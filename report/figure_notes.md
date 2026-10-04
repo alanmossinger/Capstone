@@ -742,6 +742,136 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** Distribution of the expected time to operation (among requests built within 10 years) for the test entrants.
 <!-- /fig:06_17_expected_time -->
 
+<!-- fig:07_01_built_share_by_region -->
+### 07_01_built_share_by_region
+
+![07_01_built_share_by_region](../figures/07_all_regions_model/07_01_built_share_by_region.png)
+
+*Notebook:* `notebooks/07_all_regions_model.ipynb` · *Files:* `figures/07_all_regions_model/07_01_built_share_by_region.png`, `.svg`
+
+**Caption (stub).** Share built among resolved requests by region, training and validation cohorts.
+<!-- /fig:07_01_built_share_by_region -->
+
+<!-- fig:07_02_unresolved_share -->
+### 07_02_unresolved_share
+
+![07_02_unresolved_share](../figures/07_all_regions_model/07_02_unresolved_share.png)
+
+*Notebook:* `notebooks/07_all_regions_model.ipynb` · *Files:* `figures/07_all_regions_model/07_02_unresolved_share.png`, `.svg`
+
+**Caption (stub).** Share of requests still unresolved at the end of 2024, by request year and region.
+<!-- /fig:07_02_unresolved_share -->
+
+<!-- fig:07_03_base_rates -->
+### 07_03_base_rates
+
+![07_03_base_rates](../figures/07_all_regions_model/07_03_base_rates.png)
+
+*Notebook:* `notebooks/07_all_regions_model.ipynb` · *Files:* `figures/07_all_regions_model/07_03_base_rates.png`, `.svg`
+
+**Caption (stub).** Region × technology share built among resolved training requests (the Track B benchmark).
+<!-- /fig:07_03_base_rates -->
+
+<!-- fig:07_04_tuning -->
+### 07_04_tuning
+
+![07_04_tuning](../figures/07_all_regions_model/07_04_tuning.png)
+
+*Notebook:* `notebooks/07_all_regions_model.ipynb` · *Files:* `figures/07_all_regions_model/07_04_tuning.png`, `.svg`
+
+**Caption (stub).** Track B tuning: logit ridge strength and LightGBM settings in cross-validation and on the 2016 cohort.
+<!-- /fig:07_04_tuning -->
+
+<!-- fig:07_05_validation_metrics -->
+### 07_05_validation_metrics
+
+![07_05_validation_metrics](../figures/07_all_regions_model/07_05_validation_metrics.png)
+
+*Notebook:* `notebooks/07_all_regions_model.ipynb` · *Files:* `figures/07_all_regions_model/07_05_validation_metrics.png`, `.svg`
+
+**Caption (stub).** AUC and Brier score of the Track B models and the base rate on the 2016 cohort.
+<!-- /fig:07_05_validation_metrics -->
+
+<!-- fig:07_06_reliability_2016 -->
+### 07_06_reliability_2016
+
+![07_06_reliability_2016](../figures/07_all_regions_model/07_06_reliability_2016.png)
+
+*Notebook:* `notebooks/07_all_regions_model.ipynb` · *Files:* `figures/07_all_regions_model/07_06_reliability_2016.png`, `.svg`
+
+**Caption (stub).** Reliability diagrams of the Track B models on the 2016 cohort, raw and isotonic-calibrated.
+<!-- /fig:07_06_reliability_2016 -->
+
+<!-- fig:07_07_isotonic_maps -->
+### 07_07_isotonic_maps
+
+![07_07_isotonic_maps](../figures/07_all_regions_model/07_07_isotonic_maps.png)
+
+*Notebook:* `notebooks/07_all_regions_model.ipynb` · *Files:* `figures/07_all_regions_model/07_07_isotonic_maps.png`, `.svg`
+
+**Caption (stub).** Isotonic calibration maps of the two Track B models, fitted on the 2016 cohort.
+<!-- /fig:07_07_isotonic_maps -->
+
+<!-- fig:07_08_calibration_by_region -->
+### 07_08_calibration_by_region
+
+![07_08_calibration_by_region](../figures/07_all_regions_model/07_08_calibration_by_region.png)
+
+*Notebook:* `notebooks/07_all_regions_model.ipynb` · *Files:* `figures/07_all_regions_model/07_08_calibration_by_region.png`, `.svg`
+
+**Caption (stub).** Mean calibrated P(built) against the observed share by region, on 2016 and with the region held out.
+<!-- /fig:07_08_calibration_by_region -->
+
+<!-- fig:07_09_loro_auc -->
+### 07_09_loro_auc
+
+![07_09_loro_auc](../figures/07_all_regions_model/07_09_loro_auc.png)
+
+*Notebook:* `notebooks/07_all_regions_model.ipynb` · *Files:* `figures/07_all_regions_model/07_09_loro_auc.png`, `.svg`
+
+**Caption (stub).** Leave-one-region-out AUC of the Track B models against a technology-only benchmark.
+<!-- /fig:07_09_loro_auc -->
+
+<!-- fig:07_10_odds_ratios -->
+### 07_10_odds_ratios
+
+![07_10_odds_ratios](../figures/07_all_regions_model/07_10_odds_ratios.png)
+
+*Notebook:* `notebooks/07_all_regions_model.ipynb` · *Files:* `figures/07_all_regions_model/07_10_odds_ratios.png`, `.svg`
+
+**Caption (stub).** Odds ratios of the Track B logistic regression for being built.
+<!-- /fig:07_10_odds_ratios -->
+
+<!-- fig:07_11_lgbm_importance -->
+### 07_11_lgbm_importance
+
+![07_11_lgbm_importance](../figures/07_all_regions_model/07_11_lgbm_importance.png)
+
+*Notebook:* `notebooks/07_all_regions_model.ipynb` · *Files:* `figures/07_all_regions_model/07_11_lgbm_importance.png`, `.svg`
+
+**Caption (stub).** Split-gain importance of each feature in the Track B LightGBM model.
+<!-- /fig:07_11_lgbm_importance -->
+
+<!-- fig:07_12_test_predictions -->
+### 07_12_test_predictions
+
+![07_12_test_predictions](../figures/07_all_regions_model/07_12_test_predictions.png)
+
+*Notebook:* `notebooks/07_all_regions_model.ipynb` · *Files:* `figures/07_all_regions_model/07_12_test_predictions.png`, `.svg`
+
+**Caption (stub).** Distribution of calibrated P(built) for the 2017 test cohort by region.
+<!-- /fig:07_12_test_predictions -->
+
+<!-- fig:07_13_track_a_vs_b -->
+### 07_13_track_a_vs_b
+
+![07_13_track_a_vs_b](../figures/07_all_regions_model/07_13_track_a_vs_b.png)
+
+*Notebook:* `notebooks/07_all_regions_model.ipynb` · *Files:* `figures/07_all_regions_model/07_13_track_a_vs_b.png`, `.svg`
+
+**Caption (stub).** Track A 7-year P(operation) against Track B P(built) for the shared 2017 requests.
+<!-- /fig:07_13_track_a_vs_b -->
+
 <!-- fig:F1_cif_by_region -->
 ### F1_cif_by_region
 

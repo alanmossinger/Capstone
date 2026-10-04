@@ -173,3 +173,16 @@ horizon (3, 5, 7 years): 2,841 requests × 3 horizons.
 | dt_logit_expected_years, dt_lgbm_expected_years | expected years from request to operation among requests that operate within 10 years |
 | event, duration_years | observed outcome through 2024-12-31 (0 still waiting, 1 operation, 2 withdrawal) and years to it — scored only in notebook 08 |
 | entry_years, wd_bulk_date | ERCOT delayed-entry time and bulk-withdrawal flag (decision #21), for the sensitivity runs |
+
+### `data/processed/predictions_trackB.parquet` (notebook 07)
+
+One row per resolved Track B request of the 2016 (validation) and 2017 (test)
+cohorts, all nine regions: 2,980 rows.
+
+| column | meaning |
+|---|---|
+| project_key, region, q_year, split | request key, region, request year, `validation` or `test` |
+| baseline | share built in the request's region × technology cell of earlier entrants (to 2015 for 2016 requests, to 2016 for 2017 requests) |
+| logit, lgbm | raw P(built) from the logistic regression and LightGBM fitted on entrants to 2015 |
+| logit_cal, lgbm_cal | the same after isotonic calibration on the 2016 cohort (cross-fitted for 2016 requests; decision #30) |
+| built | observed outcome (1 built, 0 withdrawn) — scored only in notebook 08 |

@@ -1,0 +1,11 @@
+{
+  "logit_C": 0.1,
+  "logit_cv_log_loss": 0.5031851417675923,
+  "lgbm": {
+    "num_leaves": 4,
+    "min_data_in_leaf": 20,
+    "rounds": 243
+  },
+  "lgbm_valid_log_loss": 0.4539707971880901,
+  "spearman_cv_vs_2016": -0.8534571723426213
+}

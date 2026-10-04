@@ -6,8 +6,9 @@ Author: Alan Mössinger.
 > **Status (2026-10-04):** the data gate reads GO
 > ([`docs/data_readiness.md`](docs/data_readiness.md)); notebooks 01 (data),
 > 02 (cleaning), 03 (survival curves), 04 (samples and features), 05
-> (baseline and Cox models) and 06 (discrete-time models) run end to end.
-> Next: the all-regions model (07).
+> (baseline and Cox models), 06 (discrete-time models) and 07 (all-regions
+> model) run end to end.
+> Next: evaluation (08).
 
 ## About
 

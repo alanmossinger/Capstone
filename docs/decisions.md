@@ -191,3 +191,27 @@ alternative rejected.
     is wide (0–10.6% at 3 years) and the check is weak. *Rejected:* keeping
     the strict check as a documented FAIL (my recommendation); changing the
     ERCOT treatment (#21 stands, question 6).
+29. **Track B: final models fitted on entrants to 2015, calibrated on 2016;
+    the 2017 check moves to notebook 08** (2026-10-04, notebook 07). The
+    isotonic map must be fitted on requests the models have not seen, so the
+    final Track B models are the fits on entrants to 2015 and the map is
+    fitted on the 2016 cohort; refitting on entrants to 2016 would leave no
+    unseen cohort to calibrate on. PLAN.md §6 also asks notebook 07 to check
+    AUC and Brier against the base rate on the 2017 cohort; that is the test
+    set, so the check is made on 2016 in notebook 07 (both models pass) and on
+    2017 in notebook 08, after its criteria are fixed. LightGBM is tuned on
+    the 2016 cohort as in #27 (4 leaves, 243 rounds; grouped CV ranked the
+    settings the other way, Spearman −0.85). *Rejected:* refitting on
+    entrants to 2016 and calibrating in-sample; scoring 2017 in notebook 07.
+30. **Isotonic calibration on bins of at least 50 requests**
+    (2026-10-04, `src/track_b.isotonic`). Plain isotonic regression on the
+    2016 cohort sent LightGBM's map to 100% above a raw score of 0.53 on the
+    strength of nine requests, a value 29 test requests would have inherited.
+    The map is now fitted on consecutive bins of at least 50 requests (mean
+    score, share built, weighted by size) and interpolated between bins; the
+    highest calibrated 2017 value is 44.1% (logit) and 40.2% (LightGBM).
+    Calibration, scored cross-fitted on halves of the 2016 cohort, fixes the
+    mean level (18.3% vs 18.4% built) but does not lower the Brier score;
+    both raw and calibrated predictions go to notebook 08. *Rejected:* plain
+    isotonic (unstable tail); Platt scaling (assumes a logistic shape the
+    reliability diagram does not show).
