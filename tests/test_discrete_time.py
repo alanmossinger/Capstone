@@ -4,9 +4,10 @@ The unit tests check the project-year rows (delayed entry, congestion without
 the project itself), the state encoding (no row sees its own outcome) and the
 hazard → incidence arithmetic on toy data. ``test_model_cif_inside_aj_bands``
 is notebook 06's acceptance check: averaged by region, each model's
-P(operation by 3/5/7 years) for the entrants it was fitted on must lie inside
-the Aalen–Johansen 95% bootstrap band of the same entrants
-(``results/dt_band_check.csv``, written by the notebook).
+P(operation by 3/5/7 years) must lie inside the Aalen–Johansen 95% bootstrap
+band of the same requests — the entrants it was fitted on for PJM and CAISO,
+the 2016 entrants for ERCOT (decision #28) — read from the rows of
+``results/dt_band_check.csv`` marked ``counts``.
 """
 
 import numpy as np
@@ -110,7 +111,7 @@ def _band_rows():
 @pytest.mark.parametrize("region", config.TRACK_A_REGIONS)
 def test_model_cif_inside_aj_bands(region, model):
     rows = _band_rows()
-    part = rows[(rows["region"] == region) & (rows["model"] == model)]
+    part = rows[rows["counts"] & (rows["region"] == region) & (rows["model"] == model)]
     assert set(part["horizon"]) == set(config.HORIZONS)
     outside = part[(part["predicted"] < part["band_low"]) | (part["predicted"] > part["band_high"])]
     assert outside.empty, outside[["horizon", "predicted", "band_low", "band_high"]].round(3).to_string(index=False)

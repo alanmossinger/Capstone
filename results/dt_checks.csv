@@ -3,6 +3,6 @@ check,passed,result
 "P(operation by t) within [0, 1], rising with t, operation + withdrawal ≤ 1",True,PASS
 grouped folds: no project in both parts of a fold,True,PASS
 features are entry-time only (plus year in queue and yearly congestion),True,PASS
-logit: mean predicted P(operation by 3/5/7 yr) inside the Aalen–Johansen band in every region,False,FAIL
-LightGBM: mean predicted P(operation by 3/5/7 yr) inside the Aalen–Johansen band in every region,False,FAIL
+logit: mean predicted P(operation by 3/5/7 yr) inside the Aalen–Johansen band in every region (ERCOT: 2016 entrants),True,PASS
+LightGBM: mean predicted P(operation by 3/5/7 yr) inside the Aalen–Johansen band in every region (ERCOT: 2016 entrants),True,PASS
 notebook runs in under 10 minutes,True,PASS

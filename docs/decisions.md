@@ -175,3 +175,19 @@ alternative rejected.
     is flat around the choice). Cost: the 2016 calibration check is partly in-sample for
     LightGBM. *Rejected:* the CV's choice (worse forward in time);
     extending the grid further.
+28. **ERCOT's band check uses its 2016 entrants** (Alan, 2026-10-04, after the
+    first run of notebook 06). Notebook 06's acceptance check asks that the
+    models' mean P(operation by 3/5/7 years) lie inside the Aalen–Johansen
+    95% band of the entrants they were fitted on. PJM and CAISO pass that
+    check; ERCOT failed it in 5 of 6 cases (logit 6.3% vs 12.2% observed by
+    year 3), because under delayed entry (#21) the models never see ERCOT
+    before 2018-08-29 and its 2005–14 entrants mostly completed before then;
+    its 2015–16 entrants are matched (4.3% vs 4.3%). ERCOT is now checked on
+    its 2016 entrants, predicted by the fits to 2015, where both models are
+    inside the band at every horizon. The change is made after seeing the
+    result and is stated as such in the notebook; the all-entrants ERCOT
+    result stays in `results/dt_band_check.csv` (rows with `counts` = False)
+    and in figure 06_13. The 2016 ERCOT cohort has 66 requests, so its band
+    is wide (0–10.6% at 3 years) and the check is weak. *Rejected:* keeping
+    the strict check as a documented FAIL (my recommendation); changing the
+    ERCOT treatment (#21 stands, question 6).

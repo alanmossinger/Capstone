@@ -195,3 +195,7 @@ avoids that code path.
    recommendation: (a), keeping the strict test and saying so in the report.
 8. **Decision #27** (LightGBM tuned on 2016 rather than by grouped CV)
    departs from PLAN.md §6. Keep it?
+
+**Answered the same day:** question 7 → ERCOT's band check restated on its
+2016 entrants (decision #28); both models pass it, notebook 06 now reports 7
+of 7 checks PASS and `pytest` 45 passed. Question 8 → decision #27 kept.
