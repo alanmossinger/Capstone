@@ -1,0 +1,5 @@
+check,passed,result
+"naive mock-up reproduces within ±1 point (AJ, 5 years)",True,PASS
+"F1, F2, F3, F8 saved as PNG and SVG",True,PASS
+"F1, F2, F3, F8 have caption stubs in report/figure_notes.md",True,PASS
+every curve has a bootstrap band,True,PASS

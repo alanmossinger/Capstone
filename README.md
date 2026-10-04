@@ -3,9 +3,10 @@
 SIADS 699 Capstone (Master of Applied Data Science, University of Michigan), Group 13.
 Author: Alan Mössinger.
 
-> **Status (2026-10-03):** Phase 0 — data gathering and the readiness gate.
-> Notebook 01 runs end to end; the gate is waiting on one decision
-> (see [`docs/data_readiness.md`](docs/data_readiness.md)). No modeling yet.
+> **Status (2026-10-03):** the data gate reads GO
+> ([`docs/data_readiness.md`](docs/data_readiness.md)); notebooks 01 (data),
+> 02 (cleaning) and 03 (survival curves) run end to end. Modeling starts with
+> notebook 04.
 
 ## About
 
@@ -69,7 +70,7 @@ tests/       pytest checks on the audit, cleaning, features and metrics
 
 ## Results at a glance
 
-Phase 0 only, from `results/`:
+From `results/` (notebooks 01–03):
 
 - The public file reproduces LBNL's headline: 12.6% of 2000–2019 requested
   capacity reached operation and 76.9% was withdrawn
@@ -79,6 +80,11 @@ Phase 0 only, from `results/`:
   baseline the models must beat.
 - Only CAISO, ERCOT and PJM record both operation and withdrawal dates
   (`results/event_date_coverage.csv`), so the timing model covers those three.
+- Five years after the request, 18.4% of ERCOT, 13.2% of PJM and 4.8% of
+  CAISO projects are operating (Aalen–Johansen, `results/cif_horizons.csv`;
+  figure `figures/F1_cif_by_region.png`).
+- The clean file reproduces LBNL's published completion rates within 1.2
+  points for every technology and region (`results/benchmarks.csv`).
 
 ## References
 

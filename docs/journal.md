@@ -38,6 +38,7 @@ Dated work log. Newest entry at the bottom. Read first, update last.
    2,313 Track A rows entered in 2017–2019 at all; completions 304 vs ≥ 150).
    Amend the bars (e.g. ≥ 82%; ≥ 2,000 projects with ≥ 150 completions) and
    record it as a decision, or keep them and change the test design?
+   → *Answered the same day: amended as proposed (decision #15).*
 2. **Proposed online date looks updated after entry (ASK ALAN).** 44% of
    completed Track A projects have a proposed date within a month of their
    actual operation date, and ERCOT/CAISO operational rows mostly have the
@@ -55,3 +56,51 @@ Dated work log. Newest entry at the bottom. Read first, update last.
 `pd.to_datetime(…, unit="D")` that did not recur in five reruns; the Excel
 date conversion now uses integer days (identical results, checked), which
 avoids that code path.
+
+## 2026-10-03 (later) — gate GO, notebooks 02 and 03
+
+**Done**
+
+- Gate thresholds amended at Alan's decision (#15); notebook 01 re-run: 15 of
+  15 checks pass, **GO**.
+- Notebook 02 (`src/cleaning.py`, R1–R9): 36,441 → 36,216 requests; 692 event
+  dates that contradicted the status or the request date cleared; all seven
+  checks pass; the plan's rule-table counts reproduce (the ">5,000 MW: one
+  row" is two). 9 figures.
+- Notebook 03 (`src/events.py`, `src/survival_tools.py`, `src/features.py`,
+  `src/benchmarks.py`): Track A sample 13,366; Aalen–Johansen curves with
+  500-resample bootstrap bands; F1, F2, F3, F8 and 10 exploratory figures;
+  mock-up check passes; LBNL's completion rates reproduce within 1.2 points
+  for every technology and region. All four checks pass.
+- Tests: 23 pass (`test_cleaning`, `test_features`, `test_survival_tools`);
+  my Aalen–Johansen matches lifelines exactly.
+- Found in notebook 03: ERCOT's bulk withdrawal date (441 withdrawals dated
+  2018-08-29, none earlier); notebook 01's reading of figure 01_13 corrected.
+
+**Next**
+
+- Notebook 04 (events, Track A/B samples, entry-time features, congestion,
+  `tests/test_features.py` extended) — waits on questions 2 and 4 below.
+
+**Open questions for Alan**
+
+2. *(still open)* Proposed online date: keep `ambition_gap_years` out of the
+   main models (leakage ablation only)? My recommendation: yes.
+4. **ERCOT bulk withdrawal date (ASK ALAN).** 441 ERCOT withdrawals (projects
+   entering 2002–2017) are dated 2018-08-29, so their true withdrawal time is
+   only known to be before that day. Options for the timing models:
+   (a) keep as recorded and flag — simplest, but those projects stay in the
+   risk sets for years after they left, which biases ERCOT's withdrawal and
+   operation hazards before 2018;
+   (b) **delayed entry for ERCOT at 2018-08-29** (left truncation): ERCOT
+   projects contribute only the time after that date, and those that had
+   already left are not in ERCOT's risk sets — statistically clean, costs the
+   early ERCOT years; lifelines (`entry_col`) and the discrete-time expansion
+   both support it;
+   (c) drop ERCOT entrants before 2018 from the timing models.
+   My recommendation: (b) for the main models, (a) as a sensitivity run.
+   The 2017–2019 test cohort is barely affected (10 of the stamped rows
+   entered in 2017).
+5. PJM has 456 withdrawals dated 2024-12-18, inside the test window. They
+   may be a real deadline of PJM's queue reform; I have not verified it.
+   Keep them as recorded unless you know otherwise?

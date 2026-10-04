@@ -311,3 +311,143 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 
 **Caption (stub).** Share of each request-year cohort still active or suspended at the end of 2024, for CAISO, ERCOT and PJM.
 <!-- /fig:02_09_unresolved_share_by_cohort -->
+
+<!-- fig:03_01_still_in_queue_by_region -->
+### 03_01_still_in_queue_by_region
+
+![03_01_still_in_queue_by_region](../figures/03_explore_survival_curves/03_01_still_in_queue_by_region.png)
+
+*Notebook:* `notebooks/03_explore_survival_curves.ipynb` · *Files:* `figures/03_explore_survival_curves/03_01_still_in_queue_by_region.png`, `.svg`
+
+**Caption (stub).** Kaplan–Meier share of requests still in the queue by years since request, for CAISO, ERCOT and PJM.
+<!-- /fig:03_01_still_in_queue_by_region -->
+
+<!-- fig:03_02_withdrawal_by_technology -->
+### 03_02_withdrawal_by_technology
+
+![03_02_withdrawal_by_technology](../figures/03_explore_survival_curves/03_02_withdrawal_by_technology.png)
+
+*Notebook:* `notebooks/03_explore_survival_curves.ipynb` · *Files:* `figures/03_explore_survival_curves/03_02_withdrawal_by_technology.png`, `.svg`
+
+**Caption (stub).** Cumulative incidence of withdrawal by technology group within CAISO, ERCOT and PJM.
+<!-- /fig:03_02_withdrawal_by_technology -->
+
+<!-- fig:03_03_operation_by_cohort -->
+### 03_03_operation_by_cohort
+
+![03_03_operation_by_cohort](../figures/03_explore_survival_curves/03_03_operation_by_cohort.png)
+
+*Notebook:* `notebooks/03_explore_survival_curves.ipynb` · *Files:* `figures/03_explore_survival_curves/03_03_operation_by_cohort.png`, `.svg`
+
+**Caption (stub).** Cumulative incidence of operation by entry cohort (2000–09, 2010–14, 2015–19) within CAISO, ERCOT and PJM.
+<!-- /fig:03_03_operation_by_cohort -->
+
+<!-- fig:03_04_withdrawal_by_cohort -->
+### 03_04_withdrawal_by_cohort
+
+![03_04_withdrawal_by_cohort](../figures/03_explore_survival_curves/03_04_withdrawal_by_cohort.png)
+
+*Notebook:* `notebooks/03_explore_survival_curves.ipynb` · *Files:* `figures/03_explore_survival_curves/03_04_withdrawal_by_cohort.png`, `.svg`
+
+**Caption (stub).** Cumulative incidence of withdrawal by entry cohort within CAISO, ERCOT and PJM.
+<!-- /fig:03_04_withdrawal_by_cohort -->
+
+<!-- fig:03_05_region_technology_base_rates -->
+### 03_05_region_technology_base_rates
+
+![03_05_region_technology_base_rates](../figures/03_explore_survival_curves/03_05_region_technology_base_rates.png)
+
+*Notebook:* `notebooks/03_explore_survival_curves.ipynb` · *Files:* `figures/03_explore_survival_curves/03_05_region_technology_base_rates.png`, `.svg`
+
+**Caption (stub).** Five-year completion probability for each region × technology cell (2000–2019 entrants) — the cells of the baseline predictor.
+<!-- /fig:03_05_region_technology_base_rates -->
+
+<!-- fig:03_06_benchmarks -->
+### 03_06_benchmarks
+
+![03_06_benchmarks](../figures/03_explore_survival_curves/03_06_benchmarks.png)
+
+*Notebook:* `notebooks/03_explore_survival_curves.ipynb` · *Files:* `figures/03_explore_survival_curves/03_06_benchmarks.png`, `.svg`
+
+**Caption (stub).** LBNL's published completion rates, post-IA outcomes and median durations against the same quantities computed from the clean public file.
+<!-- /fig:03_06_benchmarks -->
+
+<!-- fig:03_07_hybrid_vs_single -->
+### 03_07_hybrid_vs_single
+
+![03_07_hybrid_vs_single](../figures/03_explore_survival_curves/03_07_hybrid_vs_single.png)
+
+*Notebook:* `notebooks/03_explore_survival_curves.ipynb` · *Files:* `figures/03_explore_survival_curves/03_07_hybrid_vs_single.png`, `.svg`
+
+**Caption (stub).** Cumulative incidence of operation for hybrid and single-technology requests in CAISO and PJM.
+<!-- /fig:03_07_hybrid_vs_single -->
+
+<!-- fig:03_08_service_type -->
+### 03_08_service_type
+
+![03_08_service_type](../figures/03_explore_survival_curves/03_08_service_type.png)
+
+*Notebook:* `notebooks/03_explore_survival_curves.ipynb` · *Files:* `figures/03_explore_survival_curves/03_08_service_type.png`, `.svg`
+
+**Caption (stub).** Cumulative incidence of operation by interconnection service type (ERIS, NRIS) in CAISO and PJM.
+<!-- /fig:03_08_service_type -->
+
+<!-- fig:03_09_congestion_over_time -->
+### 03_09_congestion_over_time
+
+![03_09_congestion_over_time](../figures/03_explore_survival_curves/03_09_congestion_over_time.png)
+
+*Notebook:* `notebooks/03_explore_survival_curves.ipynb` · *Files:* `figures/03_explore_survival_curves/03_09_congestion_over_time.png`, `.svg`
+
+**Caption (stub).** Median queue congestion at entry (GW waiting in the same region) by request year for CAISO, ERCOT and PJM.
+<!-- /fig:03_09_congestion_over_time -->
+
+<!-- fig:03_10_withdrawal_date_spikes -->
+### 03_10_withdrawal_date_spikes
+
+![03_10_withdrawal_date_spikes](../figures/03_explore_survival_curves/03_10_withdrawal_date_spikes.png)
+
+*Notebook:* `notebooks/03_explore_survival_curves.ipynb` · *Files:* `figures/03_explore_survival_curves/03_10_withdrawal_date_spikes.png`, `.svg`
+
+**Caption (stub).** Number of withdrawals per month by recorded withdrawal date in CAISO, ERCOT and PJM, showing ERCOT's single bulk withdrawal date.
+<!-- /fig:03_10_withdrawal_date_spikes -->
+
+<!-- fig:F1_cif_by_region -->
+### F1_cif_by_region
+
+![F1_cif_by_region](../figures/F1_cif_by_region.png)
+
+*Notebook:* `notebooks/03_explore_survival_curves.ipynb` · *Files:* `figures/F1_cif_by_region.png`, `.svg`
+
+**Caption (stub).** Cumulative incidence of reaching commercial operation and of withdrawing, by years since the interconnection request, for CAISO, ERCOT and PJM, with 95% bootstrap bands.
+<!-- /fig:F1_cif_by_region -->
+
+<!-- fig:F2_operation_by_technology -->
+### F2_operation_by_technology
+
+![F2_operation_by_technology](../figures/F2_operation_by_technology.png)
+
+*Notebook:* `notebooks/03_explore_survival_curves.ipynb` · *Files:* `figures/F2_operation_by_technology.png`, `.svg`
+
+**Caption (stub).** Cumulative incidence of reaching operation by technology group, in small multiples for CAISO, ERCOT and PJM, with 95% bootstrap bands.
+<!-- /fig:F2_operation_by_technology -->
+
+<!-- fig:F3_five_year_by_size -->
+### F3_five_year_by_size
+
+![F3_five_year_by_size](../figures/F3_five_year_by_size.png)
+
+*Notebook:* `notebooks/03_explore_survival_curves.ipynb` · *Files:* `figures/F3_five_year_by_size.png`, `.svg`
+
+**Caption (stub).** Probability of reaching operation within five years by requested capacity (size regime) for CAISO, ERCOT and PJM, with the 20 MW FERC small/large generator threshold marked.
+<!-- /fig:F3_five_year_by_size -->
+
+<!-- fig:F8_congestion_vs_completion -->
+### F8_congestion_vs_completion
+
+![F8_congestion_vs_completion](../figures/F8_congestion_vs_completion.png)
+
+*Notebook:* `notebooks/03_explore_survival_curves.ipynb` · *Files:* `figures/F8_congestion_vs_completion.png`, `.svg`
+
+**Caption (stub).** Probability of reaching operation within five years against the capacity already waiting in the same region's queue at entry, by fifths of congestion, for CAISO, ERCOT and PJM.
+<!-- /fig:F8_congestion_vs_completion -->

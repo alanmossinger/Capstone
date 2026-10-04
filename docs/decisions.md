@@ -66,3 +66,29 @@ alternative rejected.
     304 completions). The change is made after seeing the numbers and is
     stated as such in `docs/data_readiness.md`. *Rejected:* changing the test
     cohort to 2016–2019 entrants, which would take 2016 away from validation.
+16. **Cleaning details beyond the rule table** (2026-10-03). R2 also clears the
+    1970-01-01 placeholder in `ia_date` (56 rows); R7 keeps the copy of a
+    duplicated key that has a request date and drops the other (1 row); text
+    columns are stored as text in the parquet. The plan's ">5,000 MW: one
+    row" is two rows; both are flagged, not dropped. *Rejected:* merging the
+    two copies of the duplicate (it would invent a record).
+17. **Outcome coding** (2026-10-03, `src/events.py`). Withdrawals dated after
+    the censor date (175 rows, mostly early 2025) are censored at 2024-12-31,
+    because the projects were still in the queue on that day; same-day exits
+    count as one day. *Rejected:* counting them as withdrawals, which would
+    use information from after the censor date.
+18. **Survival estimates in numpy, bootstrap bands** (2026-10-03,
+    `src/survival_tools.py`). Aalen–Johansen and Kaplan–Meier are written out
+    in a few lines and tested against lifelines; bands are 500-resample
+    percentile bootstraps with fixed seeds. *Reason:* the bootstrap refits the
+    estimator tens of thousands of times. *Rejected:* lifelines'
+    AalenJohansenFitter in the loop (it jitters tied times and is slower).
+19. **Five-year views use 2000–2019 entrants** (2026-10-03, F3, F8, 03_05):
+    every project then has at least five years of follow-up. Curves over time
+    (F1, F2) use all entrants with censoring.
+20. **`src/benchmarks.py` added** (2026-10-03): reads LBNL's summary sheets
+    and recomputes them from the clean table (`results/benchmarks.csv`). Not
+    in PLAN.md's module list; kept separate so notebook 03 stays short.
+21. **ERCOT bulk withdrawal date** (found 2026-10-03, notebook 03): 441 of
+    ERCOT's 954 dated withdrawals share 2018-08-29 and none is dated earlier.
+    Treatment in the timing models: *(open — ASK ALAN, see journal)*.
