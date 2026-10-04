@@ -136,3 +136,42 @@ alternative rejected.
     compute Schoenfeld residuals with delayed entry, so the proportional-
     hazards tests and plots use the same covariates fitted on the dates as
     recorded (the sensitivity version of #21).
+26. **Discrete-time models: how delayed entry, years and features enter**
+    (2026-10-04, notebook 06, `src/discrete_time.py`). (a) Under ERCOT's
+    delayed entry (#21) a project-year is kept only if it *starts* on or after
+    the entry time (`year − 1 ≥ entry_years`). Keeping the year that contains
+    2018-08-29 would add 122 partly watched ERCOT years whose operation hazard
+    is half that of full years (0.057 vs 0.125), and would let the stamped
+    withdrawals back in, since their recorded exit *is* the entry time.
+    ERCOT is left with 98 of 732 training requests (288 project-years).
+    (b) The logit's "early" (years 1–3) interactions cover CAISO, technology and
+    size but not ERCOT: no ERCOT training request is watched in its first two
+    years, so that term would rest on a few rows (it pushed ERCOT's 3-year
+    prediction to 0.5% in a first draft). (c) The logit pools years 8–10 into
+    one effect (6% of project-years) and leaves out the hybrid flag, which the
+    Solar+Battery group already carries (as in the Cox design, #24);
+    LightGBM keeps both. (d) Predictions made at entry hold congestion at its
+    entry value in every later year; the realised yearly value is used only in
+    fitting and in a diagnostic. (e) The acceptance band check compares the
+    models with Aalen–Johansen bands of the entrants they were fitted on (to
+    2016), not with notebook 03's all-years bands, which contain the
+    2017–2019 test outcomes. A new module rather than more functions in
+    `survival_tools.py`, so notebook 08 can refit the models for its
+    sensitivity runs. *Rejected:* the "year contains entry" rule (biased
+    hazards); an ERCOT early term (not identified).
+27. **LightGBM tuned on the 2016 cohort, not by grouped cross-validation**
+    (2026-10-04, notebook 06). PLAN.md §6 chooses hyperparameters by 5-fold
+    cross-validation grouped by project and uses 2016 only for early stopping.
+    The grouped CV kept preferring ever larger trees and ended at the edge of
+    two successive grids (64 leaves), while on the 2016 entrants — later in
+    time than every fitting row — the 15 settings ranked nearly the other way
+    (Spearman −0.65 between the two log losses; the CV's choice scores 0.6658
+    on 2016, the best setting, 8 leaves and 331 rounds, 0.6493). Folds keep a
+    project's years together but share calendar years, so the CV rewards
+    learning events of particular years that do not carry forward. The tree
+    setting and the round count are therefore chosen on the 2016 cohort,
+    as the Cox penalty was in notebook 05; the CV curves stay in the notebook
+    as the evidence, and the logit's penalty is still chosen by CV (its curve
+    is flat around the choice). Cost: the 2016 calibration check is partly in-sample for
+    LightGBM. *Rejected:* the CV's choice (worse forward in time);
+    extending the grid further.

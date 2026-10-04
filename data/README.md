@@ -151,3 +151,25 @@ Codebook fields absent from the public sheet: `interconnecting_entity`, `interco
 | data/processed/technology_crosswalk.csv | eia_technology, type_clean, note, n_generators, nameplate_gw | notebook 01 §5 |
 | data/processed/linkage_test_matches.csv | q_id, entity, region, state, project_name, type1, mw1, on_date, link_type, matched, reason, eia_plantid, eia_plant_name, eia_mw, months_apart | notebook 01 §6 |
 <!-- dictionary:end -->
+
+## Model outputs
+
+Written by the modelling notebooks; one section per table, kept by hand.
+
+### `data/processed/predictions_trackA.parquet` (notebook 06)
+
+One row per validation or test request (Track A entrants of 2016–2019) and
+horizon (3, 5, 7 years): 2,841 requests × 3 horizons.
+
+| column | meaning |
+|---|---|
+| project_key | request key: LBNL `entity` and `q_id` joined by a vertical bar (rule R7) |
+| region, q_year | region and request year |
+| split | `validation` (2016 entrants) or `test` (2017–2019) |
+| horizon | years after the request (3, 5 or 7) |
+| baseline, baseline_cell | P(operation by horizon) from the region × technology Aalen–Johansen cell of entrants to 2016 (notebook 05); which cell was used |
+| cox | P(operation by horizon) from the cause-specific Cox models (notebook 05) |
+| dt_logit, dt_lgbm | P(operation by horizon) from the discrete-time multinomial logit and LightGBM hazard models (notebook 06) |
+| dt_logit_expected_years, dt_lgbm_expected_years | expected years from request to operation among requests that operate within 10 years |
+| event, duration_years | observed outcome through 2024-12-31 (0 still waiting, 1 operation, 2 withdrawal) and years to it — scored only in notebook 08 |
+| entry_years, wd_bulk_date | ERCOT delayed-entry time and bulk-withdrawal flag (decision #21), for the sensitivity runs |

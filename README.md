@@ -3,10 +3,11 @@
 SIADS 699 Capstone (Master of Applied Data Science, University of Michigan), Group 13.
 Author: Alan Mössinger.
 
-> **Status (2026-10-03):** the data gate reads GO
+> **Status (2026-10-04):** the data gate reads GO
 > ([`docs/data_readiness.md`](docs/data_readiness.md)); notebooks 01 (data),
-> 02 (cleaning), 03 (survival curves), 04 (samples and features) and 05
-> (baseline and Cox models) run end to end. Next: discrete-time models (06).
+> 02 (cleaning), 03 (survival curves), 04 (samples and features), 05
+> (baseline and Cox models) and 06 (discrete-time models) run end to end.
+> Next: the all-regions model (07).
 
 ## About
 

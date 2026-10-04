@@ -572,6 +572,176 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** Distribution of 5-year predictions for the test entrants, Cox models versus baseline.
 <!-- /fig:05_08_test_prediction_spread -->
 
+<!-- fig:06_01_life_table_hazards -->
+### 06_01_life_table_hazards
+
+![06_01_life_table_hazards](../figures/06_discrete_time_models/06_01_life_table_hazards.png)
+
+*Notebook:* `notebooks/06_discrete_time_models.ipynb` · *Files:* `figures/06_discrete_time_models/06_01_life_table_hazards.png`, `.svg`
+
+**Caption (stub).** Yearly hazards of operation and withdrawal by year in the queue and region (life table of the fit sample).
+<!-- /fig:06_01_life_table_hazards -->
+
+<!-- fig:06_02_queue_gw_over_time -->
+### 06_02_queue_gw_over_time
+
+![06_02_queue_gw_over_time](../figures/06_discrete_time_models/06_02_queue_gw_over_time.png)
+
+*Notebook:* `notebooks/06_discrete_time_models.ipynb` · *Files:* `figures/06_discrete_time_models/06_02_queue_gw_over_time.png`, `.svg`
+
+**Caption (stub).** GW waiting in each Track A queue, monthly, 2000–2024.
+<!-- /fig:06_02_queue_gw_over_time -->
+
+<!-- fig:06_03_congestion_drift -->
+### 06_03_congestion_drift
+
+![06_03_congestion_drift](../figures/06_discrete_time_models/06_03_congestion_drift.png)
+
+*Notebook:* `notebooks/06_discrete_time_models.ipynb` · *Files:* `figures/06_discrete_time_models/06_03_congestion_drift.png`, `.svg`
+
+**Caption (stub).** Ratio of yearly congestion to congestion at entry, by year in the queue and region.
+<!-- /fig:06_03_congestion_drift -->
+
+<!-- fig:06_04_logit_cv -->
+### 06_04_logit_cv
+
+![06_04_logit_cv](../figures/06_discrete_time_models/06_04_logit_cv.png)
+
+*Notebook:* `notebooks/06_discrete_time_models.ipynb` · *Files:* `figures/06_discrete_time_models/06_04_logit_cv.png`, `.svg`
+
+**Caption (stub).** Grouped cross-validation log loss of the multinomial logit by ridge strength, with and without early-years interactions.
+<!-- /fig:06_04_logit_cv -->
+
+<!-- fig:06_05_lgbm_cv -->
+### 06_05_lgbm_cv
+
+![06_05_lgbm_cv](../figures/06_discrete_time_models/06_05_lgbm_cv.png)
+
+*Notebook:* `notebooks/06_discrete_time_models.ipynb` · *Files:* `figures/06_discrete_time_models/06_05_lgbm_cv.png`, `.svg`
+
+**Caption (stub).** Grouped cross-validation log loss of LightGBM by boosting round for 15 tree settings.
+<!-- /fig:06_05_lgbm_cv -->
+
+<!-- fig:06_06_early_stopping -->
+### 06_06_early_stopping
+
+![06_06_early_stopping](../figures/06_discrete_time_models/06_06_early_stopping.png)
+
+*Notebook:* `notebooks/06_discrete_time_models.ipynb` · *Files:* `figures/06_discrete_time_models/06_06_early_stopping.png`, `.svg`
+
+**Caption (stub).** LightGBM tree settings scored in grouped cross-validation and on the 2016 cohort, and the 2016 log loss by round.
+<!-- /fig:06_06_early_stopping -->
+
+<!-- fig:06_07_validation_2016 -->
+### 06_07_validation_2016
+
+![06_07_validation_2016](../figures/06_discrete_time_models/06_07_validation_2016.png)
+
+*Notebook:* `notebooks/06_discrete_time_models.ipynb` · *Files:* `figures/06_discrete_time_models/06_07_validation_2016.png`, `.svg`
+
+**Caption (stub).** Mean predicted versus observed P(operation by 3, 5 and 7 years) on the 2016 cohort for the four models, by region.
+<!-- /fig:06_07_validation_2016 -->
+
+<!-- fig:06_08_frozen_vs_realised_congestion -->
+### 06_08_frozen_vs_realised_congestion
+
+![06_08_frozen_vs_realised_congestion](../figures/06_discrete_time_models/06_08_frozen_vs_realised_congestion.png)
+
+*Notebook:* `notebooks/06_discrete_time_models.ipynb` · *Files:* `figures/06_discrete_time_models/06_08_frozen_vs_realised_congestion.png`, `.svg`
+
+**Caption (stub).** Effect of freezing congestion at its entry value on the 2016 cohort's mean predictions.
+<!-- /fig:06_08_frozen_vs_realised_congestion -->
+
+<!-- fig:06_09_logit_odds_ratios -->
+### 06_09_logit_odds_ratios
+
+![06_09_logit_odds_ratios](../figures/06_discrete_time_models/06_09_logit_odds_ratios.png)
+
+*Notebook:* `notebooks/06_discrete_time_models.ipynb` · *Files:* `figures/06_discrete_time_models/06_09_logit_odds_ratios.png`, `.svg`
+
+**Caption (stub).** Odds ratios of the final multinomial logit for operation and withdrawal, early and late years in the queue.
+<!-- /fig:06_09_logit_odds_ratios -->
+
+<!-- fig:06_10_lgbm_importance -->
+### 06_10_lgbm_importance
+
+![06_10_lgbm_importance](../figures/06_discrete_time_models/06_10_lgbm_importance.png)
+
+*Notebook:* `notebooks/06_discrete_time_models.ipynb` · *Files:* `figures/06_discrete_time_models/06_10_lgbm_importance.png`, `.svg`
+
+**Caption (stub).** Split-gain importance of each feature in the LightGBM hazard model.
+<!-- /fig:06_10_lgbm_importance -->
+
+<!-- fig:06_11_reference_hazards -->
+### 06_11_reference_hazards
+
+![06_11_reference_hazards](../figures/06_discrete_time_models/06_11_reference_hazards.png)
+
+*Notebook:* `notebooks/06_discrete_time_models.ipynb` · *Files:* `figures/06_discrete_time_models/06_11_reference_hazards.png`, `.svg`
+
+**Caption (stub).** Predicted yearly hazards of operation and withdrawal for a reference solar request in each region, both models.
+<!-- /fig:06_11_reference_hazards -->
+
+<!-- fig:06_12_technology_profiles -->
+### 06_12_technology_profiles
+
+![06_12_technology_profiles](../figures/06_discrete_time_models/06_12_technology_profiles.png)
+
+*Notebook:* `notebooks/06_discrete_time_models.ipynb` · *Files:* `figures/06_discrete_time_models/06_12_technology_profiles.png`, `.svg`
+
+**Caption (stub).** Predicted yearly hazard of operation by year in the queue for each technology, PJM reference request, both models.
+<!-- /fig:06_12_technology_profiles -->
+
+<!-- fig:06_13_band_check -->
+### 06_13_band_check
+
+![06_13_band_check](../figures/06_discrete_time_models/06_13_band_check.png)
+
+*Notebook:* `notebooks/06_discrete_time_models.ipynb` · *Files:* `figures/06_discrete_time_models/06_13_band_check.png`, `.svg`
+
+**Caption (stub).** Model-averaged P(operation by year) against the Aalen–Johansen estimate and bootstrap band, by region (acceptance check).
+<!-- /fig:06_13_band_check -->
+
+<!-- fig:06_14_cohort_check -->
+### 06_14_cohort_check
+
+![06_14_cohort_check](../figures/06_discrete_time_models/06_14_cohort_check.png)
+
+*Notebook:* `notebooks/06_discrete_time_models.ipynb` · *Files:* `figures/06_discrete_time_models/06_14_cohort_check.png`, `.svg`
+
+**Caption (stub).** Observed versus predicted P(operation by 3 and 5 years) by entry cohort and region.
+<!-- /fig:06_14_cohort_check -->
+
+<!-- fig:06_15_test_prediction_spread -->
+### 06_15_test_prediction_spread
+
+![06_15_test_prediction_spread](../figures/06_discrete_time_models/06_15_test_prediction_spread.png)
+
+*Notebook:* `notebooks/06_discrete_time_models.ipynb` · *Files:* `figures/06_discrete_time_models/06_15_test_prediction_spread.png`, `.svg`
+
+**Caption (stub).** Distribution of 5-year predictions for the test entrants: discrete-time models versus baseline.
+<!-- /fig:06_15_test_prediction_spread -->
+
+<!-- fig:06_16_cox_vs_lgbm_test -->
+### 06_16_cox_vs_lgbm_test
+
+![06_16_cox_vs_lgbm_test](../figures/06_discrete_time_models/06_16_cox_vs_lgbm_test.png)
+
+*Notebook:* `notebooks/06_discrete_time_models.ipynb` · *Files:* `figures/06_discrete_time_models/06_16_cox_vs_lgbm_test.png`, `.svg`
+
+**Caption (stub).** Cox versus discrete-time LightGBM 5-year predictions for each test request.
+<!-- /fig:06_16_cox_vs_lgbm_test -->
+
+<!-- fig:06_17_expected_time -->
+### 06_17_expected_time
+
+![06_17_expected_time](../figures/06_discrete_time_models/06_17_expected_time.png)
+
+*Notebook:* `notebooks/06_discrete_time_models.ipynb` · *Files:* `figures/06_discrete_time_models/06_17_expected_time.png`, `.svg`
+
+**Caption (stub).** Distribution of the expected time to operation (among requests built within 10 years) for the test entrants.
+<!-- /fig:06_17_expected_time -->
+
 <!-- fig:F1_cif_by_region -->
 ### F1_cif_by_region
 

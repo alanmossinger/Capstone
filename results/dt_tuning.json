@@ -1,0 +1,26 @@
+{
+  "logit": {
+    "interactions": true,
+    "C": 0.1,
+    "cv_log_loss": 0.7195330439845471
+  },
+  "lgbm": {
+    "num_leaves": 8,
+    "min_data_in_leaf": 10,
+    "rounds": 331,
+    "valid_log_loss": 0.6492638746503553,
+    "cv_log_loss_of_this_setting": 0.6717973434722262,
+    "cv_choice": {
+      "num_leaves": 64,
+      "min_data_in_leaf": 10,
+      "rounds": 109,
+      "cv_log_loss": 0.6591469912658162
+    }
+  },
+  "validation_log_loss_2016": {
+    "no information": 0.7355748330824817,
+    "dt_logit": 0.6901644141301329,
+    "dt_lgbm (chosen on 2016)": 0.6492638746503553,
+    "dt_lgbm (CV's choice)": 0.6658242274218289
+  }
+}
