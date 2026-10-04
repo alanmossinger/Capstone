@@ -1,0 +1,8 @@
+check,passed,result
+no serial-number dates,True,PASS
+no on_date on non-operational rows,True,PASS
+no wd_date on non-withdrawn rows,True,PASS
+no event date before its request date,True,PASS
+no non-positive MW,True,PASS
+project_key unique,True,PASS
+row counts equal the plan's rule table,True,PASS

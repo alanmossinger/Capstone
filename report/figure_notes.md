@@ -221,3 +221,93 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 
 **Caption (stub).** Capacity entering operation per year according to LBNL operational projects and EIA-860M generators, ERCOT and PJM.
 <!-- /fig:01_22_lbnl_vs_eia_additions -->
+
+<!-- fig:02_01_event_dates_vs_status -->
+### 02_01_event_dates_vs_status
+
+![02_01_event_dates_vs_status](../figures/02_clean_queue_data/02_01_event_dates_vs_status.png)
+
+*Notebook:* `notebooks/02_clean_queue_data.ipynb` · *Files:* `figures/02_clean_queue_data/02_01_event_dates_vs_status.png`, `.svg`
+
+**Caption (stub).** Share of rows carrying an operation date and a withdrawal date by status, before and after rules R3–R4.
+<!-- /fig:02_01_event_dates_vs_status -->
+
+<!-- fig:02_02_operation_before_request -->
+### 02_02_operation_before_request
+
+![02_02_operation_before_request](../figures/02_clean_queue_data/02_02_operation_before_request.png)
+
+*Notebook:* `notebooks/02_clean_queue_data.ipynb` · *Files:* `figures/02_clean_queue_data/02_02_operation_before_request.png`, `.svg`
+
+**Caption (stub).** Distribution of years from request to operation for operational projects, with the negative values removed by rule R3 highlighted.
+<!-- /fig:02_02_operation_before_request -->
+
+<!-- fig:02_03_capacity_by_region -->
+### 02_03_capacity_by_region
+
+![02_03_capacity_by_region](../figures/02_clean_queue_data/02_03_capacity_by_region.png)
+
+*Notebook:* `notebooks/02_clean_queue_data.ipynb` · *Files:* `figures/02_clean_queue_data/02_03_capacity_by_region.png`, `.svg`
+
+**Caption (stub).** Distribution of requested capacity (MW, log scale) by region after rule R6, with the two requests above 5,000 MW marked.
+<!-- /fig:02_03_capacity_by_region -->
+
+<!-- fig:02_04_rows_removed_by_region -->
+### 02_04_rows_removed_by_region
+
+![02_04_rows_removed_by_region](../figures/02_clean_queue_data/02_04_rows_removed_by_region.png)
+
+*Notebook:* `notebooks/02_clean_queue_data.ipynb` · *Files:* `figures/02_clean_queue_data/02_04_rows_removed_by_region.png`, `.svg`
+
+**Caption (stub).** Number of rows removed by cleaning rules R5, R6 and R7, by region.
+<!-- /fig:02_04_rows_removed_by_region -->
+
+<!-- fig:02_05_feature_completeness_by_region -->
+### 02_05_feature_completeness_by_region
+
+![02_05_feature_completeness_by_region](../figures/02_clean_queue_data/02_05_feature_completeness_by_region.png)
+
+*Notebook:* `notebooks/02_clean_queue_data.ipynb` · *Files:* `figures/02_clean_queue_data/02_05_feature_completeness_by_region.png`, `.svg`
+
+**Caption (stub).** Share of clean rows with each entry-time field present, by region.
+<!-- /fig:02_05_feature_completeness_by_region -->
+
+<!-- fig:02_06_hybrids_by_region -->
+### 02_06_hybrids_by_region
+
+![02_06_hybrids_by_region](../figures/02_clean_queue_data/02_06_hybrids_by_region.png)
+
+*Notebook:* `notebooks/02_clean_queue_data.ipynb` · *Files:* `figures/02_clean_queue_data/02_06_hybrids_by_region.png`, `.svg`
+
+**Caption (stub).** Share of requests that are hybrids, and share of hybrids without a second-component capacity, by region.
+<!-- /fig:02_06_hybrids_by_region -->
+
+<!-- fig:02_07_rules_summary -->
+### 02_07_rules_summary
+
+![02_07_rules_summary](../figures/02_clean_queue_data/02_07_rules_summary.png)
+
+*Notebook:* `notebooks/02_clean_queue_data.ipynb` · *Files:* `figures/02_clean_queue_data/02_07_rules_summary.png`, `.svg`
+
+**Caption (stub).** Number of rows or values touched by each item of cleaning rules R2–R9, by kind of action.
+<!-- /fig:02_07_rules_summary -->
+
+<!-- fig:02_08_withdrawals_after_censor_date -->
+### 02_08_withdrawals_after_censor_date
+
+![02_08_withdrawals_after_censor_date](../figures/02_clean_queue_data/02_08_withdrawals_after_censor_date.png)
+
+*Notebook:* `notebooks/02_clean_queue_data.ipynb` · *Files:* `figures/02_clean_queue_data/02_08_withdrawals_after_censor_date.png`, `.svg`
+
+**Caption (stub).** Withdrawn projects whose withdrawal date falls after the 2024-12-31 censor date, by region and month.
+<!-- /fig:02_08_withdrawals_after_censor_date -->
+
+<!-- fig:02_09_unresolved_share_by_cohort -->
+### 02_09_unresolved_share_by_cohort
+
+![02_09_unresolved_share_by_cohort](../figures/02_clean_queue_data/02_09_unresolved_share_by_cohort.png)
+
+*Notebook:* `notebooks/02_clean_queue_data.ipynb` · *Files:* `figures/02_clean_queue_data/02_09_unresolved_share_by_cohort.png`, `.svg`
+
+**Caption (stub).** Share of each request-year cohort still active or suspended at the end of 2024, for CAISO, ERCOT and PJM.
+<!-- /fig:02_09_unresolved_share_by_cohort -->
