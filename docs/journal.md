@@ -138,3 +138,60 @@ avoids that code path.
    on 125 post-2018 requests. Keep it as the pre-chosen main treatment (my
    recommendation — the alternative invents withdrawal times), with
    as-recorded and imputed versions as sensitivity runs in notebook 08?
+
+## 2026-10-04 — notebook 06 (discrete-time models)
+
+**Done**
+
+- State check at the start: tree clean, `main` == `origin/main` at e7d5e89,
+  32 tests passed.
+- Alan's answers: delayed entry stays the main ERCOT treatment, with
+  as-recorded and imputed versions as sensitivity runs in notebook 08
+  (question 6); PJM's 2024-12-18 withdrawals stay as recorded (question 5).
+- `src/discrete_time.py` (project-year rows with delayed entry and yearly
+  congestion, state target encoding inside the training rows, logit and
+  LightGBM designs and fits, hazards → P(operation by t) and expected time);
+  `tests/test_discrete_time.py` (7 unit tests + the band check).
+- Notebook 06: 14,653 project-years in the final fit. Logit chosen by grouped
+  CV (early-years interactions, C = 0.1; CV log loss 0.7195). LightGBM chosen
+  on the 2016 cohort (8 leaves, 331 rounds; 2016 log loss 0.6493 vs 0.6902 for
+  the logit), because grouped CV preferred ever larger trees that did worse on
+  2016 (decision #27). On the 2016 cohort the mean predictions are 1.8 (logit)
+  and 1.7 (LightGBM) points from the observed incidence, against 2.6 for the
+  baseline and 3.9 for Cox. Freezing congestion at entry costs nothing
+  measurable there. Predictions for 2,841 validation/test requests in
+  `data/processed/predictions_trackA.parquet`, merged with notebook 05's.
+  17 figures, all opened and checked. No test outcome was looked at.
+- Bugs caught on the way: the first project-year rule let ERCOT's stamped
+  withdrawals back in (their exit equals the entry time) — fixed by the
+  full-year rule (decision #26); a logit ERCOT × early-years term set by a
+  handful of rows had pushed ERCOT's 3-year prediction to 0.5% — removed.
+- **Acceptance check fails in ERCOT.** Models averaged over the entrants they
+  were fitted on lie inside the Aalen–Johansen band in PJM and CAISO at 3, 5
+  and 7 years; in ERCOT 5 of 6 values are below it (logit 6.3% vs 12.2%
+  observed at 3 years). The cohort breakdown shows why: ERCOT's 2005–14
+  entrants completed fast in years delayed entry never shows the models, while
+  its 2015–16 entrants are matched (4.3% vs 4.3% at 3 years). `pytest`: 43
+  passed, 2 failed (the two ERCOT band tests).
+- Notebook 06 needs 3–5 minutes when OneDrive is not syncing; with OneDrive
+  re-uploading the figures it took up to 8.7 minutes.
+
+**Next**
+
+- Notebook 07 (Track B), once Alan decides question 7. Then notebook 08,
+  whose first cell writes the success criteria to decisions #5 — to be shown
+  to Alan before they are fixed.
+
+**Open questions for Alan**
+
+7. **ERCOT fails notebook 06's band check (ASK ALAN).** The failure is the
+   known cost of delayed entry (decision #21), not an arithmetic fault (PJM and
+   CAISO pass). Options: (a) accept it as a documented FAIL and continue —
+   the test stays red for ERCOT, reported in 08 and the limitations;
+   (b) restate the check for ERCOT on the cohorts the models can see (none in
+   training starts before 2018-08-29, so in practice only the 2016 validation
+   cohort, where both models are inside the band) — a change made after seeing
+   the result, recorded like #15; (c) revisit the ERCOT treatment. My
+   recommendation: (a), keeping the strict test and saying so in the report.
+8. **Decision #27** (LightGBM tuned on 2016 rather than by grouped CV)
+   departs from PLAN.md §6. Keep it?
