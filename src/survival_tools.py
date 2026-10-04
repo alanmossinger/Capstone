@@ -153,3 +153,68 @@ def curves_by_group(frame, by, times, n_boot=500, seed=0, min_n=1):
         pieces.append(piece)
     result = pd.concat(pieces, ignore_index=True)
     return result[keys + ["n"] + [c for c in result.columns if c not in keys + ["n"]]]
+
+
+def expand_project_years(frame, max_years=None):
+    """One row per project per year in the queue, for discrete-time hazard models.
+
+    Parameters
+    ----------
+    frame : pandas.DataFrame
+        Needs ``duration_years`` and ``event`` (0/1/2).
+    max_years : int, optional
+        Drop project-years beyond this year in the queue.
+
+    Returns
+    -------
+    pandas.DataFrame
+        ``project`` (index label in ``frame``), ``year_in_queue`` (1, 2, …)
+        and ``outcome`` (0 stay, 1 operation, 2 withdrawal) — non-zero only in
+        the year the project exits.
+
+    Notes
+    -----
+    Year k covers (k − 1, k] years since the request. A project that exits
+    contributes every year up to and including the year of its exit. A
+    censored project contributes only the years it was watched in full: a
+    partly observed last year would count as "survived" although the project
+    might still have left before the year ended, which biases hazards down.
+    """
+    d = frame["duration_years"].to_numpy(dtype=float)
+    e = frame["event"].to_numpy(dtype=int)
+    n_rows = np.where(e > 0, np.ceil(d), np.floor(d)).astype(int)
+    project = np.repeat(frame.index.to_numpy(), n_rows)
+    year = np.concatenate([np.arange(1, n + 1) for n in n_rows]) if len(n_rows) else np.array([], int)
+    last = np.cumsum(n_rows) - 1
+    outcome = np.zeros(len(project), dtype=int)
+    exits = (e > 0) & (n_rows > 0)
+    outcome[last[exits]] = e[exits]
+    rows = pd.DataFrame({"project": project, "year_in_queue": year, "outcome": outcome})
+    if max_years is not None:
+        rows = rows[rows["year_in_queue"] <= max_years]
+    return rows.reset_index(drop=True)
+
+
+def cif_from_hazards(h_operation, h_withdrawal):
+    """Turn yearly cause-specific hazards into cumulative incidence by year.
+
+    Parameters
+    ----------
+    h_operation, h_withdrawal : numpy.ndarray
+        Shape (projects, years): probability of operating / withdrawing in
+        year k given still in the queue at the start of year k.
+
+    Returns
+    -------
+    tuple of numpy.ndarray
+        CIF of operation and of withdrawal, same shape; column k − 1 is the
+        probability of having exited that way by the end of year k.
+
+    Notes
+    -----
+    CIF(t) = Σ_{k ≤ t} h_op(k) · Π_{j < k} (1 − h_op(j) − h_wd(j)) (PLAN.md §6).
+    The product is the probability of still waiting at the start of year k.
+    """
+    staying = np.cumprod(1 - h_operation - h_withdrawal, axis=1)
+    before = np.concatenate([np.ones((h_operation.shape[0], 1)), staying[:, :-1]], axis=1)
+    return np.cumsum(before * h_operation, axis=1), np.cumsum(before * h_withdrawal, axis=1)

@@ -412,6 +412,86 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** Number of withdrawals per month by recorded withdrawal date in CAISO, ERCOT and PJM, showing ERCOT's single bulk withdrawal date.
 <!-- /fig:03_10_withdrawal_date_spikes -->
 
+<!-- fig:04_01_sample_by_split -->
+### 04_01_sample_by_split
+
+![04_01_sample_by_split](../figures/04_build_features/04_01_sample_by_split.png)
+
+*Notebook:* `notebooks/04_build_features.ipynb` · *Files:* `figures/04_build_features/04_01_sample_by_split.png`, `.svg`
+
+**Caption (stub).** Track A requests by temporal split and outcome at the end of 2024.
+<!-- /fig:04_01_sample_by_split -->
+
+<!-- fig:04_02_feature_correlation -->
+### 04_02_feature_correlation
+
+![04_02_feature_correlation](../figures/04_build_features/04_02_feature_correlation.png)
+
+*Notebook:* `notebooks/04_build_features.ipynb` · *Files:* `figures/04_build_features/04_02_feature_correlation.png`, `.svg`
+
+**Caption (stub).** Spearman correlations between the numeric entry-time features in Track A.
+<!-- /fig:04_02_feature_correlation -->
+
+<!-- fig:04_03_technology_mix_by_split -->
+### 04_03_technology_mix_by_split
+
+![04_03_technology_mix_by_split](../figures/04_build_features/04_03_technology_mix_by_split.png)
+
+*Notebook:* `notebooks/04_build_features.ipynb` · *Files:* `figures/04_build_features/04_03_technology_mix_by_split.png`, `.svg`
+
+**Caption (stub).** Technology mix of Track A requests in the train, validation and test splits.
+<!-- /fig:04_03_technology_mix_by_split -->
+
+<!-- fig:04_04_yearly_hazards -->
+### 04_04_yearly_hazards
+
+![04_04_yearly_hazards](../figures/04_build_features/04_04_yearly_hazards.png)
+
+*Notebook:* `notebooks/04_build_features.ipynb` · *Files:* `figures/04_build_features/04_04_yearly_hazards.png`, `.svg`
+
+**Caption (stub).** Yearly hazards of operation and withdrawal by year in the queue for CAISO, ERCOT and PJM.
+<!-- /fig:04_04_yearly_hazards -->
+
+<!-- fig:04_05_ambition_gap_leakage -->
+### 04_05_ambition_gap_leakage
+
+![04_05_ambition_gap_leakage](../figures/04_build_features/04_05_ambition_gap_leakage.png)
+
+*Notebook:* `notebooks/04_build_features.ipynb` · *Files:* `figures/04_build_features/04_05_ambition_gap_leakage.png`, `.svg`
+
+**Caption (stub).** Five-year completion by the gap between the stored proposed online date and the request date (leakage illustration).
+<!-- /fig:04_05_ambition_gap_leakage -->
+
+<!-- fig:04_06_stamp_simulation -->
+### 04_06_stamp_simulation
+
+![04_06_stamp_simulation](../figures/04_build_features/04_06_stamp_simulation.png)
+
+*Notebook:* `notebooks/04_build_features.ipynb` · *Files:* `figures/04_build_features/04_06_stamp_simulation.png`, `.svg`
+
+**Caption (stub).** Change in estimated P(operation by t) and P(withdrawal by t) when PJM's withdrawal dates are bulk-stamped the way ERCOT's are, by cohort, horizon and method.
+<!-- /fig:04_06_stamp_simulation -->
+
+<!-- fig:04_07_track_b_built_share -->
+### 04_07_track_b_built_share
+
+![04_07_track_b_built_share](../figures/04_build_features/04_07_track_b_built_share.png)
+
+*Notebook:* `notebooks/04_build_features.ipynb` · *Files:* `figures/04_build_features/04_07_track_b_built_share.png`, `.svg`
+
+**Caption (stub).** Share of resolved requests that were built, by request year and region (Track B).
+<!-- /fig:04_07_track_b_built_share -->
+
+<!-- fig:04_08_ercot_treatment_validation -->
+### 04_08_ercot_treatment_validation
+
+![04_08_ercot_treatment_validation](../figures/04_build_features/04_08_ercot_treatment_validation.png)
+
+*Notebook:* `notebooks/04_build_features.ipynb` · *Files:* `figures/04_build_features/04_08_ercot_treatment_validation.png`, `.svg`
+
+**Caption (stub).** Predicted versus observed P(operation by 3, 5 and 7 years) for ERCOT 2016 entrants under three treatments of the bulk-dated withdrawals.
+<!-- /fig:04_08_ercot_treatment_validation -->
+
 <!-- fig:F1_cif_by_region -->
 ### F1_cif_by_region
 

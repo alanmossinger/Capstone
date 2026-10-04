@@ -21,6 +21,9 @@ PLACEHOLDER_Q_DATE = "1970-01-01"  # Unix epoch used as a fill value for unknown
 CENSOR_DATE = "2024-12-31"  # end of LBNL data collection; every open project is censored here
 EARLIEST_VALID_DATE = "1950-01-01"  # event dates before this are typing errors (rule R3)
 MW_FLAG_THRESHOLD = 5000  # requests above this many MW are flagged for review, not dropped (rule R6)
+ERCOT_BULK_WD_DATE = "2018-08-29"  # 441 ERCOT withdrawals share this recorded date (notebook 03, decision #21)
+TRACK_B_MAX_YEAR = 2017  # Track B uses entrants up to this year, resolved ones only (PLAN.md §6)
+RARE_TYPE_MIN = 100  # technology levels with fewer requests are pooled into "Other" (PLAN.md §6, notebook 04)
 
 # --- Regions ------------------------------------------------------------------
 TRACK_A_REGIONS = ["ERCOT", "PJM", "CAISO"]  # the three ISOs whose public file carries event dates (decision #6)

@@ -85,6 +85,100 @@ def track_a_sample(events):
     return events[keep].copy()
 
 
+def flag_bulk_withdrawals(events):
+    """Mark ERCOT withdrawals carrying the bulk-recorded date of 2018-08-29.
+
+    Parameters
+    ----------
+    events : pandas.DataFrame
+        Output of ``code_events``.
+
+    Returns
+    -------
+    pandas.Series of bool
+        True for the stamped rows (decision #21). They stay in every sample;
+        the flag drives the as-recorded sensitivity run of notebook 08.
+    """
+    return ((events["region"] == "ERCOT") & (events["q_status"] == "withdrawn")
+            & (events["wd_date"] == pd.Timestamp(config.ERCOT_BULK_WD_DATE)))
+
+
+def delayed_entry_years(events, region="ERCOT", date=config.ERCOT_BULK_WD_DATE):
+    """Years after the request at which a project enters the risk set under delayed entry.
+
+    Parameters
+    ----------
+    events : pandas.DataFrame
+        Output of ``code_events``.
+    region : str
+        Region whose observation window starts late.
+    date : str
+        Start of the trustworthy window.
+
+    Returns
+    -------
+    pandas.Series
+        0 for every project outside ``region`` or requested after ``date``;
+        otherwise the years between the request and ``date``. A project whose
+        exit is at or before its entry time left before the window opened and
+        must be dropped from a delayed-entry fit.
+
+    Notes
+    -----
+    Main timing models use this delayed entry for ERCOT (decision #21): a
+    project-year or a Cox risk-set interval counts only after ``date``,
+    because ERCOT's withdrawal dates before it are a bulk stamp.
+    """
+    start = pd.Timestamp(date)
+    gap = (start - events["q_date"]).dt.days / config.DAYS_PER_YEAR
+    return gap.where((events["region"] == region) & (events["q_date"] < start), 0.0).clip(lower=0)
+
+
+def split_label(q_year):
+    """Temporal split of PLAN.md §6 (notebook 08): train, validation, test, later.
+
+    Notes
+    -----
+    Hyperparameters are tuned on entrants up to 2015 and checked on 2016;
+    the final models are refitted on entrants up to 2016 and tested on
+    2017–2019 entrants. Entrants from 2020 on are not used for testing
+    because their outcomes are mostly still open.
+    """
+    year = q_year.astype(float)
+    return pd.Series(np.select(
+        [year <= config.TUNE_MAX_YEAR, year == config.VALIDATION_YEAR,
+         year.between(*config.TEST_YEARS), year > config.TEST_YEARS[1]],
+        ["train", "validation", "test", "later"], default="unknown"), index=q_year.index)
+
+
+def track_b_sample(events):
+    """All-region sample for the "ever built?" classifier (Track B).
+
+    Parameters
+    ----------
+    events : pandas.DataFrame
+        Output of ``code_events``.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Requests from every region entering up to 2017 whose outcome is
+        known (operational or withdrawn), with ``built`` = 1 if operational.
+
+    Notes
+    -----
+    No dates beyond the status are needed, so the six regions without exit
+    dates can join. Keeping only resolved requests drops the slow ones that
+    are still waiting; the later the cohort, the larger that selection, which
+    is why Track B stops at the 2017 entrants (PLAN.md §6, notebook 07).
+    """
+    keep = (events["q_year"].astype(float) <= config.TRACK_B_MAX_YEAR) \
+        & events["q_status"].isin(["operational", "withdrawn"])
+    out = events[keep].copy()
+    out["built"] = (out["q_status"] == "operational").astype(int)
+    return out
+
+
 def entry_cohort(q_year):
     """Label request years with the cohorts used in the exploratory curves.
 

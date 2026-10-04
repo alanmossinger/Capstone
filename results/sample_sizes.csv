@@ -1,0 +1,16 @@
+track,split,region,requests,operation,withdrawal,censored
+A,train,ERCOT,666,205,444,17
+A,train,PJM,2809,817,1981,11
+A,train,CAISO,1250,181,1017,52
+A,validation,ERCOT,66,16,39,11
+A,validation,PJM,383,101,247,35
+A,validation,CAISO,124,10,96,18
+A,test,ERCOT,479,92,223,164
+A,test,PJM,1465,196,893,376
+A,test,CAISO,324,13,224,87
+A,later,ERCOT,1781,66,183,1532
+A,later,PJM,3243,29,1428,1786
+A,later,CAISO,776,4,289,483
+B,train,all nine,11644,2748,8896,0
+B,validation,all nine,1446,266,1180,0
+B,test,all nine,1534,279,1255,0

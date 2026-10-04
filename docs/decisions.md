@@ -89,6 +89,33 @@ alternative rejected.
 20. **`src/benchmarks.py` added** (2026-10-03): reads LBNL's summary sheets
     and recomputes them from the clean table (`results/benchmarks.csv`). Not
     in PLAN.md's module list; kept separate so notebook 03 stays short.
-21. **ERCOT bulk withdrawal date** (found 2026-10-03, notebook 03): 441 of
-    ERCOT's 954 dated withdrawals share 2018-08-29 and none is dated earlier.
-    Treatment in the timing models: *(open — ASK ALAN, see journal)*.
+21. **ERCOT bulk withdrawal date → delayed entry** (found 2026-10-03,
+    notebook 03; settled in notebook 04). 441 of ERCOT's 954 dated
+    withdrawals share 2018-08-29 and none is dated earlier. **Main timing
+    models: delayed entry** — ERCOT requests entering before 2018-08-29 join
+    the risk set on that date (`entry_years`); those that had left by then drop
+    out of fitting. **Sensitivity run: dates as recorded.** Track B and the
+    evaluation are unaffected (a stamped withdrawal of a test project is a
+    non-event at every horizon either way). ERCOT congestion before 2018
+    stays overstated and is reported as a limitation.
+    *How it was settled:* Alan approved delayed entry; I first argued for
+    keeping the dates, because P(operation by t) from Aalen–Johansen is
+    unchanged by misdated withdrawals and because no ERCOT training project
+    would be seen in its first years. Notebook 04 tested both claims. Stamping
+    PJM's withdrawals the ERCOT way left Aalen–Johansen unchanged but moved a
+    discrete-time logit's P(operation by t) by up to 6.6 points; and fitting on
+    entrants to 2015 and predicting 2016 entrants, delayed entry had the
+    lowest error (2.4 points for ERCOT, vs 3.1 as recorded and 3.1 imputed),
+    borrowing ERCOT's early years from PJM and CAISO through the shared
+    year-in-queue effect (`results/ercot_treatment_validation.csv`).
+    *Rejected:* as recorded (biased hazards); imputing stamped times from
+    other regions (no better, adds noise); dropping the stamped rows (removes
+    real failures, inflates ERCOT completion from 20% to 32%).
+22. **Proposed online date out of the main models** (Alan, 2026-10-03). The
+    stored `prop_date` looks updated after entry (notebook 01, figure 01_15),
+    so `ambition_gap_years` is built in notebook 04 but used only in the
+    labelled leakage ablation of notebook 08, alongside the IA date and study
+    phase (decision #7).
+23. **PJM's 2024-12-18 withdrawals kept as recorded** (Alan, 2026-10-03):
+    456 PJM withdrawals share that date, which may be a real deadline of
+    PJM's queue reform; nothing in the file says otherwise.

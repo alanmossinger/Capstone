@@ -59,3 +59,27 @@ def test_curves_by_group_reports_each_group():
     out = survival_tools.curves_by_group(frame, "region", [1.0, 2.0], n_boot=20)
     assert set(out["region"]) == {"A", "B"}
     assert out.groupby("region")["n"].first().to_dict() == {"A": 120, "B": 80}
+
+
+def test_project_year_expansion_counts_years_and_events():
+    frame = pd.DataFrame({"duration_years": [2.5, 2.5, 0.2, 3.0], "event": [1, 0, 2, 0]}, index=[10, 11, 12, 13])
+    rows = survival_tools.expand_project_years(frame)
+    # project 10: years 1-3, operation in year 3; 11: censored at 2.5 -> 2 full years; 12: withdrawal in year 1;
+    # 13: censored exactly at 3.0 -> 3 full years
+    assert rows.groupby("project").size().to_dict() == {10: 3, 11: 2, 12: 1, 13: 3}
+    assert rows.loc[rows["outcome"] > 0, ["project", "year_in_queue", "outcome"]].values.tolist() == [[10, 3, 1], [12, 1, 2]]
+
+
+def test_life_table_hazards_reproduce_aalen_johansen_at_whole_years():
+    durations, events = _toy(n=2000, seed=3)
+    events = np.where(durations > 9, 0, events)  # nothing beyond the grid
+    frame = pd.DataFrame({"duration_years": durations, "event": events})
+    rows = survival_tools.expand_project_years(frame, max_years=5)
+    table = rows.groupby("year_in_queue")["outcome"].agg(
+        n="size", op=lambda o: (o == 1).sum(), wd=lambda o: (o == 2).sum())
+    h_op = (table["op"] / table["n"]).to_numpy()[None, :]
+    h_wd = (table["wd"] / table["n"]).to_numpy()[None, :]
+    cif_op, _ = survival_tools.cif_from_hazards(h_op, h_wd)
+    exact = survival_tools.aalen_johansen(durations, events, [1, 2, 3, 4, 5])["cif_operation"].to_numpy()
+    # yearly grouping blurs exact times, so allow a small difference
+    assert np.allclose(cif_op[0], exact, atol=0.02)

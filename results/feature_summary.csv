@@ -1,0 +1,14 @@
+feature,use,kind,missing_share,summary
+region,main,categorical,0.0,3 levels; most common PJM (59%)
+state,main,categorical,0.0,26 levels; most common TX (22%)
+type_group,main,categorical,0.0,14 levels; most common Solar (43%)
+hybrid,main,categorical,0.0,2 levels; most common False (92%)
+log_mw,main,numeric,0.0,"median 4.38, IQR 3.00–5.30"
+size_regime,main,categorical,0.0,6 levels; most common 20–<100 (31%)
+service,main,categorical,0.0,3 levels; most common NRIS (68%)
+q_year,main,numeric,0.0,"median 2019.00, IQR 2012.00–2021.00"
+congestion_n,main,numeric,0.0,"median 788.00, IQR 373.00–1509.00"
+congestion_gw,main,numeric,0.0,"median 122.07, IQR 91.79–195.93"
+congestion_rank,main,numeric,0.0006,"median 0.99, IQR 0.80–1.00"
+ambition_gap_years,leakage ablation only,numeric,0.119,"median 3.55, IQR 2.29–4.95"
+ambition_gap_missing,leakage ablation only,categorical,0.0,2 levels; most common False (88%)
