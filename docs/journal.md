@@ -199,3 +199,55 @@ avoids that code path.
 **Answered the same day:** question 7 → ERCOT's band check restated on its
 2016 entrants (decision #28); both models pass it, notebook 06 now reports 7
 of 7 checks PASS and `pytest` 45 passed. Question 8 → decision #27 kept.
+
+## 2026-10-04 (later) — notebook 07 (Track B), stop before notebook 08
+
+**Done**
+
+- Notebook 07 (`src/track_b.py`, `tests/test_track_b.py`, 5 tests): logistic
+  regression (C = 0.1 by CV) and LightGBM (4 leaves, 243 rounds, chosen on the
+  2016 cohort as in #27; CV ranked the settings the other way, Spearman −0.85)
+  for P(built), all nine regions, fitted on entrants to 2015.
+- 2016 cohort (18.4% built): AUC 0.665 (logit) and 0.662 (LightGBM) against
+  0.613 for the region × technology base rate; Brier 0.1433 and 0.1438
+  against 0.1471, intervals overlapping. Calibration (binned isotonic,
+  decision #30) fixes the mean level but not the Brier score.
+- Per region on 2016 the calibrated models miss in PJM, MISO and SPP; held
+  out, a region's level is missed in 8 of 9 regions (ERCOT worst: 5.9–9.9%
+  predicted vs 32.4% built, probably through its stamp-inflated congestion),
+  while ranking still beats a technology-only benchmark in 8 of 9.
+- Track B keeps resolved requests only: up to 32.6% of 2016 entrants were
+  still waiting at the end of 2024, which tilts later cohorts towards fast
+  outcomes (request-year odds ratio 1.034).
+- Predictions for 2,980 requests in `data/processed/predictions_trackB.parquet`.
+  13 figures, all checked. Six of six checks pass; the 2017 comparison with
+  the base rate moves to notebook 08 (decision #29). No 2017 outcome looked at.
+- 50 tests pass.
+
+**Next**
+
+- Notebook 08, once Alan has approved the success criteria (question 9).
+
+**Open questions for Alan**
+
+9. **Pre-registered success criteria (ASK ALAN — draft, not yet written to
+   decision #5).** Draft, from PLAN.md §6 made operational:
+   - Primary models, named before scoring: Track A = discrete-time LightGBM
+     (best 2016 log loss), with the logit, Cox and baseline reported beside it;
+     Track B = calibrated LightGBM.
+   - C1. Track A, test cohort 2017–2019: Uno's C-index for P(operation by t)
+     above the baseline's at 3, 5 and 7 years.
+   - C2. IPCW Brier score below the baseline's at 3, 5 and 7 years
+     (withdrawn = known non-event; censoring weights from a Kaplan–Meier fit
+     of the training censoring distribution).
+   - C3. Calibration slope between 0.9 and 1.1 at each horizon.
+   - C4. Top-decile lift ≥ 1.5 at 5 years.
+   - C5. Track B, 2017 cohort: AUC above and Brier below the base rate.
+   - "Beat" = the 95% interval of the paired difference (200 bootstrap
+     resamples) excludes zero; point estimates are reported either way.
+     Failures are reported, not removed. The 7-year horizon is fully observed
+     only for 2017 entrants, which is stated with every 7-year number.
+   Points to decide: (a) "beat" by interval (proposed) or by point estimate;
+   (b) C4 as written in PLAN ("lift ≥ 1.5 × baseline") is ambiguous — model
+   lift ≥ 1.5, or model lift ≥ 1.5 × the baseline's lift? (c) the primary
+   models above.
