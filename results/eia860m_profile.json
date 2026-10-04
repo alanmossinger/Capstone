@@ -1,0 +1,29 @@
+{
+  "period": "2026-07",
+  "rows": 28324,
+  "total": 28324,
+  "pages": 6,
+  "status": {
+    "OP": 26072,
+    "SB": 1497,
+    "OS": 539,
+    "OA": 216
+  },
+  "field_share_all": {
+    "operating-year-month": 1.0,
+    "stateid": 1.0,
+    "technology": 1.0,
+    "county": 1.0,
+    "latitude": 1.0,
+    "longitude": 1.0
+  },
+  "field_share_op": {
+    "operating-year-month": 1.0,
+    "stateid": 1.0,
+    "technology": 1.0,
+    "county": 1.0,
+    "latitude": 1.0,
+    "longitude": 1.0
+  },
+  "nameplate_gw": 1408.6
+}

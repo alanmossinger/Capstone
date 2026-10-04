@@ -1,0 +1,17 @@
+# Python 3.11. Pinned on 2026-10-03; re-derived from imports before v1.0.
+pandas==2.3.3
+numpy==2.4.6
+pyarrow==25.0.1
+openpyxl==3.1.5
+requests==2.34.2
+python-dotenv==1.2.4
+matplotlib==3.11.2
+jupyter==1.1.1
+nbconvert==7.17.1
+ipykernel==7.4.0
+lifelines==0.30.3
+scikit-survival==0.28.0
+scikit-learn==1.9.1
+lightgbm==4.7.0
+shap==0.51.0
+pytest==9.1.1

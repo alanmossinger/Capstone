@@ -1,0 +1,1651 @@
+q_id,entity,region,state,project_name,type1,mw1,on_date,link_type,matched,reason,eia_plantid,eia_plant_name,eia_mw,months_apart
+A01,PJM,PJM,PA,Ironwood,Gas,720.0,2002-04-01,Gas,True,matched,55337,Ironwood LLC,777.5999999999999,-4.0
+A02,PJM,PJM,VA,Chesapeake,Oil,315.0,2001-08-22,Other,False,"name found, capacity differs >15 %",,,,
+A03,PJM,PJM,NJ,Linden 5 & 6,Gas,120.0,2000-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+A04,PJM,PJM,NJ,"Linden 1, 2 & 3",Gas,750.0,2006-05-01,Gas,False,"name found, capacity differs >15 %",,,,
+A05,PJM,PJM,NJ,Bergen,Gas,500.0,2002-06-01,Gas,True,matched,2398,Bergen Generating Station,450.0,-84.0
+A08,PJM,PJM,PA,Susquehanna #1,Nuclear,15.0,2002-07-01,Nuclear,False,"name found, capacity differs >15 %",,,,
+A09,PJM,PJM,PA,Susquehanna #1,Nuclear,35.0,2003-05-01,Nuclear,False,"name found, capacity differs >15 %",,,,
+A10,PJM,PJM,PA,Colver Power,Coal,6.0,2000-01-08,Coal,False,"name found, capacity differs >15 %",,,,
+A11,PJM,PJM,PA,Hazelton,Gas,201.0,2002-04-01,Gas,False,"name found, capacity differs >15 %",,,,
+A12,PJM,PJM,PA,Lower Mt Bethel,Gas,600.0,2004-05-14,Gas,True,matched,55667,Lower Mount Bethel Energy,651.6,0.0
+A15,PJM,PJM,NJ,"Red Oak CC1, CT1 - CT4",Gas,765.0,2002-02-01,Gas,False,"name found, capacity differs >15 %",,,,
+A18,PJM,PJM,PA,,Gas,557.0,2002-12-01,Gas,False,no usable project name,,,,
+A19,PJM,PJM,PA,Liberty (Eddy),Gas,521.0,2002-01-01,Gas,False,"name found, capacity differs >15 %",,,,
+A21,PJM,PJM,PA,Phillips Island,Gas,725.0,2004-12-31,Gas,False,"name found, capacity differs >15 %",,,,
+A26,PJM,PJM,NJ,Tosco #6,Gas,180.0,2002-01-25,Gas,False,no EIA plant shares a name word,,,,
+A28,PJM,PJM,DE,Kent,Gas,100.0,2001-06-14,Gas,False,no EIA plant shares a name word,,,,
+A29,PJM,PJM,MD,Rock Springs,Gas,465.0,2003-06-13,Gas,False,"name found, capacity differs >15 %",,,,
+A30,PJM,PJM,MD,Rock Springs,Gas,465.0,2005-12-01,Gas,False,"name found, capacity differs >15 %",,,,
+A31,PJM,PJM,PA,Archbald,Gas,44.0,2001-10-27,Gas,False,"name found, capacity differs >15 %",,,,
+A32,PJM,PJM,PA,Montour #1,Coal,14.0,2001-06-19,Coal,False,no EIA plant shares a name word,,,,
+A33,PJM,PJM,PA,Montour #2,Coal,14.0,2000-11-01,Coal,False,no EIA plant shares a name word,,,,
+A34,PJM,PJM,PA,,Coal,14.0,2002-04-27,Coal,False,no usable project name,,,,
+A35,PJM,PJM,PA,Grand Central Sanitary LF,Other,10.0,2001-04-18,Other,False,no EIA plant shares a name word,,,,
+A36,PJM,PJM,PA,Hunterstown,Gas,830.0,2003-07-31,Gas,True,matched,55976,Hunterstown Power Plant,898.0,0.0
+A55,PJM,PJM,NJ,Lakewood NUG,Gas,500.0,2005-12-31,Gas,False,"name found, capacity differs >15 %",,,,
+A59,PJM,PJM,PA,Ford Mill,Gas,540.0,2004-05-27,Gas,False,"name found, capacity differs >15 %",,,,
+A59_W00,PJM,PJM,PA,Springdale 1 & 2,Gas,96.0,2000-12-01,Gas,True,matched,55196,Springdale 1 & 2,87.6,-12.0
+AA1-006,PJM,PJM,OH,Erie County Landfill,Other,0.8,2015-12-31,Other,True,matched,57249,North American - Erie Generating Station,0.8,-16.0
+AA1-013,PJM,PJM,OH,Cornu,Gas,10.0,2015-11-01,Gas,False,no EIA plant shares a name word,,,,
+AA1-014,PJM,PJM,OH,Washington Energy Facility,Gas,5.0,2015-11-01,Gas,False,"name found, capacity differs >15 %",,,,
+AA1-015,PJM,PJM,PA,Fayette Energy Facility,Gas,5.0,2015-12-14,Gas,False,"name found, capacity differs >15 %",,,,
+AA1-018,PJM,PJM,IL,Otter Creek Wind Farm,Wind,150.0,2020-01-09,Wind,True,matched,61344,Otter Creek Wind Farm LLC,150.0,2.0
+AA1-025,PJM,PJM,VA,,Solar,3.7,2016-12-08,Solar,False,no usable project name,,,,
+AA1-026,PJM,PJM,VA,,Solar,3.7,2016-12-08,Solar,False,no usable project name,,,,
+AA1-027,PJM,PJM,VA,,Solar,3.7,2016-12-08,Solar,False,no usable project name,,,,
+AA1-028,PJM,PJM,VA,,Solar,3.7,2016-12-08,Solar,False,no usable project name,,,,
+AA1-034,PJM,PJM,PA,Delta York,Gas,120.0,2018-12-11,Gas,False,"name found, capacity differs >15 %",,,,
+AA1-037,PJM,PJM,PA,Piney Station (Piney 1-3),Hydro,5.26,2015-06-19,Hydro,False,"name found, capacity differs >15 %",,,,
+AA1-040,PJM,PJM,IL,Morris Cogen,Gas,20.0,2016-01-28,Gas,False,"name found, capacity differs >15 %",,,,
+AA1-043,PJM,PJM,PA,Ontelaunee Power Generating Plant,Gas,34.1,2017-09-30,Gas,False,"name found, capacity differs >15 %",,,,
+AA1-044,PJM,PJM,PA,Hickory Run Energy Station,Gas,1000.0,2019-10-31,Gas,True,matched,61028,Hickory Run Energy Station,1033.7,7.0
+AA1-050,PJM,PJM,NC,Conetoe II Solar  Park,Solar,25.6,2015-12-21,Solar,False,"name found, capacity differs >15 %",,,,
+AA1-056,PJM,PJM,OH,Oregon Energy Center,Gas,161.0,2017-06-23,Gas,False,"name found, capacity differs >15 %",,,,
+AA1-060,PJM,PJM,NJ,Plumsted Energy Storage Facility,Battery,20.0,2018-12-11,Battery,True,matched,61892,Plumsted 537 LLC,19.8,2.0
+AA1-063A,PJM,PJM,NC,Spuds Lane Solar Park,Solar,74.9,2018-11-08,Solar,False,"name found, capacity differs >15 %",,,,
+AA1-065,PJM,PJM,NC,Aulander Holloman Solar Park,Solar,80.0,2019-01-09,Solar,False,"name found, capacity differs >15 %",,,,
+AA1-066,PJM,PJM,PA,Freedom Generation Plant,Gas,80.0,2018-08-31,Gas,False,"name found, capacity differs >15 %",,,,
+AA1-067,PJM,PJM,NC,Williamston Speight Solar,Solar,15.0,2017-01-24,Solar,True,matched,60787,"Williamston Speight Solar, LLC",15.0,-2.0
+AA1-072,PJM,PJM,NC,Kelford Solar Park,Solar,3.1,2015-12-31,Solar,False,"name found, capacity differs >15 %",,,,
+AA1-076,PJM,PJM,PA,CPV Fairview Energy Center,Gas,1050.0,2019-09-22,Gas,True,matched,60589,CPV Fairview Energy Center,1197.0,3.0
+AA1-077,PJM,PJM,PA,Lackawanna Thermal Generating Station,Gas,113.0,2019-01-21,Gas,False,"name found, capacity differs >15 %",,,,
+AA1-078,PJM,PJM,IL,University Park North Energy Center,Gas,20.0,2016-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+AA1-079,PJM,PJM,PA,Ford Mill,Gas,74.0,2016-09-13,Gas,True,matched,50463,Procter & Gamble Mehoopany Mill,64.0,-41.0
+AA1-082,PJM,PJM,PA,Liberty/Asylum Township Plant,Gas,57.5,2016-08-25,Gas,False,"name found, capacity differs >15 %",,,,
+AA1-083,PJM,PJM,VA,Doswell Facility,Gas,20.0,2015-08-31,Gas,False,"name found, capacity differs >15 %",,,,
+AA1-084,PJM,PJM,DE,"PBF Delaware City Refinery Units G3, G6 & G7",Gas,10.0,2015-06-19,Gas,False,"name found, capacity differs >15 %",,,,
+AA1-095,PJM,PJM,MD,Pinesburg Solar Project,Solar,4.25,2020-05-27,Solar,True,matched,63903,Pinesburg Solar LLC,4.3,0.0
+AA1-099,PJM,PJM,OH,Clinton County Energy Storage Project,Battery,4.0,2016-08-29,Battery,False,no EIA plant shares a name word,,,,
+AA1-100,PJM,PJM,PA,AES Warrior Run Energy Storage,Battery,11.0,2015-10-15,Battery,False,no EIA plant shares a name word,,,,
+AA1-102,PJM,PJM,MD,Perry Road Solar,Solar,150.0,2017-12-28,Solar,False,no EIA plant shares a name word,,,,
+AA1-109,PJM,PJM,MD,Frederick Road Solar,Solar,9.0,2017-10-23,Solar,False,"name found, capacity differs >15 %",,,,
+AA1-123,PJM,PJM,OH,South Field Energy Power Plant,Gas,1152.0,2021-06-14,Gas,False,"name found, capacity differs >15 %",,,,
+AA1-139,PJM,PJM,NC,Summit Farms Solar and Ranchland Solar,Solar,120.0,2018-03-06,Solar,False,"name found, capacity differs >15 %",,,,
+AA1-145,PJM,PJM,VA,Doswell SC Units 2 & 3,Gas,340.0,2018-05-30,Gas,True,matched,52019,Doswell Energy Center,376.0,-316.0
+AA1-146,PJM,PJM,IL,Invenergy Nelson Expansion LLC,Gas,190.0,2023-05-20,Gas,False,"name found, capacity differs >15 %",,,,
+AA2-008,PJM,PJM,PA,Patriot Generating Station,Gas,57.0,2016-09-01,Gas,False,"name found, capacity differs >15 %",,,,
+AA2-030,PJM,PJM,IL,Invenergy Nelson Expansion LLC,Gas,190.0,2023-05-20,Gas,False,"name found, capacity differs >15 %",,,,
+AA2-048,PJM,PJM,NJ,Lakewood-Farmingdale Road Solar Farm & Storage Facility,Battery,7.0,2023-03-17,Battery,False,no EIA plant shares a name word,,,,
+AA2-052,PJM,PJM,NJ,,Gas,3.0,2015-09-11,Gas,False,no usable project name,,,,
+AA2-053,PJM,PJM,NC,Gutenberg Solar,Solar,74.9,2019-07-10,Solar,True,matched,63076,Gutenberg Solar,79.9,2.0
+AA2-057,PJM,PJM,NC,Chestnut Solar,Solar,66.0,2019-11-26,Solar,True,matched,61011,Chestnut Solar,74.9,4.0
+AA2-058,PJM,PJM,NJ,Hopewell Valley Solar,Solar,1.0,2015-12-30,Solar,True,matched,61473,Hopewell Valley High School Hybrid,0.9,0.0
+AA2-060,PJM,PJM,NJ,Roy Road Battery Storage Facility,Battery,6.0,2023-08-14,Battery,False,no EIA plant shares a name word,,,,
+AA2-061,PJM,PJM,NJ,Roy Road Battery Storage Facility,Battery,8.0,2023-08-14,Battery,False,no EIA plant shares a name word,,,,
+AA2-066,PJM,PJM,NJ,Princeton Hospital NRG Energy Center,Gas,2.0,2017-08-16,Gas,False,"name found, capacity differs >15 %",,,,
+AA2-070,PJM,PJM,VA,Smith Mountain Hydro,Hydro,34.0,2018-12-31,Hydro,False,"name found, capacity differs >15 %",,,,
+AA2-072,PJM,PJM,MD,Kingsville Solar,Solar,1.1,2016-06-14,Solar,False,no EIA plant shares a name word,,,,
+AA2-079,PJM,PJM,VA,Possum Point Unit 6,Gas,28.0,2016-07-27,Gas,False,"name found, capacity differs >15 %",,,,
+AA2-082,PJM,PJM,NJ,Alpha Battery Storage Facility,Battery,20.0,2019-01-28,Battery,False,no EIA plant shares a name word,,,,
+AA2-088,PJM,PJM,VA,Newsoms Solar,Solar,100.0,2017-12-15,Solar,False,no EIA plant shares a name word,,,,
+AA2-099,PJM,PJM,NJ,Sewaren 7,Gas,32.0,2018-06-05,Gas,False,"name found, capacity differs >15 %",,,,
+AA2-100,PJM,PJM,OH,Bio Energy Landfill Facility,Other,4.8,2017-05-10,Other,False,"name found, capacity differs >15 %",,,,
+AA2-115,PJM,PJM,PA,Birdsboro Power LLC Generation Facility,Gas,450.0,2019-02-07,Gas,False,"name found, capacity differs >15 %",,,,
+AA2-116,PJM,PJM,MI,Indeck Niles Energy Center,Gas,994.0,2021-12-27,Gas,False,"name found, capacity differs >15 %",,,,
+AA2-123,PJM,PJM,IL,Marengo Battery Storage,Battery,20.0,2018-11-19,Battery,True,matched,62856,Marengo Battery Storage LLC,20.0,1.0
+AA2-127,PJM,PJM,VA,Bear Garden Facility,Gas,32.2,2016-05-01,Gas,False,"name found, capacity differs >15 %",,,,
+AA2-131,PJM,PJM,WV,Oak Grove 138kV,Gas,18.0,2018-05-25,Gas,False,no EIA plant shares a name word,,,,
+AA2-133,PJM,PJM,PA,Wyalusing 34.5kV,Gas,19.9,2019-02-21,Gas,False,no EIA plant shares a name word,,,,
+AA2-137,PJM,PJM,OH,Cornu,Gas,45.0,2016-12-02,Gas,False,no EIA plant shares a name word,,,,
+AA2-138,PJM,PJM,OH,Cornu,Gas,45.0,2016-12-02,Gas,False,no EIA plant shares a name word,,,,
+AA2-139,PJM,PJM,PA,Fayette Energy Facility,Gas,45.0,2017-04-21,Gas,False,"name found, capacity differs >15 %",,,,
+AA2-140,PJM,PJM,PA,Liberty Electric,Gas,35.0,2017-06-30,Gas,False,"name found, capacity differs >15 %",,,,
+AA2-141,PJM,PJM,OH,Washington Energy Facility,Gas,45.0,2016-12-02,Gas,False,"name found, capacity differs >15 %",,,,
+AA2-165,PJM,PJM,NC,Chestnut Solar,Solar,8.9,2019-11-26,Solar,False,"name found, capacity differs >15 %",,,,
+AA2-171,PJM,PJM,PA,Sunbury Generation Facility,Gas,97.0,2018-06-01,Gas,False,no EIA plant shares a name word,,,,
+AA2-173,PJM,PJM,PA,Hilltop Energy Center Facility,Gas,515.0,2021-04-01,Gas,False,no EIA plant shares a name word,,,,
+AA2-174,PJM,PJM,NC,Gutenberg Solar,Solar,5.0,2019-07-10,Solar,False,"name found, capacity differs >15 %",,,,
+AA2-178,PJM,PJM,NC,Ablemarle Beach Solar,Solar,80.0,2020-12-23,Solar,False,"name found, capacity differs >15 %",,,,
+AA2-184,PJM,PJM,NJ,Atlantic-RedBank 34.5kV Solar,Solar,20.0,2019-12-31,Solar,False,"name found, capacity differs >15 %",,,,
+AB1-001,PJM,PJM,NJ,Oak Street Landfill Solar Project,Solar,2.3,2020-09-30,Solar,True,matched,63698,Galloway Landfill,2.3,0.0
+AB1-006,PJM,PJM,IN,Meadow Lake Wind Farm VI,Wind,200.0,2018-12-21,Wind,True,matched,57109,Meadow Lake Wind Farm LLC,199.7,-110.0
+AB1-014,PJM,PJM,OH,Hillcrest Solar Facility,Solar,125.0,2020-12-18,Solar,False,"name found, capacity differs >15 %",,,,
+AB1-015,PJM,PJM,OH,Warren Natural Gas Generation Faciility,Gas,16.5,2016-10-10,Gas,False,no EIA plant shares a name word,,,,
+AB1-017,PJM,PJM,OH,Lordstown Energy Center,Gas,140.0,2018-08-11,Gas,False,no EIA plant shares a name word,,,,
+AB1-021,PJM,PJM,NJ,West Caldwell Solar,Solar,2.0,2018-06-01,Solar,False,"name found, capacity differs >15 %",,,,
+AB1-025,PJM,PJM,NJ,Lumberton Solar,Solar,6.8,2016-08-22,Solar,False,no EIA plant shares a name word,,,,
+AB1-027,PJM,PJM,VA,Mechanicsville Solar,Solar,20.0,2020-09-23,Solar,False,"name found, capacity differs >15 %",,,,
+AB1-033,PJM,PJM,PA,Morris Road,Diesel,4.1,2020-09-03,Other,False,no EIA plant shares a name word,,,,
+AB1-058,PJM,PJM,OH,Gavin #1,Coal,11.0,2017-12-31,Coal,False,"name found, capacity differs >15 %",,,,
+AB1-063,PJM,PJM,NJ,Cooper Solar,Solar,0.4,2017-02-15,Solar,False,no EIA plant shares a name word,,,,
+AB1-080,PJM,PJM,IN,"St. Joseph's Energy Center, LLC",Gas,40.0,2018-04-01,Gas,False,"name found, capacity differs >15 %",,,,
+AB1-081,PJM,PJM,NC,Harts Mill Solar,Solar,80.0,2020-12-21,Solar,True,matched,64144,"Harts Mill Solar, LLC",80.0,0.0
+AB1-095,PJM,PJM,OH,Dovetail Biogas Facility,Other,0.85,2016-09-30,Other,False,"name found, capacity differs >15 %",,,,
+AB1-096,PJM,PJM,MD,Union Bridge Solar Facility,Solar,8.166,2022-04-21,Solar,True,matched,67145,Union Bridge Solar,8.2,0.0
+AB1-106,PJM,PJM,PA,Smithton Generating Station,Gas,40.0,2018-11-18,Gas,False,no EIA plant shares a name word,,,,
+AB1-109,PJM,PJM,WV,Mountaineer #1,Coal,36.0,2018-12-31,Coal,False,"name found, capacity differs >15 %",,,,
+AB1-112,PJM,PJM,PA,Hilltop Energy Center Facility,Gas,20.0,2021-04-01,Gas,False,no EIA plant shares a name word,,,,
+AB1-116,PJM,PJM,NJ,,Gas,0.787,2018-02-01,Gas,False,no usable project name,,,,
+AB1-119,PJM,PJM,NJ,Tansboro Road,Gas,0.735,2018-02-01,Gas,False,no EIA plant shares a name word,,,,
+AB1-122,PJM,PJM,IL,Three Rivers Energy Center,Gas,1160.0,2023-06-16,Gas,True,matched,63931,CPV Three Rivers Energy Center,1300.0,0.0
+AB1-127,PJM,PJM,PA,St. Thomas Township Solar Facility,Solar,20.0,2020-08-21,Solar,False,no EIA plant shares a name word,,,,
+AB1-128,PJM,PJM,PA,St. Thomas Township Solar Facility II,Solar,20.0,2020-09-08,Solar,False,no EIA plant shares a name word,,,,
+AB1-132,PJM,PJM,NC,Gaston Green Acres Solar,Solar,120.0,2024-08-22,Solar,False,"name found, capacity differs >15 %",,,,
+AB1-138,PJM,PJM,NJ,Lakehurst Solar Farm,Solar,9.6,2020-03-24,Solar,True,matched,63503,Lakehurst Solar,9.6,0.0
+AB1-139,PJM,PJM,NJ,Nixon Lane Solar,Solar,6.6,2017-05-26,Solar,False,"name found, capacity differs >15 %",,,,
+AB1-141,PJM,PJM,MD,Pondtown Solar 1,Solar,19.8,2022-10-18,Solar,False,no EIA plant shares a name word,,,,
+AB1-142,PJM,PJM,MD,Pondtown Solar 1,Solar,19.8,2022-10-18,Solar,False,no EIA plant shares a name word,,,,
+AB1-144,PJM,PJM,PA,Shawville Generating Station,Gas,590.0,2016-10-24,Gas,False,"name found, capacity differs >15 %",,,,
+AB1-150,PJM,PJM,WV,Beech Ridge Wind Farm,Wind,50.6,2020-03-14,Wind,True,matched,62482,Beech Ridge II Wind Energy Center,56.2,2.0
+AB1-160,PJM,PJM,PA,Big Level Wind Farm,Wind,20.0,2019-11-20,Wind,False,"name found, capacity differs >15 %",,,,
+AB1-163,PJM,PJM,NJ,Legler Landfill Solar Farm,Solar,2.88,2021-11-06,Solar,True,matched,65094,Jackson Legler Solar 1 LLC,2.9,1.0
+AB1-173,PJM,PJM,VA,Meherrin Solar,Solar,19.8,2022-09-29,Solar,False,"name found, capacity differs >15 %",,,,
+AB1-173A,PJM,PJM,VA,Meherrin Solar,Solar,19.8,2022-09-29,Solar,False,"name found, capacity differs >15 %",,,,
+AB1-180,PJM,PJM,WV,"Seven Islands Environmental Solutions, LLC",Other,3.2,2017-03-07,Other,False,no EIA plant shares a name word,,,,
+AB1-181,PJM,PJM,VA,,Gas,37.3,2017-03-07,Gas,False,no usable project name,,,,
+AB2-001,PJM,PJM,NJ,Flemington Solar Farm,Solar,3.8,2016-12-31,Solar,False,"name found, capacity differs >15 %",,,,
+AB2-014,PJM,PJM,NJ,Lakewood Cogeneration Plant,Gas,8.1,2016-11-16,Gas,False,"name found, capacity differs >15 %",,,,
+AB2-022,PJM,PJM,NC,Elizabeth City Solar,Solar,20.0,2021-10-18,Solar,False,no EIA plant shares a name word,,,,
+AB2-024,PJM,PJM,VA,,Solar,20.0,2017-11-27,Solar,False,no usable project name,,,,
+AB2-025,PJM,PJM,VA,,Solar,20.0,2017-11-30,Solar,False,no usable project name,,,,
+AB2-026,PJM,PJM,VA,,Solar,20.0,2017-11-30,Solar,False,no usable project name,,,,
+AB2-029,PJM,PJM,VA,,Solar,19.8,2017-10-01,Solar,False,no usable project name,,,,
+AB2-031,PJM,PJM,VA,Meherrin Solar,Solar,20.0,2022-09-29,Solar,False,"name found, capacity differs >15 %",,,,
+AB2-032,PJM,PJM,MD,Pondtown Solar 2,Solar,20.0,2022-10-18,Solar,False,no EIA plant shares a name word,,,,
+AB2-038,PJM,PJM,MD,,Wind,2.9,2017-09-13,Wind,False,no usable project name,,,,
+AB2-040,PJM,PJM,VA,Brink Solar Project,Solar,80.0,2024-12-27,Solar,False,no EIA plant shares a name word,,,,
+AB2-043,PJM,PJM,VA,Bluestone Farm Solar,Solar,49.9,2021-04-03,Solar,True,matched,62950,Bluestone Solar,49.9,1.0
+AB2-045,PJM,PJM,VA,,Solar,19.8,2017-11-30,Solar,False,no usable project name,,,,
+AB2-047,PJM,PJM,IL,Blooming Grove WF,Wind,250.0,2020-10-30,Wind,True,matched,63988,Blooming Grove Wind Energy Center,250.0,2.0
+AB2-049,PJM,PJM,NJ,GEMS Landfill Solar,Solar,3.0,2022-04-14,Solar,False,"name found, capacity differs >15 %",,,,
+AB2-050,PJM,PJM,VA,Doswell Complex 5 & 6,Gas,20.0,2018-02-28,Gas,False,"name found, capacity differs >15 %",,,,
+AB2-057,PJM,PJM,NJ,New Road Solar,Solar,10.0,2018-06-22,Solar,False,no usable project name,,,,
+AB2-058,PJM,PJM,NJ,Stewartsville Solar Farm,Solar,3.6,2016-12-06,Solar,False,no EIA plant shares a name word,,,,
+AB2-059,PJM,PJM,NC,Moccasin Creek Solar,Solar,100.0,2020-10-12,Solar,False,"name found, capacity differs >15 %",,,,
+AB2-060,PJM,PJM,VA,Chase City Solar,Solar,80.0,2020-07-21,Solar,False,no EIA plant shares a name word,,,,
+AB2-067,PJM,PJM,OH,Guernsey Power Station,Gas,1100.0,2023-04-07,Gas,False,"name found, capacity differs >15 %",,,,
+AB2-070,PJM,PJM,IL,Alta Farms II,Wind,197.0,2023-05-20,Wind,True,matched,64088,"Alta Farms II Wind Project, LLC",200.5,0.0
+AB2-077,PJM,PJM,VA,Spanish Grove Solar,Solar,20.0,2024-06-18,Solar,True,matched,65224,"Apple Grove Solar, LLC",18.6,-6.0
+AB2-078,PJM,PJM,VA,Spanish Grove Solar,Solar,20.0,2024-06-18,Solar,True,matched,65224,"Apple Grove Solar, LLC",18.6,-6.0
+AB2-079,PJM,PJM,VA,Spanish Grove Solar,Solar,20.0,2024-06-18,Solar,True,matched,65224,"Apple Grove Solar, LLC",18.6,-6.0
+AB2-092,PJM,PJM,NJ,Bergen Generating Station,Gas,51.1,2019-12-05,Gas,False,"name found, capacity differs >15 %",,,,
+AB2-093,PJM,PJM,OH,Hannibal Port Power Project,Gas,485.0,2021-06-01,Gas,False,no EIA plant shares a name word,,,,
+AB2-097,PJM,PJM,MD,Hagerstown Plant,Solar,10.0,2020-10-15,Solar,True,matched,62912,Solar Hagerstown,10.0,1.0
+AB2-099,PJM,PJM,NC,Colice Hall Solar,Solar,5.0,2023-07-06,Solar,False,"name found, capacity differs >15 %",,,,
+AB2-100,PJM,PJM,VA,Sadler Solar,Solar,100.0,2021-01-22,Solar,True,matched,62814,Sadler Solar,100.0,6.0
+AB2-109,PJM,PJM,VA,Reusens Hydro Electric Generating Plant,Hydro,12.5,2017-11-29,Hydro,True,matched,3779,Reusens,12.5,-1378.0
+AB2-112,PJM,PJM,PA,Birdsboro Power LLC Generation Facility,Gas,35.0,2019-02-07,Gas,False,"name found, capacity differs >15 %",,,,
+AB2-132,PJM,PJM,IL,Lee-DeKalb Wind Energy Center,Wind,2.2,2023-09-01,Wind,False,no EIA plant shares a name word,,,,
+AB2-134,PJM,PJM,VA,Colonial Trail West Solar,Solar,142.4,2019-11-07,Solar,True,matched,61985,Colonial Trail West,142.4,1.0
+AB2-139,PJM,PJM,NJ,Freemall Fuel Cell Facility,Other,0.42,2018-02-01,Other,False,no EIA plant shares a name word,,,,
+AB2-153,PJM,PJM,MD,Pondtown Solar 2,Solar,20.0,2022-10-18,Solar,False,no EIA plant shares a name word,,,,
+AB2-157,PJM,PJM,MD,Rollins Avenue Phoenix,Solar,2.5,2019-12-23,Solar,True,matched,62331,Sol Phoenix,2.5,1.0
+AB2-158,PJM,PJM,VA,Belcher Solar,Solar,88.2,2021-06-30,Solar,False,no EIA plant shares a name word,,,,
+AB2-161,PJM,PJM,VA,Waverly Solar,Solar,50.0,2024-03-14,Solar,False,"name found, capacity differs >15 %",,,,
+AB2-169,PJM,PJM,NC,Wilkinson Solar Energy Center,Solar,74.0,2019-11-20,Solar,True,matched,62544,Wilkinson Solar LLC,80.6,1.0
+AB2-170,PJM,PJM,OH,Hardin Energy Center,Solar,130.0,2020-10-13,Solar,False,"name found, capacity differs >15 %",,,,
+AB2-172,PJM,PJM,MD,Richfield Solar and Storage,Solar,50.0,2024-02-09,Solar,True,matched,70426,Richfield Solar Energy LLC,50.0,4.0
+AB2-174,PJM,PJM,VA,Greensville County Solar Project,Solar,80.0,2020-12-01,Solar,True,matched,63745,"Greensville County Solar Project, LLC",80.0,0.0
+AB2-175,PJM,PJM,PA,Peach Bottom Units #2 & #3,Nuclear,44.0,2019-03-26,Nuclear,False,"name found, capacity differs >15 %",,,,
+AB2-179,PJM,PJM,DE,New Castle Solar,Solar,50.0,2022-12-30,Solar,False,no EIA plant shares a name word,,,,
+AB2-190,PJM,PJM,VA,Fort Powhatan Solar,Solar,150.0,2022-01-19,Solar,True,matched,65322,Fort Powhatan Solar,150.0,0.0
+AB2-191,PJM,PJM,IL,Mendota Hills Wind Farm,Wind,20.0,2019-02-11,Wind,False,"name found, capacity differs >15 %",,,,
+AC1-017,PJM,PJM,NJ,Levittown 13 kV Solar,Solar,3.7,2020-05-28,Solar,False,no EIA plant shares a name word,,,,
+AC1-021,PJM,PJM,PA,Smithton Generation Station,Gas,110.0,2018-11-18,Gas,False,no EIA plant shares a name word,,,,
+AC1-025,PJM,PJM,PA,State College Pumping Station Battery,Battery,1.5,2019-02-14,Battery,False,no EIA plant shares a name word,,,,
+AC1-027,PJM,PJM,VA,Oceana Solar Facility,Solar,17.6,2017-12-01,Solar,True,matched,60584,Oceana Solar,17.6,0.0
+AC1-030,PJM,PJM,NJ,Pennsauken Solar 3,Solar,2.5,2017-12-13,Solar,True,matched,56883,Pennsauken Solar,2.4,2.0
+AC1-033,PJM,PJM,IL,Midland Wind Farm,Wind,100.8,2024-01-31,Wind,True,matched,63003,Midland Wind,105.5,-1.0
+AC1-035,PJM,PJM,PA,Helix Ironwood Facility,Gas,30.0,2018-03-30,Gas,False,"name found, capacity differs >15 %",,,,
+AC1-036,PJM,PJM,VA,Twittys Creek Solar,Solar,13.75,2020-12-08,Solar,True,matched,63077,"Twittys Creek Solar, LLC",13.8,0.0
+AC1-038,PJM,PJM,KY,Big Sandy #1,Gas,13.0,2016-05-30,Gas,False,"name found, capacity differs >15 %",,,,
+AC1-042,PJM,PJM,VA,Sycamore Solar I,Solar,42.0,2023-02-14,Solar,True,matched,64136,Sycamore Solar,42.0,1.0
+AC1-044,PJM,PJM,OH,Guernsey Power Station,Gas,550.0,2022-12-07,Gas,False,"name found, capacity differs >15 %",,,,
+AC1-054,PJM,PJM,NC,Hawtree Creek,Solar,65.0,2021-10-01,Solar,True,matched,60380,"Shoe Creek Solar, LLC",65.0,-46.0
+AC1-060,PJM,PJM,VA,Charles City 1,Other,2.5,2017-06-09,Other,False,"name found, capacity differs >15 %",,,,
+AC1-061,PJM,PJM,VA,Dinwiddie 2,Other,0.2,2017-06-01,Other,False,no EIA plant shares a name word,,,,
+AC1-062,PJM,PJM,VA,Amelia 1,Other,1.9,2018-08-24,Other,False,"name found, capacity differs >15 %",,,,
+AC1-063,PJM,PJM,VA,King & Queen Landfill Facility,Other,2.2,2019-05-09,Other,False,"name found, capacity differs >15 %",,,,
+AC1-064,PJM,PJM,PA,Route 16 (Mountain View) 345kV (Upton 114),Other,1.1,2017-06-22,Other,False,"name found, capacity differs >15 %",,,,
+AC1-072,PJM,PJM,MI,Covert Generating Facility,Gas,20.0,2018-05-09,Gas,False,"name found, capacity differs >15 %",,,,
+AC1-075,PJM,PJM,VA,Stagecoach Solar,Solar,60.0,2021-04-01,Solar,False,no EIA plant shares a name word,,,,
+AC1-076,PJM,PJM,VA,Pine Glade Solar,Solar,62.5,2024-09-13,Solar,False,no EIA plant shares a name word,,,,
+AC1-078,PJM,PJM,OH,Big Plain,Solar,176.0,2023-07-25,Solar,True,matched,64635,"Big Plain Solar, LLC",196.0,2.0
+AC1-080,PJM,PJM,VA,Stagecoach Solar,Solar,20.0,2021-04-01,Solar,False,no EIA plant shares a name word,,,,
+AC1-083,PJM,PJM,VA,Maplewood Solar,Solar,100.0,2022-09-02,Solar,False,"name found, capacity differs >15 %",,,,
+AC1-085,PJM,PJM,OH,Highland County Solar,Solar,400.0,2024-08-21,Solar,False,"name found, capacity differs >15 %",,,,
+AC1-087,PJM,PJM,PA,PA Solar Park,Solar,10.0,2020-01-17,Solar,False,no usable project name,,,,
+AC1-089,PJM,PJM,OH,Willowbrook Solar,Solar,150.0,2024-09-27,Solar,True,matched,63877,"Willowbrook Solar I, LLC",150.0,0.0
+AC1-100,PJM,PJM,OH,Dresden,Gas,98.0,2017-11-10,Gas,False,"name found, capacity differs >15 %",,,,
+AC1-105,PJM,PJM,VA,Sunnybrook Farm Solar,Solar,51.0,2022-12-28,Solar,True,matched,65307,Sunnybrook Solar Project - Hybrid,51.0,0.0
+AC1-108,PJM,PJM,PA,CPV Fairview Energy Center,Gas,100.0,2019-09-22,Gas,False,"name found, capacity differs >15 %",,,,
+AC1-109,PJM,PJM,IL,Aurora Generation,Gas,30.0,2020-08-27,Gas,False,"name found, capacity differs >15 %",,,,
+AC1-110,PJM,PJM,IL,Aurora Generation,Gas,30.0,2023-04-30,Gas,False,"name found, capacity differs >15 %",,,,
+AC1-111,PJM,PJM,IL,Aurora Generation,Gas,36.0,2020-08-27,Gas,False,"name found, capacity differs >15 %",,,,
+AC1-112,PJM,PJM,VA,Hollyfield Solar Facility,Solar,17.0,2018-08-08,Solar,True,matched,61023,Hollyfield,17.0,1.0
+AC1-113,PJM,PJM,IL,Rockford I Energy Center,Gas,20.0,2021-06-05,Gas,False,"name found, capacity differs >15 %",,,,
+AC1-114,PJM,PJM,IL,Rockford II Energy Center,Gas,20.0,2021-08-25,Gas,False,"name found, capacity differs >15 %",,,,
+AC1-118,PJM,PJM,VA,Montross Solar Facility,Solar,20.0,2018-12-12,Solar,True,matched,64093,Montross Solar,20.0,0.0
+AC1-122,PJM,PJM,VA,Altavista Solar,Solar,60.0,2020-10-21,Solar,False,"name found, capacity differs >15 %",,,,
+AC1-123,PJM,PJM,VA,Altavista Solar,Solar,20.0,2020-10-21,Solar,False,"name found, capacity differs >15 %",,,,
+AC1-134,PJM,PJM,VA,Doswell Facility (Doswell Complex 5 & 6),Gas,50.0,2018-02-28,Gas,False,"name found, capacity differs >15 %",,,,
+AC1-140,PJM,PJM,WV,Longview Power,Coal,10.0,2018-05-14,Coal,False,"name found, capacity differs >15 %",,,,
+AC1-141,PJM,PJM,MI,Indeck Niles Energy Center,Gas,91.0,2021-12-27,Gas,False,"name found, capacity differs >15 %",,,,
+AC1-142A,PJM,PJM,IL,Joliet Units 7 and 8,Gas,64.0,2020-12-08,Gas,False,no EIA plant shares a name word,,,,
+AC1-145,PJM,PJM,VA,Whitethorn Solar,Solar,50.0,2021-10-13,Solar,False,no EIA plant shares a name word,,,,
+AC1-147,PJM,PJM,VA,,Solar,20.0,2022-03-25,Solar,False,no usable project name,,,,
+AC1-152,PJM,PJM,IN,Lawrenceburg Generating Plant,Gas,50.0,2019-11-13,Gas,False,"name found, capacity differs >15 %",,,,
+AC1-158,PJM,PJM,VA,Spotsylvania Energy Center,Solar,485.0,2020-09-02,Solar,False,no EIA plant shares a name word,,,,
+AC1-161,PJM,PJM,VA,Cavalier,Solar,240.0,2024-12-10,Solar,False,"name found, capacity differs >15 %",,,,
+AC1-164,PJM,PJM,VA,Keydet Solar Center One,Solar,320.0,2021-12-27,Solar,False,"name found, capacity differs >15 %",,,,
+AC1-172,PJM,PJM,IN,Lawrenceburg Generating Plant,Gas,50.0,2019-11-13,Gas,False,"name found, capacity differs >15 %",,,,
+AC1-173,PJM,PJM,OH,Timber Road IV Wind Farm (Southern Phase),Wind,75.9,2020-03-27,Wind,False,"name found, capacity differs >15 %",,,,
+AC1-174,PJM,PJM,IN,Riverstart Solar Park,Solar,100.0,2021-09-24,Solar,True,matched,66269,Riverstart Solar Park III,100.0,39.0
+AC1-175,PJM,PJM,IN,Riverstart Solar Park,Solar,100.0,2021-09-24,Solar,True,matched,66269,Riverstart Solar Park III,100.0,39.0
+AC1-181,PJM,PJM,OH,Richland Power Plant,Gas,5.0,2018-08-08,Gas,False,"name found, capacity differs >15 %",,,,
+AC1-185,PJM,PJM,IL,Lee Energy Facility,Gas,48.0,2018-12-14,Gas,False,"name found, capacity differs >15 %",,,,
+AC1-204,PJM,PJM,IL,Jackson Generation,Gas,1200.9,2022-05-03,Gas,True,matched,62926,"Jackson Generation, LLC",1288.6,0.0
+AC1-207,PJM,PJM,NJ,Hoffman Station Road Solar,Solar,13.1,2020-06-25,Solar,False,no EIA plant shares a name word,,,,
+AC1-214,PJM,PJM,IL,Lone Tree Wind,Wind,79.4,2020-11-20,Wind,True,matched,63251,"Lone Tree Wind, LLC",79.0,1.0
+AC1-216,PJM,PJM,VA,Spring Grove I Solar,Solar,97.9,2020-10-01,Solar,True,matched,61986,Spring Grove I,97.9,1.0
+AC1-222,PJM,PJM,VA,Halifax County Solar,Solar,44.7,2024-02-15,Solar,False,"name found, capacity differs >15 %",,,,
+AC2-009,PJM,PJM,NJ,Pennington 13 kV Solar,Solar,0.59,2017-10-19,Solar,False,no EIA plant shares a name word,,,,
+AC2-012,PJM,PJM,VA,Shillelagh Solar,Solar,118.0,2023-12-20,Solar,False,no EIA plant shares a name word,,,,
+AC2-016,PJM,PJM,OH,Carroll County Energy LLC,Gas,20.0,2020-02-14,Gas,False,"name found, capacity differs >15 %",,,,
+AC2-018,PJM,PJM,MD,Rock Springs Units #3 & #4,Gas,60.0,2017-10-01,Gas,False,"name found, capacity differs >15 %",,,,
+AC2-059,PJM,PJM,OH,Yellowbud Solar,Solar,127.0,2022-12-21,Solar,False,"name found, capacity differs >15 %",,,,
+AC2-066,PJM,PJM,OH,Hillcrest Solar Facility,Solar,75.0,2020-12-18,Solar,False,"name found, capacity differs >15 %",,,,
+AC2-088,PJM,PJM,OH,Nestlewood Solar,Solar,70.0,2023-12-27,Solar,True,matched,65215,Nestlewood Solar,80.0,0.0
+AC2-090,PJM,PJM,IN,Riverstart Solar Park III,Solar,100.0,2024-12-18,Solar,True,matched,66269,Riverstart Solar Park III,100.0,0.0
+AC2-092,PJM,PJM,PA,Freedom Generation Plant,Gas,65.0,2023-01-26,Gas,False,"name found, capacity differs >15 %",,,,
+AC2-100,PJM,PJM,VA,Powells Creek Solar,Solar,50.0,2023-08-23,Solar,True,matched,67342,Carvers Creek Solar,54.9,12.0
+AC2-115,PJM,PJM,IL,Rockford I Energy Center,Gas,40.0,2021-08-27,Gas,False,"name found, capacity differs >15 %",,,,
+AC2-116,PJM,PJM,IL,Rockford II Energy Center,Gas,7.0,2021-08-25,Gas,False,"name found, capacity differs >15 %",,,,
+AC2-117,PJM,PJM,IL,University Park North Energy Center,Gas,46.0,2023-11-06,Gas,True,matched,54044,University of Illinois Cogen Facility,39.9,-262.0
+AC2-120,PJM,PJM,MD,Ripley Solar,Solar,27.5,2023-06-23,Solar,True,matched,66203,Ripley,27.5,-2.0
+AC2-125,PJM,PJM,VA,Ladysmith Combustion Turbines Unit 1,Gas,19.0,2019-05-17,Gas,False,"name found, capacity differs >15 %",,,,
+AC2-126,PJM,PJM,VA,Ladysmith Combustion Turbines Unit 2,Gas,19.0,2019-05-17,Gas,False,"name found, capacity differs >15 %",,,,
+AC2-130,PJM,PJM,VA,Chesterfield Unit 5,Coal,14.0,2018-12-31,Coal,False,no EIA plant shares a name word,,,,
+AC2-133,PJM,PJM,VA,Warren County Power Station,Gas,20.0,2018-09-04,Gas,False,"name found, capacity differs >15 %",,,,
+AC2-137,PJM,PJM,VA,Briel Farm Solar,Solar,18.8,2020-12-21,Solar,True,matched,65022,Briel Solar Farm,20.0,8.0
+AC2-138,PJM,PJM,VA,Gardy's Mill Solar,Solar,10.8,2020-12-21,Solar,False,"name found, capacity differs >15 %",,,,
+AC2-140,PJM,PJM,MI,DC Cook Generating Plant Unit No. 2,Nuclear,38.0,2017-01-14,Nuclear,False,"name found, capacity differs >15 %",,,,
+AC2-142,PJM,PJM,PA,Hilltop Energy Center Facility,Gas,129.7,2021-04-01,Gas,False,no EIA plant shares a name word,,,,
+AC2-168,PJM,PJM,PA,Gaucho Solar,Solar,11.7,2023-06-29,Solar,False,"name found, capacity differs >15 %",,,,
+AC2-172,PJM,PJM,KY,Big Sandy #1,Gas,17.0,2016-05-30,Gas,False,"name found, capacity differs >15 %",,,,
+AC2-175,PJM,PJM,NJ,Berkshire Solar,Solar,1.6,2021-11-06,Solar,False,no EIA plant shares a name word,,,,
+AC2-176,PJM,PJM,IN,Bitter Ridge Wind Farm,Wind,130.0,2020-09-05,Wind,True,matched,63666,"Bitter Ridge Wind Farm, LLC",146.6,0.0
+AD1-017,PJM,PJM,VA,Maplewood Solar,Solar,20.0,2022-09-02,Solar,False,"name found, capacity differs >15 %",,,,
+AD1-020,PJM,PJM,PA,Adams Solar LLC,Solar,80.0,2024-03-21,Solar,True,matched,66634,Adams Solar LLC PA,80.0,-3.0
+AD1-026,PJM,PJM,PA,Hickory Run Energy Station,Gas,130.0,2020-04-28,Gas,False,"name found, capacity differs >15 %",,,,
+AD1-033,PJM,PJM,VA,Bedford Solar Center,Solar,70.0,2021-11-23,Solar,True,matched,65323,Bedford Solar (Dominion),70.0,0.0
+AD1-037,PJM,PJM,PA,Lower Mount Bethel,Gas,86.6,2019-07-10,Gas,False,"name found, capacity differs >15 %",,,,
+AD1-039,PJM,PJM,IL,Three Rivers Energy Center,Gas,102.7,2023-06-16,Gas,False,"name found, capacity differs >15 %",,,,
+AD1-041,PJM,PJM,VA,Carvers Creek Solar,Solar,50.0,2024-08-22,Solar,True,matched,67342,Carvers Creek Solar,54.9,0.0
+AD1-052,PJM,PJM,OH,Freemont Energy Center,Gas,38.0,2021-02-24,Gas,False,no EIA plant shares a name word,,,,
+AD1-054,PJM,PJM,NJ,Bergen 13kV,Solar,1.5,2019-12-31,Solar,True,matched,60806,North Bergen Solar,1.6,-38.0
+AD1-055,PJM,PJM,VA,Halifax County Solar,Solar,20.0,2024-02-15,Solar,False,"name found, capacity differs >15 %",,,,
+AD1-059,PJM,PJM,NJ,Lakewood Cogeneration Plant,Gas,14.9,2018-05-07,Gas,False,"name found, capacity differs >15 %",,,,
+AD1-060,PJM,PJM,PA,Upton Solar,Solar,15.0,2020-12-17,Solar,False,no EIA plant shares a name word,,,,
+AD1-061,PJM,PJM,PA,,Solar,20.0,2022-05-06,Solar,False,no usable project name,,,,
+AD1-063,PJM,PJM,VA,Puller Solar,Solar,15.0,2018-10-08,Solar,True,matched,62140,Puller Solar,15.0,0.0
+AD1-067,PJM,PJM,IL,Mendota Hills Wind Farm,Wind,5.725,2020-10-19,Wind,False,"name found, capacity differs >15 %",,,,
+AD1-072,PJM,PJM,OH,Yellowbud Solar,Solar,20.0,2022-12-21,Solar,False,"name found, capacity differs >15 %",,,,
+AD1-081,PJM,PJM,OH,Big Plain 2,Solar,20.0,2023-07-25,Solar,False,"name found, capacity differs >15 %",,,,
+AD1-082,PJM,PJM,VA,Waverly Solar,Solar,68.0,2024-03-14,Solar,False,"name found, capacity differs >15 %",,,,
+AD1-084,PJM,PJM,VA,Cushaw Hydropower Station,Hydro,5.5,2018-11-12,Hydro,False,"name found, capacity differs >15 %",,,,
+AD1-087,PJM,PJM,VA,Foxhound Solar,Solar,64.2,2024-04-24,Solar,False,"name found, capacity differs >15 %",,,,
+AD1-097,PJM,PJM,PA,"Phillips Island CT1, CT2, CT3, and ST4",Gas,67.0,2020-06-09,Gas,False,"name found, capacity differs >15 %",,,,
+AD1-099,PJM,PJM,PA,South Bend Generating Station,Gas,70.0,2018-09-20,Gas,False,no EIA plant shares a name word,,,,
+AD1-101,PJM,PJM,OH,Blue Harvest Solar Park,Solar,49.9,2023-11-22,Solar,True,matched,66249,Blue Harvest Solar Park,49.9,1.0
+AD1-108,PJM,PJM,PA,Beaver Dam Generating Station,Gas,1.5,2018-07-16,Gas,False,"name found, capacity differs >15 %",,,,
+AD1-109,PJM,PJM,PA,Glory Barn Road Generating Facility Alpaca,Gas,1.1,2018-05-10,Gas,False,"name found, capacity differs >15 %",,,,
+AD1-110,PJM,PJM,PA,Roundtop Energy Projects,Gas,1.5,2018-06-22,Gas,False,"name found, capacity differs >15 %",,,,
+AD1-114,PJM,PJM,MD,CPV Maryland,Gas,75.0,2019-03-28,Gas,False,"name found, capacity differs >15 %",,,,
+AD1-118,PJM,PJM,OH,Troy Energy,Gas,60.0,2022-08-17,Gas,False,"name found, capacity differs >15 %",,,,
+AD1-119,PJM,PJM,OH,Timber Road Solar Park,Solar,49.9,2024-09-12,Solar,True,matched,66250,Timber Road Solar Park,49.9,-9.0
+AD1-130,PJM,PJM,OH,Hardin Energy Center _x0013_ Phase 2,Solar,150.0,2024-12-03,Solar,True,matched,63029,Hardin Solar Energy LLC,150.0,-46.0
+AD1-131,PJM,PJM,VA,Powells Creek Solar,Solar,20.0,2023-08-23,Solar,False,"name found, capacity differs >15 %",,,,
+AD1-135,PJM,PJM,PA,Gaucho Solar,Solar,8.3,2023-06-29,Solar,False,"name found, capacity differs >15 %",,,,
+AD1-136,PJM,PJM,OH,Nestlewood Solar,Solar,10.0,2023-12-27,Solar,False,"name found, capacity differs >15 %",,,,
+AD1-142,PJM,PJM,PA,Milan Energy,Gas,1.1,2018-04-24,Gas,False,"name found, capacity differs >15 %",,,,
+AD1-144,PJM,PJM,VA,TWE Myrtle Solar Project,Solar,15.0,2020-06-29,Solar,True,matched,63746,"TWE Myrtle Solar Farm, LLC",15.0,0.0
+AD1-148,PJM,PJM,IL,HillTopper Wind Farm,Wind,36.3,2022-09-01,Wind,False,"name found, capacity differs >15 %",,,,
+AD1-152,PJM,PJM,VA,Piney Creek Solar,Solar,80.0,2023-08-15,Solar,True,matched,62768,Piney Creek Solar,80.0,0.0
+AD1-155,PJM,PJM,VA,Foxglove Solar,Solar,75.0,2024-10-19,Solar,True,matched,66841,Foxglove Solar,75.0,0.0
+AD2-001,PJM,PJM,WV,Big Sandy Peaker Plant,Gas,18.0,2020-10-02,Gas,False,"name found, capacity differs >15 %",,,,
+AD2-009,PJM,PJM,PA,Great Cover Solar LLC,Solar,70.0,2024-04-16,Solar,True,matched,65999,Great Cove Solar,70.0,-4.0
+AD2-016,PJM,PJM,OH,Yellowbud Solar,Solar,127.0,2022-12-21,Solar,False,"name found, capacity differs >15 %",,,,
+AD2-021,PJM,PJM,VA,Briel Farm Solar,Solar,1.3,2020-12-21,Solar,False,"name found, capacity differs >15 %",,,,
+AD2-026,PJM,PJM,NJ,Quakertown Solar Farm,Solar,4.1,2019-05-03,Solar,False,"name found, capacity differs >15 %",,,,
+AD2-027,PJM,PJM,NJ,Taylors Lane Solar,Solar,10.0,2019-03-22,Solar,False,"name found, capacity differs >15 %",,,,
+AD2-030,PJM,PJM,VA,Gloucester Solar,Solar,19.8,2019-03-22,Solar,True,matched,63031,Gloucester Solar,19.9,1.0
+AD2-035,PJM,PJM,PA,Ontelaunee Power Generating Plant,Gas,38.9,2019-12-01,Gas,False,"name found, capacity differs >15 %",,,,
+AD2-042,PJM,PJM,NJ,Pennsauken Solar II,Solar,13.2,2019-10-04,Solar,True,matched,65467,Pennsauken Brownfield Solar,12.0,-6.0
+AD2-044,PJM,PJM,VA,Gardy's Mill Solar,Solar,3.2,2020-12-21,Solar,True,matched,66122,"HCE Roark Mill Solar, LLC",3.2,44.0
+AD2-058,PJM,PJM,MD,Spectrum Solar,Solar,5.6,2024-01-02,Solar,True,matched,67490,Spectrum Solar Hybrid,5.6,-1.0
+AD2-065,PJM,PJM,NJ,Kettle Run,Solar,2.57,2023-03-24,Solar,False,"name found, capacity differs >15 %",,,,
+AD2-070,PJM,PJM,NJ,Milford Solar Farm,Solar,7.5,2019-09-18,Solar,True,matched,62637,Milford Solar Farm (NJ) LLC,7.5,0.0
+AD2-073,PJM,PJM,VA,Woodbine Road Solar,Solar,19.92,2021-09-02,Solar,False,no EIA plant shares a name word,,,,
+AD2-079,PJM,PJM,IN,"St. Joseph County, Indiana",Solar,20.0,2021-03-16,Solar,True,matched,63801,St. Joseph Solar,20.0,0.0
+AD2-097,PJM,PJM,VA,Spruance Operating Services LLC,Gas,66.0,2019-10-01,Gas,False,"name found, capacity differs >15 %",,,,
+AD2-108,PJM,PJM,PA,Springdale,Gas,8.0,2019-07-10,Gas,False,"name found, capacity differs >15 %",,,,
+AD2-110,PJM,PJM,PA,"Chambersburg Energy, LLC",Gas,12.0,2020-09-14,Gas,False,"name found, capacity differs >15 %",,,,
+AD2-112,PJM,PJM,PA,Springdale,Gas,50.4,2023-11-21,Gas,False,"name found, capacity differs >15 %",,,,
+AD2-113,PJM,PJM,PA,South Bend Generating Station,Gas,70.0,2022-04-27,Gas,False,no EIA plant shares a name word,,,,
+AD2-115,PJM,PJM,PA,Lyons Solar,Solar,20.0,2023-12-01,Solar,True,matched,66019,Lyons Solar,20.0,0.0
+AD2-116,PJM,PJM,PA,Cottontail Solar 2,Solar,20.0,2024-03-01,Solar,True,matched,65076,Cottontail Solar 1,20.0,3.0
+AD2-133,PJM,PJM,PA,Sandy Ridge,Wind,85.4,2023-09-16,Wind,True,matched,65741,"Sandy Ridge Wind 2, LLC",87.6,0.0
+AD2-160,PJM,PJM,NC,Oak Trail Solar,Solar,50.0,2023-07-05,Solar,False,"name found, capacity differs >15 %",,,,
+AD2-163,PJM,PJM,OH,Madison Fields Solar Project,Solar,180.0,2024-01-23,Solar,True,matched,66198,"Madison Fields Solar Project, LLC",180.0,0.0
+AD2-166,PJM,PJM,PA,Helix Ironwood Facility,Gas,89.8,2022-04-28,Gas,False,"name found, capacity differs >15 %",,,,
+AD2-167,PJM,PJM,MD,Wildcat Point,Gas,90.0,2017-07-27,Gas,False,"name found, capacity differs >15 %",,,,
+AD2-172,PJM,PJM,IL,High Point Solar,Solar,50.0,2023-11-30,Solar,False,"name found, capacity differs >15 %",,,,
+AD2-180,PJM,PJM,WV,Black Rock Wind,Wind,110.0,2021-10-25,Wind,True,matched,64433,Black Rock Wind,115.0,4.0
+AD2-189,PJM,PJM,OH,Guernsey Power Station,Gas,225.0,2023-02-27,Gas,False,"name found, capacity differs >15 %",,,,
+AD2-202,PJM,PJM,VA,Foxhound Solar,Solar,18.8,2024-04-24,Solar,False,"name found, capacity differs >15 %",,,,
+AD2-205,PJM,PJM,VA,Buck & Byllesby Hydro Project,Battery,4.0,2019-01-31,Battery,False,no EIA plant shares a name word,,,,
+AD2-213,PJM,PJM,NJ,Justin Court Energy Storage,Battery,20.0,2024-02-15,Battery,True,matched,66758,Justin Court Energy Storage,20.0,0.0
+AE1-021,PJM,PJM,OH,Gavin Unit No. 2,Coal,11.0,2021-06-19,Coal,False,"name found, capacity differs >15 %",,,,
+AE1-035,PJM,PJM,NC,Aulander Holloman Solar Park,Solar,19.9,2020-02-24,Solar,False,"name found, capacity differs >15 %",,,,
+AE1-036,PJM,PJM,NJ,Red Oak,Gas,9.0,2019-02-08,Gas,False,"name found, capacity differs >15 %",,,,
+AE1-039,PJM,PJM,MI,Orchard Hills Sanitary Landfill,Other,0.8,2019-10-01,Other,False,"name found, capacity differs >15 %",,,,
+AE1-041,PJM,PJM,NJ,Highland Park,Solar,1.1,2019-12-30,Solar,False,"name found, capacity differs >15 %",,,,
+AE1-060,PJM,PJM,NJ,VESI _x0013_ Andover Energy Storage,Battery,19.8,2023-06-17,Battery,True,matched,65952,Andover Energy Storage Project,20.0,0.0
+AE1-081,PJM,PJM,NJ,Durban Ave Solar,Solar,1.25,2020-09-25,Solar,True,matched,60772,Adams Ave MS and HS,1.3,-110.0
+AE1-086,PJM,PJM,WV,Beech Ridge Wind Farm,Wind,5.0,2020-03-14,Wind,False,"name found, capacity differs >15 %",,,,
+AE1-100,PJM,PJM,VA,Caden Energix Axton,Solar,66.0,2024-02-22,Solar,True,matched,66635,Caden Energix Axton LLC,66.0,-2.0
+AE1-101,PJM,PJM,PA,Great Cove Solar II,Solar,150.0,2024-06-06,Solar,True,matched,67137,Great Cove Solar II,150.0,-6.0
+AE1-109,PJM,PJM,WV,Capon Bridge Solar,Solar,20.0,2024-07-25,Solar,True,matched,67694,Capon Bridge Solar LLC,20.0,0.0
+AE1-120,PJM,PJM,OH,Hillcrest Solar I,Solar,44.0,2020-12-18,Solar,False,"name found, capacity differs >15 %",,,,
+AE1-123,PJM,PJM,PA,Clarion Boards,Gas,18.0,2023-11-03,Gas,False,no EIA plant shares a name word,,,,
+AE1-134,PJM,PJM,IL,Nelson Energy Center,Gas,24.4,2023-05-12,Gas,False,"name found, capacity differs >15 %",,,,
+AE1-142,PJM,PJM,NJ,Toms River Solar,Solar,20.0,2021-03-12,Solar,True,matched,64327,EDF Ph1 Toms River,21.3,3.0
+AE1-155,PJM,PJM,VA,Bookers Mill Solar,Solar,127.0,2024-12-18,Solar,True,matched,66314,Bookers Mill Solar,127.0,0.0
+AE1-162,PJM,PJM,VA,Solidago Solar,Solar,20.0,2023-08-01,Solar,True,matched,66999,Solidago Solar,20.0,0.0
+AE1-175,PJM,PJM,VA,Lightfoot 34.5 kV II,Solar,19.9,2022-05-10,Solar,False,no EIA plant shares a name word,,,,
+AE1-176,PJM,PJM,VA,Niagara Power Plant Dam,Hydro,2.4,2020-05-23,Hydro,False,"name found, capacity differs >15 %",,,,
+AE1-178,PJM,PJM,VA,Wolf Hills Energy Plant,Gas,19.0,2021-05-25,Gas,False,"name found, capacity differs >15 %",,,,
+AE1-185,PJM,PJM,PA,Cottontail Solar 1,Solar,20.0,2024-08-12,Solar,True,matched,65076,Cottontail Solar 1,20.0,-2.0
+AE1-196,PJM,PJM,PA,Cottontail Solar 8,Solar,20.0,2024-04-24,Solar,True,matched,65076,Cottontail Solar 1,20.0,2.0
+AE1-221,PJM,PJM,PA,West Point Cogeneration Facility,Gas,14.0,2020-04-21,Gas,False,"name found, capacity differs >15 %",,,,
+AE2-006,PJM,PJM,VA,Twittys Creek Solar,Solar,2.9,2020-12-08,Solar,False,"name found, capacity differs >15 %",,,,
+AE2-010,PJM,PJM,PA,Jericho,Gas,29.0,2020-08-12,Gas,False,no EIA plant shares a name word,,,,
+AE2-035,PJM,PJM,IL,High Point II Solar,Solar,50.0,2023-11-30,Solar,False,"name found, capacity differs >15 %",,,,
+AE2-059,PJM,PJM,PA,Cottontail Solar 4 aka East Chilli Solar,Solar,20.0,2024-08-20,Solar,True,matched,65076,Cottontail Solar 1,20.0,-2.0
+AE2-060,PJM,PJM,PA,Cottontail Solar 5 aka Walker Solar,Solar,20.0,2023-12-12,Solar,True,matched,65076,Cottontail Solar 1,20.0,6.0
+AE2-061,PJM,PJM,MD,Rock Springs Unit #1 and Unit #2,Gas,7.0,2019-08-12,Gas,False,"name found, capacity differs >15 %",,,,
+AE2-062,PJM,PJM,IL,Magid Glove & Safety Mfg. Co,Battery,0.98,2021-04-08,Battery,False,no EIA plant shares a name word,,,,
+AE2-064,PJM,PJM,NJ,Kinsley 2 Beaverbrook Solar,Solar,2.0,2021-02-04,Solar,False,"name found, capacity differs >15 %",,,,
+AE2-065,PJM,PJM,NJ,Kinsley 2 Deptford Solar,Solar,1.8,2020-09-19,Solar,True,matched,69853,West Deptford Solar 2 LLC CSG,1.7,67.0
+AE2-071,PJM,PJM,KY,Glover Creek Solar,Solar,35.0,2024-06-07,Solar,False,"name found, capacity differs >15 %",,,,
+AE2-114,PJM,PJM,PA,BE-PINE 1 Cain Road,Solar,17.1,2023-11-20,Solar,True,matched,66943,Pine 1 Solar,17.1,0.0
+AE2-115,PJM,PJM,PA,BE-PINE 2 Dam Road,Solar,17.1,2023-11-05,Solar,True,matched,66943,Pine 1 Solar,17.1,0.0
+AE2-125,PJM,PJM,PA,Stahlstown-Ligonier 25 kV,Solar,13.8,2024-12-04,Solar,False,no EIA plant shares a name word,,,,
+AE2-126,PJM,PJM,PA,CL-Viaduct,Solar,20.0,2023-03-23,Solar,True,matched,64709,CL-Viaduct LLC,20.0,0.0
+AE2-129,PJM,PJM,PA,Philipsburg-Clarence 34.5 kV,Solar,20.0,2023-01-28,Solar,False,no EIA plant shares a name word,,,,
+AE2-132,PJM,PJM,VA,Remington GT3,Gas,17.7,2019-10-17,Gas,False,"name found, capacity differs >15 %",,,,
+AE2-133,PJM,PJM,PA,Penn Solar (Cottontail 6),Solar,20.0,2024-05-08,Solar,True,matched,65076,Cottontail Solar 1,20.0,1.0
+AE2-134,PJM,PJM,VA,Pine Glade Solar,Solar,16.5,2024-09-13,Solar,False,no EIA plant shares a name word,,,,
+AE2-148,PJM,PJM,OH,Fox Squirrel Solar,Solar,577.0,2024-11-01,Solar,True,matched,67239,Fox Squirrel Solar,577.0,-11.0
+AE2-155,PJM,PJM,VA,Hanover Solar,Solar,5.0,2020-09-23,Solar,False,no EIA plant shares a name word,,,,
+AE2-183,PJM,PJM,VA,Greensville Power Station,Gas,75.0,2023-08-30,Gas,False,"name found, capacity differs >15 %",,,,
+AE2-184,PJM,PJM,VA,Warren County Power Station,Gas,15.0,2020-08-11,Gas,False,"name found, capacity differs >15 %",,,,
+AE2-224,PJM,PJM,PA,CPV Maple Hill Solar,Solar,100.0,2023-11-28,Solar,True,matched,65332,CPV Maple Hill Solar,100.0,0.0
+AE2-230,PJM,PJM,VA,Bartonsville Energy Facility,Solar,70.0,2024-12-27,Solar,False,"name found, capacity differs >15 %",,,,
+AE2-253,PJM,PJM,NC,Oak Trail Solar,Solar,50.0,2023-07-05,Solar,False,"name found, capacity differs >15 %",,,,
+AE2-254,PJM,PJM,KY,Turkey Creek Solar,Solar,50.0,2022-10-28,Solar,True,matched,64842,"SR Turkey Creek, LLC",50.0,1.0
+AE2-272,PJM,PJM,NJ,Pilesgrove Solar,Solar,0.8,2019-09-17,Solar,False,"name found, capacity differs >15 %",,,,
+AE2-273,PJM,PJM,PA,PA Solar Park,Solar,0.4,2020-01-17,Solar,False,no usable project name,,,,
+AE2-274,PJM,PJM,PA,PA Solar Park,Solar,0.8,2020-01-17,Solar,False,no usable project name,,,,
+AE2-282,PJM,PJM,OH,Arche Energy Project,Solar,67.0,2024-01-17,Solar,False,"name found, capacity differs >15 %",,,,
+AE2-297,PJM,PJM,IN,Bellflower Solar 1,Solar,152.5,2022-12-06,Solar,True,matched,65031,Bellflower Solar 1,152.5,2.0
+AE2-309,PJM,PJM,MD,Jade Meadow,Solar,19.84,2024-03-26,Solar,True,matched,67214,Jade Meadow LLC,19.8,0.0
+AE2-315,PJM,PJM,OH,Yankee 1-7,Gas,23.5,2022-04-19,Gas,False,"name found, capacity differs >15 %",,,,
+AE2-346,PJM,PJM,NC,Colice Hall Solar,Solar,12.0,2023-07-06,Solar,False,"name found, capacity differs >15 %",,,,
+AF1-019,PJM,PJM,NJ,Viridity Energy Solutions Montague Storage,Battery,20.0,2024-12-20,Battery,True,matched,67851,Montague Energy Storage,20.0,0.0
+AF1-021,PJM,PJM,PA,Pechin Solar,Solar,14.0,2024-10-18,Solar,True,matched,65903,Pechin Solar,14.0,0.0
+AF1-022,PJM,PJM,PA,Gans Solar Farm,Solar,14.0,2024-12-03,Solar,True,matched,65902,Gans Solar,14.0,-1.0
+AF1-023,PJM,PJM,NJ,Hamilton Road Solar,Solar,8.4,2020-08-06,Solar,True,matched,60489,Hamilton Solar-Crosswicks,7.5,-104.0
+AF1-026,PJM,PJM,NJ,Alpha Battery Storage Facility,Battery,2.0,2020-09-21,Battery,False,no EIA plant shares a name word,,,,
+AF1-027,PJM,PJM,NJ,Plumsted Energy Storage Facility,Battery,2.0,2020-09-21,Battery,False,"name found, capacity differs >15 %",,,,
+AF1-032,PJM,PJM,VA,Stratford Solar Center,Solar,15.0,2023-01-04,Solar,True,matched,61908,"Stratford Solar Center, LLC",15.0,-2.0
+AF1-039,PJM,PJM,PA,Listonburg Solar,Solar,15.0,2024-12-26,Solar,True,matched,65929,Listonburg Solar,15.0,0.0
+AF1-041,PJM,PJM,NJ,Pear Street Solar,Solar,2.4,2020-05-08,Solar,False,no EIA plant shares a name word,,,,
+AF1-058,PJM,PJM,VA,Watlington Solar,Solar,20.0,2023-03-08,Solar,True,matched,65221,Watlington Solar,20.0,0.0
+AF1-102,PJM,PJM,PA,Gans CT,Gas,8.0,2021-03-11,Gas,False,"name found, capacity differs >15 %",,,,
+AF1-120,PJM,PJM,OH,Arche Energy Project,Solar,40.0,2024-01-17,Solar,False,"name found, capacity differs >15 %",,,,
+AF1-150,PJM,PJM,PA,Pittsburgh International Airport,Gas,14.4,2021-10-28,Gas,False,"name found, capacity differs >15 %",,,,
+AF1-177,PJM,PJM,PA,Warren Generating Station,Gas,5.0,2020-07-01,Gas,False,"name found, capacity differs >15 %",,,,
+AF1-178,PJM,PJM,PA,Tolna Unit 2,Oil,1.5,2020-07-01,Other,False,"name found, capacity differs >15 %",,,,
+AF1-179,PJM,PJM,PA,Tolna Unit 1,Oil,1.0,2020-07-01,Other,False,"name found, capacity differs >15 %",,,,
+AF1-180,PJM,PJM,PA,Titus Generating Station (Titus CT 4 and Titus CT 5),Oil,2.0,2020-07-01,Other,False,"name found, capacity differs >15 %",,,,
+AF1-181,PJM,PJM,PA,Shawville Generating Station,Gas,3.0,2020-07-01,Gas,False,"name found, capacity differs >15 %",,,,
+AF1-182,PJM,PJM,PA,Shawville Generating Station,Gas,4.0,2020-07-01,Gas,False,"name found, capacity differs >15 %",,,,
+AF1-183,PJM,PJM,PA,Shawville Generating Station,Gas,1.0,2020-07-01,Gas,False,"name found, capacity differs >15 %",,,,
+AF1-184,PJM,PJM,PA,Shawnee Generating Station (CT 1),Oil,1.0,2020-07-01,Other,False,"name found, capacity differs >15 %",,,,
+AF1-185,PJM,PJM,NJ,Sayreville Facility (Raritan River),Gas,5.5,2020-03-10,Gas,False,"name found, capacity differs >15 %",,,,
+AF1-186,PJM,PJM,PA,Portland Station Unit 5,Gas,6.5,2020-07-01,Gas,False,no EIA plant shares a name word,,,,
+AF1-187,PJM,PJM,PA,Portland Station Unit 3 and Unit 4,Gas,2.0,2020-07-01,Gas,False,no EIA plant shares a name word,,,,
+AF1-188,PJM,PJM,PA,Orrtanna Station Unit C1,Oil,1.0,2020-07-01,Other,False,"name found, capacity differs >15 %",,,,
+AF1-189,PJM,PJM,OH,Niles A CT,Oil,1.5,2020-07-01,Other,False,"name found, capacity differs >15 %",,,,
+AF1-190,PJM,PJM,PA,New Castle Generating Station,Gas,1.0,2020-07-01,Gas,False,"name found, capacity differs >15 %",,,,
+AF1-191,PJM,PJM,PA,New Castle Generating Station,Gas,4.0,2020-07-01,Gas,False,"name found, capacity differs >15 %",,,,
+AF1-192,PJM,PJM,PA,Mountain Station Unit C2,Gas,1.0,2020-07-01,Gas,False,no EIA plant shares a name word,,,,
+AF1-193,PJM,PJM,PA,Hunterstown CT Facility,Gas,4.0,2020-07-01,Gas,False,"name found, capacity differs >15 %",,,,
+AF1-194,PJM,PJM,PA,Hamilton Station,Oil,1.0,2020-07-01,Other,False,"name found, capacity differs >15 %",,,,
+AF1-195,PJM,PJM,NJ,Gilbert Station Unit 9,Gas,1.0,2020-03-10,Gas,False,"name found, capacity differs >15 %",,,,
+AF1-196,PJM,PJM,NJ,"Gilbert Station 4x1 Combined Cycle (Unit 4, Unit 5, Unit 6, Unit 7, and Unit 8)",Gas,14.5,2020-03-10,Gas,False,"name found, capacity differs >15 %",,,,
+AF1-198,PJM,PJM,PA,Blossburg Station Unit 1,Gas,2.5,2020-07-01,Gas,False,"name found, capacity differs >15 %",,,,
+AF1-203,PJM,PJM,KY,Glover Creek Solar,Solar,20.0,2024-06-07,Solar,False,"name found, capacity differs >15 %",,,,
+AF1-215,PJM,PJM,IN,Mammoth North Solar Project,Solar,300.0,2024-11-08,Solar,False,"name found, capacity differs >15 %",,,,
+AF1-227,PJM,PJM,OH,Union Solar,Solar,325.0,2024-11-15,Solar,True,matched,64660,"AEUG Union Solar, LLC",325.0,0.0
+AF1-248,PJM,PJM,VA,Gardy_x0019_s Mill Solar,Solar,2.1,2023-06-01,Solar,False,"name found, capacity differs >15 %",,,,
+AF1-249,PJM,PJM,OH,Nickel Solar,Solar,19.92,2024-12-05,Solar,False,no EIA plant shares a name word,,,,
+AF1-257,PJM,PJM,NJ,,Solar,0.2,2021-05-10,Solar,False,no usable project name,,,,
+AF1-258,PJM,PJM,MD,Hebron Solar,Solar,3.2,2020-11-05,Solar,False,no EIA plant shares a name word,,,,
+AF1-259,PJM,PJM,MD,Church Hill Solar,Solar,0.8,2020-09-10,Solar,False,"name found, capacity differs >15 %",,,,
+AF1-260,PJM,PJM,NJ,Lakewood-Farmingdale Road Solar Farm,Solar,1.0,2020-09-08,Solar,True,matched,62454,Lakewood Cheddar School,1.0,-92.0
+AF1-261,PJM,PJM,NJ,North American Solar,Solar,0.9,2021-06-01,Solar,False,"name found, capacity differs >15 %",,,,
+AF1-262,PJM,PJM,NJ,Pittsgrove Solar,Solar,0.9,2022-09-15,Solar,False,"name found, capacity differs >15 %",,,,
+AF1-264,PJM,PJM,NJ,Owens Corning Solar,Solar,1.3,2021-06-01,Solar,False,"name found, capacity differs >15 %",,,,
+AF1-290,PJM,PJM,WV,Blake Solar,Solar,80.0,2024-03-06,Solar,False,"name found, capacity differs >15 %",,,,
+AF1-291A,PJM,PJM,VA,Bartonsville Energy Facility,Solar,10.0,2024-12-27,Solar,False,"name found, capacity differs >15 %",,,,
+AF2-043,PJM,PJM,VA,Pleasant Hill Solar,Solar,20.0,2023-06-20,Solar,True,matched,65220,Pleasant Hill Solar,20.0,0.0
+AF2-044,PJM,PJM,OH,Lordstown Energy Center,Gas,20.0,2020-10-20,Gas,False,no EIA plant shares a name word,,,,
+AF2-075,PJM,PJM,VA,Bartonsville Energy Facility,Solar,50.0,2024-12-27,Solar,False,"name found, capacity differs >15 %",,,,
+AF2-077,PJM,PJM,VA,Winterberry Solar,Solar,20.0,2024-06-04,Solar,True,matched,68775,Winterberry Solar,20.0,-7.0
+AF2-085,PJM,PJM,VA,Dry Bridge Energy Center,Battery,20.0,2023-11-21,Battery,True,matched,65044,Dry Bridge Storage,20.0,0.0
+AF2-103,PJM,PJM,OH,Northwest Ohio Wind,Solar,3.15,2021-06-01,Solar,False,"name found, capacity differs >15 %",,,,
+AF2-134,PJM,PJM,IN,Mammoth North Solar Project,Solar,100.0,2024-10-21,Solar,False,"name found, capacity differs >15 %",,,,
+AF2-138,PJM,PJM,NJ,Mount Olive Solar Farm,Solar,19.8,2023-03-15,Solar,True,matched,65348,Mount Olive Solar Farm,19.8,-2.0
+AF2-139,PJM,PJM,NJ,Holland Solar Farm,Solar,8.8,2022-07-28,Solar,False,"name found, capacity differs >15 %",,,,
+AF2-144,PJM,PJM,VA,Scott 1 BESS,Solar,17.0,2023-06-01,Solar,True,matched,60316,Scott Solar Farm,17.0,-78.0
+AF2-154,PJM,PJM,MD,"Dickerson HCT1, HCT2, DCT1",Gas,5.0,2023-05-31,Gas,False,"name found, capacity differs >15 %",,,,
+AF2-156,PJM,PJM,MD,Chalk Point CT 2,Gas,2.0,2023-05-31,Gas,False,"name found, capacity differs >15 %",,,,
+AF2-168,PJM,PJM,NJ,Princeton University Generating Facility,Solar,5.0,2022-03-02,Solar,True,matched,58584,Princeton University Cogeneration,4.5,-113.0
+AF2-178,PJM,PJM,PA,Whitetail Solar 1,Solar,3.9,2021-01-12,Solar,False,"name found, capacity differs >15 %",,,,
+AF2-179,PJM,PJM,PA,Whitetail Solar 2,Solar,5.8,2021-01-12,Solar,False,"name found, capacity differs >15 %",,,,
+AF2-180,PJM,PJM,PA,St Thomas Township Solar Facility,Solar,5.8,2021-01-12,Solar,False,no EIA plant shares a name word,,,,
+AF2-184,PJM,PJM,PA,,Solar,5.8,2023-05-01,Solar,False,no usable project name,,,,
+AF2-185,PJM,PJM,PA,Elk Hill Solar 2,Solar,4.4,2021-01-04,Solar,False,"name found, capacity differs >15 %",,,,
+AF2-247,PJM,PJM,NJ,FLR Florence Landfill,Solar,5.0,2022-03-02,Solar,True,matched,60994,French's Landfill PV,5.1,-89.0
+AF2-250,PJM,PJM,MD,Kumquat Solar,Solar,1.95,2022-10-19,Solar,False,no EIA plant shares a name word,,,,
+AF2-305,PJM,PJM,IL,Alta Farms II,Wind,9.2,2023-05-20,Wind,False,"name found, capacity differs >15 %",,,,
+AF2-317,PJM,PJM,IL,Whitney Hill Wind Farm,Wind,15.68,2022-09-01,Wind,False,"name found, capacity differs >15 %",,,,
+AF2-395,PJM,PJM,OH,Rolling Hills Generating,Gas,89.6,2023-02-07,Gas,False,"name found, capacity differs >15 %",,,,
+AF2-436,PJM,PJM,PA,Wyalusing 34.5 kV,Gas,1.5,2021-03-18,Gas,False,no EIA plant shares a name word,,,,
+AF2-437,PJM,PJM,PA,Oxbow Creek Energy,Gas,1.5,2021-01-11,Gas,False,"name found, capacity differs >15 %",,,,
+AG1-044,PJM,PJM,IL,Rock River ESS,Battery,0.5,2021-12-27,Battery,False,no EIA plant shares a name word,,,,
+AG1-063,PJM,PJM,MD,Fairhaven Battery Energy Storage System,Battery,2.5,2024-09-19,Battery,True,matched,68335,Fairhaven,2.5,0.0
+AG1-145,PJM,PJM,VA,Norge Solar,Solar,20.0,2023-11-30,Solar,True,matched,64086,Norge Solar Farm,20.0,0.0
+AG1-360,PJM,PJM,MD,Costen Solar,Solar,8.75,2024-10-07,Solar,True,matched,69306,Costen Solar,8.8,-2.0
+AG1-398,PJM,PJM,IL,Alta Farms II,Wind,7.33,2023-05-20,Wind,False,"name found, capacity differs >15 %",,,,
+AG1-563,PJM,PJM,NJ,AG1-563,Solar,0.7,2021-07-16,Solar,False,no usable project name,,,,
+AG2-050,PJM,PJM,MD,CHESAPEAKE BEACH BESS,Battery,1.0,2023-05-09,Battery,True,matched,69128,Chesapeake Beach BESS,1.1,-4.0
+B02,PJM,PJM,MD,Morgantown Units 1 & 2,Gas,80.0,2001-03-17,Gas,False,no EIA plant shares a name word,,,,
+B03,PJM,PJM,PA,Bethlehem,Gas,750.0,2003-01-28,Gas,False,"name found, capacity differs >15 %",,,,
+B05,PJM,PJM,PA,,Gas,265.0,2002-01-01,Gas,False,no usable project name,,,,
+B09A,PJM,PJM,NJ,Burlington,Gas,168.0,2000-07-22,Gas,False,"name found, capacity differs >15 %",,,,
+B12_W01,PJM,PJM,PA,South Bend CT1 - CT4,Gas,600.0,2002-03-01,Gas,False,no EIA plant shares a name word,,,,
+B12_W02,PJM,PJM,WV,Oak Grove CT1 & CT2,Gas,300.0,2002-10-01,Gas,False,no EIA plant shares a name word,,,,
+B18_W03,PJM,PJM,PA,"Springdale CT3, CT4, ST5",Gas,525.0,2003-08-01,Gas,False,"name found, capacity differs >15 %",,,,
+B19,PJM,PJM,NJ,Middlesex Sewer,Gas,20.0,2001-04-06,Gas,False,no EIA plant shares a name word,,,,
+B23,PJM,PJM,PA,Northampton,Coal,5.0,2001-06-10,Coal,False,"name found, capacity differs >15 %",,,,
+B23_W04,PJM,PJM,PA,Gans 8 & 9,Gas,88.0,2001-12-01,Gas,True,matched,55377,Gans,87.6,-13.0
+B26,PJM,PJM,PA,Hunlock Creek 66kV,Gas,50.0,2002-05-26,Gas,True,matched,3176,Hunlock Power Station,49.9,-512.0
+B28,PJM,PJM,PA,Muddy Run,Hydro,160.0,2003-08-27,Hydro,False,"name found, capacity differs >15 %",,,,
+B28_W07,PJM,PJM,WV,Backbone WF,Wind,90.0,2003-05-01,Wind,False,no EIA plant shares a name word,,,,
+B28_W08,PJM,PJM,PA,Mill Run WF,Wind,15.0,2002-04-01,Wind,True,matched,55805,Mill Run Windpower LLC,15.0,-4.0
+B30,PJM,PJM,PA,Ford Mill,Gas,605.0,2004-06-29,Gas,False,"name found, capacity differs >15 %",,,,
+B34,PJM,PJM,PA,"Seward 1 (Hay Road 5,6,7,8)",Other,525.0,2006-06-09,Other,False,no EIA plant shares a name word,,,,
+B46,PJM,PJM,MD,Conowingo,Hydro,36.0,2003-11-21,Hydro,False,"name found, capacity differs >15 %",,,,
+B47,PJM,PJM,DE,"Hay Road 5, 6, 7",Gas,545.0,2002-07-22,Gas,False,"name found, capacity differs >15 %",,,,
+C01,PJM,PJM,NJ,"Linden 1, 2 & 3",Gas,436.0,2006-05-01,Gas,True,matched,50006,Linden Cogen Plant,476.0,-170.0
+C07,PJM,PJM,NJ,Salem 1 & 2,Nuclear,26.0,2001-07-19,Nuclear,False,"name found, capacity differs >15 %",,,,
+C08,PJM,PJM,NJ,Hope Creek 1,Nuclear,69.0,2001-08-01,Nuclear,False,"name found, capacity differs >15 %",,,,
+D01,PJM,PJM,PA,Sight and Sound Theater,Gas,1.6,2000-05-31,Gas,False,no EIA plant shares a name word,,,,
+D02,PJM,PJM,DE,Hay Road 1-4,Gas,10.0,2000-04-12,Gas,False,"name found, capacity differs >15 %",,,,
+D03,PJM,PJM,PA,Haxelton Units 2-4,Gas,99.0,2002-06-01,Gas,False,no EIA plant shares a name word,,,,
+D04,PJM,PJM,PA,Archbald,Gas,1.0,2000-06-09,Gas,False,"name found, capacity differs >15 %",,,,
+D05,PJM,PJM,PA,Waymart WF,Wind,70.0,2003-12-01,Wind,True,matched,56001,Waymart Wind,64.5,-2.0
+D06,PJM,PJM,PA,Scrubgrass NUG,Gas,5.0,2000-07-15,Gas,False,no EIA plant shares a name word,,,,
+D08,PJM,PJM,NJ,Kearny #12,Gas,168.0,2001-08-04,Gas,False,"name found, capacity differs >15 %",,,,
+D09,PJM,PJM,DC,Central Heating & Refrigeriation Facility  1 & 2,Gas,10.0,2004-06-01,Gas,True,matched,57788,US GSA Heating and Transmission,10.8,1.0
+D10,PJM,PJM,MD,NIH Unit 1,Oil,25.0,2004-06-01,Other,False,no EIA plant shares a name word,,,,
+D11,PJM,PJM,DE,DEMEC/Smyrna 1 &2,Gas,100.0,2002-05-01,Gas,False,no EIA plant shares a name word,,,,
+D18,PJM,PJM,PA,"Conectiv Bethlem CT 6, ST2",Gas,350.0,2004-05-01,Gas,False,no EIA plant shares a name word,,,,
+D29,PJM,PJM,MD,,Gas,3.0,2001-06-29,Gas,False,no usable project name,,,,
+E02,PJM,PJM,PA,,Other,1.2,2000-11-17,Other,False,no usable project name,,,,
+E04_W20,PJM,PJM,PA,,Gas,88.0,2002-12-01,Gas,False,no usable project name,,,,
+E05,PJM,PJM,MD,Sparrow Point,Gas,2.5,2001-01-01,Gas,False,"name found, capacity differs >15 %",,,,
+E07,PJM,PJM,PA,Montour #2,Coal,7.0,2002-05-06,Coal,False,no EIA plant shares a name word,,,,
+E13,PJM,PJM,PA,Somerset WF,Wind,10.0,2004-08-13,Wind,True,matched,55803,Somerset Windpower LLC,9.0,-32.0
+E17_W27,PJM,PJM,PA,"Ronco CT1, CT2, STG",Gas,620.0,2003-06-01,Gas,False,no EIA plant shares a name word,,,,
+E20,PJM,PJM,PA,"Croydon #11,12,21,22,31,32,41,42",Oil,6.5,2002-12-20,Other,False,"name found, capacity differs >15 %",,,,
+E28,PJM,PJM,DE,Delaware City/Motiva Unit  G6,Gas,60.0,2003-10-01,Gas,False,"name found, capacity differs >15 %",,,,
+F03,PJM,PJM,PA,Martins Creek #3,Coal,30.0,2001-04-01,Coal,False,"name found, capacity differs >15 %",,,,
+F07,PJM,PJM,MD,Dickerson,Gas,16.0,2001-03-17,Gas,False,"name found, capacity differs >15 %",,,,
+F08,PJM,PJM,MD,Chalk Point,Gas,6.0,2001-03-17,Gas,False,"name found, capacity differs >15 %",,,,
+G06,PJM,PJM,PA,Martins Creek #4,Coal,30.0,2012-03-01,Coal,False,"name found, capacity differs >15 %",,,,
+G08,PJM,PJM,NJ,Kearny #12,Gas,7.0,2001-06-30,Gas,False,"name found, capacity differs >15 %",,,,
+G10,PJM,PJM,NJ,Bergen #2,Gas,50.0,2002-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+G17,PJM,PJM,NJ,Burlington #10,Gas,16.0,2002-07-19,Gas,False,"name found, capacity differs >15 %",,,,
+G18,PJM,PJM,NJ,Linden 5 & 6,Gas,12.0,2004-05-04,Gas,False,"name found, capacity differs >15 %",,,,
+G19,PJM,PJM,NJ,Linden 7 & 8,Gas,12.0,2004-05-04,Gas,False,"name found, capacity differs >15 %",,,,
+G20,PJM,PJM,NJ,Essex 9,Gas,6.0,2003-06-01,Gas,True,matched,63540,Essex County Correctional Facility Cogen,6.2,-5.0
+G21,PJM,PJM,PA,Meyersdale WF,Wind,30.0,2003-12-03,Wind,True,matched,56052,"Meyersdale Windpower, LLC",30.0,0.0
+G22,PJM,PJM,PA,Merck,Gas,38.0,2002-09-30,Gas,False,no EIA plant shares a name word,,,,
+G24,PJM,PJM,NJ,BCUA LF,Other,1.9,2002-06-08,Other,False,no EIA plant shares a name word,,,,
+G25,PJM,PJM,NJ,Baler LF,Other,3.8,2003-05-01,Other,False,no EIA plant shares a name word,,,,
+G30,PJM,PJM,MD,Perryman 51,Coal,10.0,2001-06-01,Coal,False,no EIA plant shares a name word,,,,
+G30_W51,PJM,PJM,WV,Longview ST1,Coal,600.0,2008-06-01,Coal,False,"name found, capacity differs >15 %",,,,
+G30_W52,PJM,PJM,WV,Oak Grove CT1 & CT2,Gas,54.0,2003-06-01,Gas,False,no EIA plant shares a name word,,,,
+G30_W53,PJM,PJM,PA,South Bend CT1 - CT4,Gas,104.0,2003-06-01,Gas,False,no EIA plant shares a name word,,,,
+G36,PJM,PJM,PA,Holtwood,Hydro,107.0,2002-04-01,Hydro,False,"name found, capacity differs >15 %",,,,
+G46,PJM,PJM,PA,Peach Bottom 2 & 3,Nuclear,70.0,2001-12-31,Nuclear,False,"name found, capacity differs >15 %",,,,
+G51_W63,PJM,PJM,PA,Upton,Other,9.9,2003-04-01,Other,False,no EIA plant shares a name word,,,,
+H02,PJM,PJM,PA,Susquehanna #1,Nuclear,9.0,2007-06-01,Nuclear,False,"name found, capacity differs >15 %",,,,
+H03,PJM,PJM,PA,Susquehanna #2,Nuclear,9.0,2003-12-01,Nuclear,False,"name found, capacity differs >15 %",,,,
+H06,PJM,PJM,PA,Phillips Island,Gas,25.0,2004-12-31,Gas,False,"name found, capacity differs >15 %",,,,
+H12,PJM,PJM,DE,Hay Road 4,Gas,10.0,2005-12-01,Gas,False,"name found, capacity differs >15 %",,,,
+H13,PJM,PJM,MD,Owings Mills,Gas,9.0,2004-06-01,Gas,False,no EIA plant shares a name word,,,,
+H17,PJM,PJM,NJ,Salem 1 & 2,Nuclear,115.0,2008-06-01,Nuclear,False,"name found, capacity differs >15 %",,,,
+H18,PJM,PJM,NJ,Hope Creek 1,Nuclear,78.0,2007-12-01,Nuclear,False,"name found, capacity differs >15 %",,,,
+H19,PJM,PJM,NJ,Hope Creek 1,Nuclear,43.0,2007-12-01,Nuclear,False,"name found, capacity differs >15 %",,,,
+H20,PJM,PJM,MD,,Other,3.5,2003-05-31,Other,False,no usable project name,,,,
+H21_W68,PJM,PJM,WV,Greenland Gap WF,Wind,300.0,2007-09-30,Wind,False,no EIA plant shares a name word,,,,
+H23_W70,PJM,PJM,MD,Kelso Gap WF,Wind,100.0,2006-11-06,Wind,False,no EIA plant shares a name word,,,,
+H27,PJM,PJM,NJ,BCUA LF,Other,1.0,2002-12-01,Other,False,no EIA plant shares a name word,,,,
+I01,PJM,PJM,NJ,Jersey Atlantic WF,Wind,7.5,2005-12-30,Wind,True,matched,56300,Jersey-Atlantic Wind Farm,7.5,3.0
+I02_W73,PJM,PJM,WV,"Harrison 1, 2, 3",Coal,35.0,2004-09-22,Coal,False,"name found, capacity differs >15 %",,,,
+I06,PJM,PJM,NJ,Repauno Unit 1,Gas,1.7,2003-05-01,Gas,False,no EIA plant shares a name word,,,,
+I10,PJM,PJM,MD,,Gas,2.0,2004-10-01,Gas,False,no usable project name,,,,
+I12,PJM,PJM,PA,Orchard Park Generating Station,Diesel,23.3,2004-01-01,Other,False,no EIA plant shares a name word,,,,
+I13,PJM,PJM,PA,Forward WF,Wind,29.4,2008-03-06,Wind,True,matched,56699,Forward Windpower LLC,29.4,1.0
+I14,PJM,PJM,PA,Upton,Other,4.1,2004-06-01,Other,False,no EIA plant shares a name word,,,,
+J05,PJM,PJM,NJ,Borgata D1 / D2,Gas,8.0,2003-07-30,Gas,False,no EIA plant shares a name word,,,,
+J08,PJM,PJM,MD,GSA Federal Research Center (FDA),Gas,8.0,2004-08-15,Gas,False,no EIA plant shares a name word,,,,
+J09,PJM,PJM,PA,Harrisburg Municipal Solid Waste Authority,Other,26.0,2006-04-24,Other,True,matched,10118,Harrisburg Facility,24.1,0.0
+K02,PJM,PJM,PA,Laurel Hill,Wind,70.0,2012-09-25,Wind,True,matched,57744,Laurel Hill Wind,69.0,0.0
+K04,PJM,PJM,NJ,Pennsauken Sanitary Landfill / Aluminum Shapes,Other,5.1,2005-06-30,Other,False,"name found, capacity differs >15 %",,,,
+K06,PJM,PJM,MD,Easton Utilities Substation 2,Gas,5.0,2004-11-01,Gas,False,no EIA plant shares a name word,,,,
+K07,PJM,PJM,MD,Easton Utilities Substation 2,Gas,5.0,2004-11-01,Gas,False,no EIA plant shares a name word,,,,
+K11,PJM,PJM,WV,Greenland Gap WF,Wind,60.0,2007-09-30,Wind,False,no EIA plant shares a name word,,,,
+K13,PJM,PJM,PA,Forward WF,Wind,5.88,2007-09-01,Wind,False,"name found, capacity differs >15 %",,,,
+K19,PJM,PJM,WV,Backbone WF,Wind,18.0,2006-11-12,Wind,False,no EIA plant shares a name word,,,,
+K20,PJM,PJM,PA,Mill Run WF,Wind,3.0,2005-07-28,Wind,False,"name found, capacity differs >15 %",,,,
+K21,PJM,PJM,PA,Waymart,Wind,13.0,2004-07-01,Wind,False,"name found, capacity differs >15 %",,,,
+K22,PJM,PJM,PA,Somerset WF,Wind,1.8,2004-08-13,Wind,False,"name found, capacity differs >15 %",,,,
+K23,PJM,PJM,PA,Meyersdale WF,Wind,5.1,2004-07-01,Wind,False,"name found, capacity differs >15 %",,,,
+K28,PJM,PJM,MD,Kelso Gap WF,Wind,20.0,2006-11-06,Wind,False,no EIA plant shares a name word,,,,
+L02,PJM,PJM,NJ,Pleasantville / AC LF Unit 1,Other,1.5,2005-01-30,Other,False,no EIA plant shares a name word,,,,
+L05_CE22,PJM,PJM,IL,Camp Grove Wind Farm,Wind,150.0,2006-09-01,Wind,True,matched,56640,Camp Grove Wind Farm,150.0,15.0
+L08,PJM,PJM,PA,Holtwood,Hydro,2.0,2004-08-16,Hydro,False,"name found, capacity differs >15 %",,,,
+L09,PJM,PJM,PA,Montour #1,Coal,2.0,2004-08-16,Coal,False,no EIA plant shares a name word,,,,
+L13,PJM,PJM,PA,Casselman WF1,Wind,40.0,2007-12-31,Wind,True,matched,56369,Casselman Wind Power Project,34.5,0.0
+L13_CE25,PJM,PJM,IL,City of Geneva Units 1-5,Gas,29.0,2005-06-01,Gas,True,matched,56462,Geneva Generation Facility,29.5,0.0
+L18,PJM,PJM,PA,Bear Creek WF,Wind,26.0,2006-02-26,Wind,True,matched,56299,Wind Park Bear Creek,24.0,1.0
+M04,PJM,PJM,MD,Clavert Cliffs 1 and 2,Nuclear,63.0,2005-06-30,Nuclear,False,"name found, capacity differs >15 %",,,,
+M07,PJM,PJM,PA,Archbald,Gas,6.3,2004-03-15,Gas,False,"name found, capacity differs >15 %",,,,
+M11,PJM,PJM,PA,Susquehanna #1,Nuclear,111.0,2010-07-24,Nuclear,False,"name found, capacity differs >15 %",,,,
+M12,PJM,PJM,PA,Susquehanna #2,Nuclear,107.0,2011-08-18,Nuclear,False,"name found, capacity differs >15 %",,,,
+M19,PJM,PJM,MD,Otter Point LF-1,Other,4.5,2006-09-01,Other,False,"name found, capacity differs >15 %",,,,
+M21,PJM,PJM,IL,"City of Rochelle, IL",Diesel,20.0,2005-11-11,Other,False,"name found, capacity differs >15 %",,,,
+M24,PJM,PJM,WV,Beech Ridge / Field Mtn WF,Wind,186.0,2007-11-01,Wind,False,"name found, capacity differs >15 %",,,,
+M27,PJM,PJM,PA,Eddystone,Coal,7.0,2006-12-01,Coal,False,no EIA plant shares a name word,,,,
+N03,PJM,PJM,DE,Hay Road 2,Gas,7.0,2006-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+N05,PJM,PJM,DE,Hay Road 1-3,Gas,9.0,2006-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+N06,PJM,PJM,PA,Pine Hurst Acres,Other,0.047,2005-03-01,Other,False,"name found, capacity differs >15 %",,,,
+N10,PJM,PJM,WV,Big Sandy Peaker Plant,Gas,6.0,2005-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+N11,PJM,PJM,VA,Wolf Hills Energy Plant,Gas,15.0,2005-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+N12,PJM,PJM,OH,North Haverhill,Coal,75.0,2009-06-01,Coal,False,no EIA plant shares a name word,,,,
+N13,PJM,PJM,PA,,Nuclear,1630.0,2005-01-01,Nuclear,False,no usable project name,,,,
+N14,PJM,PJM,PA,Locust Ridge WF,Wind,24.0,2006-06-01,Wind,True,matched,56470,Locust Ridge,26.0,9.0
+N15,PJM,PJM,IL,Grand Ridge Energy LLC,Wind,150.0,2009-11-01,Wind,False,"name found, capacity differs >15 %",,,,
+N16,PJM,PJM,DE,Central Landfill Units 1-4,Other,4.0,2006-12-07,Other,False,"name found, capacity differs >15 %",,,,
+N17,PJM,PJM,DE,Southern Landfill Units 1-4,Other,3.0,2006-10-24,Other,False,no EIA plant shares a name word,,,,
+N26,PJM,PJM,PA,SECCRA LF,Other,1.74,2009-12-31,Other,True,matched,56873,SECCRA Community Landfill,1.6,11.0
+N27,PJM,PJM,NJ,Warren County LF,Other,3.6,2007-06-01,Other,False,no EIA plant shares a name word,,,,
+N32,PJM,PJM,PA,South Chestnut WF,Wind,50.4,2011-12-24,Wind,True,matched,56796,South Chestnut LLC,50.4,4.0
+N34,PJM,PJM,DE,Delaware City,Oil,250.0,2005-12-31,Other,False,"name found, capacity differs >15 %",,,,
+N39,PJM,PJM,PA,Allegheny Ridge WF1,Wind,80.0,2006-11-01,Wind,True,matched,56451,Allegheny Ridge Wind Farm,80.0,7.0
+N47,PJM,PJM,WV,Pinnacle WF,Wind,85.0,2011-11-16,Wind,False,"name found, capacity differs >15 %",,,,
+O05,PJM,PJM,IL,City of Rochelle,Diesel,22.0,2005-06-30,Other,False,"name found, capacity differs >15 %",,,,
+O06_DP01,PJM,PJM,VA,Pittsylvania,Other,4.0,2006-06-01,Other,False,no EIA plant shares a name word,,,,
+O09,PJM,PJM,IL,"Walnut Ridge Wind, LLC",Wind,212.0,2018-10-31,Wind,True,matched,58694,Walnut Ridge Wind Farm,212.0,2.0
+O10,PJM,PJM,DE,Hay Road 1-3,Gas,7.0,2005-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+O18,PJM,PJM,PA,Highland WF,Wind,65.0,2008-12-18,Wind,False,"name found, capacity differs >15 %",,,,
+O20,PJM,PJM,NJ,Ocean Energy LF,Other,9.4,2007-06-01,Other,False,no EIA plant shares a name word,,,,
+O22,PJM,PJM,IL,Top Crop WF 1 & 2,Wind,300.0,2010-10-25,Wind,False,"name found, capacity differs >15 %",,,,
+O25,PJM,PJM,MD,Newland Park LF,Other,6.0,2007-06-01,Other,False,no EIA plant shares a name word,,,,
+O26,PJM,PJM,PA,Guilford Mills LF,Diesel,8.0,2008-06-30,Other,False,no EIA plant shares a name word,,,,
+O29,PJM,PJM,IL,Green River Wind Farm Phase  2,Wind,225.0,2019-11-25,Wind,True,matched,60471,Green River Wind Farm,194.3,0.0
+O31,PJM,PJM,VA,Fries Hydorelectric Plant,Hydro,5.21,2006-12-31,Hydro,False,"name found, capacity differs >15 %",,,,
+O32,PJM,PJM,WV,Mountaineer #1,Coal,20.0,2005-05-31,Coal,False,"name found, capacity differs >15 %",,,,
+O33,PJM,PJM,IL,Shady Oaks Wind Power Project,Wind,20.0,2012-05-01,Wind,False,"name found, capacity differs >15 %",,,,
+O35,PJM,PJM,IL,Providence Heights WF,Wind,74.0,2007-06-30,Wind,True,matched,56622,Providence Heights Wind LLC,72.0,14.0
+O36,PJM,PJM,PA,Honeybrook,Other,1.6,2011-06-01,Other,False,no EIA plant shares a name word,,,,
+O38,PJM,PJM,PA,North Alleghney WF,Wind,50.0,2007-12-15,Wind,False,no EIA plant shares a name word,,,,
+O42,PJM,PJM,MI,Cook #1,Nuclear,84.0,2006-12-31,Nuclear,False,"name found, capacity differs >15 %",,,,
+O43,PJM,PJM,IL,University Park North Energy Center,Gas,54.0,2011-12-19,Gas,True,matched,55250,University Park South,58.9,-125.0
+O46,PJM,PJM,PA,Locust Ridge WF,Wind,2.0,2007-12-01,Wind,False,"name found, capacity differs >15 %",,,,
+O48,PJM,PJM,PA,Lookout WF,Wind,36.0,2008-06-01,Wind,True,matched,56700,Lookout Windpower LLC,37.8,4.0
+O50,PJM,PJM,IL,Minonk Wind Farm,Wind,200.0,2012-10-31,Wind,True,matched,57284,Minonk Wind Farm,200.0,1.0
+O51,PJM,PJM,IL,Cayuga Ridge South WF,Wind,300.0,2007-12-31,Wind,True,matched,57094,Streator Cayuga Ridge South,300.0,27.0
+O53,PJM,PJM,PA,Beaver Valley 1,Nuclear,81.0,2006-09-15,Nuclear,False,"name found, capacity differs >15 %",,,,
+O54,PJM,PJM,PA,Beaver Valley 2,Nuclear,77.0,2006-10-23,Nuclear,False,"name found, capacity differs >15 %",,,,
+P03,PJM,PJM,PA,Locust Ridge WF,Wind,1.3,2007-12-31,Wind,False,"name found, capacity differs >15 %",,,,
+P04,PJM,PJM,PA,Delta,Gas,550.0,2011-03-01,Gas,False,no EIA plant shares a name word,,,,
+P06,PJM,PJM,NJ,Cumberland 2,Gas,225.0,2008-12-31,Gas,False,"name found, capacity differs >15 %",,,,
+P09,PJM,PJM,VA,"John H. Kerr Dam Hydro Units 1(15MW), 2-7(42MW)",Hydro,27.0,2011-01-19,Hydro,False,"name found, capacity differs >15 %",,,,
+P10,PJM,PJM,IL,Grand Ridge WF,Wind,190.5,2010-06-01,Wind,True,matched,61161,Harvest Ridge Wind Farm,202.0,121.0
+P11,PJM,PJM,IL,Bishop Hill WF,Wind,200.0,2012-02-24,Wind,True,matched,57463,Bishop Hill Energy LLC,200.0,4.0
+P14,PJM,PJM,IL,Shady Oaks Wind Power Project,Wind,80.0,2012-05-01,Wind,False,"name found, capacity differs >15 %",,,,
+P16,PJM,PJM,VA,Bath County,Hydro,340.0,2009-12-01,Hydro,False,"name found, capacity differs >15 %",,,,
+P22,PJM,PJM,PA,North Allegheny WF,Wind,20.0,2009-09-01,Wind,False,"name found, capacity differs >15 %",,,,
+P26,PJM,PJM,IL,Shady Oaks Wind Power Project,Wind,9.5,2012-05-01,Wind,False,"name found, capacity differs >15 %",,,,
+P27,PJM,PJM,VA,Bethel LF,Other,13.0,2008-01-25,Other,False,"name found, capacity differs >15 %",,,,
+P28,PJM,PJM,PA,Mehoopany WF,Wind,150.0,2013-01-09,Wind,True,matched,57769,Mehoopany Wind Energy LLC,140.8,-1.0
+P32,PJM,PJM,MD,GSA Federal Research Center (FDA),Gas,19.5,2007-12-31,Gas,False,no EIA plant shares a name word,,,,
+P33,PJM,PJM,DE,Southern Landfill Units 1-4,Other,1.0,2006-10-24,Other,False,no EIA plant shares a name word,,,,
+P34,PJM,PJM,PA,,Other,6.4,2006-12-31,Other,False,no usable project name,,,,
+P35,PJM,PJM,NJ,Pleasantville /AC LF Unit 2,Gas,2.0,2006-07-31,Gas,False,no EIA plant shares a name word,,,,
+P36,PJM,PJM,IL,Big Sky,Wind,240.0,2010-08-31,Wind,True,matched,57135,Big Sky Wind LLC,239.4,6.0
+P38,PJM,PJM,VA,Bremo,Gas,675.0,2011-03-30,Gas,False,no EIA plant shares a name word,,,,
+P43,PJM,PJM,NC,Domtar Paper Company Generating Units 7-10,Other,62.5,2010-01-01,Other,False,"name found, capacity differs >15 %",,,,
+P44,PJM,PJM,OH,Columbus Floodwall,Diesel,7.47,2006-12-31,Other,False,no EIA plant shares a name word,,,,
+P46,PJM,PJM,IL,EcoGrove WF (67 WT),Wind,100.0,2007-10-01,Wind,True,matched,56805,EcoGrove Wind LLC,100.5,21.0
+P47,PJM,PJM,PA,Armenia Mountain WF,Wind,100.0,2009-12-16,Wind,True,matched,57044,Armenia Mountain Wind Farm,100.5,0.0
+P49,PJM,PJM,OH,Darby Generating Station,Gas,9.0,2006-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+P50,PJM,PJM,OH,Greenville Electric Generating Station,Gas,14.0,2006-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+P51,PJM,PJM,OH,Stuart Electric Generating Station,Coal,7.0,2006-06-01,Coal,False,no EIA plant shares a name word,,,,
+P59,PJM,PJM,WV,Laurel Mountain WF,Wind,97.6,2008-12-31,Wind,True,matched,57447,Laurel Mountain Hybrid,97.6,32.0
+P60,PJM,PJM,PA,Stony Creek WF,Wind,52.5,2010-03-01,Wind,True,matched,56980,Stony Creek Wind Farm LLC,52.5,-4.0
+P61,PJM,PJM,OH,Gavin 1,Coal,20.0,2007-05-01,Coal,False,"name found, capacity differs >15 %",,,,
+P62,PJM,PJM,OH,Gavin 2,Coal,20.0,2009-05-01,Coal,False,"name found, capacity differs >15 %",,,,
+Q01,PJM,PJM,IN,Fowler Ridge WF,Wind,500.0,2008-12-01,Wind,False,"name found, capacity differs >15 %",,,,
+Q03,PJM,PJM,IN,Fowler Ridge 4 WF,Wind,250.0,2015-12-03,Wind,False,"name found, capacity differs >15 %",,,,
+Q09,PJM,PJM,VA,Emporia Hydro,Hydro,2.5,2007-04-01,Hydro,True,matched,50175,Emporia,2.5,-255.0
+Q10,PJM,PJM,IN,Montpelier,Gas,27.0,2008-12-31,Gas,False,"name found, capacity differs >15 %",,,,
+Q18,PJM,PJM,PA,Pottstown LF Units 1 & 2,Other,5.0,2007-11-06,Other,False,no EIA plant shares a name word,,,,
+Q20,PJM,PJM,PA,Holtwood,Hydro,140.0,2010-10-30,Hydro,True,matched,3145,Holtwood,132.0,37.0
+Q22,PJM,PJM,NJ,Great Bear Hydro,Hydro,0.5,2006-12-26,Hydro,False,"name found, capacity differs >15 %",,,,
+Q27,PJM,PJM,PA,Locust Ridge II WF,Wind,100.0,2009-04-29,Wind,True,matched,56770,Locust Ridge II LLC,102.0,1.0
+Q31,PJM,PJM,MD,Hawkins Point,Gas,10.0,2006-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+Q36,PJM,PJM,PA,Sandy Ridge WF,Wind,50.0,2012-04-17,Wind,True,matched,57285,Sandy Ridge Wind Farm,50.0,-2.0
+Q43,PJM,PJM,VA,Virginia City Hybrid Energy Center - 1 Unit,Coal,534.0,2012-03-22,Coal,False,"name found, capacity differs >15 %",,,,
+Q44,PJM,PJM,PA,Elizabethtown,Gas,0.3,2006-07-01,Gas,False,no EIA plant shares a name word,,,,
+Q45,PJM,PJM,PA,GLRA LF,Other,3.2,2007-09-25,Other,True,matched,56512,GLRA Landfill,3.2,0.0
+Q47,PJM,PJM,PA,Peach Bottom - Units 2 & 3,Nuclear,140.0,2012-11-12,Nuclear,False,"name found, capacity differs >15 %",,,,
+Q49,PJM,PJM,IL,Dresden Nuclear Generating Station U2,Nuclear,70.0,2011-11-14,Nuclear,False,"name found, capacity differs >15 %",,,,
+Q50,PJM,PJM,IL,Dresden Nuclear Station Unit 3,Nuclear,70.0,2012-12-12,Nuclear,False,"name found, capacity differs >15 %",,,,
+Q51,PJM,PJM,IL,Quad Cities - Units 1 & 2,Nuclear,140.0,2011-09-25,Nuclear,False,"name found, capacity differs >15 %",,,,
+Q53,PJM,PJM,PA,Chestnut Flats WF,Wind,38.0,2011-05-20,Wind,True,matched,57268,Chestnut Flats Wind Farm,38.0,7.0
+Q57,PJM,PJM,IL,Lee - DeKalb Wind Energy Center,Wind,240.0,2014-11-14,Wind,False,no EIA plant shares a name word,,,,
+Q59,PJM,PJM,PA,Pioneer Crossing LF,Other,6.4,2008-05-30,Other,True,matched,56957,"Pioneer Crossing Energy, LLC",6.4,5.0
+Q63,PJM,PJM,PA,Seneca Pumped Storage Generating Station Unit 1,Hydro,16.0,2010-08-11,Hydro,False,"name found, capacity differs >15 %",,,,
+Q69,PJM,PJM,VA,King - Queen,Other,10.0,2008-02-07,Other,True,matched,56686,King & Queen,10.799999999999999,-1.0
+Q70,PJM,PJM,VA,Brunswick,Other,11.0,2007-11-01,Other,True,matched,56682,Brunswick Landfill Gas,10.5,-1.0
+Q71,PJM,PJM,VA,Strafford Regional LF,Other,2.0,2008-06-01,Other,False,no EIA plant shares a name word,,,,
+Q79,PJM,PJM,WV,Longview ST1,Coal,100.0,2010-09-01,Coal,False,"name found, capacity differs >15 %",,,,
+Q90,PJM,PJM,NJ,West Deptford Energy Station,Gas,650.0,2014-08-11,Gas,False,"name found, capacity differs >15 %",,,,
+R14,PJM,PJM,OH,Tait Generating Units 4-7,Gas,15.0,2007-05-01,Gas,False,"name found, capacity differs >15 %",,,,
+R15,PJM,PJM,OH,Darby Generation Station Units 1-6,Gas,9.0,2007-05-01,Gas,False,"name found, capacity differs >15 %",,,,
+R18,PJM,PJM,IL,Winnebago Energy Center,Other,6.4,2008-01-03,Other,False,no EIA plant shares a name word,,,,
+R19,PJM,PJM,VA,Ladysmith CT Units 3 & 4,Gas,340.0,2008-06-01,Gas,True,matched,7839,Ladysmith,357.0,-85.0
+R20,PJM,PJM,MD,Rock Springs Units 3 & 4,Gas,20.0,2007-01-01,Gas,False,"name found, capacity differs >15 %",,,,
+R23,PJM,PJM,NJ,"Ocean Peaking Power (Lakewood CT1, CT2)",Gas,20.0,2007-01-01,Gas,False,"name found, capacity differs >15 %",,,,
+R32,PJM,PJM,PA,Highland North,Wind,75.0,2012-03-23,Wind,True,matched,57991,Highland North Wind Farm,75.0,0.0
+R33,PJM,PJM,IL,Nelson Energy Center,Gas,600.0,2015-05-08,Gas,True,matched,55183,Nelson Energy Center,627.5,0.0
+R40,PJM,PJM,PA,Lookout WF,Wind,1.8,2008-06-30,Wind,False,"name found, capacity differs >15 %",,,,
+R49,PJM,PJM,OH,Timber Road II WF,Wind,150.0,2011-07-15,Wind,False,"name found, capacity differs >15 %",,,,
+R60,PJM,PJM,OH,Blue Creek WF,Wind,350.0,2012-04-01,Wind,True,matched,57449,Blue Creek Wind Project,302.0,-4.0
+R62,PJM,PJM,KY,Big Sandy #1,Gas,20.0,2016-05-31,Gas,False,"name found, capacity differs >15 %",,,,
+R63,PJM,PJM,VA,Chesterfield Unit #5,Coal,19.0,2011-06-01,Coal,False,no EIA plant shares a name word,,,,
+R66,PJM,PJM,NJ,Marcal Paper,Gas,20.0,2007-03-01,Gas,False,no EIA plant shares a name word,,,,
+R72,PJM,PJM,DE,Indian River Units 3-4,Coal,18.0,2008-12-10,Coal,False,no EIA plant of that type in the state,,,,
+R73,PJM,PJM,DE,Indian River Units #3 & #4,Coal,5.0,2008-12-10,Coal,False,no EIA plant of that type in the state,,,,
+R74,PJM,PJM,NJ,Shoreham Energy Units 1-3,Other,4.8,2008-11-14,Other,False,no EIA plant shares a name word,,,,
+R76,PJM,PJM,WV,Hawks Nest Hydro,Hydro,6.16,2009-03-01,Hydro,False,"name found, capacity differs >15 %",,,,
+R80,PJM,PJM,VA,Possum Point Unit 6,Gas,60.0,2015-04-30,Gas,False,"name found, capacity differs >15 %",,,,
+R81,PJM,PJM,PA,Ford Mill,Gas,101.0,2010-02-08,Gas,False,"name found, capacity differs >15 %",,,,
+R82,PJM,PJM,WV,Kanawna River #1,Coal,5.0,2007-04-01,Coal,False,no EIA plant shares a name word,,,,
+R83,PJM,PJM,WV,Kanawna River #2,Coal,5.0,2007-04-01,Coal,False,no EIA plant shares a name word,,,,
+R84,PJM,PJM,OH,Pickway #5,Coal,5.0,2007-04-01,Coal,False,no EIA plant shares a name word,,,,
+R85,PJM,PJM,IN,Tanners Creek #1,Coal,5.0,2007-04-01,Coal,False,"name found, capacity differs >15 %",,,,
+R86,PJM,PJM,IN,Tanners Creek #2,Coal,5.0,2007-04-01,Coal,False,"name found, capacity differs >15 %",,,,
+R87,PJM,PJM,OH,Muskingum River #5,Coal,10.0,2007-04-01,Coal,False,no EIA plant shares a name word,,,,
+R89,PJM,PJM,MD,Conowingo Hydro Station,Hydro,24.0,2010-12-01,Hydro,False,"name found, capacity differs >15 %",,,,
+R91,PJM,PJM,NJ,,Other,0.37,2007-06-01,Other,False,no usable project name,,,,
+R97,PJM,PJM,IN,Rockport Unit 1,Coal,20.0,2011-11-01,Coal,False,"name found, capacity differs >15 %",,,,
+S03,PJM,PJM,DE,Edgemoor #5,Gas,5.0,2007-12-31,Gas,False,no EIA plant shares a name word,,,,
+S05,PJM,PJM,PA,Seneca Pumped Generating Station Unit 2,Hydro,16.0,2010-08-11,Hydro,False,"name found, capacity differs >15 %",,,,
+S06,PJM,PJM,IN,Meadow Lake,Wind,202.0,2009-12-01,Wind,True,matched,61756,Meadow Lake Wind Farm VI LLC,200.4,107.0
+S100,PJM,PJM,VA,Virginia City Hybrid Energy Center,Coal,80.0,2012-03-22,Coal,False,"name found, capacity differs >15 %",,,,
+S101,PJM,PJM,OH,Dresden,Gas,580.0,2011-10-22,Gas,False,"name found, capacity differs >15 %",,,,
+S102,PJM,PJM,VA,Ladysmith Combustion Turbine Unit 5,Gas,170.0,2009-03-31,Gas,True,matched,7839,Ladysmith,178.5,1.0
+S103,PJM,PJM,PA,Warren Generating Station,Gas,57.0,2011-04-05,Gas,True,matched,3132,Warren,53.1,-463.0
+S108,PJM,PJM,VA,North Anna Unit 1,Nuclear,20.0,2010-05-18,Nuclear,False,"name found, capacity differs >15 %",,,,
+S109,PJM,PJM,VA,North Anna Unit 2,Nuclear,20.0,2010-05-02,Nuclear,False,"name found, capacity differs >15 %",,,,
+S110,PJM,PJM,VA,North Anna Unit 1,Nuclear,65.0,2010-05-02,Nuclear,False,"name found, capacity differs >15 %",,,,
+S111,PJM,PJM,VA,Surry Power Station - Units 1 & 2,Nuclear,15.0,2011-06-01,Nuclear,False,"name found, capacity differs >15 %",,,,
+S112,PJM,PJM,VA,North Anna Unit 2,Nuclear,65.0,2010-05-18,Nuclear,False,"name found, capacity differs >15 %",,,,
+S113,PJM,PJM,VA,Surry Power Station - Units 1 & 2,Nuclear,15.0,2011-06-01,Nuclear,False,"name found, capacity differs >15 %",,,,
+S114,PJM,PJM,VA,Surry Power Station - Units 1 & 2,Nuclear,75.0,2012-06-13,Nuclear,False,"name found, capacity differs >15 %",,,,
+S115,PJM,PJM,VA,Surry Power Station - Units 1 & 2,Nuclear,75.0,2011-07-01,Nuclear,False,"name found, capacity differs >15 %",,,,
+S121,PJM,PJM,NJ,Howard M. Down Power Plant Unit 11,Gas,63.0,2012-04-18,Gas,True,matched,2434,Howard Down,68.2,2.0
+S13,PJM,PJM,IN,Montpelier,Gas,19.0,2008-12-31,Gas,False,"name found, capacity differs >15 %",,,,
+S25,PJM,PJM,NJ,Calpine Parlin Energy Center,Gas,114.0,2008-05-13,Gas,False,no EIA plant shares a name word,,,,
+S27,PJM,PJM,IL,Twin Groves I WF,Wind,39.6,2010-06-24,Wind,False,no EIA plant shares a name word,,,,
+S28,PJM,PJM,IL,Twin Groves II WF,Wind,39.6,2010-06-24,Wind,False,no EIA plant shares a name word,,,,
+S29B,PJM,PJM,PA,SCI Laurel Highlands,Other,6.75,2011-09-29,Other,False,no EIA plant shares a name word,,,,
+S30,PJM,PJM,MD,Sun Paper,Diesel,4.0,2007-12-31,Other,False,no EIA plant shares a name word,,,,
+S32,PJM,PJM,MD,Perryman 6 Units 1-4,Gas,130.0,2015-05-09,Gas,True,matched,1556,Perryman,141.0,1.0
+S34,PJM,PJM,PA,Handsome Lake,Gas,20.0,2007-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+S35,PJM,PJM,OH,Washington Energy Facility,Coal,20.0,2008-06-01,Coal,False,no EIA plant shares a name word,,,,
+S36,PJM,PJM,IL,Kankakee Wind Farm,Wind,175.0,2015-07-28,Wind,False,no EIA plant shares a name word,,,,
+S37,PJM,PJM,IL,Kelly Creek Wind Farm,Wind,175.0,2016-11-09,Wind,True,matched,60587,Kelly Creek Wind Project,184.0,1.0
+S40,PJM,PJM,PA,Commonwealth LF,Other,10.5,2009-01-21,Other,False,no EIA plant shares a name word,,,,
+S43,PJM,PJM,NJ,Vineland Unit #9,Oil,17.0,2007-11-12,Other,False,no EIA plant shares a name word,,,,
+S50,PJM,PJM,VA,Ogden Martin,Other,18.0,2007-06-30,Other,False,no EIA plant shares a name word,,,,
+S55,PJM,PJM,IL,Zion Energy Center,Gas,585.0,2011-12-19,Gas,False,"name found, capacity differs >15 %",,,,
+S59,PJM,PJM,OH,Wenning Poultry,Other,1.89,2008-10-30,Other,False,no EIA plant shares a name word,,,,
+S61,PJM,PJM,NJ,Tosco #6,Gas,20.0,2011-10-11,Gas,False,no EIA plant shares a name word,,,,
+S63,PJM,PJM,OH,Tait Generating Station,Gas,13.0,2007-10-05,Gas,False,"name found, capacity differs >15 %",,,,
+S70,PJM,PJM,WV,Willow Island Hydro Generation Project,Hydro,36.4,2015-11-15,Hydro,False,"name found, capacity differs >15 %",,,,
+S71,PJM,PJM,IN,Bluff Point,Wind,120.0,2017-09-15,Wind,True,matched,61303,Bluff Point Wind Facility,119.7,3.0
+S74,PJM,PJM,WV,Mount Storm Unit 2,Coal,38.0,2011-06-01,Coal,False,"name found, capacity differs >15 %",,,,
+S76,PJM,PJM,WV,Mount Storm Unit 1,Coal,38.0,2013-06-06,Coal,False,"name found, capacity differs >15 %",,,,
+S79,PJM,PJM,VA,Chesterfield Unit #6,Coal,27.0,2010-12-01,Coal,False,no EIA plant shares a name word,,,,
+S80,PJM,PJM,VA,Chesterfield Unit #5,Coal,20.0,2011-06-01,Coal,False,no EIA plant shares a name word,,,,
+S82,PJM,PJM,VA,Gravel Neck Gas Turbine #3,Gas,19.0,2010-05-06,Gas,False,"name found, capacity differs >15 %",,,,
+S83,PJM,PJM,VA,Gravel Neck Gas Turbine #4,Gas,19.0,2010-05-06,Gas,False,"name found, capacity differs >15 %",,,,
+S84,PJM,PJM,VA,Gravel Neck Gas Turbine #5,Gas,19.0,2010-05-06,Gas,False,"name found, capacity differs >15 %",,,,
+S85,PJM,PJM,VA,Gravel Neck Gas Turbine #6,Gas,19.0,2010-05-06,Gas,False,"name found, capacity differs >15 %",,,,
+S86,PJM,PJM,VA,Darbytown GT1,Gas,20.0,2008-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+S87,PJM,PJM,VA,Darbytown GT2,Gas,20.0,2008-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+S88,PJM,PJM,VA,Darbytown GT3,Gas,20.0,2008-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+S89,PJM,PJM,VA,Darbytown GT4,Gas,20.0,2008-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+S90,PJM,PJM,VA,Elizabeth River GT1,Gas,20.0,2008-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+S91,PJM,PJM,VA,Elizabeth River GT2,Gas,20.0,2008-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+S92,PJM,PJM,VA,Elizabeth River GT3,Gas,20.0,2008-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+S93,PJM,PJM,VA,Remington GT1,Gas,15.0,2008-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+S94,PJM,PJM,VA,Remington GT2,Gas,15.0,2008-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+S95,PJM,PJM,VA,Remington GT3,Gas,15.0,2008-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+S96,PJM,PJM,VA,Remington GT4,Gas,15.0,2008-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+T10,PJM,PJM,VA,Stafford Regional LF,Other,3.0,2008-06-01,Other,False,"name found, capacity differs >15 %",,,,
+T102,PJM,PJM,PA,Sunbury #1,Coal,10.0,2008-09-02,Coal,False,no EIA plant shares a name word,,,,
+T103,PJM,PJM,PA,Sunbury #1,Coal,10.0,2008-09-02,Coal,False,no EIA plant shares a name word,,,,
+T104,PJM,PJM,VA,SPSA Navy Power Plant,Other,20.0,2008-04-01,Other,False,no EIA plant shares a name word,,,,
+T107,PJM,PJM,NJ,Newark Energy Center,Gas,625.0,2015-06-29,Gas,False,"name found, capacity differs >15 %",,,,
+T108,PJM,PJM,PA,Archbald Generating Station,Other,9.2,2010-01-25,Other,True,matched,50279,Archbald Power Station,9.2,1.0
+T109,PJM,PJM,PA,Keystone Generating Station,Coal,20.0,2010-08-23,Coal,False,"name found, capacity differs >15 %",,,,
+T11,PJM,PJM,DE,Southern LF Units 1-5,Other,5.0,2010-05-21,Other,False,no EIA plant shares a name word,,,,
+T110,PJM,PJM,PA,Keystone Generating Station,Coal,20.0,2010-08-23,Coal,False,"name found, capacity differs >15 %",,,,
+T111,PJM,PJM,MI,Southeast Berrien LF,Other,6.4,2009-05-29,Other,False,"name found, capacity differs >15 %",,,,
+T117,PJM,PJM,PA,Hunlock Creek,Gas,126.0,2011-01-31,Gas,False,"name found, capacity differs >15 %",,,,
+T118,PJM,PJM,PA,"Phillips Island CT1, CT2, CT3, CT4",Gas,10.0,2009-09-30,Gas,False,"name found, capacity differs >15 %",,,,
+T12,PJM,PJM,DE,Central LF Units 1-4,Other,4.0,2007-10-01,Other,False,"name found, capacity differs >15 %",,,,
+T126,PJM,PJM,IN,"Meadow Lake WF II, Meadow Lake WF III",Wind,200.0,2010-10-28,Wind,True,matched,57109,Meadow Lake Wind Farm LLC,199.7,-12.0
+T127,PJM,PJM,IN,Meadow Lake WF 4 - 5,Wind,200.0,2010-10-30,Wind,True,matched,57109,Meadow Lake Wind Farm LLC,199.7,-12.0
+T129,PJM,PJM,PA,Liberty,Gas,20.0,2008-12-01,Gas,False,"name found, capacity differs >15 %",,,,
+T131,PJM,PJM,OH,Timber Road III,Wind,150.0,2016-11-23,Wind,False,"name found, capacity differs >15 %",,,,
+T147,PJM,PJM,MD,Perryman Generating Unit 51,Gas,10.0,2008-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+T155,PJM,PJM,PA,Mahoning Creek Dam Hydro Project,Hydro,6.0,2013-12-26,Hydro,True,matched,58685,Mahoning Creek Hydroelectric Project,6.0,0.0
+T157,PJM,PJM,WV,New Creek Mountain Wind Farm,Wind,102.5,2016-12-26,Wind,True,matched,60132,New Creek Wind,103.0,0.0
+T16,PJM,PJM,MD,Fair Wind Project,Wind,30.0,2015-11-15,Wind,True,matched,59147,Fair Wind,30.0,0.0
+T164,PJM,PJM,OH,Muskingum River #5,Coal,15.0,2008-02-01,Coal,False,no EIA plant shares a name word,,,,
+T174,PJM,PJM,PA,Smithton Generating Station,Gas,930.0,2018-11-18,Gas,False,no EIA plant shares a name word,,,,
+T20,PJM,PJM,PA,Exelon Epuron Solar Energy Center,Solar,3.3,2008-04-28,Solar,False,no EIA plant shares a name word,,,,
+T41,PJM,PJM,NJ,Kearny #13,Gas,178.0,2012-05-07,Gas,False,"name found, capacity differs >15 %",,,,
+T42,PJM,PJM,NJ,Kearny #14,Gas,89.0,2012-05-07,Gas,False,"name found, capacity differs >15 %",,,,
+T49,PJM,PJM,PA,Bethlehem Gen Facility Units 1 - 8,Gas,42.0,2009-05-06,Gas,False,"name found, capacity differs >15 %",,,,
+T51,PJM,PJM,DE,"Hay Road Units 1, 2, 3, 4",Gas,13.0,2010-05-26,Gas,False,"name found, capacity differs >15 %",,,,
+T52,PJM,PJM,DE,"Hay Road Units 5, 6, 7, 8",Gas,20.0,2008-05-01,Gas,False,"name found, capacity differs >15 %",,,,
+T53,PJM,PJM,DE,Delaware City Unit #10,Oil,7.3,2008-06-01,Other,False,"name found, capacity differs >15 %",,,,
+T54,PJM,PJM,NJ,Cumberland Unit 1,Gas,9.4,2010-08-12,Gas,False,"name found, capacity differs >15 %",,,,
+T55,PJM,PJM,NJ,Sherman Avenue Unit 1,Gas,12.4,2010-05-03,Gas,False,"name found, capacity differs >15 %",,,,
+T56,PJM,PJM,DE,Christiana Units #11 & 14,Oil,8.4,2009-05-31,Other,False,"name found, capacity differs >15 %",,,,
+T59,PJM,PJM,NJ,,Gas,14.4,2011-07-07,Gas,False,no usable project name,,,,
+T66,PJM,PJM,VA,Tasley,Oil,6.7,2009-03-26,Other,False,"name found, capacity differs >15 %",,,,
+T67,PJM,PJM,DE,West #1,Oil,5.3,2009-04-01,Other,False,no usable project name,,,,
+T68,PJM,PJM,DE,Edgemoor #10,Oil,5.2,2009-04-01,Other,False,no EIA plant shares a name word,,,,
+T73,PJM,PJM,OH,Hanging Rock CC2,Gas,20.0,2008-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+T74,PJM,PJM,IL,Elgin Energy Center,Gas,16.0,2013-01-08,Gas,False,"name found, capacity differs >15 %",,,,
+T75,PJM,PJM,NJ,South River,Gas,20.0,2012-11-15,Gas,False,"name found, capacity differs >15 %",,,,
+T76,PJM,PJM,NJ,South River,Gas,27.0,2012-11-15,Gas,False,"name found, capacity differs >15 %",,,,
+T77,PJM,PJM,NJ,Linden 1 & 2,Gas,44.0,2008-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+T78,PJM,PJM,VA,King George Renewable Energy Facility,Other,9.8,2010-05-04,Other,True,matched,57022,Waste Management King George LFGTE,9.899999999999999,0.0
+T79,PJM,PJM,VA,Middle Pennisula Gas to Energy Power Plant,Other,6.2,2009-10-01,Other,True,matched,57018,Waste Management Middle Peninsula LFGTE,6.4,-1.0
+T85,PJM,PJM,PA,Cumberland County LF,Other,6.4,2008-12-31,Other,True,matched,56887,Cumberland County PA LFG Recovery,6.4,1.0
+T86,PJM,PJM,PA,North Tier LF,Other,1.6,2008-07-01,Other,True,matched,56890,Norther Tier Landfill,1.6,6.0
+T94,PJM,PJM,MI,,Gas,1035.0,2016-06-01,Gas,False,no usable project name,,,,
+U1-010,PJM,PJM,PA,Delta,Gas,18.0,2011-03-01,Gas,False,no EIA plant shares a name word,,,,
+U1-044,PJM,PJM,VA,Fredrick County Regional LF,Other,2.0,2009-01-01,Other,False,no EIA plant shares a name word,,,,
+U1-054,PJM,PJM,IL,River Energy Center,Gas,27.0,2013-01-25,Gas,False,no EIA plant shares a name word,,,,
+U1-059,PJM,PJM,OH,Hog Creek Wind Farm,Wind,48.3,2017-11-15,Wind,False,"name found, capacity differs >15 %",,,,
+U1-066,PJM,PJM,NJ,Carll's Corner Units 1 & 2,Oil,18.0,2011-06-24,Other,False,no EIA plant shares a name word,,,,
+U1-067,PJM,PJM,PA,Granger of Honeybrook,Other,1.6,2011-06-01,Other,False,no EIA plant shares a name word,,,,
+U1-093,PJM,PJM,VA,Ladysmith Unit 3,Oil,20.0,2009-10-01,Other,False,no EIA plant shares a name word,,,,
+U1-094,PJM,PJM,VA,Ladysmith Unit 4,Oil,20.0,2009-10-01,Other,False,no EIA plant shares a name word,,,,
+U1-095,PJM,PJM,VA,Ladysmith Unit 5,Oil,20.0,2009-03-31,Other,False,no EIA plant shares a name word,,,,
+U2-013,PJM,PJM,VA,Richmond Energy Facility,Other,8.0,2011-12-29,Other,False,"name found, capacity differs >15 %",,,,
+U2-030,PJM,PJM,MD,Four Mile Ridge WF - 24 WT,Wind,60.0,2014-11-21,Wind,False,"name found, capacity differs >15 %",,,,
+U2-059,PJM,PJM,NJ,Belvidere SP,Solar,2.0,2011-12-12,Solar,False,no EIA plant shares a name word,,,,
+U2-061,PJM,PJM,MD,Roth Rock WF,Wind,50.0,2009-12-01,Wind,False,"name found, capacity differs >15 %",,,,
+U2-063,PJM,PJM,PA,Croydon Generating Station,Gas,5.0,2014-01-02,Gas,False,no EIA plant shares a name word,,,,
+U2-067,PJM,PJM,PA,Westwood Generation,Coal,2.5,2008-12-29,Coal,False,"name found, capacity differs >15 %",,,,
+U2-072,PJM,PJM,OH,Scioto Ridge Wind Farm,Wind,250.0,2020-12-17,Wind,True,matched,58780,Scioto Ridge Wind Farm,249.8,5.0
+U2-073,PJM,PJM,PA,Twin Ridges Wind Farm,Wind,139.4,2012-12-21,Wind,True,matched,57998,Twin Ridges Wind Farm,139.4,0.0
+U2-090,PJM,PJM,IN,HeadwatersWF,Wind,200.0,2014-10-27,Wind,False,no EIA plant shares a name word,,,,
+U3-002,PJM,PJM,IN,Wildcat Wind Farm I,Wind,200.0,2012-12-26,Wind,True,matched,57862,"Wildcat Wind Farm I, LLC",200.0,0.0
+U3-029,PJM,PJM,PA,Beaver Valley Power Station,Nuclear,48.0,2013-11-15,Nuclear,False,"name found, capacity differs >15 %",,,,
+U3-030,PJM,PJM,PA,Beaver Valley Power Station,Nuclear,43.0,2012-11-07,Nuclear,False,"name found, capacity differs >15 %",,,,
+U3-031,PJM,PJM,IL,Lincoln Generating Facility,Gas,40.0,2013-01-24,Gas,False,"name found, capacity differs >15 %",,,,
+U4-008,PJM,PJM,OH,Suburban LF,Other,6.4,2011-01-07,Other,True,matched,57170,Suburban Landfill Gas Recovery,5.6000000000000005,0.0
+U4-009,PJM,PJM,VA,Louisa Gas Turbines Units 1 through 5,Gas,3.0,2009-05-26,Gas,False,"name found, capacity differs >15 %",,,,
+U4-014,PJM,PJM,PA,PA SP,Solar,10.0,2012-11-06,Solar,False,no usable project name,,,,
+U4-015,PJM,PJM,MD,Rocks Springs 1 & 2,Gas,8.7,2009-05-31,Gas,False,"name found, capacity differs >15 %",,,,
+U4-030,PJM,PJM,IL,Rockford II Energy Center,Gas,6.0,2010-06-23,Gas,False,"name found, capacity differs >15 %",,,,
+U4-033,PJM,PJM,IL,,Gas,36.0,2014-01-21,Gas,False,no usable project name,,,,
+U4-036,PJM,PJM,NJ,Paradise SP,Solar,5.1,2009-12-31,Solar,True,matched,58569,Paradise Solar Energy Center,5.0,15.0
+V1-011,PJM,PJM,OH,"Trishe Wind Ohio, LLC",Wind,100.0,2018-09-10,Wind,True,matched,59296,Northwest Ohio Wind,105.0,0.0
+V1-021,PJM,PJM,NJ,Cape May County Municipal Utiltities Authority (CM,Other,1.9,2013-10-22,Other,False,"name found, capacity differs >15 %",,,,
+V1-023,PJM,PJM,WV,Charlston LF,Other,2.0,2010-12-07,Other,False,no EIA plant shares a name word,,,,
+V1-024,PJM,PJM,IL,LaSalle Nuclear Station Unit 1,Nuclear,20.0,2015-05-21,Nuclear,False,"name found, capacity differs >15 %",,,,
+V1-025,PJM,PJM,IL,LaSalle Nuclear Station Unit 2,Nuclear,20.0,2015-05-21,Nuclear,False,"name found, capacity differs >15 %",,,,
+V1-028,PJM,PJM,PA,Morris Road,Diesel,2.0,2012-05-02,Other,False,no EIA plant shares a name word,,,,
+V1-030,PJM,PJM,NJ,,Solar,52.0,2011-12-27,Solar,False,no usable project name,,,,
+V2-019,PJM,PJM,PA,"AES Armenia Mountain Wind, LLC",Wind,0.5,2010-08-19,Wind,False,"name found, capacity differs >15 %",,,,
+V2-025,PJM,PJM,NJ,Kearny SP,Solar,5.0,2012-03-01,Solar,False,no EIA plant shares a name word,,,,
+V2-030,PJM,PJM,VA,Warren County,Gas,950.0,2014-10-30,Gas,False,"name found, capacity differs >15 %",,,,
+V2-035,PJM,PJM,NJ,"Pittsgrove Solar, LLC",Solar,2.0,2014-04-19,Solar,True,matched,60740,Pittsgrove Solar,2.0,1.0
+V2-037,PJM,PJM,MD,White Oak,Gas,4.5,2010-03-31,Gas,True,matched,58207,Central Utility Plant at White Oak,4.3,-23.0
+V2-040,PJM,PJM,VA,Henrico County Landfill,Other,4.0,2010-09-23,Other,True,matched,57356,Henrico,3.5999999999999996,0.0
+V2-041,PJM,PJM,NJ,Vineland-Mays Landing,Solar,4.0,2011-09-30,Solar,True,matched,57660,Vineland Mays Landing Solar,4.0,1.0
+V2-046,PJM,PJM,NJ,Pilesgrove SP,Solar,19.9,2011-07-31,Solar,True,matched,57448,Pilesgrove,18.0,1.0
+V3-007,PJM,PJM,IN,Headwaters II,Wind,200.0,2021-01-26,Wind,True,matched,58416,Headwaters Wind Farm LLC,200.0,-73.0
+V3-017,PJM,PJM,MD,St. Charles Combined Cycle Facility,Gas,725.0,2016-11-25,Gas,True,matched,56846,CPV St Charles Energy Center,775.3,3.0
+V3-024,PJM,PJM,NJ,"RE Cranbury Solar I, LLC",Solar,5.0,2011-09-27,Solar,True,matched,59446,Cranbury,5.0,3.0
+V3-028,PJM,PJM,OH,Hardin Energy Center,Solar,20.0,2020-09-29,Solar,False,"name found, capacity differs >15 %",,,,
+V3-030,PJM,PJM,PA,Patton Wind Farm,Wind,30.6,2012-12-24,Wind,True,matched,57999,Patton Wind Farm,30.0,0.0
+V3-036,PJM,PJM,NJ,Midtown Thermal Control Center,Gas,5.5,2011-12-01,Gas,True,matched,63483,ACM - Midtown Thermal,5.5,1.0
+V3-037,PJM,PJM,MD,Millersville Landfill & Resource Recovery Facility,Gas,4.0,2012-06-13,Gas,False,no EIA plant shares a name word,,,,
+V3-041,PJM,PJM,PA,"SECCRA Units 1, 2 & 3",Other,3.2,2010-12-15,Other,False,"name found, capacity differs >15 %",,,,
+V3-045,PJM,PJM,OH,Meldahl Hydroelectric Plant,Hydro,112.0,2015-11-01,Hydro,False,no EIA plant shares a name word,,,,
+V3-051,PJM,PJM,PA,Turkey Hill Dairy WF,Wind,3.2,2011-01-17,Wind,False,"name found, capacity differs >15 %",,,,
+V3-052,PJM,PJM,,,Other,500.0,2012-05-02,Other,False,no usable project name,,,,
+V3-058,PJM,PJM,NJ,Edgeboro,Solar,2.0,2011-10-24,Solar,False,no EIA plant shares a name word,,,,
+V3-059,PJM,PJM,NJ,Edgeboro,Solar,2.0,2011-10-24,Solar,False,no EIA plant shares a name word,,,,
+V3-065,PJM,PJM,NJ,Clay ST SP,Solar,0.549,2010-10-01,Solar,False,no EIA plant shares a name word,,,,
+V3-066,PJM,PJM,NJ,Cook Rd SP,Solar,0.432,2010-11-17,Solar,False,"name found, capacity differs >15 %",,,,
+V3-067,PJM,PJM,NJ,Newark I SP,Solar,0.773,2011-02-16,Solar,False,"name found, capacity differs >15 %",,,,
+V3-068,PJM,PJM,NJ,Newark II SP,Solar,0.425,2010-12-31,Solar,False,"name found, capacity differs >15 %",,,,
+V3-069,PJM,PJM,NJ,Woodbridge SP,Solar,2.308,2011-01-26,Solar,True,matched,57776,FedEx Woodbridge,2.0,-13.0
+V3-070,PJM,PJM,NJ,Lilac Site,Solar,8.0,2012-01-02,Solar,False,no EIA plant shares a name word,,,,
+V4-001,PJM,PJM,NJ,Lebanon Solar,Solar,2.0,2012-01-02,Solar,True,matched,57488,Lebanon Solar,2.0,-1.0
+V4-005,PJM,PJM,NJ,Lumberton SP,Solar,2.9,2010-08-01,Solar,False,no EIA plant shares a name word,,,,
+V4-006,PJM,PJM,,,Other,150.0,2011-12-12,Other,False,no usable project name,,,,
+V4-011,PJM,PJM,OH,Granger Electric of Hancock County,Other,3.0,2015-03-31,Other,True,matched,67027,"Energy Developments, Hancock",3.2,-6.0
+V4-018,PJM,PJM,VA,Warren County,Gas,475.0,2014-10-30,Gas,False,"name found, capacity differs >15 %",,,,
+V4-019,PJM,PJM,NJ,Bergen Generating Station,Gas,10.0,2013-05-31,Gas,False,"name found, capacity differs >15 %",,,,
+V4-027,PJM,PJM,PA,Keystone Solar,Solar,5.0,2012-09-17,Solar,True,matched,58091,Keystone Solar,5.0,0.0
+V4-038,PJM,PJM,MD,Alpha Ridge Landfill,Other,1.0,2012-07-31,Other,True,matched,58252,Alpha Ridge LFG,1.0,0.0
+V4-045,PJM,PJM,PA,Peach Bottom Units 2 & 3,Nuclear,206.0,2016-01-06,Nuclear,False,"name found, capacity differs >15 %",,,,
+V4-046,PJM,PJM,IL,"Byron Nuclear Generating Station, Unit 1",Nuclear,20.0,2014-02-06,Nuclear,False,"name found, capacity differs >15 %",,,,
+V4-047,PJM,PJM,IL,"Byron Nuclear Generating Station, Unit 2",Nuclear,20.0,2014-02-06,Nuclear,False,"name found, capacity differs >15 %",,,,
+V4-048,PJM,PJM,IL,"Braidwood Nuclear Generating Station, Unit 1",Nuclear,20.0,2014-02-06,Nuclear,False,"name found, capacity differs >15 %",,,,
+V4-049,PJM,PJM,IL,"Braidwood Nuclear Generating Station, Unit 2",Nuclear,20.0,2014-02-06,Nuclear,False,"name found, capacity differs >15 %",,,,
+V4-052,PJM,PJM,PA,The Reading Hospital and Medical Center,Gas,10.0,2011-07-12,Gas,False,"name found, capacity differs >15 %",,,,
+V4-054,PJM,PJM,NJ,NJ Oak Solar,Solar,10.0,2011-12-20,Solar,True,matched,57948,NJ Oak Solar Plant,10.0,0.0
+V4-067,PJM,PJM,NJ,McKee City Solar,Solar,2.6,2011-12-22,Solar,False,no EIA plant shares a name word,,,,
+V4-068,PJM,PJM,NC,,Solar,5.0,2011-12-29,Solar,False,no usable project name,,,,
+V4-069,PJM,PJM,NJ,Frenchtown 1 Solar,Solar,3.0,2011-12-31,Solar,True,matched,57486,Frenchtown I Solar,3.0,1.0
+V4-070,PJM,PJM,NJ,Frenchtown 2 Solar,Solar,3.0,2012-01-02,Solar,True,matched,57486,Frenchtown I Solar,3.0,0.0
+V4-073,PJM,PJM,OH,,Solar,2.5,2010-05-28,Solar,False,no usable project name,,,,
+W1-003,PJM,PJM,VA,Oak Hall Project A,Solar,20.0,2016-12-08,Solar,False,no EIA plant shares a name word,,,,
+W1-004,PJM,PJM,VA,Oak Hall Project B,Solar,20.0,2016-12-08,Solar,False,no EIA plant shares a name word,,,,
+W1-005,PJM,PJM,VA,Oak Hall Project C,Solar,20.0,2016-12-08,Solar,False,no EIA plant shares a name word,,,,
+W1-006,PJM,PJM,VA,Oak Hall Project D,Solar,20.0,2016-12-08,Solar,False,no EIA plant shares a name word,,,,
+W1-024,PJM,PJM,NJ,Village at Manalapan Solar Farm,Solar,4.0,2011-12-14,Solar,True,matched,57661,Manalapan Village Solar,3.5,0.0
+W1-029,PJM,PJM,NC,Desert Wind Farm,Wind,208.0,2017-03-02,Wind,True,matched,59968,"Desert Wind Farm, LLC",208.0,-3.0
+W1-032,PJM,PJM,NJ,Millhurst Solar Farm,Solar,3.0,2016-02-02,Solar,False,no EIA plant shares a name word,,,,
+W1-045,PJM,PJM,PA,Roxbury Solar Project,Solar,13.5,2019-12-31,Solar,False,no EIA plant shares a name word,,,,
+W1-054,PJM,PJM,PA,Dart Container,Other,11.4,2012-10-06,Other,True,matched,58476,Dart Container Corp,11.2,2.0
+W1-056,PJM,PJM,OH,Hog Creek Wind Farm,Wind,18.4,2017-11-15,Wind,False,"name found, capacity differs >15 %",,,,
+W1-062,PJM,PJM,DE,Smyrna Units 1 & 2,Gas,53.0,2012-06-15,Gas,False,no EIA plant shares a name word,,,,
+W1-072A_AT5,PJM,PJM,OH,Troy Energy,Gas,40.0,2014-04-11,Gas,False,"name found, capacity differs >15 %",,,,
+W1-077,PJM,PJM,VA,King and Queen,Other,4.0,2011-09-01,Other,False,"name found, capacity differs >15 %",,,,
+W1-101,PJM,PJM,NJ,Bayonne SP,Solar,1.4,2011-03-14,Solar,True,matched,57383,WEA Texas Bayonne,1.5,-3.0
+W1-108,PJM,PJM,PA,Grays Ferry Cogeneration Partnership,Gas,13.0,2013-07-29,Gas,False,"name found, capacity differs >15 %",,,,
+W1-111,PJM,PJM,PA,Beacon Power Flywheel Station,Battery,20.0,2014-07-24,Battery,False,no EIA plant shares a name word,,,,
+W1-112,PJM,PJM,NJ,Holmdel SP,Solar,4.0,2013-03-01,Solar,False,"name found, capacity differs >15 %",,,,
+W1-113,PJM,PJM,NJ,Northpark Solar Farm #1,Solar,8.0,2016-03-22,Solar,False,"name found, capacity differs >15 %",,,,
+W1-116,PJM,PJM,MD,Mount St. Mary's PV Park,Solar,14.0,2012-07-05,Solar,True,matched,57758,Mount Saint Mary's,13.7,0.0
+W1-119,PJM,PJM,NJ,Greenburg Solar,Solar,8.8,2017-06-16,Solar,False,no EIA plant shares a name word,,,,
+W1-120,PJM,PJM,NJ,Perez Solar,Solar,8.8,2017-06-15,Solar,False,no EIA plant shares a name word,,,,
+W1-121,PJM,PJM,NJ,Property #6,Solar,8.0,2011-12-14,Solar,False,no EIA plant shares a name word,,,,
+W1-124,PJM,PJM,NJ,Tinton Falls Solar,Solar,16.9,2012-12-06,Solar,True,matched,58483,Tinton Falls Solar Farm,16.0,-1.0
+W1-127,PJM,PJM,NJ,Harmony Solar Farm,Solar,3.0,2015-06-30,Solar,True,matched,59627,Harmony,3.0,0.0
+W1-129,PJM,PJM,NJ,Jacobstown Solar Farm,Solar,5.0,2014-09-20,Solar,True,matched,59185,Jacobstown,5.0,0.0
+W1-130,PJM,PJM,NJ,Cedar Branch Solar Farm,Solar,9.2,2016-10-27,Solar,False,"name found, capacity differs >15 %",,,,
+W1-132,PJM,PJM,NJ,Paunch Solar,Solar,2.0,2013-12-06,Solar,False,no EIA plant shares a name word,,,,
+W2-010,PJM,PJM,PA,Conemaugh Generating Station,Coal,20.0,2012-07-09,Coal,False,"name found, capacity differs >15 %",,,,
+W2-011,PJM,PJM,PA,Conemaugh Generating Station,Coal,20.0,2012-07-09,Coal,False,"name found, capacity differs >15 %",,,,
+W2-014,PJM,PJM,PA,,Oil,2.0,2014-06-24,Other,False,no usable project name,,,,
+W2-016,PJM,PJM,NJ,Barbertown-Point Breeze Solar Farm,Solar,15.0,2013-12-31,Solar,False,"name found, capacity differs >15 %",,,,
+W2-018,PJM,PJM,PA,Cumberland County Landfill,Other,4.8,2012-04-22,Other,False,"name found, capacity differs >15 %",,,,
+W2-019,PJM,PJM,NJ,Shemesh Solar Farm,Solar,6.0,2016-10-24,Solar,False,no EIA plant shares a name word,,,,
+W2-030,PJM,PJM,NJ,1307 Doughty Road,Solar,9.6,2016-10-04,Solar,False,no EIA plant shares a name word,,,,
+W2-036,PJM,PJM,NJ,Central SP,Solar,0.749,2011-03-21,Solar,False,"name found, capacity differs >15 %",,,,
+W2-039,PJM,PJM,NJ,Clayville Unit #1,Gas,63.0,2015-11-01,Gas,False,"name found, capacity differs >15 %",,,,
+W2-048,PJM,PJM,IL,"Hilltopper Wind, LLC",Wind,62.5,2018-11-01,Wind,False,"name found, capacity differs >15 %",,,,
+W2-049,PJM,PJM,VA,South Boston Energy Facility,Other,47.4,2013-09-24,Other,False,no EIA plant shares a name word,,,,
+W2-050,PJM,PJM,NJ,Flemington Solar Farm,Solar,10.0,2016-03-22,Solar,False,"name found, capacity differs >15 %",,,,
+W2-052,PJM,PJM,NJ,,Solar,0.592,2011-03-14,Solar,False,no usable project name,,,,
+W2-056,PJM,PJM,NJ,Reeves Station Road Solar,Solar,11.0,2012-10-16,Solar,False,"name found, capacity differs >15 %",,,,
+W2-057,PJM,PJM,WV,Laurel Mountain BT,Battery,27.4,2011-09-21,Battery,False,no EIA plant shares a name word,,,,
+W2-061,PJM,PJM,NJ,Everitt Solar Farm,Solar,3.0,2016-06-01,Solar,False,no EIA plant shares a name word,,,,
+W2-071,PJM,PJM,NJ,,Solar,2.8,2011-12-15,Solar,False,no usable project name,,,,
+W2-075,PJM,PJM,PA,Tolna Unit 2,Oil,0.9,2011-07-28,Other,False,"name found, capacity differs >15 %",,,,
+W2-078,PJM,PJM,NJ,Northpark Solar Farm #2,Solar,9.0,2016-03-22,Solar,False,"name found, capacity differs >15 %",,,,
+W2-080,PJM,PJM,NJ,Fisher Solar Farm,Solar,2.0,2017-05-30,Solar,False,"name found, capacity differs >15 %",,,,
+W2-082,PJM,PJM,NJ,North Hanover Solar Farm,Solar,17.0,2017-03-17,Solar,False,"name found, capacity differs >15 %",,,,
+W2-091,PJM,PJM,NJ,Stewartsville Solar Farm,Solar,10.0,2016-05-31,Solar,False,no EIA plant shares a name word,,,,
+W2-102,PJM,PJM,NJ,West Pemberton Solar,Solar,7.0,2014-07-03,Solar,True,matched,59186,West Pemberton,7.0,0.0
+W3-002,PJM,PJM,VA,I-95 Landfill Phase 2,Other,3.2,2011-04-01,Other,True,matched,54723,I 95 Landfill Phase II,3.2,-217.0
+W3-003,PJM,PJM,NJ,Quakertown Solar Farm #1,Solar,10.0,2018-10-30,Solar,True,matched,61965,"Quakertown Solar Farm, LLC",8.8,0.0
+W3-029,PJM,PJM,NJ,Ringoes Solar Farm,Solar,8.4,2018-06-04,Solar,False,no EIA plant shares a name word,,,,
+W3-032A,PJM,PJM,DE,Garrison Energy Center,Gas,309.2,2015-05-21,Gas,False,"name found, capacity differs >15 %",,,,
+W3-044,PJM,PJM,NJ,McCullough Road Solar Farm,Solar,8.8,2019-06-27,Solar,True,matched,62638,McCullough Road Solar Farm,8.8,0.0
+W3-047,PJM,PJM,VA,Warren County,Gas,60.0,2014-10-30,Gas,False,"name found, capacity differs >15 %",,,,
+W3-048,PJM,PJM,NJ,Hope Creek Generating Station,Nuclear,50.0,2013-01-23,Nuclear,False,"name found, capacity differs >15 %",,,,
+W3-077,PJM,PJM,NJ,Franklin Township Solar Farm,Solar,8.8,2020-01-10,Solar,True,matched,63149,Franklin Solar (NJ),8.8,0.0
+W3-079,PJM,PJM,NJ,Lakewood-Farmingdale Road Solar Farm,Solar,7.0,2016-04-19,Solar,False,"name found, capacity differs >15 %",,,,
+W3-080,PJM,PJM,NJ,Cedar Lane,Solar,15.0,2016-12-29,Solar,False,"name found, capacity differs >15 %",,,,
+W3-106,PJM,PJM,NJ,Beaver Run Solar Farm,Solar,9.9,2016-01-22,Solar,False,"name found, capacity differs >15 %",,,,
+W3-110,PJM,PJM,NJ,Wantage Solar Farm,Solar,7.5,2013-11-15,Solar,True,matched,59366,G&S Wantage Solar LLC,8.5,2.0
+W3-124,PJM,PJM,NJ,Matrix-Stults Road,Solar,2.85,2011-06-17,Solar,True,matched,57588,Matrix Stults Road Solar Facility,2.6,0.0
+W3-162,PJM,PJM,KY,Riverside Generating Stations,Gas,20.0,2011-09-09,Gas,False,"name found, capacity differs >15 %",,,,
+W4-004A_AT10,PJM,PJM,OH,Lorain,Other,19.2,2012-05-31,Other,False,"name found, capacity differs >15 %",,,,
+W4-004B_AT11,PJM,PJM,OH,Perry Nuclear Power Plant,Nuclear,16.0,2013-04-26,Nuclear,False,"name found, capacity differs >15 %",,,,
+W4-005,PJM,PJM,IL,Radford's Run Wind Farm,Wind,306.0,2017-12-14,Wind,True,matched,59061,Radfords Run Wind Farm,278.0,0.0
+W4-009,PJM,PJM,NJ,Woodbridge Energy Center,Gas,725.0,2015-12-04,Gas,False,"name found, capacity differs >15 %",,,,
+W4-010,PJM,PJM,MD,,Gas,29.1,2014-05-08,Gas,False,no usable project name,,,,
+W4-015,PJM,PJM,NJ,West Deptford Energy Station,Gas,210.0,2015-01-16,Gas,False,"name found, capacity differs >15 %",,,,
+W4-025,PJM,PJM,NJ,North Run Solar,Solar,7.0,2015-02-04,Solar,True,matched,60805,Beaver Run,7.4,7.0
+W4-046,PJM,PJM,NJ,Hengst Solar Farm,Solar,10.0,2016-07-13,Solar,False,no EIA plant shares a name word,,,,
+W4-058,PJM,PJM,NJ,Rider University,Solar,0.702,2011-12-16,Solar,False,"name found, capacity differs >15 %",,,,
+W4-059,PJM,PJM,NJ,Metro Division Headquarters,Solar,0.6,2012-07-05,Solar,False,"name found, capacity differs >15 %",,,,
+W4-060,PJM,PJM,NJ,Old Bridge Solar Farm,Solar,10.0,2018-08-04,Solar,True,matched,61600,Old Bridge Solar Farm,8.8,0.0
+W4-064,PJM,PJM,NJ,Augusta Solar Farm,Solar,3.0,2016-05-31,Solar,True,matched,62906,Augusta Solar Farm,2.9,0.0
+W4-073,PJM,PJM,NJ,Hamptons at Pohatcong Solar Farm,Solar,8.0,2020-01-10,Solar,True,matched,63150,Pohatcong Solar Farm,8.0,0.0
+W4-097,PJM,PJM,NJ,Wetteland Solar Farm,Solar,3.0,2016-01-06,Solar,False,no EIA plant shares a name word,,,,
+W4-102,PJM,PJM,MD,Lappans 34.5kV Project,Solar,20.0,2012-11-29,Solar,False,no EIA plant shares a name word,,,,
+W4-103,PJM,PJM,NJ,North American Solar,Solar,7.0,2016-03-03,Solar,False,"name found, capacity differs >15 %",,,,
+X1-012,PJM,PJM,NJ,Frankford Solar Farm,Solar,10.0,2016-03-03,Solar,False,"name found, capacity differs >15 %",,,,
+X1-032,PJM,PJM,MD,Somerset Solar Project,Solar,4.0,2013-01-09,Solar,False,no EIA plant shares a name word,,,,
+X1-037,PJM,PJM,NJ,Howell Solar Farm,Solar,17.0,2014-11-20,Solar,False,"name found, capacity differs >15 %",,,,
+X1-038,PJM,PJM,VA,Franklin Mill Power Facility,Gas,35.0,2012-06-06,Gas,False,no EIA plant shares a name word,,,,
+X1-039,PJM,PJM,NJ,Eagle Point,Gas,22.9,2012-09-06,Gas,False,"name found, capacity differs >15 %",,,,
+X1-042,PJM,PJM,MI,Orchard Hills,Other,3.2,2013-03-04,Other,False,"name found, capacity differs >15 %",,,,
+X1-045,PJM,PJM,IL,"Dresden Nuclear Generation Station, Units 2 & 3",Nuclear,3.0,2013-08-13,Nuclear,False,"name found, capacity differs >15 %",,,,
+X1-068,PJM,PJM,NJ,Red Oak,Gas,10.0,2012-12-03,Gas,False,"name found, capacity differs >15 %",,,,
+X1-070,PJM,PJM,NJ,Mill Creek,Solar,3.5,2011-09-15,Solar,True,matched,57728,Mill Creek Solar,3.5,3.0
+X1-071,PJM,PJM,NJ,Southern Division Headquarters,Solar,0.93,2013-10-07,Solar,True,matched,58093,BBB Corporate Headquarters,1.0,-40.0
+X1-072,PJM,PJM,NJ,Hackensack Solar Farm,Solar,1.0,2013-01-11,Solar,False,no EIA plant shares a name word,,,,
+X1-084,PJM,PJM,VA,Altavista Power Station,Other,60.0,2013-05-07,Other,False,"name found, capacity differs >15 %",,,,
+X1-085,PJM,PJM,NJ,Upper Freehold Solar,Solar,5.0,2016-05-18,Solar,False,no EIA plant shares a name word,,,,
+X1-095,PJM,PJM,NJ,Bernards Township Solar Farm,Solar,3.0,2016-10-03,Solar,True,matched,60437,Bernards Solar,2.9,-1.0
+X1-097,PJM,PJM,DE,Red Lion Energy Center,Other,24.9,2012-12-12,Other,False,no EIA plant shares a name word,,,,
+X1-108,PJM,PJM,PA,Lower Mount Bethel,Gas,33.0,2012-12-15,Gas,False,"name found, capacity differs >15 %",,,,
+X1-109,PJM,PJM,PA,Liberty/Asylum Township Plant,Gas,850.0,2016-03-28,Gas,False,"name found, capacity differs >15 %",,,,
+X2-012,PJM,PJM,PA,Patriot Generating Station,Gas,850.0,2016-07-13,Gas,True,matched,58426,Hamilton Patriot Generation Plant,870.0,0.0
+X2-013,PJM,PJM,NJ,Mantua Creek Frequency Regularor,Battery,2.0,2013-01-17,Battery,False,no EIA plant shares a name word,,,,
+X2-022,PJM,PJM,IL,Hilltopper Wind Farm,Wind,187.5,2018-11-01,Wind,True,matched,61735,Hilltopper Wind Project,185.0,1.0
+X2-025,PJM,PJM,PA,Sunbury Generation Facility,Gas,416.0,2018-03-18,Gas,False,no EIA plant shares a name word,,,,
+X2-052,PJM,PJM,IN,"St. Joseph Energy Center, LLC",Gas,675.0,2018-04-01,Gas,False,"name found, capacity differs >15 %",,,,
+X2-060,PJM,PJM,VA,MeadWestvaco Covington Mill Site,Other,30.0,2013-10-15,Other,True,matched,50900,Covington Facility,34.0,-397.0
+X2-075,PJM,PJM,NJ,Junction Road Solar Farm,Solar,6.0,2016-05-19,Solar,False,"name found, capacity differs >15 %",,,,
+X2-076,PJM,PJM,VA,Brunswick Combined Cycle Power Station,Gas,1525.5,2016-03-07,Gas,True,matched,58260,Brunswick County Power Station,1472.2,1.0
+X2-083,PJM,PJM,DE,Brookside Energy Center,Other,3.0,2012-06-21,Other,False,no EIA plant shares a name word,,,,
+X2-087,PJM,PJM,NJ,Food Bank Solar,Solar,1.0,2012-08-18,Solar,False,"name found, capacity differs >15 %",,,,
+X2-088,PJM,PJM,NJ,Black Rock Solar,Solar,2.356,2012-03-26,Solar,True,matched,60746,Silvi Gibraltar Rock,2.5,55.0
+X2-089,PJM,PJM,NJ,Summit Associates Solar,Solar,2.0,2011-12-31,Solar,True,matched,57726,Summit Associates,1.9,0.0
+X3-003,PJM,PJM,PA,Mehoopany Plant,Gas,20.0,2013-11-15,Gas,False,"name found, capacity differs >15 %",,,,
+X3-004,PJM,PJM,NJ,Newark Energy Center,Gas,35.0,2015-06-29,Gas,False,"name found, capacity differs >15 %",,,,
+X3-005,PJM,PJM,IL,City Solar,Solar,9.0,2013-09-26,Solar,False,no usable project name,,,,
+X3-008,PJM,PJM,MD,Dorchester County Solar 1 Project,Solar,20.0,2021-04-08,Solar,False,no EIA plant shares a name word,,,,
+X3-029,PJM,PJM,NJ,CHP Belvidere Generation Facility,Gas,11.15,2013-12-17,Gas,False,no EIA plant shares a name word,,,,
+X3-052,PJM,PJM,NJ,Essex County Correctional Facility,Gas,3.0,2014-09-10,Gas,False,"name found, capacity differs >15 %",,,,
+X3-066,PJM,PJM,MD,Church Hill Solar Farm,Solar,6.0,2016-05-19,Solar,True,matched,60737,Church Hill,6.0,0.0
+X3-070,PJM,PJM,DE,"PBF Delaware City Refinery Units G3, G6 & G7",Gas,2.0,2013-12-12,Gas,False,"name found, capacity differs >15 %",,,,
+X3-075,PJM,PJM,NJ,Owens Corning Solar,Solar,3.0,2017-05-11,Solar,True,matched,62439,Owens Corning,2.8,-5.0
+X4-005,PJM,PJM,NJ,,Gas,60.0,2015-12-04,Gas,False,no usable project name,,,,
+X4-006,PJM,PJM,MD,St. Charles Combined Cycle Facility,Gas,60.0,2017-01-28,Gas,False,"name found, capacity differs >15 %",,,,
+X4-015,PJM,PJM,NJ,Jacobstown III Solar Farm,Solar,5.0,2015-09-28,Solar,True,matched,59185,Jacobstown,5.0,-12.0
+X4-019,PJM,PJM,PA,Sunbury Generation Facility,Gas,227.0,2018-03-18,Gas,False,no EIA plant shares a name word,,,,
+X4-027,PJM,PJM,PA,"Phillips Island CT1, CT2,CT3 & ST4",Gas,35.0,2018-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+X4-031,PJM,PJM,NJ,Skudera Solar Farm,Solar,2.0,2015-06-17,Solar,False,no EIA plant shares a name word,,,,
+X4-035,PJM,PJM,MD,Keys Energy Center,Gas,735.5,2018-05-21,Gas,False,no EIA plant shares a name word,,,,
+X4-039,PJM,PJM,VA,Stonewall Energy Park,Gas,800.0,2017-04-28,Gas,False,no EIA plant shares a name word,,,,
+X4-044,PJM,PJM,NJ,EF Kenilworth LLC,Gas,17.9,2015-06-11,Gas,False,"name found, capacity differs >15 %",,,,
+X4-046,PJM,PJM,DC,,Gas,19.5,2019-02-04,Gas,False,no usable project name,,,,
+X4-048,PJM,PJM,PA,Lackawanna Thermal Generating Station,Gas,1000.0,2018-03-08,Gas,False,"name found, capacity differs >15 %",,,,
+Y1-012,PJM,PJM,OH,Geneva Renewable Energy Facility,Other,6.48,2013-07-22,Other,False,"name found, capacity differs >15 %",,,,
+Y1-020,PJM,PJM,NJ,Beaver Run Solar Farm,Solar,3.72,2016-01-22,Solar,False,"name found, capacity differs >15 %",,,,
+Y1-026,PJM,PJM,NJ,Tosco #6,Gas,160.0,2018-06-01,Gas,False,no EIA plant shares a name word,,,,
+Y1-033,PJM,PJM,PA,,Wind,38.3,2016-12-14,Wind,False,no usable project name,,,,
+Y1-044,PJM,PJM,WV,Willow Island Hydro Generation Project,Hydro,6.8,2015-11-15,Hydro,False,"name found, capacity differs >15 %",,,,
+Y1-047,PJM,PJM,PA,Roundtop Energy Project,Gas,15.4,2015-10-15,Gas,False,"name found, capacity differs >15 %",,,,
+Y1-049,PJM,PJM,VA,New River Resource Authority Waste Management Facility IRD LEG-E,Other,6.0,2014-12-01,Other,True,matched,57018,Waste Management Middle Peninsula LFGTE,6.4,-63.0
+Y1-054,PJM,PJM,OH,Rochelle Plant,Gas,20.0,2013-05-30,Gas,False,no EIA plant shares a name word,,,,
+Y1-063,PJM,PJM,OH,,Battery,4.0,2014-03-31,Battery,False,no usable project name,,,,
+Y1-065,PJM,PJM,MD,Wildcat Point,Gas,834.1,2017-07-26,Gas,False,"name found, capacity differs >15 %",,,,
+Y1-066,PJM,PJM,VA,Four Rivers NUG CC-1,Gas,13.3,2013-09-01,Gas,False,no EIA plant shares a name word,,,,
+Y1-068,PJM,PJM,VA,MeadWestvaco Covington Mill Site,Other,20.0,2013-10-15,Other,False,"name found, capacity differs >15 %",,,,
+Y1-069,PJM,PJM,OH,Oregon Energy Center,Gas,799.0,2017-06-23,Gas,False,"name found, capacity differs >15 %",,,,
+Y1-072,PJM,PJM,NJ,Lebanon Solar,Solar,0.76,2013-05-30,Solar,False,"name found, capacity differs >15 %",,,,
+Y1-075,PJM,PJM,NJ,Reeve's Station South,Solar,1.0,2013-12-19,Solar,False,no EIA plant shares a name word,,,,
+Y1-079,PJM,PJM,MD,Wye Mills Solar Site,Solar,10.0,2016-08-24,Solar,True,matched,60604,Wye Mills VNEM CSG,10.0,0.0
+Y1-080,PJM,PJM,MD,"Constellation Solar Maryland II, LLC Solar Facility",Solar,3.38,2015-04-30,Solar,False,"name found, capacity differs >15 %",,,,
+Y1-086,PJM,PJM,NC,Morgan's Corner Solar,Solar,20.0,2015-12-26,Solar,True,matched,60422,Morgan's Corner,20.0,0.0
+Y2-001,PJM,PJM,VA,SPSA Navy Power Plant,Other,40.0,2014-05-22,Other,False,no EIA plant shares a name word,,,,
+Y2-018,PJM,PJM,NJ,Warren County Landfill,Solar,3.8,2014-05-12,Solar,True,matched,65466,Kinsley II Landfill Solar System,3.8,68.0
+Y2-019,PJM,PJM,NJ,Newark Energy Center,Gas,45.0,2015-06-29,Gas,False,"name found, capacity differs >15 %",,,,
+Y2-042,PJM,PJM,PA,Oxbow Creek Generation Plant,Gas,18.3,2019-11-16,Gas,False,"name found, capacity differs >15 %",,,,
+Y2-043,PJM,PJM,IL,Grand Ridge Battery Storage,Battery,4.5,2012-12-21,Battery,True,matched,59957,Grand Ridge Battery Projects,4.5,12.0
+Y2-045,PJM,PJM,KY,Riverside Generating Station,Gas,6.0,2016-01-08,Gas,False,"name found, capacity differs >15 %",,,,
+Y2-050,PJM,PJM,OH,Carroll County Energy LLC,Gas,742.0,2017-09-25,Gas,True,matched,59773,Carroll County Energy,832.3,3.0
+Y2-051,PJM,PJM,NJ,French's Landfill Solar Farm,Solar,5.0,2014-10-22,Solar,True,matched,60994,French's Landfill PV,5.1,0.0
+Y2-054,PJM,PJM,WV,Oak Grove 138kV,Gas,13.7,2014-10-10,Gas,False,no EIA plant shares a name word,,,,
+Y2-060,PJM,PJM,PA,Roundtop Energy Project,Gas,3.5,2015-10-15,Gas,False,"name found, capacity differs >15 %",,,,
+Y2-064,PJM,PJM,PA,Liberty Electric,Gas,65.5,2015-10-05,Gas,False,"name found, capacity differs >15 %",,,,
+Y2-067,PJM,PJM,VA,Virginia City Hybrid Energy Center,Coal,12.0,2014-03-28,Coal,False,"name found, capacity differs >15 %",,,,
+Y2-074,PJM,PJM,VA,Hopewell Cogeneration Facility (HCF),Gas,8.0,2013-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+Y2-076,PJM,PJM,VA,Clover Power Station Unit 1,Coal,13.7,2014-06-01,Coal,False,"name found, capacity differs >15 %",,,,
+Y2-077,PJM,PJM,VA,Hopewell Cogeneration Facility (HCF),Gas,30.0,2017-12-20,Gas,False,"name found, capacity differs >15 %",,,,
+Y2-078,PJM,PJM,NJ,Lakewood Cogeneration Plant,Gas,20.0,2015-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+Y2-079,PJM,PJM,NJ,Ocean Peaking Power,Gas,20.0,2015-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+Y2-081,PJM,PJM,NJ,Deptford (Kinsley Solar)13kV,Solar,5.0,2015-01-14,Solar,False,"name found, capacity differs >15 %",,,,
+Y2-089,PJM,PJM,PA,Lackawanna Thermal Generating Station,Gas,370.0,2018-10-02,Gas,False,"name found, capacity differs >15 %",,,,
+Y2-100,PJM,PJM,MD,Eastern Landfill Gas,Other,4.0,2016-11-18,Other,False,"name found, capacity differs >15 %",,,,
+Y2-105,PJM,PJM,NJ,Eagle Point,Gas,63.0,2015-03-25,Gas,False,"name found, capacity differs >15 %",,,,
+Y2-109,PJM,PJM,VA,Bayview,Oil,0.5,2013-07-19,Other,False,"name found, capacity differs >15 %",,,,
+Y2-113,PJM,PJM,IL,Morris Cogen,Gas,12.6,2014-03-14,Gas,False,"name found, capacity differs >15 %",,,,
+Y3-012,PJM,PJM,NJ,Marina Thermal Facility,Gas,7.5,2014-01-31,Gas,False,"name found, capacity differs >15 %",,,,
+Y3-013,PJM,PJM,IL,Zion Energy Center,Gas,90.0,2021-01-12,Gas,False,"name found, capacity differs >15 %",,,,
+Y3-023,PJM,PJM,IN,"Wabash Valley Power Association, Inc.",Other,4.8,2015-01-01,Other,False,no EIA plant shares a name word,,,,
+Y3-024,PJM,PJM,IN,"Wabash Valley Power Association, Inc.",Other,3.2,2015-01-01,Other,False,no EIA plant shares a name word,,,,
+Y3-025,PJM,PJM,WV,Charleston Clean Energy,Other,3.18,2019-05-29,Other,True,matched,63246,New River Clean Energy,3.2,-27.0
+Y3-026,PJM,PJM,NJ,Burlington (L&D Solar) 26kV,Solar,10.0,2016-01-26,Solar,False,"name found, capacity differs >15 %",,,,
+Y3-034,PJM,PJM,PA,Stonegate Renewable Energy,Other,1.8,2013-12-26,Other,False,no EIA plant shares a name word,,,,
+Y3-036,PJM,PJM,OH,Gavin Unit #2,Coal,36.0,2015-01-14,Coal,False,"name found, capacity differs >15 %",,,,
+Y3-037,PJM,PJM,WV,John Amos Generating Plant Unit No. 3,Coal,36.0,2015-04-01,Coal,False,"name found, capacity differs >15 %",,,,
+Y3-038,PJM,PJM,IN,Rockport Unit #1,Coal,36.0,2017-06-30,Coal,False,"name found, capacity differs >15 %",,,,
+Y3-039,PJM,PJM,VA,Clinch River Power Plant,Gas,20.0,2016-05-27,Gas,False,"name found, capacity differs >15 %",,,,
+Y3-040,PJM,PJM,VA,Clinch River Power Plant,Gas,20.0,2016-05-23,Gas,False,"name found, capacity differs >15 %",,,,
+Y3-043,PJM,PJM,PA,Delta York,Gas,760.0,2018-12-11,Gas,False,"name found, capacity differs >15 %",,,,
+Y3-044,PJM,PJM,NJ,Kearny Generating Station,Gas,5.0,2015-10-21,Gas,False,"name found, capacity differs >15 %",,,,
+Y3-045,PJM,PJM,NJ,Bergen Genertating Station,Gas,5.0,2015-10-29,Gas,False,"name found, capacity differs >15 %",,,,
+Y3-048,PJM,PJM,NJ,Burlington Generating Station,Gas,3.0,2015-10-21,Gas,False,"name found, capacity differs >15 %",,,,
+Y3-050,PJM,PJM,NJ,Kearny Generating Station,Gas,24.0,2015-10-21,Gas,False,"name found, capacity differs >15 %",,,,
+Y3-051,PJM,PJM,NJ,Linden Generating Station,Gas,47.0,2016-08-29,Gas,False,"name found, capacity differs >15 %",,,,
+Y3-052,PJM,PJM,NJ,,Gas,50.0,2015-10-29,Gas,False,no usable project name,,,,
+Y3-053,PJM,PJM,NJ,Kearny Generating Station,Gas,40.0,2015-10-21,Gas,False,"name found, capacity differs >15 %",,,,
+Y3-056,PJM,PJM,PA,Pioneer Crossing,Other,1.6,2013-09-01,Other,True,matched,56957,"Pioneer Crossing Energy, LLC",1.6,2.0
+Y3-058,PJM,PJM,MD,Rockfish Solar Power Plant,Solar,15.0,2016-02-22,Solar,False,"name found, capacity differs >15 %",,,,
+Y3-074,PJM,PJM,MD,,Hydro,0.372,2014-10-01,Hydro,False,no usable project name,,,,
+Y3-087,PJM,PJM,NJ,Beaverbrook (Kinsley Solar),Solar,3.8,2015-01-14,Solar,True,matched,65466,Kinsley II Landfill Solar System,3.8,60.0
+Y3-088,PJM,PJM,IL,Kendall Energy Center,Gas,20.0,2017-05-23,Gas,False,"name found, capacity differs >15 %",,,,
+Y3-089,PJM,PJM,IL,Kendall Energy Center,Gas,20.0,2017-05-23,Gas,False,"name found, capacity differs >15 %",,,,
+Y3-090,PJM,PJM,IL,Kendall Energy Center,Gas,20.0,2017-05-23,Gas,False,"name found, capacity differs >15 %",,,,
+Y3-091,PJM,PJM,IL,Kendall Energy Center,Gas,20.0,2017-05-23,Gas,False,"name found, capacity differs >15 %",,,,
+Y3-099,PJM,PJM,OH,Beckjord Battery #1,Battery,2.0,2015-01-21,Battery,True,matched,2830,Walter C Beckjord,2.0,0.0
+Y3-102,PJM,PJM,MD,Wildcat Point,Gas,166.0,2017-07-27,Gas,False,"name found, capacity differs >15 %",,,,
+Y3-103,PJM,PJM,PA,Pennsylvania Chemicals Generating Facility,Gas,205.0,2021-06-22,Gas,False,"name found, capacity differs >15 %",,,,
+Y3-106,PJM,PJM,WV,Belleville Hydroelectric Plant,Hydro,7.0,2014-12-31,Hydro,False,"name found, capacity differs >15 %",,,,
+Y3-107,PJM,PJM,NJ,,Gas,45.0,2015-10-29,Gas,False,no usable project name,,,,
+Z1-015,PJM,PJM,PA,Springdale,Gas,26.0,2015-01-21,Gas,False,"name found, capacity differs >15 %",,,,
+Z1-036,PJM,PJM,NC,Timbermill Wind Farm,Wind,189.0,2024-12-13,Wind,True,matched,67910,"Timbermill Wind, LLC",189.0,0.0
+Z1-041,PJM,PJM,MD,Rock Springs Units #1 & #2,Gas,2.0,2015-05-28,Gas,False,"name found, capacity differs >15 %",,,,
+Z1-050,PJM,PJM,NJ,Yards Creek Pumped Storage Hydro-electric Generating Station,Hydro,20.0,2014-05-01,Hydro,False,"name found, capacity differs >15 %",,,,
+Z1-051,PJM,PJM,MI,D.C. Cook Generating Plant Unit No. 2,Nuclear,102.0,2017-01-14,Nuclear,False,"name found, capacity differs >15 %",,,,
+Z1-052,PJM,PJM,MD,Keys Energy Center,Gas,64.5,2018-07-23,Gas,False,no EIA plant shares a name word,,,,
+Z1-055,PJM,PJM,PA,South Bend Generating Station,Gas,10.0,2017-01-31,Gas,False,no EIA plant shares a name word,,,,
+Z1-056,PJM,PJM,PA,South Bend Generating Station,Gas,6.0,2017-01-31,Gas,False,no EIA plant shares a name word,,,,
+Z1-057,PJM,PJM,DE,"PBF Delaware City Refinery Units G3, G6 & G7",Gas,15.9,2014-05-06,Gas,False,"name found, capacity differs >15 %",,,,
+Z1-058,PJM,PJM,NJ,Linden Generating Station,Gas,36.0,2016-08-29,Gas,False,"name found, capacity differs >15 %",,,,
+Z1-059,PJM,PJM,NJ,Linden Generating Station,Gas,23.0,2016-08-29,Gas,False,"name found, capacity differs >15 %",,,,
+Z1-065,PJM,PJM,OH,Willey Energy Storage Project,Battery,6.0,2015-12-01,Battery,False,no EIA plant shares a name word,,,,
+Z1-066,PJM,PJM,PA,Green Mountain Battery,Battery,10.4,2015-12-30,Battery,True,matched,55370,"Green Mountain Storage, LLC",10.4,5.0
+Z1-068,PJM,PJM,VA,,Offshore Wind,12.0,2020-09-26,Offshore Wind,False,no usable project name,,,,
+Z1-069,PJM,PJM,PA,Big Level Wind Farm,Wind,70.0,2019-11-20,Wind,False,"name found, capacity differs >15 %",,,,
+Z1-072,PJM,PJM,IL,Crescent Ridge Wind Farm,Wind,9.7,2016-06-01,Wind,False,"name found, capacity differs >15 %",,,,
+Z1-073,PJM,PJM,IL,,Wind,5.2,2015-08-05,Wind,False,no usable project name,,,,
+Z1-079,PJM,PJM,OH,Middletown Energy Center,Gas,513.0,2018-02-06,Gas,True,matched,59326,Middletown Energy Center,543.9,3.0
+Z1-080,PJM,PJM,OH,Clinton County Energy Storage Project,Battery,6.0,2016-08-29,Battery,False,no EIA plant shares a name word,,,,
+Z1-082,PJM,PJM,NJ,Lawnside Battery,Battery,1.0,2015-01-13,Battery,False,no EIA plant shares a name word,,,,
+Z1-086,PJM,PJM,VA,Greensville Generating Facility,Gas,1681.0,2018-12-08,Gas,True,matched,59913,Greensville County Power Station,1773.3,0.0
+Z1-087,PJM,PJM,PA,Seneca Pumped Storage Generating Station,Hydro,17.0,2017-04-21,Hydro,False,"name found, capacity differs >15 %",,,,
+Z1-088,PJM,PJM,PA,Allegheny River Lock & Dam # 5,Hydro,5.0,2015-03-25,Hydro,False,"name found, capacity differs >15 %",,,,
+Z1-089,PJM,PJM,PA,Allegheny River Lock & Dam #6,Hydro,5.0,2015-03-25,Hydro,False,"name found, capacity differs >15 %",,,,
+Z1-090,PJM,PJM,PA,Sunbury Generation Facility,Gas,381.0,2018-03-24,Gas,False,no EIA plant shares a name word,,,,
+Z1-092,PJM,PJM,PA,Milan Energy,Gas,19.9,2017-02-20,Gas,True,matched,58818,Milan,21.0,1.0
+Z1-096,PJM,PJM,NJ,Parkland Solar,Solar,7.84,2015-01-14,Solar,True,matched,59001,Parkland Landfill Solar,7.8,0.0
+Z1-097,PJM,PJM,OH,"Darby Generating Station Unites, 1,2,3,4,5,6",Gas,30.0,2014-12-15,Gas,False,"name found, capacity differs >15 %",,,,
+Z1-099,PJM,PJM,DE,City of Dover Generating Facilities,Gas,7.0,2016-09-22,Gas,False,"name found, capacity differs >15 %",,,,
+Z1-100,PJM,PJM,VA,Oak Hal lProject A,Solar,4.162,2016-12-08,Solar,False,no EIA plant shares a name word,,,,
+Z1-101,PJM,PJM,VA,Oak Hall Project B,Solar,4.162,2016-12-08,Solar,False,no EIA plant shares a name word,,,,
+Z1-102,PJM,PJM,VA,Oak Hall Project C,Solar,4.162,2016-12-08,Solar,False,no EIA plant shares a name word,,,,
+Z1-103,PJM,PJM,VA,,Solar,4.162,2016-12-08,Solar,False,no usable project name,,,,
+Z1-108,PJM,PJM,IL,McHenry Energy Storage,Battery,20.0,2015-12-17,Battery,True,matched,60656,McHenry Battery Storage,20.0,2.0
+Z1-110,PJM,PJM,PA,Beaver Dam Generating Station,Gas,19.9,2016-06-07,Gas,True,matched,58811,Beaver Dam (PA),22.0,0.0
+Z1-113,PJM,PJM,VA,HP Hood Generation Facility,Gas,12.0,2015-05-11,Gas,False,"name found, capacity differs >15 %",,,,
+Z1-127,PJM,PJM,IL,,Gas,20.0,2014-02-10,Gas,False,no usable project name,,,,
+Z2-002,PJM,PJM,NJ,Linden Generating Station,Gas,61.0,2018-05-16,Gas,False,"name found, capacity differs >15 %",,,,
+Z2-011,PJM,PJM,PA,Glory Barn Road Generating Facility Alpaca,Gas,19.9,2017-02-27,Gas,True,matched,58813,Alpaca,21.0,2.0
+Z2-012,PJM,PJM,VA,Hecate Energy Cherrydale,Solar,20.0,2017-09-07,Solar,True,matched,61375,Hecate Energy Cherrydale LLC,20.0,2.0
+Z2-013,PJM,PJM,PA,Twin Ridges Wind Farm,Wind,4.9,2014-12-15,Wind,False,"name found, capacity differs >15 %",,,,
+Z2-014,PJM,PJM,PA,Patton Wind Farm,Wind,1.35,2015-02-13,Wind,False,"name found, capacity differs >15 %",,,,
+Z2-027,PJM,PJM,NC,Elizabeth City Solar Park,Solar,20.0,2014-12-31,Solar,False,no EIA plant shares a name word,,,,
+Z2-028,PJM,PJM,OH,Lordstown Energy Center,Gas,800.0,2018-08-15,Gas,False,no EIA plant shares a name word,,,,
+Z2-030,PJM,PJM,VA,Double Tollgate Solar Project,Solar,10.0,2017-07-12,Solar,False,no EIA plant shares a name word,,,,
+Z2-039,PJM,PJM,VA,Warren Hydro Station; Newport Hydro Station; Luray Hydro Station; Shenandoah Hydro Station,Hydro,2.82,2015-05-13,Hydro,False,"name found, capacity differs >15 %",,,,
+Z2-040,PJM,PJM,WV,Dam 4 Hydro Generation Facility; Dam 5 Hydro Generation Facility; Millville Hydroelectric Facility,Hydro,3.5,2015-04-17,Hydro,True,matched,50010,Glen Ferris Hydro,3.8,-1179.0
+Z2-043,PJM,PJM,NC,Kelford Solar Park,Solar,20.0,2015-12-31,Solar,True,matched,59527,Kelford (Duke),20.0,0.0
+Z2-044,PJM,PJM,NC,Whitakers Solar Park,Solar,12.0,2015-12-31,Solar,True,matched,59526,Whitakers,12.0,0.0
+Z2-046,PJM,PJM,PA,Freedom Generation Plant,Gas,1050.0,2018-02-20,Gas,False,"name found, capacity differs >15 %",,,,
+Z2-056,PJM,PJM,NJ,,Solar,0.5,2016-08-04,Solar,False,no usable project name,,,,
+Z2-062,PJM,PJM,NJ,Camden County Energy Recovery Associates,Other,3.0,2014-11-19,Other,False,"name found, capacity differs >15 %",,,,
+Z2-076,PJM,PJM,MD,Worcester South,Solar,2.64,2019-05-29,Solar,False,no EIA plant shares a name word,,,,
+Z2-077,PJM,PJM,MD,Worcester North,Solar,5.0,2019-03-15,Solar,False,no EIA plant shares a name word,,,,
+Z2-081,PJM,PJM,IL,Livingston Landfill Gas to Energy Facility,Other,13.3,2017-04-04,Other,False,"name found, capacity differs >15 %",,,,
+Z2-082,PJM,PJM,NJ,Cape May County Municipal Utilities Authority Landfill,Other,0.3,2015-06-01,Other,False,"name found, capacity differs >15 %",,,,
+Z2-083,PJM,PJM,NJ,West Deptford Energy Station,Gas,9.0,2018-12-31,Gas,False,"name found, capacity differs >15 %",,,,
+Z2-085,PJM,PJM,PA,Mahoning Creek Hydroelectric Plant,Hydro,1.5,2014-10-10,Hydro,False,"name found, capacity differs >15 %",,,,
+Z2-087,PJM,PJM,IL,Bright Stalk Wind Farm,Wind,200.0,2019-12-16,Wind,True,matched,57623,Bright Stalk Wind Farm I,205.2,0.0
+Z2-088,PJM,PJM,NC,Conetoe II Solar Park,Solar,80.0,2015-12-21,Solar,True,matched,59944,"Conetoe II Solar, LLC",80.0,0.0
+Z2-089,PJM,PJM,NJ,Sewaren 7,Gas,568.0,2018-05-02,Gas,True,matched,2411,Sewaren,609.5,1.0
+Z2-102,PJM,PJM,NJ,Dix Solar Farm,Solar,13.0,2017-07-13,Solar,True,matched,61864,"Dix Solar, L.L.C",13.0,-1.0
+Z2-103,PJM,PJM,PA,Roundtop Energy Project,Gas,1.0,2016-01-28,Gas,False,"name found, capacity differs >15 %",,,,
+Z2-104,PJM,PJM,PA,Oxbow Creek Generation Plant,Gas,1.6,2019-11-16,Gas,False,"name found, capacity differs >15 %",,,,
+Z2-108,PJM,PJM,PA,Meyersdale Wind Farm & Battery Energy Storage System,Battery,18.0,2015-12-17,Battery,True,matched,62444,Meyersdale Battery,18.0,0.0
+Z2-112,PJM,PJM,OH,,Gas,97.0,2015-06-15,Gas,False,no usable project name,,,,
+Z2-113,PJM,PJM,MI,Watervliet Solar Facility,Solar,4.6,2016-11-08,Solar,True,matched,59853,Watervliet PV,4.6,0.0
+Z2-114,PJM,PJM,IN,Olive Solar Facility,Solar,5.0,2016-08-26,Solar,False,no EIA plant shares a name word,,,,
+Z2-115,PJM,PJM,IN,Deer Creek Solar Facility,Solar,2.5,2016-01-06,Solar,True,matched,59855,Deer Creek PV,2.5,0.0
+Z2-116,PJM,PJM,IN,Twin Branch Solar Facility,Solar,2.6,2016-08-18,Solar,True,matched,59861,Twin Branch PV,2.6,0.0
+11INR0054,ERCOT,ERCOT,TX,Midway Wind,Wind,162.9,2018-12-04,Wind,True,matched,61776,"Midway Wind, LLC",162.9,8.0
+11INR0062,ERCOT,ERCOT,TX,Shaffer Wind,Wind,226.0,2021-06-08,Wind,False,no EIA plant shares a name word,,,,
+12INR0055,ERCOT,ERCOT,TX,S_Hills Wind,Wind,30.24,2019-08-07,Wind,True,matched,62227,"Seymour Hills Wind Project, LLC",30.2,-3.0
+12INR0060,ERCOT,ERCOT,TX,Wilson Ranch,Wind,199.5,2020-04-17,Wind,False,no EIA plant shares a name word,,,,
+13INR0026,ERCOT,ERCOT,TX,Canadian Breaks Wind,Wind,210.0,2019-07-18,Wind,True,matched,63030,"Canadian Breaks, LLC",210.1,5.0
+14INR0009,ERCOT,ERCOT,TX,WKN Amadeus Wind,Wind,250.12,2021-04-05,Wind,True,matched,62142,Amadeus Wind Farm,250.0,-4.0
+14INR0044,ERCOT,ERCOT,TX,West of Pecos Solar,Solar,100.0,2019-12-20,Solar,True,matched,62415,West of the Pecos Solar,100.0,0.0
+14INR0045,ERCOT,ERCOT,TX,Torrecillas Wind,Wind,300.5,2019-11-07,Wind,True,matched,61969,"Torrecillas Wind Energy, LLC",300.0,-9.0
+15INR0034,ERCOT,ERCOT,TX,El Algodon Alto W,Wind,201.0,2022-05-11,Wind,True,matched,64591,"El Algodon Alto Wind Farm, LLC",200.2,0.0
+15INR0035,ERCOT,ERCOT,TX,Stella 1 Wind,Wind,201.0,2018-12-19,Wind,True,matched,59063,Stella Wind Farm,201.0,0.0
+15INR0044,ERCOT,ERCOT,TX,Corazon Solar,Solar,200.0,2021-10-11,Solar,True,matched,64538,Corazon Energy LLC,200.0,-2.0
+15INR0059,ERCOT,ERCOT,TX,Emerald Grove Solar,Solar,108.0,2023-03-10,Solar,True,matched,63233,Emerald Grove,108.0,0.0
+15INR0090,ERCOT,ERCOT,TX,East Blackland Solar,Solar,144.0,2021-08-12,Solar,True,matched,57659,East Blackland Solar Project 1,144.0,-1.0
+16INR0003,ERCOT,ERCOT,TX,LEVEE (Freeport LNG),Gas,11.0,2019-12-04,Gas,False,"name found, capacity differs >15 %",,,,
+16INR0019,ERCOT,ERCOT,TX,BlueBell Solar,Solar,30.0,2019-11-07,Solar,True,matched,60789,Bluebell Solar,30.0,-12.0
+16INR0023b,ERCOT,ERCOT,TX,Lamesa Solar B (Phase II) IVORY,Solar,50.0,2018-12-19,Solar,True,matched,61697,Lamesa II,50.0,-1.0
+16INR0054,ERCOT,ERCOT,TX,NASA,Gas,12.0,2022-10-14,Gas,True,matched,62762,NASA Johnson Space Center CHP,11.2,-51.0
+16INR0062b,ERCOT,ERCOT,TX,Lockett Wind,Wind,184.0,2019-05-31,Wind,True,matched,62356,Lockett Windfarm,183.8,4.0
+16INR0076,ERCOT,ERCOT,TX,Hudson (Ineos/Brazoria),Gas,96.0,2020-07-17,Gas,False,no EIA plant shares a name word,,,,
+16INR0086,ERCOT,ERCOT,TX,Cactus Flats Wind,Wind,148.4,2022-06-13,Wind,True,matched,61001,Cactus Flats Wind Energy Project,148.4,-47.0
+16INR0111,ERCOT,ERCOT,TX,Venado Wind,Wind,201.6,2021-12-06,Wind,False,no EIA plant shares a name word,,,,
+16INR0115,ERCOT,ERCOT,TX,Waymark Solar,Solar,182.0,2018-12-20,Solar,False,no EIA plant shares a name word,,,,
+17INR0005,ERCOT,ERCOT,TX,Cabezon Wind,Wind,237.6,2019-02-18,Wind,False,no EIA plant shares a name word,,,,
+17INR0020a,ERCOT,ERCOT,TX,RE Maplewood 2a Solar,Solar,222.0,2021-10-11,Solar,True,matched,61346,RE Maplewood,222.0,0.0
+17INR0020b,ERCOT,ERCOT,TX,RE Maplewood 2b Solar,Solar,28.0,2021-10-11,Solar,True,matched,61346,RE Maplewood,28.0,-6.0
+17INR0025,ERCOT,ERCOT,TX,Reloj Del Sol Wind,Wind,209.4,2022-08-03,Wind,True,matched,62207,Reloj del Sol Wind Farm,209.4,-15.0
+17INR0031,ERCOT,ERCOT,TX,Espiritu Wind,Wind,25.2,2021-06-10,Wind,False,no EIA plant shares a name word,,,,
+17INR0035,ERCOT,ERCOT,TX,Las Majadas Wind,Wind,272.6,2023-07-13,Wind,True,matched,63739,Las Majadas Wind Farm,272.6,-28.0
+17INR0037,ERCOT,ERCOT,TX,Palmas Altas Wind,Wind,144.9,2020-11-12,Wind,True,matched,61773,"Palmas Wind, LLC",144.9,0.0
+17INR0045,ERCOT,ERCOT,TX,VictPort,Gas,100.0,2019-06-19,Gas,False,no EIA plant shares a name word,,,,
+18INR0014,ERCOT,ERCOT,TX,Karankawa Wind,Wind,206.64,2019-11-07,Wind,False,"name found, capacity differs >15 %",,,,
+18INR0016,ERCOT,ERCOT,TX,RTS 2 Wind,Wind,179.91,2021-05-14,Wind,False,no EIA plant shares a name word,,,,
+18INR0018,ERCOT,ERCOT,TX,Peyton Creek Wind,Wind,151.2,2020-06-04,Wind,True,matched,62417,Peyton Creek Wind Farm LLC,151.2,0.0
+18INR0025,ERCOT,ERCOT,TX,Tahoka Wind,Wind,300.0,2019-03-01,Wind,True,matched,61921,Tahoka Wind,300.0,-3.0
+18INR0033,ERCOT,ERCOT,TX,Oveja Wind,Wind,300.0,2021-10-20,Wind,False,no EIA plant shares a name word,,,,
+18INR0035,ERCOT,ERCOT,TX,CityVict,Gas,100.0,2020-02-06,Gas,False,no EIA plant shares a name word,,,,
+18INR0038,ERCOT,ERCOT,TX,Barrow Ranch Wind,Wind,160.0,2021-09-07,Wind,False,no EIA plant shares a name word,,,,
+18INR0039,ERCOT,ERCOT,TX,Fowler Ranch,Solar,152.5,2020-08-28,Solar,False,no EIA plant shares a name word,,,,
+18INR0045,ERCOT,ERCOT,TX,Misae Solar,Solar,240.8,2021-12-20,Solar,True,matched,62249,Misae Solar,240.0,-23.0
+18INR0050,ERCOT,ERCOT,TX,Mustang Creek Solar,Solar,150.0,2023-10-09,Solar,False,"name found, capacity differs >15 %",,,,
+18INR0053,ERCOT,ERCOT,TX,Tavener Solar,Solar,143.61,2023-10-06,Solar,False,no EIA plant shares a name word,,,,
+18INR0055,ERCOT,ERCOT,TX,Long Draw Solar,Solar,226.73,2021-12-14,Solar,True,matched,62845,ENGIE Long Draw Solar LLC,225.0,-12.0
+18INR0059,ERCOT,ERCOT,TX,East Raymond Wind (El Rayo),Wind,201.6,2021-06-11,Wind,True,matched,62909,"Raymond Wind Farm, LLC",200.2,0.0
+18INR0060,ERCOT,ERCOT,TX,Brightside Solar,Solar,50.0,2022-05-16,Solar,True,matched,63223,Brightside,50.7,0.0
+18INR0062,ERCOT,ERCOT,TX,Wagyu Solar,Solar,120.0,2021-10-04,Solar,True,matched,63273,Wagyu,120.0,-14.0
+18INR0067,ERCOT,ERCOT,TX,Gopher Creek Wind,Wind,158.0,2019-05-30,Wind,True,matched,61417,Gopher Creek Wind Farm,158.0,4.0
+18INR0070,ERCOT,ERCOT,TX,Blue Summit II,Wind,102.0,2020-04-06,Wind,True,matched,61970,Blue Summit II Wind,99.4,-15.0
+18INR0076,ERCOT,ERCOT,TX,Wolf Hollow 2 repower,Gas,44.0,2022-08-25,Gas,False,"name found, capacity differs >15 %",,,,
+18INR0077,ERCOT,ERCOT,TX,Colorado Bend 2 repower,Gas,45.0,2022-06-30,Gas,False,"name found, capacity differs >15 %",,,,
+18INR0078,ERCOT,ERCOT,TX,Bobcat Bluff repower,Wind,12.0,2020-04-17,Wind,False,"name found, capacity differs >15 %",,,,
+19INR0001,ERCOT,ERCOT,TX,Texas Solar Nova,Solar,253.51,2024-04-30,Solar,True,matched,65654,Texas Solar Nova 1,252.0,-4.0
+19INR0009,ERCOT,ERCOT,TX,Holstein Solar,Solar,204.47,2020-01-16,Solar,True,matched,61962,Holstein 1 Solar Farm,200.0,5.0
+19INR0014,ERCOT,ERCOT,TX,Formosa Increase,Gas,240.0,2023-01-18,Gas,True,matched,10554,Formosa Utility Venture Ltd,244.0,0.0
+19INR0019,ERCOT,ERCOT,TX,Foard City Wind,Wind,350.0,2019-12-05,Wind,True,matched,61402,Foard City Wind,352.8,-3.0
+19INR0029,ERCOT,ERCOT,TX,Phoebe Solar,Solar,250.0,2019-11-26,Solar,True,matched,61906,Phoebe Solar,250.0,0.0
+19INR0034,ERCOT,ERCOT,TX,Greasewood Solar,Solar,255.0,2021-02-09,Solar,True,matched,62804,Greasewood Solar,255.0,0.0
+19INR0038,ERCOT,ERCOT,TX,High Lonesome Wind,Wind,449.5,2021-07-01,Wind,True,matched,62562,"High Lonesome Wind Power, LLC Hybrid",499.5,24.0
+19INR0044,ERCOT,ERCOT,TX,Lily Solar,Solar,146.0,2021-10-08,Solar,True,matched,63892,Lily Solar Hybrid,146.7,0.0
+19INR0045,ERCOT,ERCOT,TX,Nebula Solar,Solar,150.0,2022-10-25,Solar,True,matched,65661,Nebula Solar,135.0,-4.0
+19INR0051,ERCOT,ERCOT,TX,Vera Wind,Wind,208.8,2021-05-26,Wind,False,no EIA plant shares a name word,,,,
+19INR0052,ERCOT,ERCOT,TX,TG East Wind,Wind,336.0,2022-12-08,Wind,False,no usable project name,,,,
+19INR0053,ERCOT,ERCOT,TX,Hidalgo II Wind,Wind,51.0,2021-07-30,Wind,True,matched,62618,Hidalgo Wind Farm II,50.4,-17.0
+19INR0056,ERCOT,ERCOT,TX,LIGNIN (SJRR),Gas,100.0,2022-06-20,Gas,True,matched,62548,SJRR (LIG),100.0,0.0
+19INR0057,ERCOT,ERCOT,TX,Old Bloomington Road,Gas,100.0,2022-01-12,Gas,False,no EIA plant shares a name word,,,,
+19INR0073,ERCOT,ERCOT,TX,McLean (Shakes) Solar,Solar,206.0,2023-09-01,Solar,True,matched,65333,Shakes Solar,200.0,-15.0
+19INR0074,ERCOT,ERCOT,TX,Karankawa 2 Wind,Wind,101.0,2019-11-05,Wind,False,"name found, capacity differs >15 %",,,,
+19INR0081,ERCOT,ERCOT,TX,Anson Solar 1,Solar,201.53,2022-01-20,Solar,True,matched,64026,"ANSON Solar Center, LLC",200.0,-10.0
+19INR0083,ERCOT,ERCOT,TX,Oberon Solar,Solar,180.0,2020-07-13,Solar,False,"name found, capacity differs >15 %",,,,
+19INR0088,ERCOT,ERCOT,TX,Aragorn Solar,Solar,187.2,2021-12-22,Solar,True,matched,63329,Aragorn Solar Project,187.2,0.0
+19INR0091,ERCOT,ERCOT,TX,Phoenix Solar,Solar,82.3,2021-09-01,Solar,False,no EIA plant shares a name word,,,,
+19INR0092,ERCOT,ERCOT,TX,Prospero Solar***,Solar,300.0,2020-06-30,Solar,True,matched,62755,Prospero Solar,300.0,0.0
+19INR0102,ERCOT,ERCOT,TX,Queen Solar Phase I,Solar,200.0,2019-12-12,Solar,False,no EIA plant shares a name word,,,,
+19INR0112,ERCOT,ERCOT,TX,Cranel Wind,Wind,220.0,2022-01-27,Wind,False,no EIA plant shares a name word,,,,
+19INR0114,ERCOT,ERCOT,TX,Rambler Solar,Solar,200.0,2020-10-01,Solar,True,matched,62141,Rambler,200.0,-4.0
+19INR0121,ERCOT,ERCOT,TX,Galloway Solar,Solar,250.0,2021-10-27,Solar,True,matched,61920,Galloway 1 Solar Farm,250.0,0.0
+19INR0128,ERCOT,ERCOT,TX,White Mesa Wind,Wind,500.0,2022-09-01,Wind,True,matched,64710,White Mesa Wind,500.6,-11.0
+19INR0131,ERCOT,ERCOT,TX,Rowland Solar I,Solar,101.75,2023-07-10,Solar,False,no EIA plant shares a name word,,,,
+19INR0145,ERCOT,ERCOT,TX,Aquilla Lake Wind,Wind,202.0,2023-01-31,Wind,False,no EIA plant shares a name word,,,,
+19INR0151,ERCOT,ERCOT,TX,Impact Solar,Solar,198.55,2021-08-20,Solar,True,matched,63222,Impact Solar 1,198.5,-8.0
+19INR0156,ERCOT,ERCOT,TX,Aviator Wind,Wind,525.0,2021-06-22,Wind,True,matched,63209,Aviator Wind,525.0,0.0
+19INR0163,ERCOT,ERCOT,TX,Sage Draw Wind,Wind,338.0,2022-05-04,Wind,True,matched,62620,Sage Draw Wind,338.4,-9.0
+19INR0176,ERCOT,ERCOT,TX,Roughneck Storage,Other,50.0,2022-09-30,Other,False,no EIA plant shares a name word,,,,
+19INR0182,ERCOT,ERCOT,TX,Blue Summit Wind III,Wind,200.0,2019-11-14,Wind,True,matched,62566,Blue Summit III Wind,200.2,1.0
+19INR0184,ERCOT,ERCOT,TX,Oxy Solar,Solar,16.2,2021-02-24,Solar,True,matched,63388,Oxy Renewable Energy - Goldsmith,16.8,-9.0
+19INR0185,ERCOT,ERCOT,TX,Lapetus Solar,Solar,100.0,2020-06-24,Solar,True,matched,62448,Lapetus,100.0,-6.0
+19INR0204,ERCOT,ERCOT,TX,Oak Grove Units 1 & 2 repower,Coal,45.0,2019-06-13,Coal,False,"name found, capacity differs >15 %",,,,
+19INR0205,ERCOT,ERCOT,TX,RIO NOGALES AGP UPGRADE CT1,Gas,19.0,2019-11-20,Gas,False,"name found, capacity differs >15 %",,,,
+19INR0206,ERCOT,ERCOT,TX,Odessa-Ector Unit 1 (Block 1) Uprate,Gas,80.0,2019-06-13,Gas,False,"name found, capacity differs >15 %",,,,
+20INR0011,ERCOT,ERCOT,TX,Ranchero Wind,Wind,300.0,2019-07-31,Wind,True,matched,62259,Ranchero Wind Farm LLC,300.0,2.0
+20INR0031,ERCOT,ERCOT,TX,Rippey Solar,Solar,60.0,2020-12-30,Solar,False,no EIA plant shares a name word,,,,
+20INR0032,ERCOT,ERCOT,TX,Titan Solar,Solar,270.0,2021-11-22,Solar,True,matched,63320,Titan Solar Project,260.0,1.0
+20INR0037,ERCOT,ERCOT,TX,Coniglio Solar,Solar,125.68,2021-08-09,Solar,True,matched,62772,Coniglio Solar,123.6,0.0
+20INR0040,ERCOT,ERCOT,TX,Montgomery Ranch Wind,Wind,200.2,2024-12-13,Wind,True,matched,67095,"Montgomery Ranch Wind Farm, LLC",202.5,1.0
+20INR0042,ERCOT,ERCOT,TX,Chalupa Wind,Wind,174.0,2021-06-10,Wind,True,matched,63624,"La Chalupa, LLC",198.5,0.0
+20INR0045,ERCOT,ERCOT,TX,Maverick Creek I Wind,Wind,373.2,2022-03-29,Wind,False,"name found, capacity differs >15 %",,,,
+20INR0046,ERCOT,ERCOT,TX,Maverick Creek II Wind,Wind,118.8,2022-03-29,Wind,True,matched,56783,Elbow Creek Wind Project LLC,121.9,-159.0
+20INR0052,ERCOT,ERCOT,TX,Griffin Trail Wind,Wind,225.6,2021-10-28,Wind,True,matched,62411,Griffin Trail Wind,225.6,-3.0
+20INR0054,ERCOT,ERCOT,TX,Taygete Solar,Solar,255.07,2021-06-14,Solar,True,matched,62483,Taygete Energy Project LLC,255.0,-3.0
+20INR0068,ERCOT,ERCOT,TX,Blackjack Creek Wind,Wind,240.5,2023-05-12,Wind,True,matched,62783,Blackjack Creek Wind Farm,239.6,0.0
+20INR0074,ERCOT,ERCOT,TX,Pitts Dudik Solar,Solar,50.0,2023-11-03,Solar,True,matched,67024,Pitts Dudik Solar,49.6,0.0
+20INR0080,ERCOT,ERCOT,TX,Frye Solar,Solar,502.0,2024-07-03,Solar,True,matched,64233,Hecate Energy Frye Solar LLC,500.0,-1.0
+20INR0081,ERCOT,ERCOT,TX,Strategic Solar 1,Solar,135.0,2022-12-29,Solar,False,no EIA plant shares a name word,,,,
+20INR0082,ERCOT,ERCOT,TX,Vision Solar 1,Solar,127.2,2022-12-29,Solar,False,no EIA plant shares a name word,,,,
+20INR0088,ERCOT,ERCOT,TX,West Raymond (Trueno) Wind,Wind,239.8,2021-10-26,Wind,True,matched,62855,West Raymond Wind Farm LLC,239.8,0.0
+20INR0089,ERCOT,ERCOT,TX,Chisholm Grid,Other,101.7,2021-10-01,Other,False,no EIA plant shares a name word,,,,
+20INR0098,ERCOT,ERCOT,TX,Danciger Solar,Solar,203.2,2023-01-18,Solar,True,matched,66046,Brazoria County Solar Project (Danciger),200.0,-6.0
+20INR0101,ERCOT,ERCOT,TX,Westoria Solar,Solar,203.35,2022-11-01,Solar,False,no EIA plant shares a name word,,,,
+20INR0120,ERCOT,ERCOT,TX,Vortex Wind,Wind,350.0,2024-04-15,Wind,False,no EIA plant shares a name word,,,,
+20INR0142,ERCOT,ERCOT,TX,Ajax Wind,Wind,366.6,2022-01-26,Wind,False,no EIA plant shares a name word,,,,
+20INR0164,ERCOT,ERCOT,TX,BPL Files Solar,Solar,175.0,2023-08-29,Solar,True,matched,66324,BPL Files Solar,157.5,0.0
+20INR0204,ERCOT,ERCOT,TX,BlueBell Solar II,Solar,115.0,2021-04-28,Solar,True,matched,63351,Bluebell Solar II,115.0,-4.0
+20INR0206,ERCOT,ERCOT,TX,PES1,Gas,306.0,2021-03-30,Gas,False,no EIA plant shares a name word,,,,
+20INR0214,ERCOT,ERCOT,TX,Noble Solar,Solar,279.0,2022-09-19,Solar,True,matched,65271,Noble Solar,275.0,0.0
+20INR0219,ERCOT,ERCOT,TX,Eunice Solar,Solar,426.7,2021-09-24,Solar,False,no EIA plant shares a name word,,,,
+20INR0220,ERCOT,ERCOT,TX,Eunice Storage,Other,40.26,2021-07-14,Other,False,no EIA plant shares a name word,,,,
+20INR0221,ERCOT,ERCOT,TX,Rabbs Power Station,Gas,484.0,2022-05-02,Gas,False,no EIA plant shares a name word,,,,
+20INR0231,ERCOT,ERCOT,TX,Topaz Power Plant,Gas,510.0,2021-10-14,Gas,False,"name found, capacity differs >15 %",,,,
+20INR0249,ERCOT,ERCOT,TX,Appaloosa Run Wind,Wind,175.0,2024-03-06,Wind,True,matched,65335,Appaloosa Run Wind,171.8,-15.0
+20INR0250,ERCOT,ERCOT,TX,Aguayo Wind,Wind,196.0,2023-10-17,Wind,False,no EIA plant shares a name word,,,,
+20INR0256,ERCOT,ERCOT,TX,Aquilla Lake 2 Wind,Wind,100.0,2023-01-31,Wind,False,no EIA plant shares a name word,,,,
+20INR0261,ERCOT,ERCOT,TX,Kellam Solar,Solar,60.0,2020-12-24,Solar,True,matched,62774,Kellam Solar,59.0,0.0
+20INR0262,ERCOT,ERCOT,TX,High Lonesome Wind Phase II,Wind,50.6,2021-07-01,Wind,False,"name found, capacity differs >15 %",,,,
+20INR0268,ERCOT,ERCOT,TX,Pyron BESS II,Other,30.2,2023-07-07,Other,False,no EIA plant shares a name word,,,,
+20INR0272,ERCOT,ERCOT,TX,RIO NOGALES AGP UPGRADE CT3,Gas,19.0,2020-06-09,Gas,False,"name found, capacity differs >15 %",,,,
+20INR0276,ERCOT,ERCOT,TX,North Fork Energy Storage,Other,100.49,2021-10-22,Other,False,no EIA plant shares a name word,,,,
+20INR0280,ERCOT,ERCOT,TX,High Lonesome BESS,Other,51.06,2023-06-27,Other,False,no EIA plant shares a name word,,,,
+20INR0281,ERCOT,ERCOT,TX,Queen BESS,Other,51.06,2023-07-31,Other,False,no EIA plant shares a name word,,,,
+20INR0282,ERCOT,ERCOT,TX,Odessa-Ector Unit 2 (Block 2) Uprate Repower,Gas,83.0,2022-10-26,Gas,False,"name found, capacity differs >15 %",,,,
+20INR0287,ERCOT,ERCOT,TX,STP Unit 1 repower,Nuclear,13.0,2021-04-15,Nuclear,False,no EIA plant shares a name word,,,,
+20INR0290,ERCOT,ERCOT,TX,River Valley Storage 1,Other,51.5,2023-07-31,Other,False,no EIA plant shares a name word,,,,
+20INR0291,ERCOT,ERCOT,TX,Silicon Hill Storage,Other,104.62,2023-04-03,Other,False,no EIA plant shares a name word,,,,
+20INR0293,ERCOT,ERCOT,TX,River Valley Storage 2,Other,51.5,2023-07-31,Other,False,no EIA plant shares a name word,,,,
+20INR0294,ERCOT,ERCOT,TX,Lily Storage,Other,51.74,2021-10-08,Other,False,no EIA plant shares a name word,,,,
+20INR0298,ERCOT,ERCOT,TX,Queen Solar Phase II,Solar,200.0,2020-08-28,Solar,False,no EIA plant shares a name word,,,,
+20INR0305,ERCOT,ERCOT,TX,Vera Wind V110,Wind,34.0,2021-05-26,Wind,False,no EIA plant shares a name word,,,,
+21INR0019,ERCOT,ERCOT,TX,Zier Solar,Solar,162.99,2024-04-26,Solar,True,matched,66137,Zier Solar,160.0,0.0
+21INR0026,ERCOT,ERCOT,TX,Juno Solar (Phase I),Solar,166.12,2021-05-26,Solar,True,matched,63328,Juno Solar Project,162.1,1.0
+21INR0027,ERCOT,ERCOT,TX,Zier Storage,Other,40.41,2024-04-26,Other,False,no EIA plant shares a name word,,,,
+21INR0205,ERCOT,ERCOT,TX,Radian Solar,Solar,327.42,2023-05-16,Solar,True,matched,64859,"IP Radian, LLC",320.0,0.0
+21INR0213,ERCOT,ERCOT,TX,Vancourt Solar,Solar,50.0,2023-01-25,Solar,True,matched,65662,Vancourt Solar Interconnections,45.0,-4.0
+21INR0229,ERCOT,ERCOT,TX,Prospero Solar II,Solar,250.0,2021-09-23,Solar,True,matched,64325,Prospero Solar II,250.0,-1.0
+21INR0233,ERCOT,ERCOT,TX,Taygete II Solar,Solar,203.8,2023-07-17,Solar,True,matched,64075,Taygete II Energy Project,203.8,0.0
+21INR0244,ERCOT,ERCOT,TX,Madero Grid,Other,101.52,2023-03-17,Other,False,no EIA plant shares a name word,,,,
+21INR0276,ERCOT,ERCOT,TX,Elara Solar,Solar,132.4,2022-03-17,Solar,True,matched,64204,Elara Solar,132.4,-3.0
+21INR0281,ERCOT,ERCOT,TX,Byrd Ranch Energy Storage Plant,Other,50.6,2022-10-21,Other,False,no EIA plant shares a name word,,,,
+21INR0323,ERCOT,ERCOT,TX,Spanish Crown,Solar,103.1,2024-01-05,Solar,True,matched,64259,BPL Crown Solar LLC,100.0,0.0
+21INR0325,ERCOT,ERCOT,TX,Sheep Creek Wind,Wind,153.0,2023-11-17,Wind,True,matched,62417,Peyton Creek Wind Farm LLC,151.2,-41.0
+21INR0328,ERCOT,ERCOT,TX,RIO NOGALES UPGRADE CT2 repower,Gas,13.0,2021-05-06,Gas,False,"name found, capacity differs >15 %",,,,
+21INR0357,ERCOT,ERCOT,TX,SP TX-12B BESS,Other,25.12,2023-05-31,Other,False,no usable project name,,,,
+21INR0364,ERCOT,ERCOT,TX,Gambit Batt,Other,102.4,2021-06-14,Other,False,no EIA plant shares a name word,,,,
+21INR0365,ERCOT,ERCOT,TX,Bat Cave Energy Storage,Other,100.49,2021-10-22,Other,False,no EIA plant shares a name word,,,,
+21INR0375,ERCOT,ERCOT,TX,Grizzly Ridge Solar,Solar,100.0,2023-10-20,Solar,True,matched,66410,Grizzly Ridge Solar,100.0,0.0
+21INR0384,ERCOT,ERCOT,TX,Ratliff (Concho Valley) Solar,Solar,159.8,2023-05-25,Solar,True,matched,65793,"Concho Valley Solar, LLC",172.8,0.0
+21INR0387,ERCOT,ERCOT,TX,Anchor Wind,Wind,98.9,2024-04-15,Wind,False,no EIA plant shares a name word,,,,
+21INR0431,ERCOT,ERCOT,TX,Galloway 2 Solar,Solar,113.88,2024-01-04,Solar,True,matched,63343,Galloway 2 Solar Farm,110.0,-3.0
+21INR0434,ERCOT,ERCOT,TX,Golinda Solar,Solar,103.1,2024-02-27,Solar,False,no EIA plant shares a name word,,,,
+21INR0449,ERCOT,ERCOT,TX,Panther Creek III Repower,Wind,15.96,2022-01-05,Wind,False,"name found, capacity differs >15 %",,,,
+21INR0459,ERCOT,ERCOT,TX,DeCordova BESS addition,Other,263.08,2022-07-12,Other,False,no EIA plant shares a name word,,,,
+21INR0460,ERCOT,ERCOT,TX,Republic Road Storage,Other,51.75,2022-06-15,Other,False,no EIA plant shares a name word,,,,
+21INR0467,ERCOT,ERCOT,TX,Apogee Wind,Wind,393.24,2024-04-19,Wind,False,no EIA plant shares a name word,,,,
+21INR0473,ERCOT,ERCOT,TX,Vortex BESS,Other,121.83,2023-09-29,Other,False,no EIA plant shares a name word,,,,
+21INR0474,ERCOT,ERCOT,TX,Anchor BESS,Other,71.45,2023-10-27,Other,False,no EIA plant shares a name word,,,,
+21INR0476,ERCOT,ERCOT,TX,Azure Sky BESS,Other,77.6,2022-05-12,Other,False,no EIA plant shares a name word,,,,
+21INR0477,ERCOT,ERCOT,TX,Azure Sky Solar,Solar,228.4,2021-11-15,Solar,True,matched,63905,Azure Sky Solar,225.0,-4.0
+21INR0479,ERCOT,ERCOT,TX,Endurance Park Storage,Other,51.5,2022-12-28,Other,False,no EIA plant shares a name word,,,,
+21INR0484,ERCOT,ERCOT,TX,Mustang Creek Storage,Other,70.5,2024-03-08,Other,False,"name found, capacity differs >15 %",,,,
+21INR0493,ERCOT,ERCOT,TX,Ellis Solar,Solar,81.0,2023-10-24,Solar,True,matched,63797,Ellis Solar LLC,80.0,0.0
+21INR0496,ERCOT,ERCOT,TX,Flower Valley II Batt,Other,100.98,2022-03-28,Other,False,no EIA plant shares a name word,,,,
+21INR0497,ERCOT,ERCOT,TX,Swoose II,Other,100.98,2022-08-15,Other,False,no EIA plant shares a name word,,,,
+21INR0501,ERCOT,ERCOT,TX,Juno Solar (Phase II),Solar,147.09,2021-08-09,Solar,True,matched,63328,Juno Solar Project,143.5,0.0
+21INR0510,ERCOT,ERCOT,TX,Crossett Power Batt,Other,203.0,2022-05-26,Other,False,no EIA plant shares a name word,,,,
+21INR0512,ERCOT,ERCOT,TX,Colorado Bend I Expansion,Gas,78.0,2023-05-31,Gas,True,matched,56350,Colorado Bend Energy Center,74.0,0.0
+21INR0521,ERCOT,ERCOT,TX,White Mesa 2 Wind,Wind,348.0,2022-09-13,Wind,False,"name found, capacity differs >15 %",,,,
+21INR0522,ERCOT,ERCOT,TX,Madero Unit2,Other,101.52,2023-03-17,Other,False,no EIA plant shares a name word,,,,
+21INR0539,ERCOT,ERCOT,TX,Anchor Wind II,Wind,128.7,2024-04-15,Wind,False,no EIA plant shares a name word,,,,
+21INR0541,ERCOT,ERCOT,TX,Bastrop Energy Center AGP repower Phase I,Gas,21.0,2022-08-02,Gas,False,"name found, capacity differs >15 %",,,,
+22INR0223,ERCOT,ERCOT,TX,Eiffel Solar,Solar,241.0,2023-11-30,Solar,True,matched,66471,Eiffel Solar Project,240.0,0.0
+22INR0254,ERCOT,ERCOT,TX,Pisgah Ridge Solar,Solar,253.85,2024-04-17,Solar,True,matched,65631,"Pisgah Ridge Solar, LLC",250.0,-16.0
+22INR0280,ERCOT,ERCOT,TX,Roseland Storage,Other,51.63,2023-07-06,Other,False,no EIA plant shares a name word,,,,
+22INR0295,ERCOT,ERCOT,TX,Coral Solar,Solar,151.6,2023-11-27,Solar,False,no EIA plant shares a name word,,,,
+22INR0322,ERCOT,ERCOT,TX,Paleo BESS,Other,200.8,2024-07-02,Other,False,no EIA plant shares a name word,,,,
+22INR0325,ERCOT,ERCOT,TX,Dickens BESS,Other,200.8,2024-05-21,Other,False,no EIA plant shares a name word,,,,
+22INR0326,ERCOT,ERCOT,TX,Inertia Wind,Wind,350.0,2023-11-01,Wind,True,matched,65546,Inertia Wind Project,301.0,-10.0
+22INR0327,ERCOT,ERCOT,TX,Hummingbird Storage,Other,103.8,2024-06-24,Other,False,no EIA plant shares a name word,,,,
+22INR0338,ERCOT,ERCOT,TX,Limousin Oak Storage,Other,104.62,2024-05-31,Other,False,no EIA plant shares a name word,,,,
+22INR0352,ERCOT,ERCOT,TX,Sparta Solar,Solar,252.35,2024-04-24,Solar,True,matched,63840,Sparta Solar,250.0,0.0
+22INR0359,ERCOT,ERCOT,TX,Dileo Solar,Solar,71.4,2023-11-14,Solar,True,matched,67023,Dileo Solar,71.4,1.0
+22INR0360,ERCOT,ERCOT,TX,Jade Solar,Solar,326.6,2024-01-02,Solar,False,no EIA plant shares a name word,,,,
+22INR0366,ERCOT,ERCOT,TX,LIBRA BESS,Other,206.21,2024-04-09,Other,False,no EIA plant shares a name word,,,,
+22INR0369,ERCOT,ERCOT,TX,Beachwood Power Station (Mark One),Gas,153.0,2022-11-09,Gas,False,"name found, capacity differs >15 %",,,,
+22INR0371,ERCOT,ERCOT,TX,PES 2 Power Station,Gas,102.0,2021-11-11,Gas,False,no EIA plant shares a name word,,,,
+22INR0372,ERCOT,ERCOT,TX,Hydra BESS,Other,200.8,2024-05-17,Other,False,no EIA plant shares a name word,,,,
+22INR0384,ERCOT,ERCOT,TX,Pavo BESS,Other,175.8,2024-03-07,Other,False,no EIA plant shares a name word,,,,
+22INR0398,ERCOT,ERCOT,TX,Cameron Storage,Other,18.0,2024-03-26,Other,False,no EIA plant shares a name word,,,,
+22INR0405,ERCOT,ERCOT,TX,Fence Post BESS,Other,72.23,2023-12-05,Other,False,no EIA plant shares a name word,,,,
+22INR0410,ERCOT,ERCOT,TX,Stampede BESS,Other,72.38,2023-12-22,Other,False,no EIA plant shares a name word,,,,
+22INR0412,ERCOT,ERCOT,TX,Andromeda Solar,Solar,326.6,2024-01-03,Solar,False,no EIA plant shares a name word,,,,
+22INR0429,ERCOT,ERCOT,TX,Sun Valley BESS,Other,101.4,2023-12-28,Other,False,no EIA plant shares a name word,,,,
+22INR0436,ERCOT,ERCOT,TX,Noble Storage,Other,62.5,2022-10-11,Other,False,no EIA plant shares a name word,,,,
+22INR0485,ERCOT,ERCOT,TX,House Mountain,Other,63.0,2023-12-21,Other,False,no EIA plant shares a name word,,,,
+22INR0490,ERCOT,ERCOT,TX,Callisto I Energy Center,Other,206.4,2024-08-15,Other,False,no EIA plant shares a name word,,,,
+22INR0495,ERCOT,ERCOT,TX,TIMBERWOLF BESS 2,Other,150.0,2023-12-21,Other,False,no EIA plant shares a name word,,,,
+22INR0509,ERCOT,ERCOT,TX,Turquoise Storage,Other,196.21,2023-07-26,Other,False,no EIA plant shares a name word,,,,
+22INR0524,ERCOT,ERCOT,TX,St. Gall I Energy Storage,Other,102.6,2024-03-26,Other,False,no EIA plant shares a name word,,,,
+22INR0535,ERCOT,ERCOT,TX,Bastrop Energy Center AGP repower Phase II,Gas,21.0,2022-08-02,Gas,False,"name found, capacity differs >15 %",,,,
+22INR0550,ERCOT,ERCOT,TX,BLUE SUMMIT I REPOWER,Wind,4.4,2024-04-19,Wind,False,"name found, capacity differs >15 %",,,,
+22INR0551,ERCOT,ERCOT,TX,Wolf Tank Storage,Other,155.48,2023-07-18,Other,False,no EIA plant shares a name word,,,,
+22INR0562,ERCOT,ERCOT,TX,Anchor Wind IV,Wind,19.32,2024-04-15,Wind,False,no EIA plant shares a name word,,,,
+22INR0565,ERCOT,ERCOT,TX,Saragosa BESS1 (Matta Power Station),Other,9.95,2022-07-22,Other,False,no EIA plant shares a name word,,,,
+22INR0570,ERCOT,ERCOT,TX,Saddleback BESS,Other,9.95,2022-05-05,Other,False,no EIA plant shares a name word,,,,
+22INR0571,ERCOT,ERCOT,TX,Faulkner BESS,Other,9.95,2022-05-19,Other,False,no EIA plant shares a name word,,,,
+22INR0572,ERCOT,ERCOT,TX,Catarina BESS (La Huerta BESS),Other,9.95,2022-08-25,Other,False,no EIA plant shares a name word,,,,
+22INR0573,ERCOT,ERCOT,TX,Holcomb BESS (Burro BESS),Other,9.95,2023-01-20,Other,False,no EIA plant shares a name word,,,,
+22INR0574,ERCOT,ERCOT,TX,Coyote Springs BESS,Other,9.95,2022-06-14,Other,False,no EIA plant shares a name word,,,,
+22INR0575,ERCOT,ERCOT,TX,Lonestar BESS,Other,9.95,2022-08-25,Other,False,no EIA plant shares a name word,,,,
+22INR0576,ERCOT,ERCOT,TX,Rattlesnake BESS,Other,9.95,2022-06-23,Other,False,no EIA plant shares a name word,,,,
+22INR0577,ERCOT,ERCOT,TX,Cedarvale BESS,Other,9.95,2022-06-17,Other,False,no EIA plant shares a name word,,,,
+22INR0580,ERCOT,ERCOT,TX,BRP Lopeno BESS,Other,9.95,2022-02-02,Other,False,no EIA plant shares a name word,,,,
+22INR0581,ERCOT,ERCOT,TX,BRP Pueblo I BESS,Other,9.95,2022-02-07,Other,False,no EIA plant shares a name word,,,,
+22INR0582,ERCOT,ERCOT,TX,BRP Pueblo II BESS,Other,9.95,2022-03-08,Other,False,no EIA plant shares a name word,,,,
+22INR0583,ERCOT,ERCOT,TX,BRP Zapata I BESS,Other,9.95,2022-02-07,Other,False,no EIA plant shares a name word,,,,
+22INR0584,ERCOT,ERCOT,TX,BRP Zapata II BESS,Other,9.95,2022-02-04,Other,False,no EIA plant shares a name word,,,,
+22INR0587,ERCOT,ERCOT,TX,Screwbean BESS,Other,9.95,2023-01-31,Other,False,no EIA plant shares a name word,,,,
+22INR0597,ERCOT,ERCOT,TX,RABBS U6 Power Station,Gas,51.0,2022-06-23,Gas,False,no EIA plant shares a name word,,,,
+22INR0598,ERCOT,ERCOT,TX,Noble Storage (BESS1),Other,62.5,2022-10-27,Other,False,no EIA plant shares a name word,,,,
+22INR0601,ERCOT,ERCOT,TX,RABBS U7 U8 Power Station,Gas,102.0,2022-06-23,Gas,False,no EIA plant shares a name word,,,,
+22INR0602,ERCOT,ERCOT,TX,Regis Palacios BESS,Other,9.9,2024-11-19,Other,False,no EIA plant shares a name word,,,,
+22INR0603,ERCOT,ERCOT,TX,Olney BESS,Other,9.95,2023-05-16,Other,True,matched,65832,Olney,9.9,35.0
+22INR0604,ERCOT,ERCOT,TX,RABBS U1 Power Station,Gas,51.0,2022-09-12,Gas,False,no EIA plant shares a name word,,,,
+22INR0607,ERCOT,ERCOT,TX,Beachwood Power Station Phase 2 (Mark One),Gas,153.0,2023-01-06,Gas,False,"name found, capacity differs >15 %",,,,
+23INR0019,ERCOT,ERCOT,TX,Blue Jay BESS,Other,51.63,2023-06-30,Other,False,no EIA plant shares a name word,,,,
+23INR0095,ERCOT,ERCOT,TX,Brotman Power Station,Gas,199.0,2023-06-29,Gas,False,"name found, capacity differs >15 %",,,,
+23INR0114,ERCOT,ERCOT,TX,True North Solar,Solar,238.8,2024-12-20,Solar,True,matched,65998,"True North Solar, LLC",238.8,0.0
+23INR0124,ERCOT,ERCOT,TX,Coral Storage,Other,99.0,2023-12-11,Other,False,no EIA plant shares a name word,,,,
+23INR0154,ERCOT,ERCOT,TX,Ebony Energy Storage,Other,203.5,2024-06-12,Other,False,no EIA plant shares a name word,,,,
+23INR0159,ERCOT,ERCOT,TX,Five Wells BESS,Other,220.8,2024-06-04,Other,False,no EIA plant shares a name word,,,,
+23INR0239,ERCOT,ERCOT,TX,Giga Texas Energy Storage,Other,131.05,2024-08-09,Other,False,"name found, capacity differs >15 %",,,,
+23INR0339,ERCOT,ERCOT,TX,Remy Jade Power Station,Gas,306.0,2024-05-14,Gas,False,"name found, capacity differs >15 %",,,,
+23INR0363,ERCOT,ERCOT,TX,River Bend,Other,101.64,2024-04-16,Other,False,no EIA plant shares a name word,,,,
+23INR0369,ERCOT,ERCOT,TX,Anemoi Energy Storage,Other,205.0,2024-06-11,Other,False,no EIA plant shares a name word,,,,
+23INR0371,ERCOT,ERCOT,TX,Rodeo Ranch Energy Storage,Other,300.64,2023-12-27,Other,False,no EIA plant shares a name word,,,,
+23INR0408,ERCOT,ERCOT,TX,TECO GTG2,Gas,50.0,2024-04-17,Gas,True,matched,57504,TECO CHP-1,50.0,1.0
+23INR0470,ERCOT,ERCOT,TX,BoCo BESS,Other,155.48,2024-08-12,Other,False,no EIA plant shares a name word,,,,
+23INR0472,ERCOT,ERCOT,TX,Frontera Energy Center,Gas,524.0,2023-08-23,Gas,False,"name found, capacity differs >15 %",,,,
+23INR0477,ERCOT,ERCOT,TX,North Alamo BESS,Other,9.99,2023-11-30,Other,False,no EIA plant shares a name word,,,,
+23INR0482,ERCOT,ERCOT,TX,RABBS U2 Power Station,Gas,51.0,2022-07-12,Gas,False,no EIA plant shares a name word,,,,
+23INR0498,ERCOT,ERCOT,TX,Moore Field BESS 2,Other,9.8,2024-06-18,Other,False,no EIA plant shares a name word,,,,
+23INR0506,ERCOT,ERCOT,TX,Beachwood II Power Station,Gas,102.0,2024-12-13,Gas,False,no EIA plant shares a name word,,,,
+23INR0507,ERCOT,ERCOT,TX,Bay City BESS,Other,9.99,2023-10-27,Other,False,no EIA plant shares a name word,,,,
+23INR0508,ERCOT,ERCOT,TX,Los Fresnos BESS,Other,9.99,2023-11-30,Other,False,no EIA plant shares a name word,,,,
+23INR0509,ERCOT,ERCOT,TX,Garceno BESS,Other,9.99,2023-11-30,Other,False,no EIA plant shares a name word,,,,
+23INR0510,ERCOT,ERCOT,TX,Rio Grande City BESS,Other,9.99,2023-11-30,Other,False,no EIA plant shares a name word,,,,
+23INR0511,ERCOT,ERCOT,TX,Mayberry BESS,Other,9.99,2023-12-20,Other,False,no EIA plant shares a name word,,,,
+23INR0512,ERCOT,ERCOT,TX,West Harlingen BESS,Other,9.99,2023-12-14,Other,False,no EIA plant shares a name word,,,,
+23INR0513,ERCOT,ERCOT,TX,Elsa BESS,Other,9.99,2023-12-14,Other,False,no EIA plant shares a name word,,,,
+23INR0514,ERCOT,ERCOT,TX,North Mercedes BESS,Other,9.99,2023-12-14,Other,False,no EIA plant shares a name word,,,,
+23INR0515,ERCOT,ERCOT,TX,Santa Rosa BESS,Other,9.99,2023-12-14,Other,True,matched,65574,Santa Rosa,9.0,-122.0
+23INR0519,ERCOT,ERCOT,TX,Gomez BESS,Other,9.95,2023-05-26,Other,False,no EIA plant shares a name word,,,,
+23INR0521,ERCOT,ERCOT,TX,Junction BESS,Other,9.95,2023-10-24,Other,False,no EIA plant shares a name word,,,,
+23INR0522,ERCOT,ERCOT,TX,Diboll Bess,Other,9.95,2024-03-05,Other,False,no EIA plant shares a name word,,,,
+23INR0525,ERCOT,ERCOT,TX,Pyron Wind Repower,Wind,19.92,2024-06-27,Wind,False,"name found, capacity differs >15 %",,,,
+23INR0528,ERCOT,ERCOT,TX,TAVENER 2,Solar,98.04,2023-10-06,Solar,False,no EIA plant shares a name word,,,,
+23INR0539,ERCOT,ERCOT,TX,Gregory BESS,Other,9.9,2024-11-07,Other,False,no EIA plant shares a name word,,,,
+23INR0541,ERCOT,ERCOT,TX,Telview BESS,Other,9.96,2024-12-04,Other,False,no EIA plant shares a name word,,,,
+23INR0543,ERCOT,ERCOT,TX,Continental BESS,Other,9.8,2024-07-31,Other,False,no EIA plant shares a name word,,,,
+23INR0551,ERCOT,ERCOT,TX,Brotman II Power Station,Gas,102.0,2023-10-23,Gas,False,"name found, capacity differs >15 %",,,,
+23INR0553,ERCOT,ERCOT,TX,Val Verde BESS,Other,9.95,2024-01-24,Other,False,no EIA plant shares a name word,,,,
+23INR0554,ERCOT,ERCOT,TX,Hamilton BESS,Other,9.95,2024-02-22,Other,False,no EIA plant shares a name word,,,,
+23INR0555,ERCOT,ERCOT,TX,Farmersville West BESS 1,Other,9.9,2024-06-18,Other,False,no EIA plant shares a name word,,,,
+23INR0565,ERCOT,ERCOT,TX,Garden City East BESS,Other,9.95,2024-02-29,Other,False,no EIA plant shares a name word,,,,
+23INR0569,ERCOT,ERCOT,TX,Weil Tract BESS,Other,9.9,2024-07-02,Other,False,no EIA plant shares a name word,,,,
+23INR0570,ERCOT,ERCOT,TX,Mineral Wells East BESS,Other,9.95,2024-02-16,Other,False,no EIA plant shares a name word,,,,
+23INR0613,ERCOT,ERCOT,TX,Brotman U1 U2 Power Station,Gas,102.0,2023-06-19,Gas,False,"name found, capacity differs >15 %",,,,
+23INR0620,ERCOT,ERCOT,TX,Falfurrias BESS,Other,9.9,2024-05-21,Other,False,no EIA plant shares a name word,,,,
+24INR0100,ERCOT,ERCOT,TX,Sheep Creek Storage,Other,142.1,2024-07-10,Other,False,"name found, capacity differs >15 %",,,,
+24INR0147,ERCOT,ERCOT,TX,Holy ESS,Other,209.32,2024-12-30,Other,False,no EIA plant shares a name word,,,,
+24INR0273,ERCOT,ERCOT,TX,Al Pastor BESS,Other,103.1,2024-11-01,Other,False,no EIA plant shares a name word,,,,
+24INR0312,ERCOT,ERCOT,TX,Wigeon Whistle BESS,Other,122.9,2024-12-20,Other,False,no EIA plant shares a name word,,,,
+24INR0585,ERCOT,ERCOT,TX,Pauline BESS,Other,9.95,2024-02-22,Other,False,no EIA plant shares a name word,,,,
+24INR0586,ERCOT,ERCOT,TX,Judkins BESS,Other,9.95,2024-02-22,Other,False,no EIA plant shares a name word,,,,
+24INR0587,ERCOT,ERCOT,TX,Lufkin South BESS,Other,9.95,2024-02-21,Other,False,no EIA plant shares a name word,,,,
+24INR0588,ERCOT,ERCOT,TX,Cisco BESS,Other,9.9,2024-05-21,Other,False,no EIA plant shares a name word,,,,
+24INR0610,ERCOT,ERCOT,TX,Century BESS,Other,9.88,2024-12-18,Other,False,no EIA plant shares a name word,,,,
+24INR0614,ERCOT,ERCOT,TX,Russek Street BESS,Other,9.9,2024-12-20,Other,False,no EIA plant shares a name word,,,,
+24INR0615,ERCOT,ERCOT,TX,Pavlov BESS,Other,9.9,2024-05-22,Other,False,no EIA plant shares a name word,,,,
+24INR0624,ERCOT,ERCOT,TX,Mainland BESS,Other,9.9,2024-06-21,Other,False,no EIA plant shares a name word,,,,
+24INR0660,ERCOT,ERCOT,TX,Liggett Switch BESS,Other,9.88,2024-12-19,Other,False,no EIA plant shares a name word,,,,
+24INR0688,ERCOT,ERCOT,TX,SANDLAKE BESS,Other,9.99,2024-08-16,Other,False,no EIA plant shares a name word,,,,
+24INR0736,ERCOT,ERCOT,TX,Remy Jade II Unit 7 Unit 8 Power Station,Gas,102.0,2024-12-11,Gas,False,"name found, capacity differs >15 %",,,,
+25INR0642,ERCOT,ERCOT,TX,Crockett BESS1,Other,9.95,2024-12-13,Other,False,no EIA plant shares a name word,,,,
+TGS_GT01,ERCOT,ERCOT,TX,"Texas Gulf Sulphur 1, TGS_GT01",Gas,94.0,2022-12-20,Gas,True,matched,50137,Texas Gulf Sulphur,101.9,-464.0
+01INR0036,ERCOT,ERCOT,TX,Sweetwater Wind 3,Wind,136.0,2005-12-15,Wind,True,matched,56311,Sweetwater Wind 3 LLC,135.0,0.0
+03INR0034,ERCOT,ERCOT,TX,Silver Star  Project - Clipper,Wind,60.0,2008-05-21,Wind,True,matched,56771,Silver Star I Wind Power Project,52.8,4.0
+04INR0011a,ERCOT,ERCOT,TX,Post Oak,Wind,200.0,2007-09-15,Wind,True,matched,56483,Post Oak Wind LLC,200.0,6.0
+04INR0011d,ERCOT,ERCOT,TX,Mesquite Wind Phase 1,Wind,200.0,2006-11-21,Wind,True,matched,56395,Mesquite Wind Power LLC,200.0,12.0
+04INR0015,ERCOT,ERCOT,TX,Buffalo Gap1,Wind,120.0,2006-04-21,Wind,True,matched,56240,Buffalo Gap Wind Farm,120.6,0.0
+04INR0017,ERCOT,ERCOT,TX,Ocotillo Wind Farm 1 (Big Spring Option B),Wind,59.0,2008-08-01,Wind,True,matched,56959,Ocotillo Windpower,58.8,1.0
+05INR0010,ERCOT,ERCOT,TX,Jack County Generation Facility,Gas,620.0,2005-07-01,Gas,True,matched,55230,Jack County,640.0,7.0
+05INR0013,ERCOT,ERCOT,TX,Battleground,Gas,66.0,1982-01-01,Gas,False,"name found, capacity differs >15 %",,,,
+05INR0015a,ERCOT,ERCOT,TX,Gulf Wind 1,Wind,283.0,2008-11-24,Wind,True,matched,56661,Pattern Gulf Wind,283.2,1.0
+05INR0017,ERCOT,ERCOT,TX,Red Canyon,Wind,84.0,2006-04-15,Wind,False,"name found, capacity differs >15 %",,,,
+05INR0018a,ERCOT,ERCOT,TX,Horse Hollow 2,Wind,186.0,2006-06-01,Wind,True,matched,56291,Horse Hollow Wind Energy Center,213.0,-6.0
+05INR0018b,ERCOT,ERCOT,TX,Horse Hollow 1,Wind,220.0,2005-06-01,Wind,True,matched,56291,Horse Hollow Wind Energy Center,213.0,6.0
+05INR0019,ERCOT,ERCOT,TX,Forest Creek,Wind,215.0,2006-11-01,Wind,True,matched,56979,Panther Creek Wind Farm Three,215.5,33.0
+06INR0008,ERCOT,ERCOT,TX,Big Spring Electricity Generating Facility,Gas,16.0,2006-07-01,Gas,False,no EIA plant shares a name word,,,,
+06INR0012a,ERCOT,ERCOT,TX,Sherbino Mesa Wind Farm 1,Wind,150.0,2008-09-11,Wind,True,matched,57415,Sherbino II,132.0,38.0
+06INR0012b,ERCOT,ERCOT,TX,Sherbino Mesa Wind Farm 2,Wind,150.0,2011-12-21,Wind,True,matched,57415,Sherbino II,132.0,-1.0
+06INR0021,ERCOT,ERCOT,TX,Barton Chapel Wind Farm,Wind,120.0,2007-12-01,Wind,True,matched,57156,Barton Chapel Wind Farm,120.0,13.0
+06INR0022a,ERCOT,ERCOT,TX,Penascal Wind Farm 1,Wind,202.0,2009-04-22,Wind,True,matched,56795,Penascal Wind Power LLC,201.6,0.0
+06INR0022b,ERCOT,ERCOT,TX,Penascal Wind Farm 2,Wind,202.0,2009-04-22,Wind,True,matched,56795,Penascal Wind Power LLC,201.6,0.0
+06INR0022c,ERCOT,ERCOT,TX,Baffin Wind,Wind,202.0,2016-06-30,Wind,True,matched,57927,Baffin Wind,188.0,-18.0
+06INR0035a,ERCOT,ERCOT,TX,Colorado Bend Energy Center 2,Gas,275.0,2007-04-01,Gas,False,"name found, capacity differs >15 %",,,,
+06INR0035b,ERCOT,ERCOT,TX,Colorado Bend Energy Center 1,Gas,275.0,2007-04-01,Gas,False,"name found, capacity differs >15 %",,,,
+06INR0036a,ERCOT,ERCOT,TX,Quail Run Energy Center 2,Gas,275.0,2007-04-12,Gas,True,matched,56349,Quail Run Energy Center,279.29999999999995,1.0
+06INR0036b,ERCOT,ERCOT,TX,Quail Run Energy Center 1,Coal,275.0,2007-04-12,Coal,False,no EIA plant shares a name word,,,,
+06INR0037,ERCOT,ERCOT,TX,Cirello (Buffalo Gap 2),Wind,226.0,2006-04-21,Wind,True,matched,56484,Buffalo Gap 2 Wind Farm,232.5,15.0
+06INR0038,ERCOT,ERCOT,TX,Scurry County Wind Farm,Wind,130.0,2007-05-26,Wind,True,matched,56506,Scurry County Wind LP,130.5,0.0
+06INR0040,ERCOT,ERCOT,TX,Horse Hollow 3,Wind,224.0,2009-10-15,Wind,True,matched,56291,Horse Hollow Wind Energy Center,213.0,-46.0
+07INR0003,ERCOT,ERCOT,TX,Whirlwind,Wind,60.0,2007-11-09,Wind,True,matched,56673,Whirlwind Energy Center,59.8,1.0
+07INR0005,ERCOT,ERCOT,TX,Notrees-1,Wind,93.0,2008-12-19,Wind,False,"name found, capacity differs >15 %",,,,
+07INR0010,ERCOT,ERCOT,TX,Stanton Wind Energy,Wind,120.0,2008-02-01,Wind,True,matched,56644,Stanton Wind Energy LLC,120.0,0.0
+07INR0011,ERCOT,ERCOT,TX,Turkey Track Energy Center,Wind,170.0,2008-11-05,Wind,True,matched,56774,Turkey Track Wind Energy LLC,169.5,0.0
+07INR0018,ERCOT,ERCOT,TX,Capricorn Ridge Wind Project 1,Wind,200.0,2007-08-01,Wind,True,matched,56763,Capricorn Ridge Wind LLC,186.0,8.0
+07INR0022,ERCOT,ERCOT,TX,Airtricity Panther Creek Wind Farm,Wind,150.0,2008-07-25,Wind,True,matched,56920,Panther Creek Wind Farm I,142.5,0.0
+07INR0023,ERCOT,ERCOT,TX,Sweetwater Wind 4,Wind,300.0,2007-03-21,Wind,False,"name found, capacity differs >15 %",,,,
+07INR0027,ERCOT,ERCOT,TX,South Houston Green Power Expansion Project 1,Gas,244.0,2004-04-01,Gas,True,matched,55470,Green Power 2,250.0,61.0
+07INR0028,ERCOT,ERCOT,TX,Goat Wind,Wind,70.0,2008-02-21,Wind,True,matched,56754,Goat Wind LP,69.6,16.0
+07INR0028b,ERCOT,ERCOT,TX,Goat Wind - phase 2,Wind,70.0,2008-02-21,Wind,True,matched,56754,Goat Wind LP,69.6,16.0
+07INR0029,ERCOT,ERCOT,TX,South Trent Wind Farm,Wind,98.0,2008-10-17,Wind,True,matched,56649,South Trent Wind Farm,101.2,3.0
+07INR0030,ERCOT,ERCOT,TX,Louis (Buffalo Gap 3),Wind,138.0,2006-04-21,Wind,True,matched,56240,Buffalo Gap Wind Farm,120.6,0.0
+07INR0034,ERCOT,ERCOT,TX,Wolf Ridge Windfarm,Wind,113.0,2008-10-02,Wind,True,matched,58080,Wolf Ridge Wind,112.5,-2.0
+07INR0037,ERCOT,ERCOT,TX,Bull Creek Wind Plant,Wind,180.0,2009-05-14,Wind,True,matched,56956,Bull Creek Wind,180.0,-5.0
+07INR0040,ERCOT,ERCOT,TX,Camp Springs Wind Farm II,Wind,120.0,2007-05-26,Wind,False,"name found, capacity differs >15 %",,,,
+07INR0041,ERCOT,ERCOT,TX,Capricorn Ridge Wind 2,Wind,150.0,2007-08-01,Wind,False,"name found, capacity differs >15 %",,,,
+07INR0042,ERCOT,ERCOT,TX,Wolfe Flats Wind,Wind,1.0,2007-12-31,Wind,False,"name found, capacity differs >15 %",,,,
+07INR0045a,ERCOT,ERCOT,TX,Airtricity Pyron Wind Farm,Wind,249.0,2008-12-27,Wind,True,matched,56981,Pyron Wind Farm LLC Hybrid,249.0,2.0
+07INR0045b,ERCOT,ERCOT,TX,Airtricity Inadale,Wind,197.0,2008-12-18,Wind,True,matched,56984,Inadale Wind Farm LLC Hybrid,197.0,9.0
+07INR0045d,ERCOT,ERCOT,TX,Airtricity Champion Wind Farm,Wind,126.0,2010-08-02,Wind,True,matched,56592,Champion Wind Farm LLC,126.5,-30.0
+07INR0045e,ERCOT,ERCOT,TX,Roscoe 1,Wind,209.0,2008-01-22,Wind,True,matched,56593,Roscoe Wind Farm LLC,209.0,1.0
+07INR0046,ERCOT,ERCOT,TX,Valley 1,Gas,175.0,1962-11-16,Gas,False,"name found, capacity differs >15 %",,,,
+08INR0003,ERCOT,ERCOT,TX,Sandow 5,Coal,581.0,2009-04-21,Coal,False,no EIA plant shares a name word,,,,
+08INR0011,ERCOT,ERCOT,TX,Senate Wind Project,Wind,150.0,2012-12-17,Wind,True,matched,57981,Senate Wind LLC,150.0,0.0
+08INR0012a,ERCOT,ERCOT,TX,Papalote Creek Wind Farm,Wind,180.0,2009-09-04,Wind,True,matched,56983,Papalote Creek I LLC,180.0,0.0
+08INR0012b,ERCOT,ERCOT,TX,Papalote Creek Phase 2,Wind,198.0,2010-06-01,Wind,True,matched,57212,Papalote Creek II LLC,200.1,6.0
+08INR0018,ERCOT,ERCOT,TX,Gunsight Mt W,Wind,120.0,2016-09-05,Wind,True,matched,56776,Gunsight Mountain Wind Energy LLC,120.0,-3.0
+08INR0028,ERCOT,ERCOT,TX,McAdoo Energy Center,Wind,300.0,2008-08-04,Wind,False,"name found, capacity differs >15 %",,,,
+08INR0033,ERCOT,ERCOT,TX,Lufkin,Gas,45.0,2010-12-15,Gas,False,no EIA plant shares a name word,,,,
+08INR0035,ERCOT,ERCOT,TX,Cedar Bayou 4,Gas,535.0,2009-03-09,Gas,True,matched,56806,Cedar Bayou 4,535.5,3.0
+08INR0037,ERCOT,ERCOT,TX,Airtricity Panther Creek 2,Wind,115.0,2008-12-18,Wind,True,matched,56921,Panther Creek Wind Farm II,115.5,0.0
+08INR0046,ERCOT,ERCOT,TX,Bosque Expansion,Gas,255.0,2000-06-01,Gas,False,no EIA plant shares a name word,,,,
+08INR0049,ERCOT,ERCOT,TX,Bobcat Bluff,Wind,163.0,2013-03-28,Wind,True,matched,57974,Bobcat Bluff Wind Project LLC,161.0,-3.0
+08INR0050,ERCOT,ERCOT,TX,Victoria Power Station,Gas,332.0,2008-11-01,Gas,False,"name found, capacity differs >15 %",,,,
+08INR0053,ERCOT,ERCOT,TX,Elbow Creek Wind Project,Wind,117.0,2008-11-21,Wind,True,matched,56783,Elbow Creek Wind Project LLC,121.9,1.0
+08INR0055,ERCOT,ERCOT,TX,Capricorn Ridge III,Wind,249.0,2007-08-01,Wind,False,"name found, capacity differs >15 %",,,,
+08INR0062,ERCOT,ERCOT,TX,Trinity Hills,Wind,225.0,2011-12-01,Wind,True,matched,57520,Trinity Hills,198.0,0.0
+08INR0063,ERCOT,ERCOT,TX,Capricorn Ridge IV,Wind,105.0,2008-04-15,Wind,True,matched,56763,Capricorn Ridge Wind LLC,112.5,1.0
+08INR0064,ERCOT,ERCOT,TX,Laredo Peaking Power Plant,Gas,193.0,1951-01-01,Gas,True,matched,56604,Hardin County Peaking Facility,173.0,606.0
+09INR0001,ERCOT,ERCOT,TX,Sandy Creek 1,Coal,925.0,2013-07-16,Coal,True,matched,56611,Sandy Creek Energy Station,1008.0,-2.0
+09INR0006a,ERCOT,ERCOT,TX,Oak Grove SES 1,Coal,855.0,2009-04-06,Coal,True,matched,6180,Oak Grove (TX),878.6,24.0
+09INR0006b,ERCOT,ERCOT,TX,Oak Grove SES 2,Coal,855.0,2011-01-13,Coal,True,matched,6180,Oak Grove (TX),878.6,3.0
+09INR0007,ERCOT,ERCOT,TX,Nacogdoches Project,Other,100.0,2012-06-22,Other,True,matched,55708,Nacogdoches Power,114.0,0.0
+09INR0027,ERCOT,ERCOT,TX,Winchester Power Park,Gas,178.0,2009-03-07,Gas,False,"name found, capacity differs >15 %",,,,
+09INR0028,ERCOT,ERCOT,TX,V H Braunig 6,Gas,185.0,1966-01-01,Gas,False,"name found, capacity differs >15 %",,,,
+09INR0029,ERCOT,ERCOT,TX,CFB Power Plant Units 11&12,Coal,260.0,2011-06-23,Coal,False,no EIA plant shares a name word,,,,
+09INR0045,ERCOT,ERCOT,TX,Sand Hill Peakers,Gas,94.0,2001-06-20,Gas,True,matched,7900,Sand Hill,102.8,108.0
+09INR0047,ERCOT,ERCOT,TX,Loraine Windpark,Wind,251.0,2009-10-15,Wind,False,"name found, capacity differs >15 %",,,,
+09INR0051,ERCOT,ERCOT,TX,Mesquite Creek W,Wind,211.0,2015-04-15,Wind,True,matched,59332,Mesquite Creek Wind,211.2,0.0
+09INR0061,ERCOT,ERCOT,TX,WKN Mozart,Wind,30.0,2012-12-20,Wind,True,matched,58048,Mozart Wind Farm,30.0,0.0
+09INR0072,ERCOT,ERCOT,TX,Dansby3,Gas,48.0,1978-09-01,Gas,True,matched,6243,Dansby,49.1,305.0
+09INR0079a,ERCOT,ERCOT,TX,Pearsall Expansion,Gas,100.0,2009-08-18,Gas,False,"name found, capacity differs >15 %",,,,
+09INR0079b,ERCOT,ERCOT,TX,Pearsall Expansion,Gas,100.0,2009-08-18,Gas,False,"name found, capacity differs >15 %",,,,
+09INR0081,ERCOT,ERCOT,TX,Martin Lake Unit 1 Expansion,Coal,18.0,1977-05-16,Coal,False,"name found, capacity differs >15 %",,,,
+09INR0082,ERCOT,ERCOT,TX,Cedro Hill Wind,Wind,150.0,2010-11-23,Wind,True,matched,62630,Jumbo Hill Wind Project,160.7,112.0
+10INR0010,ERCOT,ERCOT,TX,Jack County 2,Gas,565.0,2011-06-01,Gas,True,matched,55230,Jack County,640.0,-64.0
+10INR0020a,ERCOT,ERCOT,TX,Panda Temple 1,Gas,790.0,2014-08-01,Gas,True,matched,58001,Temple Power Station,803.2,-1.0
+10INR0020b,ERCOT,ERCOT,TX,Panda Temple 2 G,Gas,790.0,2015-05-31,Gas,True,matched,58001,Temple Power Station,803.2,-10.0
+10INR0021,ERCOT,ERCOT,TX,Panda Sherman Power,Gas,809.0,2014-08-01,Gas,False,no EIA plant shares a name word,,,,
+10INR0026,ERCOT,ERCOT,TX,Langford Wind Power,Wind,150.0,2009-10-31,Wind,True,matched,57153,Langford Wind Power,150.0,2.0
+10INR0060,ERCOT,ERCOT,TX,Redfish Wind Project,Wind,206.0,2012-09-27,Wind,False,no EIA plant shares a name word,,,,
+10INR0069,ERCOT,ERCOT,TX,Martin Lake Unit 2 Expansion,Coal,13.0,1977-05-16,Coal,False,"name found, capacity differs >15 %",,,,
+10INR0070,ERCOT,ERCOT,TX,Greenville Engine Plant,Gas,25.0,2010-06-01,Gas,False,no EIA plant shares a name word,,,,
+10INR0082,ERCOT,ERCOT,TX,FRV AE Solar,Solar,30.0,2011-11-23,Solar,False,no EIA plant shares a name word,,,,
+11INR0013,ERCOT,ERCOT,TX,Goldthwaite Wind Energy,Wind,149.0,2014-06-06,Wind,True,matched,58321,Goldthwaite Wind Energy Facility,150.0,-6.0
+11INR0014,ERCOT,ERCOT,TX,TECO Central Plant,Gas,50.0,2010-05-03,Gas,True,matched,57504,TECO CHP-1,50.0,168.0
+11INR0015,ERCOT,ERCOT,TX,Panther Creek 3,Wind,200.0,2008-12-18,Wind,True,matched,56979,Panther Creek Wind Farm Three,215.5,8.0
+11INR0033,ERCOT,ERCOT,TX,Los Vientos,Wind,400.0,2013-09-13,Wind,False,"name found, capacity differs >15 %",,,,
+11INR0057,ERCOT,ERCOT,TX,Cameron County Wind,Wind,165.0,2016-01-29,Wind,True,matched,59118,Cameron Wind 1 LLC,165.0,-1.0
+11INR0071,ERCOT,ERCOT,TX,Air Liquide Gulf Coast H2 Plant,Gas,7.0,2011-10-21,Gas,False,"name found, capacity differs >15 %",,,,
+11INR0079a,ERCOT,ERCOT,TX,Shannon Wind,Wind,200.0,2015-12-30,Wind,True,matched,59034,1370 Shannon,204.0,0.0
+11INR0082a,ERCOT,ERCOT,TX,FERMI,Wind,149.3,2017-11-01,Wind,False,no EIA plant shares a name word,,,,
+11INR0088,ERCOT,ERCOT,TX,TAMU Combined Heat & Power,Gas,45.0,2011-07-01,Gas,False,no EIA plant shares a name word,,,,
+11INR0091,ERCOT,ERCOT,TX,Whitetail Wind Energy Project,Wind,92.0,2012-12-21,Wind,True,matched,58021,Whitetail,92.0,0.0
+12INR0034a,ERCOT,ERCOT,TX,Stephens Ranch Wind Energy Phase 1,Wind,211.0,2014-12-08,Wind,True,matched,57983,Stephens Ranch Wind Energy LLC,211.0,0.0
+12INR0034b,ERCOT,ERCOT,TX,Stephens Ranch Wind B,Wind,165.0,2015-05-12,Wind,True,matched,57983,Stephens Ranch Wind Energy LLC,165.0,-1.0
+12INR0059,ERCOT,ERCOT,TX,Barilla Solar,Solar,22.0,2015-03-01,Solar,False,"name found, capacity differs >15 %",,,,
+12INR0068,ERCOT,ERCOT,TX,Sendero Wind,Wind,78.0,2015-12-31,Wind,True,matched,59654,Sendero,78.0,0.0
+12INR0070,ERCOT,ERCOT,TX,Green Pastures W,Wind,300.0,2015-09-25,Wind,False,"name found, capacity differs >15 %",,,,
+12INR0072,ERCOT,ERCOT,TX,Anacacho Windfarm,Wind,100.0,2012-12-27,Wind,True,matched,58000,"Anacacho Wind Farm, LLC",99.8,0.0
+12INR0075,ERCOT,ERCOT,TX,Blue Summit Windfarm,Wind,135.0,2013-12-16,Wind,True,matched,58372,Blue Summit Wind LLC,135.4,-12.0
+12INR0076,ERCOT,ERCOT,TX,Notrees Battery Storage,Battery,36.0,2013-01-21,Battery,True,matched,56961,Notrees Windpower Hybrid,36.0,-1.0
+12INR0086,ERCOT,ERCOT,TX,WA Parish Addition,Gas,75.0,2013-06-26,Gas,False,"name found, capacity differs >15 %",,,,
+13INR0005a,ERCOT,ERCOT,TX,Grandview Phase I (Conway Windfarm),Wind,211.0,2014-12-01,Wind,True,matched,58596,"Grandview Wind Farm, LLC",211.2,0.0
+13INR0005b,ERCOT,ERCOT,TX,Colbeck's Corner W,Wind,200.5,2016-12-01,Wind,True,matched,59068,"Colbeck's Corner, LLC",200.0,-7.0
+13INR0010b,ERCOT,ERCOT,TX,Mariah Del Norte,Wind,230.4,2017-02-28,Wind,True,matched,59005,Mariah del Norte,230.4,-3.0
+13INR0020a,ERCOT,ERCOT,TX,Rattlesnake W 1,Wind,211.0,2015-09-01,Wind,True,matched,59943,Rattlesnake Den,207.2,-2.0
+13INR0021,ERCOT,ERCOT,TX,Ferguson Replacement Project,Gas,570.0,2014-07-31,Gas,True,matched,4937,Thomas C Ferguson,574.6,1.0
+13INR0028,ERCOT,ERCOT,TX,Antelope & Elk 1,Gas,369.4,2016-06-15,Gas,True,matched,58835,Elk Station,399.6,-1.0
+13INR0040,ERCOT,ERCOT,TX,Rentech Project,Gas,16.0,2014-11-01,Gas,False,no EIA plant shares a name word,,,,
+13INR0048,ERCOT,ERCOT,TX,Spinning Spur Wind Two,Wind,161.0,2014-06-01,Wind,True,matched,57973,Spinning Spur Wind LLC,161.0,-19.0
+13INR0049,ERCOT,ERCOT,TX,FEGC,Gas,129.0,2018-11-08,Gas,False,no EIA plant shares a name word,,,,
+13INR0050,ERCOT,ERCOT,TX,Logans Gap Wind I,Wind,211.0,2015-09-15,Wind,True,matched,59442,Logans Gap Wind LLC,200.1,-1.0
+13INR0052,ERCOT,ERCOT,TX,Los Vientos III,Wind,200.0,2015-09-30,Wind,True,matched,57751,Los Vientos Wind 1A,200.0,-33.0
+13INR0055,ERCOT,ERCOT,TX,Javelina Wind,Wind,250.0,2015-12-31,Wind,True,matched,60104,"Javelina Wind Energy, LLC",249.7,0.0
+13INR0056,ERCOT,ERCOT,TX,FLUVANNA,Wind,155.4,2017-11-30,Wind,True,matched,59245,Fluvanna,155.4,0.0
+13INR0057,ERCOT,ERCOT,TX,Windthorst 2,Wind,65.0,2014-10-15,Wind,True,matched,59238,Windthorst-2,67.6,-1.0
+13INR0058,ERCOT,ERCOT,TX,OCI Alamo 1,Solar,50.0,2013-12-13,Solar,False,"name found, capacity differs >15 %",,,,
+13INR0059a,ERCOT,ERCOT,TX,Hereford Wind,Wind,200.0,2015-04-20,Wind,True,matched,58773,TX Hereford Wind,200.0,-4.0
+13INR0059b,ERCOT,ERCOT,TX,Jumbo Road Wind,Wind,300.0,2015-04-15,Wind,True,matched,59621,TX Jumbo Road Wind,299.7,0.0
+13INR0060,ERCOT,ERCOT,TX,Frontera Chillers,Gas,50.0,2013-06-01,Gas,False,"name found, capacity differs >15 %",,,,
+14INR0012a,ERCOT,ERCOT,TX,Miami Wind 1 Project,Wind,289.0,2014-12-01,Wind,True,matched,58765,Miami Wind Energy Center,288.6,-4.0
+14INR0013,ERCOT,ERCOT,TX,San Roman Wind 1,Wind,94.0,2017-02-16,Wind,True,matched,59712,"San Roman Wind I, LLC",95.3,0.0
+14INR0015,ERCOT,ERCOT,TX,Deer Park Energy Center,Gas,190.0,2014-07-01,Gas,True,matched,50304,Shell Deer Park,182.2,-231.0
+14INR0016,ERCOT,ERCOT,TX,Channel Energy Center 138/345kV CT,Gas,194.0,2014-06-01,Gas,True,matched,55299,Channel Energy Center LLC,208.8,0.0
+14INR0023,ERCOT,ERCOT,TX,Longhorn North,Wind,200.0,2015-08-01,Wind,True,matched,58772,Longhorn Wind,200.0,-3.0
+14INR0024,ERCOT,ERCOT,TX,OCI Alamo 4 (Brackettville / ECLIPSE),Solar,38.0,2014-08-31,Solar,True,matched,58717,"OCI Alamo 4, LLC",39.6,0.0
+14INR0025a,ERCOT,ERCOT,TX,South Plains I,Wind,200.0,2015-10-31,Wind,True,matched,59384,South Plains Wind Phase I,200.0,1.0
+14INR0025b,ERCOT,ERCOT,TX,South Plains II Phase a,Wind,151.8,2016-05-31,Wind,False,"name found, capacity differs >15 %",,,,
+14INR0025c,ERCOT,ERCOT,TX,South Plains II Phase b,Wind,148.5,2016-05-31,Wind,False,"name found, capacity differs >15 %",,,,
+14INR0030a_2,ERCOT,ERCOT,TX,Panhandle Wind 1,Wind,218.0,2014-07-31,Wind,True,matched,58242,Pattern Panhandle Wind LLC,218.0,0.0
+14INR0030b,ERCOT,ERCOT,TX,Panhandle Wind 2,Wind,182.0,2014-11-01,Wind,True,matched,58720,Pattern Panhandle Wind 2 LLC,181.7,0.0
+14INR0031,ERCOT,ERCOT,TX,BTE (Baytown Chiller),Gas,270.0,2018-03-01,Gas,False,"name found, capacity differs >15 %",,,,
+14INR0032a,ERCOT,ERCOT,TX,Route 66 Wind,Wind,150.0,2015-07-01,Wind,True,matched,58681,Route 66 Wind Plant,150.0,1.0
+14INR0038,ERCOT,ERCOT,TX,BAC,Gas,390.0,2018-12-31,Gas,False,no EIA plant shares a name word,,,,
+14INR0039,ERCOT,ERCOT,TX,Ector County Energy Center G,Gas,341.0,2015-09-15,Gas,True,matched,58471,Ector County Energy Center,358.8,-1.0
+14INR0040,ERCOT,ERCOT,TX,Redgate G,Gas,225.0,2016-12-20,Gas,False,no EIA plant shares a name word,,,,
+14INR0041a,ERCOT,ERCOT,TX,BBREEZE,Wind,228.0,2017-12-01,Wind,False,no EIA plant shares a name word,,,,
+14INR0047,ERCOT,ERCOT,TX,Wake Wind,Wind,257.3,2016-10-30,Wind,True,matched,58766,Wake Wind Energy Center,257.3,0.0
+14INR0049_2,ERCOT,ERCOT,TX,Keechi Wind 138 kV Joplin,Wind,102.0,2015-01-05,Wind,True,matched,58838,Keechi Wind,110.0,0.0
+14INR0053,ERCOT,ERCOT,TX,Spinning Spur W 3,Wind,194.0,2015-10-18,Wind,True,matched,58775,Spinning Spur Wind III,194.0,-1.0
+14INR0057,ERCOT,ERCOT,TX,BUCKTHORN WIND,Wind,100.5,2017-11-06,Wind,True,matched,60983,Buckthorn Wind,100.5,1.0
+14INR0060,ERCOT,ERCOT,TX,Horse Creek Wind,Wind,230.0,2017-01-31,Wind,True,matched,60339,Horse Creek Wind Farm,230.0,-3.0
+14INR0060b,ERCOT,ERCOT,TX,SALVTION,Wind,230.0,2017-11-14,Wind,False,no EIA plant shares a name word,,,,
+14INR0062,ERCOT,ERCOT,TX,Salt Fork 1 Wind,Wind,174.0,2017-07-01,Wind,True,matched,60657,"Salt Fork Wind Project, LLC",174.0,-7.0
+14INR0069,ERCOT,ERCOT,TX,Sandow Unit 5,Coal,30.0,2014-10-31,Coal,False,no EIA plant shares a name word,,,,
+14INR0072,ERCOT,ERCOT,TX,Briscoe Wind,Wind,150.0,2015-10-30,Wind,True,matched,59734,Briscoe Wind Farm,150.0,0.0
+14INR0077,ERCOT,ERCOT,TX,TPC Power,Gas,9.0,2015-06-08,Gas,False,no EIA plant shares a name word,,,,
+15INR0021,ERCOT,ERCOT,TX,Los Vientos V,Wind,110.0,2016-09-30,Wind,True,matched,60059,Los Vientos V Wind Power,110.0,-9.0
+15INR0032,ERCOT,ERCOT,TX,Elk 2,Gas,202.0,2016-06-15,Gas,True,matched,58835,Elk Station,199.8,-12.0
+15INR0033,ERCOT,ERCOT,TX,Elk 3,Gas,202.0,2016-06-15,Gas,True,matched,58835,Elk Station,199.8,-12.0
+15INR0036,ERCOT,ERCOT,TX,Downie Ranch Solar,Solar,95.0,2015-12-15,Solar,False,no EIA plant shares a name word,,,,
+15INR0037,ERCOT,ERCOT,TX,Los Vientos IV,Wind,200.0,2016-12-01,Wind,True,matched,57751,Los Vientos Wind 1A,200.0,-48.0
+15INR0045,ERCOT,ERCOT,TX,RIGGINS,Solar,150.0,2018-06-30,Solar,False,no EIA plant shares a name word,,,,
+15INR0049,ERCOT,ERCOT,TX,Javelina 2 Wind,Wind,200.0,2017-02-12,Wind,True,matched,60645,"Javelina Wind Energy II, LLC",200.0,-3.0
+15INR0061,ERCOT,ERCOT,TX,LASSO,Solar,50.0,2018-06-01,Solar,False,no EIA plant shares a name word,,,,
+15INR0064,ERCOT,ERCOT,TX,Niels Bohr (BearKat Wind A),Wind,197.0,2018-02-02,Wind,True,matched,59972,Bearkat,196.7,0.0
+15INR0070_1,ERCOT,ERCOT,TX,West Texas Solar,Solar,110.0,2017-03-01,Solar,False,"name found, capacity differs >15 %",,,,
+15INR0070_1b,ERCOT,ERCOT,TX,SIRIUS_UNIT2 (Pearl Solar),Solar,50.0,2017-10-15,Solar,True,matched,60682,Pearl Solar,50.0,0.0
+15INR0074,ERCOT,ERCOT,TX,Falvez Astra W,Wind,163.2,2017-06-01,Wind,True,matched,60856,Astra Wind Farm,163.0,-1.0
+15INR0082,ERCOT,ERCOT,TX,Flat Top Wind I,Wind,200.0,2018-10-01,Wind,True,matched,61212,Flat Top Wind I,200.0,-9.0
+15INR0085,ERCOT,ERCOT,TX,Tyler Bluff Wind,Wind,125.6,2017-04-01,Wind,True,matched,60502,"Tyler Bluff Wind Project, LLC",125.6,-4.0
+16INR0009,ERCOT,ERCOT,TX,CALHOUN (Port Comfort),Gas,100.0,2017-10-15,Gas,True,matched,61242,"Tres Port Power, LLC",100.0,21.0
+16INR0023,ERCOT,ERCOT,TX,LMESASLR (BNB Lamesa Solar 1),Solar,101.6,2018-02-15,Solar,True,matched,60372,Lamesa Solar,102.0,-10.0
+16INR0024,ERCOT,ERCOT,TX,Hidalgo & Starr Wind,Wind,250.0,2019-12-31,Wind,True,matched,57617,Hidalgo Wind Farm LLC,250.0,-36.0
+16INR0037,ERCOT,ERCOT,TX,Cotton Plains Wind,Wind,50.0,2017-05-15,Wind,True,matched,60210,Cotton Plains Wind Farm,50.4,-2.0
+16INR0037b,ERCOT,ERCOT,TX,Old Settler Wind,Wind,150.0,2017-02-05,Wind,True,matched,60366,Old Settler Wind,151.2,2.0
+16INR0048,ERCOT,ERCOT,TX,RE Roserock Solar,Solar,160.0,2016-10-31,Solar,True,matched,59994,RE Roserock,160.0,1.0
+16INR0052,ERCOT,ERCOT,TX,Solara Solar,Solar,106.0,2016-09-30,Solar,False,no EIA plant shares a name word,,,,
+16INR0055,ERCOT,ERCOT,TX,SANTACRU,Wind,250.0,2017-11-14,Wind,False,no EIA plant shares a name word,,,,
+16INR0057,ERCOT,ERCOT,TX,Sky Global Power One,Gas,51.4,2016-06-01,Gas,True,matched,59938,Sky Global Power One,51.0,-1.0
+16INR0062a,ERCOT,ERCOT,TX,Electra Wind,Wind,230.0,2017-01-31,Wind,True,matched,60338,Electra Wind Farm,230.0,-2.0
+16INR0065,ERCOT,ERCOT,TX,CASL_GAP (Castle Gap Solar),Solar,180.0,2018-06-01,Solar,True,matched,60123,Castle Gap Solar Hybrid,180.0,-1.0
+16INR0065b,ERCOT,ERCOT,TX,SPTX12B (CED Upton Solar),Solar,157.5,2017-09-15,Solar,True,matched,60581,Upton County Solar,150.0,3.0
+16INR0073,ERCOT,ERCOT,TX,East Pecos Solar,Solar,120.0,2017-03-01,Solar,True,matched,60436,East Pecos Solar,118.5,1.0
+16INR0087,ERCOT,ERCOT,TX,RTS 1 Wind,Wind,160.0,2018-08-22,Wind,False,no EIA plant shares a name word,,,,
+16INR0091,ERCOT,ERCOT,TX,HICKMAN,Wind,300.0,2018-05-30,Wind,False,no EIA plant shares a name word,,,,
+16INR0122,ERCOT,ERCOT,TX,Blue Summit Battery,Battery,30.0,2017-08-01,Battery,True,matched,60690,"Blue Summit Storage, LLC",30.0,0.0
+17INR0007,ERCOT,ERCOT,TX,Colorado Bend II,Gas,1148.0,2017-06-29,Gas,True,matched,60122,Colorado Bend II,1230.3,0.0
+17INR0009,ERCOT,ERCOT,TX,Wolf Hollow 2,Gas,1118.0,2017-05-01,Gas,True,matched,59812,Wolf Hollow II,1231.2,1.0
+17INR0027,ERCOT,ERCOT,TX,Dermott Wind 1,Wind,250.0,2017-08-07,Wind,True,matched,60902,Dermott Wind,253.0,-1.0
+17INR0042,ERCOT,ERCOT,TX,CHAMON,Gas,100.0,2017-10-31,Gas,False,"name found, capacity differs >15 %",,,,
+18INR0013,ERCOT,ERCOT,TX,Denton Energy Center,Gas,225.8,2018-08-15,Gas,True,matched,61643,Denton Energy Center,225.60000000000002,-1.0

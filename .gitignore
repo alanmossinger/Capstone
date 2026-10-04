@@ -1,0 +1,13 @@
+# secrets
+.env
+
+# data that is not redistributed (LBNL terms) or is rebuilt by the notebooks
+data/raw/
+data/interim/
+
+# local environment and caches
+.venv/
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.pytest_cache/

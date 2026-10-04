@@ -1,0 +1,30 @@
+{
+  "n_rows": 36441,
+  "n_cols": 31,
+  "q_status": {
+    "withdrawn": 20921,
+    "active": 10538,
+    "operational": 4432,
+    "suspended": 546,
+    "unknown": 4
+  },
+  "region": {
+    "PJM": 8152,
+    "West": 7675,
+    "MISO": 4978,
+    "Southeast": 3950,
+    "ERCOT": 3282,
+    "CAISO": 2837,
+    "SPP": 2469,
+    "NYISO": 1817,
+    "ISO-NE": 1281
+  },
+  "placeholder_q_date": 204,
+  "missing_q_date": 607,
+  "negative_mw_rows": 17,
+  "zero_mw_rows": 0,
+  "mw_over_5000_rows": 2,
+  "max_mw": 16875.0,
+  "duplicate_key_rows": 2,
+  "missing_q_year": 607
+}
