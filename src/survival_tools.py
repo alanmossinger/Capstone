@@ -218,3 +218,131 @@ def cif_from_hazards(h_operation, h_withdrawal):
     staying = np.cumprod(1 - h_operation - h_withdrawal, axis=1)
     before = np.concatenate([np.ones((h_operation.shape[0], 1)), staying[:, :-1]], axis=1)
     return np.cumsum(before * h_operation, axis=1), np.cumsum(before * h_withdrawal, axis=1)
+
+
+def baseline_cif(train, target, horizons, min_n=50):
+    """The "industry average" predictor: Aalen–Johansen CIF of operation in the project's region × technology cell.
+
+    Parameters
+    ----------
+    train : pandas.DataFrame
+        Training requests with ``region``, ``tech``, ``duration_years``, ``event``.
+    target : pandas.DataFrame
+        Requests to predict for (needs ``region`` and ``tech``).
+    horizons : list of int
+        Years at which to report P(operation by t).
+    min_n : int
+        Cells with fewer training requests fall back to the region's curve.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Index of ``target``, one column per horizon, plus ``cell`` saying
+        which estimate was used ("region × technology" or "region").
+
+    Notes
+    -----
+    This is what a developer or lender uses today: the historical completion
+    rate of similar projects. Withdrawal dates do not enter the operation
+    curve's risk sets in a way that changes it (notebook 04 shows stamped
+    withdrawals leave it unchanged), so the cells use the dates as recorded.
+    """
+    cells, regions = {}, {}
+    for (region, tech), part in train.groupby(["region", "tech"]):
+        if len(part) >= min_n:
+            cells[(region, tech)] = aalen_johansen(part["duration_years"], part["event"], horizons)["cif_operation"].to_numpy()
+    for region, part in train.groupby("region"):
+        regions[region] = aalen_johansen(part["duration_years"], part["event"], horizons)["cif_operation"].to_numpy()
+    rows, used = [], []
+    for region, tech in zip(target["region"], target["tech"]):
+        if (region, tech) in cells:
+            rows.append(cells[(region, tech)])
+            used.append("region × technology")
+        else:
+            rows.append(regions[region])
+            used.append("region")
+    out = pd.DataFrame(rows, index=target.index, columns=horizons)
+    out["cell"] = used
+    return out
+
+
+COX_TECH_LEVELS = ["Solar+Battery", "Wind", "Offshore Wind", "Battery", "Gas", "Other"]  # reference: Solar
+COX_SIZE_LEVELS = ["<5", "5–<20", "100–<200", "200–<500", "≥500"]  # reference: 20–<100 MW
+COX_SERVICE_LEVELS = ["ERIS", "missing"]  # reference: NRIS; NRIS/ERIS occurs only in SPP, outside Track A
+
+
+def cox_design(frame):
+    """Numeric design matrix for the Cox models (one row per request).
+
+    Parameters
+    ----------
+    frame : pandas.DataFrame
+        Track A rows with ``region``, ``tech``, ``size_regime``, ``service``,
+        ``q_year``, ``congestion_gw`` and ``congestion_rank``.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Indicator columns against the reference levels PJM, Solar, 20–<100 MW
+        and NRIS; ``q_year_5`` (request year in 5-year units, 0 = 2010);
+        ``log_congestion_gw`` (log of 1 + GW waiting at entry);
+        ``congestion_rank`` (missing for a region's first request → 0.5).
+
+    Notes
+    -----
+    Region enters as indicators, not strata: with ERCOT's delayed entry
+    (decision #21) an ERCOT-only baseline would have almost nobody at risk in
+    the first years, while a shared baseline lets ERCOT borrow its early-year
+    shape from PJM and CAISO (decision #24). Size enters as regimes, so the
+    20 MW step can show. The separate hybrid flag is left out because
+    Solar+Battery already carries it.
+    """
+    X = pd.DataFrame(index=frame.index)
+    for region in ["ERCOT", "CAISO"]:
+        X[f"region_{region}"] = (frame["region"] == region).astype(float)
+    for tech in COX_TECH_LEVELS:
+        X[f"tech_{tech}"] = (frame["tech"] == tech).astype(float)
+    for size in COX_SIZE_LEVELS:
+        X[f"size_{size}"] = (frame["size_regime"].astype(str) == size).astype(float)
+    for service in COX_SERVICE_LEVELS:
+        X[f"service_{service}"] = (frame["service"] == service).astype(float)
+    X["q_year_5"] = (frame["q_year"].astype(float) - 2010) / 5
+    X["log_congestion_gw"] = np.log1p(frame["congestion_gw"].astype(float))
+    X["congestion_rank"] = frame["congestion_rank"].astype(float).fillna(0.5)
+    return X
+
+
+def cause_specific_cif(model_operation, model_withdrawal, X, horizons, step=1 / 12):
+    """CIF of operation from two cause-specific Cox models.
+
+    Parameters
+    ----------
+    model_operation, model_withdrawal : lifelines.CoxPHFitter
+        Fitted for operation (withdrawal censored) and for withdrawal.
+    X : pandas.DataFrame
+        Design rows to predict for.
+    horizons : list of int
+        Years at which to report.
+    step : float
+        Grid step in years for the integral.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Index of ``X``, one column per horizon: P(operation by t).
+
+    Notes
+    -----
+    CIF_op(t) = Σ S(t_{k−1}) · ΔΛ_op(t_k), with S = exp(−Λ_op − Λ_wd): a project
+    can only start operating while it is still in the queue, so the
+    operation hazard is weighted by the chance of not having left either way.
+    """
+    grid = np.arange(0, max(horizons) + step / 2, step)
+    cum_op = model_operation.predict_cumulative_hazard(X, times=grid).to_numpy().T
+    cum_wd = model_withdrawal.predict_cumulative_hazard(X, times=grid).to_numpy().T
+    survival = np.exp(-(cum_op + cum_wd))
+    before = np.concatenate([np.ones((len(X), 1)), survival[:, :-1]], axis=1)
+    increment = np.diff(np.concatenate([np.zeros((len(X), 1)), cum_op], axis=1), axis=1)
+    cif = np.cumsum(before * increment, axis=1)
+    columns = [int(round(h / step)) for h in horizons]
+    return pd.DataFrame(cif[:, columns], index=X.index, columns=horizons)

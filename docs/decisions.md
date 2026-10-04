@@ -119,3 +119,20 @@ alternative rejected.
 23. **PJM's 2024-12-18 withdrawals kept as recorded** (Alan, 2026-10-03):
     456 PJM withdrawals share that date, which may be a real deadline of
     PJM's queue reform; nothing in the file says otherwise.
+24. **Cox models: region as covariate, not strata** (2026-10-03, notebook
+    05). PLAN.md §6 stratifies the cause-specific Cox models by region. With
+    ERCOT's delayed entry (#21) every ERCOT training project enters the risk
+    set at least 1.66 years after its request, so an ERCOT-only baseline
+    hazard would have almost no one at risk in the first years and could not
+    predict 3-year outcomes. Region therefore enters as indicators with a
+    shared baseline, which also gives the region hazard ratios the plan's
+    sign check asks for. Whether region's effect is proportional is tested
+    with the Schoenfeld diagnostics; non-proportional effects are left to the
+    discrete-time models of notebook 06, which give each region its own
+    year-in-queue profile. *Rejected:* stratified Cox (ERCOT's early baseline
+    not identified under delayed entry). The separate `hybrid` flag is left
+    out of the Cox design because the Solar+Battery group already carries it.
+25. **PH diagnostics on the as-recorded fit** (2026-10-03). lifelines cannot
+    compute Schoenfeld residuals with delayed entry, so the proportional-
+    hazards tests and plots use the same covariates fitted on the dates as
+    recorded (the sensitivity version of #21).

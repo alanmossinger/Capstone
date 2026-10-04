@@ -83,3 +83,24 @@ def test_life_table_hazards_reproduce_aalen_johansen_at_whole_years():
     exact = survival_tools.aalen_johansen(durations, events, [1, 2, 3, 4, 5])["cif_operation"].to_numpy()
     # yearly grouping blurs exact times, so allow a small difference
     assert np.allclose(cif_op[0], exact, atol=0.02)
+
+
+def test_cause_specific_cox_cif_matches_aalen_johansen_without_effects():
+    from lifelines import CoxPHFitter
+    durations, events = _toy(n=3000, seed=5)
+    noise = np.random.default_rng(6).normal(size=len(durations))  # a covariate with no effect
+    frame = pd.DataFrame({"x": noise, "T": durations})
+    op = CoxPHFitter().fit(frame.assign(E=(events == 1).astype(int)), "T", "E")
+    wd = CoxPHFitter().fit(frame.assign(E=(events == 2).astype(int)), "T", "E")
+    cif = survival_tools.cause_specific_cif(op, wd, frame[["x"]], [1, 3, 5]).mean()
+    exact = survival_tools.aalen_johansen(durations, events, [1, 3, 5])["cif_operation"].to_numpy()
+    assert np.allclose(cif.to_numpy(), exact, atol=0.02)
+
+
+def test_baseline_falls_back_to_region_for_small_cells():
+    durations, events = _toy(n=300, seed=7)
+    train = pd.DataFrame({"duration_years": durations, "event": events, "region": "R",
+                          "tech": np.where(np.arange(300) < 280, "Solar", "Gas")})
+    target = pd.DataFrame({"region": ["R", "R"], "tech": ["Solar", "Gas"]})
+    out = survival_tools.baseline_cif(train, target, [3, 5], min_n=50)
+    assert out["cell"].tolist() == ["region × technology", "region"]

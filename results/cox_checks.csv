@@ -1,0 +1,6 @@
+check,passed,result
+region hazard ratios for operation in the expected order (ERCOT > PJM > CAISO),True,PASS
+requests of 20 MW or more slower than smaller ones (operation),True,PASS
+PH diagnostics saved (tests and Schoenfeld plots),True,PASS
+"hazard-ratio table has HR, 95% CI and p for both causes",True,PASS
+predictions for every validation and test request at 3/5/7 years,True,PASS

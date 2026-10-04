@@ -5,8 +5,8 @@ Author: Alan Mössinger.
 
 > **Status (2026-10-03):** the data gate reads GO
 > ([`docs/data_readiness.md`](docs/data_readiness.md)); notebooks 01 (data),
-> 02 (cleaning) and 03 (survival curves) run end to end. Modeling starts with
-> notebook 04.
+> 02 (cleaning), 03 (survival curves), 04 (samples and features) and 05
+> (baseline and Cox models) run end to end. Next: discrete-time models (06).
 
 ## About
 

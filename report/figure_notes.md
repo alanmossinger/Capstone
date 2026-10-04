@@ -492,6 +492,86 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** Predicted versus observed P(operation by 3, 5 and 7 years) for ERCOT 2016 entrants under three treatments of the bulk-dated withdrawals.
 <!-- /fig:04_08_ercot_treatment_validation -->
 
+<!-- fig:05_01_baseline_cells -->
+### 05_01_baseline_cells
+
+![05_01_baseline_cells](../figures/05_cox_models/05_01_baseline_cells.png)
+
+*Notebook:* `notebooks/05_cox_models.ipynb` · *Files:* `figures/05_cox_models/05_01_baseline_cells.png`, `.svg`
+
+**Caption (stub).** Baseline P(operation by 3, 5 and 7 years) for each region × technology cell of the training data.
+<!-- /fig:05_01_baseline_cells -->
+
+<!-- fig:05_02_penalizer_tuning -->
+### 05_02_penalizer_tuning
+
+![05_02_penalizer_tuning](../figures/05_cox_models/05_02_penalizer_tuning.png)
+
+*Notebook:* `notebooks/05_cox_models.ipynb` · *Files:* `figures/05_cox_models/05_02_penalizer_tuning.png`, `.svg`
+
+**Caption (stub).** Validation log partial likelihood of the cause-specific Cox models by ridge penalty.
+<!-- /fig:05_02_penalizer_tuning -->
+
+<!-- fig:05_03_hazard_ratios -->
+### 05_03_hazard_ratios
+
+![05_03_hazard_ratios](../figures/05_cox_models/05_03_hazard_ratios.png)
+
+*Notebook:* `notebooks/05_cox_models.ipynb` · *Files:* `figures/05_cox_models/05_03_hazard_ratios.png`, `.svg`
+
+**Caption (stub).** Hazard ratios of the cause-specific Cox models for operation and withdrawal (forest plot).
+<!-- /fig:05_03_hazard_ratios -->
+
+<!-- fig:05_04_ph_tests -->
+### 05_04_ph_tests
+
+![05_04_ph_tests](../figures/05_cox_models/05_04_ph_tests.png)
+
+*Notebook:* `notebooks/05_cox_models.ipynb` · *Files:* `figures/05_cox_models/05_04_ph_tests.png`, `.svg`
+
+**Caption (stub).** Proportional-hazards test p-values for each covariate of the two cause-specific Cox models.
+<!-- /fig:05_04_ph_tests -->
+
+<!-- fig:05_05_sensitivity_ercot_dates -->
+### 05_05_sensitivity_ercot_dates
+
+![05_05_sensitivity_ercot_dates](../figures/05_cox_models/05_05_sensitivity_ercot_dates.png)
+
+*Notebook:* `notebooks/05_cox_models.ipynb` · *Files:* `figures/05_cox_models/05_05_sensitivity_ercot_dates.png`, `.svg`
+
+**Caption (stub).** Hazard ratios of the main Cox fit against the fit with ERCOT's withdrawal dates as recorded.
+<!-- /fig:05_05_sensitivity_ercot_dates -->
+
+<!-- fig:05_06_validation_check -->
+### 05_06_validation_check
+
+![05_06_validation_check](../figures/05_cox_models/05_06_validation_check.png)
+
+*Notebook:* `notebooks/05_cox_models.ipynb` · *Files:* `figures/05_cox_models/05_06_validation_check.png`, `.svg`
+
+**Caption (stub).** Mean predicted versus observed P(operation by 3, 5 and 7 years) on the 2016 validation cohort, by region.
+<!-- /fig:05_06_validation_check -->
+
+<!-- fig:05_07_reference_request -->
+### 05_07_reference_request
+
+![05_07_reference_request](../figures/05_cox_models/05_07_reference_request.png)
+
+*Notebook:* `notebooks/05_cox_models.ipynb` · *Files:* `figures/05_cox_models/05_07_reference_request.png`, `.svg`
+
+**Caption (stub).** Predicted P(operation by year) for the same reference solar request in each region.
+<!-- /fig:05_07_reference_request -->
+
+<!-- fig:05_08_test_prediction_spread -->
+### 05_08_test_prediction_spread
+
+![05_08_test_prediction_spread](../figures/05_cox_models/05_08_test_prediction_spread.png)
+
+*Notebook:* `notebooks/05_cox_models.ipynb` · *Files:* `figures/05_cox_models/05_08_test_prediction_spread.png`, `.svg`
+
+**Caption (stub).** Distribution of 5-year predictions for the test entrants, Cox models versus baseline.
+<!-- /fig:05_08_test_prediction_spread -->
+
 <!-- fig:F1_cif_by_region -->
 ### F1_cif_by_region
 
@@ -531,3 +611,23 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 
 **Caption (stub).** Probability of reaching operation within five years against the capacity already waiting in the same region's queue at entry, by fifths of congestion, for CAISO, ERCOT and PJM.
 <!-- /fig:F8_congestion_vs_completion -->
+
+<!-- fig:diag_schoenfeld_operation -->
+### diag_schoenfeld_operation
+
+![diag_schoenfeld_operation](../figures/05_cox_models/diag_schoenfeld_operation.png)
+
+*Notebook:* `notebooks/05_cox_models.ipynb` · *Files:* `figures/05_cox_models/diag_schoenfeld_operation.png`, `.svg`
+
+**Caption (stub).** Scaled Schoenfeld residuals over time for the covariates with the strongest evidence of non-proportional hazards in the operation model.
+<!-- /fig:diag_schoenfeld_operation -->
+
+<!-- fig:diag_schoenfeld_withdrawal -->
+### diag_schoenfeld_withdrawal
+
+![diag_schoenfeld_withdrawal](../figures/05_cox_models/diag_schoenfeld_withdrawal.png)
+
+*Notebook:* `notebooks/05_cox_models.ipynb` · *Files:* `figures/05_cox_models/diag_schoenfeld_withdrawal.png`, `.svg`
+
+**Caption (stub).** Scaled Schoenfeld residuals over time for the covariates with the strongest evidence of non-proportional hazards in the withdrawal model.
+<!-- /fig:diag_schoenfeld_withdrawal -->

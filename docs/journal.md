@@ -104,3 +104,37 @@ avoids that code path.
 5. PJM has 456 withdrawals dated 2024-12-18, inside the test window. They
    may be a real deadline of PJM's queue reform; I have not verified it.
    Keep them as recorded unless you know otherwise?
+
+## 2026-10-03 (evening) — notebooks 04 and 05
+
+**Done**
+
+- Alan approved the recommendations (ambition gap → ablation only; ERCOT
+  delayed entry; PJM 2024-12-18 kept). Decisions #21–#25.
+- Notebook 04: Track A 13,366 (1,730 : 7,064), Track B 14,624, test cohort
+  2,268 (301 built, 627 still waiting); entry-time features with leakage
+  tests (9 tests); the stored ambition gap separates 5-year completion 27-fold
+  (kept out of main models). I first argued against delayed entry; the PJM
+  stamping simulation (logit moves up to 6.6 points) and the 2016 validation
+  (delayed entry best, 2.4 vs 3.1 points for ERCOT) reversed that, so the
+  approved choice stands.
+- Notebook 05: baseline (region × technology AJ cells) and cause-specific Cox
+  (region as covariate, decision #24; ridge tuned on 2016: 0.01 operation, 1.0
+  withdrawal). Sign checks pass (ERCOT 1.66, CAISO 0.52; small requests
+  faster). PH fails for 17 of 36 effects — fast profiles are fast early.
+  On the 2016 cohort the baseline's average level beat Cox (2.6 vs 3.9 points).
+  Predictions for validation and test written; no test outcome looked at.
+- 32 tests pass.
+
+**Next**
+
+- Notebook 06: discrete-time hazards (multinomial logit, LightGBM) with
+  year-in-queue effects, time-varying congestion, grouped CV.
+
+**Open questions for Alan**
+
+6. **Cost of delayed entry.** It drops 607 of ERCOT's 732 training requests,
+   including 176 of 221 completions, from the timing fits; ERCOT's effect rests
+   on 125 post-2018 requests. Keep it as the pre-chosen main treatment (my
+   recommendation — the alternative invents withdrawal times), with
+   as-recorded and imputed versions as sensitivity runs in notebook 08?
