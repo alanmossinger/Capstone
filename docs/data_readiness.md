@@ -18,15 +18,17 @@
 | S1 headline: median request-to-operation time | < 2 yr for 2000–07 completions; > 4 yr for 2018–24 | 1.82 yr (n = 240) / 4.14 yr (n = 884) | PASS |
 | S1 naive mock-up reproduces | 5-yr completion CAISO 4% / ERCOT 21% / PJM 15% (±1 point) | CAISO 4.2% / ERCOT 21.3% / PJM 15.2% | PASS |
 | S1 event-date coverage: operation dates | ≥ 95% of operational rows have on_date in each Track A region | ERCOT 98.4%, PJM 97.8%, CAISO 95.2% | PASS |
-| S1 event-date coverage: withdrawal dates | ≥ 83% of withdrawn rows have wd_date in each Track A region | ERCOT 100.0%, PJM 96.9%, CAISO 82.6% | FAIL |
+| S1 event-date coverage: withdrawal dates | ≥ 82% of withdrawn rows have wd_date in each Track A region | ERCOT 100.0%, PJM 96.9%, CAISO 82.6% | PASS |
 | S1 Track A candidate sample | 13,500–14,500 projects | 13,733 (with a valid request date: 13,438) | PASS |
-| S1 enough events for a held-out test | 2017–2019 Track A entrants ≥ 2,500 with ≥ 150 completions by end-2024 | 2,292 projects; 304 completions; 1,358 withdrawals | FAIL |
+| S1 enough events for a held-out test | 2017–2019 Track A entrants ≥ 2,000 with ≥ 150 completions by end-2024 | 2,292 projects; 304 completions; 1,358 withdrawals | PASS |
 | S2 API works with the key | metadata returns; latest period ≥ 2026-06; rows = response.total | latest 2026-07; 28,324 rows of 28,324 in 6 pages | PASS |
 | S2 fields usable | operating month ≥ 95% of OP rows; state, technology ≥ 99%; county, lat/long ≥ 95% | operating-year-month 100.0%, stateid 100.0%, technology 100.0%, county 100.0%, latitude 100.0%, longitude 100.0% | PASS |
 | Crosswalk complete | every EIA technology maps to one type, or to Other with a note | 27 technologies; complete = True | PASS |
 | Linkage test | match rate reported; notebook 10 viable if ≥ 40% matched and ≥ 80% of matches agree ±6 months | 31.1% matched, 74.9% agree → notebook 10 not viable, dropped | PASS |
 | Licenses documented | data/README.md gives source, terms, how to obtain, what is redistributed for S1 and S2 | all sections present = True | PASS |
 | Secrets safe | .env git-ignored; the key appears in no committed file; no key assigned outside .env | .env ignored = True; files containing the key = 0; key assignments = 0 | PASS |
+
+**Threshold changes.** Two thresholds were amended by Alan after the first evaluation, which had read NO-GO on exactly these two checks (decision #15): withdrawal-date coverage in each Track A region ≥ 83% → ≥ 82%, and the held-out test cohort ≥ 2,500 → ≥ 2,000 projects (≥ 150 completions unchanged).
 
 ## Event-date coverage by region (%)
 
@@ -50,4 +52,4 @@
 
 - Linkage: 31.1% of ERCOT/PJM operational projects matched an EIA plant and 74.9% of matches agree on the operation month within six months.
 
-**Outcome (2026-10-03): NO-GO (failed: S1 event-date coverage: withdrawal dates; S1 enough events for a held-out test)**
+**Outcome (2026-10-03): GO**

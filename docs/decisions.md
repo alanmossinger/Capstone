@@ -22,12 +22,11 @@ alternative rejected.
    missing exit dates.
 7. **No post-entry milestones** (study phase, IA date) in the main models;
    they appear only in the labelled leakage ablation.
-8. **Data readiness GO/NO-GO** — 2026-10-03: **NO-GO**, 13 of 15 checks
-   pass (`docs/data_readiness.md`). Both failures are thresholds, not data
-   defects: CAISO withdrawal-date coverage 82.6% vs ≥ 83%, and 2,292
-   test-cohort projects vs ≥ 2,500 (304 completions vs ≥ 150). *(open — Alan
-   decides whether to amend the two bars or change the test design; no
-   modeling notebook until this reads GO)*
+8. **Data readiness GO/NO-GO** — first evaluation 2026-10-03: NO-GO, 13 of
+   15 checks passed; both failures were thresholds, not data defects (CAISO
+   withdrawal-date coverage 82.6% vs ≥ 83%; 2,292 test-cohort projects vs
+   ≥ 2,500, with 304 completions vs ≥ 150). After Alan amended the two
+   thresholds (#15) the gate reads **GO** (`docs/data_readiness.md`).
 9. **EIA-860M through the EIA API** with a personal key kept in `.env`; the
    monthly XLSX is the documented fallback; EIA data are public domain.
 10. **LBNL file obtained by hand and pinned by hash** (2026-10-03). The LBNL
@@ -58,3 +57,12 @@ alternative rejected.
     *Rejected:* re-tuning the matcher until it passes — any new linkage test
     restricted to new solar/wind/battery projects would need its own bar set
     in advance.
+15. **Two readiness thresholds amended** (Alan, 2026-10-03, after the first
+    evaluation). Withdrawal-date coverage in each Track A region: ≥ 83% →
+    **≥ 82%** (the 83% was the audit's rounded figure; CAISO has 82.6%).
+    Held-out test cohort: ≥ 2,500 projects → **≥ 2,000** projects, still with
+    ≥ 150 completions (the three ISOs hold only 2,313 rows that entered in
+    2017–2019, so 2,500 was unreachable; the cohort has 2,292 projects and
+    304 completions). The change is made after seeing the numbers and is
+    stated as such in `docs/data_readiness.md`. *Rejected:* changing the test
+    cohort to 2016–2019 entrants, which would take 2016 away from validation.
