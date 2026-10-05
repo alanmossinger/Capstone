@@ -468,3 +468,8 @@ a different verdict.
 - Unsupervised learning: the report's plain statement that none was used
   is kept.
 - PLAN.md citations and the EIA key: closed by Alan, no action.
+
+**PDF (same day).** pandoc 3.12 and Typst 0.15.1 installed at Alan's
+request; `make report` builds `report/report.pdf` (20 pages; decision #41).
+Checked page by page: figures carry one caption each, references come
+before the appendices, the criteria table fits one page.

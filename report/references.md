@@ -1,4 +1,4 @@
-# References
+## References
 
 Aalen, O. O., & Johansen, S. (1978). An empirical transition matrix for non-homogeneous Markov chains based on censored observations. *Scandinavian Journal of Statistics, 5*(3), 141–150.
 

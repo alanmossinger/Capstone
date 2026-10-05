@@ -1,4 +1,4 @@
-"""Every number in the report traces to results/report_numbers.csv, and the report stays under 3,000 words."""
+"""Every number in the report and its appendix traces to results/report_numbers.csv; the report stays under 3,000 words."""
 
 import re
 
@@ -8,6 +8,7 @@ import pytest
 from src import paths, report_numbers
 
 REPORT = paths.REPORT / "report.md"
+APPENDIX = paths.REPORT / "appendix.md"
 WORD_LIMIT = 3000  # course limit, excluding references and appendix
 NUMBER = re.compile(r"\d[\d,]*(?:\.\d+)?%?")
 
@@ -29,8 +30,8 @@ NOT_QUANTITIES = [
 
 
 def body(text):
-    """The counted part of the report: from the title to the reference section."""
-    return text.split("\n## References")[0]
+    """The counted part of the report: report.md holds no references or appendices."""
+    return text
 
 
 def numbers_in(text):
@@ -45,8 +46,9 @@ def test_every_number_in_the_report_is_in_report_numbers():
     cited = set()
     for text in table["text"].astype(str):
         cited |= numbers_in(text)
-    missing = sorted(numbers_in(REPORT.read_text(encoding="utf-8")) - cited)
-    assert not missing, f"numbers in report.md not in results/report_numbers.csv: {missing}"
+    text = REPORT.read_text(encoding="utf-8") + APPENDIX.read_text(encoding="utf-8")
+    missing = sorted(numbers_in(text) - cited)
+    assert not missing, f"numbers in report.md or appendix.md not in results/report_numbers.csv: {missing}"
 
 
 def test_report_numbers_keys_are_unique():

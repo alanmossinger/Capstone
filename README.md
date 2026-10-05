@@ -65,7 +65,8 @@ src/         small helper package used by the notebooks (paths, config, data acc
 data/        raw/ (not committed) · interim/ (not committed) · processed/ (small final tables)
 results/     every number the report cites, written by the notebooks
 figures/     every figure, PNG + SVG; figures/<notebook>/ holds each notebook's exploratory figures
-report/      report.md and figure_notes.md (caption stubs collected from the notebooks)
+report/      report.md, references.md, appendix.md, figure_notes.md (caption stubs from the notebooks);
+             `make report` builds report.pdf (needs pandoc and typst)
 docs/        journal.md (work log), decisions.md, data_readiness.md, mentor_feedback.md
 tests/       pytest checks on the audit, cleaning, features and metrics
 ```

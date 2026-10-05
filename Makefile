@@ -40,8 +40,8 @@ figures:          ## every notebook that draws figures
 numbers:          ## results/report_numbers.csv: every number the report cites, read from results/
 	$(PYTHON) -m src.report_numbers
 
-report: numbers   ## report/report.md → report/report.pdf (needs pandoc)
-	pandoc report/report.md --citeproc -o report/report.pdf
+report: numbers   ## report.md + references.md + appendix.md → report/report.pdf (needs pandoc and typst)
+	pandoc report/report.md report/references.md report/appendix.md -f markdown-implicit_figures --resource-path=report --pdf-engine=typst -o report/report.pdf
 
 test:
 	$(PYTHON) -m pytest

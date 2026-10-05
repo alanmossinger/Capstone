@@ -397,3 +397,14 @@ alternative rejected.
     cutting the draft (moving detail to the appendices) later. This
     supersedes 39(b)–(c) for the draft. *Rejected:* cutting now, before
     mentor feedback shows which parts matter.
+41. **PDF build: pandoc 3.12 with the Typst 0.15.1 engine** (Alan,
+    2026-10-05; supersedes #38). Both installed with winget (system tools,
+    not Python packages, so `requirements.txt` is unchanged). `make report`
+    runs `make numbers`, then joins `report/report.md`,
+    `report/references.md` and `report/appendix.md` into `report/report.pdf`.
+    The appendices moved out of `report.md` into `appendix.md` so the PDF
+    has references before appendices; `tests/test_report.py` checks the
+    numbers in both files. Implicit figures are turned off so pandoc does not
+    add a second caption under each figure. The PDF is git-ignored because
+    it rebuilds from the sources. *Rejected:* a LaTeX engine (a large
+    install for the same result).
