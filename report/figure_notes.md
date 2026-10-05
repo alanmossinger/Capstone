@@ -872,6 +872,266 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** Track A 7-year P(operation) against Track B P(built) for the shared 2017 requests.
 <!-- /fig:07_13_track_a_vs_b -->
 
+<!-- fig:08_01_outcome_status -->
+### 08_01_outcome_status
+
+![08_01_outcome_status](../figures/08_evaluate/08_01_outcome_status.png)
+
+*Notebook:* `notebooks/08_evaluate.ipynb` · *Files:* `figures/08_evaluate/08_01_outcome_status.png`, `.svg`
+
+**Caption (stub).** Status of the 2017–2019 test requests at 3, 5 and 7 years after the request, by region.
+<!-- /fig:08_01_outcome_status -->
+
+<!-- fig:08_02_censoring_weights -->
+### 08_02_censoring_weights
+
+![08_02_censoring_weights](../figures/08_evaluate/08_02_censoring_weights.png)
+
+*Notebook:* `notebooks/08_evaluate.ipynb` · *Files:* `figures/08_evaluate/08_02_censoring_weights.png`, `.svg`
+
+**Caption (stub).** Censoring distribution of the test cohort and follow-up windows by entry year.
+<!-- /fig:08_02_censoring_weights -->
+
+<!-- fig:08_03_concordance -->
+### 08_03_concordance
+
+![08_03_concordance](../figures/08_evaluate/08_03_concordance.png)
+
+*Notebook:* `notebooks/08_evaluate.ipynb` · *Files:* `figures/08_evaluate/08_03_concordance.png`, `.svg`
+
+**Caption (stub).** Uno's and Harrell's concordance of the four Track A models by horizon, with bootstrap intervals.
+<!-- /fig:08_03_concordance -->
+
+<!-- fig:08_04_differences_from_baseline -->
+### 08_04_differences_from_baseline
+
+![08_04_differences_from_baseline](../figures/08_evaluate/08_04_differences_from_baseline.png)
+
+*Notebook:* `notebooks/08_evaluate.ipynb` · *Files:* `figures/08_evaluate/08_04_differences_from_baseline.png`, `.svg`
+
+**Caption (stub).** Paired differences from the baseline in Uno's concordance and Brier score, three models, three horizons.
+<!-- /fig:08_04_differences_from_baseline -->
+
+<!-- fig:08_05_within_region -->
+### 08_05_within_region
+
+![08_05_within_region](../figures/08_evaluate/08_05_within_region.png)
+
+*Notebook:* `notebooks/08_evaluate.ipynb` · *Files:* `figures/08_evaluate/08_05_within_region.png`, `.svg`
+
+**Caption (stub).** Within-region concordance and AUC at 5 years for the four Track A models.
+<!-- /fig:08_05_within_region -->
+
+<!-- fig:08_06_calibration_slope_intercept -->
+### 08_06_calibration_slope_intercept
+
+![08_06_calibration_slope_intercept](../figures/08_evaluate/08_06_calibration_slope_intercept.png)
+
+*Notebook:* `notebooks/08_evaluate.ipynb` · *Files:* `figures/08_evaluate/08_06_calibration_slope_intercept.png`, `.svg`
+
+**Caption (stub).** Calibration slope and intercept of the four Track A models by horizon.
+<!-- /fig:08_06_calibration_slope_intercept -->
+
+<!-- fig:08_07_calibration_by_region -->
+### 08_07_calibration_by_region
+
+![08_07_calibration_by_region](../figures/08_evaluate/08_07_calibration_by_region.png)
+
+*Notebook:* `notebooks/08_evaluate.ipynb` · *Files:* `figures/08_evaluate/08_07_calibration_by_region.png`, `.svg`
+
+**Caption (stub).** Mean predicted versus observed P(operation by 3, 5 and 7 years) by region, test cohort, four models.
+<!-- /fig:08_07_calibration_by_region -->
+
+<!-- fig:08_08_gains_5yr -->
+### 08_08_gains_5yr
+
+![08_08_gains_5yr](../figures/08_evaluate/08_08_gains_5yr.png)
+
+*Notebook:* `notebooks/08_evaluate.ipynb` · *Files:* `figures/08_evaluate/08_08_gains_5yr.png`, `.svg`
+
+**Caption (stub).** Gains curves at 5 years: share of operating requests captured by the top x% of each model's ranking.
+<!-- /fig:08_08_gains_5yr -->
+
+<!-- fig:08_09_top_decile -->
+### 08_09_top_decile
+
+![08_09_top_decile](../figures/08_evaluate/08_09_top_decile.png)
+
+*Notebook:* `notebooks/08_evaluate.ipynb` · *Files:* `figures/08_evaluate/08_09_top_decile.png`, `.svg`
+
+**Caption (stub).** Top-decile lift and precision of the four Track A models by horizon.
+<!-- /fig:08_09_top_decile -->
+
+<!-- fig:08_10_trackB_roc_reliability -->
+### 08_10_trackB_roc_reliability
+
+![08_10_trackB_roc_reliability](../figures/08_evaluate/08_10_trackB_roc_reliability.png)
+
+*Notebook:* `notebooks/08_evaluate.ipynb` · *Files:* `figures/08_evaluate/08_10_trackB_roc_reliability.png`, `.svg`
+
+**Caption (stub).** Track B on the 2017 cohort: ROC curves and reliability by predicted decile.
+<!-- /fig:08_10_trackB_roc_reliability -->
+
+<!-- fig:08_11_trackB_by_region -->
+### 08_11_trackB_by_region
+
+![08_11_trackB_by_region](../figures/08_evaluate/08_11_trackB_by_region.png)
+
+*Notebook:* `notebooks/08_evaluate.ipynb` · *Files:* `figures/08_evaluate/08_11_trackB_by_region.png`, `.svg`
+
+**Caption (stub).** Track B on the 2017 cohort: observed share built versus mean predictions by region.
+<!-- /fig:08_11_trackB_by_region -->
+
+<!-- fig:08_12_success_criteria -->
+### 08_12_success_criteria
+
+![08_12_success_criteria](../figures/08_evaluate/08_12_success_criteria.png)
+
+*Notebook:* `notebooks/08_evaluate.ipynb` · *Files:* `figures/08_evaluate/08_12_success_criteria.png`, `.svg`
+
+**Caption (stub).** The pre-registered success criteria with their bootstrap intervals and PASS/FAIL verdicts.
+<!-- /fig:08_12_success_criteria -->
+
+<!-- fig:08_13_seven_year_check -->
+### 08_13_seven_year_check
+
+![08_13_seven_year_check](../figures/08_evaluate/08_13_seven_year_check.png)
+
+*Notebook:* `notebooks/08_evaluate.ipynb` · *Files:* `figures/08_evaluate/08_13_seven_year_check.png`, `.svg`
+
+**Caption (stub).** Seven-year metrics: IPCW on all test entrants versus the fully observed 2017 entrants.
+<!-- /fig:08_13_seven_year_check -->
+
+<!-- fig:08_14_by_entry_year -->
+### 08_14_by_entry_year
+
+![08_14_by_entry_year](../figures/08_evaluate/08_14_by_entry_year.png)
+
+*Notebook:* `notebooks/08_evaluate.ipynb` · *Files:* `figures/08_evaluate/08_14_by_entry_year.png`, `.svg`
+
+**Caption (stub).** Mean predicted versus observed P(operation by 3 and 5 years) for each test entry year.
+<!-- /fig:08_14_by_entry_year -->
+
+<!-- fig:08_15_leave_one_iso_out -->
+### 08_15_leave_one_iso_out
+
+![08_15_leave_one_iso_out](../figures/08_evaluate/08_15_leave_one_iso_out.png)
+
+*Notebook:* `notebooks/08_evaluate.ipynb` · *Files:* `figures/08_evaluate/08_15_leave_one_iso_out.png`, `.svg`
+
+**Caption (stub).** Leave-one-ISO-out: concordance and mean predicted level at 5 years for each held-out ISO.
+<!-- /fig:08_15_leave_one_iso_out -->
+
+<!-- fig:08_16_leakage_ablation -->
+### 08_16_leakage_ablation
+
+![08_16_leakage_ablation](../figures/08_evaluate/08_16_leakage_ablation.png)
+
+*Notebook:* `notebooks/08_evaluate.ipynb` · *Files:* `figures/08_evaluate/08_16_leakage_ablation.png`, `.svg`
+
+**Caption (stub).** Leakage ablation: time-dependent AUC and Brier score with and without post-entry columns, CAISO and ERCOT.
+<!-- /fig:08_16_leakage_ablation -->
+
+<!-- fig:08_17_robustness -->
+### 08_17_robustness
+
+![08_17_robustness](../figures/08_evaluate/08_17_robustness.png)
+
+*Notebook:* `notebooks/08_evaluate.ipynb` · *Files:* `figures/08_evaluate/08_17_robustness.png`, `.svg`
+
+**Caption (stub).** Robustness reruns: LightGBM versus the baseline under five data versions, three horizons.
+<!-- /fig:08_17_robustness -->
+
+<!-- fig:09_01_shap_by_category -->
+### 09_01_shap_by_category
+
+![09_01_shap_by_category](../figures/09_explain_and_rank/09_01_shap_by_category.png)
+
+*Notebook:* `notebooks/09_explain_and_rank.ipynb` · *Files:* `figures/09_explain_and_rank/09_01_shap_by_category.png`, `.svg`
+
+**Caption (stub).** Mean SHAP contribution of each region, technology and service level to P(operation within 5 years).
+<!-- /fig:09_01_shap_by_category -->
+
+<!-- fig:09_02_shap_congestion -->
+### 09_02_shap_congestion
+
+![09_02_shap_congestion](../figures/09_explain_and_rank/09_02_shap_congestion.png)
+
+*Notebook:* `notebooks/09_explain_and_rank.ipynb` · *Files:* `figures/09_explain_and_rank/09_02_shap_congestion.png`, `.svg`
+
+**Caption (stub).** SHAP dependence of P(operation within 5 years) on GW waiting at entry, by region.
+<!-- /fig:09_02_shap_congestion -->
+
+<!-- fig:09_03_shap_by_region -->
+### 09_03_shap_by_region
+
+![09_03_shap_by_region](../figures/09_explain_and_rank/09_03_shap_by_region.png)
+
+*Notebook:* `notebooks/09_explain_and_rank.ipynb` · *Files:* `figures/09_explain_and_rank/09_03_shap_by_region.png`, `.svg`
+
+**Caption (stub).** Mean absolute SHAP value of each feature by region.
+<!-- /fig:09_03_shap_by_region -->
+
+<!-- fig:09_04_pd_size -->
+### 09_04_pd_size
+
+![09_04_pd_size](../figures/09_explain_and_rank/09_04_pd_size.png)
+
+*Notebook:* `notebooks/09_explain_and_rank.ipynb` · *Files:* `figures/09_explain_and_rank/09_04_pd_size.png`, `.svg`
+
+**Caption (stub).** Partial dependence of P(operation within 5 years) on requested size, by region, with the 20 MW step marked.
+<!-- /fig:09_04_pd_size -->
+
+<!-- fig:09_05_pd_congestion -->
+### 09_05_pd_congestion
+
+![09_05_pd_congestion](../figures/09_explain_and_rank/09_05_pd_congestion.png)
+
+*Notebook:* `notebooks/09_explain_and_rank.ipynb` · *Files:* `figures/09_explain_and_rank/09_05_pd_congestion.png`, `.svg`
+
+**Caption (stub).** Partial dependence of P(operation within 5 years) on GW waiting at entry, by region.
+<!-- /fig:09_05_pd_congestion -->
+
+<!-- fig:09_06_pd_technology -->
+### 09_06_pd_technology
+
+![09_06_pd_technology](../figures/09_explain_and_rank/09_06_pd_technology.png)
+
+*Notebook:* `notebooks/09_explain_and_rank.ipynb` · *Files:* `figures/09_explain_and_rank/09_06_pd_technology.png`, `.svg`
+
+**Caption (stub).** Partial dependence of P(operation within 5 years) on technology within each region.
+<!-- /fig:09_06_pd_technology -->
+
+<!-- fig:09_07_ranking_book -->
+### 09_07_ranking_book
+
+![09_07_ranking_book](../figures/09_explain_and_rank/09_07_ranking_book.png)
+
+*Notebook:* `notebooks/09_explain_and_rank.ipynb` · *Files:* `figures/09_explain_and_rank/09_07_ranking_book.png`, `.svg`
+
+**Caption (stub).** A book of 25 requests from 2019 ranked by predicted P(operation within 5 years), with the baseline and the observed status five years later.
+<!-- /fig:09_07_ranking_book -->
+
+<!-- fig:09_08_worked_examples -->
+### 09_08_worked_examples
+
+![09_08_worked_examples](../figures/09_explain_and_rank/09_08_worked_examples.png)
+
+*Notebook:* `notebooks/09_explain_and_rank.ipynb` · *Files:* `figures/09_explain_and_rank/09_08_worked_examples.png`, `.svg`
+
+**Caption (stub).** SHAP decomposition of P(operation within 5 years) for three requests from the book.
+<!-- /fig:09_08_worked_examples -->
+
+<!-- fig:09_09_congestion_confounding -->
+### 09_09_congestion_confounding
+
+![09_09_congestion_confounding](../figures/09_explain_and_rank/09_09_congestion_confounding.png)
+
+*Notebook:* `notebooks/09_explain_and_rank.ipynb` · *Files:* `figures/09_explain_and_rank/09_09_congestion_confounding.png`, `.svg`
+
+**Caption (stub).** PJM fitting rows: GW waiting by year in the queue, against the entry values of the test requests, and the yearly operation hazard.
+<!-- /fig:09_09_congestion_confounding -->
+
 <!-- fig:F1_cif_by_region -->
 ### F1_cif_by_region
 
@@ -901,6 +1161,46 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 
 **Caption (stub).** Probability of reaching operation within five years by requested capacity (size regime) for CAISO, ERCOT and PJM, with the 20 MW FERC small/large generator threshold marked.
 <!-- /fig:F3_five_year_by_size -->
+
+<!-- fig:F4_calibration_by_horizon -->
+### F4_calibration_by_horizon
+
+![F4_calibration_by_horizon](../figures/F4_calibration_by_horizon.png)
+
+*Notebook:* `notebooks/08_evaluate.ipynb` · *Files:* `figures/F4_calibration_by_horizon.png`, `.svg`
+
+**Caption (stub).** Calibration of P(operation by 3, 5 and 7 years) by predicted decile: baseline, discrete-time logit and LightGBM, test cohort.
+<!-- /fig:F4_calibration_by_horizon -->
+
+<!-- fig:F5_auc_brier_by_horizon -->
+### F5_auc_brier_by_horizon
+
+![F5_auc_brier_by_horizon](../figures/F5_auc_brier_by_horizon.png)
+
+*Notebook:* `notebooks/08_evaluate.ipynb` · *Files:* `figures/F5_auc_brier_by_horizon.png`, `.svg`
+
+**Caption (stub).** Time-dependent AUC and IPCW Brier score of the four Track A models at 3, 5 and 7 years, test cohort, with bootstrap intervals.
+<!-- /fig:F5_auc_brier_by_horizon -->
+
+<!-- fig:F6_hazard_ratios -->
+### F6_hazard_ratios
+
+![F6_hazard_ratios](../figures/F6_hazard_ratios.png)
+
+*Notebook:* `notebooks/09_explain_and_rank.ipynb` · *Files:* `figures/F6_hazard_ratios.png`, `.svg`
+
+**Caption (stub).** Hazard ratios for operation and withdrawal from the cause-specific Cox models, main version.
+<!-- /fig:F6_hazard_ratios -->
+
+<!-- fig:F7_shap_summary -->
+### F7_shap_summary
+
+![F7_shap_summary](../figures/F7_shap_summary.png)
+
+*Notebook:* `notebooks/09_explain_and_rank.ipynb` · *Files:* `figures/F7_shap_summary.png`, `.svg`
+
+**Caption (stub).** SHAP values of P(operation within 5 years) from the discrete-time LightGBM, 300 test requests.
+<!-- /fig:F7_shap_summary -->
 
 <!-- fig:F8_congestion_vs_completion -->
 ### F8_congestion_vs_completion

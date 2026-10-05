@@ -1,0 +1,7 @@
+fact,outside evidence,model evidence,recovered,verdict
+Region order of completion: ERCOT > PJM > CAISO,"LBNL completion rates; naive 5-year mock-up ERCOT 21%, PJM 15%, CAISO 4% (notebook 01)","every test request moved to each region: ERCOT 13.4%, PJM 13.9%, CAISO 12.6%",False,not recovered — explained below
+Requests under 20 MW reach operation sooner (FERC small-generator procedures),LBNL median request→operation: 36 months at 5–20 MW vs 53 at 20–50 MW,"change at the 20 MW step: ERCOT +1.8 points, PJM +1.4 points, CAISO +0.7 points",False,not recovered — explained below
+Gas completes more often than solar,"LBNL completion by count: gas 29.9%, solar 13.4%","technology partial dependence, mean of three regions: gas 24.3%, solar 10.7%",True,recovered
+Batteries and solar+battery hybrids lag solar,"LBNL completion by count: battery 8.2%, solar+battery 9.1%, solar 13.4%","partial dependence: battery 8.1%, solar+battery 11.3%, solar 10.7%",False,not recovered — explained below
+"A more crowded queue at entry lowers completion (Johnston, Liu & Yang, 2023)",queue crowding as the mechanism of attrition; F8 of notebook 03,"partial dependence from the 2nd to the 98th percentile of GW waiting: ERCOT +9.8 points, PJM +7.3 points, CAISO -0.1 points",False,not recovered — explained below
+ERIS and NRIS requests complete at similar rates (within 2 points),LBNL: ERIS and NRIS requests take similar times to an IA (benchmark of notebook 03),"service partial dependence, mean of three regions: ERIS 10.9%, NRIS 12.9%",True,recovered

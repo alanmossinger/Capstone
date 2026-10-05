@@ -1,0 +1,6 @@
+check,passed,result
+explanation function reproduces notebook 06's stored predictions (gap < 1e-9),True,PASS
+SHAP values add up to each prediction minus the background mean (gap < 1e-6),True,PASS
+"ranking table: 25 requests, no missing value",True,PASS
+every outside fact has a verdict,True,PASS
+F6 and F7 saved,True,PASS
