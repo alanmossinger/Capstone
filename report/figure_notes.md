@@ -1042,6 +1042,66 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** Robustness reruns: LightGBM versus the baseline under five data versions, three horizons.
 <!-- /fig:08_17_robustness -->
 
+<!-- fig:08b_01_choice_on_2016 -->
+### 08b_01_choice_on_2016
+
+![08b_01_choice_on_2016](../figures/08b_posthoc_improvements/08b_01_choice_on_2016.png)
+
+*Notebook:* `notebooks/08b_posthoc_improvements.ipynb` · *Files:* `figures/08b_posthoc_improvements/08b_01_choice_on_2016.png`, `.svg`
+
+**Caption (stub).** The five post-hoc candidates on the 2016 cohort: Brier score relative to the main LightGBM and calibration slope.
+<!-- /fig:08b_01_choice_on_2016 -->
+
+<!-- fig:08b_02_chosen_on_test -->
+### 08b_02_chosen_on_test
+
+![08b_02_chosen_on_test](../figures/08b_posthoc_improvements/08b_02_chosen_on_test.png)
+
+*Notebook:* `notebooks/08b_posthoc_improvements.ipynb` · *Files:* `figures/08b_posthoc_improvements/08b_02_chosen_on_test.png`, `.svg`
+
+**Caption (stub).** Post-hoc: test-cohort AUC, Brier score and calibration slope of the chosen candidate, the registered LightGBM and the baseline.
+<!-- /fig:08b_02_chosen_on_test -->
+
+<!-- fig:08b_03_calibration_deciles -->
+### 08b_03_calibration_deciles
+
+![08b_03_calibration_deciles](../figures/08b_posthoc_improvements/08b_03_calibration_deciles.png)
+
+*Notebook:* `notebooks/08b_posthoc_improvements.ipynb` · *Files:* `figures/08b_posthoc_improvements/08b_03_calibration_deciles.png`, `.svg`
+
+**Caption (stub).** Post-hoc: calibration by predicted decile of the chosen candidate and the registered LightGBM.
+<!-- /fig:08b_03_calibration_deciles -->
+
+<!-- fig:08b_04_levels_by_group -->
+### 08b_04_levels_by_group
+
+![08b_04_levels_by_group](../figures/08b_posthoc_improvements/08b_04_levels_by_group.png)
+
+*Notebook:* `notebooks/08b_posthoc_improvements.ipynb` · *Files:* `figures/08b_posthoc_improvements/08b_04_levels_by_group.png`, `.svg`
+
+**Caption (stub).** Post-hoc: mean predicted versus observed 5-year completion by region and entry year.
+<!-- /fig:08b_04_levels_by_group -->
+
+<!-- fig:08b_05_all_candidates_test -->
+### 08b_05_all_candidates_test
+
+![08b_05_all_candidates_test](../figures/08b_posthoc_improvements/08b_05_all_candidates_test.png)
+
+*Notebook:* `notebooks/08b_posthoc_improvements.ipynb` · *Files:* `figures/08b_posthoc_improvements/08b_05_all_candidates_test.png`, `.svg`
+
+**Caption (stub).** Post-hoc, not used for the choice: all five candidates on the test cohort.
+<!-- /fig:08b_05_all_candidates_test -->
+
+<!-- fig:08b_06_congestion_entry_fit -->
+### 08b_06_congestion_entry_fit
+
+![08b_06_congestion_entry_fit](../figures/08b_posthoc_improvements/08b_06_congestion_entry_fit.png)
+
+*Notebook:* `notebooks/08b_posthoc_improvements.ipynb` · *Files:* `figures/08b_posthoc_improvements/08b_06_congestion_entry_fit.png`, `.svg`
+
+**Caption (stub).** Post-hoc: partial dependence on GW waiting at entry for LightGBM fitted on yearly and on entry-time congestion.
+<!-- /fig:08b_06_congestion_entry_fit -->
+
 <!-- fig:09_01_shap_by_category -->
 ### 09_01_shap_by_category
 

@@ -1,0 +1,12 @@
+{
+  "chosen": "K4",
+  "label": "K4 blend, entry congestion",
+  "mean_brier_2016": {
+    "K0": 0.099603,
+    "K1": 0.099591,
+    "K2": 0.099749,
+    "K3": 0.099746,
+    "K4": 0.099402
+  },
+  "rule": "mean IPCW Brier over 3, 5, 7 years; K0 unless another candidate is lower"
+}

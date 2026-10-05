@@ -1,0 +1,7 @@
+check,passed,result
+decision #34 (protocol) is in docs/decisions.md,True,PASS
+main components reproduce notebooks 05–06 on 2016 (gap < 1e-9),True,PASS
+main components reproduce the predictions notebook 08 scored (gap < 1e-9),True,PASS
+the choice was written before the first test-cohort score,True,PASS
+registered LightGBM's criteria lines here equal notebook 08's,True,PASS
+every post-hoc metric has a 95% interval,True,PASS
