@@ -14,8 +14,58 @@ alternative rejected.
 4. **Suspended projects are censored** at 2024-12-31 in the main model; a
    sensitivity run treats them as withdrawn. *Reason:* suspension is
    reversible. *Rejected:* dropping them.
-5. **Pre-registered success criteria** — written by notebook 08's first cell
-   before any test metric exists. *(open)*
+5. **Pre-registered success criteria** (Alan, 2026-10-04; written by the
+   first cell of notebook 08 before any test data were read, and committed
+   on its own before the first scoring run). Test sets: Track A requests
+   entering 2017–2019 with outcomes through 2024-12-31; Track B resolved
+   requests entering in 2017.
+   *Primary models, named before scoring:* Track A — discrete-time LightGBM
+   (`dt_lgbm`, lowest 2016 log loss in notebook 06); Track B — calibrated
+   LightGBM (`lgbm_cal`). The discrete-time logit, Cox and the uncalibrated
+   Track B models are reported beside them and decide nothing.
+   *Benchmarks:* region × technology Aalen–Johansen cells (Track A, notebook
+   05); region × technology base rates (Track B, notebook 07).
+   - **C1** Uno's concordance index of P(operation by t), withdrawal as a
+     competing event, above the baseline's at t = 3, 5 and 7 years.
+   - **C2** IPCW Brier score below the baseline's at 3, 5 and 7 years.
+   - **C3** Calibration slope between 0.9 and 1.1 at 3, 5 and 7 years.
+   - **C4** Top-decile lift at 5 years ≥ 1.5: the share reaching operation
+     within 5 years among the 10% of test requests with the highest
+     predictions, divided by the share in the whole test cohort.
+   - **C5** Track B, 2017 cohort: AUC above and Brier score below the base
+     rate's.
+   *"Beat"* (C1, C2, C5) means that the 95% percentile interval of the
+   paired difference model − benchmark, from 200 bootstrap resamples of test
+   requests (seeds 800 for Track A and 801 for Track B, recorded in
+   `results/success_criteria_registered.json`), lies entirely on the better
+   side of zero.
+   *Thresholds* (C3, C4) are judged on the point estimate; the interval is
+   reported. Each criterion × horizon is one PASS/FAIL line of
+   `results/success_criteria.csv` (12 lines); point estimates are reported
+   either way, failures are reported, not removed, and no criterion is
+   changed after scoring.
+   *Outcome and censoring:* for "operation by t" a request that withdrew
+   before t is a known non-event; only requests still waiting on 2024-12-31
+   before reaching t are censored, with inverse-probability-of-censoring
+   weights from a Kaplan–Meier estimate of the censoring distribution. All
+   censoring is administrative (2024-12-31), so that distribution is the
+   distribution of the test requests' follow-up windows (2024-12-31 minus the
+   request date), which is known at entry; every test request has at least
+   five years, so the weights differ from 1 only at 7 years. The 7-year
+   horizon is fully observed only for 2017 entrants; this is stated with
+   every 7-year number, and the 7-year metrics are also reported for 2017
+   entrants alone. *Change from the draft (journal, question 9):* the draft
+   took the censoring distribution from the training set, whose requests
+   have at least eight years of follow-up, so every weight would be 1 and the
+   7-year metrics would silently drop the 2018–2019 requests still waiting.
+   Changed before any test data were read.
+   *Reported, not criteria:* Harrell's concordance, time-dependent AUC,
+   calibration intercept and deciles, precision in the top 10%, metrics by
+   region, the 7-year check on 2017 entrants, leave-one-ISO-out, the leakage
+   ablation and the robustness reruns.
+   *Rejected:* "beat" on point estimates (a difference inside the noise
+   would count as a win); lift ≥ 1.5 × the baseline's lift (Alan, question
+   9b).
 6. **Timing model restricted to CAISO/ERCOT/PJM**, the regions whose public
    file carries event dates; Track B covers the other regions at the cost of
    timing. Stated as a limitation, as LBNL itself does. *Rejected:* imputing

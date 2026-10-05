@@ -1,0 +1,82 @@
+{
+  "decided": "2026-10-04",
+  "n_boot": 200,
+  "level": 0.95,
+  "seed_track_a": 800,
+  "seed_track_b": 801,
+  "criteria": [
+    {
+      "id": "C1",
+      "track": "A",
+      "model": "dt_lgbm",
+      "benchmark": "baseline",
+      "metric": "uno_c",
+      "horizons": [
+        3,
+        5,
+        7
+      ],
+      "rule": "beat"
+    },
+    {
+      "id": "C2",
+      "track": "A",
+      "model": "dt_lgbm",
+      "benchmark": "baseline",
+      "metric": "brier",
+      "horizons": [
+        3,
+        5,
+        7
+      ],
+      "rule": "beat"
+    },
+    {
+      "id": "C3",
+      "track": "A",
+      "model": "dt_lgbm",
+      "metric": "slope",
+      "horizons": [
+        3,
+        5,
+        7
+      ],
+      "rule": "between",
+      "low": 0.9,
+      "high": 1.1
+    },
+    {
+      "id": "C4",
+      "track": "A",
+      "model": "dt_lgbm",
+      "metric": "lift_10",
+      "horizons": [
+        5
+      ],
+      "rule": "at least",
+      "value": 1.5
+    },
+    {
+      "id": "C5",
+      "track": "B",
+      "model": "lgbm_cal",
+      "benchmark": "baseline",
+      "metric": "auc",
+      "horizons": [
+        null
+      ],
+      "rule": "beat"
+    },
+    {
+      "id": "C5",
+      "track": "B",
+      "model": "lgbm_cal",
+      "benchmark": "baseline",
+      "metric": "brier",
+      "horizons": [
+        null
+      ],
+      "rule": "beat"
+    }
+  ]
+}

@@ -32,6 +32,7 @@ EARLY_YEARS = 3  # "early" years for the logit's interactions: notebook 05 found
 STATE_PRIOR_ROWS = 200  # smoothing of the state encoding: a state with 200 project-years gets half its own rate
 TECH_LEVELS = list(config.TECH_COLORS)  # Solar (reference) first; same seven groups as the baseline and Cox
 SERVICE_LEVELS = ["NRIS", "ERIS", "missing"]  # NRIS/ERIS occurs only in SPP, outside Track A
+POOLED_REGION = "PJM"  # region given to every row when region is withheld: the logit's reference level, so its region columns are all 0
 
 
 def _exit_dates(clean):
@@ -395,6 +396,73 @@ def cif_table(h_operation, h_withdrawal, index, horizons=config.HORIZONS, max_ye
     out[f"p_operation_{max_years}"] = cif_op[:, -1]
     out["expected_years"] = (in_year * (np.arange(1, max_years + 1) - 0.5)).sum(axis=1) / cif_op[:, -1]
     return out
+
+
+def fit_both(frame, clean, tuning, delayed=True, extra=None, pool_regions=False):
+    """Refit the logit and LightGBM with notebook 06's settings on ``frame``.
+
+    Parameters
+    ----------
+    frame, clean : pandas.DataFrame
+        As in ``project_years``.
+    tuning : dict
+        Contents of ``results/dt_tuning.json`` (logit C and interactions,
+        LightGBM leaves, minimum rows per leaf and rounds).
+    delayed : bool
+        ERCOT delayed entry (main) or dates as recorded.
+    extra : callable, optional
+        ``extra(rows) -> DataFrame`` of columns added to LightGBM's design
+        (the leakage ablation of notebook 08); the logit is left as it is.
+    pool_regions : bool
+        Give every row the same region after congestion has been counted in
+        the real one, so neither model can use region (leave-one-ISO-out:
+        the held-out region is a level the models never saw).
+
+    Returns
+    -------
+    dict
+        ``rows`` (fitting project-years), ``logit``, ``lgbm``, ``tuning``,
+        ``extra``, ``pool_regions``: everything ``predict_both`` needs.
+
+    Notes
+    -----
+    Settings are not re-tuned: a sensitivity run asks what changes when the
+    data change, with the model held fixed. Notebook 08 checks that refitting
+    the main version reproduces notebook 06's predictions.
+    """
+    rows = project_years(frame, clean, delayed=delayed)
+    if pool_regions:
+        rows["region"] = POOLED_REGION
+    encoded = encode_state(rows)[0]
+    logit = fit_logit(logit_design(encoded, tuning["logit"]["interactions"]), encoded["outcome"], tuning["logit"]["C"])
+    X = lgbm_design(encoded)
+    if extra is not None:
+        X = X.join(extra(encoded))
+    params = {"num_leaves": tuning["lgbm"]["num_leaves"], "min_data_in_leaf": tuning["lgbm"]["min_data_in_leaf"]}
+    lgbm = fit_lgbm(X, encoded["outcome"], params, tuning["lgbm"]["rounds"])
+    return {"rows": rows, "logit": logit, "lgbm": lgbm, "tuning": tuning, "extra": extra, "pool_regions": pool_regions}
+
+
+def predict_both(fitted, target, horizons=config.HORIZONS):
+    """P(operation by each horizon) and expected time from both refitted models, as known at entry.
+
+    Notes
+    -----
+    Same steps as notebook 06's predictions: years 1–10 with congestion
+    frozen at entry, state rates from the fitting rows, hazards → incidence.
+    """
+    rows = prediction_rows(target)
+    if fitted["pool_regions"]:
+        rows["region"] = POOLED_REGION
+    _, rows = encode_state(fitted["rows"], [rows])
+    X = lgbm_design(rows)
+    if fitted["extra"] is not None:
+        X = X.join(fitted["extra"](rows))
+    interactions = fitted["tuning"]["logit"]["interactions"]
+    return {
+        "dt_logit": cif_table(*predict_hazards(fitted["logit"], logit_design(rows, interactions)), target.index, horizons),
+        "dt_lgbm": cif_table(*predict_hazards(fitted["lgbm"], X), target.index, horizons),
+    }
 
 
 def multiclass_log_loss(y, probs):
