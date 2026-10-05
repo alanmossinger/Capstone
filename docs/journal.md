@@ -453,3 +453,18 @@ a different verdict.
     sections may move to appendices is your call after mentor feedback.
 - Still open: PLAN.md is git-excluded but cited by committed docs; rotate
   the EIA key pasted in chat on 2026-10-03.
+
+**Answers (same day)**
+
+- 13 (PJM 2018 source): Alan accepts the citation as it stands; decision
+  #36 (benchmark not run) stands.
+- 14 (references): checked against the publishers' and indexes' records.
+  Johnston, Liu & Yang (2023) is NBER Working Paper No. 31946 (DOI added);
+  DOIs added for Blanche et al. (2013), Cox (1958), Fine & Gray (1999), Graf
+  et al. (1999) and Wolbers et al. (2014); journal URLs for Pedregosa et al.
+  (2011) and Pölsterl (2020); the two NeurIPS papers cite the proceedings
+  pages by URL, because the page ranges given in different indexes disagree.
+- 15 (word limit): not a concern for now; the focus is the content.
+- Unsupervised learning: the report's plain statement that none was used
+  is kept.
+- PLAN.md citations and the EIA key: closed by Alan, no action.
