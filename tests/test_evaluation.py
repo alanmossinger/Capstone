@@ -85,6 +85,8 @@ def test_calibration_slope_recovers_known_values():
     logit = np.log(p / (1 - p))
     y_flat = rng.binomial(1, 1 / (1 + np.exp(-0.5 * logit)))  # predictions twice as extreme as the truth
     assert abs(evaluation.calibration_slope_intercept(p, y_flat)["slope"] - 0.5) < 0.05
+    constant = evaluation.calibration_slope_intercept(np.full(100, 0.2), rng.binomial(1, 0.2, 100))
+    assert np.isnan(constant["slope"]) and np.isfinite(constant["intercept"])
 
 
 def test_ipcw_recovers_incidence_under_censoring():

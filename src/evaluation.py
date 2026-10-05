@@ -187,17 +187,24 @@ def concordance(p, durations, events, t, G=None, sample_weight=None):
 
 
 def _logistic(X, y, weight, offset):
-    """Weighted logistic regression by Newton's method (two or fewer parameters)."""
+    """Weighted logistic regression by Newton's method (two or fewer parameters); NaN if it does not converge.
+
+    Notes
+    -----
+    Without convergence (perfect separation, possible in a small bootstrap
+    resample) the maximum-likelihood estimate does not exist, so NaN is
+    returned rather than whatever value the iterations stopped at.
+    """
     beta = np.zeros(X.shape[1])
     for _ in range(100):
-        mu = 1 / (1 + np.exp(-(X @ beta + offset)))
+        mu = 1 / (1 + np.exp(-np.clip(X @ beta + offset, -30, 30)))
         gradient = X.T @ (weight * (y - mu))
         hessian = (X * (weight * mu * (1 - mu))[:, None]).T @ X
-        step = np.linalg.solve(hessian, gradient)
+        step = np.linalg.lstsq(hessian, gradient, rcond=None)[0]
         beta += step
         if np.max(np.abs(step)) < 1e-10:
-            break
-    return beta
+            return beta
+    return np.full(X.shape[1], np.nan)
 
 
 def calibration_slope_intercept(p, y, w=None, sample_weight=None):
@@ -216,15 +223,21 @@ def calibration_slope_intercept(p, y, w=None, sample_weight=None):
     The usual recalibration framework (Cox, 1958; Van Calster et al., 2019),
     weighted by the IPCW weights so censored requests drop out and the
     others stand in for them. Predictions are clipped to [1e-6, 1 − 1e-6]
-    before the logit.
+    before the logit. The slope is undefined (NaN) when every prediction is
+    the same — the baseline inside a region with one technology cell — and
+    both values are NaN when every outcome is the same.
     """
     p = np.clip(np.asarray(p, dtype=float), 1e-6, 1 - 1e-6)
     y = np.asarray(y, dtype=float)
     weight = (np.ones(len(p)) if w is None else np.asarray(w, dtype=float)) * _weights(len(p), sample_weight)
     keep = weight > 0
     x, y, weight = np.log(p / (1 - p))[keep], y[keep], weight[keep]
-    slope = _logistic(np.column_stack([np.ones(len(x)), x]), y, weight, np.zeros(len(x)))[1]
+    if y.min() == y.max():
+        return {"slope": np.nan, "intercept": np.nan}
     intercept = _logistic(np.ones((len(x), 1)), y, weight, x)[0]
+    if np.ptp(x) == 0:
+        return {"slope": np.nan, "intercept": float(intercept)}
+    slope = _logistic(np.column_stack([np.ones(len(x)), x]), y, weight, np.zeros(len(x)))[1]
     return {"slope": float(slope), "intercept": float(intercept)}
 
 
@@ -387,6 +400,9 @@ def bootstrap(stat, n, n_boot=200, seed=0):
 
 
 def interval(values, level=0.95):
-    """Percentile interval of bootstrap values: (low, high)."""
+    """Percentile interval of bootstrap values: (low, high); resamples where the value is undefined are skipped."""
     tail = (1 - level) / 2 * 100
-    return float(np.percentile(values, tail)), float(np.percentile(values, 100 - tail))
+    values = np.asarray(values, dtype=float)
+    if np.isnan(values).all():
+        return np.nan, np.nan
+    return float(np.nanpercentile(values, tail)), float(np.nanpercentile(values, 100 - tail))
