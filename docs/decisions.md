@@ -344,3 +344,56 @@ alternative rejected.
     made without the test years.
     *Rejected:* choosing among candidates on the test cohort; any change
     after the post-hoc test scores are seen.
+35. **"Beat" stays the registered interval rule** (Alan, 2026-10-05,
+    question 10). Confirms #32: the verdict in `results/success_criteria.csv`
+    is the 95% paired-bootstrap interval rule of decision #5, and the
+    `point_estimate_reading` column stays beside it. The report gives the
+    registered count and names the two lines (C1 and C2 at 7 years) that are
+    better on the point estimate but fail by the interval. *Reason:* the rule
+    was committed before scoring; changing it afterwards would turn two FAILs
+    into PASSes after seeing them. *Rejected:* the point estimate as verdict.
+36. **PJM (2018) commercial-probability benchmark dropped** (Alan,
+    2026-10-05, question 12). PLAN.md §6 lists it for notebook 08, but its
+    coefficients and method document are not available to the project, so it
+    was never run. The report says that it was planned and not run, and lists
+    it under limitations. *Reason:* a re-estimated stand-in would not be
+    PJM's model and could not be called that benchmark. *Rejected:*
+    approximating the benchmark from its general description.
+37. **Poster, not video** (Alan, 2026-10-05; PLAN.md §8b). The final
+    presentation is `poster/poster.pptx`, built after the report draft and
+    mentor feedback, from the report's figures and `results/`. *Rejected:*
+    the 4-minute video.
+38. **`report/report.md` only for now** (Alan, 2026-10-05). pandoc is not
+    installed, so `make report` (report.md → report.pdf) is not run; the
+    Markdown file is the draft of record and the PDF build is a later step.
+    *Rejected:* installing system software from a working session.
+39. **How the report is built and checked** (2026-10-05, report draft v1).
+    (a) Every number the report cites comes from `results/report_numbers.csv`,
+    written by `src/report_numbers.py` (`make numbers`) from the result
+    tables, with the source file of each value; design constants (horizons,
+    the 20 MW step, bootstrap settings, model settings) are traced the same
+    way. `tests/test_report.py` fails if a number in `report/report.md` is
+    not in that table, ignoring calendar years and labels (figure, decision,
+    criterion and rule numbers). The 90% range of operations in the 25-request
+    book is computed exactly (Poisson-binomial), not by simulation, so it does
+    not depend on a seed; it equals notebook 09's simulated range (1–6).
+    (b) Word count: everything from the title to the end of the mentor-
+    feedback section, including captions and lists, excluding references and
+    appendices; the test fails above 3,000.
+    (c) Figures: F1, F3, F8 (data), 08_12, F5, F4, 08_17 (evaluation), F7
+    (explanation). F2 and F6 are left out to stay at eight; their findings
+    appear as numbers in the text.
+    (d) Alan asked for the data-science steps to be explicit (gathering,
+    EDA, features, supervised models with hyperparameters and how they were
+    tuned, metrics); the report says plainly that no unsupervised method was
+    used. *Rejected:* typing numbers into the report by hand; counting
+    captions out of the limit.
+40. **Word and figure limits relaxed for draft v1** (Alan, 2026-10-05).
+    The 3,000-word limit and the 6–8 figure plan are set aside for now, so the
+    draft can carry the data-science detail Alan asked for and all of F1–F8
+    plus 08_12, 08_14, 08_17 and 09_09 (12 figures). The word-count test in
+    `tests/test_report.py` is skipped, not deleted, with this decision as
+    its reason; it must pass again before the final report, which means
+    cutting the draft (moving detail to the appendices) later. This
+    supersedes 39(b)–(c) for the draft. *Rejected:* cutting now, before
+    mentor feedback shows which parts matter.

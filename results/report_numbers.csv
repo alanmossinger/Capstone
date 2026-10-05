@@ -1,0 +1,314 @@
+key,text,value,source,note
+horizon_3,3,3,src/config.py,"prediction horizon, years"
+horizon_5,5,5,src/config.py,"prediction horizon, years"
+horizon_7,7,7,src/config.py,"prediction horizon, years"
+ferc_step_mw,20,20,src/config.py,"FERC small/large generator step, MW"
+size_top_edge,500,500,src/config.py,"lower edge of the largest size regime, MW"
+rare_type_min,100,100,src/config.py,technology levels pooled below this count
+mw_flag,"5,000",5000,src/config.py,requests above this MW flagged
+calibration_min_bin,50,50,src/track_b.py,requests behind every step of the isotonic map
+state_prior,50,50,src/track_b.py,smoothing of the state encoding
+bootstrap_resamples,200,200,results/success_criteria_registered.json,paired bootstrap resamples
+interval_level,95%,0.95,results/success_criteria_registered.json,interval level of every reported interval
+c3_low,0.9,0.9,docs/decisions.md #5,C3 lower bound of the calibration slope
+c3_high,1.1,1.1,docs/decisions.md #5,C3 upper bound of the calibration slope
+c4_threshold,1.5,1.5,docs/decisions.md #5,C4 minimum top-decile lift
+top_share,10%,0.1,docs/decisions.md #5,share of requests in the top decile
+n_criteria_lines,12,12,results/success_criteria.csv,criterion × horizon lines
+cv_folds,5,5,src/discrete_time.py,grouped cross-validation folds
+lgbm_learning_rate,0.05,0.05,src/discrete_time.py,LightGBM learning rate
+lgbm_fraction,0.8,0.8,src/discrete_time.py,LightGBM feature and bagging fraction
+lgbm_l2,1.0,1.0,src/discrete_time.py,LightGBM L2 penalty
+seed_track_a,800,800,results/success_criteria_registered.json,"bootstrap seed, Track A"
+seed_track_b,801,801,results/success_criteria_registered.json,"bootstrap seed, Track B"
+lbnl_rows,"36,441",36441,results/audit_counts.json,rows in the LBNL file
+lbnl_cols,31,31,results/audit_counts.json,columns in the LBNL file
+placeholder_q_date,204,204,results/audit_counts.json,request dates stored as 1970-01-01
+eia_rows,"28,324",28324,results/eia860m_profile.json,EIA-860M generators pulled
+eia_pages,6,6,results/eia860m_profile.json,API pages
+eia_gw,"1,408.6",1408.6,results/eia860m_profile.json,nameplate GW in EIA-860M
+readiness_passed,15,15,results/readiness_checks.csv,readiness checks passed
+readiness_total,15,15,results/readiness_checks.csv,readiness checks
+headline_operational,12.6%,0.1256,results/headline_checks.json,2000–2019 capacity operational
+headline_withdrawn,76.9%,0.7691,results/headline_checks.json,2000–2019 capacity withdrawn
+median_cod_early,1.8,1.821,results/headline_checks.json,"median request-to-operation years, 2000–07 completions"
+median_cod_late,4.1,4.137,results/headline_checks.json,"median request-to-operation years, 2018–24 completions"
+on_cov_CAISO,95.2%,0.9517543859649122,results/event_date_coverage.csv,CAISO operational rows with an operation date
+wd_cov_CAISO,82.6%,0.8264840182648402,results/event_date_coverage.csv,CAISO withdrawn rows with a withdrawal date
+on_cov_MISO,1.4%,0.0142276422764227,results/event_date_coverage.csv,MISO operational rows with an operation date
+wd_cov_MISO,41.8%,0.417693661971831,results/event_date_coverage.csv,MISO withdrawn rows with a withdrawal date
+on_cov_SPP,4.9%,0.048780487804878,results/event_date_coverage.csv,SPP operational rows with an operation date
+wd_cov_SPP,0.0%,0.0,results/event_date_coverage.csv,SPP withdrawn rows with a withdrawal date
+on_cov_West,21.5%,0.2153209109730849,results/event_date_coverage.csv,West operational rows with an operation date
+wd_cov_West,7.5%,0.0753438718948881,results/event_date_coverage.csv,West withdrawn rows with a withdrawal date
+linkage_matched,31.1%,0.3109090909090909,results/linkage_test.csv,LBNL projects matched to EIA
+linkage_agree,74.9%,0.7485380116959064,results/linkage_test.csv,matches agreeing within 6 months
+linkage_bar_match,40%,0.4,PLAN.md §5.3,pre-set match bar
+linkage_bar_agree,80%,0.8,PLAN.md §5.3,pre-set agreement bar
+linkage_projects,"1,650",1650,results/linkage_test.csv,projects in the linkage test
+clean_rows_out,"36,216",36216,results/clean_log.csv,rows after cleaning
+dates_cleared,692,692,results/clean_log.csv,event dates cleared by R3 and R4
+dropped_r5,208,208,results/clean_log.csv,non-generation requests dropped
+trackA_n,"13,366",13366,results/trackA_event_counts.csv,Track A All
+trackA_op,"1,730",1730,results/trackA_event_counts.csv,Track A operation
+trackA_wd,"7,064",7064,results/trackA_event_counts.csv,Track A withdrawal
+trackA_cens,"4,572",4572,results/trackA_event_counts.csv,Track A censored
+trackB_n,"14,624",14624,results/sample_sizes.csv,Track B requests
+trackB_test_n,"1,534",1534,results/sample_sizes.csv,Track B 2017 requests
+trackB_test_built,279,279,results/sample_sizes.csv,Track B 2017 built
+trackB_test_share,18.2%,0.181877444589309,results/sample_sizes.csv,Track B 2017 share built
+trackA_train_n,"4,725",4725,results/sample_sizes.csv,Track A train requests
+trackA_validation_n,573,573,results/sample_sizes.csv,Track A validation requests
+trackA_test_n,"2,268",2268,results/sample_sizes.csv,Track A test requests
+test_n_ERCOT,479,479,results/sample_sizes.csv,ERCOT test requests
+test_n_PJM,"1,465",1465,results/sample_sizes.csv,PJM test requests
+test_n_CAISO,324,324,results/sample_sizes.csv,CAISO test requests
+test_op_5,227,227,results/test_outcome_status.csv,test requests operating within 5 years
+test_op_5_share,10.0%,0.10008818342151675,results/test_outcome_status.csv,share of test requests operating within 5 years
+test_op_5_CAISO,10,10,results/test_outcome_status.csv,CAISO test requests operating within 5 years
+trackA_later_n,"5,800",5800,results/sample_sizes.csv,"Track A requests entering after 2019, not used"
+test_unknown_7,532,532,results/test_outcome_status.csv,test requests censored before 7 years
+test_n_2017,549,549,results/cohort_check.csv,test requests entering 2017
+test_n_2018,672,672,results/cohort_check.csv,test requests entering 2018
+test_n_2019,"1,047",1047,results/cohort_check.csv,test requests entering 2019
+n_features_main,11,11,results/feature_summary.csv,entry-time feature columns
+cif5_op_ERCOT,18.4%,0.183586548447775,results/cif_horizons.csv,"ERCOT P(operation by 5 years), all entrants"
+cif5_wd_ERCOT,27.4%,0.2740767723302886,results/cif_horizons.csv,"ERCOT P(withdrawal by 5 years), all entrants"
+cif5_op_PJM,13.2%,0.1317687305405054,results/cif_horizons.csv,"PJM P(operation by 5 years), all entrants"
+cif5_wd_PJM,61.2%,0.6115479698139211,results/cif_horizons.csv,"PJM P(withdrawal by 5 years), all entrants"
+cif5_op_CAISO,4.8%,0.0477815662428987,results/cif_horizons.csv,"CAISO P(operation by 5 years), all entrants"
+cif5_wd_CAISO,66.5%,0.6650883550204727,results/cif_horizons.csv,"CAISO P(withdrawal by 5 years), all entrants"
+cif5_storage_max,3.4%,0.0336678391817952,results/cif_horizons.csv,highest 5-year operation of batteries or solar+battery in any region
+cif5_gas_ERCOT,26.9%,0.2687304309357592,results/cif_horizons.csv,ERCOT Gas 5-year operation
+cif5_solar_ERCOT,11.1%,0.1109265331028905,results/cif_horizons.csv,ERCOT Solar 5-year operation
+cif5_gas_PJM,31.9%,0.3187149018689874,results/cif_horizons.csv,PJM Gas 5-year operation
+cif5_solar_PJM,7.4%,0.0735447260694099,results/cif_horizons.csv,PJM Solar 5-year operation
+cif5_gas_CAISO,10.5%,0.1045441873431837,results/cif_horizons.csv,CAISO Gas 5-year operation
+cif5_solar_CAISO,4.2%,0.0424911170330891,results/cif_horizons.csv,CAISO Solar 5-year operation
+size5_PJM_small,29.3%,0.2925170068027214,results/five_year_by_size.csv,"PJM 5-year completion, <5 MW"
+size5_PJM_large,3.7%,0.0365168539325843,results/five_year_by_size.csv,"PJM 5-year completion, ≥500 MW"
+size5_CAISO_small,17.9%,0.1794871794871794,results/five_year_by_size.csv,"CAISO 5-year completion, <5 MW"
+size5_CAISO_large,0.4%,0.0044247787610619,results/five_year_by_size.csv,"CAISO 5-year completion, ≥500 MW"
+size5_ERCOT_mid,25.8%,0.2576177285318561,results/five_year_by_size.csv,"ERCOT 5-year completion, 100–<200 MW"
+size5_ERCOT_large,8.7%,0.0869565217391304,results/five_year_by_size.csv,"ERCOT 5-year completion, ≥500 MW"
+size5_CAISO_below20,15.8%,0.1578947368421052,results/five_year_by_size.csv,"CAISO 5-year completion, 5–<20 MW"
+size5_CAISO_above20,6.1%,0.0608552631578948,results/five_year_by_size.csv,"CAISO 5-year completion, 20–<100 MW"
+cong5_ERCOT_low,26.7%,0.2674897119341566,results/five_year_by_congestion.csv,"ERCOT 5-year completion, congestion fifth 1"
+cong5_ERCOT_high,17.8%,0.1776859504132235,results/five_year_by_congestion.csv,"ERCOT 5-year completion, congestion fifth 5"
+cong5_PJM_low,32.1%,0.3209200438116093,results/five_year_by_congestion.csv,"PJM 5-year completion, congestion fifth 1"
+cong5_PJM_high,8.7%,0.0867178924259056,results/five_year_by_congestion.csv,"PJM 5-year completion, congestion fifth 5"
+cong5_CAISO_low,4.3%,0.0434782608695652,results/five_year_by_congestion.csv,"CAISO 5-year completion, congestion fifth 1"
+cong5_CAISO_high,5.1%,0.0513833992094863,results/five_year_by_congestion.csv,"CAISO 5-year completion, congestion fifth 5"
+benchmark_max_gap,1.2,1.2046485260771,results/benchmarks.csv,"largest gap to LBNL's completion rates, points"
+ercot_stamped_n,441,441,results/ercot_bulk_date_sensitivity.csv,ERCOT 2000–2019 entrants with the bulk withdrawal date
+dt_project_years,"14,653",14653,results/dt_rows_summary.csv,project-years in the final discrete-time fit
+dt_ercot_with_rows,98,98,results/dt_rows_summary.csv,ERCOT training requests left after delayed entry
+dt_ercot_requests,732,732,results/dt_rows_summary.csv,ERCOT training requests before delayed entry
+logit_C,0.1,0.1,results/dt_tuning.json,logit ridge strength C
+logit_cv_loss,0.720,0.7195330439845471,results/dt_tuning.json,logit CV log loss
+lgbm_leaves,8,8,results/dt_tuning.json,LightGBM leaves
+lgbm_min_leaf,10,10,results/dt_tuning.json,LightGBM min rows per leaf
+lgbm_rounds,331,331,results/dt_tuning.json,LightGBM boosting rounds
+lgbm_cv_leaves,64,64,results/dt_tuning.json,leaves preferred by grouped CV
+val_loss_none,0.736,0.7355748330824817,results/dt_tuning.json,"2016 log loss, no information"
+val_loss_logit,0.690,0.6901644141301329,results/dt_tuning.json,"2016 log loss, dt_logit"
+val_loss_lgbm,0.649,0.6492638746503553,results/dt_tuning.json,"2016 log loss, dt_lgbm (chosen on 2016)"
+val_loss_lgbm_cv,0.666,0.6658242274218289,results/dt_tuning.json,"2016 log loss, dt_lgbm (CV's choice)"
+lgbm_grid_size,15,15,results/dt_cv_lgbm.csv,LightGBM settings searched
+lgbm_grid_spearman,−0.65,-0.6464285714285712,results/dt_cv_lgbm.csv,"Spearman, CV vs 2016 log loss"
+logit_grid_C_min,0.003,0.003,results/dt_cv_logit.csv,smallest C searched
+logit_grid_C_max,3.0,3.0,results/dt_cv_logit.csv,largest C searched
+cox_pen_op,0.01,0.01,results/cox_penalizer_tuning.csv,"Cox ridge, operation"
+cox_pen_wd,1.0,1.0,results/cox_penalizer_tuning.csv,"Cox ridge, withdrawal"
+hr_ercot,1.66,1.6583466295883644,results/cox_hazard_ratios.csv,"operation HR, region_ERCOT"
+hr_ercot_ci,"[1.04, 2.64]",1.0435555981657572–2.635330162284524,results/cox_hazard_ratios.csv,"95% interval, operation HR, region_ERCOT"
+hr_caiso,0.52,0.5233108251348412,results/cox_hazard_ratios.csv,"operation HR, region_CAISO"
+hr_caiso_ci,"[0.43, 0.64]",0.4295591362821416–0.6375239089861573,results/cox_hazard_ratios.csv,"95% interval, operation HR, region_CAISO"
+hr_gas,2.56,2.564064243092222,results/cox_hazard_ratios.csv,"operation HR, tech_Gas"
+hr_gas_ci,"[2.19, 3.01]",2.1858117996950224–3.0077728757898523,results/cox_hazard_ratios.csv,"95% interval, operation HR, tech_Gas"
+hr_small,1.85,1.851727798908872,results/cox_hazard_ratios.csv,"operation HR, size_<5"
+hr_small_ci,"[1.54, 2.23]",1.538479919529477–2.2287556683226497,results/cox_hazard_ratios.csv,"95% interval, operation HR, size_<5"
+hr_large,0.31,0.3062162873506707,results/cox_hazard_ratios.csv,"operation HR, size_≥500"
+hr_large_ci,"[0.24, 0.39]",0.2377668190760032–0.3943713214620373,results/cox_hazard_ratios.csv,"95% interval, operation HR, size_≥500"
+hr_gas_wd,0.95,0.950443212899996,results/cox_hazard_ratios.csv,"withdrawal HR, gas"
+hr_gas_wd_ci,"[0.90, 1.00]",0.9001948444677801–1.0034964169137714,results/cox_hazard_ratios.csv,"95% interval, withdrawal HR, gas"
+tb_logit_C,0.1,0.1,results/trackB_tuning.json,Track B logit C
+tb_leaves,4,4,results/trackB_tuning.json,Track B leaves
+tb_min_leaf,20,20,results/trackB_tuning.json,Track B min rows per leaf
+tb_rounds,243,243,results/trackB_tuning.json,Track B rounds
+tb_spearman,−0.85,-0.8534571723426213,results/trackB_tuning.json,"Track B Spearman, CV vs 2016"
+tb_val_auc_baseline,0.613,0.6127038995794571,results/trackB_validation.csv,"Track B 2016 AUC, baseline"
+tb_val_auc_logit,0.665,0.6654422072129476,results/trackB_validation.csv,"Track B 2016 AUC, logit"
+tb_val_auc_lgbm,0.662,0.6622642411112527,results/trackB_validation.csv,"Track B 2016 AUC, lgbm"
+criteria_pass,8,8,results/success_criteria.csv,criterion lines passed
+criteria_pe_differ,2,2,results/success_criteria.csv,lines better on the point estimate but FAIL
+c1_uno_c_3_est,0.853,0.8525048376693184,results/success_criteria.csv,C1 uno_c estimate
+c1_uno_c_3_diff,+0.121,0.1214523758331541,results/success_criteria.csv,C1 uno_c paired difference
+c1_uno_c_3_ci,"[+0.072, +0.170]",0.0721640344544069–0.1699217445202425,results/success_criteria.csv,C1 uno_c 95% interval of the difference
+c1_uno_c_3_bench,0.731,0.7310524618361642,results/success_criteria.csv,C1 uno_c benchmark estimate
+c1_uno_c_5_est,0.760,0.7597380545167388,results/success_criteria.csv,C1 uno_c estimate
+c1_uno_c_5_diff,+0.041,0.0406778586099949,results/success_criteria.csv,C1 uno_c paired difference
+c1_uno_c_5_ci,"[+0.013, +0.069]",0.0128140195625332–0.0685019959435803,results/success_criteria.csv,C1 uno_c 95% interval of the difference
+c1_uno_c_5_bench,0.719,0.7190601959067439,results/success_criteria.csv,C1 uno_c benchmark estimate
+c1_uno_c_7_est,0.672,0.672237710434048,results/success_criteria.csv,C1 uno_c estimate
+c1_uno_c_7_diff,+0.015,0.0148231798259172,results/success_criteria.csv,C1 uno_c paired difference
+c1_uno_c_7_ci,"[−0.014, +0.050]",-0.0141808257645643–0.0496183128227279,results/success_criteria.csv,C1 uno_c 95% interval of the difference
+c1_uno_c_7_bench,0.657,0.6574145306081307,results/success_criteria.csv,C1 uno_c benchmark estimate
+c2_brier_3_est,0.0411,0.0411446683650563,results/success_criteria.csv,C2 brier estimate
+c2_brier_3_diff,−0.006,-0.0059406360474558,results/success_criteria.csv,C2 brier paired difference
+c2_brier_3_ci,"[−0.008, −0.004]",-0.0082002593247059–-0.0039204893958309,results/success_criteria.csv,C2 brier 95% interval of the difference
+c2_brier_3_bench,0.0471,0.0470853044125121,results/success_criteria.csv,C2 brier benchmark estimate
+c2_brier_5_est,0.0808,0.0808026544195353,results/success_criteria.csv,C2 brier estimate
+c2_brier_5_diff,−0.005,-0.0050141489903783,results/success_criteria.csv,C2 brier paired difference
+c2_brier_5_ci,"[−0.007, −0.003]",-0.0073914078039049–-0.0028044236560993,results/success_criteria.csv,C2 brier 95% interval of the difference
+c2_brier_5_bench,0.0858,0.0858168034099137,results/success_criteria.csv,C2 brier benchmark estimate
+c2_brier_7_est,0.1211,0.1210705930467268,results/success_criteria.csv,C2 brier estimate
+c2_brier_7_diff,−0.001,-0.000810713968959,results/success_criteria.csv,C2 brier paired difference
+c2_brier_7_ci,"[−0.004, +0.002]",-0.0041026056116119–0.002323732989438,results/success_criteria.csv,C2 brier 95% interval of the difference
+c2_brier_7_bench,0.1219,0.1218813070156858,results/success_criteria.csv,C2 brier benchmark estimate
+c3_slope_3_est,1.345,1.3448228497462515,results/success_criteria.csv,C3 slope estimate
+c3_slope_3_ci,"[1.15, 1.58]",1.151099230672113–1.5790683647694956,results/success_criteria.csv,C3 slope 95% interval
+c3_slope_5_est,1.273,1.272778128333924,results/success_criteria.csv,C3 slope estimate
+c3_slope_5_ci,"[1.11, 1.49]",1.1096037055151111–1.4890846151236012,results/success_criteria.csv,C3 slope 95% interval
+c3_slope_7_est,0.939,0.9394633770622736,results/success_criteria.csv,C3 slope estimate
+c3_slope_7_ci,"[0.72, 1.14]",0.7222006402952398–1.1359382391355164,results/success_criteria.csv,C3 slope 95% interval
+c4_lift_10_5_est,3.96,3.9647577092511015,results/success_criteria.csv,C4 lift_10 estimate
+c4_lift_10_5_ci,"[3.44, 4.51]",3.4400649200092746–4.507156894857517,results/success_criteria.csv,C4 lift_10 95% interval
+c5_auc_0_est,0.608,0.6084921960901912,results/success_criteria.csv,C5 auc estimate
+c5_auc_0_diff,+0.084,0.0835139727827043,results/success_criteria.csv,C5 auc paired difference
+c5_auc_0_ci,"[+0.050, +0.118]",0.0504343967939406–0.1184551247625996,results/success_criteria.csv,C5 auc 95% interval of the difference
+c5_auc_0_bench,0.525,0.5249782233074869,results/success_criteria.csv,C5 auc benchmark estimate
+c5_brier_0_est,0.1475,0.1474767311255339,results/success_criteria.csv,C5 brier estimate
+c5_brier_0_diff,−0.006,-0.0056832439344846,results/success_criteria.csv,C5 brier paired difference
+c5_brier_0_ci,"[−0.009, −0.002]",-0.0093421573362667–-0.0024326981159314,results/success_criteria.csv,C5 brier 95% interval of the difference
+c5_brier_0_bench,0.1532,0.1531599750600186,results/success_criteria.csv,C5 brier benchmark estimate
+auc_baseline_3,0.733,0.7326389436342137,results/metrics.csv,"time-dependent AUC, baseline, 3 years"
+slope_baseline_3,1.55,1.5456487794600853,results/metrics.csv,"calibration slope, baseline, 3 years"
+auc_baseline_5,0.725,0.7254541804893947,results/metrics.csv,"time-dependent AUC, baseline, 5 years"
+slope_baseline_5,1.15,1.1547334644555758,results/metrics.csv,"calibration slope, baseline, 5 years"
+auc_baseline_7,0.654,0.6539902549767884,results/metrics.csv,"time-dependent AUC, baseline, 7 years"
+slope_baseline_7,1.08,1.0759398427228402,results/metrics.csv,"calibration slope, baseline, 7 years"
+auc_cox_3,0.852,0.8519274733937722,results/metrics.csv,"time-dependent AUC, cox, 3 years"
+slope_cox_3,2.13,2.132572467834253,results/metrics.csv,"calibration slope, cox, 3 years"
+auc_cox_5,0.765,0.7647758397779442,results/metrics.csv,"time-dependent AUC, cox, 5 years"
+slope_cox_5,1.63,1.634217936576338,results/metrics.csv,"calibration slope, cox, 5 years"
+auc_cox_7,0.696,0.6955196924094842,results/metrics.csv,"time-dependent AUC, cox, 7 years"
+slope_cox_7,1.32,1.3220874859725598,results/metrics.csv,"calibration slope, cox, 7 years"
+auc_dt_logit_3,0.836,0.8360938115884904,results/metrics.csv,"time-dependent AUC, dt_logit, 3 years"
+slope_dt_logit_3,1.03,1.033896023382075,results/metrics.csv,"calibration slope, dt_logit, 3 years"
+auc_dt_logit_5,0.751,0.7509545506543177,results/metrics.csv,"time-dependent AUC, dt_logit, 5 years"
+slope_dt_logit_5,1.03,1.0332533585327954,results/metrics.csv,"calibration slope, dt_logit, 5 years"
+auc_dt_logit_7,0.668,0.6683661344857367,results/metrics.csv,"time-dependent AUC, dt_logit, 7 years"
+slope_dt_logit_7,0.79,0.7871634544063887,results/metrics.csv,"calibration slope, dt_logit, 7 years"
+auc_dt_lgbm_3,0.858,0.8575778478517935,results/metrics.csv,"time-dependent AUC, dt_lgbm, 3 years"
+slope_dt_lgbm_3,1.34,1.3448228497462515,results/metrics.csv,"calibration slope, dt_lgbm, 3 years"
+auc_dt_lgbm_5,0.766,0.7662370739056392,results/metrics.csv,"time-dependent AUC, dt_lgbm, 5 years"
+slope_dt_lgbm_5,1.27,1.272778128333924,results/metrics.csv,"calibration slope, dt_lgbm, 5 years"
+auc_dt_lgbm_7,0.672,0.672110171245085,results/metrics.csv,"time-dependent AUC, dt_lgbm, 7 years"
+slope_dt_lgbm_7,0.94,0.9394633770622736,results/metrics.csv,"calibration slope, dt_lgbm, 7 years"
+precision10_lgbm_5,39.7%,0.3968253968253968,results/metrics.csv,"share operating within 5 years, top decile"
+lift_baseline_5,3.35,3.3468539606017784,results/metrics.csv,"baseline top-decile lift, 5 years"
+decile9_pred,21.2%,0.2118546001055003,results/calibration.csv,LightGBM 5-year decile 9 predicted
+decile9_obs,9.7%,0.0969162995594712,results/calibration.csv,LightGBM 5-year decile 9 observed
+pjm5_pred,14.5%,0.1447569460466336,results/calibration_by_region.csv,PJM mean predicted 5-year
+pjm5_obs,9.4%,0.0935153583617751,results/calibration_by_region.csv,PJM observed 5-year
+obs5_2017,12.8%,0.1275045537340618,results/cohort_check.csv,"observed 5-year, 2017 entrants"
+lgbm5_2017,14.2%,0.1419604687431062,results/cohort_check.csv,"LightGBM mean 5-year, 2017 entrants"
+obs5_2018,8.3%,0.0833333333333335,results/cohort_check.csv,"observed 5-year, 2018 entrants"
+lgbm5_2018,13.1%,0.1305162667132478,results/cohort_check.csv,"LightGBM mean 5-year, 2018 entrants"
+obs5_2019,9.6%,0.0964660936007639,results/cohort_check.csv,"observed 5-year, 2019 entrants"
+lgbm5_2019,13.6%,0.136016192860086,results/cohort_check.csv,"LightGBM mean 5-year, 2019 entrants"
+captured10_dt_lgbm,39.6%,0.3964757709251101,results/gains.csv,"share of 5-year operations in top 10%, dt_lgbm"
+captured10_baseline,33.5%,0.3346853960601779,results/gains.csv,"share of 5-year operations in top 10%, baseline"
+pjm_uno5_dt_lgbm,0.784,0.7844962011009482,results/metrics_by_region.csv,"PJM Uno's C at 5 years, dt_lgbm"
+pjm_uno5_baseline,0.691,0.691271427674404,results/metrics_by_region.csv,"PJM Uno's C at 5 years, baseline"
+ercot_brier3_diff,+0.004,0.0042229036594967,results/metrics_by_region.csv,"ERCOT 3-year Brier, LightGBM − baseline"
+ercot_brier3_ci,"[+0.001, +0.009]",0.0006450520540308–0.0090417254591397,results/metrics_by_region.csv,interval of the ERCOT 3-year Brier difference
+caiso_wins,3,3,results/metrics_by_region.csv,CAISO concordance and Brier comparisons won by LightGBM
+s7_uno_lgbm,0.671,0.670870700649837,results/seven_year_check.csv,"7-year Uno's C, 2017 entrants, LightGBM"
+s7_uno_base,0.619,0.618661052290625,results/seven_year_check.csv,"7-year Uno's C, 2017 entrants, baseline"
+s7_uno_ci,"[−0.006, +0.117]",-0.0062133834176293–0.1165524791489637,results/seven_year_check.csv,interval of the 2017-only 7-year difference
+rob_main_wins,4,4,results/robustness.csv,"comparisons won, main version"
+rob_small_wins,0,0,results/robustness.csv,"comparisons won, under 20 MW excluded"
+rob_comparisons,6,6,results/robustness.csv,comparisons per variant
+abl_post,0.990,0.989777154433536,results/ablation.csv,"5-year AUC, with_post_entry, CAISO and ERCOT"
+abl_entry,0.715,0.7147187159108618,results/ablation.csv,"5-year AUC, entry_only, CAISO and ERCOT"
+loio_pred_ERCOT,2.5%,0.0251590415236316,results/loio.csv,ERCOT mean 5-year prediction when held out
+loio_obs_ERCOT,16.7%,0.1670146137787062,results/loio.csv,ERCOT observed 5-year
+loio_pred_CAISO,23.9%,0.2387969358155872,results/loio.csv,CAISO mean 5-year prediction when held out
+loio_obs_CAISO,3.1%,0.0308641975308641,results/loio.csv,CAISO observed 5-year
+tb_regions_missed,4,4,results/trackB_test_by_region.csv,Track B regions whose level is missed
+tb_regions,9,9,results/trackB_test_by_region.csv,Track B regions
+mean_abs_shap_region,0.44,0.43532593999449887,results/shap_values.csv,"mean |SHAP| of shap_region, points"
+mean_abs_shap_state,5.12,5.119395796570186,results/shap_values.csv,"mean |SHAP| of shap_state, points"
+mean_abs_shap_tech,2.95,2.9507660378028504,results/shap_values.csv,"mean |SHAP| of shap_tech, points"
+mean_abs_shap_hybrid,0.15,0.1469247161827035,results/shap_values.csv,"mean |SHAP| of shap_hybrid, points"
+mean_abs_shap_size_mw,3.68,3.6757526782987013,results/shap_values.csv,"mean |SHAP| of shap_size_mw, points"
+mean_abs_shap_service,1.24,1.2361531824292786,results/shap_values.csv,"mean |SHAP| of shap_service, points"
+mean_abs_shap_q_year,0.00,0.0,results/shap_values.csv,"mean |SHAP| of shap_q_year, points"
+mean_abs_shap_congestion_gw,1.90,1.900116701486225,results/shap_values.csv,"mean |SHAP| of shap_congestion_gw, points"
+mean_abs_shap_congestion_rank,1.61,1.6091649937754242,results/shap_values.csv,"mean |SHAP| of shap_congestion_rank, points"
+shap_features,9,9,results/shap_values.csv,features the models use
+shap_n,300,300,results/shap_values.csv,test requests explained
+shap_background,100,100,docs/decisions.md #33,background test requests for SHAP
+pd_size_point_3,3,3,notebooks/09_explain_and_rank.ipynb,"size at which partial dependence is quoted, MW"
+pd_size_ercot_3,41.8%,0.4179475331450031,results/partial_dependence.csv,ERCOT mean P(operation within 5 years) near 3 MW
+pd_size_point_1000,"1,000",1000,notebooks/09_explain_and_rank.ipynb,"size at which partial dependence is quoted, MW"
+pd_size_ercot_1000,7.4%,0.0742753560076774,results/partial_dependence.csv,ERCOT mean P(operation within 5 years) near 1000 MW
+pd_step_ERCOT,+1.8,1.7640182941274174,results/partial_dependence.csv,"ERCOT change at 20 MW, points"
+pd_step_PJM,+1.4,1.3575178911041208,results/partial_dependence.csv,"PJM change at 20 MW, points"
+pd_step_CAISO,+0.7,0.6835704203686004,results/partial_dependence.csv,"CAISO change at 20 MW, points"
+pd_region_ERCOT,13.4%,0.1338118746630359,results/partial_dependence.csv,mean prediction with every test request moved to ERCOT
+pd_region_PJM,13.9%,0.1389561092333305,results/partial_dependence.csv,mean prediction with every test request moved to PJM
+pd_region_CAISO,12.6%,0.1256143651732142,results/partial_dependence.csv,mean prediction with every test request moved to CAISO
+pd_tech_Gas,24.3%,0.24278667965970233,results/partial_dependence.csv,"Gas, mean of three regions"
+pd_tech_Solar,10.7%,0.10737286272336195,results/partial_dependence.csv,"Solar, mean of three regions"
+sanity_recovered,2,2,results/sanity_checks.csv,outside facts recovered
+sanity_total,6,6,results/sanity_checks.csv,outside facts checked
+book_n,25,25,results/ranking_table.csv,requests in the ranking book
+book_expected,3.0,3.0069918149436017,results/ranking_table.csv,operations expected by the model
+book_expected_base,2.6,2.578245113890499,results/ranking_table.csv,operations expected by the baseline
+book_range_level,90%,0.9,src/report_numbers.py,level of the range of operations in the book
+book_range_low,1,1,results/ranking_table.csv,5th percentile of operations
+book_range_high,6,6,results/ranking_table.csv,95th percentile of operations
+book_observed,2,2,results/ranking_table.csv,operations observed within 5 years
+book_operated_rank_1,2,2,results/ranking_table.csv,model rank of an operating request
+book_operated_rank_2,3,3,results/ranking_table.csv,model rank of an operating request
+ex_top_p3,32%,0.3189682143144863,results/worked_examples.csv,ranked highest: P(operation within 3 years)
+ex_top_p5,38%,0.3846410873911978,results/worked_examples.csv,ranked highest: P(operation within 5 years)
+ex_top_p7,40%,0.4004920287827925,results/worked_examples.csv,ranked highest: P(operation within 7 years)
+ex_top_base,14%,0.1408450704225353,results/worked_examples.csv,ranked highest: baseline 5-year
+ex_top_mw,4,4.1,results/worked_examples.csv,ranked highest: MW
+ex_top_rank,1,1,results/worked_examples.csv,ranked highest: model rank
+ex_top_brank,5.5,5.5,results/worked_examples.csv,ranked highest: baseline rank
+ex_top_years,2.1,2.1469454408266726,results/worked_examples.csv,ranked highest: expected years if built
+ex_top_driver1,4 MW (+15.9 pts),4 MW (+15.9 pts),results/worked_examples.csv,ranked highest: driver 1
+ex_top_driver2,congestion rank 0.37 (+9.2 pts),congestion rank 0.37 (+9.2 pts),results/worked_examples.csv,ranked highest: driver 2
+ex_moved_p3,31%,0.3089105710350546,results/worked_examples.csv,moved up most vs the baseline: P(operation within 3 years)
+ex_moved_p5,32%,0.3195397563926,results/worked_examples.csv,moved up most vs the baseline: P(operation within 5 years)
+ex_moved_p7,32%,0.3209688204051962,results/worked_examples.csv,moved up most vs the baseline: P(operation within 7 years)
+ex_moved_base,13%,0.1343012704174232,results/worked_examples.csv,moved up most vs the baseline: baseline 5-year
+ex_moved_mw,0.8,0.8,results/worked_examples.csv,moved up most vs the baseline: MW
+ex_moved_rank,3,3,results/worked_examples.csv,moved up most vs the baseline: model rank
+ex_moved_brank,12,12.0,results/worked_examples.csv,moved up most vs the baseline: baseline rank
+ex_moved_years,1.1,1.0563733677177238,results/worked_examples.csv,moved up most vs the baseline: expected years if built
+ex_moved_driver1,1 MW (+19.8 pts),1 MW (+19.8 pts),results/worked_examples.csv,moved up most vs the baseline: driver 1
+ex_moved_driver2,service type NRIS (+4.2 pts),service type NRIS (+4.2 pts),results/worked_examples.csv,moved up most vs the baseline: driver 2
+ex_bottom_p3,0%,0.002414038969397,results/worked_examples.csv,ranked lowest: P(operation within 3 years)
+ex_bottom_p5,1%,0.008117837343538,results/worked_examples.csv,ranked lowest: P(operation within 5 years)
+ex_bottom_p7,2%,0.0184321045084461,results/worked_examples.csv,ranked lowest: P(operation within 7 years)
+ex_bottom_base,9%,0.0857142857142857,results/worked_examples.csv,ranked lowest: baseline 5-year
+ex_bottom_mw,"1,568",1568.0,results/worked_examples.csv,ranked lowest: MW
+ex_bottom_rank,25,25,results/worked_examples.csv,ranked lowest: model rank
+ex_bottom_brank,18,18.0,results/worked_examples.csv,ranked lowest: baseline rank
+ex_bottom_years,6.2,6.22857284645487,results/worked_examples.csv,ranked lowest: expected years if built
+ex_bottom_driver1,state CA (-6.6 pts),state CA (-6.6 pts),results/worked_examples.csv,ranked lowest: driver 1
+ex_bottom_driver2,1568 MW (-6.5 pts),1568 MW (-6.5 pts),results/worked_examples.csv,ranked lowest: driver 2
+ph_brier_min,0.0994,0.099402,results/posthoc_choice.json,lowest 2016 mean Brier
+ph_brier_max,0.0997,0.099749,results/posthoc_choice.json,highest 2016 mean Brier
+ph_candidates,5,5,results/posthoc_choice.json,candidates compared
+ph_include0,12,12,results/posthoc_validation_2016.csv,2016 paired Brier intervals including 0
+ph_paired,12,12,results/posthoc_validation_2016.csv,2016 paired Brier comparisons
+ph_pass,5,5,results/posthoc_criteria.csv,"Track A lines passed, post-hoc"
+ph_reg_pass,6,6,results/posthoc_criteria.csv,"Track A lines passed, registered (notebook 08)"
+ph_lines,10,10,results/posthoc_criteria.csv,Track A criterion lines

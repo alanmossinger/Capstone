@@ -383,3 +383,73 @@ a different verdict.
 - 10 ("beat mean") and 12 (PJM commercial-probability source) still open.
 - Poster vs 4-minute video; EIA key rotation; PLAN.md cited by committed
   docs although git-excluded.
+
+## 2026-10-05 (session 5) — report draft v1
+
+**Done**
+
+- State check at the start: tree clean, `main` == `origin/main` at 8db47e9,
+  66 tests passed.
+- Alan's answers, recorded as decisions #35–#38: question 10 closed (the
+  registered interval verdict stays, point-estimate column beside it);
+  question 12 closed (the PJM 2018 commercial-probability benchmark is
+  dropped and the report says so); poster, not video; `report.md` only for
+  now, no pandoc.
+- `src/report_numbers.py` (`make numbers`) writes
+  `results/report_numbers.csv`: every number the report cites, read from
+  `results/`, with its source file. `tests/test_report.py` fails if a
+  number in `report/report.md` is not in that table (decision #39).
+- `report/report.md` v1: abstract; problem; data gathering and the
+  readiness gate; cleaning; exploratory analysis; methods (framing as
+  supervised time-to-event learning, entry-time features, four Track A
+  models and Track B, hyperparameters and how each was tuned); evaluation
+  design (split, metrics, pre-registered criteria); results (8 of 12
+  lines, what passes and fails, drift, where the advantage comes from,
+  ablation, leave-one-ISO-out, the post-hoc paragraph citing #34);
+  explanation (Cox hazard ratios, SHAP, sanity checks, congestion
+  artifact) and the ranking book with three worked examples; ethics;
+  limitations; statement of work; appendices with the criteria table,
+  features and hyperparameters, reproduction steps and a glossary.
+  `report/references.md` in APA (23 entries, every in-text citation
+  matched).
+- Alan's outline feedback: the data-science steps had to be explicit
+  (gathering, EDA, modeling, hyperparameters, metrics). Then, mid-session,
+  the 3,000-word and figure limits were relaxed for the draft (decision
+  #40); the draft has 12 figures and about 3,400 counted words, and the
+  word-count test is skipped until the final report.
+- An independent review of the draft against `results/` found errors that
+  are now fixed: the 8 of 12 lines are not all the timing model's (it
+  passes 6 of 10; C5 is Track B); Track B is fitted on entrants to 2015,
+  not 2016; ERCOT's 3-year Brier score is worse than the baseline's, which
+  "close to the baseline" hid; the congestion train/predict mismatch is now
+  described in Methods; "beat" is "entirely on the better side of zero";
+  C3's 7-year pass has an interval crossing both bounds; the baseline's
+  lift would pass C4 too.
+- Notebook 08 rebuilt and rerun for two figure fixes found in that
+  review: F5's title said "the project-level models" beat the averages at
+  5 years, but the logit's interval includes zero (the title is now
+  computed for LightGBM from the intervals); F4's legend covered data
+  points (moved to the 7-year panel). Result tables unchanged.
+
+**Next**
+
+- Mentor feedback on the draft (`docs/mentor_feedback.md`), then cut the
+  report back toward 3,000 words for the final version; poster
+  (`poster/poster.pptx`).
+
+**Open questions for Alan**
+
+13. **PJM (2018) source.** I found a PJM presentation, "Commercial
+    probability background information" (Market Efficiency Process
+    Enhancement Task Force, 2018-06-15), and cite it as the planned
+    benchmark. I could not open it (the site did not resolve from here),
+    so the title is taken from its file name. If it publishes the
+    coefficients, the benchmark could still be run; decision #36 stands
+    until you say otherwise.
+14. **References to check:** Johnston, Liu & Yang (2023) is cited as a
+    working paper with the authors' URL; DOIs are given only where I am
+    sure of them.
+15. **Word limit:** the final report must come back under 3,000 words; which
+    sections may move to appendices is your call after mentor feedback.
+- Still open: PLAN.md is git-excluded but cited by committed docs; rotate
+  the EIA key pasted in chat on 2026-10-03.

@@ -6,7 +6,7 @@ else
 PYTHON := .venv/bin/python
 endif
 
-.PHONY: setup data clean explore features models evaluate explain figures report test all
+.PHONY: setup data clean explore features models evaluate explain figures numbers report test all
 
 setup:            ## create .venv, install pinned packages, register the notebook kernel
 	python -m venv .venv
@@ -37,7 +37,10 @@ explain:          ## 09: forest plot, SHAP, ranking table, F6 F7
 figures:          ## every notebook that draws figures
 	$(PYTHON) run_pipeline.py --only 01 03 08 09
 
-report:           ## report/report.md → report/report.pdf (needs pandoc)
+numbers:          ## results/report_numbers.csv: every number the report cites, read from results/
+	$(PYTHON) -m src.report_numbers
+
+report: numbers   ## report/report.md → report/report.pdf (needs pandoc)
 	pandoc report/report.md --citeproc -o report/report.pdf
 
 test:
