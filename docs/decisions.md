@@ -265,3 +265,47 @@ alternative rejected.
     both raw and calibrated predictions go to notebook 08. *Rejected:* plain
     isotonic (unstable tail); Platt scaling (assumes a logistic shape the
     reliability diagram does not show).
+31. **How notebook 08 scores** (2026-10-04, `src/evaluation.py`). Concordance
+    for competing risks (Wolbers et al., 2014) with Uno's weights; time-
+    dependent AUC with withdrawn requests among the controls (Blanche et al.,
+    2013, definition 2); Brier score after Graf et al. (1999) with withdrawal
+    as a known non-event; calibration slope and intercept from a weighted
+    logistic recalibration; requests tied at the top-decile cut-off counted
+    in proportion; the bootstrap holds the censoring weights at their full-
+    sample values (they describe follow-up windows fixed by the request
+    date). Two changes made after the first scoring run started, neither
+    touching a registered number: that run stopped in the within-region
+    section because a bootstrap resample made the recalibration fit singular
+    (a region's baseline can take one value, or a resample separates the
+    outcomes perfectly), so the fit now returns NaN when the maximum-
+    likelihood estimate does not exist and intervals skip those resamples;
+    and the "under 20 MW excluded" robustness run uses the size regime
+    (first component's MW, as the features do) rather than total MW — changed
+    before any robustness result existed. *Rejected:* scikit-survival's
+    `concordance_index_ipcw` and `brier_score` (they treat withdrawal as
+    censoring, which scores a different question).
+32. **Point-estimate reading reported beside the registered verdict** (Alan,
+    2026-10-04, after scoring). Alan's message "beat mean", read as asking
+    that "beat" mean a better point estimate, arrived after the criteria were
+    committed (0d5a47b) and scored. The verdict in
+    `results/success_criteria.csv` stays the registered interval rule
+    (decision #5); a column `point_estimate_reading` shows the point-estimate
+    comparison for every "beat" line. They differ on 2 lines (C1 and C2 at 7
+    years: better on the point estimate, FAIL by the interval). *Rejected:*
+    switching the rule after seeing the results, which would turn two FAILs
+    into PASSes.
+33. **Explaining P(operation by t), not a yearly hazard** (2026-10-04,
+    notebook 09, `src/explain.py`). SHAP values come from shap's permutation
+    explainer applied to the whole chain of the discrete-time LightGBM (ten
+    yearly rows → hazards → cumulative incidence), at 5 years, for 300 random
+    test requests against 100 background test requests (two permutations,
+    seed 9); size enters once, in MW, rounded so that 20 MW stays on the
+    large-generator side (a floating-point slip caught by
+    `tests/test_explain.py`); partial dependence sets one feature for every
+    test request of a region. The sanity-check rules were written before the
+    numbers were printed and are kept as computed (2 of 6 recovered); the
+    diagnostics that explain the other four come after them. The 25-request
+    book is drawn at random from 2019 entrants (seed 2019) and the three
+    worked examples are chosen by rule. *Rejected:* TreeExplainer on one
+    yearly hazard (it does not explain the probability a user reads); exact
+    Shapley values (2⁹ coalitions × background, too slow).

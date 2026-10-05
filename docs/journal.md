@@ -251,3 +251,90 @@ of 7 checks PASS and `pytest` 45 passed. Question 8 → decision #27 kept.
    (b) C4 as written in PLAN ("lift ≥ 1.5 × baseline") is ambiguous — model
    lift ≥ 1.5, or model lift ≥ 1.5 × the baseline's lift? (c) the primary
    models above.
+
+## 2026-10-04/05 — notebooks 08 (evaluation) and 09 (explain and rank)
+
+**Done**
+
+- Alan's answers to question 9: "beat" by interval, C4 = model lift ≥ 1.5,
+  primary models as drafted. Decision #5 written by notebook 08's first cell
+  and committed and pushed on its own (0d5a47b) together with
+  `src/evaluation.py` and its hand-checked tests, before any test metric was
+  computed. One change from the draft, made before scoring: censoring
+  weights come from the test requests' follow-up windows, not from the
+  training set (whose weights would all be 1).
+- Notebook 08: **8 of 12 criterion lines pass.** LightGBM beats the
+  region × technology baseline on Uno's C and Brier at 3 and 5 years (Uno
+  +0.121 and +0.041, intervals above zero) but not at 7 years; calibration
+  slope 1.34 and 1.27 at 3 and 5 years (C3 fails), 0.94 at 7; top-decile
+  lift 3.96 (C4 passes); Track B calibrated LightGBM beats the base rate on
+  2017 (AUC 0.608 vs 0.525, Brier 0.1475 vs 0.1532; C5 passes).
+- What else notebook 08 found: Cox is the best model at 7 years; completion
+  fell for 2018–2019 entrants (5-year 12.8% → 8.3% and 9.6%) and LightGBM
+  over-predicts them (mainly PJM: 14.5% vs 9.4%); without its region the
+  model misses the level badly (leave-one-ISO-out); post-entry columns
+  would inflate the 5-year AUC to 0.990 (leakage ablation); the advantage
+  over the baseline holds in the ERCOT and suspended-request reruns but
+  disappears when requests under 20 MW are excluded (0 of 6 comparisons
+  won).
+- Notebook 09: F6 (Cox hazard ratios), F7 (SHAP of P(operation within 5
+  years) through the whole hazard chain, `src/explain.py`); state, size and
+  technology carry the predictions; size acts as a smooth gradient with no
+  step at 20 MW; 2 of 6 outside facts recovered as written, the other four
+  explained — among them a positive congestion effect traced to fitting on
+  yearly congestion (PJM queues as crowded as at the test requests' entry
+  occur in the training rows almost only late in the wait: year 4.4 vs 2.6,
+  operation hazard 11.7% vs 8.3%). 25-request ranking table and three
+  worked examples.
+- Both notebooks run clean twice with identical numbers (08: 3.8 min, 09:
+  1.7 min); 37 new figures, all opened and checked; titles that state a
+  direction are computed from the data (one hard-coded "lowers" was wrong
+  and was fixed). 62 tests pass.
+- Alan's mid-session message ("beat mean", "plan for the best result and
+  explain", "best results and explainability, must be honest"): the
+  registered interval verdict is kept and a point-estimate column added
+  (decision #32); plan below; notebook 09 is the explainability step.
+
+**Next**
+
+- Alan's decisions on questions 10–12. Then report draft v1 (PLAN.md §8a).
+
+**Plan for the best honest result (proposal, not started)**
+
+The test cohort has now been seen, so any new model is post-hoc and must be
+labelled as such; the registered verdicts do not change. Procedure: every
+choice is made on fits to entrants up to 2015 scored on 2016 entrants only;
+the single chosen version is refitted on entrants up to 2016, scored once on
+2017–2019, and reported as "post-hoc, after the pre-registered evaluation".
+Candidates, each aimed at a failure found in notebooks 08–09:
+
+1. Congestion at entry in fitting as well as prediction (or the yearly
+   value expressed relative to the entry value), to remove the
+   crowding-as-lateness artefact (09_09) behind part of PJM's
+   over-prediction.
+2. A level-and-ranking hybrid or a simple average of logit, Cox and
+   LightGBM, weights chosen on 2016: the logit is the best calibrated model
+   at 3 and 5 years (slope 1.03), Cox the best ranker at 7 years.
+3. A linear trend term the trees cannot provide (LightGBM `linear_tree`, or
+   request year in a logit layer), aimed at the 2018–2019 slowdown.
+
+None of these can be validated against the slowdown itself without using
+the test years, so the honest expectation is a better-calibrated model, not
+a different verdict.
+
+**Open questions for Alan**
+
+10. **"Beat mean" (ASK ALAN).** Read as: "beat" should mean a better point
+    estimate. Because the criteria were registered and scored first, I kept
+    the interval rule as the verdict and added the point-estimate reading
+    beside it (2 lines differ: C1 and C2 at 7 years). If you meant something
+    else, say so; changing the registered verdict now would have to be
+    reported as a post-hoc change.
+11. **Post-hoc improvement notebook (ASK ALAN).** Run the plan above as a
+    labelled notebook 08b before the report, or report the registered
+    results only?
+12. **PJM (2018) commercial-probability benchmark (ASK ALAN).** PLAN.md §6
+    lists it for notebook 08; its coefficients or method document are not in
+    the repository, so it was not run. Do you have the source?
+- Still open: poster vs 4-minute video; PLAN.md and the local working-rules file are git-excluded
+  but cited by committed docs; rotate the EIA key pasted on 2026-10-03.
