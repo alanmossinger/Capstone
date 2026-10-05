@@ -61,7 +61,7 @@ def observed_years(frame, delayed=True, max_years=MAX_YEARS):
     return rows.reset_index(drop=True)
 
 
-def project_years(frame, clean, delayed=True, max_years=MAX_YEARS, tech_column="tech"):
+def project_years(frame, clean, delayed=True, max_years=MAX_YEARS, tech_column="tech", congestion="yearly"):
     """Project-year rows for fitting, with delayed entry and time-varying congestion.
 
     Parameters
@@ -78,6 +78,11 @@ def project_years(frame, clean, delayed=True, max_years=MAX_YEARS, tech_column="
         Last year in the queue that gets a row.
     tech_column : str
         Column of ``frame`` with the technology group.
+    congestion : {"yearly", "entry"}
+        "yearly" (main) recounts the GW waiting on the first day of every
+        project-year; "entry" keeps the value at the request date in every
+        year, as every prediction made at entry does (notebook 08b,
+        decision #34).
 
     Returns
     -------
@@ -103,7 +108,10 @@ def project_years(frame, clean, delayed=True, max_years=MAX_YEARS, tech_column="
     """
     rows = observed_years(frame, delayed, max_years)
     out = attach_features(rows, frame, tech_column)
-    out["congestion_gw"] = yearly_congestion(rows, frame, clean)
+    if congestion == "entry":
+        out["congestion_gw"] = frame.loc[rows["project"], "congestion_gw"].to_numpy(dtype=float)
+    else:
+        out["congestion_gw"] = yearly_congestion(rows, frame, clean)
     out["log_congestion_gw"] = np.log1p(out["congestion_gw"])
     return out
 
@@ -398,7 +406,7 @@ def cif_table(h_operation, h_withdrawal, index, horizons=config.HORIZONS, max_ye
     return out
 
 
-def fit_both(frame, clean, tuning, delayed=True, extra=None, pool_regions=False):
+def fit_both(frame, clean, tuning, delayed=True, extra=None, pool_regions=False, congestion="yearly"):
     """Refit the logit and LightGBM with notebook 06's settings on ``frame``.
 
     Parameters
@@ -417,6 +425,8 @@ def fit_both(frame, clean, tuning, delayed=True, extra=None, pool_regions=False)
         Give every row the same region after congestion has been counted in
         the real one, so neither model can use region (leave-one-ISO-out:
         the held-out region is a level the models never saw).
+    congestion : {"yearly", "entry"}
+        Passed to ``project_years``.
 
     Returns
     -------
@@ -430,7 +440,7 @@ def fit_both(frame, clean, tuning, delayed=True, extra=None, pool_regions=False)
     data change, with the model held fixed. Notebook 08 checks that refitting
     the main version reproduces notebook 06's predictions.
     """
-    rows = project_years(frame, clean, delayed=delayed)
+    rows = project_years(frame, clean, delayed=delayed, congestion=congestion)
     if pool_regions:
         rows["region"] = POOLED_REGION
     encoded = encode_state(rows)[0]

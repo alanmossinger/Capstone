@@ -309,3 +309,38 @@ alternative rejected.
     worked examples are chosen by rule. *Rejected:* TreeExplainer on one
     yearly hazard (it does not explain the probability a user reads); exact
     Shapley values (2⁹ coalitions × background, too slow).
+34. **Post-hoc improvement analysis, notebook 08b** (Alan, 2026-10-05, after
+    notebook 08 had been scored; written by the first cell of notebook 08b
+    and committed on its own before any candidate was fitted). The
+    registered verdicts of decision #5 stand; everything in notebook 08b is
+    labelled post-hoc.
+    *Aim:* the failures found in notebooks 08–09 — calibration slope 1.34
+    and 1.27 at 3 and 5 years, PJM over-prediction with the congestion
+    artefact of figure 09_09, and the 7-year horizon, where Cox ranks best.
+    *Candidates (fixed list):* K0 the main discrete-time LightGBM
+    (reference); K1 LightGBM fitted with congestion held at its entry value
+    in every project-year, as at prediction; K2 a blend of the main
+    discrete-time logit, Cox and LightGBM, weights ≥ 0 summing to 1 on a 0.1
+    grid, chosen per horizon; K3 the main LightGBM after a logistic
+    recalibration (intercept and slope on the logit scale) per horizon; K4 a
+    blend as in K2 of the entry-congestion logit and LightGBM with Cox.
+    Model settings are notebook 06's and notebook 05's; nothing else is
+    tuned.
+    *Choice, on the 2016 cohort only:* every component is fitted on entrants
+    to 2015 and predicts the 2016 entrants (all followed for at least eight
+    years, so no censoring weights are needed); blend weights and
+    recalibrations are fitted on those 2016 predictions and their 2016 score
+    is cross-fitted on two halves (seed 34). The candidate with the lowest
+    mean Brier score over 3, 5 and 7 years is chosen; K0 stays unless another
+    candidate is lower.
+    *Final model:* the chosen candidate's components refitted on entrants
+    to 2016, with weights or recalibration fitted on all 2016 predictions of
+    the fits to 2015; scored once on the 2017–2019 test cohort with notebook
+    08's metrics, seed and criteria rules (`results/posthoc_criteria.csv`).
+    All five candidates are also scored on the test cohort, in a table
+    marked "not used for the choice".
+    *Not attempted:* a trend term for the slowdown of 2018–2019 entrants —
+    it happened after the 2016 validation year, so no choice about it can be
+    made without the test years.
+    *Rejected:* choosing among candidates on the test cohort; any change
+    after the post-hoc test scores are seen.

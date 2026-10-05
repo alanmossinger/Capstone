@@ -11,11 +11,13 @@ Aalen–Johansen splits the exits correctly. The estimator is written out in
 numpy (a few lines, checked against lifelines in the tests) because the
 bootstrap refits it tens of thousands of times.
 Reads / writes: nothing.
-Used by: notebooks 03 and 05 (baseline predictor); ``tests/test_survival_tools.py``.
+Used by: notebooks 03 and 05 (baseline predictor), 08b (Cox refits);
+``tests/test_survival_tools.py``.
 """
 
 import numpy as np
 import pandas as pd
+from lifelines import CoxPHFitter
 
 from src.events import OPERATION, WITHDRAWAL
 
@@ -346,3 +348,33 @@ def cause_specific_cif(model_operation, model_withdrawal, X, horizons, step=1 / 
     cif = np.cumsum(before * increment, axis=1)
     columns = [int(round(h / step)) for h in horizons]
     return pd.DataFrame(cif[:, columns], index=X.index, columns=horizons)
+
+
+def fit_cause_specific_cox(frame, cause, penalizer, delayed=True):
+    """One cause-specific Cox model (the other exit treated as censoring), as fitted in notebook 05.
+
+    Parameters
+    ----------
+    frame : pandas.DataFrame
+        Track A requests with the ``cox_design`` columns, ``duration_years``,
+        ``event`` and ``entry_years``.
+    cause : {"operation", "withdrawal"}
+    penalizer : float
+        Ridge penalty (notebook 05 tuned it on the 2016 cohort).
+    delayed : bool
+        ERCOT delayed entry (decision #21): requests that left before their
+        entry time are dropped and the others enter the risk set late.
+
+    Notes
+    -----
+    The same steps as the fit inside notebook 05, moved here so notebook 08b
+    can refit Cox on entrants to 2015; notebook 08b checks that the refit
+    reproduces notebook 05's predictions.
+    """
+    code = OPERATION if cause == "operation" else WITHDRAWAL
+    data = cox_design(frame).assign(T=frame["duration_years"], E=(frame["event"] == code).astype(int),
+                                    entry=frame["entry_years"] if delayed else 0.0)
+    if delayed:
+        data = data[data["T"] > data["entry"]]
+        return CoxPHFitter(penalizer=penalizer).fit(data, "T", "E", entry_col="entry")
+    return CoxPHFitter(penalizer=penalizer).fit(data.drop(columns="entry"), "T", "E")

@@ -28,8 +28,8 @@ features:         ## 04: events, Track A/B samples, entry-time features
 models:           ## 05–07: Cox, discrete-time, all-regions models
 	$(PYTHON) run_pipeline.py --only 05 06 07
 
-evaluate:         ## 08: metrics, calibration, F4 F5
-	$(PYTHON) run_pipeline.py --only 08
+evaluate:         ## 08: metrics, calibration, F4 F5; 08b: post-hoc improvements
+	$(PYTHON) run_pipeline.py --only 08 08b
 
 explain:          ## 09: forest plot, SHAP, ranking table, F6 F7
 	$(PYTHON) run_pipeline.py --only 09

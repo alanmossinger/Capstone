@@ -1,0 +1,18 @@
+{
+  "decided": "2026-10-05",
+  "candidates": {
+    "K0": "main discrete-time LightGBM (reference)",
+    "K1": "LightGBM fitted with congestion held at its entry value",
+    "K2": "blend of main logit, Cox and LightGBM (weights on a 0.1 simplex grid, per horizon)",
+    "K3": "main LightGBM with logistic recalibration per horizon",
+    "K4": "blend of entry-congestion logit and LightGBM with Cox"
+  },
+  "selection_cohort": 2016,
+  "selection_metric": "mean IPCW Brier over 3, 5, 7 years",
+  "cross_fit_folds": 2,
+  "cross_fit_seed": 34,
+  "blend_step": 0.1,
+  "selection_bootstrap_seed": 340,
+  "test_bootstrap_seed": 800,
+  "n_boot": 200
+}
