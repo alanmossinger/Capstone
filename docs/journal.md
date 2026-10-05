@@ -338,3 +338,48 @@ a different verdict.
     the repository, so it was not run. Do you have the source?
 - Still open: poster vs 4-minute video; PLAN.md and the local working-rules file are git-excluded
   but cited by committed docs; rotate the EIA key pasted on 2026-10-03.
+
+## 2026-10-05 — notebook 08b (post-hoc improvements)
+
+**Done**
+
+- Alan approved rewriting the last journal commit (history now free of the
+  word the pre-push check looks for; force-pushed with lease, 83c2769) and
+  asked for the post-hoc notebook (question 11).
+- Protocol first: decision #34 written by notebook 08b's first cell and
+  committed and pushed on its own (307730b) before any candidate was fitted
+  — five fixed candidates, chosen on the 2016 cohort by mean Brier score
+  with cross-fitting, one scoring on the test cohort, labelled post-hoc.
+  Helpers: `src/posthoc.py` (blend, recalibration, cross-fitting, 4 tests),
+  `discrete_time.fit_both(..., congestion="entry")`,
+  `survival_tools.fit_cause_specific_cox` (reproduces notebook 05 exactly).
+- Result: on 2016 the candidates were indistinguishable (mean Brier
+  0.0994–0.0997, 12 of 12 paired intervals include zero); the rule chose K4
+  (blend of entry-congestion logit and LightGBM with Cox). On the test
+  cohort K4 passes **5 of 10** Track A criterion lines against 6 for the
+  registered LightGBM — the repair does not improve the pre-registered
+  result, which stands. K4 does bring the average level closer (inside the
+  observed band in 12 of 18 region and entry-year cells, against 7) and
+  fitting on entry-time congestion removes ERCOT's spurious congestion
+  effect and halves PJM's; the slowdown of 2018–2019 entrants stays
+  unrepaired.
+- Why 2016 could not have found the repair: the main LightGBM was
+  calibrated on 2016 (slopes 0.88–0.96) and miscalibrated only on 2017–2019
+  entrants; K3's recalibration, fitted on 2016, pushed in the wrong
+  direction on the test cohort.
+- All five candidates are also scored on the test cohort, marked "not used
+  for the choice"; K2 happens to score best there and is not promoted.
+- Reading cells of notebooks 08, 08b and 09 no longer cite run times that
+  vary between runs. 66 tests pass; 08b runs in about 2–2.5 minutes, results
+  identical across three runs.
+
+**Next**
+
+- Report draft v1 (PLAN.md §8a): the registered results of notebook 08 as
+  the main result, notebook 08b as one labelled post-hoc paragraph.
+
+**Open questions for Alan**
+
+- 10 ("beat mean") and 12 (PJM commercial-probability source) still open.
+- Poster vs 4-minute video; EIA key rotation; PLAN.md cited by committed
+  docs although git-excluded.
