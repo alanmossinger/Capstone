@@ -1262,6 +1262,26 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** Coverage of post-entry milestones by region and the timing of executed agreements.
 <!-- /fig:13_01_milestone_coverage -->
 
+<!-- fig:18_01_v2_criteria -->
+### 18_01_v2_criteria
+
+![18_01_v2_criteria](../figures/18_evaluate_v2/18_01_v2_criteria.png)
+
+*Notebook:* `notebooks/18_evaluate_v2.ipynb` · *Files:* `figures/18_evaluate_v2/18_01_v2_criteria.png`, `.svg`
+
+**Caption (stub).** The pre-registered v2 criteria scored, with PASS/FAIL per line.
+<!-- /fig:18_01_v2_criteria -->
+
+<!-- fig:18_02_trackB_calibration -->
+### 18_02_trackB_calibration
+
+![18_02_trackB_calibration](../figures/18_evaluate_v2/18_02_trackB_calibration.png)
+
+*Notebook:* `notebooks/18_evaluate_v2.ipynb` · *Files:* `figures/18_evaluate_v2/18_02_trackB_calibration.png`, `.svg`
+
+**Caption (stub).** Calibration of the Track B models by prediction bin.
+<!-- /fig:18_02_trackB_calibration -->
+
 <!-- fig:F10_gains_over_baselines -->
 ### F10_gains_over_baselines
 
@@ -1311,6 +1331,26 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 
 **Caption (stub).** Expected cumulative MW online of a 25-request book with its simulated 5–95% band under shared and independent risk, against the realised MW.
 <!-- /fig:F14_simulated_book -->
+
+<!-- fig:F15_backtest -->
+### F15_backtest
+
+![F15_backtest](../figures/F15_backtest.png)
+
+*Notebook:* `notebooks/16_portfolio.ipynb` · *Files:* `figures/F15_backtest.png`, `.svg`
+
+**Caption (stub).** Realised MW online within five years and realised value of the books each chooser would have held, with bootstrap intervals.
+<!-- /fig:F15_backtest -->
+
+<!-- fig:F16_constraint_map -->
+### F16_constraint_map
+
+![F16_constraint_map](../figures/F16_constraint_map.png)
+
+*Notebook:* `notebooks/17_constraints_and_levers.ipynb` · *Files:* `figures/F16_constraint_map.png`, `.svg`
+
+**Caption (stub).** Congestion at entry and three-year exits by region and entry year: the constraint map.
+<!-- /fig:F16_constraint_map -->
 
 <!-- fig:F17_miso_spp -->
 ### F17_miso_spp

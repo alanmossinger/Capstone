@@ -3,12 +3,11 @@
 SIADS 699 Capstone (Master of Applied Data Science, University of Michigan), Group 13.
 Author: Alan Mössinger.
 
-> **Status (2026-10-04):** the data gate reads GO
-> ([`docs/data_readiness.md`](docs/data_readiness.md)); notebooks 01 (data),
-> 02 (cleaning), 03 (survival curves), 04 (samples and features), 05
-> (baseline and Cox models), 06 (discrete-time models) and 07 (all-regions
-> model) run end to end.
-> Next: evaluation (08).
+> **Status (2026-10-06):** the v1 pipeline (notebooks 01–09, the registered
+> verdict on the frozen 2025 file) and the v3 portfolio layer (notebooks 01b
+> and 11–19: fair baseline, level repair, milestones, landmark models, value
+> and cost, the book and its backtest, levers and playbooks, the v2 verdict,
+> MISO/SPP) run end to end with `make all`. Report v2 in progress.
 
 ## About
 
@@ -22,17 +21,26 @@ this pipeline with cohort averages.
 
 ## Question
 
-For a proposed plant, at the moment it enters the queue and using only what is
-known then: what is the probability that it reaches commercial operation within
-3, 5 and 7 years, and how long is it likely to take? And can those estimates be
-calibrated and ranked well enough for a developer or lender to act on?
+For a portfolio of proposed plants: which requests get built, when, and which
+book of requests to back — from what is known on the request date and again at
+each milestone. Six questions, each answered by a notebook: how well the models
+predict survival and timing (11–12), each request's probability and why (09,
+14, 16), what a request should have different and the constraints (16–17), how
+to reduce them (17), the right book per region (15–16) and what an energy
+company should do with the result (report). The v1 question — can a model
+beat cohort averages at entry — is answered by notebooks 05–09, and the
+answer for utility-scale requests turned out to be *no beyond a size lookup*
+(notebook 11); the value is at the milestones (notebook 14).
 
 ## Data
 
 | Source | What | Access |
 |---|---|---|
-| LBNL *Queued Up: 2025 Edition* project file | 36,441 interconnection requests through end-2024 | download by hand from <https://emp.lbl.gov/queues>; not redistributed |
+| LBNL *Queued Up: 2025 Edition* project file (frozen) | 36,441 interconnection requests through end-2024 — the basis of every registered result | download by hand from <https://emp.lbl.gov/queues>; not redistributed |
+| LBNL *Queued Up: 2026 Edition* project file (alongside) | 38,201 requests through end-2025: reconciliation, the newest cohorts' early outcomes, MISO/SPP dates | same page; CC BY 4.0 |
 | EIA-860M via the EIA API v2 | inventory of operable U.S. generators (operating month, location) | free API key in `.env` |
+| CAISO public queue report (via `gridstatus`) | cluster, study-phase and agreement status of CAISO requests | `data/raw/iso/` |
+| EIA wholesale prices, PJM market-monitor report, LBNL PJM cost data, IRS Notice 2025-42, Census boundaries | the value and cost layer and the map | `data/raw/value/`, `data/raw/lbnl_costs/`, `data/raw/geo/` |
 
 The full data access statement, terms and data dictionary are in
 [`data/README.md`](data/README.md).
@@ -50,8 +58,10 @@ make setup     # .venv, pinned packages, Jupyter kernel "queue-survival"
 3. Run:
 
 ```bash
-make all       # executes notebooks 01 → 09 in order, stopping at the first error
+make all       # notebooks 01 → 09, then 01b and 11 → 19, stopping at the first error
+make v3        # only the portfolio layer (01b, 11 → 19)
 make test      # pytest
+make report    # report/report.pdf from report/*.md (needs pandoc and typst)
 ```
 
 Each step also has its own target (`make data`, `make clean`, `make explore`, …;
@@ -60,7 +70,10 @@ see the `Makefile`). `python run_pipeline.py --only 01` runs a single notebook.
 ## Map of the repository
 
 ```
-notebooks/   01_get_data … 09_explain_and_rank — the analysis, run in order
+notebooks/   01_get_data … 09_explain_and_rank — the v1 analysis (registered verdict), run in order;
+             03b (map), 01b (2026 file), 11 (fair baseline, utility scale), 12 (level), 13 (milestones),
+             14 (landmark models), 15 (value and cost), 16 (the book and its backtest),
+             17 (constraints, levers, playbooks), 18 (the v2 verdict), 19 (MISO and SPP)
 src/         small helper package used by the notebooks (paths, config, data access, plots)
 data/        raw/ (not committed) · interim/ (not committed) · processed/ (small final tables)
 results/     every number the report cites, written by the notebooks
@@ -68,7 +81,7 @@ figures/     every figure, PNG + SVG; figures/<notebook>/ holds each notebook's 
 report/      report.md, references.md, appendix.md, figure_notes.md (caption stubs from the notebooks);
              `make report` builds report.pdf (needs pandoc and typst)
 docs/        journal.md (work log), decisions.md, data_readiness.md, mentor_feedback.md
-tests/       pytest checks on the audit, cleaning, features and metrics
+tests/       pytest checks on the audit, cleaning, features, metrics, baselines, drift, landmarks, value and the book
 ```
 
 ## Results at a glance

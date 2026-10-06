@@ -1,0 +1,3 @@
+version,lines,pass,what passes,what fails
+"v1 (notebook 08, decision #5)",12,8,ranking and Brier vs the region × technology baseline at 3 and 5 years; 7-year calibration; lift; Track B,ranking at 7 years; calibration at 3 and 5 years
+"v2 (this notebook, decision #52)",12,3,C8; C11; C12,C6; C7; C8; C9; C10

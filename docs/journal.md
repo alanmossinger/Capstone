@@ -597,3 +597,42 @@ work (decision #51), no limits on figures, report length or notebooks.
   realised. The value case barely moves the order of requests (Spearman ≥
   0.97). Downloads made with Alan's permission; pjm.com and ercot.com are
   unreachable from this machine (decision #53).
+- **Notebook 16** (the book): scorecards and what-ifs for the 25-request
+  2019 book (cut to 19.9 MW +3.0 points, add storage +3.5, quieter queue
+  −0.7 — the artefact); shared risk ρ = 0.041 from 15 region × year
+  groups; the book expected 203 MW online within five years (band 0–586),
+  72 MW were. Budget $20.11M; the registered backtest is a tie: the model's,
+  the fair baseline's and the v1 baseline's books all realised 1,035 MW
+  (one request), because an expected-value objective under a deposit budget
+  buys the same giant requests whatever the chooser — C9 and C10 fail, C11
+  passes (band 58–3,371). An exploratory count-limited book was added after
+  the registered result, labelled (decision #55).
+- **Notebook 17** (constraints, levers, playbooks): constraint map F16,
+  scenario table (decision #56), ten levers, `report/playbooks.md`.
+- **Notebook 18** (v2 verdict): 3 of 12 lines pass (C8 at +24 months, C11,
+  C12); v1's 8 of 12 untouched and shown beside it; Track B calibration
+  plot added.
+- **Notebook 19** (MISO and SPP on the 2026 file; C13–C14 registered first,
+  decision #54): 3 of 12 lines pass; the test cohorts hold 54 and 8
+  operations — the method transfers, the evidence does not yet.
+- `HANDOFF.md` written (git-excluded) with the state, the unfinished items
+  and the prompt for the next session. Report v2 drafted in the session
+  scratchpad, not yet assembled into `report/report.md`.
+
+**Next**
+
+- See `HANDOFF.md` "Unfinished": notebook 16's final reading cells; report
+  v2 assembled, numbered and built; `make all`; then the calendar items.
+
+**Open questions for Alan**
+
+21. (answered) MISO/SPP as a registered extension — done, notebook 19.
+22. PJM queue export and ERCOT GIS report from another network
+    (`data/raw/iso/`): the single largest improvement available to the
+    landmark models.
+23. Verify three value assumptions (`results/value_assumptions.csv`): the
+    CAISO capacity price, the production-credit rate, ERCOT's energy price
+    after 2019.
+24. Rotate the EIA API key pasted into chat on 2026-10-06.
+25. `git push` when you want the remote updated (nothing pushed since
+    7313df0).

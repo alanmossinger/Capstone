@@ -18,27 +18,39 @@ Fine, J. P., & Gray, R. J. (1999). A proportional hazards model for the subdistr
 
 Graf, E., Schmoor, C., Sauerbrei, W., & Schumacher, M. (1999). Assessment and comparison of prognostic classification schemes for survival data. *Statistics in Medicine, 18*(17–18), 2529–2545. https://doi.org/10.1002/(SICI)1097-0258(19990915/30)18:17/18<2529::AID-SIM274>3.0.CO;2-5
 
+Grid Status. (2026). *gridstatus* (Version 0.36.0) [Computer software]. https://github.com/gridstatus/gridstatus
+
+Internal Revenue Service. (2025). *Notice 2025-42: Beginning of construction for sections 45Y and 48E after the One, Big, Beautiful Bill Act*. U.S. Department of the Treasury. https://www.irs.gov/pub/irs-drop/n-25-42.pdf
+
 Ishwaran, H., Kogalur, U. B., Blackstone, E. H., & Lauer, M. S. (2008). Random survival forests. *The Annals of Applied Statistics, 2*(3), 841–860. https://doi.org/10.1214/08-AOAS169
 
 Johnston, S., Liu, Y., & Yang, C. (2023). *An empirical analysis of the interconnection queue* (NBER Working Paper No. 31946). National Bureau of Economic Research. https://doi.org/10.3386/w31946
 
 Ke, G., Meng, Q., Finley, T., Wang, T., Chen, W., Ma, W., Ye, Q., & Liu, T.-Y. (2017). LightGBM: A highly efficient gradient boosting decision tree. In *Advances in Neural Information Processing Systems 30*. https://proceedings.neurips.cc/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html
 
+Lawrence Berkeley National Laboratory. (2023). *Interconnection cost analysis in the PJM territory* [Technical brief and data file]. https://emp.lbl.gov/publications/interconnection-cost-analysis-pjm
+
 Lundberg, S. M., & Lee, S.-I. (2017). A unified approach to interpreting model predictions. In *Advances in Neural Information Processing Systems 30*. https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html
 
 Micci-Barreca, D. (2001). A preprocessing scheme for high-cardinality categorical attributes in classification and prediction problems. *ACM SIGKDD Explorations Newsletter, 3*(1), 27–32. https://doi.org/10.1145/507533.507538
+
+Monitoring Analytics. (2025). *2024 state of the market report for PJM: Section 5, Capacity market*. Independent Market Monitor for PJM. https://www.monitoringanalytics.com/reports/PJM_State_of_the_Market/2024.shtml
 
 Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J., Passos, A., Cournapeau, D., Brucher, M., Perrot, M., & Duchesnay, É. (2011). Scikit-learn: Machine learning in Python. *Journal of Machine Learning Research, 12*, 2825–2830. https://jmlr.org/papers/v12/pedregosa11a.html
 
 PJM Interconnection. (2018, June 15). *Commercial probability background information* [Presentation]. Market Efficiency Process Enhancement Task Force. https://pjm.com/-/media/committees-groups/task-forces/mepetf/20180615/20180615-item-03f-commercial-probability-background-info.ashx
 
+Putter, H., Fiocco, M., & Geskus, R. B. (2007). Tutorial in biostatistics: Competing risks and multi-state models. *Statistics in Medicine, 26*(11), 2389–2430. https://doi.org/10.1002/sim.2712
+
 Pölsterl, S. (2020). scikit-survival: A library for time-to-event analysis built on top of scikit-learn. *Journal of Machine Learning Research, 21*(212), 1–6. https://jmlr.org/papers/v21/20-729.html
 
-Putter, H., Fiocco, M., & Geskus, R. B. (2007). Tutorial in biostatistics: Competing risks and multi-state models. *Statistics in Medicine, 26*(11), 2389–2430. https://doi.org/10.1002/sim.2712
+Rand, J., Cheyette, A., Talley, C., Zhang, S., Gorman, W., Wiser, R., Seel, J., Jeong, S., & Kahrl, F. (2026). *Queued up: 2026 edition — Characteristics of power plants seeking transmission interconnection as of the end of 2025* [Data file and slide report]. Lawrence Berkeley National Laboratory. https://emp.lbl.gov/queues
 
 Rand, J., Manderlink, N., Zhang, S., Talley, C., Gorman, W., Wiser, R. H., Seel, J., Mulvaney Kemp, J., Jeong, S., & Kahrl, F. (2025). *Queued up: 2025 edition, characteristics of power plants seeking transmission interconnection as of the end of 2024* [Report and project-level data file]. Lawrence Berkeley National Laboratory. https://emp.lbl.gov/publications/queued-2025-edition-characteristics
 
-Rand, J., Cheyette, A., Talley, C., Zhang, S., Gorman, W., Wiser, R., Seel, J., Jeong, S., & Kahrl, F. (2026). *Queued up: 2026 edition — Characteristics of power plants seeking transmission interconnection as of the end of 2025* [Data file and slide report]. Lawrence Berkeley National Laboratory. https://emp.lbl.gov/queues
+U.S. Census Bureau. (2021). *Cartographic boundary files, 2020: Counties and states, 1:20,000,000* [Data files]. https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html
+
+U.S. Energy Information Administration. (2025). *Wholesale electricity and natural gas market data* [ICE daily price files, 2017–2025]. https://www.eia.gov/electricity/wholesale/
 
 U.S. Energy Information Administration. (2026). *Preliminary monthly electric generator inventory (Form EIA-860M)* [Data set; API v2 route electricity/operating-generator-capacity, period July 2026]. Retrieved October 3, 2026, from https://www.eia.gov/electricity/data/eia860m/
 

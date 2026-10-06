@@ -551,3 +551,29 @@ alternative rejected.
     Twelve lines; failures reported, not removed; never pooled with the
     three-ISO verdict. MISO's operation-date coverage (92%) is below the
     95% notebook 01 asked of the 2025 file and is stated as a caveat.
+55. **The registered backtest is a tie, and an exploratory book is added
+    beside it, labelled** (2026-10-06). Under criteria C9–C10 as registered
+    (expected-value objective, a deposit budget equal to the median
+    25-request 2019 book, 50% region and 60% technology caps), every
+    optimising chooser — the model, raw or level-repaired, the fair
+    baseline and the v1 baseline — fills the budget with the same few very
+    large gas and offshore-wind requests, because value per MW and MW per
+    dollar of deposit dominate the probability; all four realised the same
+    1,035 MW within five years, so the paired differences are zero with
+    one-sided intervals and both lines fail as registered. Notebook 16
+    reports that verdict unchanged and adds, after it and marked
+    "exploratory, not registered", a count-limited book: the 25 requests
+    of 20 MW and more with the highest P(operation by 5 years) under each
+    chooser, scored on operations and MW realised, with the same paired
+    bootstrap. It answers whether the ranking matters in a decision frame;
+    it decides nothing about C9–C10. *Rejected:* changing the registered
+    objective after seeing the result.
+56. **Reform and equipment scenarios are stated multipliers, not
+    estimates** (2026-10-06). Notebook 17 applies named scenarios (cluster
+    reform speeds studies 0.9/1.1/1.3; reform raises withdrawals 0.8; gas
+    backlog, a two-year delay on gas MW; the post-2020 level, 0.3 from
+    notebook 12) to the sample book's incidence curve. The multipliers are
+    assumptions with ranges, because every test request predates Order No.
+    2023 and the post-reform regime is not observable; the one scenario
+    with a measured basis (the post-2020 level) is the largest.
+    *Rejected:* fitting a reform effect on data that cannot carry it.

@@ -1,0 +1,13 @@
+id,line,estimate,benchmark,diff,diff_low,diff_high,rule,result
+C6,"≥ 20 MW: v2 vs fair baseline, uno_c at 3 years",0.7790664913598798,0.7831316410861864,-0.0040651497263066,-0.0436702946493124,0.0455801976420989,paired interval on the better side,FAIL
+C6,"≥ 20 MW: v2 vs fair baseline, uno_c at 5 years",0.7339216029885067,0.7516145715348154,-0.0176929685463086,-0.0505881715782369,0.0148947784715027,paired interval on the better side,FAIL
+C6,"≥ 20 MW: v2 vs fair baseline, brier at 3 years",0.022190301921124,0.0234121977536789,-0.0012218958325549,-0.002671631679614,0.0005693587949321,paired interval on the better side,FAIL
+C6,"≥ 20 MW: v2 vs fair baseline, brier at 5 years",0.0644623031361057,0.06445204236534408,1.0260770761619242e-05,-0.0024662189995913,0.0025216078822595,paired interval on the better side,FAIL
+C7,"2018–2019 ≥ 20 MW, level repaired: slope and intercept at 3 years",1.0881644574726943,-0.7351568840455466,,-1.1676777902756503,-0.4062760594799281,slope interval within 0.8–1.2 and intercept interval covering 0,FAIL
+C7,"2018–2019 ≥ 20 MW, level repaired: slope and intercept at 5 years",1.18307237988506,-0.4738518241515592,,-0.6990123984370972,-0.269313565720511,slope interval within 0.8–1.2 and intercept interval covering 0,FAIL
+C8,"landmark +24 months: both updated vs entry model, Uno's C 3 years after",0.7876164109082878,0.6867018211002011,0.1009145898080868,0.0615865933854091,0.1360328348247524,paired interval on the better side,PASS
+C8,"landmark agreement executed: both updated vs entry model, Uno's C 3 years after",0.5976031021749536,0.5931876351799354,0.0044154669950182,-0.0157651675459292,0.0275223591519362,paired interval on the better side,FAIL
+C9,"backtest: model book vs fair-baseline book, realised MW online within 5 years",1035.0,1035.0,0.0,-17.73250000000004,449.7550000000004,paired interval on the better side,FAIL
+C10,"backtest: model book vs fair-baseline book, realised value, base case",1463.2156787461902,1463.22651964072,-0.0108408945297924,-53.83427566245316,576.8979574901338,paired interval on the better side,FAIL
+C11,simulated 5–95% band covers the realised MW of the model's book,1035.0,1473.3631680854571,,58.0,3371.145,realised inside the band,PASS
+C12,leakage guard: dated features (test) and landmark AUC below the ablation's,,,,,,both hold,PASS
