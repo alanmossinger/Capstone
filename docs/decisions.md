@@ -482,3 +482,13 @@ alternative rejected.
     against 100%), so the 2026 file cannot simply replace the 2025 file for
     ERCOT, which supports #43's "alongside" choice. *Rejected:* switching
     the registered pipeline to the 2026 file.
+49. **MISO and SPP timing models as a registered v3 extension** (Alan,
+    2026-10-06; follows #48). Notebook 19 fits the fair baseline, the
+    discrete-time logit and LightGBM for MISO and SPP on the 2026 file
+    (censor 2025-12-31), with criteria C13–C14 written to
+    `results/success_criteria_v3.csv` before scoring, and reports them
+    beside, never pooled with, the three-ISO results on the 2025 file.
+    ERCOT is not refitted on the 2026 file because its withdrawal dates
+    are 49% complete there. *Rejected:* a sensitivity run without criteria
+    (weaker claim for the same fitting work); keeping MISO and SPP in
+    Track B (ignores dates that now exist).

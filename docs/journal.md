@@ -527,7 +527,8 @@ before the appendices, the criteria table fits one page.
     checksummed; first-look readiness lines in `docs/data_readiness.md`;
     decision #48. New question 21: extend Track A to MISO and SPP on the
     2026 file (they now have event dates), as a separately registered
-    extension, or keep them in Track B?
+    extension, or keep them in Track B? Answered: registered extension,
+    notebook 19, criteria C13–C14 (decision #49); PLAN.md updated.
 17. Value proxies for ERCOT and CAISO capacity value (PLAN.md §11 b):
     proposed with sources in notebook 15, confirmed by Alan before the
     table is fixed. Budget and caps: defaults accepted (decision #46).
