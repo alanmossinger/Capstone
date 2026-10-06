@@ -1,6 +1,6 @@
 """Execute the project notebooks in order, top to bottom, in place.
 
-What: runs ``notebooks/01_*.ipynb`` … ``09_*.ipynb`` (with ``03b_*`` and ``08b_*``) with ``jupyter nbconvert
+What: runs ``notebooks/01_*.ipynb`` … ``09_*.ipynb`` (with ``03b_*`` and ``08b_*``), then the v3 notebooks ``01b`` and ``11`` … ``19``, with ``jupyter nbconvert
 --execute --inplace`` on the ``queue-survival`` kernel and stops at the first
 notebook that fails.
 Why: one command rebuilds every interim table, result and figure from the
@@ -23,7 +23,8 @@ import time
 from pathlib import Path
 
 NOTEBOOKS = Path(__file__).resolve().parent / "notebooks"
-PIPELINE = ["01", "02", "03", "03b", "04", "05", "06", "07", "08", "08b", "09"]  # 03b = map F9; 08b = post-hoc analysis; 10 is a stretch, run by hand
+PIPELINE = ["01", "02", "03", "03b", "04", "05", "06", "07", "08", "08b", "09",  # v1: the registered pipeline on the 2025 file
+            "01b", "11", "12", "13", "14", "15", "16", "17", "18", "19"]  # v3: the portfolio layer (PLAN.md v3); 10 was dropped
 KERNEL = "queue-survival"  # registered from .venv by `make setup`
 
 

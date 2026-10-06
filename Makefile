@@ -6,7 +6,7 @@ else
 PYTHON := .venv/bin/python
 endif
 
-.PHONY: setup data clean explore features models evaluate explain figures numbers report test all
+.PHONY: setup data clean explore features models evaluate explain v3 figures numbers report test all
 
 setup:            ## create .venv, install pinned packages, register the notebook kernel
 	python -m venv .venv
@@ -34,8 +34,11 @@ evaluate:         ## 08: metrics, calibration, F4 F5; 08b: post-hoc improvements
 explain:          ## 09: forest plot, SHAP, ranking table, F6 F7
 	$(PYTHON) run_pipeline.py --only 09
 
+v3:               ## 01b, 11-19: the portfolio layer (fair baseline, level, milestones, landmarks, value, book, levers, verdict, MISO/SPP)
+	$(PYTHON) run_pipeline.py --only 01b 11 12 13 14 15 16 17 18 19
+
 figures:          ## every notebook that draws figures
-	$(PYTHON) run_pipeline.py --only 01 03 03b 08 09
+	$(PYTHON) run_pipeline.py --only 01 03 03b 08 09 01b 11 12 13 14 15 16 17 18 19
 
 numbers:          ## results/report_numbers.csv: every number the report cites, read from results/
 	$(PYTHON) -m src.report_numbers
@@ -46,5 +49,5 @@ report: numbers   ## report.md + references.md + appendix.md → report/report.p
 test:
 	$(PYTHON) -m pytest
 
-all:              ## notebooks 01 → 09 in order (with 03b and 08b), stop at the first error
+all:              ## notebooks 01 → 09 (with 03b and 08b), then 01b and 11 → 19, stop at the first error
 	$(PYTHON) run_pipeline.py

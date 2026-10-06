@@ -112,6 +112,33 @@ the API fails; not needed so far.
 - **Terms:** public ISO data; each ISO's terms of use apply; raw files not
   committed.
 
+### S8 — LBNL interconnection cost data, PJM (notebook 15)
+
+- **What:** `data/raw/lbnl_costs/pjm_costs_2022_clean_data.xlsx` (1.8 MB):
+  1,127 PJM projects with interconnection cost estimates in $2022/kW by
+  study (LBNL, *Interconnection Cost Analysis in the PJM Territory*, 2023).
+- **How to obtain:** the "Data File XLSX" link on
+  <https://emp.lbl.gov/publications/interconnection-cost-analysis-pjm>;
+  SHA-256 in `data/raw/lbnl_costs/SHA256.txt`. Downloaded 2026-10-06 with
+  Alan's permission.
+- **Terms:** LBNL publication; derived tables only are redistributed.
+
+### S9/S10 — value-layer sources (notebook 15), `data/raw/value/`
+
+- `ice_electric-2017final.xlsx` … `ice_electric-2025final.xlsx`: EIA's
+  republication of ICE daily traded electricity prices by hub
+  (<https://www.eia.gov/electricity/wholesale/>, public domain).
+- `2024-som-pjm-sec5.pdf`: Monitoring Analytics, *2024 State of the Market
+  Report for PJM*, Section 5 (Capacity): Table 5-23 (RPM revenue by
+  calendar year) and Table 5-13 (ELCC class ratings), parsed by
+  `src/value.py` (<https://www.monitoringanalytics.com/reports/PJM_State_of_the_Market/2024.shtml>).
+- `irs_notice_2025-42.pdf`: IRS Notice 2025-42 (begin-construction rules
+  for the wind and solar credits), <https://www.irs.gov/pub/irs-drop/n-25-42.pdf>.
+- `eia_generation_2024.json`: the EIA API response cached by notebook 15
+  (annual net generation by state and fuel, 2024; the key is not in the file).
+- SHA-256 of the files in `data/raw/value/SHA256.txt`. All public; not
+  committed with the rest of `data/raw/`.
+
 ### S11 — U.S. Census Bureau cartographic boundary files (positions for the map)
 
 - **What:** `cb_2020_us_county_20m.zip` and `cb_2020_us_state_20m.zip`,

@@ -581,3 +581,19 @@ work (decision #51), no limits on figures, report length or notebooks.
 - New modules with tests: `src/baselines.py`, `src/drift.py`,
   `src/variants.py`, `src/landmark.py`; `tests/test_baselines.py`,
   `test_drift.py`, `test_variants.py`, `test_landmark.py`.
+- **Notebook 14** (landmark models): the discrete-time model read from a
+  landmark with the covariates updated to that day; two years in, the
+  dated agreement flag lifts Uno's C from 0.687 to 0.797 (+0.101 [+0.062,
+  +0.136]) and wins 6 of 6 comparisons — **C8 passes at +24 months**, fails
+  at the agreement itself (+0.004); updating congestion alone hurts (the
+  artefact); the fair baseline conditional on the landmark falls to 0.591.
+  Leakage guard: highest landmark AUC 0.972 against the ablation's 0.990.
+- **Notebook 15** (value and cost): every input parsed from a public file
+  (EIA ICE hub prices 2017–2025; the PJM market monitor's capacity revenue
+  2007–2026 and ELCC ratings, parsed from the PDF; EIA generation over
+  EIA-860M nameplate for capacity factors; LBNL's PJM cost data) or stated
+  in `results/value_assumptions.csv` with a range. 2017–2019 cohort: 29.2
+  GW expected online within five years (raw), 25.2 GW repaired, 18.8 GW
+  realised. The value case barely moves the order of requests (Spearman ≥
+  0.97). Downloads made with Alan's permission; pjm.com and ercot.com are
+  unreachable from this machine (decision #53).
