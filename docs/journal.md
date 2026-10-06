@@ -528,8 +528,7 @@ before the appendices, the criteria table fits one page.
     proposed with sources in notebook 15, confirmed by Alan before the
     table is fixed. Budget and caps: defaults accepted (decision #46).
 18. PyMC Bayesian level model: wanted as a stretch (decision #46).
-19a. The report title: Alan wants a headline about portfolio management
-    and AI that draws attention; options proposed, choice pending.
+- Report title changed to "From Queue to Grid: AI-Driven Portfolio Management for the U.S. Power-Plant Pipeline" (decision #47); README, report and CLAUDE.md updated.
 19. Figure footnotes read "Source: LBNL … ; author's analysis." Should they
     say "Figure: Alan Mössinger, from LBNL …" so authorship is explicit?
     One line in `src/config.py` changes every figure on the next run.

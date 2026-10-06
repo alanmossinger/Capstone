@@ -1,6 +1,6 @@
-# Queue Survival: Which Proposed Power Plants Get Built, and When?
+# From Queue to Grid: AI-Driven Portfolio Management for the U.S. Power-Plant Pipeline
 
-Alan Mössinger · SIADS 699 Capstone, University of Michigan · Draft v1
+Alan Mössinger · SIADS 699 Capstone, University of Michigan · Draft v1 (title updated for v2)
 
 ## Abstract
 

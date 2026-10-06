@@ -458,3 +458,11 @@ alternative rejected.
     with their sources and confirmed by Alan before the value table is
     fixed. *Rejected:* fixing the value proxies now, before the sources are
     read.
+47. **Report title: "From Queue to Grid: AI-Driven Portfolio Management for the U.S. Power-Plant Pipeline"** (Alan, 2026-10-06). The title
+    names the subject (portfolio management) and the method (AI, meaning
+    the machine-learning models of notebooks 06, 11–16); "Queue Survival"
+    stays as the repository's short name. Chosen from four options for
+    being conventional enough for a course report while leading with the
+    decision. *Rejected:* "Betting on the Grid" (the recommendation; more
+    hook, less formal), "2,100 GW Are Waiting" (a number as the hook),
+    "Which Power Plants Will Actually Get Built?" (close to the old title).
