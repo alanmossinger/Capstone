@@ -124,7 +124,7 @@ def finish(fig, title, subtitle, cohort, eia=False, lbnl=True):
     if lbnl:
         source = config.SOURCE_LBNL + (" " + config.SOURCE_EIA if eia else "")
     else:
-        source = "Source: " + config.SOURCE_EIA.rstrip(".") + "; author's analysis."
+        source = config.FIGURE_AUTHOR + " Data: " + config.SOURCE_EIA
     source_lines = textwrap.wrap(f"{source} Cohort: {cohort}", 125)
     # line heights in figure fractions (points → inches → fraction, 1.25 leading)
     title_h, sub_h, src_h = (size * 1.25 / 72 / height for size in (16, 13, 10.5))

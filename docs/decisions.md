@@ -492,3 +492,16 @@ alternative rejected.
     are 49% complete there. *Rejected:* a sensitivity run without criteria
     (weaker claim for the same fitting work); keeping MISO and SPP in
     Track B (ignores dates that now exist).
+50. **Figure footnotes name the author** (Alan, 2026-10-06). Every figure's
+    source line now reads "Figure: Alan Mössinger. Data: LBNL Queued Up:
+    2025 Edition (Rand et al., 2025). [EIA-860M …] Cohort: …" instead of
+    "Source: …; author's analysis", so authorship is explicit on the figure
+    itself; the data credit stays, as the course requires. One constant in
+    `src/config.py`; all figures re-rendered. *Rejected:* keeping the
+    anonymous "author's analysis" (Alan found it read as if the figures
+    came from elsewhere).
+51. **Build order: the full v3 pipeline first, then the calendar** (Alan,
+    2026-10-06). Notebooks 11–19 and 01b are built in sequence in
+    continuous sessions, each executed and checked before the next, with
+    stops only at the ASK ALAN items; the week-by-week calendar in
+    `PLAN.md §2` becomes the order of work, not the pace.
