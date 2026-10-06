@@ -19,6 +19,7 @@ NOT_QUANTITIES = [
     r"^#+ .*$",                            # headings carry section numbers
     r"\b(?:Figure|Appendix|decisions?|notebooks?)\s+[\d–, and#]+",
     r"#\d+",                               # decision numbers
+    r"\bsections?\s+\d+(?:\.\d+)?",       # section references
     r"\b[CRK]\d+\b",                       # criteria C1–C5, cleaning rules R1–R9, post-hoc candidates
     r"\bOrder No\. \d+",
     r"\bEIA-860M\b",

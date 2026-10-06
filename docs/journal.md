@@ -615,9 +615,16 @@ work (decision #51), no limits on figures, report length or notebooks.
 - **Notebook 19** (MISO and SPP on the 2026 file; C13–C14 registered first,
   decision #54): 3 of 12 lines pass; the test cohorts hold 54 and 8
   operations — the method transfers, the evidence does not yet.
+- **Report v2** assembled: `report/report.md` (12 sections, 5,509 words,
+  F9–F16 as Figures 1–8), the appendix with the v2 and v3 criteria tables,
+  the value assumptions and the landmark risk sets, 30 references.
+  `src/report_numbers.py` extended with the v3 collectors (969 traced
+  numbers); `tests/test_report.py` passes; three hand-typed numbers it
+  caught were corrected (−2.15, $100.2, the agreement years). PDF built (26
+  pages); the DOCX is locked by Word and rebuilds with the pandoc command
+  in `HANDOFF.md`. 86 tests pass.
 - `HANDOFF.md` written (git-excluded) with the state, the unfinished items
-  and the prompt for the next session. Report v2 drafted in the session
-  scratchpad, not yet assembled into `report/report.md`.
+  and the prompt for the next session.
 
 **Next**
 
