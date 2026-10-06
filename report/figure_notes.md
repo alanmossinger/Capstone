@@ -1292,6 +1292,16 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** Gains over the entry model from updating congestion and the agreement status at each landmark, 3 years after the landmark.
 <!-- /fig:F12_landmark_models -->
 
+<!-- fig:F13_expected_mw_and_value -->
+### F13_expected_mw_and_value
+
+![F13_expected_mw_and_value](../figures/F13_expected_mw_and_value.png)
+
+*Notebook:* `notebooks/15_value_and_cost.ipynb` · *Files:* `figures/F13_expected_mw_and_value.png`, `.svg`
+
+**Caption (stub).** Expected cumulative MW online of the 2017–2019 cohort against realised MW, and the expected value index by region under three value cases.
+<!-- /fig:F13_expected_mw_and_value -->
+
 <!-- fig:F1_cif_by_region -->
 ### F1_cif_by_region
 

@@ -1,0 +1,16 @@
+input,value,low,high,source,verified
+ERCOT energy price 2020 onward,PJM West × 0.77,× 0.7,× 1.3,ERCOT North traded in EIA's ICE files only 2017–2019; ratio of the 2017–2019 means,assumption
+prices after 2025,held at 2025,,,no forward curve used,assumption
+CAISO capacity price,$8.0/kW-month,$4.0,$12.0,CPUC Resource Adequacy reports (not fetched from this machine),assumption — verify
+ERCOT capacity price,0,0,0,energy-only market,by design
+PJM capacity price after 2026,held at 2026 (partial year),,,Monitoring Analytics 2024 SOM Table 5-23,parsed
+accreditation by technology group,PJM 2025/26 ELCC class averages,× 0.7,× 1.3,"Monitoring Analytics 2024 SOM Table 5-13 (Jan 23, 2025 column); applied to CAISO as a proxy",parsed; mapping is an assumption
+capacity factors,"2024 generation / July-2026 nameplate, by state × technology",× 0.85,× 1.15,EIA API electric-power-operational-data; EIA-860M (notebook 01),computed; vintage mismatch stated
+offshore wind capacity factor,0.4,0.35,0.45,no operating U.S. fleet in 2024 data,assumption
+'Other' technology capacity factor,0.3,0.2,0.5,mixed group,assumption
+capture of the on-peak price,"{'Solar': 0.8, 'Solar+Battery': 0.85, 'Wind': 0.8, 'Offshore Wind': 0.85, 'Battery': 0.0, 'Gas': 1.0, 'Other': 0.9}",energy × 0.7,energy × 1.3,assumption,assumption
+"production credit, wind and solar",$27.5/MWh if operating by 2027,0,$27.5,IRC §45 base rate inflation-adjusted (verify the year's rate); deadline from IRS Notice 2025-42 (data/raw/value/irs_notice_2025-42.pdf),deadline from the notice; rate to verify
+case multipliers,"{'low': {'energy': 0.7, 'capacity': 0.5, 'credit': 0.0}, 'base': {'energy': 1.0, 'capacity': 1.0, 'credit': 1.0}, 'high': {'energy': 1.3, 'capacity': 1.5, 'credit': 1.0}}",,,assumption,assumption
+interconnection cost per kW outside PJM,PJM median by size band,× 0.5,× 2,LBNL PJM cost data (no CAISO/ERCOT file),proxy
+deposit share of interconnection cost to the next gate,0.1,0.05,0.2,assumption,assumption
+"study cost to the next gate, $ per request",150000,50000,500000,assumption,assumption
