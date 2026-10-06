@@ -1,0 +1,11 @@
+chooser,metric,estimate,low,high,diff_vs_fair_baseline,diff_low,diff_high,beats_fair_baseline,status
+"v2 model, level repaired",operated_within_5,7.0,3.0,13.0,-6.0,-12.0,0.0,False,"exploratory, not registered"
+"v2 model, level repaired",realised_mw_5yr,318.15999999999997,110.6085,664.0590000000001,-393.34000000000003,-725.6030000000001,120.42600000000014,False,"exploratory, not registered"
+"v2 model, raw",operated_within_5,9.0,3.0,14.0,-4.0,-11.024999999999999,2.0,False,"exploratory, not registered"
+"v2 model, raw",realised_mw_5yr,353.58000000000004,104.555,583.272,-357.91999999999996,-651.8264999999999,53.125500000000095,False,"exploratory, not registered"
+fair baseline,operated_within_5,13.0,7.9750000000000005,18.0,0.0,0.0,0.0,False,"exploratory, not registered"
+fair baseline,realised_mw_5yr,711.5,372.37,951.0825,0.0,0.0,0.0,False,"exploratory, not registered"
+v1 baseline,operated_within_5,8.0,0.0,8.0,-5.0,-14.0,-4.0,False,"exploratory, not registered"
+v1 baseline,realised_mw_5yr,524.3,0.0,611.8175000000001,-187.20000000000005,-733.3050000000001,-37.90999999999987,False,"exploratory, not registered"
+random (≥ 20 MW),operated_within_5,2.0,0.0,7.0,-11.0,-16.0,-4.0,False,"exploratory, not registered"
+random (≥ 20 MW),realised_mw_5yr,192.4,0.0,1475.6205000000002,-519.1,-805.3499999999999,948.1425000000003,False,"exploratory, not registered"
