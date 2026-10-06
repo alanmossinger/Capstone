@@ -1,0 +1,7 @@
+candidate,model,congestion,fitted on,log_loss_2016_all,log_loss_2016_large,chosen
+"K0 LightGBM, yearly congestion",dt_lgbm,yearly,all sizes,0.6492638746503548,0.5901993962890068,True
+"K1 LightGBM, entry congestion",dt_lgbm,entry,all sizes,0.6607066469754316,0.6062934966940087,False
+"K2 LightGBM, entry congestion, ≥ 20 MW only",dt_lgbm,entry,≥ 20 MW only,0.6746800522677299,0.6081029395230244,False
+"K3 LightGBM, entry congestion, monotone in MW",dt_lgbm,entry,all sizes,0.6628482025938899,0.6077746266578404,False
+"K1 logit, entry congestion",dt_logit,entry,all sizes,0.6742581015537112,0.6095549971165842,False
+"K2 logit, entry congestion, ≥ 20 MW only",dt_logit,entry,≥ 20 MW only,0.6791089278445963,0.606980398261133,False

@@ -1,0 +1,9 @@
+id,line,notebook,track,cohort,model,benchmark,metric,horizons,rule
+C6,"≥ 20 MW cohort: v2 model vs fair baseline, Uno's C",11/18,A,>=20 MW,v2 (lowest 2016 log loss on ≥ 20 MW rows),fair_baseline,uno_c,"3, 5",paired 95% interval entirely on the better side
+C6,"≥ 20 MW cohort: v2 model vs fair baseline, Brier",11/18,A,>=20 MW,v2 (lowest 2016 log loss on ≥ 20 MW rows),fair_baseline,brier,"3, 5",paired 95% interval entirely on the better side
+C7,"≥ 20 MW cohort, 2018–2019 entrants, after level repair: calibration slope and intercept",12/18,A,">=20 MW, entry 2018–2019",v2 after level repair,,"slope, intercept","3, 5",slope interval within 0.8–1.2 and intercept interval covering 0
+C8,"Landmark model at +24 months and at IA executed vs the entry model, same risk set",14/18,A,requests active at the landmark,landmark,entry model,uno_c,3 (from the landmark),paired 95% interval entirely on the better side
+C9,"Backtest: realised MW online by end-2024, model-chosen book vs fair-baseline book, same budget",16/18,A,2017–2019 entrants,v2 book,fair-baseline book,mw_online,by 2024-12-31,paired 95% interval entirely on the better side
+C10,"Backtest: realised value of the model-chosen book vs the fair-baseline book, base value case",16/18,A,2017–2019 entrants,v2 book,fair-baseline book,value,by 2024-12-31,paired 95% interval on the better side; low and high cases reported
+C11,Simulated book: the 5–95% band of expected MW online by 2024 covers the realised value,16/18,A,2017–2019 book,v2 book simulation,,coverage,by 2024-12-31,realised MW inside the 5–95% band
+C12,Leakage guard: no landmark feature dated after its landmark; landmark AUC ≤ leakage-ablation AUC,14/18,A,,landmark,leakage ablation (notebook 08),auc,5,both hold

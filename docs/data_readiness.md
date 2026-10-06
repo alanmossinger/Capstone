@@ -1,6 +1,6 @@
 # Data readiness report (Phase 0 gate)
 
-*Written by `notebooks/01_get_data.ipynb` on 2026-10-03. Every number below was computed by that notebook; thresholds are in `src/config.py`.*
+*Written by `notebooks/01_get_data.ipynb` on 2026-10-06. Every number below was computed by that notebook; thresholds are in `src/config.py`.*
 
 ## Sources
 
@@ -52,19 +52,19 @@
 
 - Linkage: 31.1% of ERCOT/PJM operational projects matched an EIA plant and 74.9% of matches agree on the operation month within six months.
 
-**Outcome (2026-10-03): GO**
+**Outcome (2026-10-06): GO**
 
+## v3 sources — S6, the LBNL 2026 data file (notebook 01b)
 
-## v3 sources — first look at S6, the LBNL 2026 data file (2026-10-06)
-
-Printed by the profiling run of 2026-10-06; notebook 01b re-runs every line
-and replaces this section. File `LBNL_Ix_Queue_Data_File_thru2025.xlsx`,
-SHA-256 `794582d3…a08b6`, 38,201 rows × 30 columns.
+Written by `notebooks/01b_lbnl_2026_reconcile.ipynb`. File `LBNL_Ix_Queue_Data_File_thru2025.xlsx`, SHA-256 `794582d3…a08b6`.
 
 | Check (PLAN.md §5.2) | Value | Result |
 |---|---|---|
-| S6 loads and is the stated edition | sheet `03. Complete Queue Data`, header row 1; 9 columns renamed, `county_state_pairs` dropped, dates as datetimes | PASS (differences listed in `data/README.md`) |
-| ≥ 95% of 2025 requests found in 2026 by (`q_id`, `entity`, `region`) | 96.9% (PJM 92.9%, CAISO 95.1%, others ≥ 96.5%); 2,757 new rows; 135 duplicate keys in 2026 | PASS |
-| Status transitions tabulated | of 10,538 active at end-2024: 6,449 active, 2,973 withdrawn, 280 operational, 238 suspended; 63 withdrawn → operational, 80 operational → active, 16 operational → withdrawn | done |
-| Event-date coverage, operational / withdrawn | PJM 99% / 98%; CAISO 97% / 98%; **ERCOT 85% / 49%** (2025 file: 98% / 100%); **MISO 97% / 94%** (was 1% / 42%); **SPP 96% / 73%** (was 5% / 0%); ISO-NE 0% / 99%; NYISO 39% / 49%; Southeast 59% / 35%; West 18% / 12% | noted — see decision #48 |
-| 2020–2022 entrants in CAISO/ERCOT/PJM | 3,735 requests, 157 operational by end-2025 | available for notebook 12 |
+| S6 loads and is the stated edition | 38,201 rows × 30 columns; sheet and header as in 2025; 9 columns renamed, 10 dropped; SHA-256 verified | PASS |
+| ≥ 95% of 2025 requests found in 2026 by (q_id, entity, region) | 96.9% (lowest region PJM 92.9%); 2,759 new rows; 0 duplicate keys | PASS |
+| status transitions tabulated | active at end-2024 → active 6,336, withdrawn 2,963, operational 278, suspended 238; withdrawn → operational 63; operational → active 80 | PASS |
+| requests whose dates changed listed | q_date: 926 changed, 1 lost; on_date: 123 changed, 107 lost; wd_date: 54 changed, 476 lost; ia_date: 115 changed, 187 lost; ERCOT wd_date == 2018-08-29 (decision #21): 0 changed, 441 lost | PASS |
+| 2020–2022 early outcomes available | 3,672 entrants in the three ISOs (2026 edition) | PASS |
+| the 2025 file is unchanged | SHA-256 of the frozen file matches src/config.py | PASS |
+
+Event-date coverage by region in both editions: `results/lbnl_2026_date_coverage.csv` (figure 01b_01). The 2025 file stays the basis of every registered result (decisions #43, #48).

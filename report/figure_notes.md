@@ -222,6 +222,26 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** Capacity entering operation per year according to LBNL operational projects and EIA-860M generators, ERCOT and PJM.
 <!-- /fig:01_22_lbnl_vs_eia_additions -->
 
+<!-- fig:01b_01_date_coverage -->
+### 01b_01_date_coverage
+
+![01b_01_date_coverage](../figures/01b_lbnl_2026_reconcile/01b_01_date_coverage.png)
+
+*Notebook:* `notebooks/01b_lbnl_2026_reconcile.ipynb` · *Files:* `figures/01b_lbnl_2026_reconcile/01b_01_date_coverage.png`, `.svg`
+
+**Caption (stub).** Event-date coverage by region in the 2025 and 2026 editions of the LBNL file.
+<!-- /fig:01b_01_date_coverage -->
+
+<!-- fig:01b_02_early_incidence -->
+### 01b_02_early_incidence
+
+![01b_02_early_incidence](../figures/01b_lbnl_2026_reconcile/01b_02_early_incidence.png)
+
+*Notebook:* `notebooks/01b_lbnl_2026_reconcile.ipynb` · *Files:* `figures/01b_lbnl_2026_reconcile/01b_02_early_incidence.png`, `.svg`
+
+**Caption (stub).** One- and two-year incidence of operation for 2020–2022 entrants in the three ISOs, 2025 and 2026 editions.
+<!-- /fig:01b_02_early_incidence -->
+
 <!-- fig:02_01_event_dates_vs_status -->
 ### 02_01_event_dates_vs_status
 
@@ -1201,6 +1221,16 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 
 **Caption (stub).** PJM fitting rows: GW waiting by year in the queue, against the entry values of the test requests, and the yearly operation hazard.
 <!-- /fig:09_09_congestion_confounding -->
+
+<!-- fig:11_01_fair_baseline_cells -->
+### 11_01_fair_baseline_cells
+
+![11_01_fair_baseline_cells](../figures/11_fair_baseline_and_scale/11_01_fair_baseline_cells.png)
+
+*Notebook:* `notebooks/11_fair_baseline_and_scale.ipynb` · *Files:* `figures/11_fair_baseline_and_scale/11_01_fair_baseline_cells.png`, `.svg`
+
+**Caption (stub).** P(operation within 5 years) by size band within each region and technology: the cells of the fair baseline.
+<!-- /fig:11_01_fair_baseline_cells -->
 
 <!-- fig:F1_cif_by_region -->
 ### F1_cif_by_region

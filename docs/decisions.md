@@ -505,3 +505,18 @@ alternative rejected.
     continuous sessions, each executed and checked before the next, with
     stops only at the ASK ALAN items; the week-by-week calendar in
     `PLAN.md §2` becomes the order of work, not the pace.
+52. **Pre-registered v2 success criteria C6–C12** (Alan, 2026-10-06; written
+    by the first cell of notebook 11 before any test metric of v2 existed).
+    Primary cohort: test requests of 20 MW and more; the v2 model is the
+    candidate with the lowest 2016 log loss on ≥ 20 MW project-years,
+    chosen before the test cohort is scored (rule in
+    `results/success_criteria_v2_registered.json`). Lines: C6 Uno's C and
+    Brier vs the fair baseline at 3 and 5 years; C7 calibration slope
+    0.8–1.2 and intercept covering 0 on 2018–2019 entrants after the level
+    repair; C8 landmark models beat the entry model on the same risk set;
+    C9 and C10 the model-chosen book delivers more realised MW and value
+    than the fair-baseline book in the backtest; C11 the simulated band
+    covers the realised MW; C12 the leakage guard holds. Scored in notebook
+    18; failures are reported, not removed; the v1 verdict (decision #5) is
+    untouched. *Rejected:* scoring the ≥ 20 MW cohort against the v1
+    baseline only (that is the comparison a size lookup would pass).

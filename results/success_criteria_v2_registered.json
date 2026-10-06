@@ -1,0 +1,106 @@
+{
+  "decided": "2026-10-06",
+  "n_boot": 200,
+  "level": 0.95,
+  "seed_v2": 900,
+  "primary_cohort": "requests whose size regime is 20 MW or more (notebook 04's size_regime)",
+  "variant_rule": "among the fixed candidates K0–K3 (LightGBM) and the K1/K2 logits, the one with the lowest multiclass log loss on 2016 entrants' project-years of 20 MW or more, fitted on entrants to 2015; refitted on entrants to 2016 for the test cohort",
+  "criteria": [
+    {
+      "id": "C6",
+      "line": "≥ 20 MW cohort: v2 model vs fair baseline, Uno's C",
+      "notebook": "11/18",
+      "track": "A",
+      "cohort": ">=20 MW",
+      "model": "v2 (lowest 2016 log loss on ≥ 20 MW rows)",
+      "benchmark": "fair_baseline",
+      "metric": "uno_c",
+      "horizons": "3, 5",
+      "rule": "paired 95% interval entirely on the better side"
+    },
+    {
+      "id": "C6",
+      "line": "≥ 20 MW cohort: v2 model vs fair baseline, Brier",
+      "notebook": "11/18",
+      "track": "A",
+      "cohort": ">=20 MW",
+      "model": "v2 (lowest 2016 log loss on ≥ 20 MW rows)",
+      "benchmark": "fair_baseline",
+      "metric": "brier",
+      "horizons": "3, 5",
+      "rule": "paired 95% interval entirely on the better side"
+    },
+    {
+      "id": "C7",
+      "line": "≥ 20 MW cohort, 2018–2019 entrants, after level repair: calibration slope and intercept",
+      "notebook": "12/18",
+      "track": "A",
+      "cohort": ">=20 MW, entry 2018–2019",
+      "model": "v2 after level repair",
+      "benchmark": "",
+      "metric": "slope, intercept",
+      "horizons": "3, 5",
+      "rule": "slope interval within 0.8–1.2 and intercept interval covering 0"
+    },
+    {
+      "id": "C8",
+      "line": "Landmark model at +24 months and at IA executed vs the entry model, same risk set",
+      "notebook": "14/18",
+      "track": "A",
+      "cohort": "requests active at the landmark",
+      "model": "landmark",
+      "benchmark": "entry model",
+      "metric": "uno_c",
+      "horizons": "3 (from the landmark)",
+      "rule": "paired 95% interval entirely on the better side"
+    },
+    {
+      "id": "C9",
+      "line": "Backtest: realised MW online by end-2024, model-chosen book vs fair-baseline book, same budget",
+      "notebook": "16/18",
+      "track": "A",
+      "cohort": "2017–2019 entrants",
+      "model": "v2 book",
+      "benchmark": "fair-baseline book",
+      "metric": "mw_online",
+      "horizons": "by 2024-12-31",
+      "rule": "paired 95% interval entirely on the better side"
+    },
+    {
+      "id": "C10",
+      "line": "Backtest: realised value of the model-chosen book vs the fair-baseline book, base value case",
+      "notebook": "16/18",
+      "track": "A",
+      "cohort": "2017–2019 entrants",
+      "model": "v2 book",
+      "benchmark": "fair-baseline book",
+      "metric": "value",
+      "horizons": "by 2024-12-31",
+      "rule": "paired 95% interval on the better side; low and high cases reported"
+    },
+    {
+      "id": "C11",
+      "line": "Simulated book: the 5–95% band of expected MW online by 2024 covers the realised value",
+      "notebook": "16/18",
+      "track": "A",
+      "cohort": "2017–2019 book",
+      "model": "v2 book simulation",
+      "benchmark": "",
+      "metric": "coverage",
+      "horizons": "by 2024-12-31",
+      "rule": "realised MW inside the 5–95% band"
+    },
+    {
+      "id": "C12",
+      "line": "Leakage guard: no landmark feature dated after its landmark; landmark AUC ≤ leakage-ablation AUC",
+      "notebook": "14/18",
+      "track": "A",
+      "cohort": "",
+      "model": "landmark",
+      "benchmark": "leakage ablation (notebook 08)",
+      "metric": "auc",
+      "horizons": "5",
+      "rule": "both hold"
+    }
+  ]
+}

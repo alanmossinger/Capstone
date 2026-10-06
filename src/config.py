@@ -157,4 +157,5 @@ OUTCOME_COLORS = {"operation": "#009E73", "withdrawal": "#CC79A7"}
 # --- Source notes printed under figures --------------------------------------
 FIGURE_AUTHOR = "Figure: Alan Mössinger."  # every figure names its author (decision #50)
 SOURCE_LBNL = FIGURE_AUTHOR + " Data: LBNL Queued Up: 2025 Edition (Rand et al., 2025)."
+SOURCE_LBNL_2026 = "LBNL Queued Up: 2026 Edition (Rand et al., 2026)."  # the file added alongside (decision #43)
 SOURCE_EIA = "EIA-860M Inventory of Operable Generators via EIA API v2."

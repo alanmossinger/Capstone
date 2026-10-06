@@ -1,0 +1,23 @@
+rule,function,item,rows,rows_in,rows_out
+R7a,drop_appended_duplicates_2026,dropped: emptier copy of a duplicated key,135,38201,38066
+R2,r2_placeholder_dates,q_date placeholder set to missing,0,38066,38066
+R2,r2_placeholder_dates,ia_date placeholder set to missing,0,38066,38066
+R2,r2_placeholder_dates,q_year changed by recomputing it from q_date,0,38066,38066
+R3,r3_operation_dates,on_date cleared: status is not operational,420,38066,38066
+R3,r3_operation_dates,on_date cleared: before the request date,48,38066,38066
+R3,r3_operation_dates,on_date cleared: before 1950,0,38066,38066
+R4,r4_withdrawal_dates,wd_date cleared: status is not withdrawn,41,38066,38066
+R4,r4_withdrawal_dates,wd_date cleared: before the request date,6,38066,38066
+R5,r5_generation_only,dropped: project_type = Surplus,100,38066,37865
+R5,r5_generation_only,dropped: project_type = Upgrade,80,38066,37865
+R5,r5_generation_only,dropped: project_type = Replacement,21,38066,37865
+R6,r6_capacity,dropped: mw ≤ 0 or missing,16,37865,37849
+R6,r6_capacity,"flagged: mw > 5,000",1,37865,37849
+R7,r7_project_key,rows sharing a key,0,37849,37849
+R7,r7_project_key,dropped: duplicate without a request date,0,37849,37849
+R8,r8_sparse_fields,developer values removed,8377,37849,37849
+R8,r8_sparse_fields,cluster values removed,12264,37849,37849
+R8,r8_sparse_fields,service missing → 'missing',10622,37849,37849
+R8,r8_sparse_fields,county missing → 'missing',1882,37849,37849
+R9,r9_hybrid,hybrid = True,5052,37849,37849
+R9,r9_hybrid,hybrid without mw2 (second capacity unknown),3962,37849,37849

@@ -1,0 +1,7 @@
+check,value,pass
+S6 loads and is the stated edition,"38,201 rows × 30 columns; sheet and header as in 2025; 9 columns renamed, 10 dropped; SHA-256 verified",True
+"≥ 95% of 2025 requests found in 2026 by (q_id, entity, region)","96.9% (lowest region PJM 92.9%); 2,759 new rows; 0 duplicate keys",True
+status transitions tabulated,"active at end-2024 → active 6,336, withdrawn 2,963, operational 278, suspended 238; withdrawn → operational 63; operational → active 80",True
+requests whose dates changed listed,"q_date: 926 changed, 1 lost; on_date: 123 changed, 107 lost; wd_date: 54 changed, 476 lost; ia_date: 115 changed, 187 lost; ERCOT wd_date == 2018-08-29 (decision #21): 0 changed, 441 lost",True
+2020–2022 early outcomes available,"3,672 entrants in the three ISOs (2026 edition)",True
+the 2025 file is unchanged,SHA-256 of the frozen file matches src/config.py,True

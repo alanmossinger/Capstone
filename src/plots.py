@@ -92,7 +92,7 @@ def tech_group(type_clean):
     return type_clean if type_clean in config.TECH_COLORS else "Other"
 
 
-def finish(fig, title, subtitle, cohort, eia=False, lbnl=True):
+def finish(fig, title, subtitle, cohort, eia=False, lbnl=True, lbnl_2026=False):
     """Add the finding title, the subtitle and the source note, then lay out.
 
     Parameters
@@ -109,6 +109,8 @@ def finish(fig, title, subtitle, cohort, eia=False, lbnl=True):
         Credit EIA-860M.
     lbnl : bool
         Credit the LBNL file (False for figures drawn from EIA data only).
+    lbnl_2026 : bool
+        Also credit the 2026 edition (figures of notebooks 01b, 12 and 19).
 
     Notes
     -----
@@ -122,7 +124,7 @@ def finish(fig, title, subtitle, cohort, eia=False, lbnl=True):
     title_lines = textwrap.wrap(title, 72)
     subtitle_lines = textwrap.wrap(subtitle, 100)
     if lbnl:
-        source = config.SOURCE_LBNL + (" " + config.SOURCE_EIA if eia else "")
+        source = config.SOURCE_LBNL + (" " + config.SOURCE_LBNL_2026 if lbnl_2026 else "") + (" " + config.SOURCE_EIA if eia else "")
     else:
         source = config.FIGURE_AUTHOR + " Data: " + config.SOURCE_EIA
     source_lines = textwrap.wrap(f"{source} Cohort: {cohort}", 125)

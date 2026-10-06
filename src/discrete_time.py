@@ -406,7 +406,7 @@ def cif_table(h_operation, h_withdrawal, index, horizons=config.HORIZONS, max_ye
     return out
 
 
-def fit_both(frame, clean, tuning, delayed=True, extra=None, pool_regions=False, congestion="yearly"):
+def fit_both(frame, clean, tuning, delayed=True, extra=None, pool_regions=False, congestion="yearly", params=None):
     """Refit the logit and LightGBM with notebook 06's settings on ``frame``.
 
     Parameters
@@ -427,6 +427,9 @@ def fit_both(frame, clean, tuning, delayed=True, extra=None, pool_regions=False,
         the held-out region is a level the models never saw).
     congestion : {"yearly", "entry"}
         Passed to ``project_years``.
+    params : dict, optional
+        LightGBM parameters merged over the tuned ones (notebook 11 adds a
+        monotone constraint on ``log_mw``); the logit is left as it is.
 
     Returns
     -------
@@ -448,8 +451,9 @@ def fit_both(frame, clean, tuning, delayed=True, extra=None, pool_regions=False,
     X = lgbm_design(encoded)
     if extra is not None:
         X = X.join(extra(encoded))
-    params = {"num_leaves": tuning["lgbm"]["num_leaves"], "min_data_in_leaf": tuning["lgbm"]["min_data_in_leaf"]}
-    lgbm = fit_lgbm(X, encoded["outcome"], params, tuning["lgbm"]["rounds"])
+    lgbm_params = {"num_leaves": tuning["lgbm"]["num_leaves"], "min_data_in_leaf": tuning["lgbm"]["min_data_in_leaf"],
+                   **(params or {})}
+    lgbm = fit_lgbm(X, encoded["outcome"], lgbm_params, tuning["lgbm"]["rounds"])
     return {"rows": rows, "logit": logit, "lgbm": lgbm, "tuning": tuning, "extra": extra, "pool_regions": pool_regions}
 
 
