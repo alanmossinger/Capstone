@@ -1232,6 +1232,56 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** P(operation within 5 years) by size band within each region and technology: the cells of the fair baseline.
 <!-- /fig:11_01_fair_baseline_cells -->
 
+<!-- fig:12_01_hazards_by_cohort -->
+### 12_01_hazards_by_cohort
+
+![12_01_hazards_by_cohort](../figures/12_level_repair/12_01_hazards_by_cohort.png)
+
+*Notebook:* `notebooks/12_level_repair.ipynb` · *Files:* `figures/12_level_repair/12_01_hazards_by_cohort.png`, `.svg`
+
+**Caption (stub).** Early-year hazards of operation and withdrawal by entry cohort, 2012–2019.
+<!-- /fig:12_01_hazards_by_cohort -->
+
+<!-- fig:12_03_early_hazards_2020_2022 -->
+### 12_03_early_hazards_2020_2022
+
+![12_03_early_hazards_2020_2022](../figures/12_level_repair/12_03_early_hazards_2020_2022.png)
+
+*Notebook:* `notebooks/12_level_repair.ipynb` · *Files:* `figures/12_level_repair/12_03_early_hazards_2020_2022.png`, `.svg`
+
+**Caption (stub).** Predicted against observed one- and two-year incidence of operation for 2020–2022 entrants.
+<!-- /fig:12_03_early_hazards_2020_2022 -->
+
+<!-- fig:13_01_milestone_coverage -->
+### 13_01_milestone_coverage
+
+![13_01_milestone_coverage](../figures/13_iso_queue_files/13_01_milestone_coverage.png)
+
+*Notebook:* `notebooks/13_iso_queue_files.ipynb` · *Files:* `figures/13_iso_queue_files/13_01_milestone_coverage.png`, `.svg`
+
+**Caption (stub).** Coverage of post-entry milestones by region and the timing of executed agreements.
+<!-- /fig:13_01_milestone_coverage -->
+
+<!-- fig:F10_gains_over_baselines -->
+### F10_gains_over_baselines
+
+![F10_gains_over_baselines](../figures/F10_gains_over_baselines.png)
+
+*Notebook:* `notebooks/11_fair_baseline_and_scale.ipynb` · *Files:* `figures/F10_gains_over_baselines.png`, `.svg`
+
+**Caption (stub).** Paired gains of the v2 model over the v1 and the fair baseline in Uno's C and Brier score, by size cohort and horizon.
+<!-- /fig:F10_gains_over_baselines -->
+
+<!-- fig:F11_level_by_entry_year -->
+### F11_level_by_entry_year
+
+![F11_level_by_entry_year](../figures/F11_level_by_entry_year.png)
+
+*Notebook:* `notebooks/12_level_repair.ipynb` · *Files:* `figures/F11_level_by_entry_year.png`, `.svg`
+
+**Caption (stub).** Observed against predicted P(operation by 3 and 5 years) by test entry year for requests of 20 MW and more, before and after the rolling recalibration.
+<!-- /fig:F11_level_by_entry_year -->
+
 <!-- fig:F1_cif_by_region -->
 ### F1_cif_by_region
 

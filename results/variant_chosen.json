@@ -1,0 +1,11 @@
+{
+  "chosen": "K0 LightGBM, yearly congestion",
+  "candidates": [
+    "K0 LightGBM, yearly congestion",
+    "K1 LightGBM, entry congestion",
+    "K2 LightGBM, entry congestion, ≥ 20 MW only",
+    "K3 LightGBM, entry congestion, monotone in MW",
+    "K1 logit, entry congestion",
+    "K2 logit, entry congestion, ≥ 20 MW only"
+  ]
+}

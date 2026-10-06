@@ -520,3 +520,22 @@ alternative rejected.
     18; failures are reported, not removed; the v1 verdict (decision #5) is
     untouched. *Rejected:* scoring the ≥ 20 MW cohort against the v1
     baseline only (that is the comparison a size lookup would pass).
+53. **ISO-native queue files: what could be obtained** (2026-10-06).
+    `gridstatus` 0.36.0 added (pinned) for the ISO queue snapshots. CAISO's
+    public queue report came through (2,278 rows, 2026-10-06 snapshot,
+    `data/raw/iso/`): every 2017–2019 LBNL CAISO request is found by queue
+    ID; it carries the cluster, study-phase *statuses*, agreement status,
+    withdrawal and completion dates, but no phase dates. PJM's export
+    endpoint and ERCOT's report servlet are unreachable from this machine
+    (connections refused from both the shell and the browser pane; not a
+    bot check), and PJM's API route needs a personal Data Miner key.
+    Notebook 13 therefore builds the milestone table from the CAISO
+    snapshot and the two LBNL editions' interconnection-agreement dates
+    (2,508 more in the 2026 file) and phase reached; notebook 14's
+    landmarks are entry, +12 and +24 months with the dated agreement, and
+    the agreement date itself. Phase reached is undated in every source and
+    is kept out of the landmark features (it would be post-outcome
+    information). If Alan can fetch PJM's queue export and ERCOT's GIS
+    report from his side, notebook 13 gains dated study phases for PJM and
+    ERCOT and is rerun. *Rejected:* registering for a PJM API key on Alan's
+    behalf (an account is his to create).

@@ -1,0 +1,6 @@
+check,value,pass
+no scored cohort is its own level source,"{2017: 2016, 2018: 2017, 2019: 2018}",True
+the refit reproduces notebook 11's predictions,0.0e+00,True
+recalibration leaves the ranking unchanged within each scored year and region,0,True
+every level metric carries an interval,0,True
+F11 saved as PNG and SVG,2,True

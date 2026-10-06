@@ -97,6 +97,21 @@ The same inventory as a monthly Excel file from
 <https://www.eia.gov/electricity/data/eia860m/> (no key needed). Used only if
 the API fails; not needed so far.
 
+### S7 — ISO-native queue files (CAISO obtained; PJM and ERCOT pending)
+
+- **What:** `data/raw/iso/caiso_queue_2026-10-06.parquet`, CAISO's public
+  queue report as pulled by `gridstatus` 0.36.0 on 2026-10-06 (2,278 rows:
+  queue ID, cluster, study-phase statuses, agreement status, queue,
+  withdrawal and completion dates). PJM's queue export and ERCOT's GIS
+  report could not be fetched from this machine (decision #53); when they
+  are placed in `data/raw/iso/`, notebook 13 reads them.
+- **How to obtain:** `gridstatus.CAISO().get_interconnection_queue()`
+  (source: <http://www.caiso.com/PublishedDocuments/PublicQueueReport.xlsx>);
+  PJM: the "Export" of <https://www.pjm.com/planning/service-requests/services-request-status>;
+  ERCOT: the monthly "GIS Report" on <https://www.ercot.com/gridinfo/resource>.
+- **Terms:** public ISO data; each ISO's terms of use apply; raw files not
+  committed.
+
 ### S11 — U.S. Census Bureau cartographic boundary files (positions for the map)
 
 - **What:** `cb_2020_us_county_20m.zip` and `cb_2020_us_state_20m.zip`,
