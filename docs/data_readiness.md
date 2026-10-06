@@ -53,3 +53,18 @@
 - Linkage: 31.1% of ERCOT/PJM operational projects matched an EIA plant and 74.9% of matches agree on the operation month within six months.
 
 **Outcome (2026-10-03): GO**
+
+
+## v3 sources — first look at S6, the LBNL 2026 data file (2026-10-06)
+
+Printed by the profiling run of 2026-10-06; notebook 01b re-runs every line
+and replaces this section. File `LBNL_Ix_Queue_Data_File_thru2025.xlsx`,
+SHA-256 `794582d3…a08b6`, 38,201 rows × 30 columns.
+
+| Check (PLAN.md §5.2) | Value | Result |
+|---|---|---|
+| S6 loads and is the stated edition | sheet `03. Complete Queue Data`, header row 1; 9 columns renamed, `county_state_pairs` dropped, dates as datetimes | PASS (differences listed in `data/README.md`) |
+| ≥ 95% of 2025 requests found in 2026 by (`q_id`, `entity`, `region`) | 96.9% (PJM 92.9%, CAISO 95.1%, others ≥ 96.5%); 2,757 new rows; 135 duplicate keys in 2026 | PASS |
+| Status transitions tabulated | of 10,538 active at end-2024: 6,449 active, 2,973 withdrawn, 280 operational, 238 suspended; 63 withdrawn → operational, 80 operational → active, 16 operational → withdrawn | done |
+| Event-date coverage, operational / withdrawn | PJM 99% / 98%; CAISO 97% / 98%; **ERCOT 85% / 49%** (2025 file: 98% / 100%); **MISO 97% / 94%** (was 1% / 42%); **SPP 96% / 73%** (was 5% / 0%); ISO-NE 0% / 99%; NYISO 39% / 49%; Southeast 59% / 35%; West 18% / 12% | noted — see decision #48 |
+| 2020–2022 entrants in CAISO/ERCOT/PJM | 3,735 requests, 157 operational by end-2025 | available for notebook 12 |

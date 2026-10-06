@@ -40,6 +40,38 @@ Everything the project reads or produces lives under `data/`:
   report use non-public data from transmission providers, so some published
   figures cannot be reproduced exactly from the public file.
 
+### S6 — LBNL "Queued Up: 2026 Edition" data file (alongside the frozen 2025 file)
+
+- **What:** `LBNL_Ix_Queue_Data_File_thru2025.xlsx` (15.6 MB), sheet
+  `03. Complete Queue Data`: 38,201 rows × 30 columns, interconnection data
+  through the end of 2025, last updated May 2026. Used only by notebook 01b
+  (reconciliation with the 2025 file; 1- and 2-year outcomes of 2020–2022
+  entrants) and notebook 12 (level check). No registered model is fitted or
+  scored on it (decision #43).
+- **Publisher and citation:** Rand, J., Cheyette, A., Talley, C., Zhang, S.,
+  Gorman, W., Wiser, R., Seel, J., Jeong, S., & Kahrl, F. (2026). *Queued up:
+  2026 edition — Characteristics of power plants seeking transmission
+  interconnection as of the end of 2025.* Lawrence Berkeley National
+  Laboratory, with GridTracker. <https://emp.lbl.gov/queues>. The slide
+  report `Queued_Up_2026_Edition.pdf` (18.4 MB, June 2026, 71 pages) sits
+  beside it for the published benchmark numbers.
+- **How to obtain:** both files are linked under "Attachment" on
+  <https://emp.lbl.gov/queues>; the page itself sits behind a bot check, the
+  file links do not. SHA-256 of both in `data/raw/lbnl/SHA256.txt` and
+  `src/config.py`.
+- **Terms:** the 2026 data file is licensed **CC BY 4.0** (attribution to
+  Lawrence Berkeley National Laboratory and GridTracker), a stated grant the
+  2025 page did not carry. It is still kept out of git with the rest of
+  `data/raw/`; derived tables are redistributed with that attribution.
+- **Layout differences from the 2025 file** (handled by
+  `config.LBNL_2026_RENAMES` in notebook 01b): `IA_phase_raw/clean` replace
+  `IA_status_raw/clean`; `fips_code` replaces `fips_codes`;
+  `type_1..3`/`mw_1..3` replace `type1..3`/`mw1..3`; `county_state_pairs`
+  is gone; the date columns are real dates, not Excel serials; `q_status`
+  has 10 "unknown" rows. The workbook also carries 18 summary sheets
+  (completion rates by region and type, IR→COD by region/type/size, post-IA
+  completion) that notebook 01b reads as published benchmarks.
+
 ### S2 — EIA-860M through the EIA API v2 (required)
 
 - **What:** route `electricity/operating-generator-capacity`, "Inventory of

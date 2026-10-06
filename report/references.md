@@ -38,6 +38,8 @@ Putter, H., Fiocco, M., & Geskus, R. B. (2007). Tutorial in biostatistics: Compe
 
 Rand, J., Manderlink, N., Zhang, S., Talley, C., Gorman, W., Wiser, R. H., Seel, J., Mulvaney Kemp, J., Jeong, S., & Kahrl, F. (2025). *Queued up: 2025 edition, characteristics of power plants seeking transmission interconnection as of the end of 2024* [Report and project-level data file]. Lawrence Berkeley National Laboratory. https://emp.lbl.gov/publications/queued-2025-edition-characteristics
 
+Rand, J., Cheyette, A., Talley, C., Zhang, S., Gorman, W., Wiser, R., Seel, J., Jeong, S., & Kahrl, F. (2026). *Queued up: 2026 edition — Characteristics of power plants seeking transmission interconnection as of the end of 2025* [Data file and slide report]. Lawrence Berkeley National Laboratory. https://emp.lbl.gov/queues
+
 U.S. Energy Information Administration. (2026). *Preliminary monthly electric generator inventory (Form EIA-860M)* [Data set; API v2 route electricity/operating-generator-capacity, period July 2026]. Retrieved October 3, 2026, from https://www.eia.gov/electricity/data/eia860m/
 
 Uno, H., Cai, T., Pencina, M. J., D'Agostino, R. B., & Wei, L. J. (2011). On the C-statistics for evaluating overall adequacy of risk prediction procedures with censored survival data. *Statistics in Medicine, 30*(10), 1105–1117. https://doi.org/10.1002/sim.4154

@@ -521,9 +521,13 @@ before the appendices, the criteria table fits one page.
 
 **Open questions for Alan**
 
-16. The LBNL 2026 data file: download it to `data/raw/lbnl/` when it is
-    published (the page blocks scripts, so I could not check whether it
-    exists yet); notebook 01b waits for it.
+16. Closed the same day: Alan opened the page in the Browser pane; the
+    2026 edition exists (data through 2025, updated May 2026, CC BY 4.0).
+    Data file and slide report downloaded with Alan's permission and
+    checksummed; first-look readiness lines in `docs/data_readiness.md`;
+    decision #48. New question 21: extend Track A to MISO and SPP on the
+    2026 file (they now have event dates), as a separately registered
+    extension, or keep them in Track B?
 17. Value proxies for ERCOT and CAISO capacity value (PLAN.md §11 b):
     proposed with sources in notebook 15, confirmed by Alan before the
     table is fixed. Budget and caps: defaults accepted (decision #46).

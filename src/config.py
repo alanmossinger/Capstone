@@ -15,6 +15,15 @@ LBNL_FILENAME = "lbnl_ix_queue_data_file_thru2024_v2.xlsx"  # frozen release (de
 LBNL_SHA256 = "d816467f629a13ef4013dee000129d61f8e4d7fcd8ba514c404a4e140dfec991"  # hash of the copy first used on 2026-10-03
 LBNL_SHEET = "03. Complete Queue Data"  # project-level sheet; other sheets are LBNL's own summaries
 LBNL_HEADER_ROW = 1  # row 0 is a title banner
+
+# --- LBNL "Queued Up: 2026 Edition" data file (source S6; alongside, decision #43) ---
+LBNL_2026_FILENAME = "LBNL_Ix_Queue_Data_File_thru2025.xlsx"  # data through 2025; updated May 2026
+LBNL_2026_SHA256 = "794582d3281c6a305e9615fcfec3fae9dc85be2165216d33760b677e976a08b6"  # hash of the copy downloaded 2026-10-06
+LBNL_2026_REPORT = "Queued_Up_2026_Edition.pdf"  # the slide report, June 2026; sha256 in data/raw/lbnl/SHA256.txt
+LBNL_2026_RENAMES = {  # 2026 column names -> the 2025 names the pipeline uses
+    "IA_phase_raw": "IA_status_raw", "IA_phase_clean": "IA_status_clean", "fips_code": "fips_codes",
+    "type_1": "type1", "type_2": "type2", "type_3": "type3", "mw_1": "mw1", "mw_2": "mw2", "mw_3": "mw3",
+}  # county_state_pairs no longer exists; dates arrive as datetimes, not Excel serials
 LBNL_DATE_COLS = ["q_date", "prop_date", "on_date", "wd_date", "ia_date"]  # stored as Excel serial numbers
 EXCEL_ORIGIN = "1899-12-30"  # Excel's day-zero for serial dates (Windows 1900 system)
 PLACEHOLDER_Q_DATE = "1970-01-01"  # Unix epoch used as a fill value for unknown request dates

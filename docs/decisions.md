@@ -466,3 +466,19 @@ alternative rejected.
     decision. *Rejected:* "Betting on the Grid" (the recommendation; more
     hook, less formal), "2,100 GW Are Waiting" (a number as the hook),
     "Which Power Plants Will Actually Get Built?" (close to the old title).
+48. **The LBNL 2026 data file is on disk, and what it changes** (2026-10-06;
+    refines #43). Downloaded with Alan's permission from the links on
+    https://emp.lbl.gov/queues together with the June 2026 slide report;
+    both checksummed. The data file is licensed CC BY 4.0 (LBNL and
+    GridTracker), which the 2025 page did not state; it stays out of git
+    like all of `data/raw/`. Layout differences are mapped in
+    `config.LBNL_2026_RENAMES`. Two findings for the plan: (a) MISO and SPP
+    now carry event dates for most operations and withdrawals, so a timing
+    model for them is possible on the 2026 file — not under the registered
+    v1 verdict, which stays on the 2025 file, but as a separately
+    registered v3 extension (**ASK ALAN**: extend Track A to MISO and SPP
+    on the 2026 file, with its own criteria, or keep them as Track B); (b)
+    ERCOT's withdrawal dates are far less complete in the 2026 file (49%
+    against 100%), so the 2026 file cannot simply replace the 2025 file for
+    ERCOT, which supports #43's "alongside" choice. *Rejected:* switching
+    the registered pipeline to the 2026 file.
