@@ -153,6 +153,12 @@ A score like this can fulfill itself. If lenders refuse requests the model ranks
 
 Next steps: recalibrate on recent cohorts, test a trend term once later cohorts mature, and try boosted survival models (Ishwaran et al., 2008; Pölsterl, 2020).
 
+## 10 Conclusion
+
+I asked whether a model can tell, on the day a request enters the queue, which proposed power plants will be built, and when. I framed it as supervised time-to-event learning with competing risks (operation, withdrawal, censoring), fitted on entrants up to 2016 and tested on 2,268 requests that entered the CAISO, ERCOT and PJM queues in 2017–2019. A discrete-time hazard model fitted with LightGBM ranked those requests better than region × technology averages at 3 and 5 years; its top 10% held 39.6% of the requests that operated within 5 years, against 33.5% for the averages. Three limits come with it: its probabilities run high because completion fell after the training years, its advantage rests on requests under 20 MW, and it does not carry over to an ISO it has not seen.
+
+The evaluation design matters as much as the scores. I wrote the success criteria before scoring the test cohort and report the verdict as registered, 8 of 12 lines, with 95% bootstrap intervals on every metric. I kept post-entry information out of the features and measured what it would have done: the 5-year AUC in CAISO and ERCOT would rise from 0.715 to 0.990. Grouped cross-validation and a check on later entrants ranked the tuning settings nearly in reverse (Spearman −0.65), so I tuned on time, not on shuffled folds. The model is fit to order a portfolio, not to price one; its levels need recalibrating on the newest cohorts first.
+
 ## Statement of work
 
 All components of this project — data engineering, modeling, evaluation, visualization and writing — were carried out by Alan Mössinger.

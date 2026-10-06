@@ -412,6 +412,16 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** Number of withdrawals per month by recorded withdrawal date in CAISO, ERCOT and PJM, showing ERCOT's single bulk withdrawal date.
 <!-- /fig:03_10_withdrawal_date_spikes -->
 
+<!-- fig:03b_02_built_share_by_state -->
+### 03b_02_built_share_by_state
+
+![03b_02_built_share_by_state](../figures/03b_project_map/03b_02_built_share_by_state.png)
+
+*Notebook:* `notebooks/03b_project_map.ipynb` · *Files:* `figures/03b_project_map/03b_02_built_share_by_state.png`, `.svg`
+
+**Caption (stub).** Share of resolved 2010–2018 entrants that reached operation, by state; states with fewer than 30 resolved requests hatched.
+<!-- /fig:03b_02_built_share_by_state -->
+
 <!-- fig:04_01_sample_by_split -->
 ### 04_01_sample_by_split
 
@@ -1271,6 +1281,16 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 
 **Caption (stub).** Probability of reaching operation within five years against the capacity already waiting in the same region's queue at entry, by fifths of congestion, for CAISO, ERCOT and PJM.
 <!-- /fig:F8_congestion_vs_completion -->
+
+<!-- fig:F9_project_map -->
+### F9_project_map
+
+![F9_project_map](../figures/F9_project_map.png)
+
+*Notebook:* `notebooks/03b_project_map.ipynb` · *Files:* `figures/F9_project_map.png`, `.svg`
+
+**Caption (stub).** Requests waiting in U.S. interconnection queues at end-2024 by county (left) and the operating fleet from EIA-860M (right), with ERCOT, PJM and CAISO in their fixed colours.
+<!-- /fig:F9_project_map -->
 
 <!-- fig:diag_schoenfeld_operation -->
 ### diag_schoenfeld_operation

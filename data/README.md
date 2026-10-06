@@ -65,6 +65,20 @@ The same inventory as a monthly Excel file from
 <https://www.eia.gov/electricity/data/eia860m/> (no key needed). Used only if
 the API fails; not needed so far.
 
+### S11 — U.S. Census Bureau cartographic boundary files (positions for the map)
+
+- **What:** `cb_2020_us_county_20m.zip` and `cb_2020_us_state_20m.zip`,
+  the 1:20,000,000 generalised county and state outlines (2020 vintage).
+  Notebook 03b places each queue request at the representative point of
+  its county (the LBNL file gives a FIPS code for 91% of requests and no
+  coordinates) and draws the state outlines behind the map (figure F9).
+  The 2020 vintage matches LBNL's county codes, which predate the 2022
+  change of Connecticut's counties to planning regions.
+- **How to obtain:** `https://www2.census.gov/geo/tiger/GENZ2020/shp/<file>`;
+  SHA-256 of both files in `data/raw/geo/SHA256.txt`.
+- **Terms:** U.S. Government work, public domain. Not committed, because
+  `data/raw/` is not; the files are 0.3 and 0.9 MB.
+
 ## What is redistributed
 
 `data/processed/` tables, `results/` and `figures/` are derived from S1 and S2

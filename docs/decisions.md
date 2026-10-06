@@ -408,3 +408,53 @@ alternative rejected.
     add a second caption under each figure. The PDF is git-ignored because
     it rebuilds from the sources. *Rejected:* a LaTeX engine (a large
     install for the same result).
+42. **v3 scope: a portfolio-management report backed by data science**
+    (Alan, 2026-10-06). The report must let its reader decide which
+    requests to back, where, and how to build a book. It answers six
+    questions (prediction quality; each request's probability and why;
+    what a request should have different and the constraints; how to
+    reduce them; the right book per region; what an energy company should
+    do), each tied to a notebook: 11 fair baseline and utility-scale
+    cohort, 12 level repair, 13 ISO queue files, 14 landmark models, 15
+    value and cost, 16 portfolio (scorecards, what-ifs, simulated book,
+    budget-constrained choice, backtest), 17 constraints and levers, 18 v2
+    evaluation. New criteria C6–C12 are written before scoring
+    (`results/success_criteria_v2.csv`, notebook 11's first cell). The v1
+    pipeline and its registered verdict (8 of 12) are untouched. Source:
+    the review doc "Queue Survival — Report Review and Portfolio Upgrade
+    Plan" (2026-10-06), checked against `results/`: requests ≥ 20 MW are
+    81% of the test cohort by count (the doc said two-thirds) and 98.9% by
+    MW; unused entrants from 2020 on number 6,122 in the three ISOs and
+    15,715 overall (the doc said 5,800). *Rejected:* filling the doc's
+    empty sections instead of changing the repository; starting the
+    must-fix items without a plan.
+43. **LBNL 2026 file added alongside the frozen 2025 file** (Alan,
+    2026-10-06; refines #2). Alan downloads it by hand (the site returns
+    403 to scripts). Notebook 01b reconciles the two editions and computes
+    the 2020–2022 entrants' 1- and 2-year incidence for the level check in
+    notebook 12. No registered model is fitted or scored on the 2026 file;
+    the 2025 hash stays the basis of every result. *Rejected:* keeping the
+    2025 file alone (loses the newest hazards); switching to the 2026 file
+    (changes every number and breaks the registered verdict).
+44. **Word, figure and page limits off for report v2** (Alan, 2026-10-06;
+    supersedes #40 for v2). The report is as long as the six questions
+    need; `tests/test_report.py`'s word-count test stays skipped with this
+    decision as the reason. *Rejected:* a 3,000-word report that drops
+    the portfolio layer.
+45. **`geopandas` added** (2026-10-06) with `shapely`, `pyproj` and
+    `pyogrio`, for the F9 project map (notebook 03b) and the region
+    playbook maps (notebook 17). Positions come from Census county
+    centroids (91% of requests carry a FIPS code) and EIA-860M coordinates
+    for the operating fleet. *Rejected:* a state choropleth only (hides
+    where in a state the queue sits); plotly (not in the stack, no SVG
+    export matching `src/plots.py`).
+46. **Portfolio defaults and the Bayesian stretch** (Alan, 2026-10-06).
+    For notebook 16 the book budget is a deposit budget equal to the median
+    2019 book of 25 requests, with caps of 50% per region and 60% per
+    technology; both are swept in a sensitivity table. The PyMC discrete-
+    time hazard with a random walk on the cohort intercept (notebook 12,
+    option c) is wanted as a stretch item once option (b) passes its check.
+    The ERCOT and CAISO capacity-value proxies are proposed in notebook 15
+    with their sources and confirmed by Alan before the value table is
+    fixed. *Rejected:* fixing the value proxies now, before the sources are
+    read.

@@ -19,8 +19,8 @@ data:             ## 01: get LBNL + EIA-860M, readiness gate
 clean:            ## 02: cleaning rules R1–R9
 	$(PYTHON) run_pipeline.py --only 02
 
-explore:          ## 03: survival curves, F1 F2 F3 F8
-	$(PYTHON) run_pipeline.py --only 03
+explore:          ## 03: survival curves, F1 F2 F3 F8; 03b: project map F9
+	$(PYTHON) run_pipeline.py --only 03 03b
 
 features:         ## 04: events, Track A/B samples, entry-time features
 	$(PYTHON) run_pipeline.py --only 04
@@ -35,7 +35,7 @@ explain:          ## 09: forest plot, SHAP, ranking table, F6 F7
 	$(PYTHON) run_pipeline.py --only 09
 
 figures:          ## every notebook that draws figures
-	$(PYTHON) run_pipeline.py --only 01 03 08 09
+	$(PYTHON) run_pipeline.py --only 01 03 03b 08 09
 
 numbers:          ## results/report_numbers.csv: every number the report cites, read from results/
 	$(PYTHON) -m src.report_numbers
@@ -46,5 +46,5 @@ report: numbers   ## report.md + references.md + appendix.md → report/report.p
 test:
 	$(PYTHON) -m pytest
 
-all:              ## notebooks 01 → 09 in order, stop at the first error
+all:              ## notebooks 01 → 09 in order (with 03b and 08b), stop at the first error
 	$(PYTHON) run_pipeline.py

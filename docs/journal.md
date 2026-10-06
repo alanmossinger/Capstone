@@ -473,3 +473,63 @@ a different verdict.
 request; `make report` builds `report/report.pdf` (20 pages; decision #41).
 Checked page by page: figures carry one caption each, references come
 before the appendices, the criteria table fits one page.
+
+## 2026-10-06 (session 6) — conclusion section, Word copy
+
+**Done**
+
+- Status check: tree clean, `main` == `origin/main` at 7313df0.
+- Built `report/report.docx` with pandoc from the same sources as the PDF
+  (all 12 figures embedded); added it to `.gitignore` beside `report.pdf`.
+- Added section 10, Conclusion, to `report/report.md` (about 250 words)
+  for a data-science reader: the framing (time-to-event, competing risks, temporal
+  split), the ranking result and its three limits, and the evaluation
+  design (pre-registered criteria, leakage ablation, tuning on time rather
+  than shuffled folds). Every number is in `results/report_numbers.csv`;
+  `pytest`: 68 passed, 1 skipped. PDF rebuilt (20 pages).
+
+- Alan's review doc ("Queue Survival — Report Review and Portfolio Upgrade
+  Plan") read in full. "Portfolio" means a portfolio of power-plant
+  requests managed by an energy company, not a showcase. Alan's direction:
+  a complete portfolio-management report backed by data science, the 2026
+  LBNL file alongside the frozen one, no word/figure/page limits.
+  `PLAN.md` rewritten as v3 (notebooks 01b, 03b, 11–18; sources S6–S13;
+  criteria C6–C12; figures F9–F16; report v2 skeleton; calendar to Dec 14).
+  Decisions #42–#45. Two of the doc's counts corrected from the tables
+  (see #42).
+- Alan asked for a map of the projects' positions by area of work: F9,
+  notebook `03b_project_map`, with `src/geo.py` and `tests/test_geo.py`.
+  Positions are Census county representative points (2020 boundary files,
+  checksummed in `data/raw/geo/`; the 2023 files fail on Connecticut's
+  2022 county change and the gazetteer URL returns an HTML page); 91.4% of
+  the 36,216 requests are placed (MISO 35% unmatched, ERCOT 21%). F9: 2,111
+  GW waiting at end-2024 in 10,811 placed requests, 40% of it in ERCOT, PJM
+  and CAISO, beside the 1,376 GW operating fleet from EIA-860M. Companion
+  map: share built by state among resolved 2010–2018 entrants, 3% (GA) to
+  42% (MA). Both figures looked at; panel titles, legend sizes and the
+  choropleth anchor fixed after the first look. 03b is in
+  `run_pipeline.py`, `make explore` and `make figures`; `geopandas` pinned
+  (decision #45); S11 in `data/README.md`. `pytest`: 70 passed, 1 skipped.
+- Alan's note that the figures must come from his own work: every figure
+  in the report and F9 is drawn by a notebook from the LBNL and EIA data;
+  the footnote credits the *data* sources, as the course requires. Open
+  question 19 asks whether the footnote wording should name the author.
+
+**Next**
+
+- Notebook 11 (fair baseline, utility-scale cohort, v2 criteria first).
+
+**Open questions for Alan**
+
+16. The LBNL 2026 data file: download it to `data/raw/lbnl/` when it is
+    published (the page blocks scripts, so I could not check whether it
+    exists yet); notebook 01b waits for it.
+17. Value proxies for ERCOT and CAISO capacity value (PLAN.md §11 b):
+    proposed with sources in notebook 15, confirmed by Alan before the
+    table is fixed. Budget and caps: defaults accepted (decision #46).
+18. PyMC Bayesian level model: wanted as a stretch (decision #46).
+19a. The report title: Alan wants a headline about portfolio management
+    and AI that draws attention; options proposed, choice pending.
+19. Figure footnotes read "Source: LBNL … ; author's analysis." Should they
+    say "Figure: Alan Mössinger, from LBNL …" so authorship is explicit?
+    One line in `src/config.py` changes every figure on the next run.
