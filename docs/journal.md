@@ -537,3 +537,47 @@ before the appendices, the criteria table fits one page.
 19. Figure footnotes read "Source: LBNL … ; author's analysis." Should they
     say "Figure: Alan Mössinger, from LBNL …" so authorship is explicit?
     One line in `src/config.py` changes every figure on the next run.
+
+## 2026-10-06 (session 7) — the full v3 build, part 1: notebooks 01b, 11, 12, 13
+
+Alan's direction at the start: name him on every figure (decision #50),
+build the whole v3 pipeline now and treat the calendar as the order of
+work (decision #51), no limits on figures, report length or notebooks.
+
+**Done**
+
+- Figure footnotes read "Figure: Alan Mössinger. Data: …"; all figures
+  re-rendered (notebooks 01, 03, 03b, 08, 09).
+- **Notebook 01b** (LBNL 2026 file beside the frozen 2025 file): 96.9% of
+  2025 requests found; 2,759 new rows; 135 appended duplicates dropped
+  (NYISO/Southeast operational projects listed twice); of 9,815 requests
+  active at end-2024, 2,963 withdrew, 278 operated, 238 suspended in 2025;
+  63 withdrawn → operational and 80 operational → active between editions;
+  all 441 stamped ERCOT withdrawals lost their date (ERCOT withdrawal
+  coverage 49%); MISO, SPP and NYISO operations dated for the first time;
+  2020–2022 entrants: 1.1%, 0.3%, 0.7% operated within two years.
+- **Notebook 11** (fair baseline, utility-scale cohort; criteria C6–C12
+  written first, decision #52): the fair baseline has 30 cells with ≥ 50
+  requests; by the registered rule the v2 model is the v1 LightGBM (lowest
+  2016 log loss on ≥ 20 MW rows, 0.590; the entry-congestion, monotone and
+  ≥ 20 MW-only variants 0.606–0.610). **On requests of 20 MW and more the
+  model beats the fair baseline in 0 of 6 comparisons** (the v1 baseline in
+  3 of 6); under 20 MW, 2 of 6. C6 will fail. The size lookup absorbs the
+  v1 gain.
+- **Notebook 12** (level repair): among ≥ 20 MW requests, 5-year completion
+  fell from 11.0% (2017 entrants) to 5.9% and 6.1% (2018, 2019) while the
+  model stayed at 12%; the early-year operation hazard fell from 9.1% (2013
+  entrants) to 2.3% (2018–2019), the withdrawal hazard much less. Rolling
+  recalibration (level from the cohort before, per region) takes the
+  2018–2019 ≥ 20 MW 5-year intercept from −0.81 to −0.47; no option's
+  interval covers zero: **C7 fails**. 2020–2022 entrants operate within two
+  years at a quarter of the predicted rate (intercept needed −2.16).
+- **Notebook 13** (milestones): CAISO's queue report joins 100% of the
+  2017–2019 LBNL CAISO requests and agrees with LBNL's dates; the two LBNL
+  editions date an agreement for 1,818 Track A requests, 1,483 inside the
+  queue time (ERCOT 31%, CAISO 15%, PJM 2.6%); 45% of those operated. PJM's
+  export and ERCOT's GIS report are unreachable from this machine
+  (decision #53); gridstatus pinned.
+- New modules with tests: `src/baselines.py`, `src/drift.py`,
+  `src/variants.py`, `src/landmark.py`; `tests/test_baselines.py`,
+  `test_drift.py`, `test_variants.py`, `test_landmark.py`.

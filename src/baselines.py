@@ -56,7 +56,8 @@ def fair_baseline_cif(train, target, horizons, min_n=MIN_CELL):
 
     fine = curves(["region", "tech", "size_regime"], min_n)
     mid = curves(["region", "tech"], min_n)
-    coarse = curves("region", 1)  # the region curve always exists, as in notebook 05
+    coarse = curves("region", 1)  # the region curve always exists, as in notebook 05 …
+    overall = survival_tools.aalen_johansen(train["duration_years"], train["event"], horizons)["cif_operation"].to_numpy()
     rows, used = [], []
     for region, tech, size in zip(target["region"], target["tech"], target["size_regime"]):
         if (region, tech, size) in fine:
@@ -65,9 +66,12 @@ def fair_baseline_cif(train, target, horizons, min_n=MIN_CELL):
         elif (region, tech) in mid:
             rows.append(mid[(region, tech)])
             used.append("region × technology")
-        else:
+        elif region in coarse:
             rows.append(coarse[region])
             used.append("region")
+        else:  # … unless the training data hold no request of that region at all (a late landmark, notebook 14)
+            rows.append(overall)
+            used.append("all regions")
     out = pd.DataFrame(rows, index=target.index, columns=horizons)
     out["cell"] = used
     return out

@@ -1282,6 +1282,16 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** Observed against predicted P(operation by 3 and 5 years) by test entry year for requests of 20 MW and more, before and after the rolling recalibration.
 <!-- /fig:F11_level_by_entry_year -->
 
+<!-- fig:F12_landmark_models -->
+### F12_landmark_models
+
+![F12_landmark_models](../figures/F12_landmark_models.png)
+
+*Notebook:* `notebooks/14_landmark_models.ipynb` · *Files:* `figures/F12_landmark_models.png`, `.svg`
+
+**Caption (stub).** Gains over the entry model from updating congestion and the agreement status at each landmark, 3 years after the landmark.
+<!-- /fig:F12_landmark_models -->
+
 <!-- fig:F1_cif_by_region -->
 ### F1_cif_by_region
 

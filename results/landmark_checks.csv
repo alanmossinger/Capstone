@@ -1,0 +1,6 @@
+check,value,pass
+entry-model view at landmark 0 reproduces notebook 11's predictions,0.0,True
+leakage guard: every landmark AUC below the ablation's AUC,0.972 < 0.990,True
+leakage guard: agreement flag dated before the landmark (tests/test_landmark.py),pytest,True
+every metric row carries an interval,0,True
+F12 saved as PNG and SVG,2,True
