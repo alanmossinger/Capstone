@@ -1,0 +1,13 @@
+id,region,line,metric,horizon,rule
+C13,MISO,"MISO: LightGBM vs fair baseline, uno_c at 3 years",uno_c,3,paired 95% interval entirely on the better side
+C13,MISO,"MISO: LightGBM vs fair baseline, uno_c at 5 years",uno_c,5,paired 95% interval entirely on the better side
+C13,MISO,"MISO: LightGBM vs fair baseline, brier at 3 years",brier,3,paired 95% interval entirely on the better side
+C13,MISO,"MISO: LightGBM vs fair baseline, brier at 5 years",brier,5,paired 95% interval entirely on the better side
+C13,SPP,"SPP: LightGBM vs fair baseline, uno_c at 3 years",uno_c,3,paired 95% interval entirely on the better side
+C13,SPP,"SPP: LightGBM vs fair baseline, uno_c at 5 years",uno_c,5,paired 95% interval entirely on the better side
+C13,SPP,"SPP: LightGBM vs fair baseline, brier at 3 years",brier,3,paired 95% interval entirely on the better side
+C13,SPP,"SPP: LightGBM vs fair baseline, brier at 5 years",brier,5,paired 95% interval entirely on the better side
+C14,MISO,MISO: LightGBM calibration slope at 3 years,slope,3,slope interval within 0.8–1.2
+C14,MISO,MISO: LightGBM calibration slope at 5 years,slope,5,slope interval within 0.8–1.2
+C14,SPP,SPP: LightGBM calibration slope at 3 years,slope,3,slope interval within 0.8–1.2
+C14,SPP,SPP: LightGBM calibration slope at 5 years,slope,5,slope interval within 0.8–1.2

@@ -312,3 +312,305 @@ ph_paired,12,12,results/posthoc_validation_2016.csv,2016 paired Brier comparison
 ph_pass,5,5,results/posthoc_criteria.csv,"Track A lines passed, post-hoc"
 ph_reg_pass,6,6,results/posthoc_criteria.csv,"Track A lines passed, registered (notebook 08)"
 ph_lines,10,10,results/posthoc_criteria.csv,Track A criterion lines
+e26_rows,"38,201",38201,notebooks/01b_lbnl_2026_reconcile.ipynb,"rows of the 2026 edition, raw"
+e26_found,96.9%,0.9689087696045946,results/lbnl_2026_reconciliation.csv,2025 requests found in 2026
+e26_found_pjm,92.9%,0.929003580688974,results/lbnl_2026_reconciliation.csv,PJM requests found in 2026
+e26_new,"2,759",2759,results/lbnl_2026_reconciliation.csv,rows new in 2026
+e26_active_to_active,"6,336",6336,results/lbnl_2026_status_transitions.csv,active at end-2024 → active in 2026
+e26_active_to_withdrawn,"2,963",2963,results/lbnl_2026_status_transitions.csv,active at end-2024 → withdrawn in 2026
+e26_active_to_operational,278,278,results/lbnl_2026_status_transitions.csv,active at end-2024 → operational in 2026
+e26_active_to_suspended,238,238,results/lbnl_2026_status_transitions.csv,active at end-2024 → suspended in 2026
+e26_active_total,"9,815",9815,results/lbnl_2026_status_transitions.csv,requests active at end-2024 found in 2026
+e26_wd_to_op,63,63,results/lbnl_2026_status_transitions.csv,withdrawn → operational
+e26_op_to_active,80,80,results/lbnl_2026_status_transitions.csv,operational → active
+cov_miso_on_2025,1%,0.0142566191446028,results/lbnl_2026_date_coverage.csv,MISO 2025: share of operational rows with a date
+cov_miso_wd_2025,42%,0.4171806167400881,results/lbnl_2026_date_coverage.csv,MISO 2025: share of withdrawn rows with a date
+cov_miso_on_2026,92%,0.9241245136186772,results/lbnl_2026_date_coverage.csv,MISO 2026: share of operational rows with a date
+cov_miso_wd_2026,94%,0.9383813611281424,results/lbnl_2026_date_coverage.csv,MISO 2026: share of withdrawn rows with a date
+cov_spp_on_2025,5%,0.0491228070175438,results/lbnl_2026_date_coverage.csv,SPP 2025: share of operational rows with a date
+cov_spp_wd_2025,0%,0.0,results/lbnl_2026_date_coverage.csv,SPP 2025: share of withdrawn rows with a date
+cov_spp_on_2026,95%,0.9457627118644067,results/lbnl_2026_date_coverage.csv,SPP 2026: share of operational rows with a date
+cov_spp_wd_2026,73%,0.725565985643291,results/lbnl_2026_date_coverage.csv,SPP 2026: share of withdrawn rows with a date
+cov_nyiso_on_2025,0%,0.0,results/lbnl_2026_date_coverage.csv,NYISO 2025: share of operational rows with a date
+cov_nyiso_wd_2025,0%,0.0,results/lbnl_2026_date_coverage.csv,NYISO 2025: share of withdrawn rows with a date
+cov_nyiso_on_2026,75%,0.7477477477477478,results/lbnl_2026_date_coverage.csv,NYISO 2026: share of operational rows with a date
+cov_nyiso_wd_2026,49%,0.4866100587851077,results/lbnl_2026_date_coverage.csv,NYISO 2026: share of withdrawn rows with a date
+cov_ercot_on_2025,96%,0.9631901840490796,results/lbnl_2026_date_coverage.csv,ERCOT 2025: share of operational rows with a date
+cov_ercot_wd_2025,100%,1.0,results/lbnl_2026_date_coverage.csv,ERCOT 2025: share of withdrawn rows with a date
+cov_ercot_on_2026,85%,0.8466557911908646,results/lbnl_2026_date_coverage.csv,ERCOT 2026: share of operational rows with a date
+cov_ercot_wd_2026,49%,0.4866032843560933,results/lbnl_2026_date_coverage.csv,ERCOT 2026: share of withdrawn rows with a date
+cov_caiso_on_2025,94%,0.9429824561403508,results/lbnl_2026_date_coverage.csv,CAISO 2025: share of operational rows with a date
+cov_caiso_wd_2025,83%,0.8259766615930999,results/lbnl_2026_date_coverage.csv,CAISO 2025: share of withdrawn rows with a date
+cov_caiso_on_2026,96%,0.9574468085106383,results/lbnl_2026_date_coverage.csv,CAISO 2026: share of operational rows with a date
+cov_caiso_wd_2026,98%,0.9818181818181818,results/lbnl_2026_date_coverage.csv,CAISO 2026: share of withdrawn rows with a date
+cov_pjm_on_2025,98%,0.977310924369748,results/lbnl_2026_date_coverage.csv,PJM 2025: share of operational rows with a date
+cov_pjm_wd_2025,97%,0.9685755633657226,results/lbnl_2026_date_coverage.csv,PJM 2025: share of withdrawn rows with a date
+cov_pjm_on_2026,99%,0.9932603201347936,results/lbnl_2026_date_coverage.csv,PJM 2026: share of operational rows with a date
+cov_pjm_wd_2026,98%,0.9831981460023176,results/lbnl_2026_date_coverage.csv,PJM 2026: share of withdrawn rows with a date
+early2_2020,1.1%,0.0108611326609775,results/early_incidence_2020_2022.csv,"2020 entrants: 2-year incidence, 2026 edition"
+early2_2020_ops,14,14,results/early_incidence_2020_2022.csv,2020 entrants: operations within 2 years
+early2_2021,0.3%,0.0025990903183885,results/early_incidence_2020_2022.csv,"2021 entrants: 2-year incidence, 2026 edition"
+early2_2021_ops,4,4,results/early_incidence_2020_2022.csv,2021 entrants: operations within 2 years
+early2_2022,0.7%,0.0071090047393364,results/early_incidence_2020_2022.csv,"2022 entrants: 2-year incidence, 2026 edition"
+early2_2022_ops,6,6,results/early_incidence_2020_2022.csv,2022 entrants: operations within 2 years
+ms_dated,"1,483",1483,results/milestone_coverage.csv,requests with an agreement dated inside the queue time
+ms_share,11%,0.1109531647463713,results/milestone_coverage.csv,share of Track A with a dated agreement inside the queue time
+ms_share_ercot,30%,0.3048128342245989,results/milestone_coverage.csv,ERCOT: dated agreement inside the queue time
+ms_share_pjm,2.6%,0.0260759493670886,results/milestone_coverage.csv,PJM: dated agreement inside the queue time
+ms_share_caiso,15%,0.1475343573160873,results/milestone_coverage.csv,CAISO: dated agreement inside the queue time
+ia_2025,"1,252",1252,results/ia_date_agreement.csv,agreement dates in the 2025 file
+ia_2026,"1,752",1752,results/ia_date_agreement.csv,agreement dates in the 2026 file
+ia_same_day,"1,112",1112,results/ia_date_agreement.csv,shared dates equal
+ia_both,"1,186",1186,results/ia_date_agreement.csv,dated in both editions
+caiso_join,90%,0.8965238480194018,results/iso_join_rates.csv,CAISO LBNL requests found in the ISO report
+caiso_join_test,100%,1.0,results/iso_join_rates.csv,CAISO 2017–2019 entrants found in the ISO report
+caiso_iso_rows,"2,278",2278,results/iso_join_rates.csv,rows in CAISO's queue report
+large_n,"1,839",1839,results/sample_sizes_v2.csv,test requests ≥ 20 MW
+large_share,81%,0.8108465608465608,results/sample_sizes_v2.csv,share of test requests ≥ 20 MW
+large_mw_share,98.9%,0.9893121500510352,results/sample_sizes_v2.csv,share of test MW ≥ 20 MW
+large_ops,132,132,results/sample_sizes_v2.csv,"operations within 5 years, ≥ 20 MW"
+small_n,429,429,results/sample_sizes_v2.csv,test requests < 20 MW
+small_ops,95,95,results/sample_sizes_v2.csv,"operations within 5 years, < 20 MW"
+fb_cells,89,89,results/fair_baseline_cells.csv,region × technology × size cells
+fb_cells_used,30,30,results/fair_baseline_cells.csv,cells with ≥ 50 requests
+fb_pjm_gas_min,7%,0.0727272727272726,results/fair_baseline_cells.csv,PJM gas: lowest size-cell 5-year completion
+fb_pjm_gas_max,58%,0.5760869565217381,results/fair_baseline_cells.csv,PJM gas: highest size-cell 5-year completion
+fb_pjm_gas_range,50,0.5033596837944655,results/fair_baseline_cells.csv,"PJM gas: range across size cells, points"
+var_k0,0.590,0.5901993962890068,results/variant_choice_2016.csv,"K0 2016 log loss, ≥ 20 MW rows"
+var_k1,0.606,0.6062934966940087,results/variant_choice_2016.csv,"K1 2016 log loss, ≥ 20 MW rows"
+var_k3,0.608,0.6077746266578404,results/variant_choice_2016.csv,K3 2016 log loss
+var_candidates,6,6,results/variant_choice_2016.csv,candidates compared
+wins_large_fair,0,0,results/metrics_v2.csv,≥ 20 MW: wins of the v2 model vs the fair baseline (of 6)
+wins_large_v1,3,3,results/metrics_v2.csv,≥ 20 MW: wins of the v2 model vs the v1 baseline (of 6)
+wins_small_fair,2,2,results/metrics_v2.csv,< 20 MW: wins of the v2 model vs the fair baseline (of 6)
+wins_small_v1,5,5,results/metrics_v2.csv,< 20 MW: wins of the v2 model vs the v1 baseline (of 6)
+wins_all_fair,1,1,results/metrics_v2.csv,all: wins of the v2 model vs the fair baseline (of 6)
+wins_all_v1,4,4,results/metrics_v2.csv,all: wins of the v2 model vs the v1 baseline (of 6)
+wins_large_fair_vs_v1,4,4,results/metrics_v2.csv,≥ 20 MW: wins of the fair baseline vs the v1 baseline
+c_large_v2_3,0.779,0.7790664913598798,results/metrics_v2.csv,≥ 20 MW: Uno's C of v2 at 3 years
+c_large_fair_3,0.783,0.7831316410861865,results/metrics_v2.csv,≥ 20 MW: Uno's C of fair at 3 years
+c_small_v2_3,0.773,0.7731546543532088,results/metrics_v2.csv,< 20 MW: Uno's C of v2 at 3 years
+c_small_fair_3,0.729,0.7289366258448772,results/metrics_v2.csv,< 20 MW: Uno's C of the fair baseline at 3 years
+c_large_v2_5,0.734,0.7339216029885067,results/metrics_v2.csv,≥ 20 MW: Uno's C of v2 at 5 years
+c_large_fair_5,0.752,0.7516145715348154,results/metrics_v2.csv,≥ 20 MW: Uno's C of fair at 5 years
+c_small_v2_5,0.725,0.7245353675450763,results/metrics_v2.csv,< 20 MW: Uno's C of v2 at 5 years
+c_small_fair_5,0.674,0.6744105409153953,results/metrics_v2.csv,< 20 MW: Uno's C of the fair baseline at 5 years
+obs5_lt5,30%,0.2958579881656803,results/size_check_monotone.csv,"observed 5-year completion, < 5 MW"
+obs5_ge500,2%,0.0236220472440945,results/size_check_monotone.csv,"observed 5-year completion, ≥ 500 MW"
+lv_obs5_2017,11.0%,0.1098130841121494,results/drift_by_cohort.csv,2017 entrants ≥ 20 MW: observed 5-year completion
+lv_v2_5_2017,12.3%,0.122699417020762,results/drift_by_cohort.csv,2017 entrants ≥ 20 MW: v2 mean prediction at 5 years
+lv_obs5_2018,5.9%,0.0593525179856116,results/drift_by_cohort.csv,2018 entrants ≥ 20 MW: observed 5-year completion
+lv_v2_5_2018,11.8%,0.118302351491527,results/drift_by_cohort.csv,2018 entrants ≥ 20 MW: v2 mean prediction at 5 years
+lv_obs5_2019,6.1%,0.0608187134502924,results/drift_by_cohort.csv,2019 entrants ≥ 20 MW: observed 5-year completion
+lv_v2_5_2019,12.2%,0.1217754306381984,results/drift_by_cohort.csv,2019 entrants ≥ 20 MW: v2 mean prediction at 5 years
+hz_op_2013,9.1%,0.0909090909090909,results/drift_hazards_by_cohort.csv,"2013 entrants: operation hazard, years 1–3"
+hz_wd_2013,24%,0.2447552447552447,results/drift_hazards_by_cohort.csv,"2013 entrants: withdrawal hazard, years 1–3"
+hz_op_2016,3.2%,0.032347504621072,results/drift_hazards_by_cohort.csv,"2016 entrants: operation hazard, years 1–3"
+hz_wd_2016,27%,0.2735674676524954,results/drift_hazards_by_cohort.csv,"2016 entrants: withdrawal hazard, years 1–3"
+hz_op_2018,2.3%,0.0233545647558386,results/drift_hazards_by_cohort.csv,"2018 entrants: operation hazard, years 1–3"
+hz_wd_2018,23%,0.2264685067232837,results/drift_hazards_by_cohort.csv,"2018 entrants: withdrawal hazard, years 1–3"
+hz_op_2019,2.3%,0.0232461602324616,results/drift_hazards_by_cohort.csv,"2019 entrants: operation hazard, years 1–3"
+hz_wd_2019,17%,0.1689497716894977,results/drift_hazards_by_cohort.csv,"2019 entrants: withdrawal hazard, years 1–3"
+int_raw_3,−1.01,-1.0098968621605,results/level_repair_metrics.csv,2018–2019 ≥ 20 MW: intercept of v2 raw at 3 years
+int_raw_3_iv,"[−1.44, −0.69]","(np.float64(-1.4399050760526462), np.float64(-0.6889327326105977))",results/level_repair_metrics.csv,its interval
+slope_raw_3,1.06,1.0574843046005922,results/level_repair_metrics.csv,2018–2019 ≥ 20 MW: slope of v2 raw at 3 years
+int_rec_3,−0.74,-0.7351568840455466,results/level_repair_metrics.csv,2018–2019 ≥ 20 MW: intercept of v2 recalibrated at 3 years
+int_rec_3_iv,"[−1.17, −0.41]","(np.float64(-1.1676777902756503), np.float64(-0.4062760594799281))",results/level_repair_metrics.csv,its interval
+slope_rec_3,1.09,1.0881644574726943,results/level_repair_metrics.csv,2018–2019 ≥ 20 MW: slope of v2 recalibrated at 3 years
+int_logit_3,−0.72,-0.7182613103288314,results/level_repair_metrics.csv,2018–2019 ≥ 20 MW: intercept of K1 logit (trend) at 3 years
+int_logit_3_iv,"[−1.20, −0.41]","(np.float64(-1.2013804724971628), np.float64(-0.4078476366681857))",results/level_repair_metrics.csv,its interval
+slope_logit_3,0.79,0.7934321610159659,results/level_repair_metrics.csv,2018–2019 ≥ 20 MW: slope of K1 logit (trend) at 3 years
+int_fair_3,−1.35,-1.3533616554048626,results/level_repair_metrics.csv,2018–2019 ≥ 20 MW: intercept of fair baseline at 3 years
+int_fair_3_iv,"[−1.80, −1.01]","(np.float64(-1.798048770409628), np.float64(-1.0136383602675056))",results/level_repair_metrics.csv,its interval
+slope_fair_3,0.98,0.9835921021546504,results/level_repair_metrics.csv,2018–2019 ≥ 20 MW: slope of fair baseline at 3 years
+int_raw_5,−0.81,-0.8056537299138479,results/level_repair_metrics.csv,2018–2019 ≥ 20 MW: intercept of v2 raw at 5 years
+int_raw_5_iv,"[−1.01, −0.62]","(np.float64(-1.0143791942301177), np.float64(-0.6150605627065543))",results/level_repair_metrics.csv,its interval
+slope_raw_5,1.21,1.2089054809929454,results/level_repair_metrics.csv,2018–2019 ≥ 20 MW: slope of v2 raw at 5 years
+int_rec_5,−0.47,-0.4738518241515592,results/level_repair_metrics.csv,2018–2019 ≥ 20 MW: intercept of v2 recalibrated at 5 years
+int_rec_5_iv,"[−0.70, −0.27]","(np.float64(-0.6990123984370972), np.float64(-0.269313565720511))",results/level_repair_metrics.csv,its interval
+slope_rec_5,1.18,1.18307237988506,results/level_repair_metrics.csv,2018–2019 ≥ 20 MW: slope of v2 recalibrated at 5 years
+int_logit_5,−0.66,-0.6578638570088331,results/level_repair_metrics.csv,2018–2019 ≥ 20 MW: intercept of K1 logit (trend) at 5 years
+int_logit_5_iv,"[−0.87, −0.46]","(np.float64(-0.8660028247442564), np.float64(-0.4555641125970779))",results/level_repair_metrics.csv,its interval
+slope_logit_5,1.04,1.0397126191825294,results/level_repair_metrics.csv,2018–2019 ≥ 20 MW: slope of K1 logit (trend) at 5 years
+int_fair_5,−0.88,-0.8768485418746713,results/level_repair_metrics.csv,2018–2019 ≥ 20 MW: intercept of fair baseline at 5 years
+int_fair_5_iv,"[−1.10, −0.67]","(np.float64(-1.0968889835150986), np.float64(-0.6656547874555707))",results/level_repair_metrics.csv,its interval
+slope_fair_5,1.12,1.1232930926926648,results/level_repair_metrics.csv,2018–2019 ≥ 20 MW: slope of fair baseline at 5 years
+eh_pred2_2020,4.3%,0.0425332232309584,results/early_hazards_2020_2022.csv,2020 entrants: predicted 2-year incidence
+eh_pred2_2021,3.4%,0.0343762285015937,results/early_hazards_2020_2022.csv,2021 entrants: predicted 2-year incidence
+eh_pred2_2022,3.6%,0.0362842747525983,results/early_hazards_2020_2022.csv,2022 entrants: predicted 2-year incidence
+eh_intercept_needed,−2.15,-2.154988978226322,results/early_hazards_2020_2022.csv,intercept that would close the 2-year gap
+rec_2019_pjm,−0.73,-0.7261710895705656,results/recalibration.csv,2019 PJM 5-year intercept from the 2018 cohort
+rs_l0,"2,064",2064,results/landmark_coverage.csv,risk set at landmark 0
+rs_l0_ops3,108,108,results/landmark_coverage.csv,operations within 3 years of landmark 0
+rs_l0_wd3,944,944,results/landmark_coverage.csv,withdrawals within 3 years of landmark 0
+rs_l1,"1,508",1508,results/landmark_coverage.csv,risk set at landmark 1
+rs_l1_ops3,116,116,results/landmark_coverage.csv,operations within 3 years of landmark 1
+rs_l1_wd3,453,453,results/landmark_coverage.csv,withdrawals within 3 years of landmark 1
+rs_l2,"1,298",1298,results/landmark_coverage.csv,risk set at landmark 2
+rs_l2_ops3,152,152,results/landmark_coverage.csv,operations within 3 years of landmark 2
+rs_l2_wd3,351,351,results/landmark_coverage.csv,withdrawals within 3 years of landmark 2
+rs_lia,313,313,results/landmark_coverage.csv,risk set at landmark agreement
+rs_lia_ops3,98,98,results/landmark_coverage.csv,operations within 3 years of landmark agreement
+rs_lia_wd3,19,19,results/landmark_coverage.csv,withdrawals within 3 years of landmark agreement
+lm_l1_entry_uno_c,0.777,0.7767587371826898,results/landmark_metrics.csv,"landmark 1: uno_c of entry model, 3 years after"
+lm_l1_entry_brier,0.066,0.0658140257586956,results/landmark_metrics.csv,"landmark 1: brier of entry model, 3 years after"
+lm_l1_both_uno_c,0.785,0.7854959198724811,results/landmark_metrics.csv,"landmark 1: uno_c of both updated, 3 years after"
+lm_l1_both_uno_c_diff,+0.009,0.0087371826897912,results/landmark_metrics.csv,paired difference vs the entry model
+lm_l1_both_uno_c_iv,"[−0.019, +0.041]","(np.float64(-0.0188328766913243), np.float64(0.0407288291471496))",results/landmark_metrics.csv,its interval
+lm_l1_both_brier,0.061,0.0607206590436712,results/landmark_metrics.csv,"landmark 1: brier of both updated, 3 years after"
+lm_l1_both_brier_diff,−0.005,-0.0050933667150244,results/landmark_metrics.csv,paired difference vs the entry model
+lm_l1_both_brier_iv,"[−0.007, −0.003]","(np.float64(-0.007383950205329), np.float64(-0.0028787025565526))",results/landmark_metrics.csv,its interval
+lm_l1_ia_uno_c,0.796,0.7964099636000286,results/landmark_metrics.csv,"landmark 1: uno_c of agreement updated, 3 years after"
+lm_l1_ia_uno_c_diff,+0.020,0.0196512264173387,results/landmark_metrics.csv,paired difference vs the entry model
+lm_l1_ia_uno_c_iv,"[−0.006, +0.049]","(np.float64(-0.0057841338623252), np.float64(0.049019357111567))",results/landmark_metrics.csv,its interval
+lm_l1_ia_brier,0.060,0.0604308649300896,results/landmark_metrics.csv,"landmark 1: brier of agreement updated, 3 years after"
+lm_l1_ia_brier_diff,−0.005,-0.005383160828606,results/landmark_metrics.csv,paired difference vs the entry model
+lm_l1_ia_brier_iv,"[−0.008, −0.003]","(np.float64(-0.007658081424489), np.float64(-0.0027010244883516))",results/landmark_metrics.csv,its interval
+lm_l1_cong_uno_c,0.769,0.7685092665286799,results/landmark_metrics.csv,"landmark 1: uno_c of congestion updated, 3 years after"
+lm_l1_cong_uno_c_diff,−0.008,-0.0082494706540099,results/landmark_metrics.csv,paired difference vs the entry model
+lm_l1_cong_uno_c_iv,"[−0.022, +0.002]","(np.float64(-0.0215373003837285), np.float64(0.0019162832265704))",results/landmark_metrics.csv,its interval
+lm_l1_cong_brier,0.066,0.0664349621508574,results/landmark_metrics.csv,"landmark 1: brier of congestion updated, 3 years after"
+lm_l1_cong_brier_diff,+0.001,0.0006209363921617,results/landmark_metrics.csv,paired difference vs the entry model
+lm_l1_cong_brier_iv,"[−0.000, +0.001]","(np.float64(-0.0001015915042092), np.float64(0.00124495342748))",results/landmark_metrics.csv,its interval
+lm_l1_fair_uno_c,0.711,0.7112031023243642,results/landmark_metrics.csv,"landmark 1: uno_c of fair baseline, 3 years after"
+lm_l1_fair_uno_c_diff,−0.066,-0.0655556348583256,results/landmark_metrics.csv,paired difference vs the entry model
+lm_l1_fair_uno_c_iv,"[−0.110, −0.021]","(np.float64(-0.1100392508606243), np.float64(-0.0212927587371457))",results/landmark_metrics.csv,its interval
+lm_l1_fair_brier,0.072,0.0716245595812998,results/landmark_metrics.csv,"landmark 1: brier of fair baseline, 3 years after"
+lm_l1_fair_brier_diff,+0.006,0.0058105338226041,results/landmark_metrics.csv,paired difference vs the entry model
+lm_l1_fair_brier_iv,"[+0.003, +0.009]","(np.float64(0.0025651596000322), np.float64(0.0094684936616953))",results/landmark_metrics.csv,its interval
+lm_l1_entry_int,−0.63,-0.6342689431359757,results/landmark_metrics.csv,landmark 1: intercept of entry model
+lm_l1_entry_slope,1.08,1.080310485171604,results/landmark_metrics.csv,landmark 1: slope of entry model
+lm_l1_both_int,−0.41,-0.4059700411124272,results/landmark_metrics.csv,landmark 1: intercept of both updated
+lm_l1_both_slope,1.12,1.1206092867273232,results/landmark_metrics.csv,landmark 1: slope of both updated
+lm_l2_entry_uno_c,0.687,0.686701821100201,results/landmark_metrics.csv,"landmark 2: uno_c of entry model, 3 years after"
+lm_l2_entry_brier,0.100,0.0997158271501569,results/landmark_metrics.csv,"landmark 2: brier of entry model, 3 years after"
+lm_l2_both_uno_c,0.788,0.7876164109082878,results/landmark_metrics.csv,"landmark 2: uno_c of both updated, 3 years after"
+lm_l2_both_uno_c_diff,+0.101,0.1009145898080868,results/landmark_metrics.csv,paired difference vs the entry model
+lm_l2_both_uno_c_iv,"[+0.062, +0.136]","(np.float64(0.0615865933854091), np.float64(0.1360328348247524))",results/landmark_metrics.csv,its interval
+lm_l2_both_brier,0.083,0.0829473904305637,results/landmark_metrics.csv,"landmark 2: brier of both updated, 3 years after"
+lm_l2_both_brier_diff,−0.017,-0.0167684367195932,results/landmark_metrics.csv,paired difference vs the entry model
+lm_l2_both_brier_iv,"[−0.020, −0.014]","(np.float64(-0.0203543413841681), np.float64(-0.0135540044012867))",results/landmark_metrics.csv,its interval
+lm_l2_ia_uno_c,0.797,0.7974786838093905,results/landmark_metrics.csv,"landmark 2: uno_c of agreement updated, 3 years after"
+lm_l2_ia_uno_c_diff,+0.111,0.1107768627091895,results/landmark_metrics.csv,paired difference vs the entry model
+lm_l2_ia_uno_c_iv,"[+0.076, +0.146]","(np.float64(0.0759992037055635), np.float64(0.1463736669909132))",results/landmark_metrics.csv,its interval
+lm_l2_ia_brier,0.081,0.0812929453681911,results/landmark_metrics.csv,"landmark 2: brier of agreement updated, 3 years after"
+lm_l2_ia_brier_diff,−0.018,-0.0184228817819658,results/landmark_metrics.csv,paired difference vs the entry model
+lm_l2_ia_brier_iv,"[−0.022, −0.015]","(np.float64(-0.0221046167966966), np.float64(-0.0148893940622367))",results/landmark_metrics.csv,its interval
+lm_l2_cong_uno_c,0.647,0.6474116246626844,results/landmark_metrics.csv,"landmark 2: uno_c of congestion updated, 3 years after"
+lm_l2_cong_uno_c_diff,−0.039,-0.0392901964375165,results/landmark_metrics.csv,paired difference vs the entry model
+lm_l2_cong_uno_c_iv,"[−0.059, −0.021]","(np.float64(-0.0589015595715015), np.float64(-0.0207703949837))",results/landmark_metrics.csv,its interval
+lm_l2_cong_brier,0.107,0.106569665449964,results/landmark_metrics.csv,"landmark 2: brier of congestion updated, 3 years after"
+lm_l2_cong_brier_diff,+0.007,0.006853838299807,results/landmark_metrics.csv,paired difference vs the entry model
+lm_l2_cong_brier_iv,"[+0.005, +0.009]","(np.float64(0.0053460086598563), np.float64(0.0086194159251742))",results/landmark_metrics.csv,its interval
+lm_l2_fair_uno_c,0.591,0.5909230462627318,results/landmark_metrics.csv,"landmark 2: uno_c of fair baseline, 3 years after"
+lm_l2_fair_uno_c_diff,−0.096,-0.0957787748374691,results/landmark_metrics.csv,paired difference vs the entry model
+lm_l2_fair_uno_c_iv,"[−0.134, −0.052]","(np.float64(-0.1335435994485403), np.float64(-0.0516145370963204))",results/landmark_metrics.csv,its interval
+lm_l2_fair_brier,0.105,0.104951671467591,results/landmark_metrics.csv,"landmark 2: brier of fair baseline, 3 years after"
+lm_l2_fair_brier_diff,+0.005,0.005235844317434,results/landmark_metrics.csv,paired difference vs the entry model
+lm_l2_fair_brier_iv,"[−0.000, +0.010]","(np.float64(-0.0001522823224652), np.float64(0.0100123867537992))",results/landmark_metrics.csv,its interval
+lm_l2_entry_int,−0.57,-0.5713249199447972,results/landmark_metrics.csv,landmark 2: intercept of entry model
+lm_l2_entry_slope,0.97,0.973102434407042,results/landmark_metrics.csv,landmark 2: slope of entry model
+lm_l2_both_int,−0.41,-0.4083940161733992,results/landmark_metrics.csv,landmark 2: intercept of both updated
+lm_l2_both_slope,1.27,1.2679778351943802,results/landmark_metrics.csv,landmark 2: slope of both updated
+lm_lia_entry_uno_c,0.593,0.5931876351799353,results/landmark_metrics.csv,"landmark agreement: uno_c of entry model, 3 years after"
+lm_lia_entry_brier,0.235,0.2354693165760966,results/landmark_metrics.csv,"landmark agreement: brier of entry model, 3 years after"
+lm_lia_both_uno_c,0.598,0.5976031021749536,results/landmark_metrics.csv,"landmark agreement: uno_c of both updated, 3 years after"
+lm_lia_both_uno_c_diff,+0.004,0.0044154669950182,results/landmark_metrics.csv,paired difference vs the entry model
+lm_lia_both_uno_c_iv,"[−0.016, +0.028]","(np.float64(-0.0157651675459292), np.float64(0.0275223591519362))",results/landmark_metrics.csv,its interval
+lm_lia_both_brier,0.219,0.2186178009985572,results/landmark_metrics.csv,"landmark agreement: brier of both updated, 3 years after"
+lm_lia_both_brier_diff,−0.017,-0.0168515155775393,results/landmark_metrics.csv,paired difference vs the entry model
+lm_lia_both_brier_iv,"[−0.036, +0.004]","(np.float64(-0.0357258828470636), np.float64(0.0044960749781153))",results/landmark_metrics.csv,its interval
+lm_lia_ia_uno_c,0.604,0.6042554023174087,results/landmark_metrics.csv,"landmark agreement: uno_c of agreement updated, 3 years after"
+lm_lia_ia_uno_c_diff,+0.011,0.0110677671374733,results/landmark_metrics.csv,paired difference vs the entry model
+lm_lia_ia_uno_c_iv,"[−0.012, +0.035]","(np.float64(-0.0117876299345828), np.float64(0.0353997868419815))",results/landmark_metrics.csv,its interval
+lm_lia_ia_brier,0.221,0.2208319483938498,results/landmark_metrics.csv,"landmark agreement: brier of agreement updated, 3 years after"
+lm_lia_ia_brier_diff,−0.015,-0.0146373681822467,results/landmark_metrics.csv,paired difference vs the entry model
+lm_lia_ia_brier_iv,"[−0.035, +0.009]","(np.float64(-0.0350804132334217), np.float64(0.0086728356159737))",results/landmark_metrics.csv,its interval
+lm_lia_cong_uno_c,0.558,0.5583253620232426,results/landmark_metrics.csv,"landmark agreement: uno_c of congestion updated, 3 years after"
+lm_lia_cong_uno_c_diff,−0.035,-0.0348622731566927,results/landmark_metrics.csv,paired difference vs the entry model
+lm_lia_cong_uno_c_iv,"[−0.054, −0.017]","(np.float64(-0.0543745743700436), np.float64(-0.017220577654631))",results/landmark_metrics.csv,its interval
+lm_lia_cong_brier,0.239,0.2388779595143247,results/landmark_metrics.csv,"landmark agreement: brier of congestion updated, 3 years after"
+lm_lia_cong_brier_diff,+0.003,0.0034086429382281,results/landmark_metrics.csv,paired difference vs the entry model
+lm_lia_cong_brier_iv,"[−0.002, +0.010]","(np.float64(-0.0020953836593345), np.float64(0.0096660561597189))",results/landmark_metrics.csv,its interval
+lm_lia_fair_uno_c,0.479,0.4788801442227405,results/landmark_metrics.csv,"landmark agreement: uno_c of fair baseline, 3 years after"
+lm_lia_fair_uno_c_diff,−0.114,-0.1143074909571948,results/landmark_metrics.csv,paired difference vs the entry model
+lm_lia_fair_uno_c_iv,"[−0.163, −0.058]","(np.float64(-0.1627653167419029), np.float64(-0.0581319760662741))",results/landmark_metrics.csv,its interval
+lm_lia_fair_brier,0.255,0.2548485095647209,results/landmark_metrics.csv,"landmark agreement: brier of fair baseline, 3 years after"
+lm_lia_fair_brier_diff,+0.019,0.0193791929886243,results/landmark_metrics.csv,paired difference vs the entry model
+lm_lia_fair_brier_iv,"[−0.000, +0.038]","(np.float64(-0.0004863068975241), np.float64(0.0383691108243532))",results/landmark_metrics.csv,its interval
+lm_lia_entry_int,+0.83,0.8334603195609867,results/landmark_metrics.csv,landmark agreement: intercept of entry model
+lm_lia_entry_slope,0.40,0.39648542257978,results/landmark_metrics.csv,landmark agreement: slope of entry model
+lm_lia_both_int,−0.10,-0.1037540984831879,results/landmark_metrics.csv,landmark agreement: intercept of both updated
+lm_lia_both_slope,0.45,0.4483885157413239,results/landmark_metrics.csv,landmark agreement: slope of both updated
+lm_l0_ia_int,−0.06,-0.0619148952431898,results/landmark_metrics.csv,entry landmark: intercept with the agreement flag in the fit
+lm_l0_entry_int,−0.31,-0.314653722400891,results/landmark_metrics.csv,entry landmark: intercept of the entry model
+lm_l2_wins,6,6,results/landmark_metrics.csv,"+2 years: wins of both-updated vs the entry model, of 6"
+lm_max_auc,0.972,0.972 < 0.990,results/landmark_checks.csv,highest landmark AUC
+lm_ceiling,0.990,0.972 < 0.990,results/landmark_checks.csv,leakage ablation AUC at 5 years
+sig_ercot_yes,55.7%,0.5565217391304348,results/landmark_agreement_signal.csv,"ERCOT, agreement known at +2 years: observed 3-year completion"
+sig_ercot_yes_n,115,115,results/landmark_agreement_signal.csv,requests
+sig_ercot_no,4.9%,0.048780487804878,results/landmark_agreement_signal.csv,"ERCOT, agreement not known at +2 years: observed 3-year completion"
+sig_ercot_no_n,246,246,results/landmark_agreement_signal.csv,requests
+sig_caiso_yes,57.1%,0.5714285714285714,results/landmark_agreement_signal.csv,"CAISO, agreement known at +2 years: observed 3-year completion"
+sig_caiso_yes_n,7,7,results/landmark_agreement_signal.csv,requests
+sig_caiso_no,4.2%,0.042016806722689,results/landmark_agreement_signal.csv,"CAISO, agreement not known at +2 years: observed 3-year completion"
+sig_caiso_no_n,119,119,results/landmark_agreement_signal.csv,requests
+sig_pjm_yes_n,2,2,results/landmark_agreement_signal.csv,PJM requests with a known agreement at +2 years
+sig_pjm_no_n,809,809,results/landmark_agreement_signal.csv,PJM requests without
+ep_pjm_2017,$36.8,36.79,results/energy_prices.csv,"PJM on-peak hub price 2017, $/MWh"
+ep_pjm_2022,$90.5,90.49,results/energy_prices.csv,"PJM on-peak hub price 2022, $/MWh"
+ep_pjm_2025,$68.2,68.17,results/energy_prices.csv,"PJM on-peak hub price 2025, $/MWh"
+ep_caiso_2017,$44.3,44.3,results/energy_prices.csv,"CAISO on-peak hub price 2017, $/MWh"
+ep_caiso_2022,$100.2,100.15,results/energy_prices.csv,"CAISO on-peak hub price 2022, $/MWh"
+ep_caiso_2025,$30.8,30.82,results/energy_prices.csv,"CAISO on-peak hub price 2025, $/MWh"
+ep_ercot_2017,$27.6,27.56,results/energy_prices.csv,"ERCOT on-peak hub price 2017, $/MWh"
+ep_ercot_2019,$32.9,32.89,results/energy_prices.csv,"ERCOT on-peak hub price 2019, $/MWh"
+cp_pjm_2018,$58,58.15,results/capacity_prices.csv,"PJM capacity revenue 2018, $/kW-year"
+cp_pjm_2024,$16,16.09,results/capacity_prices.csv,"PJM capacity revenue 2024, $/kW-year"
+cp_pjm_2025,$70,70.35,results/capacity_prices.csv,"PJM capacity revenue 2025, $/kW-year"
+cp_pjm_2026,$108,108.24,results/capacity_prices.csv,"PJM capacity revenue 2026, $/kW-year"
+cp_caiso,$96,96.0,results/capacity_prices.csv,"CAISO capacity price assumption, $/kW-year"
+acc_solar,12%,0.12,results/accreditation.csv,"accreditation, Solar"
+acc_wind,38%,0.38,results/accreditation.csv,"accreditation, Wind"
+acc_battery,55%,0.55,results/accreditation.csv,"accreditation, Battery"
+acc_gas,70%,0.7050000000000001,results/accreditation.csv,"accreditation, Gas"
+cf_tx_solar,0.14,0.1391712482490773,results/capacity_factors.csv,"capacity factor, TX Solar"
+cf_tx_wind,0.32,0.3228528637312423,results/capacity_factors.csv,"capacity factor, TX Wind"
+cf_tx_gas,0.41,0.4087991766735043,results/capacity_factors.csv,"capacity factor, TX Gas"
+cf_ca_solar,0.22,0.2170287510794836,results/capacity_factors.csv,"capacity factor, CA Solar"
+cf_ca_wind,0.28,0.2764678411620659,results/capacity_factors.csv,"capacity factor, CA Wind"
+cf_ca_gas,0.25,0.2504582780251309,results/capacity_factors.csv,"capacity factor, CA Gas"
+cf_pa_solar,0.10,0.103529559714174,results/capacity_factors.csv,"capacity factor, PA Solar"
+cf_pa_wind,0.22,0.2226064993301069,results/capacity_factors.csv,"capacity factor, PA Wind"
+cf_pa_gas,0.56,0.5601981449207258,results/capacity_factors.csv,"capacity factor, PA Gas"
+val_pjm_gas,"$249,000",248837.0,results/value_table.csv,"value per MW-year 2024 base, PJM Gas"
+val_pjm_wind,"$135,000",135239.0,results/value_table.csv,"value per MW-year 2024 base, PJM Wind"
+val_pjm_solar,"$62,000",61984.0,results/value_table.csv,"value per MW-year 2024 base, PJM Solar"
+val_caiso_solar,"$120,000",120335.0,results/value_table.csv,"value per MW-year 2024 base, CAISO Solar"
+val_ercot_solar,"$70,000",69824.0,results/value_table.csv,"value per MW-year 2024 base, ERCOT Solar"
+cost_median_20_100,$82,81.6888366005468,results/cost_table.csv,"PJM median interconnection cost, 20–100 MW, $/kW"
+cost_median_lt5,$30,30.2074620391381,results/cost_table.csv,< 5 MW
+cost_median_ge500,$8,8.41380436667889,results/cost_table.csv,≥ 500 MW
+cost_projects,"1,127",1127,results/cost_table.csv,PJM cost estimates
+mw_exp5_raw,29.2,29245.29890603059,results/expected_mw_online.csv,"expected GW online within 5 years, raw"
+mw_exp5_rec,25.2,25221.12959121431,results/expected_mw_online.csv,"expected GW online within 5 years, level repaired"
+mw_real5,18.8,18771.695,results/expected_mw_online.csv,realised GW online within 5 years
+mw_over_raw,56%,0.5579466268778921,results/expected_mw_online.csv,"raw over-expectation of MW online, 5 years"
+mw_over_rec,34%,0.34357230879866263,results/expected_mw_online.csv,repaired over-expectation
+cohort_mw,"348,901",348901.41776,results/expected_value_by_request.csv,test cohort MW
+ev_median,$5.5,5459652.79724217,results/expected_value_by_request.csv,"median expected value per request, repaired base, $M"
+sens_spearman_min,0.97,0.973,results/value_sensitivity.csv,lowest Spearman correlation across value cases
+sens_overlap_low,90%,0.9026548672566372,results/value_sensitivity.csv,"top-decile overlap, low vs base"
+n_assumptions,15,15,results/value_assumptions.csv,rows in the assumption table
+ms_miso_usable,"5,169",5169,results/miso_spp_samples.csv,MISO usable requests
+ms_miso_test,737,737,results/miso_spp_samples.csv,MISO test requests
+ms_miso_ops,54,54,results/miso_spp_samples.csv,MISO test operations within 5 years
+ms_spp_usable,"2,191",2191,results/miso_spp_samples.csv,SPP usable requests
+ms_spp_test,448,448,results/miso_spp_samples.csv,SPP test requests
+ms_spp_ops,8,8,results/miso_spp_samples.csv,SPP test operations within 5 years
+v3_lines,12,12,results/success_criteria_v3_scored.csv,registered v3 lines
+v3_pass,3,3,results/success_criteria_v3_scored.csv,v3 lines passed
+v3_miso_c5,0.557,0.5568377630410944,results/success_criteria_v3_scored.csv,MISO LightGBM Uno's C at 5 years
+v3_miso_c5_fair,0.490,0.4895958435590831,results/success_criteria_v3_scored.csv,MISO fair baseline Uno's C at 5 years
+v3_miso_c5_diff,+0.067,0.0672419194820113,results/success_criteria_v3_scored.csv,paired difference
+v3_miso_c5_iv,"[+0.008, +0.127]","(np.float64(0.0081258833207611), np.float64(0.1270283910651551))",results/success_criteria_v3_scored.csv,its interval

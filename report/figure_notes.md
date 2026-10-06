@@ -1302,6 +1302,26 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** Expected cumulative MW online of the 2017–2019 cohort against realised MW, and the expected value index by region under three value cases.
 <!-- /fig:F13_expected_mw_and_value -->
 
+<!-- fig:F14_simulated_book -->
+### F14_simulated_book
+
+![F14_simulated_book](../figures/F14_simulated_book.png)
+
+*Notebook:* `notebooks/16_portfolio.ipynb` · *Files:* `figures/F14_simulated_book.png`, `.svg`
+
+**Caption (stub).** Expected cumulative MW online of a 25-request book with its simulated 5–95% band under shared and independent risk, against the realised MW.
+<!-- /fig:F14_simulated_book -->
+
+<!-- fig:F17_miso_spp -->
+### F17_miso_spp
+
+![F17_miso_spp](../figures/F17_miso_spp.png)
+
+*Notebook:* `notebooks/19_miso_spp_timing.ipynb` · *Files:* `figures/F17_miso_spp.png`, `.svg`
+
+**Caption (stub).** Uno's C, Brier score and calibration slope of the MISO and SPP timing models at 3 and 5 years, with baselines.
+<!-- /fig:F17_miso_spp -->
+
 <!-- fig:F1_cif_by_region -->
 ### F1_cif_by_region
 

@@ -539,3 +539,15 @@ alternative rejected.
     report from his side, notebook 13 gains dated study phases for PJM and
     ERCOT and is rerun. *Rejected:* registering for a PJM API key on Alan's
     behalf (an account is his to create).
+54. **Pre-registered criteria C13–C14 for the MISO and SPP timing models**
+    (2026-10-06; written by the first cell of notebook 19 before any MISO or
+    SPP model was fitted; follows #49). Data: the 2026 LBNL file censored at
+    2025-12-31; one model per region (region pooled, state target-encoded),
+    notebook 06's settings unchanged, fitted on entrants to 2016, scored on
+    2017–2019 entrants. C13: LightGBM beats the fair baseline (region ×
+    technology × size) on Uno's C and Brier at 3 and 5 years, per region,
+    with the 95% paired interval on the better side. C14: LightGBM's
+    calibration slope interval within 0.8–1.2 at 3 and 5 years, per region.
+    Twelve lines; failures reported, not removed; never pooled with the
+    three-ISO verdict. MISO's operation-date coverage (92%) is below the
+    95% notebook 01 asked of the 2025 file and is stated as a caveat.

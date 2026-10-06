@@ -1,0 +1,13 @@
+id,region,line,metric,horizon,rule,estimate,benchmark,diff,diff_low,diff_high,result
+C13,MISO,"MISO: LightGBM vs fair baseline, uno_c at 3 years",uno_c,3,paired 95% interval entirely on the better side,0.8129353233830846,0.8023009950248756,0.010634328358208989,-0.07606695570486069,0.0909852572371303,FAIL
+C13,MISO,"MISO: LightGBM vs fair baseline, uno_c at 5 years",uno_c,5,paired 95% interval entirely on the better side,0.5568377630410944,0.4895958435590831,0.06724191948201136,0.008125883320761168,0.1270283910651551,PASS
+C13,MISO,"MISO: LightGBM vs fair baseline, brier at 3 years",brier,3,paired 95% interval entirely on the better side,0.022518930528715578,0.017988214606456974,0.004530715922258604,0.002796587697231723,0.006170680691950984,FAIL
+C13,MISO,"MISO: LightGBM vs fair baseline, brier at 5 years",brier,5,paired 95% interval entirely on the better side,0.09155947911781565,0.07675756564737043,0.01480191347044521,0.01021204274529477,0.019977010563351345,FAIL
+C13,SPP,"SPP: LightGBM vs fair baseline, uno_c at 3 years",uno_c,3,paired 95% interval entirely on the better side,0.509518477043673,0.8101903695408734,-0.3006718924972004,-0.622320879729934,0.004484304932735439,FAIL
+C13,SPP,"SPP: LightGBM vs fair baseline, uno_c at 5 years",uno_c,5,paired 95% interval entirely on the better side,0.750140924464487,0.7415445321307779,0.008596392333709124,-0.23690654420837354,0.20010372747801114,FAIL
+C13,SPP,"SPP: LightGBM vs fair baseline, brier at 3 years",brier,3,paired 95% interval entirely on the better side,0.00480720198166458,0.01344085399392816,-0.00863365201226358,-0.011508008413974645,-0.005161082488430062,PASS
+C13,SPP,"SPP: LightGBM vs fair baseline, brier at 5 years",brier,5,paired 95% interval entirely on the better side,0.02473519883976458,0.04186668733730827,-0.01713148849754369,-0.021521622046415206,-0.011880463058907246,PASS
+C14,MISO,MISO: LightGBM calibration slope at 3 years,slope,3,slope interval within 0.8–1.2,1.8700517488307553,,,0.8320572120234361,3.099026517967145,FAIL
+C14,MISO,MISO: LightGBM calibration slope at 5 years,slope,5,slope interval within 0.8–1.2,0.29786740946975754,,,-0.1380146933490524,0.7377907190076731,FAIL
+C14,SPP,SPP: LightGBM calibration slope at 3 years,slope,3,slope interval within 0.8–1.2,0.7465432937160109,,,-4.850623323622618,4.275758780795241,FAIL
+C14,SPP,SPP: LightGBM calibration slope at 5 years,slope,5,slope interval within 0.8–1.2,1.0023308080045603,,,-0.9654307826991749,3.620808604027691,FAIL

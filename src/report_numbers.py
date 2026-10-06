@@ -8,7 +8,8 @@ by hand. With one table of quoted values, ``tests/test_report.py`` can
 check that each number in the report's text appears here, and anyone can
 look up where a number comes from (``source`` column).
 Reads: CSV and JSON files in ``results/``; design constants from
-``src/config.py`` and ``src/track_b.py``.
+``src/config.py`` and ``src/track_b.py``. The ``v3_*`` steps read the
+portfolio-layer tables of notebooks 01b and 11–19.
 Writes: ``results/report_numbers.csv`` (key, text, value, source, note).
 Used by: ``make numbers`` (``python -m src.report_numbers``), before the
 report is written or rebuilt; ``tests/test_report.py``.
@@ -533,6 +534,261 @@ def posthoc():
         "results/posthoc_criteria.csv", "Track A criterion lines")
 
 
+# ---------------------------------------------------------------------------
+# v3: the portfolio layer (notebooks 01b, 11–19)
+# ---------------------------------------------------------------------------
+
+def v3_data():
+    """The 2026 LBNL file beside the frozen one, and the milestones (notebooks 01b and 13)."""
+    recon = read("lbnl_2026_reconciliation.csv").set_index("region")
+    add("e26_rows", "38,201", 38201, "notebooks/01b_lbnl_2026_reconcile.ipynb", "rows of the 2026 edition, raw")
+    add("e26_found", pct(recon.loc["all", "share_found"]), recon.loc["all", "share_found"], "results/lbnl_2026_reconciliation.csv",
+        "2025 requests found in 2026")
+    add("e26_found_pjm", pct(recon.loc["PJM", "share_found"]), recon.loc["PJM", "share_found"], "results/lbnl_2026_reconciliation.csv",
+        "PJM requests found in 2026")
+    add("e26_new", f"{int(recon.loc['all', 'new_in_2026']):,}", recon.loc["all", "new_in_2026"], "results/lbnl_2026_reconciliation.csv", "rows new in 2026")
+    trans = read("lbnl_2026_status_transitions.csv").set_index("q_status_2025")
+    for status in ["active", "withdrawn", "operational", "suspended"]:
+        v = int(trans.loc["active", status])
+        add(f"e26_active_to_{status}", f"{v:,}", v, "results/lbnl_2026_status_transitions.csv", f"active at end-2024 → {status} in 2026")
+    add("e26_active_total", f"{int(trans.loc['active'].sum()):,}", int(trans.loc["active"].sum()), "results/lbnl_2026_status_transitions.csv",
+        "requests active at end-2024 found in 2026")
+    add("e26_wd_to_op", str(int(trans.loc["withdrawn", "operational"])), int(trans.loc["withdrawn", "operational"]),
+        "results/lbnl_2026_status_transitions.csv", "withdrawn → operational")
+    add("e26_op_to_active", str(int(trans.loc["operational", "active"])), int(trans.loc["operational", "active"]),
+        "results/lbnl_2026_status_transitions.csv", "operational → active")
+    cov = read("lbnl_2026_date_coverage.csv").set_index(["region", "edition"])
+    for region in ["MISO", "SPP", "NYISO", "ERCOT", "CAISO", "PJM"]:
+        for edition in [2025, 2026]:
+            for what, column in [("on", "on_date_share"), ("wd", "wd_date_share")]:
+                v = cov.loc[(region, edition), column]
+                add(f"cov_{region.lower().replace('-', '')}_{what}_{edition}", pct(v, 0), v, "results/lbnl_2026_date_coverage.csv",
+                    f"{region} {edition}: share of {'operational' if what == 'on' else 'withdrawn'} rows with a date")
+    early = read("early_incidence_2020_2022.csv")
+    for year in [2020, 2021, 2022]:
+        r = early[(early["entry_year"] == year) & (early["horizon"] == 2) & (early["edition"] == 2026) & (early["region"] == "CAISO+ERCOT+PJM")].iloc[0]
+        add(f"early2_{year}", pct(r["observed"]), r["observed"], "results/early_incidence_2020_2022.csv", f"{year} entrants: 2-year incidence, 2026 edition")
+        add(f"early2_{year}_ops", str(int(r["operations"])), int(r["operations"]), "results/early_incidence_2020_2022.csv", f"{year} entrants: operations within 2 years")
+    ms = read("milestone_coverage.csv").set_index("region")
+    add("ms_dated", f"{int(ms.loc['all', 'agreement_inside_queue_n']):,}", int(ms.loc["all", "agreement_inside_queue_n"]),
+        "results/milestone_coverage.csv", "requests with an agreement dated inside the queue time")
+    add("ms_share", pct(ms.loc["all", "agreement_inside_queue"], 0), ms.loc["all", "agreement_inside_queue"], "results/milestone_coverage.csv",
+        "share of Track A with a dated agreement inside the queue time")
+    for region in config.TRACK_A_REGIONS:
+        add(f"ms_share_{region.lower()}", pct(ms.loc[region, "agreement_inside_queue"], 1 if region == "PJM" else 0),
+            ms.loc[region, "agreement_inside_queue"], "results/milestone_coverage.csv", f"{region}: dated agreement inside the queue time")
+    ia = read("ia_date_agreement.csv").set_index(ia_key := read("ia_date_agreement.csv").columns[0])
+    add("ia_2025", f"{int(ia.loc['requests with an agreement date in 2025', 'count']):,}", int(ia.loc["requests with an agreement date in 2025", "count"]),
+        "results/ia_date_agreement.csv", "agreement dates in the 2025 file")
+    add("ia_2026", f"{int(ia.loc['in 2026', 'count']):,}", int(ia.loc["in 2026", "count"]), "results/ia_date_agreement.csv", "agreement dates in the 2026 file")
+    add("ia_same_day", f"{int(ia.loc['same day', 'count']):,}", int(ia.loc["same day", "count"]), "results/ia_date_agreement.csv", "shared dates equal")
+    add("ia_both", f"{int(ia.loc['in both', 'count']):,}", int(ia.loc["in both", "count"]), "results/ia_date_agreement.csv", "dated in both editions")
+    join = read("iso_join_rates.csv").set_index("iso")
+    add("caiso_join", pct(join.loc["CAISO", "share_found"], 0), join.loc["CAISO", "share_found"], "results/iso_join_rates.csv", "CAISO LBNL requests found in the ISO report")
+    add("caiso_join_test", pct(join.loc["CAISO", "share_found_2017_2019"], 0), join.loc["CAISO", "share_found_2017_2019"], "results/iso_join_rates.csv",
+        "CAISO 2017–2019 entrants found in the ISO report")
+    add("caiso_iso_rows", f"{int(join.loc['CAISO', 'rows_in_iso_file']):,}", int(join.loc["CAISO", "rows_in_iso_file"]), "results/iso_join_rates.csv", "rows in CAISO's queue report")
+
+
+def v3_fair_baseline():
+    """Notebook 11: the fair baseline, the utility-scale cohort and the variant choice."""
+    sizes = read("sample_sizes_v2.csv").set_index(read("sample_sizes_v2.csv").columns[0])
+    add("large_n", f"{int(sizes.loc['≥ 20 MW', 'requests']):,}", int(sizes.loc["≥ 20 MW", "requests"]), "results/sample_sizes_v2.csv", "test requests ≥ 20 MW")
+    add("large_share", pct(sizes.loc["≥ 20 MW", "share of test requests"], 0), sizes.loc["≥ 20 MW", "share of test requests"], "results/sample_sizes_v2.csv",
+        "share of test requests ≥ 20 MW")
+    add("large_mw_share", pct(sizes.loc["≥ 20 MW", "share of test MW"]), sizes.loc["≥ 20 MW", "share of test MW"], "results/sample_sizes_v2.csv",
+        "share of test MW ≥ 20 MW")
+    add("large_ops", str(int(sizes.loc["≥ 20 MW", "operations by 5 years"])), int(sizes.loc["≥ 20 MW", "operations by 5 years"]),
+        "results/sample_sizes_v2.csv", "operations within 5 years, ≥ 20 MW")
+    add("small_n", str(int(sizes.loc["< 20 MW", "requests"])), int(sizes.loc["< 20 MW", "requests"]), "results/sample_sizes_v2.csv", "test requests < 20 MW")
+    add("small_ops", str(int(sizes.loc["< 20 MW", "operations by 5 years"])), int(sizes.loc["< 20 MW", "operations by 5 years"]),
+        "results/sample_sizes_v2.csv", "operations within 5 years, < 20 MW")
+    cells = read("fair_baseline_cells.csv")
+    add("fb_cells", str(len(cells)), len(cells), "results/fair_baseline_cells.csv", "region × technology × size cells")
+    add("fb_cells_used", str(int(cells["used"].sum())), int(cells["used"].sum()), "results/fair_baseline_cells.csv", "cells with ≥ 50 requests")
+    pjm_gas = cells[(cells["region"] == "PJM") & (cells["tech"] == "Gas") & cells["used"]]["p_operation_5"]
+    add("fb_pjm_gas_min", pct(pjm_gas.min(), 0), pjm_gas.min(), "results/fair_baseline_cells.csv", "PJM gas: lowest size-cell 5-year completion")
+    add("fb_pjm_gas_max", pct(pjm_gas.max(), 0), pjm_gas.max(), "results/fair_baseline_cells.csv", "PJM gas: highest size-cell 5-year completion")
+    add("fb_pjm_gas_range", str(int(round(100 * (pjm_gas.max() - pjm_gas.min())))), pjm_gas.max() - pjm_gas.min(), "results/fair_baseline_cells.csv",
+        "PJM gas: range across size cells, points")
+    choice = read("variant_choice_2016.csv").set_index("candidate")
+    add("var_k0", num(choice.loc["K0 LightGBM, yearly congestion", "log_loss_2016_large"]), choice.loc["K0 LightGBM, yearly congestion", "log_loss_2016_large"],
+        "results/variant_choice_2016.csv", "K0 2016 log loss, ≥ 20 MW rows")
+    add("var_k1", num(choice.loc["K1 LightGBM, entry congestion", "log_loss_2016_large"]), choice.loc["K1 LightGBM, entry congestion", "log_loss_2016_large"],
+        "results/variant_choice_2016.csv", "K1 2016 log loss, ≥ 20 MW rows")
+    add("var_k3", num(choice.loc["K3 LightGBM, entry congestion, monotone in MW", "log_loss_2016_large"]),
+        choice.loc["K3 LightGBM, entry congestion, monotone in MW", "log_loss_2016_large"], "results/variant_choice_2016.csv", "K3 2016 log loss")
+    add("var_candidates", str(len(choice)), len(choice), "results/variant_choice_2016.csv", "candidates compared")
+    m = read("metrics_v2.csv")
+    chosen = read("variant_chosen.json")["chosen"]
+    for cohort, tag in [("≥ 20 MW", "large"), ("< 20 MW", "small"), ("all", "all")]:
+        for ref, rtag in [("fair_baseline", "fair"), ("baseline", "v1")]:
+            part = m[(m["cohort"] == cohort) & (m["reference"] == ref) & (m["model"] == chosen) & m["metric"].isin(["uno_c", "brier"])]
+            wins = int(part["beats"].fillna(False).astype(bool).sum())
+            add(f"wins_{tag}_{rtag}", str(wins), wins, "results/metrics_v2.csv", f"{cohort}: wins of the v2 model vs the {rtag} baseline (of 6)")
+    fair_vs_v1 = m[(m["cohort"] == "≥ 20 MW") & (m["reference"] == "baseline") & (m["model"] == "fair_baseline") & m["metric"].isin(["uno_c", "brier"])]
+    add("wins_large_fair_vs_v1", str(int(fair_vs_v1["beats"].fillna(False).astype(bool).sum())), int(fair_vs_v1["beats"].fillna(False).astype(bool).sum()),
+        "results/metrics_v2.csv", "≥ 20 MW: wins of the fair baseline vs the v1 baseline")
+    for h in [3, 5]:
+        for model, tag in [(chosen, "v2"), ("fair_baseline", "fair")]:
+            r = m[(m["cohort"] == "≥ 20 MW") & (m["reference"] == "baseline") & (m["model"] == model) & (m["metric"] == "uno_c") & (m["horizon"] == h)].iloc[0]
+            add(f"c_large_{tag}_{h}", num(r["estimate"]), r["estimate"], "results/metrics_v2.csv", f"≥ 20 MW: Uno's C of {tag} at {h} years")
+        r = m[(m["cohort"] == "< 20 MW") & (m["reference"] == "baseline") & (m["model"] == chosen) & (m["metric"] == "uno_c") & (m["horizon"] == h)].iloc[0]
+        add(f"c_small_v2_{h}", num(r["estimate"]), r["estimate"], "results/metrics_v2.csv", f"< 20 MW: Uno's C of v2 at {h} years")
+        r = m[(m["cohort"] == "< 20 MW") & (m["reference"] == "baseline") & (m["model"] == "fair_baseline") & (m["metric"] == "uno_c") & (m["horizon"] == h)].iloc[0]
+        add(f"c_small_fair_{h}", num(r["estimate"]), r["estimate"], "results/metrics_v2.csv", f"< 20 MW: Uno's C of the fair baseline at {h} years")
+    mono = read("size_check_monotone.csv").set_index("size_regime")
+    add("obs5_lt5", pct(mono.loc["<5", "observed (AJ)"], 0), mono.loc["<5", "observed (AJ)"], "results/size_check_monotone.csv", "observed 5-year completion, < 5 MW")
+    add("obs5_ge500", pct(mono.loc["≥500", "observed (AJ)"], 0), mono.loc["≥500", "observed (AJ)"], "results/size_check_monotone.csv", "observed 5-year completion, ≥ 500 MW")
+
+
+def v3_level():
+    """Notebook 12: drift and its repair."""
+    d = read("drift_by_cohort.csv")
+    for year in [2017, 2018, 2019]:
+        r = d[(d["cohort"] == "≥ 20 MW") & (d["horizon"] == 5) & (d["entry_year"] == year)].iloc[0]
+        add(f"lv_obs5_{year}", pct(r["observed"]), r["observed"], "results/drift_by_cohort.csv", f"{year} entrants ≥ 20 MW: observed 5-year completion")
+        add(f"lv_v2_5_{year}", pct(r["v2"]), r["v2"], "results/drift_by_cohort.csv", f"{year} entrants ≥ 20 MW: v2 mean prediction at 5 years")
+    h = read("drift_hazards_by_cohort.csv").set_index("q_year")
+    for year in [2013, 2016, 2018, 2019]:
+        add(f"hz_op_{year}", pct(h.loc[year, "h_operation"]), h.loc[year, "h_operation"], "results/drift_hazards_by_cohort.csv", f"{year} entrants: operation hazard, years 1–3")
+        add(f"hz_wd_{year}", pct(h.loc[year, "h_withdrawal"], 0), h.loc[year, "h_withdrawal"], "results/drift_hazards_by_cohort.csv", f"{year} entrants: withdrawal hazard, years 1–3")
+    lm = read("level_repair_metrics.csv").set_index(["cohort", "horizon", "model", "metric"])
+    for h_ in [3, 5]:
+        for model, tag in [("v2 raw", "raw"), ("v2 recalibrated", "rec"), ("K1 logit (trend)", "logit"), ("fair baseline", "fair")]:
+            r = lm.loc[("2018–2019, ≥ 20 MW", h_, model, "intercept")]
+            add(f"int_{tag}_{h_}", num(r["estimate"], 2, True), r["estimate"], "results/level_repair_metrics.csv", f"2018–2019 ≥ 20 MW: intercept of {model} at {h_} years")
+            add(f"int_{tag}_{h_}_iv", interval(r["low"], r["high"], 2), (r["low"], r["high"]), "results/level_repair_metrics.csv", "its interval")
+            s = lm.loc[("2018–2019, ≥ 20 MW", h_, model, "slope")]
+            add(f"slope_{tag}_{h_}", num(s["estimate"], 2), s["estimate"], "results/level_repair_metrics.csv", f"2018–2019 ≥ 20 MW: slope of {model} at {h_} years")
+    e = read("early_hazards_2020_2022.csv")
+    for year in [2020, 2021, 2022]:
+        r = e[(e["entry_year"] == year) & (e["horizon"] == 2) & (e["edition"] == 2026)].iloc[0]
+        add(f"eh_pred2_{year}", pct(r["predicted"]), r["predicted"], "results/early_hazards_2020_2022.csv", f"{year} entrants: predicted 2-year incidence")
+    add("eh_intercept_needed", num(e["intercept_needed_2yr_2025_edition"].iloc[0], 2), e["intercept_needed_2yr_2025_edition"].iloc[0],
+        "results/early_hazards_2020_2022.csv", "intercept that would close the 2-year gap")
+    rec = read("recalibration.csv")
+    r = rec[(rec["scored_year"] == 2019) & (rec["region"] == "PJM") & (rec["horizon"] == 5)].iloc[0]
+    add("rec_2019_pjm", num(r["intercept"], 2, True), r["intercept"], "results/recalibration.csv", "2019 PJM 5-year intercept from the 2018 cohort")
+
+
+def v3_landmark():
+    """Notebook 14: the landmark models."""
+    cov = read("landmark_coverage.csv").set_index("landmark")
+    for lm, tag in [("0", "l0"), ("1", "l1"), ("2", "l2"), ("agreement", "lia")]:
+        r = cov.loc[lm]
+        add(f"rs_{tag}", f"{int(r['requests']):,}", int(r["requests"]), "results/landmark_coverage.csv", f"risk set at landmark {lm}")
+        add(f"rs_{tag}_ops3", str(int(r["operations within 3"])), int(r["operations within 3"]), "results/landmark_coverage.csv", f"operations within 3 years of landmark {lm}")
+        add(f"rs_{tag}_wd3", str(int(r["withdrawals within 3"])), int(r["withdrawals within 3"]), "results/landmark_coverage.csv", f"withdrawals within 3 years of landmark {lm}")
+    m = read("landmark_metrics.csv")
+    m["landmark"] = m["landmark"].astype(str)
+    for lm, tag in [("1", "l1"), ("2", "l2"), ("agreement", "lia")]:
+        for model, mtag in [("entry model", "entry"), ("both updated", "both"), ("agreement updated", "ia"), ("congestion updated", "cong"), ("fair baseline", "fair")]:
+            for metric in ["uno_c", "brier"]:
+                r = m[(m["landmark"] == lm) & (m["reference"] == "entry model") & (m["model"] == model) & (m["metric"] == metric) & (m["horizon_after"] == 3)].iloc[0]
+                add(f"lm_{tag}_{mtag}_{metric}", num(r["estimate"]), r["estimate"], "results/landmark_metrics.csv", f"landmark {lm}: {metric} of {model}, 3 years after")
+                if model != "entry model":
+                    add(f"lm_{tag}_{mtag}_{metric}_diff", num(r["diff"], 3, True), r["diff"], "results/landmark_metrics.csv", "paired difference vs the entry model")
+                    add(f"lm_{tag}_{mtag}_{metric}_iv", interval(r["diff_low"], r["diff_high"]), (r["diff_low"], r["diff_high"]), "results/landmark_metrics.csv", "its interval")
+        for model, mtag in [("entry model", "entry"), ("both updated", "both")]:
+            r = m[(m["landmark"] == lm) & (m["reference"] == "entry model") & (m["model"] == model) & (m["metric"] == "intercept") & (m["horizon_after"] == 3)].iloc[0]
+            add(f"lm_{tag}_{mtag}_int", num(r["estimate"], 2, True), r["estimate"], "results/landmark_metrics.csv", f"landmark {lm}: intercept of {model}")
+            s = m[(m["landmark"] == lm) & (m["reference"] == "entry model") & (m["model"] == model) & (m["metric"] == "slope") & (m["horizon_after"] == 3)].iloc[0]
+            add(f"lm_{tag}_{mtag}_slope", num(s["estimate"], 2), s["estimate"], "results/landmark_metrics.csv", f"landmark {lm}: slope of {model}")
+    r = m[(m["landmark"] == "0") & (m["reference"] == "entry model") & (m["model"] == "agreement updated") & (m["metric"] == "intercept") & (m["horizon_after"] == 3)].iloc[0]
+    add("lm_l0_ia_int", num(r["estimate"], 2, True), r["estimate"], "results/landmark_metrics.csv", "entry landmark: intercept with the agreement flag in the fit")
+    r = m[(m["landmark"] == "0") & (m["reference"] == "entry model") & (m["model"] == "entry model") & (m["metric"] == "intercept") & (m["horizon_after"] == 3)].iloc[0]
+    add("lm_l0_entry_int", num(r["estimate"], 2, True), r["estimate"], "results/landmark_metrics.csv", "entry landmark: intercept of the entry model")
+    wins = m[m["metric"].isin(["uno_c", "brier"]) & (m["reference"] == "entry model") & (m["model"] == "both updated") & (m["landmark"] == "2")]
+    add("lm_l2_wins", str(int(wins["beats"].fillna(False).astype(bool).sum())), int(wins["beats"].fillna(False).astype(bool).sum()), "results/landmark_metrics.csv",
+        "+2 years: wins of both-updated vs the entry model, of 6")
+    checks = read("landmark_checks.csv")
+    guard = checks[checks["check"].str.contains("ablation")]["value"].iloc[0]
+    add("lm_max_auc", guard.split(" < ")[0], guard, "results/landmark_checks.csv", "highest landmark AUC")
+    add("lm_ceiling", guard.split(" < ")[1], guard, "results/landmark_checks.csv", "leakage ablation AUC at 5 years")
+    sig = read("landmark_agreement_signal.csv").set_index(["region", "agreement known"])
+    for region in ["ERCOT", "CAISO"]:
+        for known, tag in [(True, "yes"), (False, "no")]:
+            r = sig.loc[(region, known)]
+            add(f"sig_{region.lower()}_{tag}", pct(r["observed_3yr"]), r["observed_3yr"], "results/landmark_agreement_signal.csv",
+                f"{region}, agreement {'known' if known else 'not known'} at +2 years: observed 3-year completion")
+            add(f"sig_{region.lower()}_{tag}_n", str(int(r["requests"])), int(r["requests"]), "results/landmark_agreement_signal.csv", "requests")
+    r = sig.loc[("PJM", True)]
+    add("sig_pjm_yes_n", str(int(r["requests"])), int(r["requests"]), "results/landmark_agreement_signal.csv", "PJM requests with a known agreement at +2 years")
+    r = sig.loc[("PJM", False)]
+    add("sig_pjm_no_n", str(int(r["requests"])), int(r["requests"]), "results/landmark_agreement_signal.csv", "PJM requests without")
+
+
+def v3_value():
+    """Notebook 15: the value and cost layer."""
+    energy = read("energy_prices.csv").set_index("year")
+    for region, years in [("PJM", [2017, 2022, 2025]), ("CAISO", [2017, 2022, 2025]), ("ERCOT", [2017, 2019])]:
+        for y in years:
+            add(f"ep_{region.lower()}_{y}", f"${energy.loc[y, region]:.1f}", energy.loc[y, region], "results/energy_prices.csv", f"{region} on-peak hub price {y}, $/MWh")
+    cap = read("capacity_prices.csv").set_index("year")
+    for y in [2018, 2024, 2025, 2026]:
+        add(f"cp_pjm_{y}", f"${cap.loc[y, 'PJM']:.0f}", cap.loc[y, "PJM"], "results/capacity_prices.csv", f"PJM capacity revenue {y}, $/kW-year")
+    add("cp_caiso", f"${cap.loc[2024, 'CAISO']:.0f}", cap.loc[2024, "CAISO"], "results/capacity_prices.csv", "CAISO capacity price assumption, $/kW-year")
+    acc = read("accreditation.csv").set_index(read("accreditation.csv").columns[0])["accreditation"]
+    for tech, tag in [("Solar", "solar"), ("Wind", "wind"), ("Battery", "battery"), ("Gas", "gas")]:
+        add(f"acc_{tag}", pct(acc[tech], 0), acc[tech], "results/accreditation.csv", f"accreditation, {tech}")
+    cf = read("capacity_factors.csv").set_index(["state", "tech"])["capacity_factor"]
+    for state in ["TX", "CA", "PA"]:
+        for tech in ["Solar", "Wind", "Gas"]:
+            add(f"cf_{state.lower()}_{tech.lower()}", num(cf[(state, tech)], 2), cf[(state, tech)], "results/capacity_factors.csv", f"capacity factor, {state} {tech}")
+    vt = read("value_table.csv")
+    v24 = vt[vt["year"] == 2024].set_index(["region", "tech"])["base"]
+    for region, tech in [("PJM", "Gas"), ("PJM", "Wind"), ("PJM", "Solar"), ("CAISO", "Solar"), ("ERCOT", "Solar")]:
+        add(f"val_{region.lower()}_{tech.lower()}", f"${v24[(region, tech)] / 1e3:,.0f},000", v24[(region, tech)], "results/value_table.csv",
+            f"value per MW-year 2024 base, {region} {tech}")
+    costs = read("cost_table.csv").set_index("size_regime")
+    add("cost_median_20_100", f"${costs.loc['20–<100', 'cost_per_kw_median']:.0f}", costs.loc["20–<100", "cost_per_kw_median"], "results/cost_table.csv",
+        "PJM median interconnection cost, 20–100 MW, $/kW")
+    add("cost_median_lt5", f"${costs.loc['<5', 'cost_per_kw_median']:.0f}", costs.loc["<5", "cost_per_kw_median"], "results/cost_table.csv", "< 5 MW")
+    add("cost_median_ge500", f"${costs.loc['≥500', 'cost_per_kw_median']:.0f}", costs.loc["≥500", "cost_per_kw_median"], "results/cost_table.csv", "≥ 500 MW")
+    add("cost_projects", f"{int(costs['n_projects'].sum()):,}", int(costs["n_projects"].sum()), "results/cost_table.csv", "PJM cost estimates")
+    path = read("expected_mw_online.csv").set_index("years_after_entry")
+    add("mw_exp5_raw", f"{path.loc[5, 'expected_mw_raw'] / 1e3:.1f}", path.loc[5, "expected_mw_raw"], "results/expected_mw_online.csv", "expected GW online within 5 years, raw")
+    add("mw_exp5_rec", f"{path.loc[5, 'expected_mw_recalibrated'] / 1e3:.1f}", path.loc[5, "expected_mw_recalibrated"], "results/expected_mw_online.csv",
+        "expected GW online within 5 years, level repaired")
+    add("mw_real5", f"{path.loc[5, 'realised_mw_by_end_2024'] / 1e3:.1f}", path.loc[5, "realised_mw_by_end_2024"], "results/expected_mw_online.csv",
+        "realised GW online within 5 years")
+    over_raw = path.loc[5, "expected_mw_raw"] / path.loc[5, "realised_mw_by_end_2024"] - 1
+    over_rec = path.loc[5, "expected_mw_recalibrated"] / path.loc[5, "realised_mw_by_end_2024"] - 1
+    add("mw_over_raw", pct(over_raw, 0), over_raw, "results/expected_mw_online.csv", "raw over-expectation of MW online, 5 years")
+    add("mw_over_rec", pct(over_rec, 0), over_rec, "results/expected_mw_online.csv", "repaired over-expectation")
+    ev = read("expected_value_by_request.csv")
+    add("cohort_mw", f"{ev['mw'].sum():,.0f}", ev["mw"].sum(), "results/expected_value_by_request.csv", "test cohort MW")
+    add("ev_median", f"${ev['value_recalibrated_base'].median() / 1e6:.1f}", ev["value_recalibrated_base"].median(), "results/expected_value_by_request.csv",
+        "median expected value per request, repaired base, $M")
+    sens = read("value_sensitivity.csv").set_index(read("value_sensitivity.csv").columns[0])
+    corr_min = sens.drop(columns=["top-decile overlap with recalibrated/base"]).min().min()
+    add("sens_spearman_min", num(corr_min, 2), corr_min, "results/value_sensitivity.csv", "lowest Spearman correlation across value cases")
+    add("sens_overlap_low", pct(sens.loc["recalibrated / low", "top-decile overlap with recalibrated/base"], 0),
+        sens.loc["recalibrated / low", "top-decile overlap with recalibrated/base"], "results/value_sensitivity.csv", "top-decile overlap, low vs base")
+    assumptions = read("value_assumptions.csv")
+    add("n_assumptions", str(len(assumptions)), len(assumptions), "results/value_assumptions.csv", "rows in the assumption table")
+
+
+def v3_miso_spp():
+    """Notebook 19: MISO and SPP on the 2026 file."""
+    s = read("miso_spp_samples.csv").set_index("region")
+    for region in ["MISO", "SPP"]:
+        tag = region.lower()
+        add(f"ms_{tag}_usable", f"{int(s.loc[region, 'usable requests']):,}", int(s.loc[region, "usable requests"]), "results/miso_spp_samples.csv", f"{region} usable requests")
+        add(f"ms_{tag}_test", str(int(s.loc[region, "test (2017–2019)"])), int(s.loc[region, "test (2017–2019)"]), "results/miso_spp_samples.csv", f"{region} test requests")
+        add(f"ms_{tag}_ops", str(int(s.loc[region, "test operations within 5 years"])), int(s.loc[region, "test operations within 5 years"]),
+            "results/miso_spp_samples.csv", f"{region} test operations within 5 years")
+    scored = read("success_criteria_v3_scored.csv")
+    add("v3_lines", str(len(scored)), len(scored), "results/success_criteria_v3_scored.csv", "registered v3 lines")
+    add("v3_pass", str(int((scored["result"] == "PASS").sum())), int((scored["result"] == "PASS").sum()), "results/success_criteria_v3_scored.csv", "v3 lines passed")
+    r = scored[(scored["region"] == "MISO") & (scored["metric"] == "uno_c") & (scored["horizon"] == 5)].iloc[0]
+    add("v3_miso_c5", num(r["estimate"]), r["estimate"], "results/success_criteria_v3_scored.csv", "MISO LightGBM Uno's C at 5 years")
+    add("v3_miso_c5_fair", num(r["benchmark"]), r["benchmark"], "results/success_criteria_v3_scored.csv", "MISO fair baseline Uno's C at 5 years")
+    add("v3_miso_c5_diff", num(r["diff"], 3, True), r["diff"], "results/success_criteria_v3_scored.csv", "paired difference")
+    add("v3_miso_c5_iv", interval(r["diff_low"], r["diff_high"]), (r["diff_low"], r["diff_high"]), "results/success_criteria_v3_scored.csv", "its interval")
+
+
 def build():
     """Collect every cited number and write ``results/report_numbers.csv``.
 
@@ -548,7 +804,8 @@ def build():
     report that no longer matches.
     """
     ROWS.clear()
-    for step in (design_constants, gathering_and_cleaning, eda, modelling, evaluation, explanation, posthoc):
+    for step in (design_constants, gathering_and_cleaning, eda, modelling, evaluation, explanation, posthoc,
+                 v3_data, v3_fair_baseline, v3_level, v3_landmark, v3_value, v3_miso_spp):
         step()
     table = pd.DataFrame(ROWS)
     table.to_csv(paths.RESULTS / "report_numbers.csv", index=False)
