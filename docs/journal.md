@@ -643,3 +643,11 @@ work (decision #51), no limits on figures, report length or notebooks.
 24. Rotate the EIA API key pasted into chat on 2026-10-06.
 25. `git push` when you want the remote updated (nothing pushed since
     7313df0).
+- Alan's direction at the close of the session: pursue the stronger thesis
+  (an AI-managed book beats the lookup) — through registered tests only.
+  `HANDOFF.md` now carries the program (notebook 20: the milestone-managed
+  book with criteria C15–C16 written first; PJM's dated phases; level
+  repair at the landmark; a registered diversification objective) and the
+  review-first prompt for the next session. The evidence to date is
+  unchanged: at entry the lookup ties or wins; at the milestones the model
+  wins where the agreement is dated.
