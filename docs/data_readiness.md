@@ -1,6 +1,6 @@
 # Data readiness report (Phase 0 gate)
 
-*Written by `notebooks/01_get_data.ipynb` on 2026-10-06. Every number below was computed by that notebook; thresholds are in `src/config.py`.*
+*Written by `notebooks/01_get_data.ipynb` on 2026-10-08. Every number below was computed by that notebook; thresholds are in `src/config.py`.*
 
 ## Sources
 
@@ -52,7 +52,7 @@
 
 - Linkage: 31.1% of ERCOT/PJM operational projects matched an EIA plant and 74.9% of matches agree on the operation month within six months.
 
-**Outcome (2026-10-06): GO**
+**Outcome (2026-10-08): GO**
 
 ## v3 sources — S6, the LBNL 2026 data file (notebook 01b)
 

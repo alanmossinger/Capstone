@@ -651,3 +651,78 @@ work (decision #51), no limits on figures, report length or notebooks.
   review-first prompt for the next session. The evidence to date is
   unchanged: at entry the lookup ties or wins; at the milestones the model
   wins where the agreement is dated.
+
+## 2026-10-08 (session 8) — the missing ISO files, and the registered milestone-managed book
+
+Alan's direction: get the data that was missing and finish the job.
+
+**Done**
+
+- **The missing data was already on disk.** Alan had fetched PJM's queue
+  export (`pjm_queue_2026-10-07.xml`) and ERCOT's GIS report
+  (`ercot_gis_2026-10-07.xlsx`) from another network on 2026-10-07.
+  pjm.com still refuses this machine. `src/iso_files.py` parses both and
+  has tests. Notebook 13 now joins them and measures what they add
+  (decision #57):
+  - PJM finds 94.5% of the 2017–2019 PJM entrants and agrees with the LBNL
+    dates on the same day for all 7,051 request, 4,443 withdrawal and 1,143
+    in-service dates. It dates no study and no agreement; the agreement
+    status is October 2026's, so it carries the outcome. Backfeed precedes
+    operation by a median 0.27 years, and 258 of the 342 test-cohort
+    backfeed dates fall after 2024.
+  - ERCOT dates every phase but lists only requests still active. Of 479
+    test requests it lists 108, all active at end-2024, and none of the 92
+    that operated or the 223 that withdrew. Its agreement dates agree with
+    LBNL's (98% of 440 within 30 days), and it adds one for the test cohort.
+  - The web archive holds 158 executed PJM agreement PDFs, 63 of them for
+    the 1,465 PJM test requests. That is a selected sample, so it was
+    rejected. **The PJM gap remains.**
+- **Notebook 20 (the milestone-managed book).** Criteria C15–C17 and the
+  thesis rule were registered and committed before scoring (decision #58,
+  commit 850acea). New helpers: `portfolio.top_n_book`,
+  `landmark.agreement_lookup_at_landmark`, with tests. Results, 4 of 10
+  lines pass:
+  - Pool: 1,132 requests of 20 MW and more in the queue two years after
+    the request; 119 operated within three more years.
+  - C15 passes (operations): the model's book of 25 held 19 against 11 for
+    the agreement-aware lookup (+8 [+1, +11]); the book of 50 held 33
+    against 24 (+9 [+0.98, +13]). Against the unchanged entry ranking:
+    +11 and +14.
+  - C16 fails (MW): −604 and −914 against the lookup; against the entry
+    ranking, intervals include zero.
+  - C17 fails (level repair from early outcomes): the intercept moved from
+    −0.29 to −0.44, driven by the 2019 cohort's early burst (30
+    first-year operations against 14.3 predicted).
+  - **Thesis rule met.** The stronger thesis holds as registered: more
+    requests built, not more MW, and only where agreements are dated.
+- `docs/review_v2.md` written: a sceptical review of the six questions. It
+  was written after notebook 20 was scored, against the handoff's planned
+  order; the registration had already been committed.
+- **Report.** The abstract, section 2, section 6, section 7.3 (new
+  Figure 9 = F18), sections 8, 9 and 11, the conclusion and appendix A4
+  were updated. `src/report_numbers.py` gained `v4_managed_book` (1,014
+  numbers). `tests/test_report.py` passes. PDF (29 pages) and DOCX rebuilt.
+  README, Makefile and `run_pipeline.py` include notebook 20.
+- 90 tests pass, 1 skipped (the word limit).
+- **Full rebuild from the raw files:** all 22 notebooks (01 → 09, 01b, 11 → 20) ran without error in about 50 minutes. Every result table reproduced unchanged; only the readiness report's date and two seconds-valued timing checks differ.
+
+**Next**
+
+- The report is 6,175 words against the 3,000 limit. Cut before the final
+  version and restore the word-limit test.
+- The calendar items: the proposal update before Oct 19, mentor feedback,
+  poster, gallery post, tag `v1.0`.
+- Explain the landmark model inside the agreement-known group
+  (`docs/review_v2.md`, Q2). That is where the C15 gain comes from.
+
+**Open questions for Alan**
+
+26. **Did the thesis hold?** Yes, in its registered form: C15 passes,
+    while C16 (MW) and C17 (level repair) fail. Is the report's framing,
+    "more projects built, not more megawatts, where agreements are dated",
+    the one you want to defend?
+27. PJM's dated study phases are not in any file reachable here. The
+    remaining routes are yours to take: a PJM Data Miner API key (your
+    account), or asking PJM for the executed-agreement dates.
+28. (carried) Verify three value assumptions; rotate the EIA API key;
+    `git push` when you want (nothing pushed this session).
