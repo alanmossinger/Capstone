@@ -1,6 +1,6 @@
 """Execute the project notebooks in order, top to bottom, in place.
 
-What: runs ``notebooks/01_*.ipynb`` … ``09_*.ipynb`` (with ``03b_*`` and ``08b_*``), then the v3 notebooks ``01b`` and ``11`` … ``19``, with ``jupyter nbconvert
+What: runs ``notebooks/01_*.ipynb`` … ``09_*.ipynb`` (with ``03b_*`` and ``08b_*``), then the v3 notebooks ``01b`` and ``11`` … ``20``, with ``jupyter nbconvert
 --execute --inplace`` on the ``queue-survival`` kernel and stops at the first
 notebook that fails.
 Why: one command rebuilds every interim table, result and figure from the

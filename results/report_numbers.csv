@@ -968,3 +968,48 @@ af_3_ops2,65,65,results/landmark_coverage.csv,F row 3 operations within 2
 af_3_ops3,98,98,results/landmark_coverage.csv,F row 3 operations within 3
 af_3_wd3,19,19,results/landmark_coverage.csv,F row 3 withdrawals within 3
 a_horizon_years,0.8–1.2,"(0.8, 1.2)",docs/decisions.md #52,C7/C14 slope range
+pjm_join_test,94%,0.9447098976109216,results/iso_join_rates.csv,PJM 2017–2019 entrants found in PJM's export
+pjm_same_day,"7,051",7051,results/iso_join_rates.csv,PJM requests found in the export; every shared request date on the same day (notebook 13)
+ercot_test_op,92,92,results/iso_file_contents.csv,ERCOT test requests that operated (none listed in the GIS report)
+ercot_test_wd,223,223,results/iso_file_contents.csv,ERCOT test requests that withdrew (none listed in the GIS report)
+mb_pool,"1,132",1132,results/managed_book_pool.csv,"pool at +2, ≥ 20 MW"
+mb_pool_built,119,119,results/managed_book_pool.csv,pool requests operating within 3 years of the landmark
+mb_pool_known,118,118,results/managed_book_pool.csv,pool requests with an agreement known at the landmark
+mb_M_25_ops,19,19.0,results/managed_books.csv,"M, book of 25: operations"
+mb_M_25_mw,"1,078",1077.61,results/managed_books.csv,"M, book of 25: MW realised"
+mb_M_50_ops,33,33.0,results/managed_books.csv,"M, book of 50: operations"
+mb_M_50_mw,"2,357",2356.95,results/managed_books.csv,"M, book of 50: MW realised"
+mb_LA_25_ops,11,11.0,results/managed_books.csv,"LA, book of 25: operations"
+mb_LA_25_mw,"1,681",1681.35,results/managed_books.csv,"LA, book of 25: MW realised"
+mb_LA_50_ops,24,24.0,results/managed_books.csv,"LA, book of 50: operations"
+mb_LA_50_mw,"3,271",3270.76,results/managed_books.csv,"LA, book of 50: MW realised"
+mb_E_25_ops,8,8.0,results/managed_books.csv,"E, book of 25: operations"
+mb_E_25_mw,712,712.3,results/managed_books.csv,"E, book of 25: MW realised"
+mb_E_50_ops,19,19.0,results/managed_books.csv,"E, book of 50: operations"
+mb_E_50_mw,"1,858",1858.5,results/managed_books.csv,"E, book of 50: MW realised"
+mb_L0_25_ops,7,7.0,results/managed_books.csv,"L0, book of 25: operations"
+mb_L0_25_mw,565,564.83,results/managed_books.csv,"L0, book of 25: MW realised"
+mb_L0_50_ops,14,14.0,results/managed_books.csv,"L0, book of 50: operations"
+mb_L0_50_mw,949,949.23,results/managed_books.csv,"L0, book of 50: MW realised"
+mb_random_25_ops,4,4.0,results/managed_books.csv,"random, book of 25: operations"
+mb_random_25_mw,"1,191",1190.7,results/managed_books.csv,"random, book of 25: MW realised"
+mb_random_50_ops,7,7.0,results/managed_books.csv,"random, book of 50: operations"
+mb_random_50_mw,"1,527",1527.02,results/managed_books.csv,"random, book of 50: MW realised"
+mb_known_25,13,13,results/managed_book_composition.csv,books of 25: requests with a known agreement (M and LA alike)
+mb_la_known_built_25,7,7,results/managed_book_composition.csv,LA book of 25: agreed requests that operated
+mb_shared_25,6,6,results/managed_book_composition.csv,requests shared by the M and LA books of 25
+c17_raw,−0.29,-0.2945841414949045,results/landmark_level_calibration.csv,"M raw: calibration intercept, +2 landmark, 3 years"
+c17_raw_iv,"[−0.44, −0.14]","(np.float64(-0.4422024676085897), np.float64(-0.1438557813163973))",results/landmark_level_calibration.csv,its interval
+c17_rep,−0.44,-0.4379767570469098,results/landmark_level_calibration.csv,"M repaired: calibration intercept, +2 landmark, 3 years"
+c17_rep_iv,"[−0.59, −0.28]","(np.float64(-0.5908161363454739), np.float64(-0.2849358476769875))",results/landmark_level_calibration.csv,its interval
+v4_pass,4 of 10,4,results/success_criteria_v4_scored.csv,registered v4 lines passing
+a4_0_diff,"+8 [+1, +11]","(8.0, 1.0, 11.0)",results/success_criteria_v4_scored.csv,A4 row 0: M − LA
+a4_1_diff,"+9 [+0.98, +13]","(9.0, 0.975000000000004, 13.0)",results/success_criteria_v4_scored.csv,A4 row 1: M − LA
+a4_2_diff,"+11 [+4, +13]","(11.0, 4.0, 13.0)",results/success_criteria_v4_scored.csv,A4 row 2: M − E
+a4_3_diff,"+14 [+7, +19]","(14.0, 7.0, 19.0)",results/success_criteria_v4_scored.csv,A4 row 3: M − E
+a4_4_diff,"−604 [−2,196, +155]","(-603.7399999999998, -2196.28025, 155.2672499999999)",results/success_criteria_v4_scored.csv,A4 row 4: M − LA
+a4_5_diff,"−914 [−3,090, +180]","(-913.8100000000004, -3090.40675, 179.6030000000001)",results/success_criteria_v4_scored.csv,A4 row 5: M − LA
+a4_6_diff,"+365 [−337, +846]","(365.3100000000002, -337.20274999999987, 846.3697500000001)",results/success_criteria_v4_scored.csv,A4 row 6: M − E
+a4_7_diff,"+498 [−871, +1,238]","(498.4499999999998, -871.1514999999999, 1237.5815000000005)",results/success_criteria_v4_scored.csv,A4 row 7: M − E
+a4_8_intercept,"−0.44 [−0.59, −0.28]","(-0.4379767570469098, -0.5908161363454739, -0.2849358476769875)",results/success_criteria_v4_scored.csv,A4 row 8: repaired intercept
+a4_9_intercept,"−0.50 [−0.68, −0.32]","(-0.4953322241131015, -0.6811455814965313, -0.3192377281002943)",results/success_criteria_v4_scored.csv,A4 row 9: repaired intercept

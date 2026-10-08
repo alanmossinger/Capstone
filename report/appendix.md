@@ -61,6 +61,23 @@ Registered by notebook 19's first cell (decision #54); the 2026 LBNL file, censo
 | C14 | SPP | slope | 3 yr | 0.75 | 0.8–1.2 | [−4.85, 4.28] | FAIL |
 | C14 | SPP | slope | 5 yr | 1.00 | 0.8–1.2 | [−0.97, 3.62] | FAIL |
 
+### Appendix A4 — Pre-registered criteria for the milestone-managed book (`results/success_criteria_v4_scored.csv`)
+
+Registered by notebook 20's first cell and committed before any later cell existed (decision #58). Pool: test requests of 20 MW and more in the queue two years after the request (1,132); books of 25 and 50, no region above half; M = landmark model, LA = lookup with agreement status, E = entry ranking not re-scored; 200 resamples.
+
+| Line | What | Model | Benchmark | Difference [95% interval] | Verdict |
+|---|---|---|---|---|---|
+| C15 | book of 25: operations within 3 years, M vs LA | 19 | 11 | +8 [+1, +11] | PASS |
+| C15 | book of 50: operations within 3 years, M vs LA | 33 | 24 | +9 [+0.98, +13] | PASS |
+| C15 | book of 25: operations within 3 years, M vs E | 19 | 8 | +11 [+4, +13] | PASS |
+| C15 | book of 50: operations within 3 years, M vs E | 33 | 19 | +14 [+7, +19] | PASS |
+| C16 | book of 25: MW within 3 years, M vs LA | 1,078 | 1,681 | −604 [−2,196, +155] | FAIL |
+| C16 | book of 50: MW within 3 years, M vs LA | 2,357 | 3,271 | −914 [−3,090, +180] | FAIL |
+| C16 | book of 25: MW within 3 years, M vs E | 1,078 | 712 | +365 [−337, +846] | FAIL |
+| C16 | book of 50: MW within 3 years, M vs E | 2,357 | 1,858 | +498 [−871, +1,238] | FAIL |
+| C17 | all sizes: M after the level repair, intercept at 3 years (must cover 0) | raw −0.29 | 0 | −0.44 [−0.59, −0.28] | FAIL |
+| C17 | ≥ 20 MW: M after the level repair, intercept at 3 years (must cover 0) | — | 0 | −0.50 [−0.68, −0.32] | FAIL |
+
 ## Appendix E — Value and cost assumptions (`results/value_assumptions.csv`)
 
 Every input of the value index that is not parsed from a file on disk, with its range; parsed inputs are listed with their source.

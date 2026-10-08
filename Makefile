@@ -38,7 +38,7 @@ v3:               ## 01b, 11-20: the portfolio layer (fair baseline, level, mile
 	$(PYTHON) run_pipeline.py --only 01b 11 12 13 14 15 16 17 18 19 20
 
 figures:          ## every notebook that draws figures
-	$(PYTHON) run_pipeline.py --only 01 03 03b 08 09 01b 11 12 13 14 15 16 17 18 19
+	$(PYTHON) run_pipeline.py --only 01 03 03b 08 09 01b 11 12 13 14 15 16 17 18 19 20
 
 numbers:          ## results/report_numbers.csv: every number the report cites, read from results/
 	$(PYTHON) -m src.report_numbers
@@ -49,5 +49,5 @@ report: numbers   ## report.md + references.md + appendix.md → report/report.p
 test:
 	$(PYTHON) -m pytest
 
-all:              ## notebooks 01 → 09 (with 03b and 08b), then 01b and 11 → 19, stop at the first error
+all:              ## notebooks 01 → 09 (with 03b and 08b), then 01b and 11 → 20, stop at the first error
 	$(PYTHON) run_pipeline.py

@@ -3,11 +3,12 @@
 SIADS 699 Capstone (Master of Applied Data Science, University of Michigan), Group 13.
 Author: Alan Mössinger.
 
-> **Status (2026-10-06):** the v1 pipeline (notebooks 01–09, the registered
+> **Status (2026-10-08):** the v1 pipeline (notebooks 01–09, the registered
 > verdict on the frozen 2025 file) and the v3 portfolio layer (notebooks 01b
-> and 11–19: fair baseline, level repair, milestones, landmark models, value
+> and 11–20: fair baseline, level repair, milestones, landmark models, value
 > and cost, the book and its backtest, levers and playbooks, the v2 verdict,
-> MISO/SPP) run end to end with `make all`. Report v2 in progress.
+> MISO/SPP, the milestone-managed book) run end to end with `make all`.
+> Report v2 updated with notebook 20's registered verdict.
 
 ## About
 
@@ -30,7 +31,10 @@ to reduce them (17), the right book per region (15–16) and what an energy
 company should do with the result (report). The v1 question — can a model
 beat cohort averages at entry — is answered by notebooks 05–09, and the
 answer for utility-scale requests turned out to be *no beyond a size lookup*
-(notebook 11); the value is at the milestones (notebook 14).
+(notebook 11); the value is at the milestones (notebook 14), where a
+registered test finds the model's book holds more requests that reach
+operation than a lookup that knows the agreement status, though not more MW
+(notebook 20).
 
 ## Data
 
@@ -40,6 +44,7 @@ answer for utility-scale requests turned out to be *no beyond a size lookup*
 | LBNL *Queued Up: 2026 Edition* project file (alongside) | 38,201 requests through end-2025: reconciliation, the newest cohorts' early outcomes, MISO/SPP dates | same page; CC BY 4.0 |
 | EIA-860M via the EIA API v2 | inventory of operable U.S. generators (operating month, location) | free API key in `.env` |
 | CAISO public queue report (via `gridstatus`) | cluster, study-phase and agreement status of CAISO requests | `data/raw/iso/` |
+| PJM queue export and ERCOT GIS report | PJM request, exit and status fields; ERCOT phase dates for requests still active (notebook 13) | fetched from pjm.com and ercot.com; `data/raw/iso/`, not redistributed |
 | EIA wholesale prices, PJM market-monitor report, LBNL PJM cost data, IRS Notice 2025-42, Census boundaries | the value and cost layer and the map | `data/raw/value/`, `data/raw/lbnl_costs/`, `data/raw/geo/` |
 
 The full data access statement, terms and data dictionary are in
@@ -58,7 +63,7 @@ make setup     # .venv, pinned packages, Jupyter kernel "queue-survival"
 3. Run:
 
 ```bash
-make all       # notebooks 01 → 09, then 01b and 11 → 19, stopping at the first error
+make all       # notebooks 01 → 09, then 01b and 11 → 20, stopping at the first error
 make v3        # only the portfolio layer (01b, 11 → 19)
 make test      # pytest
 make report    # report/report.pdf from report/*.md (needs pandoc and typst)
@@ -73,7 +78,8 @@ see the `Makefile`). `python run_pipeline.py --only 01` runs a single notebook.
 notebooks/   01_get_data … 09_explain_and_rank — the v1 analysis (registered verdict), run in order;
              03b (map), 01b (2026 file), 11 (fair baseline, utility scale), 12 (level), 13 (milestones),
              14 (landmark models), 15 (value and cost), 16 (the book and its backtest),
-             17 (constraints, levers, playbooks), 18 (the v2 verdict), 19 (MISO and SPP)
+             17 (constraints, levers, playbooks), 18 (the v2 verdict), 19 (MISO and SPP),
+             20 (the milestone-managed book, registered)
 src/         small helper package used by the notebooks (paths, config, data access, plots)
 data/        raw/ (not committed) · interim/ (not committed) · processed/ (small final tables)
 results/     every number the report cites, written by the notebooks

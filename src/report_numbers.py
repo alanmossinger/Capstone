@@ -9,7 +9,8 @@ check that each number in the report's text appears here, and anyone can
 look up where a number comes from (``source`` column).
 Reads: CSV and JSON files in ``results/``; design constants from
 ``src/config.py`` and ``src/track_b.py``. The ``v3_*`` steps read the
-portfolio-layer tables of notebooks 01b and 11–19.
+portfolio-layer tables of notebooks 01b and 11–19;
+``v4_managed_book`` reads notebooks 13 and 20.
 Writes: ``results/report_numbers.csv`` (key, text, value, source, note).
 Used by: ``make numbers`` (``python -m src.report_numbers``), before the
 report is written or rebuilt; ``tests/test_report.py``.
@@ -1005,6 +1006,61 @@ def v3_appendix():
     add("a_horizon_years", "0.8–1.2", (0.8, 1.2), "docs/decisions.md #52", "C7/C14 slope range")
 
 
+def signed(x, digits=0, count=False):
+    """A signed number with thousands separators and a typographic minus; a count keeps two decimals only when it is not whole."""
+    if count and abs(x - round(x)) > 1e-9:
+        digits = 2  # a percentile between two integer differences (e.g. +0.98) keeps its decimals
+    return f"{x:+,.{digits}f}".replace("-", "−")
+
+
+def v4_managed_book():
+    """Notebook 13's PJM and ERCOT files and notebook 20's registered milestone-managed book (C15–C17)."""
+    join = read("iso_join_rates.csv").set_index("iso")
+    add("pjm_join_test", pct(join.loc["PJM", "share_found_2017_2019"], 0), join.loc["PJM", "share_found_2017_2019"], "results/iso_join_rates.csv",
+        "PJM 2017–2019 entrants found in PJM's export")
+    add("pjm_same_day", f"{int(join.loc['PJM', 'found_in_iso_file']):,}", int(join.loc["PJM", "found_in_iso_file"]), "results/iso_join_rates.csv",
+        "PJM requests found in the export; every shared request date on the same day (notebook 13)")
+    cont = read("iso_file_contents.csv").set_index(["file", "item"])
+    for column, tag in [("operated", "op"), ("withdrew", "wd")]:
+        v = int(cont.loc[("ERCOT", "test requests"), column])
+        add(f"ercot_test_{tag}", str(v), v, "results/iso_file_contents.csv", f"ERCOT test requests that {column} (none listed in the GIS report)")
+    pool = read("managed_book_pool.csv").set_index("region")
+    add("mb_pool", f"{int(pool.loc['all', 'requests']):,}", int(pool.loc["all", "requests"]), "results/managed_book_pool.csv", "pool at +2, ≥ 20 MW")
+    add("mb_pool_built", str(int(pool.loc["all", "operated_within_3"])), int(pool.loc["all", "operated_within_3"]), "results/managed_book_pool.csv",
+        "pool requests operating within 3 years of the landmark")
+    add("mb_pool_known", str(int(pool.loc["all", "agreement_known"])), int(pool.loc["all", "agreement_known"]), "results/managed_book_pool.csv",
+        "pool requests with an agreement known at the landmark")
+    books = read("managed_books.csv").set_index(["chooser", "n", "metric"])
+    for chooser in ["M", "LA", "E", "L0", "random"]:
+        for n in [25, 50]:
+            r = books.loc[(chooser, n, "operations")]
+            add(f"mb_{chooser}_{n}_ops", str(int(r["estimate"])), r["estimate"], "results/managed_books.csv", f"{chooser}, book of {n}: operations")
+            r = books.loc[(chooser, n, "MW")]
+            add(f"mb_{chooser}_{n}_mw", f"{r['estimate']:,.0f}", r["estimate"], "results/managed_books.csv", f"{chooser}, book of {n}: MW realised")
+    comp = read("managed_book_composition.csv").set_index(["chooser", "n"])
+    add("mb_known_25", str(int(comp.loc[("M", 25), "agreement_known"])), int(comp.loc[("M", 25), "agreement_known"]), "results/managed_book_composition.csv",
+        "books of 25: requests with a known agreement (M and LA alike)")
+    add("mb_la_known_built_25", str(int(comp.loc[("LA", 25), "operated_with_agreement"])), int(comp.loc[("LA", 25), "operated_with_agreement"]),
+        "results/managed_book_composition.csv", "LA book of 25: agreed requests that operated")
+    add("mb_shared_25", str(int(comp.loc[("LA", 25), "shared_with_M"])), int(comp.loc[("LA", 25), "shared_with_M"]), "results/managed_book_composition.csv",
+        "requests shared by the M and LA books of 25")
+    cal = read("landmark_level_calibration.csv")
+    for model, tag in [("M raw", "raw"), ("M repaired", "rep")]:
+        r = cal[(cal["cohort"] == "all sizes") & (cal["model"] == model) & (cal["metric"] == "intercept")].iloc[0]
+        add(f"c17_{tag}", num(r["estimate"], 2), r["estimate"], "results/landmark_level_calibration.csv", f"{model}: calibration intercept, +2 landmark, 3 years")
+        add(f"c17_{tag}_iv", interval(r["low"], r["high"], 2, False), (r["low"], r["high"]), "results/landmark_level_calibration.csv", "its interval")
+    scored = read("success_criteria_v4_scored.csv")
+    add("v4_pass", f"{int(scored['pass'].sum())} of {len(scored)}", int(scored["pass"].sum()), "results/success_criteria_v4_scored.csv", "registered v4 lines passing")
+    for i, r in scored.iterrows():
+        if r["id"] in ("C15", "C16"):
+            c = r["id"] == "C15"
+            text = f"{signed(r['estimate'], count=c)} [{signed(r['low'], count=c)}, {signed(r['high'], count=c)}]"
+            add(f"a4_{i}_diff", text, (r["estimate"], r["low"], r["high"]), "results/success_criteria_v4_scored.csv", f"A4 row {i}: M − {r['benchmark']}")
+        else:
+            add(f"a4_{i}_intercept", f"{num(r['estimate'], 2)} {interval(r['low'], r['high'], 2, False)}", (r["estimate"], r["low"], r["high"]),
+                "results/success_criteria_v4_scored.csv", f"A4 row {i}: repaired intercept")
+
+
 def build():
     """Collect every cited number and write ``results/report_numbers.csv``.
 
@@ -1022,7 +1078,7 @@ def build():
     ROWS.clear()
     for step in (design_constants, gathering_and_cleaning, eda, modelling, evaluation, explanation, posthoc,
                  v3_data, v3_fair_baseline, v3_level, v3_landmark, v3_value, v3_miso_spp, v3_portfolio,
-                 v3_extras, v3_appendix):
+                 v3_extras, v3_appendix, v4_managed_book):
         step()
     table = pd.DataFrame(ROWS)
     table.to_csv(paths.RESULTS / "report_numbers.csv", index=False)
