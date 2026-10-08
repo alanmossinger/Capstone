@@ -97,14 +97,24 @@ The same inventory as a monthly Excel file from
 <https://www.eia.gov/electricity/data/eia860m/> (no key needed). Used only if
 the API fails; not needed so far.
 
-### S7 — ISO-native queue files (CAISO obtained; PJM and ERCOT pending)
+### S7 — ISO-native queue files (CAISO, PJM, ERCOT)
 
 - **What:** `data/raw/iso/caiso_queue_2026-10-06.parquet`, CAISO's public
   queue report as pulled by `gridstatus` 0.36.0 on 2026-10-06 (2,278 rows:
   queue ID, cluster, study-phase statuses, agreement status, queue,
-  withdrawal and completion dates). PJM's queue export and ERCOT's GIS
-  report could not be fetched from this machine (decision #53); when they
-  are placed in `data/raw/iso/`, notebook 13 reads them.
+  withdrawal and completion dates).
+  `data/raw/iso/pjm_queue_2026-10-07.xml` (23 MB), PJM's queue export
+  (`PlanningQueues.xml`, 9,263 queue positions: request, withdrawal,
+  in-service, backfeed and test-energy dates; study and agreement
+  *statuses* with links to the PDFs, no study or agreement dates).
+  `data/raw/iso/ercot_gis_2026-10-07.xlsx` (0.7 MB), ERCOT's monthly GIS
+  report for September 2026 activity (1,996 INRs on the active, inactive
+  and cancelled sheets: screening, full-study and agreement dates; requests
+  that operated or withdrew before the month are not listed). PJM and
+  ERCOT were fetched by Alan from another network on 2026-10-07 (pjm.com
+  and ercot.com refuse this machine, decision #53); what they add is
+  measured in notebook 13 (decision #57). SHA-256 of all three in
+  `data/raw/iso/SHA256.txt`; parsed by `src/iso_files.py`.
 - **How to obtain:** `gridstatus.CAISO().get_interconnection_queue()`
   (source: <http://www.caiso.com/PublishedDocuments/PublicQueueReport.xlsx>);
   PJM: the "Export" of <https://www.pjm.com/planning/service-requests/services-request-status>;
