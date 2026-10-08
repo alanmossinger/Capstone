@@ -1,0 +1,11 @@
+id,line,metric,n,model,benchmark,rule,estimate,low,high,pass
+C15,"+2 landmark, ≥ 20 MW, book of 25: operations realised within 3 years, M vs LA",operations,25.0,M,LA,paired 95% interval of M − benchmark entirely above 0,8.0,1.0,11.0,True
+C15,"+2 landmark, ≥ 20 MW, book of 50: operations realised within 3 years, M vs LA",operations,50.0,M,LA,paired 95% interval of M − benchmark entirely above 0,9.0,0.9750000000000041,13.0,True
+C15,"+2 landmark, ≥ 20 MW, book of 25: operations realised within 3 years, M vs E",operations,25.0,M,E,paired 95% interval of M − benchmark entirely above 0,11.0,4.0,13.0,True
+C15,"+2 landmark, ≥ 20 MW, book of 50: operations realised within 3 years, M vs E",operations,50.0,M,E,paired 95% interval of M − benchmark entirely above 0,14.0,7.0,19.0,True
+C16,"+2 landmark, ≥ 20 MW, book of 25: MW realised within 3 years, M vs LA",MW,25.0,M,LA,paired 95% interval of M − benchmark entirely above 0,-603.7399999999998,-2196.28025,155.2672499999999,False
+C16,"+2 landmark, ≥ 20 MW, book of 50: MW realised within 3 years, M vs LA",MW,50.0,M,LA,paired 95% interval of M − benchmark entirely above 0,-913.8100000000004,-3090.40675,179.6030000000001,False
+C16,"+2 landmark, ≥ 20 MW, book of 25: MW realised within 3 years, M vs E",MW,25.0,M,E,paired 95% interval of M − benchmark entirely above 0,365.3100000000002,-337.20274999999987,846.3697500000001,False
+C16,"+2 landmark, ≥ 20 MW, book of 50: MW realised within 3 years, M vs E",MW,50.0,M,E,paired 95% interval of M − benchmark entirely above 0,498.4499999999998,-871.1514999999999,1237.5815000000005,False
+C17,"+2 landmark, all sizes: M after the level repair, calibration intercept at 3 years",intercept,,M repaired,,95% interval covers 0,-0.4379767570469098,-0.5908161363454739,-0.2849358476769875,False
+C17,"+2 landmark, ≥ 20 MW: M after the level repair, calibration intercept at 3 years",intercept,,M repaired,,95% interval covers 0,-0.49533222411310157,-0.6811455814965313,-0.3192377281002943,False

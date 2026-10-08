@@ -34,8 +34,8 @@ evaluate:         ## 08: metrics, calibration, F4 F5; 08b: post-hoc improvements
 explain:          ## 09: forest plot, SHAP, ranking table, F6 F7
 	$(PYTHON) run_pipeline.py --only 09
 
-v3:               ## 01b, 11-19: the portfolio layer (fair baseline, level, milestones, landmarks, value, book, levers, verdict, MISO/SPP)
-	$(PYTHON) run_pipeline.py --only 01b 11 12 13 14 15 16 17 18 19
+v3:               ## 01b, 11-20: the portfolio layer (fair baseline, level, milestones, landmarks, value, book, levers, verdict, MISO/SPP, managed book)
+	$(PYTHON) run_pipeline.py --only 01b 11 12 13 14 15 16 17 18 19 20
 
 figures:          ## every notebook that draws figures
 	$(PYTHON) run_pipeline.py --only 01 03 03b 08 09 01b 11 12 13 14 15 16 17 18 19

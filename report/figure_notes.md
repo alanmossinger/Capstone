@@ -1282,6 +1282,16 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** Calibration of the Track B models by prediction bin.
 <!-- /fig:18_02_trackB_calibration -->
 
+<!-- fig:20_02_level_at_the_landmark -->
+### 20_02_level_at_the_landmark
+
+![20_02_level_at_the_landmark](../figures/20_managed_book/20_02_level_at_the_landmark.png)
+
+*Notebook:* `notebooks/20_managed_book.ipynb` · *Files:* `figures/20_managed_book/20_02_level_at_the_landmark.png`, `.svg`
+
+**Caption (stub).** Observed and predicted three-year operation after the two-year landmark by entry cohort, before and after the level repair.
+<!-- /fig:20_02_level_at_the_landmark -->
+
 <!-- fig:F10_gains_over_baselines -->
 ### F10_gains_over_baselines
 
@@ -1361,6 +1371,16 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 
 **Caption (stub).** Uno's C, Brier score and calibration slope of the MISO and SPP timing models at 3 and 5 years, with baselines.
 <!-- /fig:F17_miso_spp -->
+
+<!-- fig:F18_managed_book -->
+### F18_managed_book
+
+![F18_managed_book](../figures/F18_managed_book.png)
+
+*Notebook:* `notebooks/20_managed_book.ipynb` · *Files:* `figures/F18_managed_book.png`, `.svg`
+
+**Caption (stub).** Operations and MW realised within three years by the books each chooser keeps two years after the request, with bootstrap intervals.
+<!-- /fig:F18_managed_book -->
 
 <!-- fig:F1_cif_by_region -->
 ### F1_cif_by_region

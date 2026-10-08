@@ -24,7 +24,7 @@ from pathlib import Path
 
 NOTEBOOKS = Path(__file__).resolve().parent / "notebooks"
 PIPELINE = ["01", "02", "03", "03b", "04", "05", "06", "07", "08", "08b", "09",  # v1: the registered pipeline on the 2025 file
-            "01b", "11", "12", "13", "14", "15", "16", "17", "18", "19"]  # v3: the portfolio layer (PLAN.md v3); 10 was dropped
+            "01b", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"]  # v3: the portfolio layer (PLAN.md v3); 10 was dropped
 KERNEL = "queue-survival"  # registered from .venv by `make setup`
 
 
