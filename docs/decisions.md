@@ -577,3 +577,52 @@ alternative rejected.
     2023 and the post-reform regime is not observable; the one scenario
     with a measured basis (the post-2020 level) is the largest.
     *Rejected:* fitting a reform effect on data that cannot carry it.
+57. **PJM's queue export and ERCOT's GIS report: joined, and neither adds a
+    landmark** (2026-10-08). Alan fetched both files from another network
+    on 2026-10-07 (`data/raw/iso/`, SHA-256 recorded; `src/iso_files.py`).
+    Notebook 13 joins them and measures what they date after entry for the
+    2017–2019 cohort. PJM's export finds 94.5% of the cohort and agrees
+    with the LBNL PJM request, withdrawal and in-service dates on the same
+    day for every shared request, but dates no study and no agreement: each
+    phase is a status with a PDF link, and the status is October 2026's,
+    so it carries the outcome. Its backfeed dates come a median 0.27 years
+    before operation and are often planned dates. ERCOT's report dates every
+    phase but lists only requests still active (or inactive / cancelled in
+    the month); none of the cohort's 92 operations or 223 withdrawals is in
+    it, so its dates are observed only for survivors. The milestone table
+    is therefore unchanged and PJM's dated phases remain the open gap.
+    *Rejected:* using PJM's agreement status or ERCOT's phase dates as
+    landmark features (both would carry the outcome; C12); parsing the 158
+    executed-agreement PDFs the public web archive holds (63 for the
+    1,465 PJM test requests, a selected sample, coverage from about 3% to
+    about 7%).
+58. **Pre-registered criteria C15–C17: the milestone-managed book and the
+    level at the landmark** (2026-10-08; written to
+    `results/success_criteria_v4.csv` and committed before notebook 20 ran
+    any test). *Pool:* Track A test entrants 2017–2019 of 20 MW and more
+    still in the queue two years after the request (notebook 14's +2 risk
+    set). *Decision:* keep N requests, N = 25 and 50, no region above 50%
+    of N, ties broken by a fixed random order shared by every chooser.
+    *Choosers* (each ranks by P(operation within 3 years of the landmark)):
+    M, the landmark model (notebook 14's "agreement updated" view, chosen
+    there as the best view before this test); LA, the agreement-aware
+    lookup (region × technology × size cells, fitted separately on training
+    requests with and without an agreement known at the landmark); E, no
+    re-scoring (the fair baseline's entry P(operation by 5 years)). The
+    plain lookup at the landmark is reported, not registered, because C8
+    already showed M beats it. *Outcome:* operation within 3 years of the
+    landmark (all observed by end-2024) and its MW. *Test:* 200 resamples
+    of the pool, books re-chosen in each, paired 95% percentile interval.
+    C15: operations, M vs LA and M vs E, N = 25 and 50 (four lines). C16:
+    MW, the same four. C17: M's level repaired with an intercept fitted on
+    early outcomes dated before the landmark (cohort c's 1-year and cohort
+    c − 1's 2-year operations against the landmark model's entry view), the
+    calibration intercept at 3 years from the landmark covers 0, on the full
+    +2 risk set and on ≥ 20 MW (two lines). Pass: the interval entirely on
+    the better side (C15, C16) or covering 0 (C17). *Thesis rule, fixed
+    now:* the stronger thesis — a model-managed book beats a careful
+    analyst's lookup at the milestone — is supported only if both C15 lines
+    against LA pass; otherwise the report keeps the current thesis.
+    *Rejected:* comparing only with the plain lookup (it does not know the
+    agreement, so the model would win on information the analyst also has);
+    choosing the view, N or the cap after seeing a book.

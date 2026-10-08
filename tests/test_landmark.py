@@ -36,3 +36,17 @@ def test_conditional_cif_restarts_at_the_landmark():
     assert np.isclose(out.loc[0, 1], 0.1)
     assert np.isclose(out.loc[0, 2], 0.1 + 0.6 * 0.2)
     assert np.isclose(out.loc[0, 3], out.loc[0, 2])
+
+
+def test_agreement_lookup_splits_cells_by_what_is_known_at_the_landmark():
+    rng = np.random.default_rng(0)
+    n = 400
+    q = pd.Timestamp("2010-01-01")
+    agreed = np.arange(n) < 200
+    train = pd.DataFrame({"q_date": q, "region": "R", "tech": "solar", "size_regime": "large", "entry_years": 0.0,
+                          "duration_years": 2.5 + rng.uniform(0, 2, n), "event": np.where(agreed, 1, 2)})
+    ia = pd.Series(np.where(agreed, q + pd.Timedelta(days=200), pd.NaT), index=train.index, dtype="datetime64[ns]")
+    target = train.iloc[[0, 300]].copy()  # one with an agreement known at +2, one without
+    out = landmark.agreement_lookup_at_landmark(train, target, 2, [3], ia)
+    assert out["agreement_known"].tolist() == [True, False]
+    assert out.loc[0, 3] > 0.9 and out.loc[300, 3] < 0.1  # every agreed request operated, every other withdrew

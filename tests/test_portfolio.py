@@ -35,3 +35,13 @@ def test_choice_respects_budget_and_caps():
 def test_rho_is_zero_without_overdispersion():
     rho, phi = portfolio.estimate_rho(observed=[0.10, 0.11, 0.09, 0.10], predicted=[0.10] * 4, n=[1000] * 4)
     assert rho < 0.05
+
+
+def test_top_n_book_respects_cap_and_breaks_ties_by_the_shared_order():
+    score = np.array([0.9, 0.9, 0.9, 0.5, 0.4, -np.inf])
+    region = np.array(["A", "A", "A", "B", "B", "B"])
+    tiebreak = np.array([0.3, 0.1, 0.2, 0.0, 0.0, 0.0])
+    chosen = portfolio.top_n_book(score, region, n=4, cap_share=0.5, tiebreak=tiebreak)
+    assert chosen.sum() == 4
+    assert chosen.tolist() == [False, True, True, True, True, False]  # two A places, taken by the lowest tie-break values
+    assert not portfolio.top_n_book(score, region, n=6, cap_share=1.0, tiebreak=tiebreak)[5]  # -inf is never kept

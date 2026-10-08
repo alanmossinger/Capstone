@@ -1,0 +1,120 @@
+{
+  "decided": "2026-10-08",
+  "decision": 58,
+  "n_boot": 200,
+  "level": 0.95,
+  "seed": 2058,
+  "pool": "Track A test entrants 2017–2019 of 20 MW and more (variants.at_least_20) in the queue two full years after the request (landmark.risk_set(test, 2))",
+  "landmark_years": 2,
+  "horizon_after_landmark": 3,
+  "book_sizes": [
+    25,
+    50
+  ],
+  "region_cap_share": 0.5,
+  "tie_break": "a uniform random number per request, drawn once per resample and shared by every chooser; lower first",
+  "outcome": "operation within 3 years of the landmark (event == 1 and duration − 2 ≤ 3), all observed by 2024-12-31; MW of those requests",
+  "choosers": {
+    "M": "landmark model: notebook 14's 'agreement updated' view (LightGBM hazards with the dated agreement flag, congestion at entry), refitted on entrants to 2016",
+    "LA": "agreement-aware lookup: region × technology × size-band Aalen–Johansen cells from the landmark on, fitted separately on training requests with and without an agreement known at the landmark (landmark.agreement_lookup_at_landmark)",
+    "E": "no re-scoring: the fair baseline's P(operation by 5 years) at entry (notebook 11)"
+  },
+  "reported_not_registered": [
+    "L0: the plain lookup at the landmark (C8 already compares it)",
+    "random: a random book under the same cap"
+  ],
+  "level_repair": "for entry cohort c, one intercept (slope fixed at 1, drift.fit_intercept) fitted on cohort c's operations within 1 year and cohort c − 1's within 2 years, against the landmark model's entry view (landmark k = 0) of the same requests, all sizes and regions pooled; applied to M's +2 predictions of cohort c. Every outcome used ends before 1 January of c + 2, before any landmark of cohort c",
+  "thesis_rule": "the stronger thesis (a model-managed book beats a careful analyst's lookup at the milestone) is supported only if both C15 lines against LA pass; otherwise the report keeps the current thesis",
+  "criteria": [
+    {
+      "id": "C15",
+      "line": "+2 landmark, ≥ 20 MW, book of 25: operations realised within 3 years, M vs LA",
+      "metric": "operations",
+      "n": 25,
+      "model": "M",
+      "benchmark": "LA",
+      "rule": "paired 95% interval of M − benchmark entirely above 0"
+    },
+    {
+      "id": "C15",
+      "line": "+2 landmark, ≥ 20 MW, book of 50: operations realised within 3 years, M vs LA",
+      "metric": "operations",
+      "n": 50,
+      "model": "M",
+      "benchmark": "LA",
+      "rule": "paired 95% interval of M − benchmark entirely above 0"
+    },
+    {
+      "id": "C15",
+      "line": "+2 landmark, ≥ 20 MW, book of 25: operations realised within 3 years, M vs E",
+      "metric": "operations",
+      "n": 25,
+      "model": "M",
+      "benchmark": "E",
+      "rule": "paired 95% interval of M − benchmark entirely above 0"
+    },
+    {
+      "id": "C15",
+      "line": "+2 landmark, ≥ 20 MW, book of 50: operations realised within 3 years, M vs E",
+      "metric": "operations",
+      "n": 50,
+      "model": "M",
+      "benchmark": "E",
+      "rule": "paired 95% interval of M − benchmark entirely above 0"
+    },
+    {
+      "id": "C16",
+      "line": "+2 landmark, ≥ 20 MW, book of 25: MW realised within 3 years, M vs LA",
+      "metric": "MW",
+      "n": 25,
+      "model": "M",
+      "benchmark": "LA",
+      "rule": "paired 95% interval of M − benchmark entirely above 0"
+    },
+    {
+      "id": "C16",
+      "line": "+2 landmark, ≥ 20 MW, book of 50: MW realised within 3 years, M vs LA",
+      "metric": "MW",
+      "n": 50,
+      "model": "M",
+      "benchmark": "LA",
+      "rule": "paired 95% interval of M − benchmark entirely above 0"
+    },
+    {
+      "id": "C16",
+      "line": "+2 landmark, ≥ 20 MW, book of 25: MW realised within 3 years, M vs E",
+      "metric": "MW",
+      "n": 25,
+      "model": "M",
+      "benchmark": "E",
+      "rule": "paired 95% interval of M − benchmark entirely above 0"
+    },
+    {
+      "id": "C16",
+      "line": "+2 landmark, ≥ 20 MW, book of 50: MW realised within 3 years, M vs E",
+      "metric": "MW",
+      "n": 50,
+      "model": "M",
+      "benchmark": "E",
+      "rule": "paired 95% interval of M − benchmark entirely above 0"
+    },
+    {
+      "id": "C17",
+      "line": "+2 landmark, all sizes: M after the level repair, calibration intercept at 3 years",
+      "metric": "intercept",
+      "n": null,
+      "model": "M repaired",
+      "benchmark": "",
+      "rule": "95% interval covers 0"
+    },
+    {
+      "id": "C17",
+      "line": "+2 landmark, ≥ 20 MW: M after the level repair, calibration intercept at 3 years",
+      "metric": "intercept",
+      "n": null,
+      "model": "M repaired",
+      "benchmark": "",
+      "rule": "95% interval covers 0"
+    }
+  ]
+}

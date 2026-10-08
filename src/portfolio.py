@@ -166,3 +166,49 @@ def random_book(cost, budget, caps, rng):
         for k, (labels, _) in enumerate(caps):
             spent_by[k][labels[i]] = spent_by[k].get(labels[i], 0.0) + cost[i]
     return chosen
+
+
+def top_n_book(score, groups, n, cap_share, tiebreak):
+    """The ``n`` requests with the highest score, no group above ``cap_share`` of ``n``.
+
+    Parameters
+    ----------
+    score : array-like
+        Each request's score (higher is kept first); ``-inf`` is never kept.
+    groups : array-like
+        Group of each request (region), for the concentration cap.
+    n : int
+        Size of the book.
+    cap_share : float
+        Largest share of the ``n`` places one group may take.
+    tiebreak : array-like
+        A random number per request; among equal scores the lower one is
+        taken first.
+
+    Returns
+    -------
+    numpy.ndarray of bool
+        The chosen requests.
+
+    Notes
+    -----
+    A count-limited book: the question is which requests, not how many MW
+    per dollar, so ranking is all that matters (decision #58). Lookup
+    scores are equal inside a cell, so the tie-break decides which members
+    of the last cell get in; passing the same ``tiebreak`` to every chooser
+    keeps the comparison paired, and drawing it afresh in each bootstrap
+    resample averages its effect into the interval. Greedy order with the
+    cap is optimal here because every request takes one place.
+    """
+    score, groups, tiebreak = np.asarray(score, float), np.asarray(groups), np.asarray(tiebreak, float)
+    limit = int(np.floor(cap_share * n))
+    order = np.lexsort((tiebreak, -score))
+    chosen = np.zeros(len(score), bool)
+    taken = {}
+    for i in order:
+        if chosen.sum() == n or not np.isfinite(score[i]):
+            break
+        if taken.get(groups[i], 0) < limit:
+            chosen[i] = True
+            taken[groups[i]] = taken.get(groups[i], 0) + 1
+    return chosen

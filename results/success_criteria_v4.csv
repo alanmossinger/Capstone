@@ -1,0 +1,11 @@
+id,line,metric,n,model,benchmark,rule
+C15,"+2 landmark, ≥ 20 MW, book of 25: operations realised within 3 years, M vs LA",operations,25.0,M,LA,paired 95% interval of M − benchmark entirely above 0
+C15,"+2 landmark, ≥ 20 MW, book of 50: operations realised within 3 years, M vs LA",operations,50.0,M,LA,paired 95% interval of M − benchmark entirely above 0
+C15,"+2 landmark, ≥ 20 MW, book of 25: operations realised within 3 years, M vs E",operations,25.0,M,E,paired 95% interval of M − benchmark entirely above 0
+C15,"+2 landmark, ≥ 20 MW, book of 50: operations realised within 3 years, M vs E",operations,50.0,M,E,paired 95% interval of M − benchmark entirely above 0
+C16,"+2 landmark, ≥ 20 MW, book of 25: MW realised within 3 years, M vs LA",MW,25.0,M,LA,paired 95% interval of M − benchmark entirely above 0
+C16,"+2 landmark, ≥ 20 MW, book of 50: MW realised within 3 years, M vs LA",MW,50.0,M,LA,paired 95% interval of M − benchmark entirely above 0
+C16,"+2 landmark, ≥ 20 MW, book of 25: MW realised within 3 years, M vs E",MW,25.0,M,E,paired 95% interval of M − benchmark entirely above 0
+C16,"+2 landmark, ≥ 20 MW, book of 50: MW realised within 3 years, M vs E",MW,50.0,M,E,paired 95% interval of M − benchmark entirely above 0
+C17,"+2 landmark, all sizes: M after the level repair, calibration intercept at 3 years",intercept,,M repaired,,95% interval covers 0
+C17,"+2 landmark, ≥ 20 MW: M after the level repair, calibration intercept at 3 years",intercept,,M repaired,,95% interval covers 0

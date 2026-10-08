@@ -163,3 +163,53 @@ def fair_baseline_at_landmark(train, target, k, horizons):
     at_risk["duration_years"] = at_risk["duration_years"] - k
     from src import baselines  # local import: baselines does not depend on this module
     return baselines.fair_baseline_cif(at_risk, target, horizons)
+
+
+def agreement_known_at(frame, k, ia_dates):
+    """True when the request's agreement is dated before the first day of year k + 1 (known at landmark k)."""
+    rows = pd.DataFrame({"project": frame.index.to_numpy(), "year_in_queue": k + 1}, index=frame.index)
+    return ia_before_year(rows, frame, ia_dates).astype(bool)
+
+
+def agreement_lookup_at_landmark(train, target, k, horizons, ia_dates):
+    """The lookup an analyst builds at a landmark when the agreement status is known: fair-baseline cells split by it.
+
+    Parameters
+    ----------
+    train, target : pandas.DataFrame
+        Training requests and requests to predict for, with the fair
+        baseline's columns and ``q_date``.
+    k : int
+        Landmark, in full years after the request.
+    horizons : list of int
+        Years after the landmark.
+    ia_dates : pandas.Series
+        Agreement dates by row label (NaT where none is dated).
+
+    Returns
+    -------
+    pandas.DataFrame
+        Index of ``target``, one column per horizon, ``cell`` and
+        ``agreement_known``.
+
+    Notes
+    -----
+    The comparator a careful analyst could build with the same dated
+    information the landmark model has: region × technology × size-band
+    incidence from the landmark on, fitted separately on the training
+    requests with and without an agreement known at the landmark, with the
+    usual fallback to coarser cells (decision #58). Without it, a model that
+    beats the plain lookup at a landmark may only be using the agreement
+    flag, which a table can use as well.
+    """
+    at_risk = train[risk_set(train, k)]
+    known_train = agreement_known_at(at_risk, k, ia_dates)
+    known_target = agreement_known_at(target, k, ia_dates)
+    out = []
+    for flag in (True, False):
+        part = target[known_target == flag]
+        if len(part):
+            pred = fair_baseline_at_landmark(at_risk[known_train == flag], part, k, horizons)
+            pred["agreement_known"] = flag
+            out.append(pred)
+    return pd.concat(out).reindex(target.index)
