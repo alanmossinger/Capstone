@@ -30,11 +30,11 @@ PLACEHOLDER_Q_DATE = "1970-01-01"  # Unix epoch used as a fill value for unknown
 CENSOR_DATE = "2024-12-31"  # end of LBNL data collection; every open project is censored here
 EARLIEST_VALID_DATE = "1950-01-01"  # event dates before this are typing errors (rule R3)
 MW_FLAG_THRESHOLD = 5000  # requests above this many MW are flagged for review, not dropped (rule R6)
-ERCOT_BULK_WD_DATE = "2018-08-29"  # 441 ERCOT withdrawals share this recorded date (notebook 03, decision #21)
+ERCOT_BULK_WD_DATE = "2018-08-29"  # 441 ERCOT withdrawals share this recorded date (notebook 02 (part A), decision #21)
 TRACK_B_MAX_YEAR = 2017  # Track B uses entrants up to this year, resolved ones only (PLAN.md §6)
-RARE_TYPE_MIN = 100  # technology levels with fewer requests are pooled into "Other" (PLAN.md §6, notebook 04)
+RARE_TYPE_MIN = 100  # technology levels with fewer requests are pooled into "Other" (PLAN.md §6, notebook 03)
 
-# --- NREL Annual Technology Baseline 2024, v3 (source S12; capital and O&M per kW for the NPV of notebook 15) ---
+# --- NREL Annual Technology Baseline 2024, v3 (source S12; capital and O&M per kW for the NPV of notebook 07) ---
 ATB_URL = "https://oedi-data-lake.s3.amazonaws.com/ATB/electricity/parquet/2024/v3.0.0/ATBe.parquet"  # OEDI data lake, public
 ATB_FILENAME = "ATBe_2024_v3.parquet"
 ATB_SHA256 = "22e75dfcb93f8c61e94f9fa3390f04bf943d67ad224b1c6b428c71cfbea7350b"  # hash of the copy downloaded 2026-10-12
@@ -93,7 +93,22 @@ EIA_DATA_FIELDS = ["nameplate-capacity-mw", "operating-year-month",
 EIA_PAGE_LENGTH = 5000  # the API's maximum rows per call
 EIA_TIMEOUT_S = 120  # seconds per request
 
-# --- EIA technology → LBNL type_clean crosswalk (reviewed in notebook 01) ----
+# --- ERCOT Public API (source S7; api.ercot.com, a different host from the blocked ercot.com report servlet) ---
+ERCOT_API_BASE = "https://api.ercot.com/api/public-reports"
+ERCOT_TOKEN_URL = ("https://ercotb2c.b2clogin.com/ercotb2c.onmicrosoft.com/"
+                   "B2C_1_PUBAPI-ROPC-FLOW/oauth2/v2.0/token")  # ERCOT's published B2C sign-in flow
+ERCOT_CLIENT_ID = "fec253ea-0d06-4272-a5e6-b478baeecd70"  # public client id of the ERCOT Public API (not a secret)
+ERCOT_REPORTS = {  # EMIL report id -> API path; all paged at ERCOT_PAGE_SIZE rows
+    "NP4-190-CD": "np4-190-cd/dam_stlmnt_pnt_prices",  # DAM settlement point prices, hourly
+    "NP6-905-CD": "np6-905-cd/spp_node_zone_hub",  # RTM settlement point prices, 15-minute
+    "NP4-188-CD": "np4-188-cd/dam_clear_price_for_cap",  # DAM ancillary-service clearing prices
+}
+ERCOT_HUBS = ["HB_HOUSTON", "HB_NORTH", "HB_SOUTH", "HB_WEST", "HB_HUBAVG"]  # trading hubs kept
+ERCOT_PAGE_SIZE = 5000  # the API's maximum rows per call
+ERCOT_TIMEOUT_S = 120  # seconds per request
+ERCOT_TZ = "America/Chicago"  # ERCOT delivery dates and hour-endings are local prevailing time
+
+# --- EIA technology → LBNL type_clean crosswalk (reviewed in notebook 01 (part A)) ----
 # value = (LBNL type, note); "Other" always carries a note saying what it hides
 EIA_TECHNOLOGY_MAP = {
     "Solar Photovoltaic": ("Solar", ""),

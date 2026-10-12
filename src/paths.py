@@ -15,6 +15,7 @@ DATA = REPO / "data"
 DATA_RAW = DATA / "raw"
 RAW_LBNL = DATA_RAW / "lbnl"
 RAW_EIA860M = DATA_RAW / "eia860m"
+RAW_ERCOT = DATA_RAW / "ercot"
 DATA_INTERIM = DATA / "interim"
 DATA_PROCESSED = DATA / "processed"
 
