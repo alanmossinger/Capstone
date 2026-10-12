@@ -1,0 +1,10 @@
+item,low,base,high,unit,note
+workover_cost_per_well_usd,4000000.0,8000000.0,15000000.0,$ per well,shelf to deepwater recompletion or workover
+uplift_share,0.1,0.2,0.3,share of the current rate,"incremental rate on the Arps baseline, decaying with the lease's own decline"
+opex_usd_per_boe,12.0,18.0,28.0,$ per boe,lease operating cost
+royalty_share,0.125,0.1875,0.1875,share of revenue,federal OCS royalty; 12.5% for pre-2007 leases is the low case
+abandonment_usd_per_well,1000000.0,3000000.0,8000000.0,$ per well,plugging and abandonment accrual at the lease's end
+lead_time_months,24.0,24.0,24.0,months,from decision to first incremental production
+oil_differential_usd_per_bbl,3.0,5.0,8.0,$ per bbl below WTI,realised price = WTI − differential
+gas_differential_usd_per_mmbtu,0.3,0.5,0.8,$ per MMBtu below Henry Hub,realised price = Henry Hub − differential
+wacc_real,0.051,0.051,0.08,real rate,ATB offshore cost of capital; 8% as the stress

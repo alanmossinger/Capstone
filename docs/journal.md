@@ -1035,3 +1035,36 @@ addenda).
     8% as the stress case. Say which numbers you want changed and whether
     the three redevelopment cases of notebook 02 part C (young oil, mature
     oil watering out, gas tail) should carry different uplifts.
+
+### Addendum, 2026-10-12 — step (6): notebook 07 part B, the candidates and their economics
+
+Alan confirmed the cost grid (decision #68) with one condition: results and
+their impact visible to every viewer in the dashboard.
+
+- `src/economics.py` (six tests): the Arps baseline and the incremental
+  redevelopment cash flow under the grid, break-even WTI by bisection,
+  2024 price-capture factors from the hourly North hub and the ERCOT
+  system shapes, a one-cycle-a-day battery LP (energy only, no ancillary
+  services; the simplest form of my Forecast-to-Dispatch dispatch), and
+  the timing-weighted expected NPV of a request.
+- **Notebook 07 part B.** The pool: 513 leases producing in 2024 with 60+
+  producing months and all 2,268 test-cohort requests, each with a
+  data-completeness score (ERCOT requests with v5 economics 1.0, other
+  Track A 0.6, elsewhere 0.3; leases 0.8). Default book: the 20 leases with
+  the most 2024 output (all young deepwater oil, 55% of the pool's 2024
+  boe) and the 5 largest ERCOT requests of each technology (20 MW and
+  more). Results on the flat 2024 real basis: lease incremental NPV
+  $14.6B base (low-cost $16.6B, high-cost $9.2B), every lease positive,
+  median break-even WTI in the pool from `candidate_npv.csv`; the twenty
+  ERCOT requests −$0.76B merchant (none positive once P(operation by 7 y)
+  of 0.06–0.23 and the cost to carry are priced in), wind +$20–28M each
+  under a $62 PPA; capture factors solar 0.92, wind 0.83, gas CC 1.35
+  (runs 63% of hours); battery $74.6k per MW-year; merchant break-evens
+  solar $64, wind $50, gas $33 per MWh. Tornado: the uplift share
+  ($5.9B–$21.8B) and the operating cost ($16.6B–$9.2B) dominate; the
+  power price basis moves the book by under $0.5B. Figures F28, F29;
+  tables `investment_candidates.csv`, `candidate_npv.csv`,
+  `candidate_breakeven.csv`, `cost_sensitivity.csv`, `project_impact.csv`,
+  `provenance_candidates.csv`, `upstream_cost_grid.csv`,
+  `candidate_capture_factors.csv`. 138 tests pass.
+- Next: step (7), `08_scenarios_and_risk`.

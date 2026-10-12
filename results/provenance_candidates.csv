@@ -1,0 +1,12 @@
+columns,provenance,source
+"boe_2024, n_wells, mw",OBSERVED,BSEE OGOR-A; LBNL queue file
+baseline production (Arps),FORECAST,src/decline.py on the last 36 months
+"workover, uplift, opex, royalty, abandonment, differentials, lead time",ASSUMED,"decision #68 grid, results/upstream_cost_grid.csv"
+"WTI, Henry Hub, ERCOT 2024 real means",OBSERVED,notebook 01 market table (ERCOT 2024 observed)
+"capture factors, battery revenue",DERIVED,2024 hourly DAM North hub × ERCOT system shapes; one-cycle LP
+"ATB capex, O&M, heat rate, WACC",OBSERVED,NREL ATB 2024 (part A)
+PPA prices,ASSUMED,value_assumptions.csv (decision #61)
+"P(operation by year), expected operation year",FORECAST,notebook 04 entry models
+carry cost,DERIVED,cost_table.csv by size band (part A)
+"expected NPV, break-even, tornado, impact shares",DERIVED,this notebook
+operated_by_2024,OBSERVED,"LBNL file, outcome through 2024-12-31"

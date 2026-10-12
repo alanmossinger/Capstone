@@ -1662,6 +1662,26 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** Criterion C20: paired holdout MAE difference between the chosen challenger and the best baseline per line, with the registered bootstrap interval.
 <!-- /fig:F27_forecast_gains -->
 
+<!-- fig:F28_candidates -->
+### F28_candidates
+
+![F28_candidates](../figures/F28_candidates.png)
+
+*Notebook:* `notebooks/07_economics.ipynb` · *Files:* `figures/F28_candidates.png`, `.svg`
+
+**Caption (stub).** The forty candidates of the default book: incremental NPV of the lease redevelopments and timing-weighted expected NPV of the ERCOT requests.
+<!-- /fig:F28_candidates -->
+
+<!-- fig:F29_cost_tornado -->
+### F29_cost_tornado
+
+![F29_cost_tornado](../figures/F29_cost_tornado.png)
+
+*Notebook:* `notebooks/07_economics.ipynb` · *Files:* `figures/F29_cost_tornado.png`, `.svg`
+
+**Caption (stub).** One-at-a-time sensitivity of the default book's expected NPV to each cost-grid assumption and to the power price basis.
+<!-- /fig:F29_cost_tornado -->
+
 <!-- fig:F2_operation_by_technology -->
 ### F2_operation_by_technology
 
