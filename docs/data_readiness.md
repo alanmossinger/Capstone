@@ -68,3 +68,27 @@ Written by `notebooks/01_problem_and_data.ipynb`. File `LBNL_Ix_Queue_Data_File_
 | the 2025 file is unchanged | SHA-256 of the frozen file matches src/config.py | PASS |
 
 Event-date coverage by region in both editions: `results/lbnl_2026_date_coverage.csv` (figure 01b_01). The 2025 file stays the basis of every registered result (decisions #43, #48).
+
+## v5 sources — the energy panel (notebook 01, parts D and E)
+
+*Written by `notebooks/01_problem_and_data.ipynb` on 2026-10-12. Every number below was computed by that notebook; thresholds are in `src/config.py` (PLAN.md §14.1).*
+
+| Check | Pass condition | Observed | Result |
+|---|---|---|---|
+| S13 BSEE files present and hashed | 15 files, SHA-256 in SHA256.txt and the manifest | 15 files, 15 hashes | PASS |
+| S13 lease-months cover the window | 2018-01 to 2024-12 | 2010-01 to 2024-12 | PASS |
+| S13 candidate pool | >= 20 leases with >= 60 producing months | 1,041 leases | PASS |
+| S14 EIA-923 pull complete | rows received = total reported; window covered | 186,744 of 186,744; 2018-01 to 2024-12 | PASS |
+| S14 Texas plants per technology | >= 5 plants with >= 36 generating months for each of Gas CC, Solar, Wind, Storage | Gas CC 69, Solar 108, Wind 201, Storage 18 | PASS |
+| S15/S16 monthly prices cover the window | WTI, Henry Hub and ERCOT present for every month (ERCOT: observed, derived or labelled assumed) | wti_usd_bbl complete, hh_usd_mmbtu complete, ercot_usd_mwh complete | PASS |
+| S16 ERCOT 2024 files verified | five files, SHA-256 as pinned in src/config.py | 5 of 5 | PASS |
+| S16 ERCOT hourly prices 2018–2023 on disk (not blocking) | ercot_dam_spp_<year>.parquet for 2018–2023 from the ERCOT Public API pull | years on disk: [2024]; assumed months: 48 | FAIL |
+| S17 eGRID joins the generation panel | >= 95% of the EIA-923 plants generating in 2023 found in eGRID2023 | 98.8% | PASS |
+| S18 CPI-U covers the window | 2016–2024 monthly | 2016-01 to 2024-12, 108 months | PASS |
+| Manifest complete | every raw file of S13–S18 hashed with URL, vintage, units, grain | 6 sources, 25 files | PASS |
+| Audits R10–R13 | no duplicate keys, no negative volumes, no missing priced month | R10 duplicate (lease, month) keys: 0; R10 duplicate (plant, prime mover, month) keys: 0; R11 lease-months with a negative volume: 0; R11 lease-months with zero oil and gas: 51603; R13 wti_usd_bbl: months missing in 2018-01→2024-12: 0; R13 hh_usd_mmbtu: months missing in 2018-01→2024-12: 0; R13 ercot_usd_mwh: months missing in 2018-01→2024-12: 0; R13 wti_usd_bbl_real2024: months missing in 2018-01→2024-12: 0; R13 hh_usd_mmbtu_real2024: months missing in 2018-01→2024-12: 0; R13 ercot_usd_mwh_real2024: months missing in 2018-01→2024-12: 0 | PASS |
+| Secrets safe | no API key in any saved page | 38 EIA-923 pages checked | PASS |
+
+Non-blocking lines are reported for the record; the ERCOT hourly pull replaces the assumed months when it runs (decision #64).
+
+**Outcome (2026-10-12): GO**

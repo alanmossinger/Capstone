@@ -1,6 +1,6 @@
 # Region playbooks
 
-Built by `notebooks/17_constraints_and_levers.ipynb` from the results files; every number traces to one.
+Built by `notebooks/09_portfolio.ipynb` from the results files; every number traces to one.
 
 ## ERCOT
 

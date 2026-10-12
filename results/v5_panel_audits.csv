@@ -1,0 +1,12 @@
+rule,item,rows,note
+R10,"duplicate (lease, month) keys",0,must be 0
+R10,"duplicate (plant, prime mover, month) keys",0,must be 0
+R11,lease-months with a negative volume,0,not expected
+R11,lease-months with zero oil and gas,51603,kept; flagged producing = False
+R12,plant-months with negative net generation,2729,kept; storage and pumped hydro draw power
+R13,wti_usd_bbl: months missing in 2018-01→2024-12,0,must be 0 for every priced month
+R13,hh_usd_mmbtu: months missing in 2018-01→2024-12,0,must be 0 for every priced month
+R13,ercot_usd_mwh: months missing in 2018-01→2024-12,0,must be 0 for every priced month
+R13,wti_usd_bbl_real2024: months missing in 2018-01→2024-12,0,must be 0 for every priced month
+R13,hh_usd_mmbtu_real2024: months missing in 2018-01→2024-12,0,must be 0 for every priced month
+R13,ercot_usd_mwh_real2024: months missing in 2018-01→2024-12,0,must be 0 for every priced month

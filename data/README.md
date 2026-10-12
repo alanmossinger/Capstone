@@ -5,7 +5,7 @@ Everything the project reads or produces lives under `data/`:
 | Folder | Contents | In git? |
 |---|---|---|
 | `data/raw/` | files exactly as downloaded, never edited | no (see terms below) |
-| `data/interim/` | tables written by notebooks 02–09 | no (rebuilt by `make all`) |
+| `data/interim/` | tables written by notebooks 01–09 | no (rebuilt by `make all`) |
 | `data/processed/` | small final tables (≤ 5 MB) used by figures and the report | yes |
 
 ## Sources
@@ -181,6 +181,84 @@ the API fails; not needed so far.
 - **Known limits:** costs are national averages in 2022 dollars for a
   representative class, not site estimates; gas fuel is not in the file
   (heat rate × a gas-price assumption, `results/value_assumptions.csv`).
+
+### S13 — BSEE OGOR-A production, 2010–2024 (notebook 01, part D)
+
+- **What:** `data/raw/bsee/ogora<year>delimit.zip`, one file per production year
+  (1.4–3.7 MB each): monthly oil (bbl), gas (Mcf) and water (bbl) volumes,
+  days on production and status per well completion on federal offshore
+  leases, with lease, operator, area/block and first-production date. The
+  19-field layout is BSEE's "Field Definitions for OGORA" (accessed
+  2026-10-12), copied into `src/energy_data.OGORA_COLUMNS`.
+- **Publisher:** Bureau of Safety and Environmental Enforcement, Production
+  Information. <https://www.data.bsee.gov/Main/Production.aspx>
+- **How to obtain:** `energy_data.fetch_ogora()` downloads
+  `https://www.data.bsee.gov/Production/Files/ogora<year>delimit.zip`;
+  SHA-256 of every file in `data/raw/bsee/SHA256.txt` and `data/raw/manifest_v5.json`.
+- **Terms:** U.S. federal public data; cite BSEE. Not committed.
+- **Known limits:** federal offshore leases only (Gulf of Mexico and Pacific;
+  no onshore production); volumes are what operators report, revised by BSEE
+  over about three months (`release_lags.csv`); no cost, reserve or price data.
+
+### S14 — EIA-923 plant × fuel × prime-mover monthly generation, Texas 2018–2024 (notebook 01, part D)
+
+- **What:** `data/raw/eia923/eia923_TX_2018-2024.parquet` (186,744 rows) with the
+  API pages beside it: net and gross generation (MWh), total fuel
+  consumption and consumption for electricity generation (MMBtu) per plant,
+  fuel and prime mover, monthly, including EIA's "ALL" subtotals.
+- **Publisher:** U.S. Energy Information Administration, Form EIA-923, API v2
+  route `electricity/facility-fuel`. <https://www.eia.gov/electricity/data/eia923/>
+- **How to obtain:** `energy_data.pull_eia923()` with the key in `.env`
+  (bulk workbooks returned HTTP 503 on 2026-10-12; the API serves the same
+  data); SHA-256 in the manifest.
+- **Terms:** U.S. public domain; the key is personal and never printed.
+- **Known limits:** the finest grain is plant × prime mover; generators are
+  never inferred from it. Monthly values for small plants are partly
+  imputed by EIA from annual reports.
+
+### S15 — EIA WTI Cushing and Henry Hub monthly spot prices (notebook 01, part D)
+
+- **What:** `data/raw/prices/RWTCm.xls` (WTI, $/bbl, 1986-01 →) and
+  `RNGWHHDm.xls` (Henry Hub, $/MMBtu, 1997-01 →), monthly averages of daily
+  spot prices, nominal dollars.
+- **Publisher:** U.S. Energy Information Administration.
+  <https://www.eia.gov/dnav/pet/hist/RWTCm.htm>, <https://www.eia.gov/dnav/ng/hist/RNGWHHDm.htm>
+- **How to obtain:** `energy_data.fetch_eia_prices()`; SHA-256 in the manifest.
+- **Terms:** U.S. public domain. Not committed.
+- **Known limits:** benchmark hub prices, not realised offshore or Texas
+  wellhead prices; the differential is an assumption in notebook 07.
+
+### S16 — ERCOT prices (notebook 01, part D)
+
+- **What:** `data/raw/ercot/ercot_dam_spp_2024.parquet` (hourly day-ahead
+  settlement point prices, 15 locations), `ercot_rtm_spp_2024.parquet`
+  (15-minute real-time), `ercot_dam_mcpc_2024.parquet` (ancillary clearing
+  prices), `ercot_native_load_2024.parquet`, `ercot_wind_solar_2024.parquet`,
+  calendar 2024, pulled with `gridstatus` for my Forecast-to-Dispatch project
+  (July 2026) and copied with their hashes (`src/config.ERCOT_2024_FILES`).
+  2017–2019 monthly ERCOT North prices come from the EIA ICE files already
+  in `data/raw/value/` (S9).
+- **Publisher:** ERCOT, public market information. <https://www.ercot.com/mktinfo>
+- **How to obtain:** 2024 through `gridstatus` from a network ERCOT's edge
+  accepts; 2018–2023 hourly through the ERCOT Public API
+  (`python -m src.ercot_api 2018 2023`, subscription and credentials in
+  `.env`); this machine is refused by ERCOT's edge (decision #53, #64).
+- **Terms:** public market data under ERCOT's terms of use; not committed.
+- **Known limits:** until the 2018–2023 pull runs, the 2020–2023 months are an
+  ASSUMED bridge (0.77 × PJM West, `results/value_assumptions.csv`) and every
+  figure that uses them says so.
+
+### S17 — EPA eGRID2023 plant emission rates (notebook 01, part D)
+
+- **What:** `data/raw/egrid/egrid2023_data_rev1.xlsx` (21 MB), sheet `PLNT23`:
+  plant code, state, balancing authority, coordinates, primary fuel,
+  nameplate, capacity factor, net generation, CO2 rate (lb/MWh), heat rate.
+- **Publisher:** U.S. Environmental Protection Agency, eGRID2023 (revision 1,
+  January 2025). <https://www.epa.gov/egrid/download-data>
+- **How to obtain:** `energy_data.fetch_egrid()`; SHA-256 in the manifest.
+- **Terms:** U.S. public domain. Not committed.
+- **Known limits:** annual 2023 rates; used as emission factors for the
+  carbon constraint of the optimizer, not as plant forecasts.
 
 ## What is redistributed
 

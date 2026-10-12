@@ -16,6 +16,11 @@ DATA_RAW = DATA / "raw"
 RAW_LBNL = DATA_RAW / "lbnl"
 RAW_EIA860M = DATA_RAW / "eia860m"
 RAW_ERCOT = DATA_RAW / "ercot"
+RAW_BSEE = DATA_RAW / "bsee"
+RAW_EIA923 = DATA_RAW / "eia923"
+RAW_PRICES = DATA_RAW / "prices"
+RAW_EGRID = DATA_RAW / "egrid"
+MANIFEST_V5 = DATA_RAW / "manifest_v5.json"
 DATA_INTERIM = DATA / "interim"
 DATA_PROCESSED = DATA / "processed"
 
@@ -37,6 +42,6 @@ def ensure_dirs():
     Called once in each notebook's setup cell. Creating folders up front means
     a fresh clone can run the pipeline without any manual ``mkdir``.
     """
-    for folder in (RAW_LBNL, RAW_EIA860M, DATA_INTERIM, DATA_PROCESSED,
+    for folder in (RAW_LBNL, RAW_EIA860M, RAW_ERCOT, RAW_BSEE, RAW_EIA923, RAW_PRICES, RAW_EGRID, DATA_INTERIM, DATA_PROCESSED,
                    FIGURES, RESULTS, DOCS, REPORT):
         folder.mkdir(parents=True, exist_ok=True)

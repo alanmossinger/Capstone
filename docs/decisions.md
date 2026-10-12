@@ -753,3 +753,42 @@ alternative rejected.
     record would no longer hold every criterion); renumbering so that the
     run order is numeric (the numbers are the plan's); leaving the old
     notebooks beside the new ones (dead files).
+64. **The v5 energy sources, their gate, and the provenance rule** (2026-10-12;
+    notebook 01 parts D and E, PLAN.md §14.1–14.2). Six public sources join
+    the queue file: BSEE OGOR-A production 2010–2024 (S13, fifteen delimited
+    files), EIA-923 plant × fuel × prime-mover generation for Texas 2018–2024
+    through the EIA API (S14; the bulk workbooks returned HTTP 503), the EIA
+    WTI and Henry Hub monthly spot workbooks (S15), the five ERCOT 2024 files
+    of my Forecast-to-Dispatch pull copied with pinned hashes (S16), eGRID2023
+    (S17) and the BLS CPI-U series for real 2024 dollars (S18; FRED refused
+    the connection, the BLS public API did not). Every file is hashed in
+    `data/raw/manifest_v5.json` with URL, retrieval date, vintage, units and
+    grain. Tables keep the publisher's grain: lease-month, plant × prime
+    mover × month (fuel-specific rows summed, EIA's subtotals dropped, never
+    split to generators), month. Audits R10–R13 count and never change rows.
+    *The ERCOT price* is one series with three labels: 2024 observed (DAM
+    North hub monthly mean), 2017–2019 derived (ICE North peak annual means
+    repeated by month), 2020–2023 assumed (PJM West × 0.77, the value layer's
+    assumption) until the hourly 2018–2023 pull runs from a network ERCOT's
+    edge accepts (`python -m src.ercot_api 2018 2023`); the gate reports that
+    line as FAIL and non-blocking, as the plan allowed. *Provenance rule:*
+    every v5 figure prints one of OBSERVED, DERIVED, FORECAST, ASSUMED in its
+    source note (`plots.finish(provenance=…)`, asserted by a test); a figure
+    that mixes labels carries the weakest of them and the subtitle says which
+    part is which. *The gate:* twelve blocking lines pass (coverage
+    2018-01→2024-12 for every monthly series; 1,041 leases with sixty or more
+    producing months against a minimum of 20; Texas plants with 36 months of
+    generation: gas CC 69, solar 108, wind 201, storage 18 against a minimum
+    of 5 each; eGRID joins 98.8% of the plants generating in 2023; manifest,
+    audits and secrets) — GO. The first evaluation read NO-GO on the eGRID
+    line because I had specified it against every plant in the 2018–2024
+    panel, which includes the 122 Texas batteries that first reported in
+    2024 and cannot be in a 2023 file; the line was re-specified to the
+    plants generating in 2023 and the correction is recorded here, as
+    decision #15 did for the v1 gate. *Rejected:* a typed CPI deflator (an
+    observed series was reachable); monthly ERCOT prices for 2020–2023 from
+    any other proxy (the existing assumption is already cited and the hourly
+    pull is one command away); splitting EIA-923 to generators with EIA-860M
+    shares (the proposal's own warning); pulling EIA-923 for every state now
+    (one call per state when the all-region candidates of §14's addendum are
+    built in notebook 07).

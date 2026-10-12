@@ -178,3 +178,53 @@ FIGURE_AUTHOR = "Figure: Alan Mössinger."  # every figure names its author (dec
 SOURCE_LBNL = FIGURE_AUTHOR + " Data: LBNL Queued Up: 2025 Edition (Rand et al., 2025)."
 SOURCE_LBNL_2026 = "LBNL Queued Up: 2026 Edition (Rand et al., 2026)."  # the file added alongside (decision #43)
 SOURCE_EIA = "EIA-860M Inventory of Operable Generators via EIA API v2."
+
+# --- v5 energy sources (PLAN.md §14.1; decision #64) --------------------------
+BSEE_URL = "https://www.data.bsee.gov/Production/Files/ogora{year}delimit.zip"  # OGOR-A delimited, one zip per year
+BSEE_YEARS = (2010, 2024)  # first and last production year pulled (inclusive)
+BSEE_LAYOUT_URL = "https://www.data.bsee.gov/Main/HtmlPage.aspx?page=ogora"  # field definitions (accessed 2026-10-12)
+EGRID_URL = "https://www.epa.gov/system/files/documents/2025-01/egrid2023_data_rev1.xlsx"  # eGRID2023, revision 1
+EGRID_FILENAME = "egrid2023_data_rev1.xlsx"
+EGRID_PLANT_SHEET = "PLNT23"  # plant-level sheet; row 0 is a title banner, headers on row 1
+EIA_PRICE_FILES = {  # EIA monthly spot-price workbooks (sheet "Data 1", two header rows)
+    "wti_usd_bbl": ("https://www.eia.gov/dnav/pet/hist_xls/RWTCm.xls", "RWTCm.xls"),  # Cushing, OK WTI spot FOB
+    "hh_usd_mmbtu": ("https://www.eia.gov/dnav/ng/hist_xls/RNGWHHDm.xls", "RNGWHHDm.xls"),  # Henry Hub spot
+}
+EIA923_ROUTE = "electricity/facility-fuel"  # EIA-923 plant × fuel × prime-mover monthly generation and consumption
+EIA923_DATA_FIELDS = ["generation", "gross-generation", "total-consumption-btu", "consumption-for-eg-btu"]
+EIA923_STATE = "TX"  # the power candidates are ERCOT requests
+EIA923_START, EIA923_END = "2018-01", "2024-12"  # the development and holdout window of the forecasts
+ERCOT_2024_FILES = {  # my Forecast-to-Dispatch pull (gridstatus, July 2026), copied with its hashes
+    "ercot_dam_spp_2024.parquet": "dc212cf26ea601e2bd09e48ac44ddbc9154305e044e77b2dc7edd88f2218c083",
+    "ercot_rtm_spp_2024.parquet": "cacfffbb1158bf42a965ad3539bd310e2c79006d93be910ca594a763e7f9b385",
+    "ercot_dam_mcpc_2024.parquet": "7c481f7b8a5d992294af66d5223f774ed7a04a27d1280512bcaa708bce2fdc45",
+    "ercot_native_load_2024.parquet": "9dad8c1a23ec12dea68b95264fb27146c279aecd0094da780ed1bdf6de64f1c4",
+    "ercot_wind_solar_2024.parquet": "b08fab037aa3ef3a6d71fe0a100ab6b7e122dfcbddef2bee74f2bf9b4ade0397",
+}
+ERCOT_PRICE_HUB = "HB_NORTH"  # the hub carried as "the ERCOT price": it is the hub the ICE ERCOT North series quotes
+PRIME_MOVER_TECH = {  # EIA-923 prime mover -> the candidate technologies (combined-cycle parts, PV, wind, batteries)
+    "CA": "Gas CC", "CT": "Gas CC", "CS": "Gas CC", "PV": "Solar", "WT": "Wind", "BA": "Storage",
+}
+V5_COVERAGE = ("2018-01", "2024-12")  # every monthly series must span this window
+V5_MIN_LEASES, V5_MIN_PRODUCING_MONTHS = 20, 60  # candidate pool: leases with at least this many producing months
+V5_MIN_PLANTS_PER_TECH, V5_MIN_GENERATION_MONTHS = 5, 36  # Texas plants per technology with this much history
+PROVENANCE = ("OBSERVED", "DERIVED", "FORECAST", "ASSUMED")  # the audit labels every v5 export carries
+SOURCE_BSEE = "BSEE OGOR-A production (data.bsee.gov)."
+SOURCE_EIA923 = "EIA-923 via EIA API v2 (electricity/facility-fuel)."
+SOURCE_EIA_PRICES = "EIA WTI and Henry Hub monthly spot prices."
+SOURCE_ERCOT = "ERCOT DAM/RTM settlement point prices (gridstatus pull, 2024)."
+SOURCE_EGRID = "EPA eGRID2023."
+BLS_API_URL = "https://api.bls.gov/publicAPI/v2/timeseries/data/"  # public, no key; 10 years per call (source S18)
+CPI_SERIES = "CUUR0000SA0"  # CPI-U, all items, U.S. city average, not seasonally adjusted (1982–84 = 100)
+CPI_YEARS = (2016, 2024)  # window pulled; real dollars are stated in REAL_DOLLAR_YEAR
+REAL_DOLLAR_YEAR = 2024  # every v5 cash flow is in 2024 dollars (the ATB file is in 2022 dollars; converted the same way)
+ERCOT_BRIDGE_RATIO = 0.77  # ERCOT price 2020–2023 = PJM West × this (ratio of the 2017–2019 means; results/value_assumptions.csv)
+ICE_HUB_ERCOT, ICE_HUB_PJM_WEST = "ERCOT North 345KV Peak", "PJM WH Real Time Peak"  # hub names in EIA's ICE files
+RELEASE_LAGS = {  # months after the observation month a source is public (PLAN.md §14.2; from each publisher's schedule)
+    "BSEE OGOR-A": 3,  # operators file within 45 days, BSEE posts and revises for about three months
+    "EIA-923 monthly": 2,  # the monthly file appears about two months after the data month
+    "EIA-860M": 2,  # the monthly generator inventory lags about two months
+    "WTI, Henry Hub": 0,  # spot prices are known the same month
+    "ERCOT DAM/RTM": 0,  # settlement point prices are published next day
+    "BLS CPI-U": 1,  # the index is released mid-month for the previous month
+}

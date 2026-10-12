@@ -20,6 +20,7 @@ hues.
 
 import re
 import textwrap
+import time
 
 import matplotlib as mpl
 
@@ -92,7 +93,7 @@ def tech_group(type_clean):
     return type_clean if type_clean in config.TECH_COLORS else "Other"
 
 
-def finish(fig, title, subtitle, cohort, eia=False, lbnl=True, lbnl_2026=False):
+def finish(fig, title, subtitle, cohort, eia=False, lbnl=True, lbnl_2026=False, sources=None, provenance=None):
     """Add the finding title, the subtitle and the source note, then lay out.
 
     Parameters
@@ -111,6 +112,13 @@ def finish(fig, title, subtitle, cohort, eia=False, lbnl=True, lbnl_2026=False):
         Credit the LBNL file (False for figures drawn from EIA data only).
     lbnl_2026 : bool
         Also credit the 2026 edition (figures of notebook 01 (part C) and notebook 04 (parts F, G and K)).
+    sources : list of str, optional
+        Data credits for the v5 energy sources (``config.SOURCE_BSEE`` …);
+        when given and ``lbnl`` is False, they replace the LBNL credit.
+    provenance : str, optional
+        One of ``config.PROVENANCE`` (OBSERVED, DERIVED, FORECAST, ASSUMED):
+        the audit label printed at the end of the source note on every v5
+        figure (PLAN.md §14.0). A label outside the set raises.
 
     Notes
     -----
@@ -125,8 +133,14 @@ def finish(fig, title, subtitle, cohort, eia=False, lbnl=True, lbnl_2026=False):
     subtitle_lines = textwrap.wrap(subtitle, 100)
     if lbnl:
         source = config.SOURCE_LBNL + (" " + config.SOURCE_LBNL_2026 if lbnl_2026 else "") + (" " + config.SOURCE_EIA if eia else "")
+    elif sources:
+        source = config.FIGURE_AUTHOR + " Data: " + " ".join(sources) + (" " + config.SOURCE_EIA if eia else "")
     else:
         source = config.FIGURE_AUTHOR + " Data: " + config.SOURCE_EIA
+    if provenance is not None:
+        if provenance not in config.PROVENANCE:
+            raise ValueError(f"provenance must be one of {config.PROVENANCE}, got {provenance!r}")
+        source = f"{source} Provenance: {provenance}."
     source_lines = textwrap.wrap(f"{source} Cohort: {cohort}", 125)
     # line heights in figure fractions (points → inches → fraction, 1.25 leading)
     title_h, sub_h, src_h = (size * 1.25 / 72 / height for size in (16, 13, 10.5))
@@ -177,8 +191,8 @@ def save_fig(fig, name, caption, notebook, folder=None):
     out_dir = paths.FIGURES / folder if folder else paths.FIGURES
     out_dir.mkdir(parents=True, exist_ok=True)
     png, svg = out_dir / f"{name}.png", out_dir / f"{name}.svg"
-    fig.savefig(png)
-    fig.savefig(svg, metadata={"Date": None})  # no timestamp: identical reruns give identical files
+    _save_with_retry(fig, png)
+    _save_with_retry(fig, svg, metadata={"Date": None})  # no timestamp: identical reruns give identical files
     rel = png.relative_to(paths.REPO).as_posix()
     block = (f"<!-- fig:{name} -->\n### {name}\n\n"
              f"![{name}](../{rel})\n\n"
@@ -186,6 +200,26 @@ def save_fig(fig, name, caption, notebook, folder=None):
              f"**Caption (stub).** {caption}\n<!-- /fig:{name} -->\n")
     _upsert_figure_note(name, block)
     return png
+
+
+def _save_with_retry(fig, path, attempts=6, wait_s=0.5, **kwargs):
+    """Save a figure, retrying briefly when the file is locked.
+
+    Notes
+    -----
+    The repository lives in a OneDrive folder, and OneDrive holds a file it
+    is uploading for a moment; a rewrite in that moment raises ``OSError``
+    (errno 22 or 13). A few short retries clear it without changing the
+    figure; the last failure is raised as it was.
+    """
+    for attempt in range(attempts):
+        try:
+            fig.savefig(path, **kwargs)
+            return
+        except OSError as err:
+            if err.errno not in (22, 13) or attempt == attempts - 1:
+                raise
+            time.sleep(wait_s * (attempt + 1))
 
 
 def _upsert_figure_note(name, block):

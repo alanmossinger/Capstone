@@ -222,6 +222,36 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** Capacity entering operation per year according to LBNL operational projects and EIA-860M generators, ERCOT and PJM.
 <!-- /fig:01_22_lbnl_vs_eia_additions -->
 
+<!-- fig:01_D1_bsee_production_by_year -->
+### 01_D1_bsee_production_by_year
+
+![01_D1_bsee_production_by_year](../figures/01_problem_and_data/01_D1_bsee_production_by_year.png)
+
+*Notebook:* `notebooks/01_problem_and_data.ipynb` · *Files:* `figures/01_problem_and_data/01_D1_bsee_production_by_year.png`, `.svg`
+
+**Caption (stub).** Producing federal offshore leases, oil and gas volumes per year from BSEE OGOR-A, 2010–2024.
+<!-- /fig:01_D1_bsee_production_by_year -->
+
+<!-- fig:01_D2_texas_generation_by_technology -->
+### 01_D2_texas_generation_by_technology
+
+![01_D2_texas_generation_by_technology](../figures/01_problem_and_data/01_D2_texas_generation_by_technology.png)
+
+*Notebook:* `notebooks/01_problem_and_data.ipynb` · *Files:* `figures/01_problem_and_data/01_D2_texas_generation_by_technology.png`, `.svg`
+
+**Caption (stub).** Monthly net generation by technology and plants reporting per year, Texas plants in EIA-923, 2018–2024.
+<!-- /fig:01_D2_texas_generation_by_technology -->
+
+<!-- fig:01_D3_prices_wti_hh_ercot -->
+### 01_D3_prices_wti_hh_ercot
+
+![01_D3_prices_wti_hh_ercot](../figures/01_problem_and_data/01_D3_prices_wti_hh_ercot.png)
+
+*Notebook:* `notebooks/01_problem_and_data.ipynb` · *Files:* `figures/01_problem_and_data/01_D3_prices_wti_hh_ercot.png`, `.svg`
+
+**Caption (stub).** WTI, Henry Hub and ERCOT North monthly prices 2017–2024 with the provenance of each ERCOT segment.
+<!-- /fig:01_D3_prices_wti_hh_ercot -->
+
 <!-- fig:01b_01_date_coverage -->
 ### 01b_01_date_coverage
 
