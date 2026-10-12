@@ -946,3 +946,46 @@ alternative rejected.
     supported on this candidate set. *Rejected:* re-registering with a
     tighter budget or a merchant case to manufacture a trade-off; adding a
     loss to the leases by hand; dropping the C24 line.
+72. **The advisor, the gym and the forward view: grounded, recorded,
+    replayable, scored** (2026-10-12; notebook 10, `src/advisor.py`,
+    `src/gym.py`, `src/horizons.py`; `anthropic==1.13.0` and
+    `streamlit==1.65.0` added to `requirements.txt`). *Grounding:* the
+    model sees only result tables rendered by one formatter, and
+    `verify_numbers` accepts a number in an answer only if the same token
+    appears in that text (years and counts up to 50 exempt); a differently
+    rounded figure counts as ungrounded on purpose. *Record and replay:*
+    every call is appended to `results/advisor_runs.jsonl` keyed by the
+    hash of (model, system, user); a matching call is served from the
+    record, so `make all` runs offline; with no key and no record the
+    advisor's rows read "not recorded" and nothing else changes. Model id
+    `claude-sonnet-5-5`, temperature 0, recorded with every call. *The
+    prompts:* `prompts/` holds the system prompt, the recommend and gym
+    templates and the two reasoning prompts; the two reasoning files are
+    drafted from the description in PLAN.md §14.10 and are replaced by the
+    author's own wording verbatim when it arrives (journal #34). *Override
+    gate:* `override_allowed` needs an answer of at least twenty characters
+    to each of the five questions and the opposing case read. *Gym:* sixteen
+    situations — the fifteen largest requests of each region × cohort
+    (2017–2019) at entry, the 2017 cohort at its two-year gate, ERCOT 2018
+    with the budget cut a fifth, the twenty lease candidates at June 2014,
+    January 2020 and March 2022 — each under 40% of its total cost; actors
+    instinct (top-N NPV), the registered rule (the gate verdict filled by
+    NPV per dollar; the risk-aware MILP for leases), the advisor, the human
+    (ledger); hindsight is the exact knapsack on realized value, an upper
+    bound. Realized value of a request = modeled value per MW if built ×
+    MW when it in fact operated − the cost to the gate (OBSERVED outcome,
+    DERIVED value: a proxy, labelled). Lease regimes: as-of = the real
+    price of the start month held flat; realized = the observed real path
+    then held; the CPI before 2016 is January 2016's (error under 2%); the
+    optimizer's scenarios use the 2018–2024 shock history (a mild hindsight
+    for 2014, stated). *Forward view:* within-horizon value — leases
+    truncated incremental cash flows; requests the carry, the capital at
+    the operation year and the margin to the horizon weighted by the
+    operation curve, nothing beyond the plant's life — and the
+    deterministic book per horizon under the registered budget and cap.
+    *Rejected:* a deterministic fallback that writes advisor rows without a
+    model (would fake AI output); scoring the gym on expected rather than
+    realized values; a greedy hindsight (an actor could beat it); the
+    `claude-api` skill named in the prompt, which this environment does not
+    list — the SDK's documented Messages call is used and the model id is
+    a constant in one place.

@@ -1732,6 +1732,26 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** The four allocation books and the single-sector books out of sample, the frontier over λ, and capital by technology.
 <!-- /fig:F33_four_books -->
 
+<!-- fig:F34_decision_gym -->
+### F34_decision_gym
+
+![F34_decision_gym](../figures/F34_decision_gym.png)
+
+*Notebook:* `notebooks/10_advisor_and_gym.ipynb` · *Files:* `figures/F34_decision_gym.png`, `.svg`
+
+**Caption (stub).** The decision gym: realized value of instinct, the registered rule, the advisor and the human in sixteen past situations, against hindsight.
+<!-- /fig:F34_decision_gym -->
+
+<!-- fig:F35_horizon_view -->
+### F35_horizon_view
+
+![F35_horizon_view](../figures/F35_horizon_view.png)
+
+*Notebook:* `notebooks/10_advisor_and_gym.ipynb` · *Files:* `figures/F35_horizon_view.png`, `.svg`
+
+**Caption (stub).** The forward view: expected NPV within 1, 2, 3, 5, 10 and 20 years by sector, and the book at each horizon.
+<!-- /fig:F35_horizon_view -->
+
 <!-- fig:F3_five_year_by_size -->
 ### F3_five_year_by_size
 

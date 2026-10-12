@@ -1103,3 +1103,37 @@ their impact visible to every viewer in the dashboard.
   impact with each candidate's share of book D's tail. F33.
 - Next: step (9), `10_advisor_and_gym` — ASK ALAN items first:
   `ANTHROPIC_API_KEY` in `.env`, the verbatim text of the two prompts.
+
+### Addendum, 2026-10-12 — step (9): the advisor, the gym and the forward view
+
+- **`10_advisor_and_gym`** (decision #72): `src/advisor.py` (the Messages
+  client with the grounding check, the JSONL record and replay, the two
+  reasoning prompts as templates in `prompts/`, the override gate, the
+  ledger append), `src/gym.py` (sixteen situations, four actors, the
+  exact-knapsack hindsight), `src/horizons.py` (within-horizon value and
+  the book at 1, 2, 3, 5, 10 and 20 years); tests `test_advisor.py`,
+  `test_gym.py`, `test_horizons.py` (161 pass, 1 skipped). The notebook
+  runs offline in 15 s: no key in `.env` yet, so every advisor row reads
+  "not recorded" (33 calls missing) and the record is empty; the first
+  live run fills `results/advisor_runs.jsonl` and every later run replays.
+- **Gym, as scored:** the registered rule beats instinct by $99.6M a
+  situation on average (regret against hindsight $197M vs $297M). In nine
+  of the thirteen queue rooms (all of PJM and CAISO, ERCOT 2019) none of
+  the fifteen largest requests operated within the window, so the best
+  book is empty, instinct loses the gate costs and the rule, which held
+  or exited, loses nothing; at the ERCOT two-year gate the rule held every
+  request and missed the five that operated ($2.17B to instinct, $0 to the
+  rule); in the lease regimes the MILP matches hindsight in two of three.
+  F34.
+- **Forward view:** the lease book is negative within 1–2 years
+  (−$1.4B, the workovers), positive from year 3 ($0.2B), $14.6B at 20; the
+  requests are a cost at every horizon (−$0.84B at 20 years, timing-weighted);
+  the deterministic book is empty at 1–2 years, 12 leases at 3, 19 at 5,
+  all 20 from 10. F35; `horizon_view.csv`, `horizon_books.csv`.
+- The `claude-api` skill named in the prompt is not in this environment's
+  skill list; the SDK's Messages call is used with the model id in one
+  constant (decision #72).
+- Next: step (10) — `app/app.py`, report v4, `docs/ai_use.md`, full
+  `make all`. **ASK ALAN (still open):** #34 the verbatim prompts, #35 the
+  key; one live run of notebook 10 after the key is in `.env` records the
+  advisor's answers (then commit `results/advisor_runs.jsonl`).
