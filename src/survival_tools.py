@@ -378,3 +378,88 @@ def fit_cause_specific_cox(frame, cause, penalizer, delayed=True):
         data = data[data["T"] > data["entry"]]
         return CoxPHFitter(penalizer=penalizer).fit(data, "T", "E", entry_col="entry")
     return CoxPHFitter(penalizer=penalizer).fit(data.drop(columns="entry"), "T", "E")
+
+
+def cif_from_cumulative_hazards(cum_op, cum_wd, grid, horizons):
+    """CIF of operation from two cumulative-hazard matrices on a common time grid.
+
+    Parameters
+    ----------
+    cum_op, cum_wd : numpy.ndarray
+        Shape (requests, len(grid)): cumulative hazards of operation and of
+        withdrawal at each grid time, starting at 0.
+    grid : numpy.ndarray
+        Increasing times in years, ``grid[0] == 0``.
+    horizons : list of int
+        Years at which to report.
+
+    Notes
+    -----
+    The same arithmetic as ``cause_specific_cif``: CIF_op(t) = Σ S(t_{k−1}) ·
+    ΔΛ_op(t_k) with S = exp(−Λ_op − Λ_wd). Kept separate so the Cox function
+    that notebooks 05–08 scored stays byte-for-byte as it was.
+    """
+    survival = np.exp(-(cum_op + cum_wd))
+    before = np.concatenate([np.ones((cum_op.shape[0], 1)), survival[:, :-1]], axis=1)
+    increment = np.diff(np.concatenate([np.zeros((cum_op.shape[0], 1)), cum_op], axis=1), axis=1)
+    cif = np.cumsum(before * increment, axis=1)
+    columns = [int(np.searchsorted(grid, h)) for h in horizons]
+    return cif[:, columns]
+
+
+def _step_on_grid(model, X, grid):
+    """A forest's cumulative hazard functions evaluated on ``grid`` (right-continuous steps)."""
+    curves = model.predict_cumulative_hazard_function(X, return_array=True)
+    times = model.unique_times_
+    idx = np.searchsorted(times, grid, side="right") - 1
+    out = np.where(idx[None, :] >= 0, curves[:, np.clip(idx, 0, len(times) - 1)], 0.0)
+    return out
+
+
+def fit_rsf_pair(frame, min_samples_leaf, n_estimators=300, seed=0):
+    """Two cause-specific random survival forests (operation; withdrawal) on the Cox design.
+
+    Parameters
+    ----------
+    frame : pandas.DataFrame
+        Track A requests with the ``cox_design`` columns, ``duration_years``,
+        ``event`` and ``entry_years``.
+    min_samples_leaf : int
+        The one tuned setting (chosen on the 2016 cohort in notebook 08b).
+    n_estimators, seed : int
+        Fixed in the protocol.
+
+    Returns
+    -------
+    dict
+        ``operation`` and ``withdrawal`` forests and the ``design`` columns.
+
+    Notes
+    -----
+    A random survival forest cannot take left-truncated rows, so the ERCOT
+    requests that enter the Cox fit with a delayed entry (``entry_years`` > 0,
+    732 of the 5,298 entrants to 2016) are left out of the forest's fit.
+    Each forest treats the other exit as censoring, as the Cox pair does.
+    """
+    from sksurv.ensemble import RandomSurvivalForest
+    from sksurv.util import Surv
+
+    rows = frame[frame["entry_years"] <= 0]
+    X = cox_design(rows)
+    out = {"design": list(X.columns)}
+    for cause, code in [("operation", 1), ("withdrawal", 2)]:
+        y = Surv.from_arrays(event=(rows["event"] == code).to_numpy(), time=rows["duration_years"].to_numpy())
+        out[cause] = RandomSurvivalForest(n_estimators=n_estimators, min_samples_leaf=min_samples_leaf,
+                                          max_features="sqrt", n_jobs=4, random_state=seed).fit(X, y)
+    return out
+
+
+def rsf_cif(fitted, target, horizons, step=1 / 12):
+    """P(operation by each horizon) for ``target`` from a fitted forest pair."""
+    X = cox_design(target)[fitted["design"]]
+    grid = np.arange(0, max(horizons) + step / 2, step)
+    cum_op = _step_on_grid(fitted["operation"], X, grid)
+    cum_wd = _step_on_grid(fitted["withdrawal"], X, grid)
+    cif = cif_from_cumulative_hazards(cum_op, cum_wd, grid, horizons)
+    return pd.DataFrame(cif, index=target.index, columns=horizons)
+

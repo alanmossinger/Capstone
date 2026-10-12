@@ -626,3 +626,26 @@ alternative rejected.
     *Rejected:* comparing only with the plain lookup (it does not know the
     agreement, so the model would win on information the analyst also has);
     choosing the view, N or the cap after seeing a book.
+
+59. **v4 scope: From Queue to Capital, at capstone scale** (2026-10-12;
+    Alan's direction of 2026-10-11/12, PLAN.md §13). The report becomes one
+    narrative for an energy company that owns a book of queue requests,
+    organised as six engines feeding one capital-allocation decision: market
+    intelligence, development forecasting, asset economics, risk, spatial
+    (state level only), portfolio optimisation. Everything already built is
+    kept; additions go into the notebooks that own the topic (03, 03b, 08,
+    08b, 09, 15, 16, 20), each as an explained section; no new notebooks; no
+    appendix. Added: a project NPV from the value table and NREL ATB costs
+    (one new public file); stage-gate rules G1 and G2 with
+    `V = −cost_to_next_gate + P × NPV`; expected shortfall of book NPV; four
+    allocation policies compared on 2017–2019; state archetypes; a tournament
+    of other learners under criteria C18–C19 registered first. *Reason:* the
+    v2 report was organised as a contest between the model and a lookup,
+    which turned usable findings into "the answer is nothing"; the company's
+    questions are decisions, and each needs a probability, a value, a cost
+    and a downside behind it. *Rejected:* new notebooks 21–23 (the work has
+    owners already); request-level k-means archetypes (they recover
+    region × technology cells and decide nothing); nodal prices, weather,
+    land, transmission and financing data (not obtainable by December 14;
+    stated as out of scope); multistate models (PJM has no dated stages);
+    cutting the v2 report to 3,000 words without changing its organisation.

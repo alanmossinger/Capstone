@@ -1,0 +1,9 @@
+id,line,metric,horizon,reference,rule
+C18,"≥ 20 MW, 3 years: Uno's C, T* vs dt_lgbm",uno_c,3,dt_lgbm,paired 95% interval of T* − reference entirely above 0
+C18,"≥ 20 MW, 3 years: Brier score, T* vs dt_lgbm",brier,3,dt_lgbm,paired 95% interval of T* − reference not entirely above 0 (not worse)
+C18,"≥ 20 MW, 5 years: Uno's C, T* vs dt_lgbm",uno_c,5,dt_lgbm,paired 95% interval of T* − reference entirely above 0
+C18,"≥ 20 MW, 5 years: Brier score, T* vs dt_lgbm",brier,5,dt_lgbm,paired 95% interval of T* − reference not entirely above 0 (not worse)
+C19,"≥ 20 MW, 3 years: Uno's C, T* vs fair_baseline",uno_c,3,fair_baseline,paired 95% interval of T* − reference entirely above 0
+C19,"≥ 20 MW, 3 years: Brier score, T* vs fair_baseline",brier,3,fair_baseline,paired 95% interval of T* − reference not entirely above 0 (not worse)
+C19,"≥ 20 MW, 5 years: Uno's C, T* vs fair_baseline",uno_c,5,fair_baseline,paired 95% interval of T* − reference entirely above 0
+C19,"≥ 20 MW, 5 years: Brier score, T* vs fair_baseline",brier,5,fair_baseline,paired 95% interval of T* − reference not entirely above 0 (not worse)

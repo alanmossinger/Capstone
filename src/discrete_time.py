@@ -483,3 +483,54 @@ def multiclass_log_loss(y, probs):
     """Mean negative log probability of the observed outcome of each project-year."""
     probs = np.clip(np.asarray(probs), 1e-15, 1)
     return float(-np.mean(np.log(probs[np.arange(len(y)), np.asarray(y, dtype=int)])))
+
+
+def fit_mlp_hazard(frame, clean, hidden=(64, 32), alpha=1e-3, seed=0, delayed=True):
+    """A neural discrete-time hazard model: a small MLP on the person-period rows.
+
+    Parameters
+    ----------
+    frame, clean : pandas.DataFrame
+        As in ``project_years``.
+    hidden : tuple of int
+        Hidden layer sizes.
+    alpha : float
+        L2 penalty (the one tuned setting, chosen on the 2016 cohort).
+    seed : int
+        Fixed in the protocol.
+
+    Returns
+    -------
+    dict
+        ``rows`` (fitting project-years) and ``model`` (a scaler + MLP
+        pipeline with a 3-class softmax output).
+
+    Notes
+    -----
+    The rows, the state encoding and the design are notebook 06's logit
+    design without the hand-made early-years interactions: a network can
+    form its own interactions, which is the one thing it might add over the
+    logit and LightGBM. Softmax over stay / operate / withdraw keeps the two
+    yearly hazards on the same footing as the other discrete-time models,
+    so ``cif_table`` turns them into incidence curves unchanged. Early
+    stopping on a tenth of the rows guards the fit; the seed fixes the split.
+    """
+    from sklearn.neural_network import MLPClassifier
+
+    rows = project_years(frame, clean, delayed=delayed)
+    encoded = encode_state(rows)[0]
+    X = logit_design(encoded, interactions=False)
+    model = make_pipeline(StandardScaler(),
+                          MLPClassifier(hidden_layer_sizes=hidden, alpha=alpha, early_stopping=True,
+                                        validation_fraction=0.1, n_iter_no_change=10, max_iter=300, random_state=seed))
+    model.fit(X, encoded["outcome"])
+    return {"rows": rows, "model": model}
+
+
+def predict_mlp(fitted, target, horizons=config.HORIZONS):
+    """P(operation by each horizon) from the MLP hazard model, as known at entry."""
+    rows = prediction_rows(target)
+    _, rows = encode_state(fitted["rows"], [rows])
+    X = logit_design(rows, interactions=False)
+    return cif_table(*predict_hazards(fitted["model"], X), target.index, horizons)
+

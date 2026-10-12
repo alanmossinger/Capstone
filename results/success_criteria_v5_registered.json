@@ -1,0 +1,84 @@
+{
+  "decided": "2026-10-12",
+  "decision": 59,
+  "candidates": {
+    "T1": "cause-specific random survival forest pair on the Cox design (300 trees, max_features sqrt, seed 59); left-truncated ERCOT rows (entry_years > 0) excluded from its fit; min_samples_leaf chosen on 2016 from [20, 50, 100]",
+    "T2": "MLP discrete-time hazard (hidden layers 64 and 32, softmax over stay/operate/withdraw, early stopping on 10% of rows, seed 59) on notebook 06's person-period rows and logit design without interactions; alpha chosen on 2016 from [1e-4, 1e-3, 1e-2]",
+    "T3": "blend of main logit, Cox, main LightGBM, T1 and T2, weights on a 0.1 simplex grid per horizon, fitted on 2016 predictions"
+  },
+  "fits": "every component fitted on entrants to 2015 for the 2016 choice and on entrants to 2016 for the test; nothing else tuned",
+  "selection": "within T1 and T2 the setting with the lowest mean IPCW Brier over 3, 5, 7 years on the 2016 cohort; T3's 2016 score cross-fitted on two halves (seed 34); the chosen learner T* is the candidate with the lowest 2016 mean Brier",
+  "test": "T* refitted on entrants to 2016 and scored once on the 2017–2019 test cohort, all sizes and 20 MW and more, with notebook 08's metrics, censoring weights and bootstrap (200 resamples, seed 800)",
+  "references": {
+    "dt_lgbm": "the registered LightGBM (notebook 08)",
+    "fair_baseline": "notebook 11's region × technology × size lookup"
+  },
+  "consequence": "C18 passes → notebooks 14, 16 and 20 switch to T*; C19 passes → the entry gate of notebook 16 scores with T*; otherwise the registered LightGBM and the lookup stay",
+  "rejected": "choosing T* on the test cohort; more than one tuned setting per learner; changing a line after a test score is seen",
+  "criteria": [
+    {
+      "id": "C18",
+      "line": "≥ 20 MW, 3 years: Uno's C, T* vs dt_lgbm",
+      "metric": "uno_c",
+      "horizon": 3,
+      "reference": "dt_lgbm",
+      "rule": "paired 95% interval of T* − reference entirely above 0"
+    },
+    {
+      "id": "C18",
+      "line": "≥ 20 MW, 3 years: Brier score, T* vs dt_lgbm",
+      "metric": "brier",
+      "horizon": 3,
+      "reference": "dt_lgbm",
+      "rule": "paired 95% interval of T* − reference not entirely above 0 (not worse)"
+    },
+    {
+      "id": "C18",
+      "line": "≥ 20 MW, 5 years: Uno's C, T* vs dt_lgbm",
+      "metric": "uno_c",
+      "horizon": 5,
+      "reference": "dt_lgbm",
+      "rule": "paired 95% interval of T* − reference entirely above 0"
+    },
+    {
+      "id": "C18",
+      "line": "≥ 20 MW, 5 years: Brier score, T* vs dt_lgbm",
+      "metric": "brier",
+      "horizon": 5,
+      "reference": "dt_lgbm",
+      "rule": "paired 95% interval of T* − reference not entirely above 0 (not worse)"
+    },
+    {
+      "id": "C19",
+      "line": "≥ 20 MW, 3 years: Uno's C, T* vs fair_baseline",
+      "metric": "uno_c",
+      "horizon": 3,
+      "reference": "fair_baseline",
+      "rule": "paired 95% interval of T* − reference entirely above 0"
+    },
+    {
+      "id": "C19",
+      "line": "≥ 20 MW, 3 years: Brier score, T* vs fair_baseline",
+      "metric": "brier",
+      "horizon": 3,
+      "reference": "fair_baseline",
+      "rule": "paired 95% interval of T* − reference not entirely above 0 (not worse)"
+    },
+    {
+      "id": "C19",
+      "line": "≥ 20 MW, 5 years: Uno's C, T* vs fair_baseline",
+      "metric": "uno_c",
+      "horizon": 5,
+      "reference": "fair_baseline",
+      "rule": "paired 95% interval of T* − reference entirely above 0"
+    },
+    {
+      "id": "C19",
+      "line": "≥ 20 MW, 5 years: Brier score, T* vs fair_baseline",
+      "metric": "brier",
+      "horizon": 5,
+      "reference": "fair_baseline",
+      "rule": "paired 95% interval of T* − reference not entirely above 0 (not worse)"
+    }
+  ]
+}
