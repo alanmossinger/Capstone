@@ -1339,7 +1339,7 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 
 *Notebook:* `notebooks/18_evaluate_v2.ipynb` · *Files:* `figures/D4_worth.png`, `.svg`
 
-**Caption (stub).** Decision 4, what a plant is worth: NPV per MW by technology and region at a 2024 operation date, and the break-even flat price against the captured energy price.
+**Caption (stub).** Decision 4, what a plant is worth: NPV per MW by technology and region at a 2024 operation date under merchant and contracted revenue, and the break-even flat price against the captured energy price.
 <!-- /fig:D4_worth -->
 
 <!-- fig:D5_book -->
@@ -1349,7 +1349,7 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 
 *Notebook:* `notebooks/18_evaluate_v2.ipynb` · *Files:* `figures/D5_book.png`, `.svg`
 
-**Caption (stub).** Decision 5, the book: the gate classes scored on what happened, and the model's floor book per region two years in.
+**Caption (stub).** Decision 5, the book: the gate classes scored on what happened under contracted and merchant revenue, and the model's floor book per region two years in.
 <!-- /fig:D5_book -->
 
 <!-- fig:D6_policies -->
@@ -1359,7 +1359,7 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 
 *Notebook:* `notebooks/18_evaluate_v2.ipynb` · *Files:* `figures/D6_policies.png`, `.svg`
 
-**Caption (stub).** Decision 5, continued: six allocation policies under the same deposit budget, expected NPV, expected shortfall and realised NPV.
+**Caption (stub).** Decision 5, continued: six allocation policies under the same deposit budget, contracted and merchant revenue: expected NPV, expected shortfall and realised NPV.
 <!-- /fig:D6_policies -->
 
 <!-- fig:F10_gains_over_baselines -->
@@ -1509,7 +1509,7 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 
 *Notebook:* `notebooks/16_portfolio.ipynb` · *Files:* `figures/F23_portfolio_review.png`, `.svg`
 
-**Caption (stub).** Share of requests that reached operation by gate decision (invest / hold / exit at entry; accelerate / hold or sell / exit two years in) and region, with Wilson intervals, hurdle 3, test cohort 2017–2019.
+**Caption (stub).** Share of requests that reached operation by gate decision (invest / hold / exit at entry with hurdle 3; accelerate / hold or sell / exit two years in with hurdle 2) and region, under merchant and contracted revenue, with Wilson intervals, test cohort 2017–2019.
 <!-- /fig:F23_portfolio_review -->
 
 <!-- fig:F24_book_per_region -->
@@ -1539,7 +1539,7 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 
 *Notebook:* `notebooks/15_value_and_cost.ipynb` · *Files:* `figures/F26_npv_per_mw.png`, `.svg`
 
-**Caption (stub).** Net present value per MW at operation by technology and region for a plant entering operation in 2024 (credits apply) and 2028 (after the credit deadline), 20-year life, 8% real discount rate, low and high value cases as lines; revenue from the value table with new-build capacity factors, capital and O&M from NREL ATB 2024.
+**Caption (stub).** Net present value per MW at operation by technology and region: merchant revenue with today's credits (2024), a 15-year contract at index prices (2024), and merchant revenue after the credit deadline (2028); 20-year life, ATB real cost of capital per technology, low and high value cases as lines.
 <!-- /fig:F26_npv_per_mw -->
 
 <!-- fig:F2_operation_by_technology -->

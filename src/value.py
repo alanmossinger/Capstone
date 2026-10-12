@@ -376,3 +376,35 @@ def atb_capacity_factors(file=RAW_ATB, year=2024, scenario="Moderate", case="Mar
             out[group] = float(part["value"].iloc[0])
     return out
 
+
+def atb_wacc(file=RAW_ATB, year=2024, case="Market", crp="20"):
+    """Real weighted average cost of capital per technology group from the ATB's Market financing case.
+
+    Returns
+    -------
+    dict
+        Technology group -> real WACC (a fraction). "Other" takes the median
+        of the mapped groups; battery storage, which the ATB prices without a
+        financing row in this filter, takes the solar rate (it is financed
+        with the same tax-equity structures).
+
+    Notes
+    -----
+    Practice discounts operating cash flows at the project's cost of capital
+    and carries the chance of never reaching operation as a probability, not
+    as a higher rate; the gate rule of notebook 16 has that shape. The ATB
+    Market case gives 4.2% real for utility solar and hybrids, 4.9% for land
+    wind, 5.2% for offshore wind and 5.4% for gas (2024 values).
+    """
+    d = pd.read_parquet(file)
+    d = d[(d["core_metric_case"] == case) & (d["crpyears"] == str(crp)) & (d["core_metric_variable"] == year)
+          & (d["core_metric_parameter"] == "WACC Real")]
+    out = {}
+    for group, (tech, _) in ATB_MAP.items():
+        part = d[d["technology"] == tech]
+        if len(part):
+            out[group] = float(part["value"].iloc[0])
+    out.setdefault("Battery", out["Solar"])
+    out["Other"] = float(np.median(list(out.values())))
+    return out
+

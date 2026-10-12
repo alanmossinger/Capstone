@@ -16,8 +16,10 @@ deposit share of interconnection cost to the next gate,0.1,0.05,0.2,assumption,a
 "study cost to the next gate, $ per request",150000,50000,500000,assumption,assumption
 capital and O&M cost per kW,"NREL ATB 2024 v3, Moderate / Market / 20-year CRP, one class per technology (src/value.ATB_MAP); 2022 dollars",,,"data/raw/atb/ATBe_2024_v3.parquet (OEDI data lake, downloaded 2026-10-12)",parsed
 capacity factor of a new plant (NPV only),"{'Solar': 0.266, 'Solar+Battery': 0.28, 'Wind': 0.455, 'Offshore Wind': 0.461, 'Battery': 0.0, 'Gas': 0.376, 'Other': 0.3}",,,"ATB 2024 class CF for solar, hybrid, wind, offshore; EIA fleet CF for gas; section 3 assumption for Other",parsed; choice stated
+real cost of capital by technology (NPV discount rate),"{'Solar': 0.0416, 'Solar+Battery': 0.0417, 'Wind': 0.0491, 'Offshore Wind': 0.0515, 'Gas': 0.0536, 'Battery': 0.0416, 'Other': 0.0454}",8% stress,,"ATB 2024 Market financing case, WACC Real (src/value.atb_wacc); storage takes the solar rate, Other the median",parsed; mapping stated
 "natural gas price, $/MMBtu",3.5,5.0,2.5,assumption; Henry Hub traded between about $2 and $6 over 2017–2024,assumption
 investment tax credit,"30% of CAPEX for Solar, Solar+Battery, Battery, Offshore Wind in service by 2027; wind takes the production credit instead",0 after the deadline,,IRC §48E base rate; deadline as the production credit (IRS Notice 2025-42),statute; election is an assumption
 production credit duration (NPV only),first 10 operating years,,,IRC §45Y,statute
-real discount rate,8%,10%,6%,"assumption; reported at 6%, 8% and 10%",assumption
+"contracted case: PPA price, $/MWh, first 15 years","{'Solar': 57.0, 'Wind': 62.0, 'Solar+Battery': 70.0, 'Offshore Wind': 110.0}",−10,+10,"assumption at the level of public North American PPA price indices for 2024 (LevelTen Energy, quarterly index; P25 offers); offshore and hybrid adders assumed; verify",assumption — verify
+contracted case: contract term,"15 years, merchant after",,,assumption; typical utility-scale PPA tenors are 10–20 years,assumption
 operating life valued,20 years,,,ATB 20-year cost-recovery period,by design

@@ -38,3 +38,11 @@ def test_atb_capacity_factors_are_design_values_for_the_variable_technologies():
     assert set(cf) == {"Solar", "Solar+Battery", "Wind", "Offshore Wind"}
     assert 0.2 < cf["Solar"] < 0.35 and 0.35 < cf["Wind"] < 0.55
 
+
+def test_atb_wacc_is_a_small_real_rate_for_every_group():
+    if not value.RAW_ATB.exists():
+        return
+    w = value.atb_wacc()
+    assert set(w) == set(value.ATB_MAP) | {"Other"}
+    assert all(0.03 < v < 0.08 for v in w.values())
+

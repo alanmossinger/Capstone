@@ -1,11 +1,11 @@
 check,value,pass
-every value input has a source or an assumption row,22,True
+every value input has a source or an assumption row,24,True
 capacity revenue parsed for 20 years,20,True
 ELCC ratings parsed for 18 classes,18,True
 no missing value in the value table,0,True
 every test request valued,2268,True
 ATB costs read for every technology group,7,True
-NPV table complete (3 regions × 7 technologies × 13 COD years × 3 cases),273,True
+"NPV table complete (3 regions × 7 technologies × 13 COD years, merchant and contracted, 3 cases)",273,True
 every test request has an expected NPV,2268,True
 F26 saved as PNG and SVG,2,True
 F13 saved as PNG and SVG,2,True

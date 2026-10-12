@@ -664,3 +664,25 @@ alternative rejected.
     out of scope for a capstone); the ATB's R&D case (the Market case is the
     one investors see); typing CAPEX by hand (the rule is that every cost
     is parsed from a file or listed as an assumption with a range).
+
+61. **Practice-grade valuation: the ATB cost of capital, a contracted case,
+    and a hurdle that falls with risk** (2026-10-12; Alan's "go" after the
+    market-practice note in the journal). (a) The NPV discounts operating
+    cash flows at the technology's real WACC from the ATB 2024 Market
+    financing case (4.2% solar and hybrids, 4.9% wind, 5.2% offshore, 5.4%
+    gas; storage takes the solar rate, "Other" the median), with 8% kept as a
+    stress case; the chance of never reaching operation is carried as a
+    probability by the gates, not as a higher rate. (b) A **contracted**
+    revenue case runs beside the merchant one: a 15-year PPA at index-level
+    prices (solar $57, wind $62, hybrids $70, offshore $110 per MWh, ±$10;
+    assumptions at the level of public North American PPA indices for 2024,
+    to verify) replaces the merchant energy term for solar, wind, hybrids
+    and offshore wind; gas, storage and "Other" stay merchant. (c) The
+    hurdle on the margin is 3 at entry and 2 two years in (both reported at
+    2, 3 and 5). Every gate, policy and book number is computed for both
+    revenue cases; the report shows both and treats the merchant case as the
+    floor. *Reason:* no developer underwrites on merchant on-peak prices,
+    and an 8% flat rate was three points above the market's cost of capital,
+    which pushed solar below zero everywhere. *Rejected:* a single blended
+    rate (hides the technology difference the ATB documents); a merchant-only
+    report (the contract is where the sign of solar is decided).

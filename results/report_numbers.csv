@@ -601,7 +601,7 @@ cohort_mw,"348,901",348901.41776,results/expected_value_by_request.csv,test coho
 ev_median,$5.5,5459652.79724217,results/expected_value_by_request.csv,"median expected value per request, repaired base, $M"
 sens_spearman_min,0.97,0.973,results/value_sensitivity.csv,lowest Spearman correlation across value cases
 sens_overlap_low,90%,0.9026548672566372,results/value_sensitivity.csv,"top-decile overlap, low vs base"
-n_assumptions,22,22,results/value_assumptions.csv,rows in the assumption table
+n_assumptions,24,24,results/value_assumptions.csv,rows in the assumption table
 ms_miso_usable,"5,169",5169,results/miso_spp_samples.csv,MISO usable requests
 ms_miso_test,737,737,results/miso_spp_samples.csv,MISO test requests
 ms_miso_ops,54,54,results/miso_spp_samples.csv,MISO test operations within 5 years
@@ -951,26 +951,34 @@ ae_16_value,"{'Solar': 0.266, 'Solar+Battery': 0.28, 'Wind': 0.455, 'Offshore Wi
 ae_16_low,,nan,results/value_assumptions.csv,E row 16 low
 ae_16_high,,nan,results/value_assumptions.csv,E row 16 high
 ae_16_source,"ATB 2024 class CF for solar, hybrid, wind, offshore; EIA fleet CF for gas; section 3 assumption for Other","ATB 2024 class CF for solar, hybrid, wind, offshore; EIA fleet CF for gas; section 3 assumption for Other",results/value_assumptions.csv,E row 16 source
-ae_17_value,3.5,3.5,results/value_assumptions.csv,E row 17 value
-ae_17_low,5.0,5.0,results/value_assumptions.csv,E row 17 low
-ae_17_high,2.5,2.5,results/value_assumptions.csv,E row 17 high
-ae_17_source,assumption; Henry Hub traded between about $2 and $6 over 2017–2024,assumption; Henry Hub traded between about $2 and $6 over 2017–2024,results/value_assumptions.csv,E row 17 source
-ae_18_value,"30% of CAPEX for Solar, Solar+Battery, Battery, Offshore Wind in service by 2027; wind takes the production credit instead","30% of CAPEX for Solar, Solar+Battery, Battery, Offshore Wind in service by 2027; wind takes the production credit instead",results/value_assumptions.csv,E row 18 value
-ae_18_low,0 after the deadline,0 after the deadline,results/value_assumptions.csv,E row 18 low
-ae_18_high,,nan,results/value_assumptions.csv,E row 18 high
-ae_18_source,IRC §48E base rate; deadline as the production credit (IRS Notice 2025-42),IRC §48E base rate; deadline as the production credit (IRS Notice 2025-42),results/value_assumptions.csv,E row 18 source
-ae_19_value,first 10 operating years,first 10 operating years,results/value_assumptions.csv,E row 19 value
-ae_19_low,,nan,results/value_assumptions.csv,E row 19 low
+ae_17_value,"{'Solar': 0.0416, 'Solar+Battery': 0.0417, 'Wind': 0.0491, 'Offshore Wind': 0.0515, 'Gas': 0.0536, 'Battery': 0.0416, 'Other': 0.0454}","{'Solar': 0.0416, 'Solar+Battery': 0.0417, 'Wind': 0.0491, 'Offshore Wind': 0.0515, 'Gas': 0.0536, 'Battery': 0.0416, 'Other': 0.0454}",results/value_assumptions.csv,E row 17 value
+ae_17_low,8% stress,8% stress,results/value_assumptions.csv,E row 17 low
+ae_17_high,,nan,results/value_assumptions.csv,E row 17 high
+ae_17_source,"ATB 2024 Market ficing case, WACC Real (src/value.atb_wacc); storage takes the solar rate, Other the median","ATB 2024 Market financing case, WACC Real (src/value.atb_wacc); storage takes the solar rate, Other the median",results/value_assumptions.csv,E row 17 source
+ae_18_value,3.5,3.5,results/value_assumptions.csv,E row 18 value
+ae_18_low,5.0,5.0,results/value_assumptions.csv,E row 18 low
+ae_18_high,2.5,2.5,results/value_assumptions.csv,E row 18 high
+ae_18_source,assumption; Henry Hub traded between about $2 and $6 over 2017–2024,assumption; Henry Hub traded between about $2 and $6 over 2017–2024,results/value_assumptions.csv,E row 18 source
+ae_19_value,"30% of CAPEX for Solar, Solar+Battery, Battery, Offshore Wind in service by 2027; wind takes the production credit instead","30% of CAPEX for Solar, Solar+Battery, Battery, Offshore Wind in service by 2027; wind takes the production credit instead",results/value_assumptions.csv,E row 19 value
+ae_19_low,0 after the deadline,0 after the deadline,results/value_assumptions.csv,E row 19 low
 ae_19_high,,nan,results/value_assumptions.csv,E row 19 high
-ae_19_source,IRC §45Y,IRC §45Y,results/value_assumptions.csv,E row 19 source
-ae_20_value,8%,8%,results/value_assumptions.csv,E row 20 value
-ae_20_low,10%,10%,results/value_assumptions.csv,E row 20 low
-ae_20_high,6%,6%,results/value_assumptions.csv,E row 20 high
-ae_20_source,"assumption; reported at 6%, 8% and 10%","assumption; reported at 6%, 8% and 10%",results/value_assumptions.csv,E row 20 source
-ae_21_value,20 years,20 years,results/value_assumptions.csv,E row 21 value
-ae_21_low,,nan,results/value_assumptions.csv,E row 21 low
-ae_21_high,,nan,results/value_assumptions.csv,E row 21 high
-ae_21_source,ATB 20-year cost-recovery period,ATB 20-year cost-recovery period,results/value_assumptions.csv,E row 21 source
+ae_19_source,IRC §48E base rate; deadline as the production credit (IRS Notice 2025-42),IRC §48E base rate; deadline as the production credit (IRS Notice 2025-42),results/value_assumptions.csv,E row 19 source
+ae_20_value,first 10 operating years,first 10 operating years,results/value_assumptions.csv,E row 20 value
+ae_20_low,,nan,results/value_assumptions.csv,E row 20 low
+ae_20_high,,nan,results/value_assumptions.csv,E row 20 high
+ae_20_source,IRC §45Y,IRC §45Y,results/value_assumptions.csv,E row 20 source
+ae_21_value,"{'Solar': 57.0, 'Wind': 62.0, 'Solar+Battery': 70.0, 'Offshore Wind': 110.0}","{'Solar': 57.0, 'Wind': 62.0, 'Solar+Battery': 70.0, 'Offshore Wind': 110.0}",results/value_assumptions.csv,E row 21 value
+ae_21_low,−10,−10,results/value_assumptions.csv,E row 21 low
+ae_21_high,+10,+10,results/value_assumptions.csv,E row 21 high
+ae_21_source,"assumption at the level of public North American PPA price indices for 2024 (LevelTen Energy, quarterly index; P25 offers); offshore and hybrid adders assumed; verify","assumption at the level of public North American PPA price indices for 2024 (LevelTen Energy, quarterly index; P25 offers); offshore and hybrid adders assumed; verify",results/value_assumptions.csv,E row 21 source
+ae_22_value,"15 years, merchant after","15 years, merchant after",results/value_assumptions.csv,E row 22 value
+ae_22_low,,nan,results/value_assumptions.csv,E row 22 low
+ae_22_high,,nan,results/value_assumptions.csv,E row 22 high
+ae_22_source,assumption; typical utility-scale PPA tenors are 10–20 years,assumption; typical utility-scale PPA tenors are 10–20 years,results/value_assumptions.csv,E row 22 source
+ae_23_value,20 years,20 years,results/value_assumptions.csv,E row 23 value
+ae_23_low,,nan,results/value_assumptions.csv,E row 23 low
+ae_23_high,,nan,results/value_assumptions.csv,E row 23 high
+ae_23_source,ATB 20-year cost-recovery period,ATB 20-year cost-recovery period,results/value_assumptions.csv,E row 23 source
 af_0_requests,"2,064",2064,results/landmark_coverage.csv,F row 0 requests
 af_0_large,"1,644",1644,results/landmark_coverage.csv,F row 0 ≥ 20 MW
 af_0_ops1,40,40,results/landmark_coverage.csv,F row 0 operations within 1
@@ -1191,284 +1199,589 @@ t_all_lgbm_uno7_iv,"[−0.026, −0.007]","(np.float64(-0.0261346218693193), np.
 t_t1_uno5,0.66,0.6580152781073805,results/tournament_all_candidates_test.csv,"T1: Uno's C at 5 years, all sizes"
 t_t2_uno5,0.68,0.6800742219785435,results/tournament_all_candidates_test.csv,"T2: Uno's C at 5 years, all sizes"
 t_lgbm_uno5,0.76,0.7597380545167388,results/tournament_all_candidates_test.csv,"dt_lgbm: Uno's C at 5 years, all sizes"
-npv_2024_ercot_wind,0.34,0.34469920000000004,results/npv_table.csv,"NPV per MW, $M, Wind ERCOT, COD 2024, base"
-npv_2024_ercot_solar,−0.37,-0.36518870000000003,results/npv_table.csv,"NPV per MW, $M, Solar ERCOT, COD 2024, base"
-npv_2024_ercot_gas,−0.94,-0.9445271999999999,results/npv_table.csv,"NPV per MW, $M, Gas ERCOT, COD 2024, base"
-npv_2024_ercot_batt,−1.79,-1.7911653,results/npv_table.csv,"NPV per MW, $M, Battery ERCOT, COD 2024, base"
-npv_2024_ercot_hyb,−1.28,-1.2801595,results/npv_table.csv,"NPV per MW, $M, Solar+Battery ERCOT, COD 2024, base"
-npv_2024_ercot_off,−3.31,-3.3106543,results/npv_table.csv,"NPV per MW, $M, Offshore Wind ERCOT, COD 2024, base"
-npv_2024_pjm_wind,1.18,1.1831977,results/npv_table.csv,"NPV per MW, $M, Wind PJM, COD 2024, base"
-npv_2024_pjm_solar,0.03,0.028402200000000002,results/npv_table.csv,"NPV per MW, $M, Solar PJM, COD 2024, base"
-npv_2024_pjm_gas,0.22,0.2166844,results/npv_table.csv,"NPV per MW, $M, Gas PJM, COD 2024, base"
-npv_2024_pjm_batt,−1.27,-1.2714469,results/npv_table.csv,"NPV per MW, $M, Battery PJM, COD 2024, base"
-npv_2024_pjm_hyb,−0.64,-0.6410003000000001,results/npv_table.csv,"NPV per MW, $M, Solar+Battery PJM, COD 2024, base"
-npv_2024_pjm_off,−2.21,-2.2083942999999997,results/npv_table.csv,"NPV per MW, $M, Offshore Wind PJM, COD 2024, base"
-npv_2024_caiso_wind,0.09,0.0902897,results/npv_table.csv,"NPV per MW, $M, Wind CAISO, COD 2024, base"
-npv_2024_caiso_solar,−0.61,-0.6101040999999999,results/npv_table.csv,"NPV per MW, $M, Solar CAISO, COD 2024, base"
-npv_2024_caiso_gas,−0.91,-0.9125518,results/npv_table.csv,"NPV per MW, $M, Gas CAISO, COD 2024, base"
-npv_2024_caiso_batt,−1.27,-1.2727671,results/npv_table.csv,"NPV per MW, $M, Battery CAISO, COD 2024, base"
-npv_2024_caiso_hyb,−1.36,-1.3551123,results/npv_table.csv,"NPV per MW, $M, Solar+Battery CAISO, COD 2024, base"
-npv_2024_caiso_off,−3.39,-3.3860984,results/npv_table.csv,"NPV per MW, $M, Offshore Wind CAISO, COD 2024, base"
-npv_positive_2024,5,5,results/npv_table.csv,"technology-region pairs with positive base NPV, COD 2024"
-npv_2028_ercot_wind,−0.35,-0.3457929,results/npv_table.csv,"NPV per MW, $M, Wind ERCOT, COD 2028, base"
-npv_2028_ercot_solar,−0.80,-0.8043308,results/npv_table.csv,"NPV per MW, $M, Solar ERCOT, COD 2028, base"
-npv_2028_ercot_gas,−0.90,-0.8981693000000001,results/npv_table.csv,"NPV per MW, $M, Gas ERCOT, COD 2028, base"
-npv_2028_ercot_batt,−2.37,-2.3726263999999997,results/npv_table.csv,"NPV per MW, $M, Battery ERCOT, COD 2028, base"
-npv_2028_ercot_hyb,−1.99,-1.9876519,results/npv_table.csv,"NPV per MW, $M, Solar+Battery ERCOT, COD 2028, base"
-npv_2028_ercot_off,−5.06,-5.0591826,results/npv_table.csv,"NPV per MW, $M, Offshore Wind ERCOT, COD 2028, base"
-npv_2028_pjm_wind,0.55,0.5509613000000001,results/npv_table.csv,"NPV per MW, $M, Wind PJM, COD 2028, base"
-npv_2028_pjm_solar,−0.39,-0.3887204,results/npv_table.csv,"NPV per MW, $M, Solar PJM, COD 2028, base"
-npv_2028_pjm_gas,0.36,0.3600274,results/npv_table.csv,"NPV per MW, $M, Gas PJM, COD 2028, base"
-npv_2028_pjm_batt,−1.79,-1.7881087,results/npv_table.csv,"NPV per MW, $M, Battery PJM, COD 2028, base"
-npv_2028_pjm_hyb,−1.30,-1.2990374,results/npv_table.csv,"NPV per MW, $M, Solar+Battery PJM, COD 2028, base"
-npv_2028_pjm_off,−3.87,-3.8693508,results/npv_table.csv,"NPV per MW, $M, Offshore Wind PJM, COD 2028, base"
-npv_2028_caiso_wind,−0.66,-0.6638347,results/npv_table.csv,"NPV per MW, $M, Wind CAISO, COD 2028, base"
-npv_2028_caiso_solar,−1.09,-1.0864361999999999,results/npv_table.csv,"NPV per MW, $M, Solar CAISO, COD 2028, base"
-npv_2028_caiso_gas,−0.93,-0.9318976999999999,results/npv_table.csv,"NPV per MW, $M, Gas CAISO, COD 2028, base"
-npv_2028_caiso_batt,−1.85,-1.8542281999999999,results/npv_table.csv,"NPV per MW, $M, Battery CAISO, COD 2028, base"
-npv_2028_caiso_hyb,−2.10,-2.1041689,results/npv_table.csv,"NPV per MW, $M, Solar+Battery CAISO, COD 2028, base"
-npv_2028_caiso_off,−5.20,-5.203166700000001,results/npv_table.csv,"NPV per MW, $M, Offshore Wind CAISO, COD 2028, base"
-npv_positive_2028,2,2,results/npv_table.csv,"technology-region pairs with positive base NPV, COD 2028"
-npv_pjm_gas_low,−1.1,-1066330.9,results/npv_table.csv,PJM gas 2024: low case $M
-npv_pjm_gas_high,1.4,1397370.6,results/npv_table.csv,PJM gas 2024: high case $M
-be_solar,$57,56.8,results/npv_table.csv,"break-even flat price, $/MWh, Solar"
-be_wind,$51,50.8,results/npv_table.csv,"break-even flat price, $/MWh, Wind"
-be_gas,$80,80.2,results/npv_table.csv,"break-even flat price, $/MWh, Gas"
-be_hyb,$97,96.6,results/npv_table.csv,"break-even flat price, $/MWh, Solar+Battery"
+npv_2024_ercot_wind,0.83,0.8287788,results/npv_table.csv,"NPV per MW, $M, Wind ERCOT, COD 2024, base, merchant"
+npvc_2024_ercot_wind,1.71,1.7097333000000001,results/npv_table.csv,"NPV per MW, $M, Wind ERCOT, COD 2024, base, contracted"
+npv_2024_ercot_solar,−0.09,-0.0939039,results/npv_table.csv,"NPV per MW, $M, Solar ERCOT, COD 2024, base, merchant"
+npvc_2024_ercot_solar,0.32,0.318907,results/npv_table.csv,"NPV per MW, $M, Solar ERCOT, COD 2024, base, contracted"
+npv_2024_ercot_gas,−0.81,-0.8119304,results/npv_table.csv,"NPV per MW, $M, Gas ERCOT, COD 2024, base, merchant"
+npvc_2024_ercot_gas,−0.81,-0.8119304,results/npv_table.csv,"NPV per MW, $M, Gas ERCOT, COD 2024, base, contracted"
+npv_2024_ercot_batt,−1.95,-1.9495073,results/npv_table.csv,"NPV per MW, $M, Battery ERCOT, COD 2024, base, merchant"
+npvc_2024_ercot_batt,−1.95,-1.9495073,results/npv_table.csv,"NPV per MW, $M, Battery ERCOT, COD 2024, base, contracted"
+npv_2024_ercot_hyb,−1.11,-1.1110887,results/npv_table.csv,"NPV per MW, $M, Solar+Battery ERCOT, COD 2024, base, merchant"
+npvc_2024_ercot_hyb,−0.40,-0.3960387,results/npv_table.csv,"NPV per MW, $M, Solar+Battery ERCOT, COD 2024, base, contracted"
+npv_2024_ercot_off,−3.08,-3.0763784,results/npv_table.csv,"NPV per MW, $M, Offshore Wind ERCOT, COD 2024, base, merchant"
+npvc_2024_ercot_off,−0.31,-0.310358,results/npv_table.csv,"NPV per MW, $M, Offshore Wind ERCOT, COD 2024, base, contracted"
+npv_2024_pjm_wind,1.92,1.9152162,results/npv_table.csv,"NPV per MW, $M, Wind PJM, COD 2024, base, merchant"
+npvc_2024_pjm_wind,2.29,2.2858485,results/npv_table.csv,"NPV per MW, $M, Wind PJM, COD 2024, base, contracted"
+npv_2024_pjm_solar,0.45,0.4502119,results/npv_table.csv,"NPV per MW, $M, Solar PJM, COD 2024, base, merchant"
+npvc_2024_pjm_solar,0.55,0.5486421,results/npv_table.csv,"NPV per MW, $M, Solar PJM, COD 2024, base, contracted"
+npv_2024_pjm_gas,0.64,0.6378704000000001,results/npv_table.csv,"NPV per MW, $M, Gas PJM, COD 2024, base, merchant"
+npvc_2024_pjm_gas,0.64,0.6378704000000001,results/npv_table.csv,"NPV per MW, $M, Gas PJM, COD 2024, base, contracted"
+npv_2024_pjm_batt,−1.22,-1.2198088999999999,results/npv_table.csv,"NPV per MW, $M, Battery PJM, COD 2024, base, merchant"
+npvc_2024_pjm_batt,−1.22,-1.2198088999999999,results/npv_table.csv,"NPV per MW, $M, Battery PJM, COD 2024, base, contracted"
+npv_2024_pjm_hyb,−0.22,-0.2240365,results/npv_table.csv,"NPV per MW, $M, Solar+Battery PJM, COD 2024, base, merchant"
+npvc_2024_pjm_hyb,0.14,0.1399147,results/npv_table.csv,"NPV per MW, $M, Solar+Battery PJM, COD 2024, base, contracted"
+npv_2024_pjm_off,−1.68,-1.6757883999999998,results/npv_table.csv,"NPV per MW, $M, Offshore Wind PJM, COD 2024, base, merchant"
+npvc_2024_pjm_off,0.55,0.5495549000000001,results/npv_table.csv,"NPV per MW, $M, Offshore Wind PJM, COD 2024, base, contracted"
+npv_2024_caiso_wind,0.49,0.4875678,results/npv_table.csv,"NPV per MW, $M, Wind CAISO, COD 2024, base, merchant"
+npvc_2024_caiso_wind,2.02,2.0221627,results/npv_table.csv,"NPV per MW, $M, Wind CAISO, COD 2024, base, contracted"
+npv_2024_caiso_solar,−0.44,-0.44027320000000003,results/npv_table.csv,"NPV per MW, $M, Solar CAISO, COD 2024, base, merchant"
+npvc_2024_caiso_solar,0.38,0.3764812,results/npv_table.csv,"NPV per MW, $M, Solar CAISO, COD 2024, base, contracted"
+npv_2024_caiso_gas,−0.79,-0.7861237,results/npv_table.csv,"NPV per MW, $M, Gas CAISO, COD 2024, base, merchant"
+npvc_2024_caiso_gas,−0.79,-0.7861237,results/npv_table.csv,"NPV per MW, $M, Gas CAISO, COD 2024, base, contracted"
+npv_2024_caiso_batt,−1.24,-1.2421591,results/npv_table.csv,"NPV per MW, $M, Battery CAISO, COD 2024, base, merchant"
+npvc_2024_caiso_batt,−1.24,-1.2421591,results/npv_table.csv,"NPV per MW, $M, Battery CAISO, COD 2024, base, contracted"
+npv_2024_caiso_hyb,−1.23,-1.226839,results/npv_table.csv,"NPV per MW, $M, Solar+Battery CAISO, COD 2024, base, merchant"
+npvc_2024_caiso_hyb,−0.06,-0.060686300000000006,results/npv_table.csv,"NPV per MW, $M, Solar+Battery CAISO, COD 2024, base, contracted"
+npv_2024_caiso_off,−3.19,-3.186422,results/npv_table.csv,"NPV per MW, $M, Offshore Wind CAISO, COD 2024, base, merchant"
+npvc_2024_caiso_off,0.27,0.271413,results/npv_table.csv,"NPV per MW, $M, Offshore Wind CAISO, COD 2024, base, contracted"
+npv_positive_2024,5,5,results/npv_table.csv,"technology-region pairs with positive base NPV, COD 2024, merchant"
+npvc_positive_2024,10,10,results/npv_table.csv,"technology-region pairs with positive base NPV, COD 2024, contracted"
+npv_2028_ercot_wind,0.03,0.0251137,results/npv_table.csv,"NPV per MW, $M, Wind ERCOT, COD 2028, base, merchant"
+npvc_2028_ercot_wind,0.86,0.8598504,results/npv_table.csv,"NPV per MW, $M, Wind ERCOT, COD 2028, base, contracted"
+npv_2028_ercot_solar,−0.53,-0.5320793,results/npv_table.csv,"NPV per MW, $M, Solar ERCOT, COD 2028, base, merchant"
+npvc_2028_ercot_solar,−0.15,-0.1464748,results/npv_table.csv,"NPV per MW, $M, Solar ERCOT, COD 2028, base, contracted"
+npv_2028_ercot_gas,−0.76,-0.7644094,results/npv_table.csv,"NPV per MW, $M, Gas ERCOT, COD 2028, base, merchant"
+npvc_2028_ercot_gas,−0.76,-0.7644094,results/npv_table.csv,"NPV per MW, $M, Gas ERCOT, COD 2028, base, contracted"
+npv_2028_ercot_batt,−2.53,-2.5309684,results/npv_table.csv,"NPV per MW, $M, Battery ERCOT, COD 2028, base, merchant"
+npvc_2028_ercot_batt,−2.53,-2.5309684,results/npv_table.csv,"NPV per MW, $M, Battery ERCOT, COD 2028, base, contracted"
+npv_2028_ercot_hyb,−1.82,-1.8175037,results/npv_table.csv,"NPV per MW, $M, Solar+Battery ERCOT, COD 2028, base, merchant"
+npvc_2028_ercot_hyb,−1.13,-1.1328571,results/npv_table.csv,"NPV per MW, $M, Solar+Battery ERCOT, COD 2028, base, contracted"
+npv_2028_ercot_off,−4.82,-4.8235965,results/npv_table.csv,"NPV per MW, $M, Offshore Wind ERCOT, COD 2028, base, merchant"
+npvc_2028_ercot_off,−2.11,-2.1072452999999998,results/npv_table.csv,"NPV per MW, $M, Offshore Wind ERCOT, COD 2028, base, contracted"
+npv_2028_pjm_wind,1.17,1.1718954,results/npv_table.csv,"NPV per MW, $M, Wind PJM, COD 2028, base, merchant"
+npvc_2028_pjm_wind,1.48,1.4824278999999998,results/npv_table.csv,"NPV per MW, $M, Wind PJM, COD 2028, base, contracted"
+npv_2028_pjm_solar,0.04,0.0350161,results/npv_table.csv,"NPV per MW, $M, Solar PJM, COD 2028, base, merchant"
+npvc_2028_pjm_solar,0.10,0.0980681,results/npv_table.csv,"NPV per MW, $M, Solar PJM, COD 2028, base, contracted"
+npv_2028_pjm_gas,0.79,0.7853988000000001,results/npv_table.csv,"NPV per MW, $M, Gas PJM, COD 2028, base, merchant"
+npvc_2028_pjm_gas,0.79,0.7853988000000001,results/npv_table.csv,"NPV per MW, $M, Gas PJM, COD 2028, base, contracted"
+npv_2028_pjm_batt,−1.73,-1.7334009,results/npv_table.csv,"NPV per MW, $M, Battery PJM, COD 2028, base, merchant"
+npvc_2028_pjm_batt,−1.73,-1.7334009,results/npv_table.csv,"NPV per MW, $M, Battery PJM, COD 2028, base, contracted"
+npv_2028_pjm_hyb,−0.88,-0.8787524,results/npv_table.csv,"NPV per MW, $M, Solar+Battery PJM, COD 2028, base, merchant"
+npvc_2028_pjm_hyb,−0.55,-0.5543366999999999,results/npv_table.csv,"NPV per MW, $M, Solar+Battery PJM, COD 2028, base, contracted"
+npv_2028_pjm_off,−3.33,-3.3325015,results/npv_table.csv,"NPV per MW, $M, Offshore Wind PJM, COD 2028, base, merchant"
+npvc_2028_pjm_off,−1.17,-1.1717463000000001,results/npv_table.csv,"NPV per MW, $M, Offshore Wind PJM, COD 2028, base, contracted"
+npv_2028_caiso_wind,−0.38,-0.38160259999999996,results/npv_table.csv,"NPV per MW, $M, Wind CAISO, COD 2028, base, merchant"
+npvc_2028_caiso_wind,1.17,1.1722798,results/npv_table.csv,"NPV per MW, $M, Wind CAISO, COD 2028, base, contracted"
+npv_2028_caiso_solar,−0.92,-0.9170086999999999,results/npv_table.csv,"NPV per MW, $M, Solar CAISO, COD 2028, base, merchant"
+npvc_2028_caiso_solar,−0.09,-0.08890060000000001,results/npv_table.csv,"NPV per MW, $M, Solar CAISO, COD 2028, base, contracted"
+npv_2028_caiso_gas,−0.81,-0.805955,results/npv_table.csv,"NPV per MW, $M, Gas CAISO, COD 2028, base, merchant"
+npvc_2028_caiso_gas,−0.81,-0.805955,results/npv_table.csv,"NPV per MW, $M, Gas CAISO, COD 2028, base, contracted"
+npv_2028_caiso_batt,−1.82,-1.8236202,results/npv_table.csv,"NPV per MW, $M, Battery CAISO, COD 2028, base, merchant"
+npvc_2028_caiso_batt,−1.82,-1.8236202,results/npv_table.csv,"NPV per MW, $M, Battery CAISO, COD 2028, base, contracted"
+npv_2028_caiso_hyb,−1.98,-1.9763452,results/npv_table.csv,"NPV per MW, $M, Solar+Battery CAISO, COD 2028, base, merchant"
+npvc_2028_caiso_hyb,−0.80,-0.7975047,results/npv_table.csv,"NPV per MW, $M, Solar+Battery CAISO, COD 2028, base, contracted"
+npv_2028_caiso_off,−5.00,-5.004037,results/npv_table.csv,"NPV per MW, $M, Offshore Wind CAISO, COD 2028, base, merchant"
+npvc_2028_caiso_off,−1.53,-1.5254743,results/npv_table.csv,"NPV per MW, $M, Offshore Wind CAISO, COD 2028, base, contracted"
+npv_positive_2028,4,4,results/npv_table.csv,"technology-region pairs with positive base NPV, COD 2028, merchant"
+npvc_positive_2028,5,5,results/npv_table.csv,"technology-region pairs with positive base NPV, COD 2028, contracted"
+wacc_solar,4.2%,0.0416,results/atb_costs.csv,Solar: ATB real WACC
+wacc_wind,4.9%,0.0491,results/atb_costs.csv,Wind: ATB real WACC
+wacc_gas,5.4%,0.0536,results/atb_costs.csv,Gas: ATB real WACC
+wacc_off,5.1%,0.0515,results/atb_costs.csv,Offshore Wind: ATB real WACC
+ppa_solar,$57,57.0,results/value_assumptions.csv,"Solar: PPA price assumption, $/MWh"
+ppa_wind,$62,62.0,results/value_assumptions.csv,"Wind: PPA price assumption, $/MWh"
+ppa_hyb,$70,70.0,results/value_assumptions.csv,"Solar+Battery: PPA price assumption, $/MWh"
+ppa_off,$110,110.0,results/value_assumptions.csv,"Offshore Wind: PPA price assumption, $/MWh"
+curve_m_25,22,22,results/recommended_books_curve.csv,M: operations among the first 25 adds
+curve_m_50,34,34,results/recommended_books_curve.csv,M: operations among the first 50 adds
+curve_m_100,51,51,results/recommended_books_curve.csv,M: operations among the first 100 adds
+curve_la_25,11,11,results/recommended_books_curve.csv,LA: operations among the first 25 adds
+curve_la_50,25,25,results/recommended_books_curve.csv,LA: operations among the first 50 adds
+curve_la_100,51,51,results/recommended_books_curve.csv,LA: operations among the first 100 adds
+card0_mw,525,525.0,results/decision_pack.csv,card 0: MW
+card0_npv_c,$183,183.03901375014615,results/decision_pack.csv,"card 0: expected NPV two years in, contracted, $M"
+card0_npv_m,$84,83.70878060838497,results/decision_pack.csv,"card 0: expected NPV two years in, merchant, $M"
+card0_p3,20%,0.2039182020239466,results/decision_pack.csv,card 0: landmark probability
+card0_p5,24%,0.2370892018779346,results/decision_pack.csv,card 0: lookup probability
+card0_cost,$0.6,0.5917247292506418,results/decision_pack.csv,"card 0: cost to next gate, $M"
+card1_mw,419,418.9,results/decision_pack.csv,card 1: MW
+card1_npv_c,$176,175.72844515411862,results/decision_pack.csv,"card 1: expected NPV two years in, contracted, $M"
+card1_npv_m,$80,80.33743921244681,results/decision_pack.csv,"card 1: expected NPV two years in, merchant, $M"
+card1_p3,25%,0.2453597585725396,results/decision_pack.csv,card 1: landmark probability
+card1_p5,21%,0.2075471698113207,results/decision_pack.csv,card 1: lookup probability
+card1_cost,$2.0,1.9878101408712483,results/decision_pack.csv,"card 1: cost to next gate, $M"
+card2_mw,450,449.5,results/decision_pack.csv,card 2: MW
+card2_npv_c,$171,171.26387280823508,results/decision_pack.csv,"card 2: expected NPV two years in, contracted, $M"
+card2_npv_m,$78,78.33972410981622,results/decision_pack.csv,"card 2: expected NPV two years in, merchant, $M"
+card2_p3,22%,0.2228474629117307,results/decision_pack.csv,card 2: landmark probability
+card2_p5,21%,0.2075471698113207,results/decision_pack.csv,card 2: lookup probability
+card2_cost,$2.1,2.1220593418993223,results/decision_pack.csv,"card 2: cost to next gate, $M"
+card3_mw,279,279.0,results/decision_pack.csv,card 3: MW
+card3_npv_c,$170,169.69162449008064,results/decision_pack.csv,"card 3: expected NPV two years in, contracted, $M"
+card3_npv_m,$80,80.13418800152408,results/decision_pack.csv,"card 3: expected NPV two years in, merchant, $M"
+card3_p3,36%,0.3557360132423878,results/decision_pack.csv,card 3: landmark probability
+card3_p5,21%,0.2075471698113207,results/decision_pack.csv,card 3: lookup probability
+card3_cost,$1.4,1.3740368329030277,results/decision_pack.csv,"card 3: cost to next gate, $M"
+card4_mw,373,373.2,results/decision_pack.csv,card 4: MW
+card4_npv_c,$153,152.83723013519392,results/decision_pack.csv,"card 4: expected NPV two years in, contracted, $M"
+card4_npv_m,$71,70.95476823831862,results/decision_pack.csv,"card 4: expected NPV two years in, merchant, $M"
+card4_p3,24%,0.2395295799545247,results/decision_pack.csv,card 4: landmark probability
+card4_p5,21%,0.2075471698113207,results/decision_pack.csv,card 4: lookup probability
+card4_cost,$1.8,1.787313785087491,results/decision_pack.csv,"card 4: cost to next gate, $M"
+card5_mw,367,366.6,results/decision_pack.csv,card 5: MW
+card5_npv_c,$147,146.82088589196744,results/decision_pack.csv,"card 5: expected NPV two years in, contracted, $M"
+card5_npv_m,$68,68.15808467455808,results/decision_pack.csv,"card 5: expected NPV two years in, merchant, $M"
+card5_p3,23%,0.234243209085128,results/decision_pack.csv,card 5: landmark probability
+card5_p5,21%,0.2075471698113207,results/decision_pack.csv,card 5: lookup probability
+card5_cost,$1.8,1.758358075061828,results/decision_pack.csv,"card 5: cost to next gate, $M"
+npv_pjm_gas_low,−1.0,-954535.3,results/npv_table.csv,PJM gas 2024: low case $M
+npv_pjm_gas_high,2.1,2104230.3,results/npv_table.csv,PJM gas 2024: high case $M
+be_solar,$44,44.1,results/npv_table.csv,"break-even flat price, $/MWh, Solar"
+be_wind,$41,41.4,results/npv_table.csv,"break-even flat price, $/MWh, Wind"
+be_gas,$72,71.6,results/npv_table.csv,"break-even flat price, $/MWh, Gas"
+be_hyb,$78,77.5,results/npv_table.csv,"break-even flat price, $/MWh, Solar+Battery"
 captured_ercot_solar,$30,29.8,results/npv_table.csv,"captured energy price, $/MWh, Solar ERCOT, 2024"
 captured_ercot_wind,$57,57.3,results/npv_table.csv,"captured energy price, $/MWh, Wind ERCOT, 2024"
 captured_pjm_solar,$40,39.5,results/npv_table.csv,"captured energy price, $/MWh, Solar PJM, 2024"
 captured_pjm_wind,$68,67.8,results/npv_table.csv,"captured energy price, $/MWh, Wind PJM, 2024"
 captured_caiso_solar,$35,34.7,results/npv_table.csv,"captured energy price, $/MWh, Solar CAISO, 2024"
 captured_caiso_wind,$66,66.4,results/npv_table.csv,"captured energy price, $/MWh, Wind CAISO, 2024"
-capex_solar,"$1,551",1551.273,results/atb_costs.csv,Solar: ATB CAPEX $/kW
-capex_wind,"$1,676",1676.095,results/atb_costs.csv,Wind: ATB CAPEX $/kW
-capex_gas,"$1,475",1475.294,results/atb_costs.csv,Gas: ATB CAPEX $/kW
-capex_batt,"$1,938",1938.204,results/atb_costs.csv,Battery: ATB CAPEX $/kW
-enpv_median,−0.3,-0.34465717366064946,results/npv_by_request.csv,"median expected NPV at entry, $M, level repaired, base"
-enpv_mean,−7,-7287537.844945177,results/npv_by_request.csv,"mean expected NPV at entry, $M"
+capex_solar,"$1,551",1551.2727,results/atb_costs.csv,Solar: ATB CAPEX $/kW
+capex_wind,"$1,676",1676.0949,results/atb_costs.csv,Wind: ATB CAPEX $/kW
+capex_gas,"$1,475",1475.2944,results/atb_costs.csv,Gas: ATB CAPEX $/kW
+capex_batt,"$1,938",1938.2037,results/atb_costs.csv,Battery: ATB CAPEX $/kW
+enpv_median,0.3,0.33303319830895683,results/npv_by_request.csv,"median expected NPV at entry, $M, level repaired, base, merchant"
+enpvc_median,2.3,2.2912743267540217,results/npv_by_request.csv,"median expected NPV at entry, $M, level repaired, base, contracted"
+npvc_pos_share_ercot,79%,0.791231732776618,results/npv_by_request.csv,ERCOT: share with a positive contracted NPV if built in year 3
+npvc_pos_share_pjm,87%,0.8744027303754266,results/npv_by_request.csv,PJM: share with a positive contracted NPV if built in year 3
+npvc_pos_share_caiso,22%,0.21604938271604937,results/npv_by_request.csv,CAISO: share with a positive contracted NPV if built in year 3
+enpv_mean,−2,-2301388.218729878,results/npv_by_request.csv,"mean expected NPV at entry, $M"
 npv_pos_share_ercot,22%,0.22129436325678498,results/npv_by_request.csv,ERCOT: share of test requests whose plant has a positive NPV if built in year 3
-npv_pos_share_pjm,42%,0.4150170648464164,results/npv_by_request.csv,PJM: share of test requests whose plant has a positive NPV if built in year 3
+npv_pos_share_pjm,80%,0.7959044368600683,results/npv_by_request.csv,PJM: share of test requests whose plant has a positive NPV if built in year 3
 npv_pos_share_caiso,7%,0.06790123456790123,results/npv_by_request.csv,CAISO: share of test requests whose plant has a positive NPV if built in year 3
-enpv_wind_ercot,14,14.35059915568184,results/npv_by_request.csv,"ERCOT wind: median expected NPV at entry, $M"
-enpv_wind_pjm,14,14.024954636606571,results/npv_by_request.csv,"PJM wind: median expected NPV at entry, $M"
-enpv_wind_caiso,0.9,0.9084433249411388,results/npv_by_request.csv,"CAISO wind: median expected NPV at entry, $M"
-g1_exit_h2_n,"1,468",1468,results/portfolio_review_summary.csv,"G1 entry, h=2, exit: requests"
-g1_exit_h2_share,7%,0.0694822888283378,results/portfolio_review_summary.csv,"G1 entry, h=2, exit: operated share"
-g1_exit_h2_iv,"[6%, 8%]","(0.0575669872315973, 0.0836449475309477)",results/portfolio_review_summary.csv,its Wilson interval
-g1_exit_h2_ops,102,102,results/portfolio_review_summary.csv,operations in the class
-g1_exit_h2_pool_share,45%,0.4493392070484581,results/portfolio_review_summary.csv,share of the pool's operations
-g1_exit_h2_mw,"266,131",266130.70776,results/portfolio_review_summary.csv,MW in the class
-g1_exit_h2_npv,"−8,889",-8889.0533224976,results/portfolio_review_summary.csv,"realised NPV, $M"
-g1_hold_h2_n,693,693,results/portfolio_review_summary.csv,"G1 entry, h=2, hold: requests"
-g1_hold_h2_share,14%,0.1414141414141414,results/portfolio_review_summary.csv,"G1 entry, h=2, hold: operated share"
-g1_hold_h2_iv,"[12%, 17%]","(0.1174437256247435, 0.1693382345796988)",results/portfolio_review_summary.csv,its Wilson interval
-g1_hold_h2_ops,98,98,results/portfolio_review_summary.csv,operations in the class
-g1_hold_h2_pool_share,43%,0.4317180616740088,results/portfolio_review_summary.csv,share of the pool's operations
-g1_hold_h2_mw,"59,055",59055.055,results/portfolio_review_summary.csv,MW in the class
-g1_hold_h2_npv,−537,-537.2334413492033,results/portfolio_review_summary.csv,"realised NPV, $M"
-g1_invest_h2_n,107,107,results/portfolio_review_summary.csv,"G1 entry, h=2, invest: requests"
-g1_invest_h2_share,25%,0.2523364485981308,results/portfolio_review_summary.csv,"G1 entry, h=2, invest: operated share"
-g1_invest_h2_iv,"[18%, 34%]","(0.1796031695000159, 0.3422370060297489)",results/portfolio_review_summary.csv,its Wilson interval
-g1_invest_h2_ops,27,27,results/portfolio_review_summary.csv,operations in the class
-g1_invest_h2_pool_share,12%,0.118942731277533,results/portfolio_review_summary.csv,share of the pool's operations
-g1_invest_h2_mw,"23,716",23715.654999999995,results/portfolio_review_summary.csv,MW in the class
-g1_invest_h2_npv,"+1,457",1456.828376347329,results/portfolio_review_summary.csv,"realised NPV, $M"
-g1_exit_n,"1,468",1468,results/portfolio_review_summary.csv,"G1 entry, h=3, exit: requests"
-g1_exit_share,7%,0.0694822888283378,results/portfolio_review_summary.csv,"G1 entry, h=3, exit: operated share"
-g1_exit_iv,"[6%, 8%]","(0.0575669872315973, 0.0836449475309477)",results/portfolio_review_summary.csv,its Wilson interval
-g1_exit_ops,102,102,results/portfolio_review_summary.csv,operations in the class
-g1_exit_pool_share,45%,0.4493392070484581,results/portfolio_review_summary.csv,share of the pool's operations
-g1_exit_mw,"266,131",266130.70776,results/portfolio_review_summary.csv,MW in the class
-g1_exit_npv,"−8,889",-8889.0533224976,results/portfolio_review_summary.csv,"realised NPV, $M"
-g1_hold_n,699,699,results/portfolio_review_summary.csv,"G1 entry, h=3, hold: requests"
-g1_hold_share,14%,0.1430615164520744,results/portfolio_review_summary.csv,"G1 entry, h=3, hold: operated share"
-g1_hold_iv,"[12%, 17%]","(0.1190531413026354, 0.1709718088426035)",results/portfolio_review_summary.csv,its Wilson interval
-g1_hold_ops,100,100,results/portfolio_review_summary.csv,operations in the class
-g1_hold_pool_share,44%,0.4405286343612334,results/portfolio_review_summary.csv,share of the pool's operations
-g1_hold_mw,"59,150",59150.08,results/portfolio_review_summary.csv,MW in the class
-g1_hold_npv,−529,-528.7277816197607,results/portfolio_review_summary.csv,"realised NPV, $M"
-g1_invest_n,101,101,results/portfolio_review_summary.csv,"G1 entry, h=3, invest: requests"
-g1_invest_share,25%,0.2475247524752475,results/portfolio_review_summary.csv,"G1 entry, h=3, invest: operated share"
-g1_invest_iv,"[17%, 34%]","(0.1736472685476873, 0.3399046039914574)",results/portfolio_review_summary.csv,its Wilson interval
-g1_invest_ops,25,25,results/portfolio_review_summary.csv,operations in the class
-g1_invest_pool_share,11%,0.1101321585903083,results/portfolio_review_summary.csv,share of the pool's operations
-g1_invest_mw,"23,621",23620.63,results/portfolio_review_summary.csv,MW in the class
-g1_invest_npv,"+1,448",1448.322716617886,results/portfolio_review_summary.csv,"realised NPV, $M"
-g1_exit_h5_n,"1,468",1468,results/portfolio_review_summary.csv,"G1 entry, h=5, exit: requests"
-g1_exit_h5_share,7%,0.0694822888283378,results/portfolio_review_summary.csv,"G1 entry, h=5, exit: operated share"
-g1_exit_h5_iv,"[6%, 8%]","(0.0575669872315973, 0.0836449475309477)",results/portfolio_review_summary.csv,its Wilson interval
-g1_exit_h5_ops,102,102,results/portfolio_review_summary.csv,operations in the class
-g1_exit_h5_pool_share,45%,0.4493392070484581,results/portfolio_review_summary.csv,share of the pool's operations
-g1_exit_h5_mw,"266,131",266130.70776,results/portfolio_review_summary.csv,MW in the class
-g1_exit_h5_npv,"−8,889",-8889.0533224976,results/portfolio_review_summary.csv,"realised NPV, $M"
-g1_hold_h5_n,703,703,results/portfolio_review_summary.csv,"G1 entry, h=5, hold: requests"
-g1_hold_h5_share,15%,0.1450924608819345,results/portfolio_review_summary.csv,"G1 entry, h=5, hold: operated share"
-g1_hold_h5_iv,"[12%, 17%]","(0.1209854679457403, 0.1730572143185745)",results/portfolio_review_summary.csv,its Wilson interval
-g1_hold_h5_ops,102,102,results/portfolio_review_summary.csv,operations in the class
-g1_hold_h5_pool_share,45%,0.4493392070484581,results/portfolio_review_summary.csv,share of the pool's operations
-g1_hold_h5_mw,"59,357",59357.18,results/portfolio_review_summary.csv,MW in the class
-g1_hold_h5_npv,−500,-499.9884180657579,results/portfolio_review_summary.csv,"realised NPV, $M"
-g1_invest_h5_n,97,97,results/portfolio_review_summary.csv,"G1 entry, h=5, invest: requests"
-g1_invest_h5_share,24%,0.2371134020618556,results/portfolio_review_summary.csv,"G1 entry, h=5, invest: operated share"
-g1_invest_h5_iv,"[16%, 33%]","(0.1635136085792717, 0.3307427300746171)",results/portfolio_review_summary.csv,its Wilson interval
-g1_invest_h5_ops,23,23,results/portfolio_review_summary.csv,operations in the class
-g1_invest_h5_pool_share,10%,0.1013215859030837,results/portfolio_review_summary.csv,share of the pool's operations
-g1_invest_h5_mw,"23,414",23413.53,results/portfolio_review_summary.csv,MW in the class
-g1_invest_h5_npv,"+1,420",1419.5833530638836,results/portfolio_review_summary.csv,"realised NPV, $M"
-g1_ercot_exit_share,15%,0.1501340482573726,results/portfolio_review_summary.csv,"G1 entry, ERCOT, exit: operated share"
-g1_ercot_exit_n,373,373,results/portfolio_review_summary.csv,requests
-g1_ercot_hold_share,0%,0.0,results/portfolio_review_summary.csv,"G1 entry, ERCOT, hold: operated share"
-g1_ercot_hold_n,9,9,results/portfolio_review_summary.csv,requests
-g1_ercot_invest_share,25%,0.2474226804123711,results/portfolio_review_summary.csv,"G1 entry, ERCOT, invest: operated share"
-g1_ercot_invest_n,97,97,results/portfolio_review_summary.csv,requests
-g1_pjm_exit_share,5%,0.0479274611398963,results/portfolio_review_summary.csv,"G1 entry, PJM, exit: operated share"
-g1_pjm_exit_n,772,772,results/portfolio_review_summary.csv,requests
-g1_pjm_hold_share,14%,0.1436865021770682,results/portfolio_review_summary.csv,"G1 entry, PJM, hold: operated share"
-g1_pjm_hold_n,689,689,results/portfolio_review_summary.csv,requests
-g1_pjm_invest_share,25%,0.25,results/portfolio_review_summary.csv,"G1 entry, PJM, invest: operated share"
-g1_pjm_invest_n,4,4,results/portfolio_review_summary.csv,requests
-g1_caiso_exit_share,3%,0.0278637770897832,results/portfolio_review_summary.csv,"G1 entry, CAISO, exit: operated share"
-g1_caiso_exit_n,323,323,results/portfolio_review_summary.csv,requests
-g1_caiso_hold_share,100%,1.0,results/portfolio_review_summary.csv,"G1 entry, CAISO, hold: operated share"
-g1_caiso_hold_n,1,1,results/portfolio_review_summary.csv,requests
+enpv_wind_ercot,43,43.436622411038485,results/npv_by_request.csv,"ERCOT wind: median expected NPV at entry, $M"
+enpv_wind_pjm,27,27.118330458107046,results/npv_by_request.csv,"PJM wind: median expected NPV at entry, $M"
+enpv_wind_caiso,4.1,4.1107329613624195,results/npv_by_request.csv,"CAISO wind: median expected NPV at entry, $M"
+g1_exit_h2_n,"1,067",1067,results/portfolio_review_summary.csv,"G1 entry, h=2, exit: requests"
+g1_exit_h2_share,5%,0.0534208059981255,results/portfolio_review_summary.csv,"G1 entry, h=2, exit: operated share"
+g1_exit_h2_iv,"[4%, 7%]","(0.0414591968792415, 0.0685865839346528)",results/portfolio_review_summary.csv,its Wilson interval
+g1_exit_h2_ops,57,57,results/portfolio_review_summary.csv,operations in the class
+g1_exit_h2_pool_share,25%,0.2511013215859031,results/portfolio_review_summary.csv,share of the pool's operations
+g1_exit_h2_mw,"196,718",196717.53276,results/portfolio_review_summary.csv,MW in the class
+g1_exit_h2_npv,"−5,277",-5276.761779121719,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1_hold_h2_n,955,955,results/portfolio_review_summary.csv,"G1 entry, h=2, hold: requests"
+g1_hold_h2_share,11%,0.1099476439790576,results/portfolio_review_summary.csv,"G1 entry, h=2, hold: operated share"
+g1_hold_h2_iv,"[9%, 13%]","(0.0916479872659249, 0.1313727911400182)",results/portfolio_review_summary.csv,its Wilson interval
+g1_hold_h2_ops,105,105,results/portfolio_review_summary.csv,operations in the class
+g1_hold_h2_pool_share,46%,0.4625550660792951,results/portfolio_review_summary.csv,share of the pool's operations
+g1_hold_h2_mw,"118,159",118159.23,results/portfolio_review_summary.csv,MW in the class
+g1_hold_h2_npv,−938,-938.2039357361864,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1_invest_h2_n,246,246,results/portfolio_review_summary.csv,"G1 entry, h=2, invest: requests"
+g1_invest_h2_share,26%,0.2642276422764227,results/portfolio_review_summary.csv,"G1 entry, h=2, invest: operated share"
+g1_invest_h2_iv,"[21%, 32%]","(0.2130583875926751, 0.3226474356169104)",results/portfolio_review_summary.csv,its Wilson interval
+g1_invest_h2_ops,65,65,results/portfolio_review_summary.csv,operations in the class
+g1_invest_h2_pool_share,29%,0.2863436123348017,results/portfolio_review_summary.csv,share of the pool's operations
+g1_invest_h2_mw,"34,025",34024.65499999999,results/portfolio_review_summary.csv,MW in the class
+g1_invest_h2_npv,"+4,132",4131.82306225943,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1_exit_n,"1,067",1067,results/portfolio_review_summary.csv,"G1 entry, h=3, exit: requests"
+g1_exit_share,5%,0.0534208059981255,results/portfolio_review_summary.csv,"G1 entry, h=3, exit: operated share"
+g1_exit_iv,"[4%, 7%]","(0.0414591968792415, 0.0685865839346528)",results/portfolio_review_summary.csv,its Wilson interval
+g1_exit_ops,57,57,results/portfolio_review_summary.csv,operations in the class
+g1_exit_pool_share,25%,0.2511013215859031,results/portfolio_review_summary.csv,share of the pool's operations
+g1_exit_mw,"196,718",196717.53276,results/portfolio_review_summary.csv,MW in the class
+g1_exit_npv,"−5,277",-5276.761779121719,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1_hold_n,964,964,results/portfolio_review_summary.csv,"G1 entry, h=3, hold: requests"
+g1_hold_share,11%,0.1120331950207468,results/portfolio_review_summary.csv,"G1 entry, h=3, hold: operated share"
+g1_hold_iv,"[9%, 13%]","(0.0936422790052285, 0.1335039812919109)",results/portfolio_review_summary.csv,its Wilson interval
+g1_hold_ops,108,108,results/portfolio_review_summary.csv,operations in the class
+g1_hold_pool_share,48%,0.4757709251101321,results/portfolio_review_summary.csv,share of the pool's operations
+g1_hold_mw,"118,252",118251.78,results/portfolio_review_summary.csv,MW in the class
+g1_hold_npv,−936,-936.4056780561998,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1_invest_n,237,237,results/portfolio_review_summary.csv,"G1 entry, h=3, invest: requests"
+g1_invest_share,26%,0.2616033755274262,results/portfolio_review_summary.csv,"G1 entry, h=3, invest: operated share"
+g1_invest_iv,"[21%, 32%]","(0.209767718337298, 0.3210442344150505)",results/portfolio_review_summary.csv,its Wilson interval
+g1_invest_ops,62,62,results/portfolio_review_summary.csv,operations in the class
+g1_invest_pool_share,27%,0.2731277533039647,results/portfolio_review_summary.csv,share of the pool's operations
+g1_invest_mw,"33,932",33932.105,results/portfolio_review_summary.csv,MW in the class
+g1_invest_npv,"+4,130",4130.024804579444,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1_exit_h5_n,"1,067",1067,results/portfolio_review_summary.csv,"G1 entry, h=5, exit: requests"
+g1_exit_h5_share,5%,0.0534208059981255,results/portfolio_review_summary.csv,"G1 entry, h=5, exit: operated share"
+g1_exit_h5_iv,"[4%, 7%]","(0.0414591968792415, 0.0685865839346528)",results/portfolio_review_summary.csv,its Wilson interval
+g1_exit_h5_ops,57,57,results/portfolio_review_summary.csv,operations in the class
+g1_exit_h5_pool_share,25%,0.2511013215859031,results/portfolio_review_summary.csv,share of the pool's operations
+g1_exit_h5_mw,"196,718",196717.53276,results/portfolio_review_summary.csv,MW in the class
+g1_exit_h5_npv,"−5,277",-5276.761779121719,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1_hold_h5_n,982,982,results/portfolio_review_summary.csv,"G1 entry, h=5, hold: requests"
+g1_hold_h5_share,12%,0.1160896130346232,results/portfolio_review_summary.csv,"G1 entry, h=5, hold: operated share"
+g1_hold_h5_iv,"[10%, 14%]","(0.0975332728427213, 0.1376379757635455)",results/portfolio_review_summary.csv,its Wilson interval
+g1_hold_h5_ops,114,114,results/portfolio_review_summary.csv,operations in the class
+g1_hold_h5_pool_share,50%,0.5022026431718062,results/portfolio_review_summary.csv,share of the pool's operations
+g1_hold_h5_mw,"118,512",118511.82,results/portfolio_review_summary.csv,MW in the class
+g1_hold_h5_npv,−907,-907.4894556113572,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1_invest_h5_n,219,219,results/portfolio_review_summary.csv,"G1 entry, h=5, invest: requests"
+g1_invest_h5_share,26%,0.2557077625570776,results/portfolio_review_summary.csv,"G1 entry, h=5, invest: operated share"
+g1_invest_h5_iv,"[20%, 32%]","(0.2024847255441066, 0.3173535811275381)",results/portfolio_review_summary.csv,its Wilson interval
+g1_invest_h5_ops,56,56,results/portfolio_review_summary.csv,operations in the class
+g1_invest_h5_pool_share,25%,0.2466960352422907,results/portfolio_review_summary.csv,share of the pool's operations
+g1_invest_h5_mw,"33,672",33672.064999999995,results/portfolio_review_summary.csv,MW in the class
+g1_invest_h5_npv,"+4,101",4101.108582134601,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1_ercot_exit_share,24%,0.24,results/portfolio_review_summary.csv,"G1 entry, ERCOT, exit: operated share"
+g1_ercot_exit_n,100,100,results/portfolio_review_summary.csv,requests
+g1_ercot_hold_share,12%,0.1167883211678832,results/portfolio_review_summary.csv,"G1 entry, ERCOT, hold: operated share"
+g1_ercot_hold_n,274,274,results/portfolio_review_summary.csv,requests
+g1_ercot_invest_share,23%,0.2285714285714285,results/portfolio_review_summary.csv,"G1 entry, ERCOT, invest: operated share"
+g1_ercot_invest_n,105,105,results/portfolio_review_summary.csv,requests
+g1_pjm_exit_share,4%,0.0372093023255813,results/portfolio_review_summary.csv,"G1 entry, PJM, exit: operated share"
+g1_pjm_exit_n,645,645,results/portfolio_review_summary.csv,requests
+g1_pjm_hold_share,11%,0.1090116279069767,results/portfolio_review_summary.csv,"G1 entry, PJM, hold: operated share"
+g1_pjm_hold_n,688,688,results/portfolio_review_summary.csv,requests
+g1_pjm_invest_share,29%,0.2878787878787879,results/portfolio_review_summary.csv,"G1 entry, PJM, invest: operated share"
+g1_pjm_invest_n,132,132,results/portfolio_review_summary.csv,requests
+g1_caiso_exit_share,3%,0.0279503105590062,results/portfolio_review_summary.csv,"G1 entry, CAISO, exit: operated share"
+g1_caiso_exit_n,322,322,results/portfolio_review_summary.csv,requests
+g1_caiso_hold_share,50%,0.5,results/portfolio_review_summary.csv,"G1 entry, CAISO, hold: operated share"
+g1_caiso_hold_n,2,2,results/portfolio_review_summary.csv,requests
 g1_caiso_invest_share,n/a,,results/portfolio_review_summary.csv,"G1 entry, CAISO, invest: operated share"
 g1_caiso_invest_n,0,0,results/portfolio_review_summary.csv,requests
-g2_exit_h2_n,630,630,results/portfolio_review_summary.csv,"G2 two years, h=2, exit: requests"
-g2_exit_h2_share,10%,0.1,results/portfolio_review_summary.csv,"G2 two years, h=2, exit: operated share"
-g2_exit_h2_iv,"[8%, 13%]","(0.0789434595319779, 0.125905196662251)",results/portfolio_review_summary.csv,its Wilson interval
-g2_exit_h2_ops,63,63,results/portfolio_review_summary.csv,operations in the class
-g2_exit_h2_pool_share,41%,0.4144736842105263,results/portfolio_review_summary.csv,share of the pool's operations
-g2_exit_h2_mw,"144,133",144133.0806,results/portfolio_review_summary.csv,MW in the class
-g2_exit_h2_npv,"−8,316",-8315.693795996869,results/portfolio_review_summary.csv,"realised NPV, $M"
-g2_hold_sell_h2_n,621,621,results/portfolio_review_summary.csv,"G2 two years, h=2, hold or sell: requests"
-g2_hold_sell_h2_share,11%,0.1062801932367149,results/portfolio_review_summary.csv,"G2 two years, h=2, hold or sell: operated share"
-g2_hold_sell_h2_iv,"[8%, 13%]","(0.0844142747595712, 0.1329873835167022)",results/portfolio_review_summary.csv,its Wilson interval
-g2_hold_sell_h2_ops,66,66,results/portfolio_review_summary.csv,operations in the class
-g2_hold_sell_h2_pool_share,43%,0.4342105263157895,results/portfolio_review_summary.csv,share of the pool's operations
-g2_hold_sell_h2_mw,"49,288",49288.085,results/portfolio_review_summary.csv,MW in the class
-g2_hold_sell_h2_npv,+77,76.64135322235924,results/portfolio_review_summary.csv,"realised NPV, $M"
-g2_accelerate_h2_n,47,47,results/portfolio_review_summary.csv,"G2 two years, h=2, accelerate: requests"
-g2_accelerate_h2_share,49%,0.4893617021276595,results/portfolio_review_summary.csv,"G2 two years, h=2, accelerate: operated share"
-g2_accelerate_h2_iv,"[35%, 63%]","(0.3527532433660351, 0.6275778241062712)",results/portfolio_review_summary.csv,its Wilson interval
-g2_accelerate_h2_ops,23,23,results/portfolio_review_summary.csv,operations in the class
-g2_accelerate_h2_pool_share,15%,0.1513157894736842,results/portfolio_review_summary.csv,share of the pool's operations
-g2_accelerate_h2_mw,"9,700",9699.835,results/portfolio_review_summary.csv,MW in the class
-g2_accelerate_h2_npv,"+1,234",1233.6115750381696,results/portfolio_review_summary.csv,"realised NPV, $M"
-g2_exit_n,630,630,results/portfolio_review_summary.csv,"G2 two years, h=3, exit: requests"
-g2_exit_share,10%,0.1,results/portfolio_review_summary.csv,"G2 two years, h=3, exit: operated share"
-g2_exit_iv,"[8%, 13%]","(0.0789434595319779, 0.125905196662251)",results/portfolio_review_summary.csv,its Wilson interval
-g2_exit_ops,63,63,results/portfolio_review_summary.csv,operations in the class
-g2_exit_pool_share,41%,0.4144736842105263,results/portfolio_review_summary.csv,share of the pool's operations
-g2_exit_mw,"144,133",144133.0806,results/portfolio_review_summary.csv,MW in the class
-g2_exit_npv,"−8,316",-8315.693795996869,results/portfolio_review_summary.csv,"realised NPV, $M"
-g2_hold_sell_n,629,629,results/portfolio_review_summary.csv,"G2 two years, h=3, hold or sell: requests"
-g2_hold_sell_share,11%,0.1096979332273449,results/portfolio_review_summary.csv,"G2 two years, h=3, hold or sell: operated share"
-g2_hold_sell_iv,"[9%, 14%]","(0.0876034809362981, 0.1365309628170834)",results/portfolio_review_summary.csv,its Wilson interval
-g2_hold_sell_ops,69,69,results/portfolio_review_summary.csv,operations in the class
-g2_hold_sell_pool_share,45%,0.4539473684210526,results/portfolio_review_summary.csv,share of the pool's operations
-g2_hold_sell_mw,"49,603",49603.0,results/portfolio_review_summary.csv,MW in the class
-g2_hold_sell_npv,+82,82.43178869742101,results/portfolio_review_summary.csv,"realised NPV, $M"
-g2_accelerate_n,39,39,results/portfolio_review_summary.csv,"G2 two years, h=3, accelerate: requests"
-g2_accelerate_share,51%,0.5128205128205128,results/portfolio_review_summary.csv,"G2 two years, h=3, accelerate: operated share"
-g2_accelerate_iv,"[36%, 66%]","(0.3619910864569657, 0.661350712168669)",results/portfolio_review_summary.csv,its Wilson interval
-g2_accelerate_ops,20,20,results/portfolio_review_summary.csv,operations in the class
-g2_accelerate_pool_share,13%,0.131578947368421,results/portfolio_review_summary.csv,share of the pool's operations
-g2_accelerate_mw,"9,385",9384.92,results/portfolio_review_summary.csv,MW in the class
-g2_accelerate_npv,"+1,228",1227.821139563108,results/portfolio_review_summary.csv,"realised NPV, $M"
-g2_exit_h5_n,630,630,results/portfolio_review_summary.csv,"G2 two years, h=5, exit: requests"
-g2_exit_h5_share,10%,0.1,results/portfolio_review_summary.csv,"G2 two years, h=5, exit: operated share"
-g2_exit_h5_iv,"[8%, 13%]","(0.0789434595319779, 0.125905196662251)",results/portfolio_review_summary.csv,its Wilson interval
-g2_exit_h5_ops,63,63,results/portfolio_review_summary.csv,operations in the class
-g2_exit_h5_pool_share,41%,0.4144736842105263,results/portfolio_review_summary.csv,share of the pool's operations
-g2_exit_h5_mw,"144,133",144133.0806,results/portfolio_review_summary.csv,MW in the class
-g2_exit_h5_npv,"−8,316",-8315.693795996869,results/portfolio_review_summary.csv,"realised NPV, $M"
-g2_hold_sell_h5_n,633,633,results/portfolio_review_summary.csv,"G2 two years, h=5, hold or sell: requests"
-g2_hold_sell_h5_share,11%,0.1105845181674565,results/portfolio_review_summary.csv,"G2 two years, h=5, hold or sell: operated share"
-g2_hold_sell_h5_iv,"[9%, 14%]","(0.0884626672456169, 0.1374044871613816)",results/portfolio_review_summary.csv,its Wilson interval
-g2_hold_sell_h5_ops,70,70,results/portfolio_review_summary.csv,operations in the class
-g2_hold_sell_h5_pool_share,46%,0.4605263157894737,results/portfolio_review_summary.csv,share of the pool's operations
-g2_hold_sell_h5_mw,"49,735",49734.6,results/portfolio_review_summary.csv,MW in the class
-g2_hold_sell_h5_npv,+88,87.6281124772515,results/portfolio_review_summary.csv,"realised NPV, $M"
-g2_accelerate_h5_n,35,35,results/portfolio_review_summary.csv,"G2 two years, h=5, accelerate: requests"
-g2_accelerate_h5_share,54%,0.5428571428571428,results/portfolio_review_summary.csv,"G2 two years, h=5, accelerate: operated share"
-g2_accelerate_h5_iv,"[38%, 70%]","(0.3818945134013751, 0.6953422636623914)",results/portfolio_review_summary.csv,its Wilson interval
-g2_accelerate_h5_ops,19,19,results/portfolio_review_summary.csv,operations in the class
-g2_accelerate_h5_pool_share,12%,0.125,results/portfolio_review_summary.csv,share of the pool's operations
-g2_accelerate_h5_mw,"9,253",9253.32,results/portfolio_review_summary.csv,MW in the class
-g2_accelerate_h5_npv,"+1,223",1222.6248157832774,results/portfolio_review_summary.csv,"realised NPV, $M"
-g2_ercot_exit_share,18%,0.1758957654723127,results/portfolio_review_summary.csv,"G2 two years, ERCOT, exit: operated share"
-g2_ercot_exit_n,307,307,results/portfolio_review_summary.csv,requests
-g2_ercot_hold_sell_share,17%,0.1666666666666666,results/portfolio_review_summary.csv,"G2 two years, ERCOT, hold or sell: operated share"
-g2_ercot_hold_sell_n,24,24,results/portfolio_review_summary.csv,requests
-g2_ercot_accelerate_share,60%,0.6,results/portfolio_review_summary.csv,"G2 two years, ERCOT, accelerate: operated share"
-g2_ercot_accelerate_n,30,30,results/portfolio_review_summary.csv,requests
-g2_pjm_exit_share,2%,0.015,results/portfolio_review_summary.csv,"G2 two years, PJM, exit: operated share"
-g2_pjm_exit_n,200,200,results/portfolio_review_summary.csv,requests
-g2_pjm_hold_sell_share,10%,0.1029900332225913,results/portfolio_review_summary.csv,"G2 two years, PJM, hold or sell: operated share"
-g2_pjm_hold_sell_n,602,602,results/portfolio_review_summary.csv,requests
-g2_pjm_accelerate_share,22%,0.2222222222222222,results/portfolio_review_summary.csv,"G2 two years, PJM, accelerate: operated share"
-g2_pjm_accelerate_n,9,9,results/portfolio_review_summary.csv,requests
+g1c_exit_h2_n,"1,039",1039,results/portfolio_review_summary.csv,"G1 entry, h=2, exit: requests"
+g1c_exit_h2_share,5%,0.0548604427333975,results/portfolio_review_summary.csv,"G1 entry, h=2, exit: operated share"
+g1c_exit_h2_iv,"[4%, 7%]","(0.0425827745088954, 0.0704177041831705)",results/portfolio_review_summary.csv,its Wilson interval
+g1c_exit_h2_ops,57,57,results/portfolio_review_summary.csv,operations in the class
+g1c_exit_h2_pool_share,25%,0.2511013215859031,results/portfolio_review_summary.csv,share of the pool's operations
+g1c_exit_h2_mw,"181,459",181458.73276,results/portfolio_review_summary.csv,MW in the class
+g1c_exit_h2_npv,"−4,900",-4900.271065524566,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1c_hold_h2_n,871,871,results/portfolio_review_summary.csv,"G1 entry, h=2, hold: requests"
+g1c_hold_h2_share,11%,0.1102181400688863,results/portfolio_review_summary.csv,"G1 entry, h=2, hold: operated share"
+g1c_hold_h2_iv,"[9%, 13%]","(0.0911072955124889, 0.1327522008809153)",results/portfolio_review_summary.csv,its Wilson interval
+g1c_hold_h2_ops,96,96,results/portfolio_review_summary.csv,operations in the class
+g1c_hold_h2_pool_share,42%,0.4229074889867841,results/portfolio_review_summary.csv,share of the pool's operations
+g1c_hold_h2_mw,"119,908",119907.74,results/portfolio_review_summary.csv,MW in the class
+g1c_hold_h2_npv,"+1,652",1652.419380577259,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1c_invest_h2_n,358,358,results/portfolio_review_summary.csv,"G1 entry, h=2, invest: requests"
+g1c_invest_h2_share,21%,0.2067039106145251,results/portfolio_review_summary.csv,"G1 entry, h=2, invest: operated share"
+g1c_invest_h2_iv,"[17%, 25%]","(0.1679774669924713, 0.251658086244083)",results/portfolio_review_summary.csv,its Wilson interval
+g1c_invest_h2_ops,74,74,results/portfolio_review_summary.csv,operations in the class
+g1c_invest_h2_pool_share,33%,0.3259911894273127,results/portfolio_review_summary.csv,share of the pool's operations
+g1c_invest_h2_mw,"47,535",47534.94499999999,results/portfolio_review_summary.csv,MW in the class
+g1c_invest_h2_npv,"+9,351",9350.741793154835,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1c_exit_n,"1,039",1039,results/portfolio_review_summary.csv,"G1 entry, h=3, exit: requests"
+g1c_exit_share,5%,0.0548604427333975,results/portfolio_review_summary.csv,"G1 entry, h=3, exit: operated share"
+g1c_exit_iv,"[4%, 7%]","(0.0425827745088954, 0.0704177041831705)",results/portfolio_review_summary.csv,its Wilson interval
+g1c_exit_ops,57,57,results/portfolio_review_summary.csv,operations in the class
+g1c_exit_pool_share,25%,0.2511013215859031,results/portfolio_review_summary.csv,share of the pool's operations
+g1c_exit_mw,"181,459",181458.73276,results/portfolio_review_summary.csv,MW in the class
+g1c_exit_npv,"−4,900",-4900.271065524566,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1c_hold_n,903,903,results/portfolio_review_summary.csv,"G1 entry, h=3, hold: requests"
+g1c_hold_share,11%,0.1118493909191583,results/portfolio_review_summary.csv,"G1 entry, h=3, hold: operated share"
+g1c_hold_iv,"[9%, 13%]","(0.0929138908939567, 0.1340734903642475)",results/portfolio_review_summary.csv,its Wilson interval
+g1c_hold_ops,101,101,results/portfolio_review_summary.csv,operations in the class
+g1c_hold_pool_share,44%,0.4449339207048458,results/portfolio_review_summary.csv,share of the pool's operations
+g1c_hold_mw,"120,100",120100.04,results/portfolio_review_summary.csv,MW in the class
+g1c_hold_npv,"+1,656",1656.2448127619816,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1c_invest_n,326,326,results/portfolio_review_summary.csv,"G1 entry, h=3, invest: requests"
+g1c_invest_share,21%,0.2116564417177914,results/portfolio_review_summary.csv,"G1 entry, h=3, invest: operated share"
+g1c_invest_iv,"[17%, 26%]","(0.1708034098044896, 0.2592260346318702)",results/portfolio_review_summary.csv,its Wilson interval
+g1c_invest_ops,69,69,results/portfolio_review_summary.csv,operations in the class
+g1c_invest_pool_share,30%,0.3039647577092511,results/portfolio_review_summary.csv,share of the pool's operations
+g1c_invest_mw,"47,343",47342.645,results/portfolio_review_summary.csv,MW in the class
+g1c_invest_npv,"+9,347",9346.916360970112,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1c_exit_h5_n,"1,039",1039,results/portfolio_review_summary.csv,"G1 entry, h=5, exit: requests"
+g1c_exit_h5_share,5%,0.0548604427333975,results/portfolio_review_summary.csv,"G1 entry, h=5, exit: operated share"
+g1c_exit_h5_iv,"[4%, 7%]","(0.0425827745088954, 0.0704177041831705)",results/portfolio_review_summary.csv,its Wilson interval
+g1c_exit_h5_ops,57,57,results/portfolio_review_summary.csv,operations in the class
+g1c_exit_h5_pool_share,25%,0.2511013215859031,results/portfolio_review_summary.csv,share of the pool's operations
+g1c_exit_h5_mw,"181,459",181458.73276,results/portfolio_review_summary.csv,MW in the class
+g1c_exit_h5_npv,"−4,900",-4900.271065524566,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1c_hold_h5_n,935,935,results/portfolio_review_summary.csv,"G1 entry, h=5, hold: requests"
+g1c_hold_h5_share,11%,0.1112299465240641,results/portfolio_review_summary.csv,"G1 entry, h=5, hold: operated share"
+g1c_hold_h5_iv,"[9%, 13%]","(0.0926454490528539, 0.1329960223093013)",results/portfolio_review_summary.csv,its Wilson interval
+g1c_hold_h5_ops,104,104,results/portfolio_review_summary.csv,operations in the class
+g1c_hold_h5_pool_share,46%,0.4581497797356828,results/portfolio_review_summary.csv,share of the pool's operations
+g1c_hold_h5_mw,"121,241",121241.23,results/portfolio_review_summary.csv,MW in the class
+g1c_hold_h5_npv,"+1,674",1673.7737443608416,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1c_invest_h5_n,294,294,results/portfolio_review_summary.csv,"G1 entry, h=5, invest: requests"
+g1c_invest_h5_share,22%,0.2244897959183673,results/portfolio_review_summary.csv,"G1 entry, h=5, invest: operated share"
+g1c_invest_h5_iv,"[18%, 28%]","(0.180523717090113, 0.2755630082027943)",results/portfolio_review_summary.csv,its Wilson interval
+g1c_invest_h5_ops,66,66,results/portfolio_review_summary.csv,operations in the class
+g1c_invest_h5_pool_share,29%,0.2907488986784141,results/portfolio_review_summary.csv,share of the pool's operations
+g1c_invest_h5_mw,"46,201",46201.455,results/portfolio_review_summary.csv,MW in the class
+g1c_invest_h5_npv,"+9,329",9329.38742937125,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1c_ercot_exit_share,24%,0.24,results/portfolio_review_summary.csv,"G1 entry, ERCOT, exit: operated share"
+g1c_ercot_exit_n,100,100,results/portfolio_review_summary.csv,requests
+g1c_ercot_hold_share,13%,0.1302083333333333,results/portfolio_review_summary.csv,"G1 entry, ERCOT, hold: operated share"
+g1c_ercot_hold_n,192,192,results/portfolio_review_summary.csv,requests
+g1c_ercot_invest_share,17%,0.1657754010695187,results/portfolio_review_summary.csv,"G1 entry, ERCOT, invest: operated share"
+g1c_ercot_invest_n,187,187,results/portfolio_review_summary.csv,requests
+g1c_pjm_exit_share,4%,0.0388349514563106,results/portfolio_review_summary.csv,"G1 entry, PJM, exit: operated share"
+g1c_pjm_exit_n,618,618,results/portfolio_review_summary.csv,requests
+g1c_pjm_hold_share,11%,0.1059322033898305,results/portfolio_review_summary.csv,"G1 entry, PJM, hold: operated share"
+g1c_pjm_hold_n,708,708,results/portfolio_review_summary.csv,requests
+g1c_pjm_invest_share,27%,0.2733812949640288,results/portfolio_review_summary.csv,"G1 entry, PJM, invest: operated share"
+g1c_pjm_invest_n,139,139,results/portfolio_review_summary.csv,requests
+g1c_caiso_exit_share,3%,0.02803738317757,results/portfolio_review_summary.csv,"G1 entry, CAISO, exit: operated share"
+g1c_caiso_exit_n,321,321,results/portfolio_review_summary.csv,requests
+g1c_caiso_hold_share,33%,0.3333333333333333,results/portfolio_review_summary.csv,"G1 entry, CAISO, hold: operated share"
+g1c_caiso_hold_n,3,3,results/portfolio_review_summary.csv,requests
+g1c_caiso_invest_share,n/a,,results/portfolio_review_summary.csv,"G1 entry, CAISO, invest: operated share"
+g1c_caiso_invest_n,0,0,results/portfolio_review_summary.csv,requests
+g2_exit_n,405,405,results/portfolio_review_summary.csv,"G2 two years, h=2, exit: requests"
+g2_exit_share,8%,0.0839506172839506,results/portfolio_review_summary.csv,"G2 two years, h=2, exit: operated share"
+g2_exit_iv,"[6%, 12%]","(0.060695887171244, 0.1150240004331484)",results/portfolio_review_summary.csv,its Wilson interval
+g2_exit_ops,34,34,results/portfolio_review_summary.csv,operations in the class
+g2_exit_pool_share,22%,0.2236842105263158,results/portfolio_review_summary.csv,share of the pool's operations
+g2_exit_mw,"105,719",105719.1806,results/portfolio_review_summary.csv,MW in the class
+g2_exit_npv,"−5,094",-5094.468605504495,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2_hold_sell_n,577,577,results/portfolio_review_summary.csv,"G2 two years, h=2, hold or sell: requests"
+g2_hold_sell_share,10%,0.1039861351819757,results/portfolio_review_summary.csv,"G2 two years, h=2, hold or sell: operated share"
+g2_hold_sell_iv,"[8%, 13%]","(0.0816434894887881, 0.1315671345436503)",results/portfolio_review_summary.csv,its Wilson interval
+g2_hold_sell_ops,60,60,results/portfolio_review_summary.csv,operations in the class
+g2_hold_sell_pool_share,39%,0.3947368421052631,results/portfolio_review_summary.csv,share of the pool's operations
+g2_hold_sell_mw,"76,149",76149.42,results/portfolio_review_summary.csv,MW in the class
+g2_hold_sell_npv,−216,-215.77141648998543,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2_accelerate_n,316,316,results/portfolio_review_summary.csv,"G2 two years, h=2, accelerate: requests"
+g2_accelerate_share,18%,0.1835443037974683,results/portfolio_review_summary.csv,"G2 two years, h=2, accelerate: operated share"
+g2_accelerate_iv,"[14%, 23%]","(0.1447499682301905, 0.2299405035533424)",results/portfolio_review_summary.csv,its Wilson interval
+g2_accelerate_ops,58,58,results/portfolio_review_summary.csv,operations in the class
+g2_accelerate_pool_share,38%,0.3815789473684211,results/portfolio_review_summary.csv,share of the pool's operations
+g2_accelerate_mw,"21,252",21252.4,results/portfolio_review_summary.csv,MW in the class
+g2_accelerate_npv,"+3,642",3642.260980829141,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2_exit_h3_n,405,405,results/portfolio_review_summary.csv,"G2 two years, h=3, exit: requests"
+g2_exit_h3_share,8%,0.0839506172839506,results/portfolio_review_summary.csv,"G2 two years, h=3, exit: operated share"
+g2_exit_h3_iv,"[6%, 12%]","(0.060695887171244, 0.1150240004331484)",results/portfolio_review_summary.csv,its Wilson interval
+g2_exit_h3_ops,34,34,results/portfolio_review_summary.csv,operations in the class
+g2_exit_h3_pool_share,22%,0.2236842105263158,results/portfolio_review_summary.csv,share of the pool's operations
+g2_exit_h3_mw,"105,719",105719.1806,results/portfolio_review_summary.csv,MW in the class
+g2_exit_h3_npv,"−5,094",-5094.468605504495,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2_hold_sell_h3_n,642,642,results/portfolio_review_summary.csv,"G2 two years, h=3, hold or sell: requests"
+g2_hold_sell_h3_share,10%,0.0981308411214953,results/portfolio_review_summary.csv,"G2 two years, h=3, hold or sell: operated share"
+g2_hold_sell_h3_iv,"[8%, 12%]","(0.0774531384868919, 0.1235893462338197)",results/portfolio_review_summary.csv,its Wilson interval
+g2_hold_sell_h3_ops,63,63,results/portfolio_review_summary.csv,operations in the class
+g2_hold_sell_h3_pool_share,41%,0.4144736842105263,results/portfolio_review_summary.csv,share of the pool's operations
+g2_hold_sell_h3_mw,"77,332",77332.38500000001,results/portfolio_review_summary.csv,MW in the class
+g2_hold_sell_h3_npv,−213,-212.56032555985783,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2_accelerate_h3_n,251,251,results/portfolio_review_summary.csv,"G2 two years, h=3, accelerate: requests"
+g2_accelerate_h3_share,22%,0.2191235059760956,results/portfolio_review_summary.csv,"G2 two years, h=3, accelerate: operated share"
+g2_accelerate_h3_iv,"[17%, 27%]","(0.1723939116227033, 0.274321224367653)",results/portfolio_review_summary.csv,its Wilson interval
+g2_accelerate_h3_ops,55,55,results/portfolio_review_summary.csv,operations in the class
+g2_accelerate_h3_pool_share,36%,0.3618421052631579,results/portfolio_review_summary.csv,share of the pool's operations
+g2_accelerate_h3_mw,"20,069",20069.435,results/portfolio_review_summary.csv,MW in the class
+g2_accelerate_h3_npv,"+3,639",3639.0498898990127,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2_exit_h5_n,405,405,results/portfolio_review_summary.csv,"G2 two years, h=5, exit: requests"
+g2_exit_h5_share,8%,0.0839506172839506,results/portfolio_review_summary.csv,"G2 two years, h=5, exit: operated share"
+g2_exit_h5_iv,"[6%, 12%]","(0.060695887171244, 0.1150240004331484)",results/portfolio_review_summary.csv,its Wilson interval
+g2_exit_h5_ops,34,34,results/portfolio_review_summary.csv,operations in the class
+g2_exit_h5_pool_share,22%,0.2236842105263158,results/portfolio_review_summary.csv,share of the pool's operations
+g2_exit_h5_mw,"105,719",105719.1806,results/portfolio_review_summary.csv,MW in the class
+g2_exit_h5_npv,"−5,094",-5094.468605504495,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2_hold_sell_h5_n,782,782,results/portfolio_review_summary.csv,"G2 two years, h=5, hold or sell: requests"
+g2_hold_sell_h5_share,10%,0.0971867007672634,results/portfolio_review_summary.csv,"G2 two years, h=5, hold or sell: operated share"
+g2_hold_sell_h5_iv,"[8%, 12%]","(0.0783519392108287, 0.1199597816245151)",results/portfolio_review_summary.csv,its Wilson interval
+g2_hold_sell_h5_ops,76,76,results/portfolio_review_summary.csv,operations in the class
+g2_hold_sell_h5_pool_share,50%,0.5,results/portfolio_review_summary.csv,share of the pool's operations
+g2_hold_sell_h5_mw,"83,207",83207.435,results/portfolio_review_summary.csv,MW in the class
+g2_hold_sell_h5_npv,−143,-142.77568007943034,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2_accelerate_h5_n,111,111,results/portfolio_review_summary.csv,"G2 two years, h=5, accelerate: requests"
+g2_accelerate_h5_share,38%,0.3783783783783784,results/portfolio_review_summary.csv,"G2 two years, h=5, accelerate: operated share"
+g2_accelerate_h5_iv,"[29%, 47%]","(0.293651679647774, 0.471241878087402)",results/portfolio_review_summary.csv,its Wilson interval
+g2_accelerate_h5_ops,42,42,results/portfolio_review_summary.csv,operations in the class
+g2_accelerate_h5_pool_share,28%,0.2763157894736842,results/portfolio_review_summary.csv,share of the pool's operations
+g2_accelerate_h5_mw,"14,194",14194.385,results/portfolio_review_summary.csv,MW in the class
+g2_accelerate_h5_npv,"+3,569",3569.265244418585,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2_ercot_exit_share,19%,0.1897810218978102,results/portfolio_review_summary.csv,"G2 two years, ERCOT, exit: operated share"
+g2_ercot_exit_n,137,137,results/portfolio_review_summary.csv,requests
+g2_ercot_hold_sell_share,17%,0.1693121693121693,results/portfolio_review_summary.csv,"G2 two years, ERCOT, hold or sell: operated share"
+g2_ercot_hold_sell_n,189,189,results/portfolio_review_summary.csv,requests
+g2_ercot_accelerate_share,51%,0.5142857142857142,results/portfolio_review_summary.csv,"G2 two years, ERCOT, accelerate: operated share"
+g2_ercot_accelerate_n,35,35,results/portfolio_review_summary.csv,requests
+g2_pjm_exit_share,1%,0.0137931034482758,results/portfolio_review_summary.csv,"G2 two years, PJM, exit: operated share"
+g2_pjm_exit_n,145,145,results/portfolio_review_summary.csv,requests
+g2_pjm_hold_sell_share,6%,0.0649350649350649,results/portfolio_review_summary.csv,"G2 two years, PJM, hold or sell: operated share"
+g2_pjm_hold_sell_n,385,385,results/portfolio_review_summary.csv,requests
+g2_pjm_accelerate_share,14%,0.1423487544483986,results/portfolio_review_summary.csv,"G2 two years, PJM, accelerate: operated share"
+g2_pjm_accelerate_n,281,281,results/portfolio_review_summary.csv,requests
 g2_caiso_exit_share,5%,0.048780487804878,results/portfolio_review_summary.csv,"G2 two years, CAISO, exit: operated share"
 g2_caiso_exit_n,123,123,results/portfolio_review_summary.csv,requests
 g2_caiso_hold_sell_share,100%,1.0,results/portfolio_review_summary.csv,"G2 two years, CAISO, hold or sell: operated share"
 g2_caiso_hold_sell_n,3,3,results/portfolio_review_summary.csv,requests
 g2_caiso_accelerate_share,n/a,,results/portfolio_review_summary.csv,"G2 two years, CAISO, accelerate: operated share"
 g2_caiso_accelerate_n,0,0,results/portfolio_review_summary.csv,requests
+g2c_exit_n,395,395,results/portfolio_review_summary.csv,"G2 two years, h=2, exit: requests"
+g2c_exit_share,8%,0.0835443037974683,results/portfolio_review_summary.csv,"G2 two years, h=2, exit: operated share"
+g2c_exit_iv,"[6%, 12%]","(0.0601046446409374, 0.1150064771678207)",results/portfolio_review_summary.csv,its Wilson interval
+g2c_exit_ops,33,33,results/portfolio_review_summary.csv,operations in the class
+g2c_exit_pool_share,22%,0.2171052631578947,results/portfolio_review_summary.csv,share of the pool's operations
+g2c_exit_mw,"100,401",100400.5806,results/portfolio_review_summary.csv,MW in the class
+g2c_exit_npv,"−4,572",-4572.076097855495,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2c_hold_sell_n,493,493,results/portfolio_review_summary.csv,"G2 two years, h=2, hold or sell: requests"
+g2c_hold_sell_share,7%,0.0709939148073022,results/portfolio_review_summary.csv,"G2 two years, h=2, hold or sell: operated share"
+g2c_hold_sell_iv,"[5%, 10%]","(0.0514864491083878, 0.0971355664394245)",results/portfolio_review_summary.csv,its Wilson interval
+g2c_hold_sell_ops,35,35,results/portfolio_review_summary.csv,operations in the class
+g2c_hold_sell_pool_share,23%,0.2302631578947368,results/portfolio_review_summary.csv,share of the pool's operations
+g2c_hold_sell_mw,"64,582",64582.21,results/portfolio_review_summary.csv,MW in the class
+g2c_hold_sell_npv,"+1,536",1535.6711945342788,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2c_accelerate_n,410,410,results/portfolio_review_summary.csv,"G2 two years, h=2, accelerate: requests"
+g2c_accelerate_share,20%,0.2048780487804878,results/portfolio_review_summary.csv,"G2 two years, h=2, accelerate: operated share"
+g2c_accelerate_iv,"[17%, 25%]","(0.1686342969283107, 0.2466009041727868)",results/portfolio_review_summary.csv,its Wilson interval
+g2c_accelerate_ops,84,84,results/portfolio_review_summary.csv,operations in the class
+g2c_accelerate_pool_share,55%,0.5526315789473685,results/portfolio_review_summary.csv,share of the pool's operations
+g2c_accelerate_mw,"38,138",38138.21,results/portfolio_review_summary.csv,MW in the class
+g2c_accelerate_npv,"+8,989",8988.796104431876,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2c_exit_h3_n,395,395,results/portfolio_review_summary.csv,"G2 two years, h=3, exit: requests"
+g2c_exit_h3_share,8%,0.0835443037974683,results/portfolio_review_summary.csv,"G2 two years, h=3, exit: operated share"
+g2c_exit_h3_iv,"[6%, 12%]","(0.0601046446409374, 0.1150064771678207)",results/portfolio_review_summary.csv,its Wilson interval
+g2c_exit_h3_ops,33,33,results/portfolio_review_summary.csv,operations in the class
+g2c_exit_h3_pool_share,22%,0.2171052631578947,results/portfolio_review_summary.csv,share of the pool's operations
+g2c_exit_h3_mw,"100,401",100400.5806,results/portfolio_review_summary.csv,MW in the class
+g2c_exit_h3_npv,"−4,572",-4572.076097855495,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2c_hold_sell_h3_n,503,503,results/portfolio_review_summary.csv,"G2 two years, h=3, hold or sell: requests"
+g2c_hold_sell_h3_share,7%,0.0695825049701789,results/portfolio_review_summary.csv,"G2 two years, h=3, hold or sell: operated share"
+g2c_hold_sell_h3_iv,"[5%, 10%]","(0.0504541173873079, 0.0952355813272411)",results/portfolio_review_summary.csv,its Wilson interval
+g2c_hold_sell_h3_ops,35,35,results/portfolio_review_summary.csv,operations in the class
+g2c_hold_sell_h3_pool_share,23%,0.2302631578947368,results/portfolio_review_summary.csv,share of the pool's operations
+g2c_hold_sell_h3_mw,"64,765",64764.990000000005,results/portfolio_review_summary.csv,MW in the class
+g2c_hold_sell_h3_npv,"+1,533",1532.9142372635,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2c_accelerate_h3_n,400,400,results/portfolio_review_summary.csv,"G2 two years, h=3, accelerate: requests"
+g2c_accelerate_h3_share,21%,0.21,results/portfolio_review_summary.csv,"G2 two years, h=3, accelerate: operated share"
+g2c_accelerate_h3_iv,"[17%, 25%]","(0.1729370973424762, 0.2525802342053385)",results/portfolio_review_summary.csv,its Wilson interval
+g2c_accelerate_h3_ops,84,84,results/portfolio_review_summary.csv,operations in the class
+g2c_accelerate_h3_pool_share,55%,0.5526315789473685,results/portfolio_review_summary.csv,share of the pool's operations
+g2c_accelerate_h3_mw,"37,955",37955.43000000001,results/portfolio_review_summary.csv,MW in the class
+g2c_accelerate_h3_npv,"+8,992",8991.553061702654,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2c_exit_h5_n,395,395,results/portfolio_review_summary.csv,"G2 two years, h=5, exit: requests"
+g2c_exit_h5_share,8%,0.0835443037974683,results/portfolio_review_summary.csv,"G2 two years, h=5, exit: operated share"
+g2c_exit_h5_iv,"[6%, 12%]","(0.0601046446409374, 0.1150064771678207)",results/portfolio_review_summary.csv,its Wilson interval
+g2c_exit_h5_ops,33,33,results/portfolio_review_summary.csv,operations in the class
+g2c_exit_h5_pool_share,22%,0.2171052631578947,results/portfolio_review_summary.csv,share of the pool's operations
+g2c_exit_h5_mw,"100,401",100400.5806,results/portfolio_review_summary.csv,MW in the class
+g2c_exit_h5_npv,"−4,572",-4572.076097855495,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2c_hold_sell_h5_n,649,649,results/portfolio_review_summary.csv,"G2 two years, h=5, hold or sell: requests"
+g2c_hold_sell_h5_share,7%,0.0708782742681047,results/portfolio_review_summary.csv,"G2 two years, h=5, hold or sell: operated share"
+g2c_hold_sell_h5_iv,"[5%, 9%]","(0.0535566803473235, 0.0932501407866237)",results/portfolio_review_summary.csv,its Wilson interval
+g2c_hold_sell_h5_ops,46,46,results/portfolio_review_summary.csv,operations in the class
+g2c_hold_sell_h5_pool_share,30%,0.3026315789473684,results/portfolio_review_summary.csv,share of the pool's operations
+g2c_hold_sell_h5_mw,"69,894",69894.015,results/portfolio_review_summary.csv,MW in the class
+g2c_hold_sell_h5_npv,"+1,588",1588.2851433763108,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2c_accelerate_h5_n,254,254,results/portfolio_review_summary.csv,"G2 two years, h=5, accelerate: requests"
+g2c_accelerate_h5_share,29%,0.2874015748031496,results/portfolio_review_summary.csv,"G2 two years, h=5, accelerate: operated share"
+g2c_accelerate_h5_iv,"[24%, 35%]","(0.2352392542107571, 0.3458989329553169)",results/portfolio_review_summary.csv,its Wilson interval
+g2c_accelerate_h5_ops,73,73,results/portfolio_review_summary.csv,operations in the class
+g2c_accelerate_h5_pool_share,48%,0.4802631578947368,results/portfolio_review_summary.csv,share of the pool's operations
+g2c_accelerate_h5_mw,"32,826",32826.405,results/portfolio_review_summary.csv,MW in the class
+g2c_accelerate_h5_npv,"+8,936",8936.182155589846,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2c_ercot_exit_share,19%,0.1897810218978102,results/portfolio_review_summary.csv,"G2 two years, ERCOT, exit: operated share"
+g2c_ercot_exit_n,137,137,results/portfolio_review_summary.csv,requests
+g2c_ercot_hold_sell_share,7%,0.0673076923076923,results/portfolio_review_summary.csv,"G2 two years, ERCOT, hold or sell: operated share"
+g2c_ercot_hold_sell_n,104,104,results/portfolio_review_summary.csv,requests
+g2c_ercot_accelerate_share,36%,0.3583333333333333,results/portfolio_review_summary.csv,"G2 two years, ERCOT, accelerate: operated share"
+g2c_ercot_accelerate_n,120,120,results/portfolio_review_summary.csv,requests
+g2c_pjm_exit_share,1%,0.0147058823529411,results/portfolio_review_summary.csv,"G2 two years, PJM, exit: operated share"
+g2c_pjm_exit_n,136,136,results/portfolio_review_summary.csv,requests
+g2c_pjm_hold_sell_share,6%,0.0623376623376623,results/portfolio_review_summary.csv,"G2 two years, PJM, hold or sell: operated share"
+g2c_pjm_hold_sell_n,385,385,results/portfolio_review_summary.csv,requests
+g2c_pjm_accelerate_share,14%,0.1413793103448276,results/portfolio_review_summary.csv,"G2 two years, PJM, accelerate: operated share"
+g2c_pjm_accelerate_n,290,290,results/portfolio_review_summary.csv,requests
+g2c_caiso_exit_share,4%,0.040983606557377,results/portfolio_review_summary.csv,"G2 two years, CAISO, exit: operated share"
+g2c_caiso_exit_n,122,122,results/portfolio_review_summary.csv,requests
+g2c_caiso_hold_sell_share,100%,1.0,results/portfolio_review_summary.csv,"G2 two years, CAISO, hold or sell: operated share"
+g2c_caiso_hold_sell_n,4,4,results/portfolio_review_summary.csv,requests
+g2c_caiso_accelerate_share,n/a,,results/portfolio_review_summary.csv,"G2 two years, CAISO, accelerate: operated share"
+g2c_caiso_accelerate_n,0,0,results/portfolio_review_summary.csv,requests
 g2_pool_n,"1,298",1298,results/portfolio_review_summary.csv,"the +2 pool, all sizes"
 g2_pool_ops,152,152,results/portfolio_review_summary.csv,operations within 3 years in the +2 pool
-pol_equal_n,25,25,results/policy_comparison.csv,equal regional split: requests
-pol_equal_enpv,+429,429.0267203059688,results/policy_comparison.csv,equal regional split: expected NPV $M
-pol_equal_es,−31,-31.094159313553195,results/policy_comparison.csv,equal regional split: ES95 $M
-pol_equal_pneg,5%,0.0548,results/policy_comparison.csv,equal regional split: P(NPV < 0)
+pol_equal_n,26,26,results/policy_comparison.csv,equal regional split: requests
+pol_equal_enpv,"+1,404",1403.8669489349709,results/policy_comparison.csv,equal regional split: expected NPV $M
+pol_equal_es,+29,29.11132126275154,results/policy_comparison.csv,equal regional split: ES95 $M
+pol_equal_pneg,2%,0.0244,results/policy_comparison.csv,equal regional split: P(NPV < 0)
 pol_equal_ops,4,4,results/policy_comparison.csv,equal regional split: realised operations
 pol_equal_mw,754,753.66,results/policy_comparison.csv,equal regional split: realised MW
-pol_equal_rnpv,+221,220.82352681530688,results/policy_comparison.csv,equal regional split: realised NPV $M
-pol_equal_conc,34%,0.3361438962269305,results/policy_comparison.csv,equal regional split: largest region share
-pol_npvdollar_n,20,20,results/policy_comparison.csv,"NPV per dollar, with caps: requests"
-pol_npvdollar_enpv,+476,475.5760836955047,results/policy_comparison.csv,"NPV per dollar, with caps: expected NPV $M"
-pol_npvdollar_es,−28,-28.29532705989572,results/policy_comparison.csv,"NPV per dollar, with caps: ES95 $M"
-pol_npvdollar_pneg,7%,0.0668,results/policy_comparison.csv,"NPV per dollar, with caps: P(NPV < 0)"
+pol_equal_rnpv,+581,581.2480385767059,results/policy_comparison.csv,equal regional split: realised NPV $M
+pol_equal_conc,34%,0.3406222070696543,results/policy_comparison.csv,equal regional split: largest region share
+pol_npvdollar_n,21,21,results/policy_comparison.csv,"NPV per dollar, with caps: requests"
+pol_npvdollar_enpv,"+1,536",1535.8403702488408,results/policy_comparison.csv,"NPV per dollar, with caps: expected NPV $M"
+pol_npvdollar_es,+55,54.94000659926405,results/policy_comparison.csv,"NPV per dollar, with caps: ES95 $M"
+pol_npvdollar_pneg,3%,0.027,results/policy_comparison.csv,"NPV per dollar, with caps: P(NPV < 0)"
 pol_npvdollar_ops,1,1,results/policy_comparison.csv,"NPV per dollar, with caps: realised operations"
 pol_npvdollar_mw,525,525.0,results/policy_comparison.csv,"NPV per dollar, with caps: realised MW"
-pol_npvdollar_rnpv,+146,145.81431436110216,results/policy_comparison.csv,"NPV per dollar, with caps: realised NPV $M"
-pol_npvdollar_conc,69%,0.6860340921916225,results/policy_comparison.csv,"NPV per dollar, with caps: largest region share"
+pol_npvdollar_rnpv,+396,395.69137707857374,results/policy_comparison.csv,"NPV per dollar, with caps: realised NPV $M"
+pol_npvdollar_conc,64%,0.6419919404183956,results/policy_comparison.csv,"NPV per dollar, with caps: largest region share"
 pol_nocaps_n,27,27,results/policy_comparison.csv,"model expected NPV, no caps: requests"
-pol_nocaps_enpv,+593,592.8215639397092,results/policy_comparison.csv,"model expected NPV, no caps: expected NPV $M"
-pol_nocaps_es,−23,-23.23977923857472,results/policy_comparison.csv,"model expected NPV, no caps: ES95 $M"
-pol_nocaps_pneg,4%,0.035,results/policy_comparison.csv,"model expected NPV, no caps: P(NPV < 0)"
-pol_nocaps_ops,2,2,results/policy_comparison.csv,"model expected NPV, no caps: realised operations"
-pol_nocaps_mw,561,561.3,results/policy_comparison.csv,"model expected NPV, no caps: realised MW"
-pol_nocaps_rnpv,+182,181.63128087715504,results/policy_comparison.csv,"model expected NPV, no caps: realised NPV $M"
-pol_nocaps_conc,88%,0.8834023079227724,results/policy_comparison.csv,"model expected NPV, no caps: largest region share"
-pol_risk_n,19,19,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: requests"
-pol_risk_enpv,+475,475.2147775562096,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: expected NPV $M"
-pol_risk_es,−27,-27.22765615674005,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: ES95 $M"
-pol_risk_pneg,7%,0.07,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: P(NPV < 0)"
-pol_risk_ops,3,3,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: realised operations"
-pol_risk_mw,739,738.8,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: realised MW"
-pol_risk_rnpv,+214,214.47319650248772,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: realised NPV $M"
-pol_risk_conc,69%,0.6923799482299716,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: largest region share"
+pol_nocaps_enpv,"+1,803",1802.8332413660223,results/policy_comparison.csv,"model expected NPV, no caps: expected NPV $M"
+pol_nocaps_es,+99,98.9715049493468,results/policy_comparison.csv,"model expected NPV, no caps: ES95 $M"
+pol_nocaps_pneg,2%,0.0216,results/policy_comparison.csv,"model expected NPV, no caps: P(NPV < 0)"
+pol_nocaps_ops,1,1,results/policy_comparison.csv,"model expected NPV, no caps: realised operations"
+pol_nocaps_mw,525,525.0,results/policy_comparison.csv,"model expected NPV, no caps: realised MW"
+pol_nocaps_rnpv,+391,391.13858933988143,results/policy_comparison.csv,"model expected NPV, no caps: realised NPV $M"
+pol_nocaps_conc,89%,0.892859436850355,results/policy_comparison.csv,"model expected NPV, no caps: largest region share"
+pol_risk_n,21,21,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: requests"
+pol_risk_enpv,"+1,531",1530.974680015689,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: expected NPV $M"
+pol_risk_es,+66,65.81549210575865,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: ES95 $M"
+pol_risk_pneg,2%,0.0248,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: P(NPV < 0)"
+pol_risk_ops,1,1,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: realised operations"
+pol_risk_mw,525,525.0,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: realised MW"
+pol_risk_rnpv,+396,395.69137707857374,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: realised NPV $M"
+pol_risk_conc,64%,0.6419919404183956,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: largest region share"
 pol_fair_n,22,22,results/policy_comparison.csv,"fair baseline, value index (section 5): requests"
-pol_fair_enpv,"−1,369",-1368.522862772023,results/policy_comparison.csv,"fair baseline, value index (section 5): expected NPV $M"
-pol_fair_es,"−4,772",-4772.051790225815,results/policy_comparison.csv,"fair baseline, value index (section 5): ES95 $M"
-pol_fair_pneg,86%,0.863,results/policy_comparison.csv,"fair baseline, value index (section 5): P(NPV < 0)"
+pol_fair_enpv,−747,-747.4728068135339,results/policy_comparison.csv,"fair baseline, value index (section 5): expected NPV $M"
+pol_fair_es,"−3,804",-3803.539536212973,results/policy_comparison.csv,"fair baseline, value index (section 5): ES95 $M"
+pol_fair_pneg,79%,0.7878,results/policy_comparison.csv,"fair baseline, value index (section 5): P(NPV < 0)"
 pol_fair_ops,2,2,results/policy_comparison.csv,"fair baseline, value index (section 5): realised operations"
 pol_fair_mw,"1,035",1035.0,results/policy_comparison.csv,"fair baseline, value index (section 5): realised MW"
-pol_fair_rnpv,−362,-362.09727835928027,results/policy_comparison.csv,"fair baseline, value index (section 5): realised NPV $M"
+pol_fair_rnpv,−46,-46.338305359280334,results/policy_comparison.csv,"fair baseline, value index (section 5): realised NPV $M"
 pol_fair_conc,50%,0.5011528649171587,results/policy_comparison.csv,"fair baseline, value index (section 5): largest region share"
 pol_random_n,22,22,results/policy_comparison.csv,random (section 5): requests
-pol_random_enpv,−191,-190.50884636662167,results/policy_comparison.csv,random (section 5): expected NPV $M
-pol_random_es,−879,-879.4013421910194,results/policy_comparison.csv,random (section 5): ES95 $M
-pol_random_pneg,100%,1.0,results/policy_comparison.csv,random (section 5): P(NPV < 0)
+pol_random_enpv,−220,-219.68152799524864,results/policy_comparison.csv,random (section 5): expected NPV $M
+pol_random_es,"−1,369",-1369.2726266867928,results/policy_comparison.csv,random (section 5): ES95 $M
+pol_random_pneg,88%,0.8782,results/policy_comparison.csv,random (section 5): P(NPV < 0)
 pol_random_ops,2,2,results/policy_comparison.csv,random (section 5): realised operations
 pol_random_mw,258,258.4,results/policy_comparison.csv,random (section 5): realised MW
-pol_random_rnpv,−147,-146.94149500821953,results/policy_comparison.csv,random (section 5): realised NPV $M
+pol_random_rnpv,−85,-85.10778732821952,results/policy_comparison.csv,random (section 5): realised NPV $M
 pol_random_conc,43%,0.4258536500914142,results/policy_comparison.csv,random (section 5): largest region share
+pol_equalc_n,26,26,results/policy_comparison.csv,equal regional split: requests
+pol_equalc_enpv,"+2,342",2341.575928429405,results/policy_comparison.csv,equal regional split: expected NPV $M
+pol_equalc_es,+118,117.5936444438331,results/policy_comparison.csv,equal regional split: ES95 $M
+pol_equalc_pneg,2%,0.0212,results/policy_comparison.csv,equal regional split: P(NPV < 0)
+pol_equalc_ops,4,4,results/policy_comparison.csv,equal regional split: realised operations
+pol_equalc_mw,754,753.66,results/policy_comparison.csv,equal regional split: realised MW
+pol_equalc_rnpv,"+1,271",1271.3299629996986,results/policy_comparison.csv,equal regional split: realised NPV $M
+pol_equalc_conc,34%,0.3352244033128524,results/policy_comparison.csv,equal regional split: largest region share
+pol_npvdollarc_n,30,30,results/policy_comparison.csv,"NPV per dollar, with caps: requests"
+pol_npvdollarc_enpv,"+2,621",2621.0613048156147,results/policy_comparison.csv,"NPV per dollar, with caps: expected NPV $M"
+pol_npvdollarc_es,+252,251.9666459402647,results/policy_comparison.csv,"NPV per dollar, with caps: ES95 $M"
+pol_npvdollarc_pneg,1%,0.0078,results/policy_comparison.csv,"NPV per dollar, with caps: P(NPV < 0)"
+pol_npvdollarc_ops,2,2,results/policy_comparison.csv,"NPV per dollar, with caps: realised operations"
+pol_npvdollarc_mw,734,733.8,results/policy_comparison.csv,"NPV per dollar, with caps: realised MW"
+pol_npvdollarc_rnpv,"+1,235",1234.5525246548748,results/policy_comparison.csv,"NPV per dollar, with caps: realised NPV $M"
+pol_npvdollarc_conc,50%,0.501456387221077,results/policy_comparison.csv,"NPV per dollar, with caps: largest region share"
+pol_nocapsc_n,24,24,results/policy_comparison.csv,"model expected NPV, no caps: requests"
+pol_nocapsc_enpv,"+2,867",2866.6746802547086,results/policy_comparison.csv,"model expected NPV, no caps: expected NPV $M"
+pol_nocapsc_es,+333,333.46387318706945,results/policy_comparison.csv,"model expected NPV, no caps: ES95 $M"
+pol_nocapsc_pneg,1%,0.009,results/policy_comparison.csv,"model expected NPV, no caps: P(NPV < 0)"
+pol_nocapsc_ops,3,3,results/policy_comparison.csv,"model expected NPV, no caps: realised operations"
+pol_nocapsc_mw,954,953.8,results/policy_comparison.csv,"model expected NPV, no caps: realised MW"
+pol_nocapsc_rnpv,"+1,611",1610.6386989637897,results/policy_comparison.csv,"model expected NPV, no caps: realised NPV $M"
+pol_nocapsc_conc,70%,0.7014695176912087,results/policy_comparison.csv,"model expected NPV, no caps: largest region share"
+pol_riskc_n,30,30,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: requests"
+pol_riskc_enpv,"+2,621",2621.0250081241456,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: expected NPV $M"
+pol_riskc_es,+252,252.1801017866126,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: ES95 $M"
+pol_riskc_pneg,1%,0.008,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: P(NPV < 0)"
+pol_riskc_ops,2,2,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: realised operations"
+pol_riskc_mw,734,733.8,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: realised MW"
+pol_riskc_rnpv,"+1,235",1234.5563375483018,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: realised NPV $M"
+pol_riskc_conc,50%,0.5013615604402787,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: largest region share"
+pol_fairc_n,22,22,results/policy_comparison.csv,"fair baseline, value index (section 5): requests"
+pol_fairc_enpv,+784,784.3770138627608,results/policy_comparison.csv,"fair baseline, value index (section 5): expected NPV $M"
+pol_fairc_es,"−1,817",-1816.9825215557496,results/policy_comparison.csv,"fair baseline, value index (section 5): ES95 $M"
+pol_fairc_pneg,25%,0.2546,results/policy_comparison.csv,"fair baseline, value index (section 5): P(NPV < 0)"
+pol_fairc_ops,2,2,results/policy_comparison.csv,"fair baseline, value index (section 5): realised operations"
+pol_fairc_mw,"1,035",1035.0,results/policy_comparison.csv,"fair baseline, value index (section 5): realised MW"
+pol_fairc_rnpv,+440,440.0305671407197,results/policy_comparison.csv,"fair baseline, value index (section 5): realised NPV $M"
+pol_fairc_conc,50%,0.5011528649171587,results/policy_comparison.csv,"fair baseline, value index (section 5): largest region share"
+pol_randomc_n,22,22,results/policy_comparison.csv,random (section 5): requests
+pol_randomc_enpv,−107,-107.39333317767024,results/policy_comparison.csv,random (section 5): expected NPV $M
+pol_randomc_es,−748,-747.9907754906895,results/policy_comparison.csv,random (section 5): ES95 $M
+pol_randomc_pneg,68%,0.6828,results/policy_comparison.csv,random (section 5): P(NPV < 0)
+pol_randomc_ops,2,2,results/policy_comparison.csv,random (section 5): realised operations
+pol_randomc_mw,258,258.4,results/policy_comparison.csv,random (section 5): realised MW
+pol_randomc_rnpv,+15,15.466919311780469,results/policy_comparison.csv,random (section 5): realised NPV $M
+pol_randomc_conc,43%,0.4258536500914142,results/policy_comparison.csv,random (section 5): largest region share
 pack_n,"2,268",2268,results/decision_pack.csv,rows of the decision pack
-pack_entry_invest,101,101,results/decision_pack.csv,entry decision invest
-pack_entry_hold,699,699,results/decision_pack.csv,entry decision hold
-pack_entry_exit,"1,468",1468,results/decision_pack.csv,entry decision exit
+pack_entry_invest,237,237,results/decision_pack.csv,"entry decision invest, merchant"
+pack_entry_hold,964,964,results/decision_pack.csv,"entry decision hold, merchant"
+pack_entry_exit,"1,067",1067,results/decision_pack.csv,"entry decision exit, merchant"
+packc_entry_invest,326,326,results/decision_pack.csv,"entry decision invest, contracted"
+packc_entry_hold,903,903,results/decision_pack.csv,"entry decision hold, contracted"
+packc_entry_exit,"1,039",1039,results/decision_pack.csv,"entry decision exit, contracted"
 book_m_ercot_n,167,167,results/recommended_books.csv,"M — landmark model, ERCOT: requests added"
 book_m_ercot_ops,70,70,results/recommended_books.csv,realised operations
 book_m_ercot_iv,"[55, 87]","(np.float64(55.0), np.float64(87.025))",results/recommended_books.csv,its interval
@@ -1476,7 +1789,8 @@ book_m_ercot_exp,60.6,60.61034660032479,results/recommended_books.csv,expected o
 book_m_ercot_mw,"11,973",11972.86,results/recommended_books.csv,realised MW
 book_m_ercot_pool,347,347,results/recommended_books.csv,pool requests
 book_m_ercot_pool_ops,75,75,results/recommended_books.csv,pool operations
-book_m_ercot_npv,"−3,973",-3972.860584664717,results/recommended_books.csv,"expected NPV of the adds, $M"
+book_m_ercot_npv,"−1,975",-1975.1885195179916,results/recommended_books.csv,"expected NPV of the adds, $M, merchant"
+book_m_ercot_npvc,"+2,186",2185.630064115712,results/recommended_books.csv,"expected NPV of the adds, $M, contracted"
 book_m_ercot_diff_iv,"[−9.03, −1]","(np.float64(-9.025), np.float64(-1.0))",results/recommended_books.csv,"M − LA operations, interval"
 book_m_pjm_n,241,241,results/recommended_books.csv,"M — landmark model, PJM: requests added"
 book_m_pjm_ops,24,24,results/recommended_books.csv,realised operations
@@ -1485,7 +1799,8 @@ book_m_pjm_exp,42.3,42.34183455822623,results/recommended_books.csv,expected ope
 book_m_pjm_mw,"1,184",1183.6999999999998,results/recommended_books.csv,realised MW
 book_m_pjm_pool,665,665,results/recommended_books.csv,pool requests
 book_m_pjm_pool_ops,37,37,results/recommended_books.csv,pool operations
-book_m_pjm_npv,−139,-139.32791154777763,results/recommended_books.csv,"expected NPV of the adds, $M"
+book_m_pjm_npv,+725,725.2608298326356,results/recommended_books.csv,"expected NPV of the adds, $M, merchant"
+book_m_pjm_npvc,+948,947.9269597552884,results/recommended_books.csv,"expected NPV of the adds, $M, contracted"
 book_m_pjm_diff_iv,"[−14, −2]","(np.float64(-14.0), np.float64(-2.0))",results/recommended_books.csv,"M − LA operations, interval"
 book_m_caiso_n,2,2,results/recommended_books.csv,"M — landmark model, CAISO: requests added"
 book_m_caiso_ops,1,1,results/recommended_books.csv,realised operations
@@ -1494,7 +1809,8 @@ book_m_caiso_exp,0.9,0.8814835495356551,results/recommended_books.csv,expected o
 book_m_caiso_mw,38,38.0,results/recommended_books.csv,realised MW
 book_m_caiso_pool,120,120,results/recommended_books.csv,pool requests
 book_m_caiso_pool_ops,7,7,results/recommended_books.csv,pool operations
-book_m_caiso_npv,−36,-36.31692368970947,results/recommended_books.csv,"expected NPV of the adds, $M"
+book_m_caiso_npv,−35,-35.432527899662695,results/recommended_books.csv,"expected NPV of the adds, $M, merchant"
+book_m_caiso_npvc,−35,-35.432527899662695,results/recommended_books.csv,"expected NPV of the adds, $M, contracted"
 book_m_caiso_diff_iv,"[−6, +0]","(np.float64(-6.0), np.float64(0.0))",results/recommended_books.csv,"M − LA operations, interval"
 book_m_all_n,410,410,results/recommended_books.csv,"M — landmark model, all: requests added"
 book_m_all_ops,95,95,results/recommended_books.csv,realised operations
@@ -1503,7 +1819,8 @@ book_m_all_exp,103.8,103.83366470808669,results/recommended_books.csv,expected o
 book_m_all_mw,"13,195",13194.56,results/recommended_books.csv,realised MW
 book_m_all_pool,"1,132",1132,results/recommended_books.csv,pool requests
 book_m_all_pool_ops,119,119,results/recommended_books.csv,pool operations
-book_m_all_npv,"−4,149",-4148.505419902203,results/recommended_books.csv,"expected NPV of the adds, $M"
+book_m_all_npv,"−1,285",-1285.3602175850178,results/recommended_books.csv,"expected NPV of the adds, $M, merchant"
+book_m_all_npvc,"+3,098",3098.124495971337,results/recommended_books.csv,"expected NPV of the adds, $M, contracted"
 book_m_all_diff_iv,"[−24, −8]","(np.float64(-24.0), np.float64(-8.0))",results/recommended_books.csv,"M − LA operations, interval"
 book_la_ercot_n,347,347,results/recommended_books.csv,"LA — lookup with agreement status, ERCOT: requests added"
 book_la_ercot_ops,75,75,results/recommended_books.csv,realised operations
@@ -1571,21 +1888,33 @@ arch_4_list,"AL, AR, CO, GA, KS, KY, LA, MN, MO, MS, NC, NE, SC, TN","AL, AR, CO
 arch_4_qof,1.2,1.212,results/archetype_profiles.csv,median queue over fleet
 arch_4_storage,26%,0.262,results/archetype_profiles.csv,median storage share of waiting MW
 arch_4_recent,67%,0.674,results/archetype_profiles.csv,median recent-entry share
-g1_exit_npv_bn,8.9,-8.8890533224976,results/portfolio_review_summary.csv,"G1 entry exit class: realised NPV, $ billion (loss)"
-g2_exit_npv_bn,8.3,-8.31569379599687,results/portfolio_review_summary.csv,"G2 two years exit class: realised NPV, $ billion (loss)"
-g1_invest_npv_bn,1.4,1.448322716617886,results/portfolio_review_summary.csv,"G1 entry invest class: realised NPV, $ billion"
-g2_accelerate_npv_bn,1.2,1.227821139563108,results/portfolio_review_summary.csv,"G2 two years accelerate class: realised NPV, $ billion"
-g1_exit_share_of_cohort,65%,0.6472663139329806,results/portfolio_review_summary.csv,share of the test cohort the entry gate marks for exit
-gates_commit_share,6%,0.06172839506172839,results/portfolio_review_summary.csv,invest + accelerate requests as a share of the cohort
-pack_inv_acc,29,29,results/decision_pack.csv,entry invest → two-year accelerate
-pack_inv_exit,29,29,results/decision_pack.csv,entry invest → two-year exit
-pack_inv_gone,24,24,results/decision_pack.csv,entry invest → two-year not in pool
-pack_exit_exit,575,575,results/decision_pack.csv,entry exit → two-year exit
-pack_exit_acc,4,4,results/decision_pack.csv,entry exit → two-year accelerate
-pack_hold_hold,344,344,results/decision_pack.csv,entry hold → two-year hold or sell
-pol_fair_es_bn,4.8,-4.772051790225815,results/policy_comparison.csv,"fair baseline value-index book: ES95, $ billion (loss)"
-pol_fair_enpv_bn,1.4,-1.368522862772023,results/policy_comparison.csv,"fair baseline value-index book: expected NPV, $ billion (loss)"
-pol_npv_books_range,+$146 to +$214,"(np.float64(145.81431436110216), np.float64(214.47319650248772))",results/policy_comparison.csv,"realised NPV range of the three NPV-based books, $M"
+g1_exit_npv_bn,5.3,-5.276761779121719,results/portfolio_review_summary.csv,"G1 entry exit class, merchant: realised NPV, $ billion (loss)"
+g2_exit_npv_bn,5.1,-5.0944686055044945,results/portfolio_review_summary.csv,"G2 two years exit class, merchant: realised NPV, $ billion (loss)"
+g1_invest_npv_bn,4.1,4.1300248045794445,results/portfolio_review_summary.csv,"G1 entry invest class, merchant: realised NPV, $ billion"
+g2_accelerate_npv_bn,3.6,3.642260980829141,results/portfolio_review_summary.csv,"G2 two years accelerate class, merchant: realised NPV, $ billion"
+g1_exit_share_of_cohort,47%,0.4704585537918871,results/portfolio_review_summary.csv,"share of the test cohort the entry gate marks for exit, merchant"
+gates_commit_share,24%,0.24382716049382716,results/portfolio_review_summary.csv,"invest + accelerate requests as a share of the cohort, merchant"
+g1c_exit_npv_bn,4.9,-4.900271065524566,results/portfolio_review_summary.csv,"G1 entry exit class, contracted: realised NPV, $ billion (loss)"
+g2c_exit_npv_bn,4.6,-4.572076097855495,results/portfolio_review_summary.csv,"G2 two years exit class, contracted: realised NPV, $ billion (loss)"
+g1c_invest_npv_bn,9.3,9.346916360970111,results/portfolio_review_summary.csv,"G1 entry invest class, contracted: realised NPV, $ billion"
+g2c_accelerate_npv_bn,9.0,8.988796104431877,results/portfolio_review_summary.csv,"G2 two years accelerate class, contracted: realised NPV, $ billion"
+g1c_exit_share_of_cohort,46%,0.45811287477954143,results/portfolio_review_summary.csv,"share of the test cohort the entry gate marks for exit, contracted"
+gatesc_commit_share,32%,0.32451499118165783,results/portfolio_review_summary.csv,"invest + accelerate requests as a share of the cohort, contracted"
+pack_inv_acc,77,77,results/decision_pack.csv,"entry invest → two-year accelerate, merchant"
+pack_inv_exit,33,33,results/decision_pack.csv,"entry invest → two-year exit, merchant"
+pack_inv_gone,77,77,results/decision_pack.csv,"entry invest → two-year not in pool, merchant"
+pack_exit_exit,304,304,results/decision_pack.csv,"entry exit → two-year exit, merchant"
+pack_exit_acc,132,132,results/decision_pack.csv,"entry exit → two-year accelerate, merchant"
+pack_hold_hold,386,386,results/decision_pack.csv,"entry hold → two-year hold or sell, merchant"
+packc_inv_acc,99,99,results/decision_pack.csv,"entry invest → two-year accelerate, contracted"
+packc_inv_exit,42,42,results/decision_pack.csv,"entry invest → two-year exit, contracted"
+packc_inv_gone,104,104,results/decision_pack.csv,"entry invest → two-year not in pool, contracted"
+packc_exit_exit,282,282,results/decision_pack.csv,"entry exit → two-year exit, contracted"
+packc_exit_acc,133,133,results/decision_pack.csv,"entry exit → two-year accelerate, contracted"
+packc_hold_hold,271,271,results/decision_pack.csv,"entry hold → two-year hold or sell, contracted"
+pol_fair_es_bn,3.8,-3.803539536212973,results/policy_comparison.csv,"fair baseline value-index book: ES95, $ billion (loss)"
+pol_fair_enpv_bn,0.7,-0.7474728068135339,results/policy_comparison.csv,"fair baseline value-index book: expected NPV, $ billion (loss)"
+pol_npv_books_range,+$391 to +$396,"(np.float64(391.13858933988143), np.float64(395.69137707857374))",results/policy_comparison.csv,"realised NPV range of the three NPV-based books, $M"
 sunk_20_100,"8,169",8168.88366005468,results/cost_table.csv,"deposit to the next gate, $ per MW, 20–<100 MW, base"
 sunk_ge500,841,841.3804366678892,results/cost_table.csv,"deposit to the next gate, $ per MW, ≥500 MW, base"
 gas_price,3.50,3.5,results/value_assumptions.csv,"gas price assumption, $/MMBtu"

@@ -844,3 +844,47 @@ and where to add, D6 six ways to spend the same budget. Saved as
 (a contracted PPA case through the gates, the ATB cost of capital per
 technology, a hurdle of 2 at the second gate) stands; the images show the
 merchant case as the report does.
+
+### Addendum, 2026-10-12 — the contracted case through the gates (decision #61)
+
+Alan answered open questions 29 and 30 ("close"; "what is the market best
+practice?"): the practice is a project DCF at the technology's own cost of
+capital, the never-built risk carried as a probability at staged gates, and
+a contracted revenue case beside the merchant one. Done, in the notebooks
+that own each piece:
+
+- **Notebook 15 §8.** `value.atb_wacc()` reads the ATB 2024 real WACC per
+  technology (solar and hybrids 4.2%, wind 4.9%, offshore 5.1%, gas 5.4%;
+  8% kept as a stress column). A **contracted** case: a 15-year PPA at
+  index prices (solar $57, wind $62, hybrids $70, offshore $110 per MWh,
+  ±$10) then merchant; gas, storage and "Other" stay merchant. F26 now has
+  three panels (merchant 2024, contracted 2024, merchant 2028). At the ATB
+  rate 5 of 21 technology-region pairs pay at merchant prices and 10 under
+  contract; break-even flat prices solar $44, wind $41, gas $72 per MWh
+  (`npv_table.csv`, `npv_by_request.csv`, `atb_costs.csv` with `wacc_real`).
+- **Notebook 16 §9.** Both revenue cases through the gates with the staged
+  hurdle (3 at entry, 2 two years in). Merchant: invest 237 at entry (26%
+  built, +$4.1B realised), exit 1,067 (5%, −$5.3B); accelerate 316 two
+  years in (18%, +$3.6B), exit 405 (8%). Contracted: invest 326 (21%,
+  +$9.3B), exit 1,039 (5%, −$4.9B); accelerate 410 (20%, +$9.0B), exit
+  395 (8%). F23 is a 2×2. The six policies under the $20.11M deposit
+  budget: the four that count capital returned +$391 to +$581M merchant
+  and +$1,235 to +$1,611M under contract; the value-index book −$46M
+  merchant, +$440M contracted (`portfolio_review_summary.csv`,
+  `policy_comparison.csv`, `decision_pack.csv`, all with `revenue_case`).
+- **Notebook 20 §10.** The recommended books carry a contracted expected
+  NPV column: the ERCOT adds are −$2.0B merchant and +$2.2B under contract.
+- **Notebook 18 §4.** D0, D4, D5 and D6 redrawn with both cases (D6's
+  legend moved to the empty space left of zero, x axis widened).
+- **Report v3** sections 6–8, abstract, memo and conclusion rewritten for
+  the ATB rate and the contracted case (6,543 words); `v5_*` collectors
+  extended (1,921 numbers); `tests/test_report.py` passes; 107 tests pass,
+  1 skipped; `report.pdf` and `report.docx` rebuilt 09:20.
+
+Open questions 29 and 30 are closed by decision #61. The earlier full
+rebuild check predates this change; a final `make all` before tagging v1.0
+stays on the list. New open question:
+
+32. The PPA index prices (solar $57, wind $62, hybrids $70, offshore $110
+    per MWh) are stated as assumptions in `value_assumptions.csv`; please
+    confirm or replace them with the index you want cited.

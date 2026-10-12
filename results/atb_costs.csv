@@ -1,8 +1,8 @@
-tech,capex_per_kw,fom_per_kw_year,vom_per_mwh,heat_rate_mmbtu_per_mwh,atb_technology,atb_detail,new_build_cf
-Solar,1551.273,21.609,0.0,0.0,UtilityPV,Class5,0.266
-Solar+Battery,2456.061,61.468,0.0,0.0,Utility-Scale PV-Plus-Battery,Class5,0.28
-Wind,1676.095,31.648,0.0,0.0,LandbasedWind,Class4,0.455
-Offshore Wind,5989.624,85.266,0.0,0.0,OffShoreWind,Class3,0.461
-Battery,1938.204,44.247,0.0,0.0,Utility-Scale Battery Storage,4Hr Battery Storage,0.0
-Gas,1475.294,33.8,2.14,6.332,NaturalGas_FE,NG 2-on-1 Combined Cycle (F-Frame),0.376
-Other,1807.149,39.023,2.14,6.332,median of the six mapped groups,,0.3
+tech,capex_per_kw,fom_per_kw_year,vom_per_mwh,heat_rate_mmbtu_per_mwh,atb_technology,atb_detail,new_build_cf,wacc_real
+Solar,1551.2727,21.6089,0.0,0.0,UtilityPV,Class5,0.2659,0.0416
+Solar+Battery,2456.0613,61.4677,0.0,0.0,Utility-Scale PV-Plus-Battery,Class5,0.2797,0.0417
+Wind,1676.0949,31.6482,0.0,0.0,LandbasedWind,Class4,0.4549,0.0491
+Offshore Wind,5989.6243,85.2657,0.0,0.0,OffShoreWind,Class3,0.4612,0.0515
+Battery,1938.2037,44.2469,0.0,0.0,Utility-Scale Battery Storage,4Hr Battery Storage,0.0,0.0416
+Gas,1475.2944,33.8,2.14,6.332,NaturalGas_FE,NG 2-on-1 Combined Cycle (F-Frame),0.3758,0.0536
+Other,1807.1493,39.0235,2.14,6.332,median of the six mapped groups,,0.3,0.0454
