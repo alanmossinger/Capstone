@@ -809,9 +809,11 @@ Decisions #59 (scope) and #60 (NREL ATB as the cost source); PLAN.md §13.
 - **Report v3** written to the §13 skeleton: twelve sections, fourteen
   figures, three tables, 5,909 words; every number traced
   (`tests/test_report.py` passes; 1,592 numbers in `report_numbers.csv`).
-  `report/report.pdf` was locked by another program when this session
-  built it, so the new build is `report/report_new.pdf` (6.1 MB) until the
-  lock is released; the DOCX rebuilt in place.
+  `report/report.pdf` and `report/report.docx` were locked by another
+  program when this session built them (probably open in a viewer), so the
+  final builds are `report/report_new.pdf` (6.1 MB) and
+  `report/report_new.docx`; rename them over the old files once closed, or
+  run `make report`.
 
 **Next**
 
