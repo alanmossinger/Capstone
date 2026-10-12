@@ -1,0 +1,27 @@
+{
+  "decided": "2026-10-12",
+  "decision": 70,
+  "lam": 1.0,
+  "level": 0.95,
+  "n_boot": 1000,
+  "seed": 2020,
+  "budget": "40% of the default book's total capital (leases' workovers plus the requests' CAPEX)",
+  "caps": "no technology (lease redevelopment, gas CC, solar, wind, storage) above 40% of the budget; no mutually exclusive sets; emissions cap reported as a what-if, not registered",
+  "revenue_case": "contracted for solar and wind (15-year PPA at the index prices of decision #61), merchant for gas, storage and the leases; the merchant case reported beside it",
+  "books": {
+    "A": "top-N by expected NPV within the budget, positive NPV only",
+    "B": "equal capital by sector (offshore oil and gas; ERCOT power), filled by NPV per dollar, positive NPV only",
+    "C": "deterministic MILP: maximise E[NPV] under the budget and caps (λ = 0)",
+    "D": "risk-aware MILP: maximise E[NPV] − λ·CVaR95 under the budget and caps"
+  },
+  "selection_set": "primary block-bootstrap scenarios of notebook 08",
+  "scoring_set": "held-out Gaussian-copula scenarios of notebook 08 (never used in selection)",
+  "reported_not_registered": [
+    "in-sample scores",
+    "the efficient frontier over λ",
+    "the sensitivity tornado",
+    "ablations (no correlations; no oil and gas; no renewables and storage)",
+    "the greedy cross-check"
+  ],
+  "thesis_rule": "H2 is supported when C21 and C22 pass; H3 when C23 and C24 pass; a failed line is reported, never removed"
+}

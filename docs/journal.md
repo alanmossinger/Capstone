@@ -1068,3 +1068,38 @@ their impact visible to every viewer in the dashboard.
   `provenance_candidates.csv`, `upstream_cost_grid.csv`,
   `candidate_capture_factors.csv`. 138 tests pass.
 - Next: step (7), `08_scenarios_and_risk`.
+
+### Addendum, 2026-10-12 — steps (7) and (8): scenarios and risk, the four books
+
+- **`08_scenarios_and_risk`** (decision #69, amended): 2,000 joint paths of
+  240 months — block-bootstrapped 2018–2024 monthly shocks, demeaned, on
+  log prices reverting to the 2018–2024 real means with a four-year
+  half-life (the first run as a pure random walk put WTI at $13–$800 ten
+  years out and was replaced before any criterion was scored); a held-out
+  Gaussian-copula set (seed 2021) and an independent set for the
+  correlation ablation; output multipliers one per lease or plant from the
+  scored holdout (lease draws volume-weighted; mean 1.0, sd 0.26), cost
+  multipliers triangular 0.75–1.5, operation years from the entry curves
+  through the ρ copula (87% of the twenty requests never operate within
+  seven years). Ten years out WTI sits in $27–$224 (5–95%). The default
+  book: mean $20.6B merchant, no negative scenario, CVaR95 a profit of
+  $1.5B; every named stress leaves it positive (worst: simultaneous
+  downside, $12.1B from $13.8B on the flat base); removing the
+  correlations changes the book's CVaR by $0.5B. F30–F32;
+  `src/scenarios.py` with tests.
+- **`09_portfolio` part D** (decisions #70, #71): C21–C24 registered first
+  (budget 40% of the book's capital, technology cap 40%, contracted case,
+  selection on the primary set, scoring on the copula set); the MILP on
+  HiGHS with the CVaR linearisation (`src/optimizer.py`, solved in
+  millions after a dollar-scale run stalled and returned an empty book —
+  fixed, with an optimality check, before scoring). **All four lines fail:**
+  D − A −$420M [−$659M, −$210M]; D − B −$150M [−$350M, +$24M]; Jaccard D
+  0.95 vs C 0.99; C24's comparator is the near-empty power-only book. The
+  finding: no book loses money in any scenario under the confirmed grid,
+  so risk aversion buys nothing; the books converge on the twenty leases
+  plus contracted wind and some gas (D: 24 candidates, $4.2B). Frontier,
+  sensitivity (budget −20%, λ doubled, carbon $50/t, cap 25%: Jaccard to D
+  0.84–0.96), ablations, the decision ledger with the six books, project
+  impact with each candidate's share of book D's tail. F33.
+- Next: step (9), `10_advisor_and_gym` — ASK ALAN items first:
+  `ANTHROPIC_API_KEY` in `.env`, the verbatim text of the two prompts.

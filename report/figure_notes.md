@@ -1692,6 +1692,46 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** Cumulative incidence of reaching operation by technology group, in small multiples for CAISO, ERCOT and PJM, with 95% bootstrap bands.
 <!-- /fig:F2_operation_by_technology -->
 
+<!-- fig:F30_price_scenarios -->
+### F30_price_scenarios
+
+![F30_price_scenarios](../figures/F30_price_scenarios.png)
+
+*Notebook:* `notebooks/08_scenarios_and_risk.ipynb` · *Files:* `figures/F30_price_scenarios.png`, `.svg`
+
+**Caption (stub).** Fan of the joint price scenarios against the real-dollar history for WTI, Henry Hub and ERCOT.
+<!-- /fig:F30_price_scenarios -->
+
+<!-- fig:F31_candidate_risk -->
+### F31_candidate_risk
+
+![F31_candidate_risk](../figures/F31_candidate_risk.png)
+
+*Notebook:* `notebooks/08_scenarios_and_risk.ipynb` · *Files:* `figures/F31_candidate_risk.png`, `.svg`
+
+**Caption (stub).** NPV distributions of the forty candidates under the joint scenarios, merchant case.
+<!-- /fig:F31_candidate_risk -->
+
+<!-- fig:F32_stresses -->
+### F32_stresses
+
+![F32_stresses](../figures/F32_stresses.png)
+
+*Notebook:* `notebooks/08_scenarios_and_risk.ipynb` · *Files:* `figures/F32_stresses.png`, `.svg`
+
+**Caption (stub).** Expected NPV of the default book under each named stress, leases and requests separately.
+<!-- /fig:F32_stresses -->
+
+<!-- fig:F33_four_books -->
+### F33_four_books
+
+![F33_four_books](../figures/F33_four_books.png)
+
+*Notebook:* `notebooks/09_portfolio.ipynb` · *Files:* `figures/F33_four_books.png`, `.svg`
+
+**Caption (stub).** The four allocation books and the single-sector books out of sample, the frontier over λ, and capital by technology.
+<!-- /fig:F33_four_books -->
+
 <!-- fig:F3_five_year_by_size -->
 ### F3_five_year_by_size
 

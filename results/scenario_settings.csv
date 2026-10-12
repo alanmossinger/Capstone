@@ -1,0 +1,2 @@
+n_scenarios,horizon_months,block_months,seed_primary,seed_copula,level,rho_book,base_wti,base_hh,base_ercot,long_run_wti,long_run_hh,long_run_ercot,half_life_months,history
+2000,240,12,2020,2021,0.95,0.0412111276009178,76.56244358480818,2.193772282566283,26.97381922481124,76.4608612784398,3.6790024384296593,39.71815600971064,48,2018-01 to 2024-12 monthly log changes (ERCOT 2020–2023 ASSUMED); shocks demeaned; mean reversion to the 2018–2024 real means

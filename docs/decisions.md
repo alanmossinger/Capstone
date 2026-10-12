@@ -865,3 +865,84 @@ alternative rejected.
     expected NPV, of CVaR and of emissions) — so no modeled cost is hidden
     behind a result. *Rejected:* per-lease cost estimates (no public file
     holds them); a single base case without ranges.
+69. **The scenario engine: two generators, residual draws from scored
+    forecasts, and the settings** (2026-10-12; notebook 08). Prices: 2,000
+    joint paths of 240 months by moving-block bootstrap (blocks of twelve
+    months, the same months for WTI, Henry Hub and ERCOT) of the 2018–2024
+    monthly log changes from the 2024 real base, seed 2020 — the primary
+    set the optimizer selects on; a Gaussian copula on the same marginals
+    (seed 2021) — the held-out set it is scored on. Output: one multiplier
+    per candidate per scenario drawn from the scored holdout ratios of
+    actual to forecast (leases: the labelled post-hoc level model of
+    decision #67; plants: the registered challengers), bounded to [0.2, 3]
+    and widened by 1/completeness where a candidate's data are thin.
+    Costs: a triangular multiplier 0.75–1.5 (mode 1) on the workover and
+    operating cost, common to all leases in a scenario (ASSUMED). *Prices
+    revert:* the bootstrapped changes are demeaned and applied as shocks to
+    a log price that reverts toward the 2018–2024 real mean of each series
+    with a four-year half-life (ASSUMED); the first run as a pure random
+    walk put WTI between $13 and $800 a barrel ten years out, a drift and a
+    variance no planner would use, so the walk was replaced before any
+    criterion was scored on the scenarios. Output multipliers are one ratio
+    per lease or plant (actuals over forecasts summed across its scored
+    months), not per month, so shut-in months do not become twenty-year
+    multipliers. Timing:
+    operation years of the requests from the entry curves through the book
+    simulation's copula with ρ = 0.041 (notebook 09 part A). Risk at the
+    95% level (VaR, CVaR as expected shortfall). Six named stresses as
+    deterministic multipliers on the flat base; the correlation ablation
+    resamples each price on its own. *Rejected:* a fitted multivariate
+    normal or GARCH for prices (the history's jumps are the risk; a block
+    keeps them); independent draws per month for the primary set (that is
+    the copula's weakness, kept out of sample on purpose); scenario-specific
+    Arps refits (the uplift is already an assumption; a multiplier on the
+    baseline is enough and faster).
+70. **Pre-registered criteria C21–C24: the four books under one budget**
+    (2026-10-12; written by notebook 09 part D's first cell to
+    `results/success_criteria_v7.csv` and committed before any book was
+    solved). *Budget:* 40% of the default book's total capital; *caps:* no
+    technology above 40% of the budget; *revenue case:* contracted for
+    solar and wind (the index PPA of decision #61), merchant for the rest,
+    the merchant case reported beside it. *Books:* A top-N by expected
+    NPV; B equal capital by sector filled by NPV per dollar; C the
+    deterministic MILP (λ = 0); D the risk-aware MILP maximising E[NPV] −
+    λ·CVaR95 with λ = 1 (Rockafellar–Uryasev, HiGHS). Books are selected
+    on the primary block-bootstrap scenarios and scored on the held-out
+    copula scenarios that no selection touched. C21: D beats A on the
+    out-of-sample metric, paired scenario bootstrap (1,000 resamples, seed
+    2020), interval entirely above zero. C22: D beats B, the same. C23:
+    D's selection moves less than C's across the six named stresses (mean
+    Jaccard to the base book, D ≥ C). C24: on the joint scenarios D's
+    CVaR95 loss is below the best single-sector book's of the same budget,
+    interval entirely on the better side. H2 rests on C21–C22, H3 on
+    C23–C24. *Rejected:* scoring on the selection set (in-sample flattery);
+    a merchant-only registered case (no developer underwrites solar on
+    merchant prices, and every power request is then negative, which makes
+    the comparison trivial); an emissions cap in the registered run (kept
+    as a what-if, so the trade-off is visible rather than imposed).
+71. **C21–C24 scored as registered: all four fail, and what the failure
+    says** (2026-10-12; notebook 09 part D). On the held-out copula
+    scenarios the risk-aware book earns less than top-N NPV (metric
+    difference −$420M, interval entirely below zero) and no more than equal
+    capital by sector (−$150M [−$350M, +$24M]); its selection moves more
+    than the deterministic book's under the six stresses (mean Jaccard 0.95
+    against 0.99); and its CVaR is not below the registered single-sector
+    comparator's. The verdict stands. *What the tables say:* no book — not
+    one of the six — loses money in any of the 2,000 joint scenarios; under
+    the confirmed grid a lease redevelopment is an uplift on a producing
+    asset for a modest spend, so its incremental NPV is positive almost
+    everywhere and every book's 5% tail is a smaller profit, not a loss.
+    Risk aversion then has nothing to buy, and the registered question —
+    does a risk-aware allocation beat the rules — is answered "not here"
+    for a reason the report must state: the grid, not the optimizer. The
+    C24 comparator rule (the single-sector book with the lowest CVaR) picks
+    the near-empty power-only book, whose tail is small because it is
+    small; the rule was registered before the scenarios existed and is kept
+    with that reading, as decision #34 requires. *Consequences:* the report
+    carries the four failures, the zero-loss finding and the two
+    assumptions behind it (the uplift share and the operating cost, the top
+    of the tornado); the dashboard shows the frontier and the books so a
+    reader can move the grid and watch the tail appear; H2 and H3 are not
+    supported on this candidate set. *Rejected:* re-registering with a
+    tighter budget or a merchant case to manufacture a trade-off; adding a
+    loss to the leases by hand; dropping the C24 line.

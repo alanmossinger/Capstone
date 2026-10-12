@@ -284,3 +284,38 @@ def power_npv(p_operation_by_year, npv_if_built_by_year, cost_to_carry, rate_rea
     p_op = float(P[-1])
     exp_year = float((inc * np.arange(1, len(inc) + 1)).sum() / p_op) if p_op > 0 else np.nan
     return {"expected_npv": expected, "p_operation": p_op, "p_by_year": inc, "expected_operation_year": exp_year}
+
+
+def operation_curve(key, landmark_entry, entry_predictions, years=7):
+    """Cumulative P(operation by year 1 … ``years``) of a request at entry, from the queue models.
+
+    Parameters
+    ----------
+    key : str
+        ``project_key``.
+    landmark_entry : pandas.DataFrame
+        Landmark-0 predictions pivoted to ``project_key`` × ``horizon_after``
+        (1, 2, 3), the entry model.
+    entry_predictions : pandas.DataFrame
+        Entry predictions pivoted to ``project_key`` × ``horizon`` (5, 7), the chosen model.
+
+    Returns
+    -------
+    numpy.ndarray or None
+        Non-decreasing probabilities for years 1–7 (years 4 and 6
+        interpolated), or None when the request has no prediction.
+
+    Notes
+    -----
+    Shared by notebooks 07 (expected NPV) and 08 (timing draws), so both
+    use the same curve.
+    """
+    if key not in landmark_entry.index or key not in entry_predictions.index:
+        return None
+    p1, p2, p3 = (float(landmark_entry.loc[key, h]) for h in (1, 2, 3))
+    p5 = float(entry_predictions.loc[key, 5])
+    p7 = float(entry_predictions.loc[key, 7]) if 7 in entry_predictions.columns and not np.isnan(entry_predictions.loc[key, 7]) else p5
+    if any(np.isnan(v) for v in (p1, p2, p3, p5)):
+        return None
+    curve = np.array([p1, p2, p3, (p3 + p5) / 2, p5, (p5 + p7) / 2, p7])[:years]
+    return np.maximum.accumulate(np.clip(curve, 0, 1))
