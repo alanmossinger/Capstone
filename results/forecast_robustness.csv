@@ -1,0 +1,8 @@
+check,group,mae,mae_best_baseline,n_rows
+leave-some-leases-out (lease oil +3 m),leases in the fit,14088.434434763429,12078.43793517407,12495
+leave-some-leases-out (lease oil +3 m),leases never seen (20%),17409.086430317948,13892.535256410256,3120
+cold start (Gas CC CF +1 m),plants with 12+ months of history,0.06364233118376184,0.0689020557336425,2248
+cold start (Gas CC CF +1 m),plants under 12 months (cold start),0.023952206635300646,0.01773524663598474,4
+cold start (Solar CF +1 m),plants with 12+ months of history,0.03867241967573199,0.04417264186149703,2187
+cold start (Wind CF +1 m),plants with 12+ months of history,0.0610567123650143,0.07169065771113546,3525
+cold start (Wind CF +1 m),plants under 12 months (cold start),0.29237371100671955,0.3201640056478766,1

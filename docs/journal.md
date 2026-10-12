@@ -997,3 +997,41 @@ addenda).
 - Modules `src/decline.py`, `src/energy_features.py`, `src/energy_stats.py`
   with tests (128 pass); `statsmodels` and `xlrd` pinned (decision #65).
 - Next: step (5), `05_forecast_energy`.
+
+### Addendum, 2026-10-12 — step (5): notebook 05, the energy forecasts and C20
+
+- `05_forecast_energy` built and executed (7.7 min): baselines (last value,
+  seasonal naive, Arps per lease at 21 scored origins, technology-month
+  median, random walk), ElasticNet and LightGBM refitted quarterly, the
+  challenger of each line named on validation, the holdout scored once.
+- **C20: 3 of 12 registered lines pass** — gas CC, solar and wind capacity
+  factor one month ahead (MAE 8–15% below the seasonal naive, intervals
+  below zero). The six lease lines fail (challenger 19–42% worse than the
+  last value), the three price lines fail (intervals straddle zero against
+  the random walk). Decision #67 records the labelled post-hoc diagnosis:
+  the log retransformation biased the lease forecasts low by 10–20 thousand
+  bbl or Mcf a month; on the level, LightGBM is within 4% of the last value
+  (one line would pass). F27, `success_criteria_v6_scored.csv`,
+  `forecast_metrics.csv`, `forecast_coverage.csv` (90% intervals cover
+  92–94% of lease targets, 72–80% of plant targets, 82–100% of prices),
+  `forecast_robustness.csv`, `forecast_posthoc_leases.csv`,
+  `data/processed/forecasts_holdout.parquet` for notebook 08.
+- `src/energy_models.py` with tests (132 pass).
+
+**Open question for Alan, added at the end of session 10**
+
+37. **The upstream cost grid (ASK ALAN before notebook 07 part B).** No
+    public file holds a lease's redevelopment cost, so the twenty Gulf
+    candidates need a documented low / base / high grid, labelled ASSUMED.
+    Proposed defaults, to confirm or replace: workover or recompletion cost
+    per well $4M / $8M / $15M (shelf to deepwater); incremental uplift on
+    the Arps baseline +10% / +20% / +30% of the lease's current rate, decaying
+    with the lease's own decline; lease operating cost $12 / $18 / $28 per
+    boe; federal royalty 18.75% (12.5% for leases issued before 2007 is the
+    low case); abandonment accrual $1M / $3M / $8M per well, discounted at
+    the lease's end; a 24-month redevelopment lead time; oil sold at WTI
+    minus a $3 / $5 / $8 differential and gas at Henry Hub minus $0.3 / $0.5
+    / $0.8 per MMBtu; the ATB real cost of capital for offshore (5.1%) with
+    8% as the stress case. Say which numbers you want changed and whether
+    the three redevelopment cases of notebook 02 part C (young oil, mature
+    oil watering out, gas tail) should carry different uplifts.

@@ -632,6 +632,16 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** Baseline P(operation by 3, 5 and 7 years) for each region × technology cell of the training data.
 <!-- /fig:05_01_baseline_cells -->
 
+<!-- fig:05_02_coverage_and_importance -->
+### 05_02_coverage_and_importance
+
+![05_02_coverage_and_importance](../figures/05_forecast_energy/05_02_coverage_and_importance.png)
+
+*Notebook:* `notebooks/05_forecast_energy.ipynb` · *Files:* `figures/05_forecast_energy/05_02_coverage_and_importance.png`, `.svg`
+
+**Caption (stub).** Interval coverage of the quantile model per registered line and LightGBM importance for a lease line and a plant line.
+<!-- /fig:05_02_coverage_and_importance -->
+
 <!-- fig:05_02_penalizer_tuning -->
 ### 05_02_penalizer_tuning
 
@@ -1641,6 +1651,16 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 
 **Caption (stub).** Net present value per MW at operation by technology and region: merchant revenue with today's credits (2024), a 15-year contract at index prices (2024), and merchant revenue after the credit deadline (2028); 20-year life, ATB real cost of capital per technology, low and high value cases as lines.
 <!-- /fig:F26_npv_per_mw -->
+
+<!-- fig:F27_forecast_gains -->
+### F27_forecast_gains
+
+![F27_forecast_gains](../figures/F27_forecast_gains.png)
+
+*Notebook:* `notebooks/05_forecast_energy.ipynb` · *Files:* `figures/F27_forecast_gains.png`, `.svg`
+
+**Caption (stub).** Criterion C20: paired holdout MAE difference between the chosen challenger and the best baseline per line, with the registered bootstrap interval.
+<!-- /fig:F27_forecast_gains -->
 
 <!-- fig:F2_operation_by_technology -->
 ### F2_operation_by_technology

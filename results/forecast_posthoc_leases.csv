@@ -1,0 +1,7 @@
+line,label,registered_challenger,registered_bias,registered_mae_ratio,posthoc_model,posthoc_bias,posthoc_mae_ratio,posthoc_diff_low_relative,posthoc_diff_high_relative,posthoc_would_pass,status
+lease_oil_h3,lease oil +3 m,lightgbm,-11334.085259514175,1.3524897241390408,LightGBM on the level (no transform),212.03575703145233,0.962738520706249,-0.10482082475559179,0.034617638267231125,FAIL,"post-hoc, not registered"
+lease_gas_h3,lease gas +3 m,lightgbm,-18474.813819321913,1.2756625443081115,LightGBM on the level (no transform),785.1754674057753,0.9801929447096991,-0.04195360991891031,0.005596121615127295,FAIL,"post-hoc, not registered"
+lease_oil_h6,lease oil +6 m,lightgbm,-13615.104660511643,1.419170663116912,LightGBM on the level (no transform),611.1060391597535,0.9750555234581021,-0.06658693147065575,0.02023940880577925,FAIL,"post-hoc, not registered"
+lease_gas_h6,lease gas +6 m,lightgbm,-19602.329177233663,1.2000322371790457,LightGBM on the level (no transform),1013.8535819015893,0.959888323946502,-0.07407357653594811,-0.0018631998516428652,PASS,"post-hoc, not registered"
+lease_oil_h12,lease oil +12 m,lightgbm,-9988.161715518983,1.1866352878808144,LightGBM on the level (no transform),942.3010057181733,1.0064641783480819,-0.02267875314501613,0.03233998787690398,FAIL,"post-hoc, not registered"
+lease_gas_h12,lease gas +12 m,lightgbm,-16682.650387529866,1.0032007311650413,LightGBM on the level (no transform),2575.044346547138,0.9773559580394021,-0.051090213000330745,0.005802129079135006,FAIL,"post-hoc, not registered"

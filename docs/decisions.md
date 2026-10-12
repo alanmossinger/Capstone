@@ -823,3 +823,26 @@ alternative rejected.
     pairing (origins differ in difficulty); registering interval coverage as
     a criterion (reported instead: the quantile model is a tool, not the
     claim).
+67. **C20 scored as registered: 3 of 12 lines pass; the lease failure
+    diagnosed post-hoc and labelled** (2026-10-12; notebook 05). The three
+    plant capacity-factor lines pass (gas CC, solar and wind one month
+    ahead beat the seasonal naive with the whole interval below zero); the
+    six lease lines fail, with the registered challenger 19–42% worse than
+    the last observed value; the three price lines fail with intervals that
+    straddle zero against the random walk. The verdict stands. *Post-hoc,
+    labelled (the precedent is decision #34):* the lease challengers were
+    fitted on log(1 + volume) and transformed back, a choice made before any
+    score existed; the back-transformed forecast is biased low by about
+    10,000–20,000 barrels or Mcf a month (`forecast_posthoc_leases.csv`),
+    the retransformation effect. LightGBM refitted on the level has a bias
+    near zero and a holdout MAE within 4% of the last-value baseline on
+    every lease line (one of six would pass); the honest reading is that at
+    three to twelve months a lease's own last month is nearly as good a
+    forecast as the model, and the model's value is the interval, not the
+    point. *Consequences:* the scenario engine of notebook 08 draws lease
+    residuals from the level model's scored holdout, labelled post-hoc; the
+    registered verdict is reported in the record and the report; H1 is
+    supported for the plant targets only. *Rejected:* re-registering the
+    lease lines on the level (a rule changed after the result is no rule);
+    dropping the price lines (a fail against the random walk is the
+    expected and reportable answer for a unit-root series).

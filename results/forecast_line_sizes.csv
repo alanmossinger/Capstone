@@ -1,0 +1,19 @@
+line,label,registered,development,validation,holdout
+lease_oil_h3,lease oil +3 m,True,60,6,15
+lease_gas_h3,lease gas +3 m,True,60,6,15
+lease_oil_h6,lease oil +6 m,True,60,6,12
+lease_gas_h6,lease gas +6 m,True,60,6,12
+lease_oil_h12,lease oil +12 m,True,60,6,6
+lease_gas_h12,lease gas +12 m,True,60,6,6
+cf_Gas CC_h1,Gas CC CF +1 m,True,47,6,17
+cf_Gas CC_h3,Gas CC CF +3 m,False,47,6,15
+cf_Solar_h1,Solar CF +1 m,True,47,6,17
+cf_Solar_h3,Solar CF +3 m,False,47,6,15
+cf_Wind_h1,Wind CF +1 m,True,47,6,17
+cf_Wind_h3,Wind CF +3 m,False,47,6,15
+price_WTI_h1,WTI log price +1 m,True,60,6,17
+price_WTI_h3,WTI log price +3 m,False,60,6,15
+price_Henry Hub_h1,Henry Hub log price +1 m,True,60,6,17
+price_Henry Hub_h3,Henry Hub log price +3 m,False,60,6,15
+price_ERCOT_h1,ERCOT log price +1 m,True,60,6,12
+price_ERCOT_h3,ERCOT log price +3 m,False,60,6,12
