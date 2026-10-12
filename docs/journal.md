@@ -1137,3 +1137,40 @@ their impact visible to every viewer in the dashboard.
   `make all`. **ASK ALAN (still open):** #34 the verbatim prompts, #35 the
   key; one live run of notebook 10 after the key is in `.env` records the
   advisor's answers (then commit `results/advisor_runs.jsonl`).
+
+### Addendum, 2026-10-12 — step (10): the dashboard, report v4, the AI note
+
+- **`app/app.py`** (Streamlit 1.65, `make app`): *Decide forward* — budget,
+  λ, cap and revenue case re-solve the risk-aware MILP on the 2,000 cached
+  scenarios (the thin-data rule widens the spread and scales the cap by
+  completeness), the four books beside it, the named stress, the forward
+  view at 1–20 years, the advisor's recorded recommendation, the challenge
+  round (live with the key, replay otherwise) and the override gate that
+  writes to the ledger; *Learn from history* — the sixteen gym situations
+  as of their dates, the human's pick scored against instinct, the rule,
+  the advisor and hindsight, appended to the ledger as the human actor;
+  *Scenarios and risk*; *Candidates and the cost grid* (the grid, F29,
+  each project's impact, the completeness warning for every region); *The
+  ledger*. Opened in the app's browser pane; both modes render. Notebook 09
+  now keeps the ledger's appended entries.
+- **Report v4:** the Capital Allocation Memo and the Decision Board
+  (D0–D7) after the abstract; Part II §13–§24 (the portfolio problem, the
+  v5 data and gate, the energy EDA, C20, economics and the tornado,
+  scenarios, C21–C24, the advisor and the gym, the forward view, the Part
+  II record, broader impacts and limitations, conclusion); Appendix A on
+  the advisor (grounding, record and replay, the gate, the evaluation, the
+  prompts); figures 15–21. `src/report_numbers.py` gains the v6 collectors
+  (`v6_data`, `v6_forecasts`, `v6_economics`, `v6_scenarios`, `v6_books`,
+  `v6_advisor`); `tests/test_report.py` exempts the section marks, table
+  numbers, decision ids and source labels. `docs/ai_use.md` describes the
+  AI as a system component (what it sees, record and replay, the gate, how
+  it is evaluated). README: status, questions for both parts, map, results.
+- The `make all` run of the ten notebooks and the final test count are
+  recorded in the line below this entry.
+- `make all` (2026-10-12, evening): all ten notebooks ran in order — 01 134 s,
+  02 50 s, 03 26 s, 04 521 s, 05 432 s, 07 35 s, 08 51 s, 09 365 s, 06 668 s,
+  10 14 s. The registered tables came out unchanged except float noise at
+  the sixteenth digit in the tournament tables and the run-time columns of
+  the check tables; the report's PJM gas five-year rate reads 31.9% as the
+  table has it. 161 tests pass, 1 skipped (the word limit, decision #44).
+  Report v4 built to PDF and DOCX.

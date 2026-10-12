@@ -1,12 +1,43 @@
 ---
-title: "From Queue to Capital: AI-Driven Portfolio Management for the U.S. Power-Plant Pipeline"
+title: "From Queue to Capital: AI-Driven Portfolio Management for an Integrated U.S. Energy Book"
 author: "Alan Mössinger"
 date: "SIADS 699 Capstone, University of Michigan — Group 13 — October 2026"
 ---
 
 ## Abstract
 
-An energy company that holds interconnection-queue requests must decide, request by request, whether to invest, hold or exit, and where to add. This report answers those questions with the public record of 13,366 requests in CAISO, ERCOT and PJM, tested on the 2,268 that entered in 2017–2019. Which requests get built is predictable: a gradient-boosted hazard model ranks the test cohort at an AUC of 0.858 at three years against 0.733 for cohort averages, and two years in the executed interconnection agreement lifts Uno's C from 0.687 to 0.797. Why they fail is legible: size, technology and the agreement set the odds (PJM falls from 24% five-year completion under 5 MW to 4% at 500 MW and up; an agreement signed within two years lifts ERCOT from 0.8% to 63%), and the regions run on different clocks (CAISO and PJM cull in year one, ERCOT after year four). What a plant is worth, once capital is counted at its cost of capital, is two short lists: at merchant prices only wind everywhere and gas or solar in PJM earn their capital back; under a 15-year contract at index prices, wind and solar do so everywhere; the credit deadline of 2027 decides the sign for the rest. The portfolio rules built on those three layers were scored on what happened: the requests the gates mark to fund reached operation 21–26% of the time at entry and 18–20% two years in, against 5% and 8% for those they mark to drop, and returned +$4 to +$9 billion with capital counted where the drops would have lost $5 billion; a book of 25 chosen two years in by the model held 19 requests that reached operation against 11 for an agreement-aware lookup. The conclusion is a set of decisions, each with its probability, value, cost and downside: enter by the cells and rules, review at two years in CAISO and PJM and at the agreement in ERCOT, fund wind anywhere and solar under contract, and size every book to the newest cohort's level, which runs at a quarter of the historical rate.
+An energy company that holds interconnection-queue requests must decide, request by request, whether to invest, hold or exit, and where to add. This report answers those questions with the public record of 13,366 requests in CAISO, ERCOT and PJM, tested on the 2,268 that entered in 2017–2019. Which requests get built is predictable: a gradient-boosted hazard model ranks the test cohort at an AUC of 0.858 at three years against 0.733 for cohort averages, and two years in the executed interconnection agreement lifts Uno's C from 0.687 to 0.797. Why they fail is legible: size, technology and the agreement set the odds (PJM falls from 24% five-year completion under 5 MW to 4% at 500 MW and up; an agreement signed within two years lifts ERCOT from 0.8% to 63%), and the regions run on different clocks (CAISO and PJM cull in year one, ERCOT after year four). What a plant is worth, once capital is counted at its cost of capital, is two short lists: at merchant prices only wind everywhere and gas or solar in PJM earn their capital back; under a 15-year contract at index prices, wind and solar do so everywhere; the credit deadline of 2027 decides the sign for the rest. The portfolio rules built on those three layers were scored on what happened: the requests the gates mark to fund reached operation 21–26% of the time at entry and 18–20% two years in, against 5% and 8% for those they mark to drop, and returned +$4 to +$9 billion with capital counted where the drops would have lost $5 billion; a book of 25 chosen two years in by the model held 19 requests that reached operation against 11 for an agreement-aware lookup. The conclusion is a set of decisions, each with its probability, value, cost and downside: enter by the cells and rules, review at two years in CAISO and PJM and at the agreement in ERCOT, fund wind anywhere and solar under contract, and size every book to the newest cohort's level, which runs at a quarter of the historical rate. Part II extends the decision to an integrated portfolio — twenty offshore Gulf lease redevelopments and twenty ERCOT requests under one budget and 2,000 joint scenarios — with the queue models as the timing engine: the lease book carries $14.6B of incremental NPV at base under an assumed cost grid, the contracted wind is the only power request that earns its capital at 2024 prices, the registered allocation criteria C21–C24 fail because no book loses money under that grid, a grounded and recorded LLM advisor is scored in a decision gym where the registered rule beat instinct by $100M a situation over 16 past situations, and the forward view says the book at one year is not the book at twenty.
+
+## Capital Allocation Memo
+
+*To the investment committee. One page. Every number below is read from `results/` by code; the figures and tables that carry it are in Part II.*
+
+**The ask.** A budget of $6.15B (40% of the forty candidates' capital), no technology above 40% of it, over 2025–2044, across 20 federal offshore Gulf of Mexico lease redevelopments and 20 ERCOT power requests (5 gas combined cycle, 5 solar, 5 wind, 5 storage) drawn from a pool of 513 producing leases and 2,268 queue requests.
+
+**The recommendation.** Fund the twenty lease redevelopments and the contracted wind requests; hold the gas requests to their next gate; do not fund solar or storage at 2024 prices. This is the risk-aware book D of notebook 09: 24 candidates, $4.2B of capital, an expected NPV of $20.65B on the held-out scenarios, a probability of losing money of 1.8%, and a worst-5% outcome that is still a profit. Top-N NPV (book A) earns $21.07B with the same budget and the same tail sign; the difference, −$420M [−$659M, −$210M], is the price of a risk aversion that has nothing to buy here, which is the finding, not a failure of the method.
+
+**Why.** Under the confirmed upstream cost grid a lease redevelopment is an uplift on a producing asset for a modest spend: the twenty leases carry $14.6B of incremental NPV at base, every one positive, with a median break-even of $33 a barrel against a 2024 real WTI of $77. The twenty requests are worth −$0.76B merchant and −$0.28B contracted once the queue models' chance of operating within seven years (6%–23%) and the cost to carry are priced in; only wind under a $62 PPA is positive. No book of these forty loses money in any of 2,000 joint scenarios, so the 5% tail is a smaller profit, not a loss.
+
+**What would change the answer.** The uplift share (10%–30% moves the book from $5.9B to $21.8B) and the operating cost ($12–$28 a barrel of oil equivalent: $16.6B to $9.2B) — both ASSUMED, both in the dashboard's grid page; a WTI collapse of the 2020 shape leaves the book at $13.85B on the flat path, the simultaneous downside at $12.07B from $13.83B. The requests' sign turns on the hub price and the PPA, not on the grid.
+
+**When.** The lease book is negative within one and two years (−$1.4B, the workovers), positive from year three ($0.2B), $14.6B at twenty; a request is a carry cost until it operates, −$0.84B of expected loss at twenty years. A one-year owner funds nothing; a three-year owner funds twelve leases; the twenty-year owner buys the contracted wind.
+
+**The record.** C21–C24, registered before any book was solved, all fail as registered (decision #71). In the decision gym the registered rule beat instinct by $100M a situation over 16 past situations, with a mean regret against hindsight of $197M against $297M. The advisor's own answers are not yet recorded (no key on this machine); the replay record fills in on the first live run.
+
+## Decision Board
+
+| Decision | Rule | Evidence | Where |
+|---|---|---|---|
+| D0 Enter the queue | by the cells and rules of Part I; the model's edge is at the milestones | C6–C12: the lookup ties at entry, the landmark model wins two years in | §4, §7 |
+| D1 Review a request | at two years in CAISO and PJM, at the agreement in ERCOT | the stage-specific hazards; C8: the landmark model wins two years in | §5, §7 |
+| D2 Value a plant | wind anywhere; solar under contract; gas in PJM; storage only above its break-even | the value tables at the cost of capital, merchant and contracted | §6 |
+| D3 Size the book | to the newest cohort's level, a quarter of the historical rate | C15 passes on operations, C16–C17 fail on MW and level | §8 |
+| D4 Allocate across sectors | the twenty leases plus contracted wind (book D); solar and storage wait for the price | C21–C24 fail; no book loses money in 2,000 scenarios | §19 |
+| D5 Stress the book | the uplift share and the operating cost decide the lease side; the hub price and the PPA decide the power side | tornado; named stresses | §17, §18 |
+| D6 Choose the horizon | nothing at one year; twelve leases at three; the full book from ten | within-horizon value by candidate | §21 |
+| D7 Use the advisor | recommend per scenario, challenge the human, override only through the gate, score in the gym | grounding rate, agreement with D, gym score vs instinct | §20, Appendix A |
+
+*Table 0.* The Decision Board: one line per decision, with the rule, the registered evidence and the section that carries it. Sources: `results/decision_ledger.csv`, `results/success_criteria_v7_scored.csv`, `results/decision_gym_scores.csv`.
 
 ## 1 The decision
 
@@ -183,13 +214,131 @@ A score like this can fulfil itself: if lenders refuse the requests it ranks low
 
 The agreement is dated for 30% of ERCOT's requests, 15% of CAISO's and 2.6% of PJM's, so the milestone results rest on ERCOT and CAISO; PJM's own export dates no study or agreement. The timing models cover three ISOs and a pre-reform regime; the seven-year horizon rests on 2017 entrants alone. No entry-time model is calibrated to the post-2020 level. The NPV is a capstone-scale DCF: national average costs for a representative class in 2022 dollars, merchant on-peak prices with an assumed capture, no contracts, no financing, no energy revenue for storage; the sign of gas in PJM is a bet on the capacity market. Nodal prices, weather, land, transmission network data and financing curves, which a siting or pricing decision would need, are outside the public files used here and are stated as the next layer, not attempted.
 
-## 12 Conclusion
+## 12 Conclusion of Part I
 
 Where is the opportunity: ERCOT for base rates and dated agreements, PJM for gas and the capacity market, CAISO only with a signed agreement. Which requests get built, and when: predictable at an AUC of 0.858 at three years and far better two years in with the agreement; the clock is good to about a year in PJM; the level must be read from the newest cohort. Why they fail: size, technology and the agreement, in the system impact study in year one in CAISO and PJM and in the facilities study after year four in ERCOT. What a plant is worth: wind anywhere, solar under contract and in PJM even merchant, gas in PJM; storage and hybrids only with a contract above their break-even price, and the credit deadline of 2027 decides the rest. What to do with the book: fund the requests the gates mark, 10–14% of the cohort at entry and 24–32% of the two-year pool, which returned +$4.1 and +$3.6 billion at merchant NPV and +$9.3 and +$9.0 billion under contract, and stop carrying the 47% they mark for exit at entry, which would have lost $5 billion; buy at the milestone, where a model-managed book of 25 held 19 operations against 11; two years in, add in ERCOT, where 167 picks captured 70 of 75 operations, add sparingly in PJM, and nothing yet in CAISO. Each of these is a decision with a probability, a value, a cost and a downside behind it, and each was scored on what happened to the requests that entered in 2017–2019.
+
+## Part II — The integrated portfolio
+
+## 13 The portfolio problem
+
+Part I answered the queue's questions for a developer. An energy company does not hold only queue requests: it holds producing assets, and its capital decision is across sectors. Part II extends the decision to a real integrated U.S. portfolio — 20 federal offshore Gulf of Mexico lease redevelopments drawn from a pool of 513 producing leases, and 20 ERCOT power requests (5 gas combined cycle, 5 solar, 5 wind, 5 storage) drawn from the 2,268 test-cohort requests of Part I — under one budget, one scenario set and one risk measure. Everything built in Part I is kept: the queue-survival and landmark models are the completion and timing engine of the power candidates. Four research questions: can machine learning improve the physical forecasts (RQ1); how do forecast error, price uncertainty and cross-asset correlation change portfolio risk (RQ2); does a risk-aware multi-energy book beat NPV ranking and sector-only books under the same budget out of sample (RQ3); and which features and constraints in fact change the selection (RQ4). The criteria were registered before scoring (C20 for the forecasts, C21–C24 for the allocation) and are reported as registered.
+
+Every exported figure carries a provenance label — OBSERVED (a public record), DERIVED (arithmetic on records), FORECAST (a model's output) or ASSUMED (a stated assumption) — and a figure built from several carries the weakest. The upstream cost grid is ASSUMED throughout, because public records do not disclose a redevelopment's cost; its impact is shown before its results are used.
+
+## 14 Data for the portfolio
+
+| Source | Grain | What it feeds | Gate |
+|---|---|---|---|
+| BSEE OGOR-A production, 2010–2024 (15 files, SHA-256 hashed) | lease-month: oil, gas, water, days on production | the lease pool (1,041 leases with 60 or more producing months), the Arps baselines, the forecasts | PASS |
+| EIA-923 via the EIA API v2 (186,744 rows, Texas, 2018–2024) | plant × prime mover × month | capacity factors and heat rates of 69 gas combined-cycle, 108 solar, 201 wind and 18 storage plants | PASS |
+| EIA WTI and Henry Hub monthly spot prices; BLS CPI-U | month, real 2024 dollars | the price panel, the scenario engine | PASS |
+| ERCOT DAM and RTM settlement-point prices, 2024 hourly (my Forecast-to-Dispatch pull, hashes pinned) | hour, North hub | capture factors, the battery dispatch, the 2024 anchor | PASS |
+| ERCOT 2020–2023 months (bridged from PJM West at the 2017–2019 ratio, labelled ASSUMED; 48 months) | month | the price panel | FAIL (non-blocking) |
+| EPA eGRID2023 | plant | emissions of the generation panel (98.8% of 2023 plants join) | PASS |
+
+*Table 3.* The v5 sources and the readiness gate of `docs/data_readiness.md` (outcome GO). Every raw file is hashed in `data/raw/manifest_v5.json`; the EIA key is read from `.env` and never printed (38 pages checked).
+
+Features are built at rolling origins with each source's release lag (BSEE three months, EIA-923 two, prices none), and a truncation test proves that no feature at an origin uses a month after it. The split is registered: development January 2018 to December 2022, validation the first half of 2023, holdout July 2023 to December 2024.
+
+## 15 What the energy data say
+
+A quarter of lease-months are zero by nature; the median lease keeps half its peak oil for twelve months and the pooled Arps exponent is the physics floor. Texas wind runs at 33% of nameplate, solar at 22%, gas combined cycle at 23%, each with the seasonal shape a revenue model needs. Henry Hub is twice as volatile as WTI; prices and physical output barely co-move month to month, which is why the scenario engine draws prices jointly and output separately. The decline clusters are weak and decide nothing.
+
+## 16 Forecasting the physical output (C20)
+
+C20 registered twelve lines — lease oil and gas at 3, 6 and 12 months, plant capacity factors at 1 and 3 months, the prices at 1 and 3 months — each a challenger (ElasticNet or LightGBM, chosen on validation, refit quarterly) against the best of five baselines at rolling origins, scored by a paired moving-block bootstrap. Three of twelve pass, all plant lines: the challengers cut the seasonal-naive error of the gas, solar and wind capacity factors by 8%, 12% and 15%. The lease lines fail with the registered challenger's error 1.35 times the last-value baseline at three months, a large negative bias from the log transform; a post-hoc level model (labelled, not registered, decision #67) brings the ratio to 0.96 and is the one the scenario engine draws its residuals from. The price lines fail, as random walks should.
+
+## 17 What each candidate is worth, and what it depends on
+
+Lease redevelopment: an Arps baseline from the last 36 months, an uplift of 20% of the baseline rate after a two-year lead time, the workover paid at month zero, the incremental cash flow against doing nothing, discounted at the ATB offshore rate, under the confirmed cost grid (decision #68). Power request: the NPV if built, at the 2024 hourly basis — solar earns 92% of the flat hub price because it produces when the price is low, wind 83%, gas combined cycle 135% because it runs when the price is high (63% of hours), the battery $74.6k per MW-year from one cycle a day — weighted by the queue models' probability of operating in each of seven years, minus the cost to carry.
+
+At the flat 2024 real prices the twenty leases carry $14.6B of incremental NPV, every one positive, median break-even $33 a barrel; the twenty requests −$0.76B merchant and −$0.28B contracted (P(operation within seven years) 6%–23%); wind is positive under the $62 PPA, nothing else is. The tornado (Figure 16) says what the lease side rests on: the uplift share, 10%–30%, moves the book from $5.9B to $21.8B; the operating cost, $12–$28 a barrel of oil equivalent, from $16.6B to $9.2B; the power price basis moves the book by under $0.5B.
+
+![Figure 15](../figures/F28_candidates.png)
+
+*Figure 15.* The forty candidates: capital, expected NPV and the probability of operating, with the provenance of each column.
+
+![Figure 16](../figures/F29_cost_tornado.png)
+
+*Figure 16.* The cost grid's impact on the default book: each ASSUMED item swung across its stated range, one at a time.
+
+## 18 Scenarios and risk
+
+2,000 joint paths of 240 months: block-bootstrapped monthly shocks of WTI, Henry Hub and the ERCOT price over 2018–2024 (blocks of 12 months, the same months for all three, so the correlations and the 2020 and 2022 episodes travel together) on log prices that revert toward their 2018–2024 real means with a four-year half-life (ASSUMED; a pure random walk put WTI anywhere from $13 to $800 and was replaced before any criterion was scored). Output multipliers come from the scored holdout residuals, one per lease or plant, widened by the inverse of the data-completeness score; cost multipliers are triangular 0.75–1.5; operation years come from the entry curves through the copula of the book simulation, under which 87% of the twenty requests never operate within seven years. A Gaussian copula on the same marginals makes a second, held-out set that the optimizer never selects on.
+
+Ten years out WTI sits between $27 and $224 a barrel (5–95%). The default book of forty has a mean NPV of $20.6B merchant, a 3.5% chance of a loss, and a worst-5% outcome that is still a $1.5B profit; every named stress leaves it positive, the worst (the simultaneous downside) at $12.07B from $13.83B on the flat path. Removing the correlations changes the book's CVaR by $1.8B, which is what joint modelling is worth here.
+
+![Figure 17](../figures/F30_price_scenarios.png)
+
+*Figure 17.* The joint price scenarios against the real-dollar history.
+
+![Figure 18](../figures/F32_stresses.png)
+
+*Figure 18.* The default book under the named stresses.
+
+## 19 The four books under one budget (C21–C24)
+
+Registered before any book was solved (decision #70): budget 40% of the default book's capital ($6.15B), no technology above 40% of it, the contracted case for solar and wind, selection on the primary scenarios, scoring on the held-out copula set. Book A takes candidates by expected NPV; B splits the budget equally by sector; C is the deterministic MILP; D maximises expected NPV minus the CVaR95 of the loss (Rockafellar–Uryasev, HiGHS).
+
+All four criteria fail as registered (decision #71). Out of sample D earns $20.65B against $21.07B for A (C21: −$420M [−$659M, −$210M]) and no more than B (C22: −$150M [−$350M, +$24M]); its selection moves more than C's under the six stresses (C23: mean Jaccard 0.95 against 0.99); its CVaR is not below the registered single-sector comparator's (C24: −$323M [−$937M, +$250M], the comparator being the near-empty power-only book, which the rule registered before the scenarios existed picked and which is kept with that reading). The finding behind the four failures: no book of these forty loses money in any scenario under the confirmed grid, so risk aversion has nothing to buy; the books converge on the twenty leases plus contracted wind and some gas (D: 24 candidates, $4.2B; P(NPV < 0) 1.8%). Sensitivity (budget −20%, λ doubled, a $50 carbon price, a 25% cap) moves D by a Jaccard of 0.84–0.96. H2 and H3 are not supported on this candidate set, for a reason the report states: the grid, not the optimizer.
+
+![Figure 19](../figures/F33_four_books.png)
+
+*Figure 19.* The four books and the two single-sector books out of sample, the frontier over λ, and capital by technology.
+
+## 20 The advisor and the decision gym
+
+An LLM advisor (Anthropic Messages API, model `claude-sonnet-5-5`, temperature 0) sees only the result tables of §17–§19 rendered as text and nothing else; every number it writes is checked against those tables, every call is recorded to `results/advisor_runs.jsonl` and replayed from there, so the pipeline runs offline and each answer can be audited against the prompt that produced it. Three modes: a recommendation per named scenario and per horizon (the book, the numbers cited, the binding constraint, what would change the answer); a challenge round in which the human states a preferred book and the advisor runs the motivated-reasoning check (at most five questions, then the patterns named with the sentence that shows each) and the ideological Turing test (the opposing book argued by its strongest advocate, ending in a convergence line); and the decision gym. The human may override the advisor's book only after answering the five questions and reading the opposing case; every decision goes to the ledger. Appendix A carries the prompts and the evaluation.
+
+The gym scores decisions, not prose. Sixteen situations built as of their date with no hindsight — the fifteen largest requests of ERCOT, PJM and CAISO in each 2017–2019 cohort at entry, the 2017 cohort at its two-year gate, ERCOT 2018 with the budget cut a fifth, and the twenty lease candidates at the start of the 2014, 2020 and 2022 oil-price regimes — each under 40% of its total cost; instinct (top-N expected NPV), the registered rule, the advisor and the human pick, the realized value is revealed (for a request, the modeled value per MW when it in fact operated, minus the cost to the gate: a proxy, labelled DERIVED), and the exact knapsack with hindsight is the ceiling. Over the 16 situations the registered rule beat instinct by $100M a situation on average, with a mean regret of $197M against $297M. The rooms differ: in 9 of the 13 queue situations (all of PJM and CAISO, ERCOT 2019) none of the fifteen largest requests operated within the window, so the best book is empty, instinct lost the gate costs and the rule, which held or exited, lost nothing; at the ERCOT two-year gate the rule held every request and missed the five that operated ($2.17B to instinct, $0 to the rule); in the lease regimes the MILP matched hindsight in 2 of 3 because every lease pays and the budget binds. The advisor's picks are not recorded on this machine (no key); the human's appear as the dashboard's ledger fills.
+
+![Figure 20](../figures/F34_decision_gym.png)
+
+*Figure 20.* The decision gym: realized value of each actor's book in sixteen past situations, against hindsight.
+
+## 21 The forward view: the book at one to twenty years
+
+A twenty-year NPV says nothing about what the owner holds at year three. For each candidate the value counted within a horizon — leases: the incremental cash flows against the baseline, truncated; requests: the carry cost, the capital at the operation year and the operating margin to the horizon, weighted by the probability of operating by each year — gives the book at each horizon under the same budget and cap. The lease book is −$1.4B within one and two years (the workovers), $0.2B at three, $2.9B at five, $8.1B at ten and $14.6B at twenty; the requests are a cost at every horizon, −$0.84B at twenty. The deterministic book holds nothing at one and two years, 12 leases at three, 19 at five and all 20 from ten. The dashboard shows the horizon beside the book so the committee's own horizon, not the model's, picks the row.
+
+![Figure 21](../figures/F35_horizon_view.png)
+
+*Figure 21.* The forward view: expected NPV within 1, 2, 3, 5, 10 and 20 years by sector, and the book at each horizon.
+
+## 22 Evaluation record of Part II
+
+| Criteria | Registered before | Lines | Passed | What they say |
+|---|---|---|---|---|
+| C20 | notebook 03, part B | 12 | 3 | the plant capacity-factor lines beat the seasonal naive; the lease lines fail on the log transform's bias; the prices are random walks |
+| C21–C24 | notebook 09, part D | 4 | 0 | no book loses money under the confirmed grid, so the risk-aware book cannot beat the rules; the comparator reading is kept as registered |
+
+*Table 4.* Sources: `results/success_criteria_v6_scored.csv`, `results/success_criteria_v7_scored.csv`.
+
+## 23 Broader impacts and limitations of Part II
+
+Modeled costs are not company data: the lease NPVs rest on an ASSUMED grid whose two largest items move the book by a factor of four, and the report never presents a modeled NPV as an observed one; the grid and its impact are the first page of the dashboard. No headline of the form "AI increases returns by X%" is made: the advisor's value is a gym score against realized outcomes, and on this machine that score is not yet recorded. The ERCOT price for 2020–2023 is bridged and labelled; the lease pool is federal offshore only; EIA-923 is plant-level, so no generator-level claim is made; the gym's realized value for a request is the modeled value per MW at the observed outcome, a proxy; the optimizer's scenarios for the 2014 regime use the 2018–2024 shock history; the forecasts' lease lines are carried by a post-hoc model that is labelled as such. Where a region's data are thinner the candidate carries a data-completeness score, its uncertainty is widened and its constraints tightened, and the dashboard says so; nothing is silenced.
+
+## 24 Conclusion of Part II
+
+Across sectors the capital goes where the asset already produces: the lease redevelopments, cheap uplifts on producing leases under the confirmed grid, carry the book, and the contracted wind is the only power request that earns its capital at 2024 prices. The risk-aware optimizer does not beat NPV ranking here because nothing in this candidate set loses money; that is a statement about the grid and the prices, made with its envelope, not a claim about the method. The forecasts earn their keep on the plant side and not on the leases; the scenarios keep the history's joint jumps and bound them; the advisor is a grounded, recorded, scored participant with a human gate; and the gym is where "the AI defies instinct" stops being a slogan and becomes a number next to the rule's.
 
 ## Statement of work
 
 All components of this project — data engineering, modeling, evaluation, visualization and writing — were carried out by Alan Mössinger.
+
+## Appendix A — The AI advisor: prompts, grounding, record and evaluation
+
+The advisor is a system component, documented in `docs/ai_use.md`; this appendix carries what the course asks for: the actual prompts, the grounding rule and the evaluation.
+
+**Grounding.** The model receives the system prompt below and a user message with a task template and a DATA block of result tables rendered by one formatter. `advisor.verify_numbers` accepts a number in the answer only if the same token appears in the DATA block (years and counts up to 50 exempt); the grounding rate and the ungrounded tokens are stored with the answer.
+
+**Record and replay.** Every call is appended to `results/advisor_runs.jsonl` (model, temperature, prompts, response, usage, verification), keyed by the hash of model, system and user prompts; a recorded call is served from the record, so notebook 10 runs offline. With no key and no record the advisor's rows read "not recorded".
+
+**Override gate.** `advisor.override_allowed` requires an answer of at least 20 characters to each of the 5 questions and the opposing case read; a refused override names the missing items. Every decision goes to `results/decision_ledger.csv`.
+
+**Evaluation** (`results/advisor_evaluation.csv`, `results/advisor_rubric.csv`): grounding rate over recorded answers; agreement with book D (Jaccard and by name) over the 7 named scenarios and the 6 horizons; gym score against instinct and regret against hindsight; the rubric on up to ten answers. On this machine: 0 recorded answers, 33 calls missing; the first live run records them.
+
+**System prompt** (`prompts/advisor_system.md`), **recommend** (`prompts/recommend.md`), **gym** (`prompts/gym_pick.md`), **the motivated-reasoning check** (`prompts/motivated_reasoning_check.md`) and **the ideological Turing test** (`prompts/ideological_turing_test.md`) are committed in `prompts/` and printed in full in notebook 10, section 1. The two reasoning prompts are my instruments for a decision meeting, written as templates with a `{human_statement}` and an `{opposing_book}` slot.
 
 ## Changes after mentor feedback
 

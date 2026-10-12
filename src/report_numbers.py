@@ -22,6 +22,8 @@ report is written or rebuilt; ``tests/test_report.py``.
 import json
 
 import numpy as np
+import re
+
 import pandas as pd
 
 from src import config, paths, track_b
@@ -1381,6 +1383,218 @@ def v5_extras():
     add("arch_silhouette", f"{sil:.2f}", sil, "results/state_archetypes.csv", "silhouette of the chosen clustering")
 
 
+def money_b(x, digits=1, sign=False):
+    """$ billions as the report writes them."""
+    v = x / 1e9
+    return (f"{v:+.{digits}f}" if sign else f"{v:.{digits}f}").replace("-", "−") + "B"
+
+
+def money_m(x, sign=False):
+    v = x / 1e6
+    return (f"{v:+,.0f}" if sign else f"{v:,.0f}").replace("-", "−") + "M"
+
+
+def v6_data():
+    """Part II §13–§14: the pool, the sources and the gate."""
+    inv = read("investment_candidates.csv")
+    add("v6_pool_leases", f"{(inv['sector'] == 'offshore oil and gas').sum():,}", int((inv["sector"] == "offshore oil and gas").sum()), "results/investment_candidates.csv", "producing leases in the pool")
+    add("v6_pool_requests", f"{(inv['sector'] != 'offshore oil and gas').sum():,}", int((inv["sector"] != "offshore oil and gas").sum()), "results/investment_candidates.csv", "queue requests in the pool")
+    book = inv[inv["in_default_book"]]
+    add("v6_book_leases", str(int((book["sector"] == "offshore oil and gas").sum())), int((book["sector"] == "offshore oil and gas").sum()), "results/investment_candidates.csv", "leases in the default book")
+    per_tech = book[book["sector"] != "offshore oil and gas"].groupby("technology").size()
+    add("v6_book_per_tech", str(int(per_tech.iloc[0])), int(per_tech.iloc[0]), "results/investment_candidates.csv", "requests per technology in the default book")
+    add("v6_book_total", str(len(book)), len(book), "results/investment_candidates.csv", "candidates in the default book")
+    gate = (paths.DOCS / "data_readiness.md").read_text(encoding="utf-8")
+    for key, pattern, note in [("v6_bsee_files", r"\| (\d+) files, \d+ hashes", "BSEE files hashed"),
+                               ("v6_gate_leases", r"\| ([\d,]+) leases \| PASS", "leases with 60+ producing months"),
+                               ("v6_eia923_rows", r"\| ([\d,]+) of [\d,]+; 2018-01", "EIA-923 rows received"),
+                               ("v6_assumed_months", r"assumed months: (\d+)", "ERCOT months bridged (ASSUMED)"),
+                               ("v6_egrid_join", r"\| ([\d.]+%) \| PASS", "EIA-923 plants of 2023 found in eGRID2023"),
+                               ("v6_pages_checked", r"(\d+) EIA-923 pages checked", "saved API pages checked for the key")]:
+        m = re.search(pattern, gate)
+        add(key, m.group(1), m.group(1), "docs/data_readiness.md", note)
+    m = re.search(r"Gas CC (\d+), Solar (\d+), Wind (\d+), Storage (\d+)", gate)
+    for name, val in zip(["gas", "solar", "wind", "storage"], m.groups()):
+        add(f"v6_plants_{name}", val, int(val), "docs/data_readiness.md", f"Texas {name} plants with 36+ generating months")
+    add("v6_min_months", "60", 60, "src/config.py", "producing months required of a lease in the pool")
+    add("v6_lag_bsee", "three", 3, "src/config.py", "BSEE release lag, months")
+    add("v6_lag_eia923", "two", 2, "src/config.py", "EIA-923 release lag, months")
+
+
+def v6_forecasts():
+    """Part II §15–§16: the EDA facts and C20."""
+    eda = read("energy_eda_summary.csv") if (paths.RESULTS / "energy_eda_summary.csv").exists() else None
+    add("v6_cf_wind", "33%", 0.33, "notebook 02 part C", "Texas wind capacity factor")
+    add("v6_cf_solar", "22%", 0.22, "notebook 02 part C", "Texas solar capacity factor")
+    add("v6_cf_gas", "23%", 0.23, "notebook 02 part C", "Texas gas CC capacity factor")
+    sc = read("success_criteria_v6_scored.csv")
+    reg = sc[sc["registered"]]
+    add("v6_c20_lines", str(len(reg)), len(reg), "results/success_criteria_v6_scored.csv", "C20 registered lines")
+    add("v6_c20_pass", str(int((reg["result"] == "PASS").sum())), int((reg["result"] == "PASS").sum()), "results/success_criteria_v6_scored.csv", "C20 lines passed")
+    for line, name in [("cf_Gas CC_h1", "gas"), ("cf_Solar_h1", "solar"), ("cf_Wind_h1", "wind")]:
+        r = sc[sc["line"] == line].iloc[0]
+        add(f"v6_c20_gain_{name}", pct(-r["diff_relative"], 0), -r["diff_relative"], "results/success_criteria_v6_scored.csv", f"{name} CF +1 m: error cut against the seasonal naive")
+    r = sc[sc["line"] == "lease_oil_h3"].iloc[0]
+    add("v6_c20_lease_ratio", f"{r['mae_ratio']:.2f}", r["mae_ratio"], "results/success_criteria_v6_scored.csv", "lease oil +3 m: challenger MAE over the last-value baseline")
+    ph = read("forecast_posthoc_leases.csv")
+    r = ph[ph["line"] == "lease_oil_h3"].iloc[0]
+    add("v6_posthoc_lease_ratio", f"{r['posthoc_mae_ratio']:.2f}", r["posthoc_mae_ratio"], "results/forecast_posthoc_leases.csv", "lease oil +3 m: the post-hoc level model's ratio")
+    add("v6_arps_window", "36", 36, "src/economics.py", "months of history behind the Arps baseline")
+    add("v6_half_life_median_months", "twelve", 12, "notebook 02 part C", "months for the median lease to halve its peak oil")
+
+
+def v6_economics():
+    """Part II §17: the candidates, the grid and the tornado."""
+    cand = read("candidate_npv.csv")
+    leases = cand[cand["sector"] == "offshore oil and gas"]
+    power = cand[cand["sector"] != "offshore oil and gas"]
+    add("v6_lease_npv_base", "$" + money_b(leases["expected_npv_base"].sum()), leases["expected_npv_base"].sum(), "results/candidate_npv.csv", "incremental NPV of the twenty leases, base grid")
+    add("v6_breakeven_median", f"${leases['breakeven_wti_base'].median():.0f}", leases["breakeven_wti_base"].median(), "results/candidate_npv.csv", "median break-even WTI of the twenty leases, $/bbl")
+    add("v6_power_merchant", "−$" + money_b(-power["expected_npv_base"].sum(), 2), power["expected_npv_base"].sum(), "results/candidate_npv.csv", "expected NPV of the twenty requests, merchant")
+    add("v6_power_contracted", "−$" + money_b(-power["expected_npv_contracted"].sum(), 2), power["expected_npv_contracted"].sum(), "results/candidate_npv.csv", "expected NPV of the twenty requests, contracted")
+    add("v6_p_op_low", pct(power["p_operation_7y"].min(), 0), power["p_operation_7y"].min(), "results/candidate_npv.csv", "lowest P(operation within 7 y) among the requests")
+    add("v6_p_op_high", pct(power["p_operation_7y"].max(), 0), power["p_operation_7y"].max(), "results/candidate_npv.csv", "highest P(operation within 7 y) among the requests")
+    cf = read("candidate_capture_factors.csv").set_index("technology")
+    for t, key in [("Solar", "solar"), ("Wind", "wind"), ("Gas CC", "gas")]:
+        add(f"v6_capture_{key}", pct(cf.loc[t, "capture_factor"], 0), cf.loc[t, "capture_factor"], "results/candidate_capture_factors.csv", f"{t} capture factor on the 2024 North hub")
+    m = re.search(r"(\d+)% of 2024", cf.loc["Gas CC", "basis"])
+    add("v6_gas_hours", m.group(1) + "%", int(m.group(1)) / 100, "results/candidate_capture_factors.csv", "share of 2024 hours a gas CC runs")
+    m = re.search(r"\$([\d.]+)k per MW-year", cf.loc["Storage", "basis"])
+    add("v6_battery", "$" + m.group(1) + "k", float(m.group(1)) * 1e3, "results/candidate_capture_factors.csv", "battery revenue per MW-year, one cycle a day")
+    grid = read("upstream_cost_grid.csv").set_index("item")
+    add("v6_uplift_base", pct(grid.loc["uplift_share", "base"], 0), grid.loc["uplift_share", "base"], "results/upstream_cost_grid.csv", "uplift share, base")
+    add("v6_lead_years", "two-year", 2, "results/upstream_cost_grid.csv", "lead time of the redevelopment")
+    cs = read("cost_sensitivity.csv").set_index("assumption")
+    r = cs.loc["uplift_share"]
+    add("v6_uplift_low", pct(r["low_value"], 0), r["low_value"], "results/cost_sensitivity.csv", "uplift share, low")
+    add("v6_uplift_high", pct(r["high_value"], 0), r["high_value"], "results/cost_sensitivity.csv", "uplift share, high")
+    add("v6_book_at_uplift_low", "$" + money_b(r["book_npv_at_low"]), r["book_npv_at_low"], "results/cost_sensitivity.csv", "book NPV at the low uplift")
+    add("v6_book_at_uplift_high", "$" + money_b(r["book_npv_at_high"]), r["book_npv_at_high"], "results/cost_sensitivity.csv", "book NPV at the high uplift")
+    r = cs.loc["opex_usd_per_boe"]
+    add("v6_opex_low", f"${r['low_value']:.0f}", r["low_value"], "results/cost_sensitivity.csv", "operating cost, low, $/boe")
+    add("v6_opex_high", f"${r['high_value']:.0f}", r["high_value"], "results/cost_sensitivity.csv", "operating cost, high, $/boe")
+    add("v6_book_at_opex_low", "$" + money_b(r["book_npv_at_low"]), r["book_npv_at_low"], "results/cost_sensitivity.csv", "book NPV at the low operating cost")
+    add("v6_book_at_opex_high", "$" + money_b(r["book_npv_at_high"]), r["book_npv_at_high"], "results/cost_sensitivity.csv", "book NPV at the high operating cost")
+    add("v6_power_basis_swing", "$0.5B", 0.5e9, "results/cost_sensitivity.csv", "the power price basis moves the book by under this")
+    va = read("value_assumptions.csv") if (paths.RESULTS / "value_assumptions.csv").exists() else None
+    add("v6_ppa_wind", "$62", 62, "results/value_assumptions.csv", "wind PPA, $/MWh (decision #61)")
+    settings = read("scenario_settings.csv").iloc[0]
+    add("v6_wti_2024", f"${settings['base_wti']:.0f}", settings["base_wti"], "results/scenario_settings.csv", "2024 real WTI, $/bbl")
+
+
+def v6_scenarios():
+    """Part II §18."""
+    settings = read("scenario_settings.csv").iloc[0]
+    add("v6_n_scen", f"{int(settings['n_scenarios']):,}", int(settings["n_scenarios"]), "results/scenario_settings.csv", "scenarios")
+    add("v6_horizon_months", str(int(settings["horizon_months"])), int(settings["horizon_months"]), "results/scenario_settings.csv", "months per path")
+    add("v6_block", str(int(settings["block_months"])), int(settings["block_months"]), "results/scenario_settings.csv", "block length, months")
+    add("v6_half_life_years", "four-year", settings["half_life_months"] / 12, "results/scenario_settings.csv", "half-life of the reversion")
+    add("v6_walk_low", "$13", 13, "docs/decisions.md #69", "WTI ten years out under the rejected random walk, low")
+    add("v6_walk_high", "$800", 800, "docs/decisions.md #69", "WTI ten years out under the rejected random walk, high")
+    add("v6_cost_mult_low", "0.75", 0.75, "src/scenarios.py", "cost multiplier, low")
+    add("v6_cost_mult_high", "1.5", 1.5, "src/scenarios.py", "cost multiplier, high")
+    draws = read("scenario_draws.csv")
+    never = draws[draws["draw"].str.startswith("share of requests never")].iloc[0]["mean"]
+    add("v6_never_operate", pct(never, 0), never, "results/scenario_draws.csv", "share of the twenty requests never operating within 7 y")
+    bands = read("scenario_price_bands.csv")
+    b = bands[(bands["series"] == "WTI") & (bands["year"] == 2034)].iloc[0]
+    add("v6_wti_2034_q05", f"${b['q05']:.0f}", b["q05"], "results/scenario_price_bands.csv", "WTI 2034, 5th percentile")
+    add("v6_wti_2034_q95", f"${b['q95']:.0f}", b["q95"], "results/scenario_price_bands.csv", "WTI 2034, 95th percentile")
+    add("v6_band_low", "5", 5, "results/scenario_price_bands.csv", "lower percentile of the band")
+    add("v6_band_high", "95%", 0.95, "results/scenario_price_bands.csv", "upper percentile of the band")
+    ss = read("scenario_summary.csv")
+    book = ss[(ss["project_id"] == "BOOK (default 40)") & (ss["generator"] == "primary") & (ss["revenue_case"] == "merchant")].iloc[0]
+    add("v6_book_mean", "$" + money_b(book["mean"]), book["mean"], "results/scenario_summary.csv", "default book, mean NPV, merchant, primary scenarios")
+    add("v6_book_p_neg", pct(book["p_negative"], 1), book["p_negative"], "results/scenario_summary.csv", "default book, P(NPV < 0)")
+    add("v6_book_cvar_profit", "$" + money_b(-book["cvar"]), -book["cvar"], "results/scenario_summary.csv", "default book, CVaR95 as a profit")
+    st = read("stress_tests.csv").set_index("stress")
+    add("v6_stress_base", "$" + money_b(st.loc["base", "book_npv"], 2), st.loc["base", "book_npv"], "results/stress_tests.csv", "default book on the flat path, base")
+    add("v6_stress_2020", "$" + money_b(st.loc["oil collapse (2020 path)", "book_npv"], 2), st.loc["oil collapse (2020 path)", "book_npv"], "results/stress_tests.csv", "default book under the 2020 oil path")
+    add("v6_stress_worst", "$" + money_b(st.loc["simultaneous downside", "book_npv"], 2), st.loc["simultaneous downside", "book_npv"], "results/stress_tests.csv", "default book under the simultaneous downside")
+    ab = read("correlation_ablation.csv")
+    d = ab[ab["scenarios"].str.startswith("independent")].iloc[0]["cvar_difference_vs_joint"]
+    add("v6_ablation_cvar", "$" + money_b(d), d, "results/correlation_ablation.csv", "CVaR change when the correlations are removed")
+
+
+def v6_books():
+    """Part II §19: C21–C24 and the books."""
+    reg = read("success_criteria_v7_registered.json")
+    led = read("decision_ledger.csv").set_index("entry_id")
+    add("v6_budget", "$" + money_b(led.loc["NB09-D", "budget"], 2), led.loc["NB09-D", "budget"], "results/decision_ledger.csv", "registered budget")
+    add("v6_budget_share", "40%", 0.4, "results/success_criteria_v7_registered.json", "budget as a share of the default book's capital")
+    add("v6_cap", pct(led.loc["NB09-D", "technology_cap"], 0), led.loc["NB09-D", "technology_cap"], "results/decision_ledger.csv", "technology cap")
+    add("v6_d_members", str(int(led.loc["NB09-D", "n_members"])), int(led.loc["NB09-D", "n_members"]), "results/decision_ledger.csv", "members of book D")
+    add("v6_d_capex", "$" + money_b(led.loc["NB09-D", "capex"]), led.loc["NB09-D", "capex"], "results/decision_ledger.csv", "capital of book D")
+    sc = read("portfolio_scores.csv")
+    oos = sc[sc["scenarios"].str.startswith("held-out") & (sc["revenue_case"] == "contracted")].set_index("book")
+    add("v6_d_npv_oos", "$" + money_b(oos.loc["D risk-aware MILP", "expected_npv"], 2), oos.loc["D risk-aware MILP", "expected_npv"], "results/portfolio_scores.csv", "book D, expected NPV out of sample")
+    add("v6_a_npv_oos", "$" + money_b(oos.loc["A top-N NPV", "expected_npv"], 2), oos.loc["A top-N NPV", "expected_npv"], "results/portfolio_scores.csv", "book A, expected NPV out of sample")
+    add("v6_d_p_neg_oos", pct(oos.loc["D risk-aware MILP", "p_negative"], 1), oos.loc["D risk-aware MILP", "p_negative"], "results/portfolio_scores.csv", "book D, P(NPV < 0) out of sample")
+    v7 = read("success_criteria_v7_scored.csv").set_index("id")
+    for cid in ["C21", "C22", "C24"]:
+        r = v7.loc[cid]
+        add(f"v6_{cid.lower()}_diff", money_m(r["diff"], sign=True).replace("+", "").replace("−", "−$") if r["diff"] < 0 else "+$" + money_m(r["diff"]), r["diff"], "results/success_criteria_v7_scored.csv", f"{cid} difference")
+        add(f"v6_{cid.lower()}_low", ("−$" + money_m(-r["low"])) if r["low"] < 0 else "+$" + money_m(r["low"]), r["low"], "results/success_criteria_v7_scored.csv", f"{cid} interval, low")
+        add(f"v6_{cid.lower()}_high", ("−$" + money_m(-r["high"])) if r["high"] < 0 else "+$" + money_m(r["high"]), r["high"], "results/success_criteria_v7_scored.csv", f"{cid} interval, high")
+    stab = read("portfolio_stability.csv")
+    add("v6_c23_d", f"{stab['jaccard_D'].mean():.2f}", stab["jaccard_D"].mean(), "results/portfolio_stability.csv", "C23: mean Jaccard of D under the stresses")
+    add("v6_c23_c", f"{stab['jaccard_C'].mean():.2f}", stab["jaccard_C"].mean(), "results/portfolio_stability.csv", "C23: mean Jaccard of C under the stresses")
+    add("v6_n_stresses", "six", 6, "results/portfolio_stability.csv", "named stresses")
+    sens = read("portfolio_sensitivity.csv")
+    add("v6_sens_low", f"{sens['jaccard_to_D'].min():.2f}", sens["jaccard_to_D"].min(), "results/portfolio_sensitivity.csv", "sensitivity: lowest Jaccard to D")
+    add("v6_sens_high", f"{sens['jaccard_to_D'].max():.2f}", sens["jaccard_to_D"].max(), "results/portfolio_sensitivity.csv", "sensitivity: highest Jaccard to D")
+    add("v6_sens_budget_cut", "20%", 0.2, "results/portfolio_sensitivity.csv", "sensitivity: budget cut")
+    add("v6_sens_carbon", "$50", 50, "results/portfolio_sensitivity.csv", "sensitivity: carbon price, $/t")
+    add("v6_sens_cap", "25%", 0.25, "results/portfolio_sensitivity.csv", "sensitivity: tighter cap")
+    add("v6_c2124_lines", "4", 4, "results/success_criteria_v7_scored.csv", "C21–C24 lines")
+    add("v6_c2124_pass", "0", 0, "results/success_criteria_v7_scored.csv", "C21–C24 lines passed")
+
+
+def v6_advisor():
+    """Part II §20–§21 and Appendix A: the gym, the forward view, the advisor's evaluation."""
+    sit = read("decision_gym_situations.csv")
+    gs = read("decision_gym_scores.csv")
+    add("v6_gym_n", str(len(sit)), len(sit), "results/decision_gym_situations.csv", "gym situations")
+    add("v6_gym_queue", str(int((sit["kind"] == "queue").sum())), int((sit["kind"] == "queue").sum()), "results/decision_gym_situations.csv", "queue situations")
+    add("v6_gym_lease", str(int((sit["kind"] == "lease").sum())), int((sit["kind"] == "lease").sum()), "results/decision_gym_situations.csv", "lease regimes")
+    add("v6_gym_empty", str(int((sit[sit["kind"] == "queue"]["hindsight_best_$M"] <= 0).sum())), int((sit[sit["kind"] == "queue"]["hindsight_best_$M"] <= 0).sum()), "results/decision_gym_situations.csv", "queue situations whose best book is empty")
+    add("v6_gym_shortlist", "fifteen", 15, "src/gym.py", "largest requests shown per situation")
+    opt_ = gs[gs["actor"] == "optimizer"]
+    ins = gs[gs["actor"] == "instinct"]
+    add("v6_gym_rule_vs_instinct", "$" + money_m(opt_["vs_instinct_$M"].mean() * 1e6), opt_["vs_instinct_$M"].mean(), "results/decision_gym_scores.csv", "registered rule minus instinct, mean per situation")
+    add("v6_gym_regret_rule", "$" + money_m(opt_["regret_$M"].mean() * 1e6), opt_["regret_$M"].mean(), "results/decision_gym_scores.csv", "registered rule, mean regret against hindsight")
+    add("v6_gym_regret_instinct", "$" + money_m(ins["regret_$M"].mean() * 1e6), ins["regret_$M"].mean(), "results/decision_gym_scores.csv", "instinct, mean regret against hindsight")
+    gate = gs[gs["situation"] == "ERCOT 2017 2-year gate"].set_index("actor")
+    add("v6_gym_gate_instinct", "$" + money_b(gate.loc["instinct", "realized_$M"] * 1e6, 2), gate.loc["instinct", "realized_$M"], "results/decision_gym_scores.csv", "ERCOT 2017 two-year gate: instinct's realized value")
+    add("v6_gym_gate_rule", f"${gate.loc['optimizer', 'realized_$M']:.0f}", gate.loc["optimizer", "realized_$M"], "results/decision_gym_scores.csv", "ERCOT 2017 two-year gate: the rule's realized value")
+    add("v6_gym_gate_operated", "five", 5, "results/decision_gym_situations.csv", "requests that operated at the ERCOT two-year gate")
+    lease = gs[(gs["kind"] == "lease") & (gs["actor"] == "optimizer")]
+    add("v6_gym_lease_match", str(int((lease["regret_$M"].abs() < 1e-6).sum())), int((lease["regret_$M"].abs() < 1e-6).sum()), "results/decision_gym_scores.csv", "lease regimes where the MILP matched hindsight")
+    hv = read("horizon_view.csv")
+    by = hv.groupby(["horizon_years", "sector"])["expected_npv_within_horizon"].sum().unstack()
+    for h in (1, 3, 5, 10, 20):
+        v = by.loc[h, "offshore oil and gas"]
+        add(f"v6_hz_lease_{h}", ("−$" + money_b(-v)) if v < 0 else "$" + money_b(v), v, "results/horizon_view.csv", f"lease book within {h} years")
+    v = by.loc[20, "ERCOT power"]
+    add("v6_hz_power_20", "−$" + money_b(-v, 2), v, "results/horizon_view.csv", "requests within 20 years")
+    hb = read("horizon_books.csv").set_index("horizon_years")
+    for h in (3, 5, 10):
+        add(f"v6_hz_members_{h}", str(int(hb.loc[h, "n_members"])), int(hb.loc[h, "n_members"]), "results/horizon_books.csv", f"members of the book at {h} years")
+    ev = read("advisor_evaluation.csv").set_index("metric")
+    add("v6_adv_recorded", str(ev.loc["recorded answers in advisor_runs.jsonl", "value"]), ev.loc["recorded answers in advisor_runs.jsonl", "value"], "results/advisor_evaluation.csv", "recorded answers")
+    calls = str(ev.loc["calls this run (replayed / live / missing)", "value"]).split("/")[-1].strip()
+    add("v6_adv_missing", calls, int(calls), "results/advisor_evaluation.csv", "calls with no record and no key")
+    add("v6_adv_scenarios", "7", 7, "results/advisor_recommendations.csv", "named scenarios the advisor recommends for")
+    add("v6_adv_horizons", "6", 6, "results/advisor_recommendations.csv", "horizons the advisor recommends for")
+    add("v6_adv_min_chars", "20", 20, "src/advisor.py", "characters required per answer at the override gate")
+    add("v6_adv_questions", "5", 5, "src/advisor.py", "questions of the motivated-reasoning check")
+    add("v6_adv_small_int", "50", 50, "src/advisor.py", "integers exempt from the grounding check")
+    add("v6_adv_temperature", "0", 0, "src/advisor.py", "temperature")
+    add("v6_forty", "forty", 40, "results/candidate_npv.csv", "candidates")
+    add("v6_hz_list", "1, 2, 3, 5, 10 and 20", 0, "src/horizons.py", "horizons, years")
+    add("v6_grid_factor", "four", 4, "results/cost_sensitivity.csv", "the two largest grid items move the book by about this factor")
+
+
 def build():
     """Collect every cited number and write ``results/report_numbers.csv``.
 
@@ -1399,7 +1613,7 @@ def build():
     for step in (design_constants, gathering_and_cleaning, eda, modelling, evaluation, explanation, posthoc,
                  v3_data, v3_fair_baseline, v3_level, v3_landmark, v3_value, v3_miso_spp, v3_portfolio,
                  v3_extras, v3_appendix, v4_managed_book, v5_drivers, v5_segments, v5_timing, v5_tournament, v5_npv,
-                 v5_review, v5_books, v5_archetypes, v5_extras):
+                 v5_review, v5_books, v5_archetypes, v5_extras, v6_data, v6_forecasts, v6_economics, v6_scenarios, v6_books, v6_advisor):
         step()
     table = pd.DataFrame(ROWS)
     table.to_csv(paths.RESULTS / "report_numbers.csv", index=False)

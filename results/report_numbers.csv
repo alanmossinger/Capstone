@@ -1920,3 +1920,136 @@ sunk_ge500,841,841.3804366678892,results/cost_table.csv,"deposit to the next gat
 gas_price,3.50,3.5,results/value_assumptions.csv,"gas price assumption, $/MMBtu"
 book_m_all_exp_int,104,103.83366470808669,results/recommended_books.csv,"model's own expectation for the floor book, operations"
 arch_silhouette,0.20,0.20323617718549083,results/state_archetypes.csv,silhouette of the chosen clustering
+v6_pool_leases,513,513,results/investment_candidates.csv,producing leases in the pool
+v6_pool_requests,"2,268",2268,results/investment_candidates.csv,queue requests in the pool
+v6_book_leases,20,20,results/investment_candidates.csv,leases in the default book
+v6_book_per_tech,5,5,results/investment_candidates.csv,requests per technology in the default book
+v6_book_total,40,40,results/investment_candidates.csv,candidates in the default book
+v6_bsee_files,15,15,docs/data_readiness.md,BSEE files hashed
+v6_gate_leases,"1,041","1,041",docs/data_readiness.md,leases with 60+ producing months
+v6_eia923_rows,"186,744","186,744",docs/data_readiness.md,EIA-923 rows received
+v6_assumed_months,48,48,docs/data_readiness.md,ERCOT months bridged (ASSUMED)
+v6_egrid_join,98.8%,98.8%,docs/data_readiness.md,EIA-923 plants of 2023 found in eGRID2023
+v6_pages_checked,38,38,docs/data_readiness.md,saved API pages checked for the key
+v6_plants_gas,69,69,docs/data_readiness.md,Texas gas plants with 36+ generating months
+v6_plants_solar,108,108,docs/data_readiness.md,Texas solar plants with 36+ generating months
+v6_plants_wind,201,201,docs/data_readiness.md,Texas wind plants with 36+ generating months
+v6_plants_storage,18,18,docs/data_readiness.md,Texas storage plants with 36+ generating months
+v6_min_months,60,60,src/config.py,producing months required of a lease in the pool
+v6_lag_bsee,three,3,src/config.py,"BSEE release lag, months"
+v6_lag_eia923,two,2,src/config.py,"EIA-923 release lag, months"
+v6_cf_wind,33%,0.33,notebook 02 part C,Texas wind capacity factor
+v6_cf_solar,22%,0.22,notebook 02 part C,Texas solar capacity factor
+v6_cf_gas,23%,0.23,notebook 02 part C,Texas gas CC capacity factor
+v6_c20_lines,12,12,results/success_criteria_v6_scored.csv,C20 registered lines
+v6_c20_pass,3,3,results/success_criteria_v6_scored.csv,C20 lines passed
+v6_c20_gain_gas,8%,0.0758407759989285,results/success_criteria_v6_scored.csv,gas CF +1 m: error cut against the seasonal naive
+v6_c20_gain_solar,12%,0.1194443989719875,results/success_criteria_v6_scored.csv,solar CF +1 m: error cut against the seasonal naive
+v6_c20_gain_wind,15%,0.1503238791320899,results/success_criteria_v6_scored.csv,wind CF +1 m: error cut against the seasonal naive
+v6_c20_lease_ratio,1.35,1.3524897241390408,results/success_criteria_v6_scored.csv,lease oil +3 m: challenger MAE over the last-value baseline
+v6_posthoc_lease_ratio,0.96,0.962738520706249,results/forecast_posthoc_leases.csv,lease oil +3 m: the post-hoc level model's ratio
+v6_arps_window,36,36,src/economics.py,months of history behind the Arps baseline
+v6_half_life_median_months,twelve,12,notebook 02 part C,months for the median lease to halve its peak oil
+v6_lease_npv_base,$14.6B,14582355988.282959,results/candidate_npv.csv,"incremental NPV of the twenty leases, base grid"
+v6_breakeven_median,$33,32.822265625,results/candidate_npv.csv,"median break-even WTI of the twenty leases, $/bbl"
+v6_power_merchant,−$0.76B,-757165591.4919235,results/candidate_npv.csv,"expected NPV of the twenty requests, merchant"
+v6_power_contracted,−$0.28B,-280908765.04933995,results/candidate_npv.csv,"expected NPV of the twenty requests, contracted"
+v6_p_op_low,6%,0.0628581732258815,results/candidate_npv.csv,lowest P(operation within 7 y) among the requests
+v6_p_op_high,23%,0.2281260346498383,results/candidate_npv.csv,highest P(operation within 7 y) among the requests
+v6_capture_solar,92%,0.9158921272832692,results/candidate_capture_factors.csv,Solar capture factor on the 2024 North hub
+v6_capture_wind,83%,0.8295043656983557,results/candidate_capture_factors.csv,Wind capture factor on the 2024 North hub
+v6_capture_gas,135%,1.345129858243573,results/candidate_capture_factors.csv,Gas CC capture factor on the 2024 North hub
+v6_gas_hours,63%,0.63,results/candidate_capture_factors.csv,share of 2024 hours a gas CC runs
+v6_battery,$74.6k,74600.0,results/candidate_capture_factors.csv,"battery revenue per MW-year, one cycle a day"
+v6_uplift_base,20%,0.2,results/upstream_cost_grid.csv,"uplift share, base"
+v6_lead_years,two-year,2,results/upstream_cost_grid.csv,lead time of the redevelopment
+v6_uplift_low,10%,0.1,results/cost_sensitivity.csv,"uplift share, low"
+v6_uplift_high,30%,0.3,results/cost_sensitivity.csv,"uplift share, high"
+v6_book_at_uplift_low,$5.9B,5850012402.649568,results/cost_sensitivity.csv,book NPV at the low uplift
+v6_book_at_uplift_high,$21.8B,21800368390.93252,results/cost_sensitivity.csv,book NPV at the high uplift
+v6_opex_low,$12,12.0,results/cost_sensitivity.csv,"operating cost, low, $/boe"
+v6_opex_high,$28,28.0,results/cost_sensitivity.csv,"operating cost, high, $/boe"
+v6_book_at_opex_low,$16.6B,16577625701.920418,results/cost_sensitivity.csv,book NPV at the low operating cost
+v6_book_at_opex_high,$9.2B,9237798221.575403,results/cost_sensitivity.csv,book NPV at the high operating cost
+v6_power_basis_swing,$0.5B,500000000.0,results/cost_sensitivity.csv,the power price basis moves the book by under this
+v6_ppa_wind,$62,62,results/value_assumptions.csv,"wind PPA, $/MWh (decision #61)"
+v6_wti_2024,$77,76.56244358480818,results/scenario_settings.csv,"2024 real WTI, $/bbl"
+v6_n_scen,"2,000",2000,results/scenario_settings.csv,scenarios
+v6_horizon_months,240,240,results/scenario_settings.csv,months per path
+v6_block,12,12,results/scenario_settings.csv,"block length, months"
+v6_half_life_years,four-year,4.0,results/scenario_settings.csv,half-life of the reversion
+v6_walk_low,$13,13,docs/decisions.md #69,"WTI ten years out under the rejected random walk, low"
+v6_walk_high,$800,800,docs/decisions.md #69,"WTI ten years out under the rejected random walk, high"
+v6_cost_mult_low,0.75,0.75,src/scenarios.py,"cost multiplier, low"
+v6_cost_mult_high,1.5,1.5,src/scenarios.py,"cost multiplier, high"
+v6_never_operate,87%,0.870525,results/scenario_draws.csv,share of the twenty requests never operating within 7 y
+v6_wti_2034_q05,$27,27.48487579581321,results/scenario_price_bands.csv,"WTI 2034, 5th percentile"
+v6_wti_2034_q95,$224,224.2045866835264,results/scenario_price_bands.csv,"WTI 2034, 95th percentile"
+v6_band_low,5,5,results/scenario_price_bands.csv,lower percentile of the band
+v6_band_high,95%,0.95,results/scenario_price_bands.csv,upper percentile of the band
+v6_book_mean,$20.6B,20590052269.66672,results/scenario_summary.csv,"default book, mean NPV, merchant, primary scenarios"
+v6_book_p_neg,3.5%,0.035,results/scenario_summary.csv,"default book, P(NPV < 0)"
+v6_book_cvar_profit,$1.5B,1473336877.4806418,results/scenario_summary.csv,"default book, CVaR95 as a profit"
+v6_stress_base,$13.83B,13825190396.791037,results/stress_tests.csv,"default book on the flat path, base"
+v6_stress_2020,$13.85B,13847101733.64224,results/stress_tests.csv,default book under the 2020 oil path
+v6_stress_worst,$12.07B,12069423276.819252,results/stress_tests.csv,default book under the simultaneous downside
+v6_ablation_cvar,$1.8B,1811339432.973414,results/correlation_ablation.csv,CVaR change when the correlations are removed
+v6_budget,$6.15B,6154836097.880401,results/decision_ledger.csv,registered budget
+v6_budget_share,40%,0.4,results/success_criteria_v7_registered.json,budget as a share of the default book's capital
+v6_cap,40%,0.4,results/decision_ledger.csv,technology cap
+v6_d_members,24,24,results/decision_ledger.csv,members of book D
+v6_d_capex,$4.2B,4155816268.6620007,results/decision_ledger.csv,capital of book D
+v6_d_npv_oos,$20.65B,20654071781.32522,results/portfolio_scores.csv,"book D, expected NPV out of sample"
+v6_a_npv_oos,$21.07B,21071281806.120663,results/portfolio_scores.csv,"book A, expected NPV out of sample"
+v6_d_p_neg_oos,1.8%,0.0185,results/portfolio_scores.csv,"book D, P(NPV < 0) out of sample"
+v6_c21_diff,−$420M,-419664795.0649109,results/success_criteria_v7_scored.csv,C21 difference
+v6_c21_low,−$659M,-658871906.7321851,results/success_criteria_v7_scored.csv,"C21 interval, low"
+v6_c21_high,−$210M,-209595078.583283,results/success_criteria_v7_scored.csv,"C21 interval, high"
+v6_c22_diff,−$150M,-150196019.8298149,results/success_criteria_v7_scored.csv,C22 difference
+v6_c22_low,−$350M,-349516713.3850204,results/success_criteria_v7_scored.csv,"C22 interval, low"
+v6_c22_high,+$24M,24149663.595406868,results/success_criteria_v7_scored.csv,"C22 interval, high"
+v6_c24_diff,−$323M,-322847027.82903385,results/success_criteria_v7_scored.csv,C24 difference
+v6_c24_low,−$937M,-936602080.48156,results/success_criteria_v7_scored.csv,"C24 interval, low"
+v6_c24_high,+$250M,250135740.1039396,results/success_criteria_v7_scored.csv,"C24 interval, high"
+v6_c23_d,0.95,0.9471153846153847,results/portfolio_stability.csv,C23: mean Jaccard of D under the stresses
+v6_c23_c,0.99,0.9876543209876543,results/portfolio_stability.csv,C23: mean Jaccard of C under the stresses
+v6_n_stresses,six,6,results/portfolio_stability.csv,named stresses
+v6_sens_low,0.84,0.84,results/portfolio_sensitivity.csv,sensitivity: lowest Jaccard to D
+v6_sens_high,0.96,0.9583333333333334,results/portfolio_sensitivity.csv,sensitivity: highest Jaccard to D
+v6_sens_budget_cut,20%,0.2,results/portfolio_sensitivity.csv,sensitivity: budget cut
+v6_sens_carbon,$50,50,results/portfolio_sensitivity.csv,"sensitivity: carbon price, $/t"
+v6_sens_cap,25%,0.25,results/portfolio_sensitivity.csv,sensitivity: tighter cap
+v6_c2124_lines,4,4,results/success_criteria_v7_scored.csv,C21–C24 lines
+v6_c2124_pass,0,0,results/success_criteria_v7_scored.csv,C21–C24 lines passed
+v6_gym_n,16,16,results/decision_gym_situations.csv,gym situations
+v6_gym_queue,13,13,results/decision_gym_situations.csv,queue situations
+v6_gym_lease,3,3,results/decision_gym_situations.csv,lease regimes
+v6_gym_empty,9,9,results/decision_gym_situations.csv,queue situations whose best book is empty
+v6_gym_shortlist,fifteen,15,src/gym.py,largest requests shown per situation
+v6_gym_rule_vs_instinct,$100M,99.55497826898497,results/decision_gym_scores.csv,"registered rule minus instinct, mean per situation"
+v6_gym_regret_rule,$197M,197.34001959181313,results/decision_gym_scores.csv,"registered rule, mean regret against hindsight"
+v6_gym_regret_instinct,$297M,296.8949978607981,results/decision_gym_scores.csv,"instinct, mean regret against hindsight"
+v6_gym_gate_instinct,$2.17B,2169.796989319332,results/decision_gym_scores.csv,ERCOT 2017 two-year gate: instinct's realized value
+v6_gym_gate_rule,$0,0.0,results/decision_gym_scores.csv,ERCOT 2017 two-year gate: the rule's realized value
+v6_gym_gate_operated,five,5,results/decision_gym_situations.csv,requests that operated at the ERCOT two-year gate
+v6_gym_lease_match,2,2,results/decision_gym_scores.csv,lease regimes where the MILP matched hindsight
+v6_hz_lease_1,−$1.4B,-1368000000.0,results/horizon_view.csv,lease book within 1 years
+v6_hz_lease_3,$0.2B,159122407.92529368,results/horizon_view.csv,lease book within 3 years
+v6_hz_lease_5,$2.9B,2866225129.701809,results/horizon_view.csv,lease book within 5 years
+v6_hz_lease_10,$8.1B,8105313392.128762,results/horizon_view.csv,lease book within 10 years
+v6_hz_lease_20,$14.6B,14582355988.28296,results/horizon_view.csv,lease book within 20 years
+v6_hz_power_20,−$0.84B,-841408999.3232245,results/horizon_view.csv,requests within 20 years
+v6_hz_members_3,12,12,results/horizon_books.csv,members of the book at 3 years
+v6_hz_members_5,19,19,results/horizon_books.csv,members of the book at 5 years
+v6_hz_members_10,20,20,results/horizon_books.csv,members of the book at 10 years
+v6_adv_recorded,0,0,results/advisor_evaluation.csv,recorded answers
+v6_adv_missing,33,33,results/advisor_evaluation.csv,calls with no record and no key
+v6_adv_scenarios,7,7,results/advisor_recommendations.csv,named scenarios the advisor recommends for
+v6_adv_horizons,6,6,results/advisor_recommendations.csv,horizons the advisor recommends for
+v6_adv_min_chars,20,20,src/advisor.py,characters required per answer at the override gate
+v6_adv_questions,5,5,src/advisor.py,questions of the motivated-reasoning check
+v6_adv_small_int,50,50,src/advisor.py,integers exempt from the grounding check
+v6_adv_temperature,0,0,src/advisor.py,temperature
+v6_forty,forty,40,results/candidate_npv.csv,candidates
+v6_hz_list,"1, 2, 3, 5, 10 and 20",0,src/horizons.py,"horizons, years"
+v6_grid_factor,four,4,results/cost_sensitivity.csv,the two largest grid items move the book by about this factor

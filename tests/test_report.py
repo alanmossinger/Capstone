@@ -19,9 +19,14 @@ NOT_QUANTITIES = [
     r"\b(?:Figure|Appendix|decisions?|notebooks?)\s+[\d–, and#]+",
     r"#\d+",                               # decision numbers
     r"\bsections?\s+\d+(?:\.\d+)?",       # section references
-    r"\b[CRK]\d+\b",                       # criteria C1–C5, cleaning rules R1–R9, post-hoc candidates
+    r"\b(?:RQ|[CRKDSH])\d+\b",             # criteria C1–C5, rules R1–R9, post-hoc K, decisions D0–D7, sources S13, hypotheses H2, questions RQ1
+    r"§\s?\d+(?:[–-]§?\d+)?",             # section marks in the Decision Board
+    r"\bTables?\s+\d+",                    # table numbers
+    r"\bPart I{1,2}\b",
     r"\bOrder No\. \d+",
     r"\bEIA-860M\b",
+    r"\bEIA-923\b",
+    r"\beGRID20\d\d\b",
     r"\bSHA-256\b",
     r"\bSIADS \d+",
     r"\bv\d+\b",

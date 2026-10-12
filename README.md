@@ -3,12 +3,14 @@
 SIADS 699 Capstone (Master of Applied Data Science, University of Michigan), Group 13.
 Author: Alan Mössinger.
 
-> **Status (2026-10-12):** the 22 notebooks of v1–v4 were consolidated into
-> the story layout of PLAN.md §14 (01 data, 02 EDA, 03 features, 04
-> forecasting the queue, 06 the evaluation record, 07 economics, 09 the
-> portfolio; 05, 08 and 10 are the v5 additions to come). Every result table
-> came out byte-identical after the merge (decision #63). `make all` runs
-> them end to end; the registered verdicts are untouched.
+> **Status (2026-10-12, v5):** the project is an integrated U.S. energy
+> portfolio — twenty offshore Gulf of Mexico lease redevelopments (BSEE)
+> and twenty ERCOT power requests under one budget and 2,000 joint
+> scenarios — with the queue models of v1–v4 as the completion and timing
+> engine, a grounded and recorded LLM advisor scored in a decision gym, and
+> a Streamlit dashboard (`make app`). Ten notebooks run end to end
+> (`make all`); every registered criterion (C1–C24) is scored as registered;
+> the report opens with a Capital Allocation Memo and a Decision Board.
 
 ## About
 
@@ -22,19 +24,29 @@ this pipeline with cohort averages.
 
 ## Question
 
-For a portfolio of proposed plants: which requests get built, when, and which
-book of requests to back — from what is known on the request date and again at
-each milestone. Six questions, each answered by a notebook: how well the models
-predict survival and timing (11–12), each request's probability and why (09,
-14, 16), what a request should have different and the constraints (16–17), how
-to reduce them (17), the right book per region (15–16) and what an energy
-company should do with the result (report). The v1 question — can a model
-beat cohort averages at entry — is answered by notebooks 05–09, and the
-answer for utility-scale requests turned out to be *no beyond a size lookup*
-(notebook 11); the value is at the milestones (notebook 14), where a
-registered test finds the model's book holds more requests that reach
-operation than a lookup that knows the agreement status, though not more MW
-(notebook 20).
+Part I, the queue: for a portfolio of proposed plants, which requests get
+built, when, and which book of requests to back — from what is known on the
+request date and again at each milestone. Six questions, each answered by a
+notebook: how well the models predict survival and timing (04), each
+request's probability and why (04, 06), what a request should have
+different and the constraints (09), how to reduce them (09), the right book
+per region (09) and what an energy company should do with the result
+(report). The v1 question — can a model beat cohort averages at entry — is
+answered in notebooks 04 and 06, and the answer for utility-scale requests
+turned out to be *no beyond a size lookup*; the value is at the milestones,
+where a registered test finds the model's book holds more requests that
+reach operation than a lookup that knows the agreement status, though not
+more MW (notebook 09).
+
+Part II, the integrated portfolio: an energy company with one budget
+chooses among twenty offshore Gulf lease redevelopments and twenty ERCOT
+power requests. Can machine learning improve the physical forecasts (05)?
+How do forecast error, price uncertainty and correlation change the book's
+risk (08)? Does a risk-aware book beat NPV ranking and sector-only books
+out of sample under the same budget (09, C21–C24)? Which features and
+constraints change the selection (09)? And can an LLM advisor, grounded in
+the result tables, recommend, challenge the human and be scored against
+realized outcomes (10)?
 
 ## Data
 
@@ -59,13 +71,14 @@ make setup     # .venv, pinned packages, Jupyter kernel "queue-survival"
 ```
 
 1. Save `lbnl_ix_queue_data_file_thru2024_v2.xlsx` in `data/raw/lbnl/`.
-2. Copy `.env.example` to `.env` and add your EIA API key.
+2. Copy `.env.example` to `.env` and add your EIA API key (and, for live advisor calls, `ANTHROPIC_API_KEY`; without it the advisor replays its record).
 3. Run:
 
 ```bash
 make all       # notebooks 01 → 10 in dependency order (06, the record, runs last), stopping at the first error
 make test      # pytest
 make report    # report/report.pdf and report/report.docx from report/report.md + references.md (needs pandoc and typst)
+make app       # the dashboard at http://localhost:8501 (reads results/ only)
 ```
 
 Each notebook also has its own target (`make data`, `make eda`, `make features`,
@@ -75,24 +88,35 @@ Each notebook also has its own target (`make data`, `make eda`, `make features`,
 ## Map of the repository
 
 ```
-notebooks/   01_problem_and_data (sources, cleaning rules, the 2026 edition, readiness gates)
-             02_eda (survival curves, drivers, the map, state archetypes)
-             03_statistics_and_features (outcomes, samples, split, entry-time features)
+notebooks/   01_problem_and_data (queue sources and cleaning; the v5 sources BSEE, EIA-923, prices, ERCOT 2024, eGRID; manifest; readiness gates)
+             02_eda (survival curves, drivers, the map, state archetypes; the energy EDA)
+             03_statistics_and_features (queue outcomes and features; the energy statistics and leakage-safe features; C20 registered)
              04_forecast_queue (entry models, fair baseline, entry rules, level repair, ablation,
                 milestones, landmark models, MISO/SPP — the completion and timing engine)
+             05_forecast_energy (lease output, capacity factors and prices at rolling origins; C20 scored)
              06_evaluation_record (every registered criterion scored, post-hoc and tournament,
-                explanation, the decision board; runs last)
-             07_economics (value, cost, project NPV)
-             09_portfolio (scorecards, books, gates, levers, the managed book)
+                explanation, the decision board; runs after 09)
+             07_economics (queue value and cost; the forty candidates under the upstream cost grid, provenance labels)
+             08_scenarios_and_risk (joint price, output, cost and timing scenarios; stresses; risk measures)
+             09_portfolio (scorecards, books, gates, levers, the managed book; the four books A–D, C21–C24)
+             10_advisor_and_gym (the grounded LLM advisor, the challenge round and the override gate,
+                the decision gym, the forward view at 1–20 years; replay mode runs offline)
              Each notebook is made of lettered parts; a part header says which old notebook it was.
-src/         small helper package used by the notebooks (paths, config, data access, plots)
+src/         small helper package used by the notebooks (paths, config, data access, plots, models, economics,
+             scenarios, optimizer, advisor, gym, horizons)
+app/         app.py — the Streamlit dashboard: decide forward (re-solved book, grid and impact, forward view,
+             advisor, override gate), learn from history (the gym), scenarios, candidates, the ledger
+prompts/     the advisor's system prompt, the recommend and gym templates, the two reasoning prompts
 data/        raw/ (not committed) · interim/ (not committed) · processed/ (small final tables)
-results/     every number the report cites, written by the notebooks
+results/     every number the report cites, written by the notebooks; advisor_runs.jsonl is the replay record
 figures/     every figure, PNG + SVG; figures/<notebook>/ holds each notebook's exploratory figures
 report/      report.md, references.md, playbooks.md, figure_notes.md (caption stubs from the notebooks);
              `make report` builds report.pdf and report.docx (needs pandoc and typst)
-docs/        journal.md (work log), decisions.md, data_readiness.md, mentor_feedback.md
-tests/       pytest checks on the audit, cleaning, features, metrics, baselines, drift, landmarks, value and the book
+docs/        journal.md (work log), decisions.md, data_readiness.md, mentor_feedback.md, ai_use.md,
+             proposal_update_2026-10-19.md
+tests/       pytest checks on the audit, cleaning, features, metrics, baselines, drift, landmarks, value, the book,
+             the energy data and features (the truncation proof), economics, scenarios, the optimizer,
+             the advisor (grounding, replay), the gym and the horizons
 ```
 
 ## Results at a glance
@@ -112,6 +136,24 @@ From `results/` (notebooks 01–03):
   figure `figures/F1_cif_by_region.png`).
 - The clean file reproduces LBNL's published completion rates within 1.2
   points for every technology and region (`results/benchmarks.csv`).
+
+From `results/` (Part II, notebooks 05–10):
+
+- The twenty lease redevelopments carry $14.6B of incremental NPV at base
+  under the confirmed cost grid, every one positive; the twenty ERCOT
+  requests are worth −$0.76B merchant and −$0.28B contracted once the queue
+  models' chance of operating is priced in (`results/candidate_npv.csv`).
+- No book of the forty loses money in any of 2,000 joint scenarios, so
+  the registered allocation criteria C21–C24 fail as registered: risk
+  aversion has nothing to buy here (`results/success_criteria_v7_scored.csv`,
+  decision #71).
+- In the decision gym the registered rule beat instinct by $100M a
+  situation over sixteen past situations (`results/decision_gym_scores.csv`);
+  the advisor's answers replay from `results/advisor_runs.jsonl` once a
+  live run has recorded them.
+- The forward view: the lease book is negative within two years and
+  $14.6B at twenty; a request is a carry cost until it operates
+  (`results/horizon_view.csv`, `results/horizon_books.csv`).
 
 ## References
 
