@@ -1,4 +1,4 @@
-"""Every number in the report and its appendix traces to results/report_numbers.csv; the report stays under 3,000 words."""
+"""Every number in the report traces to results/report_numbers.csv; the word-limit test records that the limit is off (decision #44)."""
 
 import re
 
@@ -8,7 +8,6 @@ import pytest
 from src import paths, report_numbers
 
 REPORT = paths.REPORT / "report.md"
-APPENDIX = paths.REPORT / "appendix.md"
 WORD_LIMIT = 3000  # course limit, excluding references and appendix
 NUMBER = re.compile(r"\d[\d,]*(?:\.\d+)?%?")
 
@@ -47,9 +46,9 @@ def test_every_number_in_the_report_is_in_report_numbers():
     cited = set()
     for text in table["text"].astype(str):
         cited |= numbers_in(text)
-    text = REPORT.read_text(encoding="utf-8") + APPENDIX.read_text(encoding="utf-8")
+    text = REPORT.read_text(encoding="utf-8")
     missing = sorted(numbers_in(text) - cited)
-    assert not missing, f"numbers in report.md or appendix.md not in results/report_numbers.csv: {missing}"
+    assert not missing, f"numbers in report.md not in results/report_numbers.csv: {missing}"
 
 
 def test_report_numbers_keys_are_unique():
@@ -57,7 +56,7 @@ def test_report_numbers_keys_are_unique():
     assert table["key"].is_unique
 
 
-@pytest.mark.skip(reason="word limit relaxed for draft v1 (decision #40); restore before the final report")
+@pytest.mark.skip(reason="word, figure and page limits are off for the v3 report (decision #44); the test stays so the limit can be restored by removing this line")
 def test_report_is_under_the_word_limit():
     text = re.sub(r"!\[[^\]]*\]\([^)]*\)", " ", body(REPORT.read_text(encoding="utf-8")))
     text = re.sub(r"^\|[-| ]+\|$", " ", text, flags=re.MULTILINE)  # table rule lines

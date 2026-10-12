@@ -726,3 +726,109 @@ Alan's direction: get the data that was missing and finish the job.
     account), or asking PJM for the executed-agreement dates.
 28. (carried) Verify three value assumptions; rotate the EIA API key;
     `git push` when you want (nothing pushed this session).
+
+## 2026-10-11/12 (session 9) — From Queue to Capital: the report reorganised around an energy company's decisions
+
+Alan's direction: the v2 report read as "nothing" because it was a contest
+between a model and a lookup. The reader is an energy company that owns a
+book of queue requests and must decide — invest, hold, exit; where, when,
+how much, which project. Use everything already built, simplify (a
+capstone, not a PhD), no new notebooks, every addition explained in the
+notebook that owns it, and "we are paid to find, not to explore".
+Decisions #59 (scope) and #60 (NREL ATB as the cost source); PLAN.md §13.
+
+**Done**
+
+- **Plan.** PLAN.md §13 rewritten: six engines (market intelligence,
+  development forecasting, asset economics, risk, spatial at state level,
+  portfolio optimisation) feeding one decision; nodal prices, weather, land,
+  transmission, financing and multistate models stated out of scope.
+- **Notebook 08b §7, the tournament (F22).** Criteria C18–C19 registered
+  and committed (154e39d) before any fit. Random survival forest pair, MLP
+  discrete-time hazard, blend of five; chosen on 2016 (T* = the blend,
+  mean Brier 0.0995 vs 0.0996 for K0). On the test cohort **C18 fails**
+  (3 of 4 lines: Uno's C +0.015 [+0.002, +0.028] at 3 y on ≥ 20 MW, but
+  −0.007 [−0.020, +0.005] at 5 y) and **C19 fails** (2 of 4). The forest
+  and the network alone rank worse than LightGBM (Uno's C 0.66, 0.68 vs
+  0.76 at 5 y). The registered LightGBM and the lookup stay.
+- **Notebook 03 §12–13 (F19, F20).** Six drivers on the 5,497 entrants of
+  2010–2019 with Wilson intervals: PJM 24% under 5 MW → 4% at 500 MW+; gas
+  32% PJM, 25% ERCOT; batteries 4–7%; an agreement signed within two years
+  (2025 file) lifts ERCOT from 0.8% (484 undated) to 63% (218). When and
+  where requests die: CAISO 48% and PJM 31% leave in year one, 82% and 42%
+  of their withdrawals out of the system impact study; ERCOT culls after
+  year four in the facilities study, 13% after a signed agreement.
+  Surviving two years triples the odds of operating within the next three
+  (ERCOT 7% → 21%, PJM 9% → 16%, CAISO 1% → 10%).
+- **Notebook 09 §4b (F21).** Ten entry-time rules (depth-4 tree on
+  2010–2016, re-measured on 2017–2019): 1%–47%, Spearman 0.77 out of time;
+  `segments_by_request.csv` feeds the entry gate.
+- **Notebook 08 §11.** Timing error among the 297 built: LightGBM within a
+  year 52% of the time (MAE 1.19 y) vs 33% for a regional median; the gain
+  is PJM's; in ERCOT the median (3.3 y) does as well.
+- **Notebook 15 §8 (F26).** NREL ATB 2024 v3 (5 MB parquet, source S12,
+  fetched and hash-checked by `value.fetch_atb`). NPV per MW with new-build
+  capacity factors, ITC/PTC election, 8% real, 20 years: with today's
+  credits only 5 of 21 technology-region pairs are positive (wind
+  everywhere, gas and solar in PJM), 2 after 2027; storage, hybrids and
+  offshore negative throughout. Break-even flat prices: solar $57, wind
+  $51, gas $80 /MWh vs captured $30–68. Median expected NPV of a test
+  request at entry −$0.3M; wind +$14M in ERCOT and PJM. A first pass with
+  fleet capacity factors (PJM solar 10%) made every pair negative; the
+  choice of the ATB class CF for new plants is stated as an assumption.
+- **Notebook 03b §5 (F25).** k-means on seven state market features: four
+  archetypes (silhouette ≈ 0.20, soft) that separate the 2017–2019 outcome
+  they never saw, 5.5% (hot gas-leaning Southeast/plains) to 19.7% (light,
+  settled PJM core and Florida).
+- **Notebook 16 §9 (F23).** Gates G1 (entry: lookup cell and segment rate)
+  and G2 (+2 y: landmark model) with `V = −C + P × NPV` and h = 3. G1:
+  invest 101 (25% operated, +$1,448M at merchant NPV), hold 699 (14%),
+  exit 1,468 (7%; would have lost $8,889M; still 45% of the cohort's
+  operations). G2 on 1,298: accelerate 39 (51% operated; ERCOT 18 of 30),
+  hold-or-sell 629 (11%, +$82M), exit 630 (10%, −$8,316M). Four policies
+  under the section-5 budget with the cohort level as a common risk factor:
+  every policy that counts capital buys wind and made money (+$146M to
+  +$221M realised at merchant NPV; expected shortfall near −$25M) where the
+  value-index book of section 5 lost $362M (ES95 −$4.8B); the risk-adjusted
+  book barely differs from NPV per dollar because the shared risk is the
+  level. `decision_pack.csv`: one row
+  per request. Helpers `gate_decision`, `simulate_operation_years`,
+  `expected_shortfall`, `greedy_risk_adjusted` in `src/portfolio.py`, with
+  tests.
+- **Notebook 20 §10 (F24).** The model's order keeps its edge over the
+  agreement-aware lookup for about the first hundred adds (22 vs 11 at 25,
+  34 vs 25 at 50, 51 each at 100). A floor at the pool's rate admits 410;
+  95 operated (23%); ERCOT: 167 adds capture 70 of 75 operations; PJM 241
+  for 24 of 37; CAISO 2. At merchant prices the ERCOT adds have a negative
+  expected NPV — the count book says which requests will exist, the gates
+  which are worth owning.
+- **Plumbing.** `report/appendix.md` retired; Makefile builds PDF and DOCX;
+  `tests/test_report.py` without the appendix; README; `src/drivers.py`
+  and the `v5_*` collectors in `src/report_numbers.py`; `data/README.md`
+  S12; all tests pass (107, 1 skipped).
+- **Report v3** written to the §13 skeleton: twelve sections, fourteen
+  figures, three tables, 5,909 words; every number traced
+  (`tests/test_report.py` passes; 1,592 numbers in `report_numbers.csv`).
+  `report/report.pdf` was locked by another program when this session
+  built it, so the new build is `report/report_new.pdf` (6.1 MB) until the
+  lock is released; the DOCX rebuilt in place.
+
+**Next**
+
+- Full `make all` from the raw files (≈ 1.5 h with the new sections) and a
+  read of every figure; F23's small-n rows and F24's label are patched in
+  the source for that run.
+- The proposal update for 19 October from sections 1 and 3–8; mentor
+  feedback; poster; tag v1.0.
+
+**Open questions for Alan**
+
+29. The gates use merchant NPV, so they refuse solar and storage that a
+    contracted developer would keep. The break-even prices (solar $57,
+    wind $51, gas $80 /MWh) are the lever. Do you want a contracted case
+    (a PPA at the break-even price plus a margin) run through the gates as
+    a second column, or is the merchant case with the break-even table the
+    answer you want to defend?
+30. The hurdle h = 3 and the discount rate 8% are the two company
+    parameters; both are reported at alternatives. Any other value?
+31. (carried) EIA key rotation; `git push` when you want.

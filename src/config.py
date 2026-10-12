@@ -34,6 +34,10 @@ ERCOT_BULK_WD_DATE = "2018-08-29"  # 441 ERCOT withdrawals share this recorded d
 TRACK_B_MAX_YEAR = 2017  # Track B uses entrants up to this year, resolved ones only (PLAN.md §6)
 RARE_TYPE_MIN = 100  # technology levels with fewer requests are pooled into "Other" (PLAN.md §6, notebook 04)
 
+# --- NREL Annual Technology Baseline 2024, v3 (source S12; capital and O&M per kW for the NPV of notebook 15) ---
+ATB_URL = "https://oedi-data-lake.s3.amazonaws.com/ATB/electricity/parquet/2024/v3.0.0/ATBe.parquet"  # OEDI data lake, public
+ATB_FILENAME = "ATBe_2024_v3.parquet"
+ATB_SHA256 = "22e75dfcb93f8c61e94f9fa3390f04bf943d67ad224b1c6b428c71cfbea7350b"  # hash of the copy downloaded 2026-10-12
 # --- Regions ------------------------------------------------------------------
 TRACK_A_REGIONS = ["ERCOT", "PJM", "CAISO"]  # the three ISOs whose public file carries event dates (decision #6)
 OTHER_REGIONS = ["MISO", "SPP", "NYISO", "ISO-NE", "West", "Southeast"]  # timing not usable; Track B only

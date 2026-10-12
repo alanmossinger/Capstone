@@ -1432,6 +1432,36 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** The chosen alternative learner (T3 blend of five) against the registered LightGBM and the fair lookup: paired differences in Uno's C and Brier score by horizon, all sizes and 20 MW and more, test cohort 2017–2019, 95% bootstrap intervals.
 <!-- /fig:F22_tournament -->
 
+<!-- fig:F23_portfolio_review -->
+### F23_portfolio_review
+
+![F23_portfolio_review](../figures/F23_portfolio_review.png)
+
+*Notebook:* `notebooks/16_portfolio.ipynb` · *Files:* `figures/F23_portfolio_review.png`, `.svg`
+
+**Caption (stub).** Share of requests that reached operation by gate decision (invest / hold / exit at entry; accelerate / hold or sell / exit two years in) and region, with Wilson intervals, hurdle 3, test cohort 2017–2019.
+<!-- /fig:F23_portfolio_review -->
+
+<!-- fig:F24_book_per_region -->
+### F24_book_per_region
+
+![F24_book_per_region](../figures/F24_book_per_region.png)
+
+*Notebook:* `notebooks/20_managed_book.ipynb` · *Files:* `figures/F24_book_per_region.png`, `.svg`
+
+**Caption (stub).** How many requests to add two years in and where: operations realised within three years of the landmark against the number added in the landmark model's and the agreement-aware lookup's order, and the model's floor book by region with resampling intervals.
+<!-- /fig:F24_book_per_region -->
+
+<!-- fig:F25_state_archetypes -->
+### F25_state_archetypes
+
+![F25_state_archetypes](../figures/F25_state_archetypes.png)
+
+*Notebook:* `notebooks/03b_project_map.ipynb` · *Files:* `figures/F25_state_archetypes.png`, `.svg`
+
+**Caption (stub).** State archetypes from k-means on seven market features (queue relative to the fleet, technology mix of the waiting MW, median request size, recent-entry share, historical share built), mapped, and the share of 2017–2019 entrants operating by end-2024 in each archetype with Wilson intervals.
+<!-- /fig:F25_state_archetypes -->
+
 <!-- fig:F26_npv_per_mw -->
 ### F26_npv_per_mw
 

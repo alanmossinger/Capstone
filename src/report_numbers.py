@@ -10,7 +10,8 @@ look up where a number comes from (``source`` column).
 Reads: CSV and JSON files in ``results/``; design constants from
 ``src/config.py`` and ``src/track_b.py``. The ``v3_*`` steps read the
 portfolio-layer tables of notebooks 01b and 11–19;
-``v4_managed_book`` reads notebooks 13 and 20.
+``v4_managed_book`` reads notebooks 13 and 20; the ``v5_*`` steps read the
+v4 additions of notebooks 03, 08, 08b, 09, 15, 16 and 20 (PLAN.md §13).
 Writes: ``results/report_numbers.csv`` (key, text, value, source, note).
 Used by: ``make numbers`` (``python -m src.report_numbers``), before the
 report is written or rebuilt; ``tests/test_report.py``.
@@ -1061,6 +1062,279 @@ def v4_managed_book():
                 "results/success_criteria_v4_scored.csv", f"A4 row {i}: repaired intercept")
 
 
+def v5_drivers():
+    """Notebook 03 §12–13: six drivers of five-year completion, where and when requests die, the hold value of surviving."""
+    d = read("drivers_5yr.csv").set_index(["driver", "region", "level"])
+    n_cohort = int(d.xs("Size at entry (MW)", level="driver")["n"].sum())
+    add("drv_n", f"{n_cohort:,}", n_cohort, "results/drivers_5yr.csv", "entrants 2010–2019 in the drivers cohort")
+    for region, level, tag in [("PJM", "<5", "pjm_lt5"), ("PJM", "≥500", "pjm_ge500"), ("PJM", "200–<500", "pjm_200"), ("CAISO", "<5", "caiso_lt5"),
+                               ("ERCOT", "≥500", "ercot_ge500"), ("ERCOT", "100–<200", "ercot_100")]:
+        r = d.loc[("Size at entry (MW)", region, level)]
+        add(f"drv_size_{tag}", pct(r["rate"], 0), r["rate"], "results/drivers_5yr.csv", f"{region} {level} MW: five-year completion")
+    for region, level, tag in [("PJM", "Gas", "pjm_gas"), ("ERCOT", "Gas", "ercot_gas"), ("PJM", "Solar", "pjm_solar"), ("ERCOT", "Solar", "ercot_solar"),
+                               ("CAISO", "Solar", "caiso_solar"), ("PJM", "Battery", "pjm_batt"), ("ERCOT", "Wind", "ercot_wind"),
+                               ("CAISO", "Solar+Battery", "caiso_hyb"), ("PJM", "Solar+Battery", "pjm_hyb"), ("PJM", "Offshore Wind", "pjm_off")]:
+        r = d.loc[("Technology", region, level)]
+        add(f"drv_tech_{tag}", pct(r["rate"], 1 if r["rate"] < 0.01 else 0), r["rate"], "results/drivers_5yr.csv", f"{region} {level}: five-year completion")
+        add(f"drv_tech_{tag}_n", str(int(r["n"])), int(r["n"]), "results/drivers_5yr.csv", "its n")
+    for region, level, tag in [("PJM", "1", "pjm_q1"), ("PJM", "5", "pjm_q5")]:
+        r = d.loc[("Regional queue at entry (fifth)", region, level)]
+        add(f"drv_queue_{tag}", pct(r["rate"], 0), r["rate"], "results/drivers_5yr.csv", f"PJM queue fifth {level}: five-year completion")
+    for region, level, tag in [("PJM", "0", "pjm_c0"), ("PJM", "11+", "pjm_c11")]:
+        r = d.loc[("Same-county requests, prior 2 years", region, level)]
+        add(f"drv_crowd_{tag}", pct(r["rate"], 0), r["rate"], "results/drivers_5yr.csv", f"PJM county crowding {level}: five-year completion")
+    for region, level, tag in [("PJM", "NRIS", "pjm_nris"), ("PJM", "ERIS", "pjm_eris")]:
+        r = d.loc[("Service type", region, level)]
+        add(f"drv_service_{tag}", pct(r["rate"], 0), r["rate"], "results/drivers_5yr.csv", f"PJM {level}: five-year completion")
+    for region, level, tag in [("ERCOT", "signed within 2 years", "ercot_in2"), ("ERCOT", "not dated", "ercot_none"), ("ERCOT", "signed later", "ercot_later"),
+                               ("CAISO", "signed later", "caiso_later"), ("CAISO", "not dated", "caiso_none")]:
+        r = d.loc[("Agreement (2025 file)", region, level)]
+        add(f"drv_ia_{tag}", pct(r["rate"], 1 if r["rate"] < 0.02 else 0), r["rate"], "results/drivers_5yr.csv", f"{region}, agreement {level}: five-year completion")
+        add(f"drv_ia_{tag}_n", f"{int(r['n']):,}", int(r["n"]), "results/drivers_5yr.csv", "its n")
+    hz = read("hazards_by_queue_year.csv").set_index(["region", "year_in_queue"])
+    for region, year, tag in [("CAISO", 1, "caiso_1"), ("CAISO", 2, "caiso_2"), ("PJM", 1, "pjm_1"), ("PJM", 2, "pjm_2"), ("ERCOT", 1, "ercot_1"),
+                              ("ERCOT", 5, "ercot_5"), ("ERCOT", 7, "ercot_7"), ("CAISO", 5, "caiso_5")]:
+        r = hz.loc[(region, year)]
+        add(f"hz_wd_{tag}", pct(r["h_withdrawal"], 0), r["h_withdrawal"], "results/hazards_by_queue_year.csv", f"{region} year {year}: withdrawal hazard")
+    for region, year, tag in [("ERCOT", 5, "ercot_5"), ("CAISO", 5, "caiso_5"), ("PJM", 7, "pjm_7")]:
+        r = hz.loc[(region, year)]
+        add(f"hz_op_{tag}", pct(r["h_operation"], 0), r["h_operation"], "results/hazards_by_queue_year.csv", f"{region} year {year}: operation hazard")
+    st = read("exit_stage.csv").set_index(["region", "stage"])
+    for region, stage, tag in [("CAISO", "System impact study", "caiso_sis"), ("PJM", "System impact study", "pjm_sis"), ("PJM", "Feasibility study", "pjm_feas"),
+                               ("ERCOT", "Facilities study", "ercot_fac"), ("ERCOT", "Agreement executed", "ercot_ia"), ("PJM", "Agreement executed", "pjm_ia")]:
+        r = st.loc[(region, stage)]
+        add(f"stage_{tag}", pct(r["share"], 0), r["share"], "results/exit_stage.csv", f"{region}: share of withdrawals leaving during the {stage.lower()}")
+    tm = read("exit_timing.csv").set_index(["region", "stage"])
+    for region, stage, tag in [("CAISO", "System impact study", "caiso_sis"), ("PJM", "System impact study", "pjm_sis"), ("PJM", "Feasibility study", "pjm_feas"),
+                               ("ERCOT", "Facilities study", "ercot_fac"), ("ERCOT", "Agreement executed", "ercot_ia")]:
+        r = tm.loc[(region, stage)]
+        add(f"exit_years_{tag}", num(r["median_years"], 1), r["median_years"], "results/exit_timing.csv", f"{region}: median years to withdrawal, {stage.lower()}")
+    gs = read("completion_given_survival.csv").set_index(["region", "survived_years"])
+    for region in config.TRACK_A_REGIONS:
+        for s_ in (0, 2):
+            r = gs.loc[(region, s_)]
+            add(f"hold_{region.lower()}_{s_}", pct(r["rate"], 0 if r["rate"] >= 0.05 else 1), r["rate"], "results/completion_given_survival.csv",
+                f"{region}: share operating within the next 3 years after surviving {s_} years")
+
+
+def v5_segments():
+    """Notebook 09 §4b: the ten entry segments and their out-of-time check."""
+    seg = read("segments.csv").set_index("segment")
+    for sid in seg.index:
+        r = seg.loc[sid]
+        add(f"seg_{sid}_fit", pct(r["rate_train"], 1 if r["rate_train"] < 0.02 else 0), r["rate_train"], "results/segments.csv", f"{sid} ({r['rule']}): fitting-cohort rate")
+        add(f"seg_{sid}_test", pct(r["rate_test"], 1 if r["rate_test"] < 0.02 else 0), r["rate_test"], "results/segments.csv", f"{sid}: 2017–2019 rate")
+        add(f"seg_{sid}_n_test", f"{int(r['n_test']):,}", int(r["n_test"]), "results/segments.csv", f"{sid}: 2017–2019 requests")
+    add("seg_count", str(len(seg)), len(seg), "results/segments.csv", "segments")
+    add("seg_fit_n", f"{int(seg['n_train'].sum()):,}", int(seg["n_train"].sum()), "results/segments.csv", "fitting-cohort requests")
+    from scipy.stats import spearmanr
+    ok = seg.dropna(subset=["rate_test"])
+    rho = spearmanr(ok["rate_train"], ok["rate_test"]).statistic
+    add("seg_rho", num(rho, 2), rho, "results/segments.csv", "Spearman rank correlation of segment rates, fitting vs later cohort")
+    add("seg_range", f"{pct(seg['rate_test'].min(), 0)} to {pct(seg['rate_train'].max(), 0)}", (seg["rate_test"].min(), seg["rate_train"].max()),
+        "results/segments.csv", "range of segment rates quoted in the report")
+
+
+def v5_timing():
+    """Notebook 08 §11: how far off the model's expected year of operation is, among the built."""
+    t = read("timing_error.csv").set_index(["region", "model"])
+    for region in ["all", "PJM", "ERCOT"]:
+        for model, tag in [("dt_lgbm", "lgbm"), ("training median by region", "median")]:
+            r = t.loc[(region, model)]
+            add(f"time_{region.lower()}_{tag}_mae", num(r["mae_years"], 2), r["mae_years"], "results/timing_error.csv", f"{region}, {model}: mean absolute error, years")
+            add(f"time_{region.lower()}_{tag}_within1", pct(r["share_within_1_year"], 0), r["share_within_1_year"], "results/timing_error.csv", "share within a year")
+            add(f"time_{region.lower()}_{tag}_signed", num(r["median_signed_error"], 2, sign=True), r["median_signed_error"], "results/timing_error.csv", "median signed error")
+    add("time_n_built", str(int(t.loc[("all", "dt_lgbm"), "n_built"])), int(t.loc[("all", "dt_lgbm"), "n_built"]), "results/timing_error.csv", "test requests built within 7 years")
+    add("time_ercot_median_obs", num(t.loc[("ERCOT", "dt_lgbm"), "median_observed_years"], 1), t.loc[("ERCOT", "dt_lgbm"), "median_observed_years"],
+        "results/timing_error.csv", "ERCOT: median observed years to operation among the built")
+    add("time_ercot_bench", num(t.loc[("ERCOT", "training median by region"), "median_predicted_years"], 1),
+        t.loc[("ERCOT", "training median by region"), "median_predicted_years"], "results/timing_error.csv", "ERCOT: training-cohort median years to operation")
+
+
+def v5_tournament():
+    """Notebook 08b §7: other learners under C18–C19."""
+    choice = read("tournament_choice.json")
+    add("t_star", choice["chosen"], choice["chosen"], "results/tournament_choice.json", "the learner chosen on 2016")
+    for k, tag in [("K0", "k0"), ("T1", "t1"), ("T2", "t2"), ("T3", "t3")]:
+        add(f"t_brier16_{tag}", num(choice["mean_brier_2016"][k], 4), choice["mean_brier_2016"][k], "results/tournament_choice.json", f"{k}: mean 2016 Brier")
+    crit = read("tournament_criteria.csv").set_index("criterion")
+    for c in ["C18", "C19"]:
+        add(f"{c.lower()}_verdict", crit.loc[c, "verdict"], crit.loc[c, "verdict"], "results/tournament_criteria.csv", f"{c} verdict")
+        add(f"{c.lower()}_lines", f"{int(crit.loc[c, 'lines_passed'])} of {int(crit.loc[c, 'lines'])}", int(crit.loc[c, "lines_passed"]), "results/tournament_criteria.csv", f"{c} lines passed")
+    t = read("tournament.csv")
+    for cohort, ref, metric, h, tag in [("≥ 20 MW", "dt_lgbm", "uno_c", 3, "big_lgbm_uno3"), ("≥ 20 MW", "dt_lgbm", "uno_c", 5, "big_lgbm_uno5"),
+                                        ("≥ 20 MW", "fair_baseline", "uno_c", 3, "big_fair_uno3"), ("≥ 20 MW", "fair_baseline", "uno_c", 5, "big_fair_uno5"),
+                                        ("all sizes", "dt_lgbm", "uno_c", 5, "all_lgbm_uno5"), ("all sizes", "dt_lgbm", "uno_c", 7, "all_lgbm_uno7")]:
+        r = t[(t["cohort"] == cohort) & (t["reference"] == ref) & (t["model"] == "T*") & (t["metric"] == metric) & (t["horizon"] == h)].iloc[0]
+        add(f"t_{tag}_diff", num(r["diff"], 3, sign=True), r["diff"], "results/tournament.csv", f"T* − {ref}, {metric}, {h} y, {cohort}")
+        add(f"t_{tag}_iv", interval(r["diff_low"], r["diff_high"], 3), (r["diff_low"], r["diff_high"]), "results/tournament.csv", "its interval")
+    allc = read("tournament_all_candidates_test.csv").set_index(["model", "metric", "horizon"])
+    for m, tag in [("T1", "t1"), ("T2", "t2"), ("dt_lgbm", "lgbm")]:
+        add(f"t_{tag}_uno5", num(allc.loc[(m, "uno_c", 5), "estimate"], 2), allc.loc[(m, "uno_c", 5), "estimate"], "results/tournament_all_candidates_test.csv", f"{m}: Uno's C at 5 years, all sizes")
+
+
+def v5_npv():
+    """Notebook 15 §8: NPV per MW, break-even prices and expected NPV per request."""
+    n = read("npv_table.csv").set_index(["cod_year", "region", "tech"])
+    for cod in (2024, 2028):
+        for region in config.TRACK_A_REGIONS:
+            for tech, tag in [("Wind", "wind"), ("Solar", "solar"), ("Gas", "gas"), ("Battery", "batt"), ("Solar+Battery", "hyb"), ("Offshore Wind", "off")]:
+                v = n.loc[(cod, region, tech), "npv_per_mw_base"] / 1e6
+                add(f"npv_{cod}_{region.lower()}_{tag}", num(v, 2, sign=True).replace("+", ""), v, "results/npv_table.csv", f"NPV per MW, $M, {tech} {region}, COD {cod}, base")
+        positives = int((n.xs(cod, level="cod_year")["npv_per_mw_base"] > 0).sum())
+        add(f"npv_positive_{cod}", str(positives), positives, "results/npv_table.csv", f"technology-region pairs with positive base NPV, COD {cod}")
+    r = n.loc[(2024, "PJM", "Gas")]
+    add("npv_pjm_gas_low", num(r["npv_per_mw_low"] / 1e6, 1), r["npv_per_mw_low"], "results/npv_table.csv", "PJM gas 2024: low case $M")
+    add("npv_pjm_gas_high", num(r["npv_per_mw_high"] / 1e6, 1), r["npv_per_mw_high"], "results/npv_table.csv", "PJM gas 2024: high case $M")
+    for tech, tag in [("Solar", "solar"), ("Wind", "wind"), ("Gas", "gas"), ("Solar+Battery", "hyb")]:
+        v = n.loc[(2024, "PJM", tech), "breakeven_price_base"]
+        add(f"be_{tag}", f"${v:,.0f}", v, "results/npv_table.csv", f"break-even flat price, $/MWh, {tech}")
+    for region in config.TRACK_A_REGIONS:
+        for tech, tag in [("Solar", "solar"), ("Wind", "wind")]:
+            v = n.loc[(2024, region, tech), "captured_price_base"]
+            add(f"captured_{region.lower()}_{tag}", f"${v:,.0f}", v, "results/npv_table.csv", f"captured energy price, $/MWh, {tech} {region}, 2024")
+    atb = read("atb_costs.csv").set_index("tech")
+    for tech, tag in [("Solar", "solar"), ("Wind", "wind"), ("Gas", "gas"), ("Battery", "batt")]:
+        add(f"capex_{tag}", f"${atb.loc[tech, 'capex_per_kw']:,.0f}", atb.loc[tech, "capex_per_kw"], "results/atb_costs.csv", f"{tech}: ATB CAPEX $/kW")
+    b = read("npv_by_request.csv")
+    med = b["expected_npv_recalibrated_base"].median() / 1e6
+    add("enpv_median", num(med, 1), med, "results/npv_by_request.csv", "median expected NPV at entry, $M, level repaired, base")
+    add("enpv_mean", num(b["expected_npv_recalibrated_base"].mean() / 1e6, 0), b["expected_npv_recalibrated_base"].mean(), "results/npv_by_request.csv", "mean expected NPV at entry, $M")
+    for region in config.TRACK_A_REGIONS:
+        share = (b.loc[b["region"] == region, "npv_per_mw_if_built_year3_base"] > 0).mean()
+        add(f"npv_pos_share_{region.lower()}", pct(share, 0), share, "results/npv_by_request.csv", f"{region}: share of test requests whose plant has a positive NPV if built in year 3")
+    for region in ["ERCOT", "PJM", "CAISO"]:
+        v = b[(b["region"] == region) & (b["tech"] == "Wind")]["expected_npv_recalibrated_base"].median() / 1e6
+        add(f"enpv_wind_{region.lower()}", num(v, 1 if abs(v) < 5 else 0), v, "results/npv_by_request.csv", f"{region} wind: median expected NPV at entry, $M")
+
+
+def v5_review():
+    """Notebook 16 §9: the gates, the four policies and the decision pack."""
+    r = read("portfolio_review_summary.csv")
+    for gate, tag in [("G1 entry", "g1"), ("G2 two years", "g2")]:
+        part = r[(r["gate"] == gate) & (r["region"] == "all")]
+        for h in (2.0, 3.0, 5.0):
+            for _, row in part[part["h"] == h].iterrows():
+                cls = row["decision"].replace(" or ", "_").replace(" ", "_")
+                hk = f"_h{int(h)}" if h != 3.0 else ""
+                add(f"{tag}_{cls}{hk}_n", f"{int(row['n']):,}", int(row["n"]), "results/portfolio_review_summary.csv", f"{gate}, h={h:.0f}, {row['decision']}: requests")
+                add(f"{tag}_{cls}{hk}_share", pct(row["operated_share"], 0), row["operated_share"], "results/portfolio_review_summary.csv", f"{gate}, h={h:.0f}, {row['decision']}: operated share")
+                add(f"{tag}_{cls}{hk}_iv", f"[{pct(row['low'], 0)}, {pct(row['high'], 0)}]", (row["low"], row["high"]), "results/portfolio_review_summary.csv", "its Wilson interval")
+                add(f"{tag}_{cls}{hk}_ops", str(int(row["operated"])), int(row["operated"]), "results/portfolio_review_summary.csv", "operations in the class")
+                add(f"{tag}_{cls}{hk}_pool_share", pct(row["share_of_pool_operations"], 0), row["share_of_pool_operations"], "results/portfolio_review_summary.csv", "share of the pool's operations")
+                add(f"{tag}_{cls}{hk}_mw", f"{row['mw']:,.0f}", row["mw"], "results/portfolio_review_summary.csv", "MW in the class")
+                add(f"{tag}_{cls}{hk}_npv", f"{row['realised_npv_$M']:+,.0f}".replace("-", "−"), row["realised_npv_$M"], "results/portfolio_review_summary.csv", "realised NPV, $M")
+        for region in config.TRACK_A_REGIONS:
+            for _, row in r[(r["gate"] == gate) & (r["region"] == region) & (r["h"] == 3.0)].iterrows():
+                cls = row["decision"].replace(" or ", "_").replace(" ", "_")
+                add(f"{tag}_{region.lower()}_{cls}_share", pct(row["operated_share"], 0) if row["n"] else "n/a", row["operated_share"], "results/portfolio_review_summary.csv", f"{gate}, {region}, {row['decision']}: operated share")
+                add(f"{tag}_{region.lower()}_{cls}_n", f"{int(row['n']):,}", int(row["n"]), "results/portfolio_review_summary.csv", "requests")
+    pool_n = int(r[(r["gate"] == "G2 two years") & (r["region"] == "all") & (r["h"] == 3.0)]["n"].sum())
+    add("g2_pool_n", f"{pool_n:,}", pool_n, "results/portfolio_review_summary.csv", "the +2 pool, all sizes")
+    pool_ops = int(r[(r["gate"] == "G2 two years") & (r["region"] == "all") & (r["h"] == 3.0)]["operated"].sum())
+    add("g2_pool_ops", str(pool_ops), pool_ops, "results/portfolio_review_summary.csv", "operations within 3 years in the +2 pool")
+    pol = read("policy_comparison.csv").set_index("policy")
+    tags = {"equal regional split": "equal", "NPV per dollar, with caps": "npvdollar", "model expected NPV, no caps": "nocaps",
+            "risk-adjusted (E[NPV] − λ·ES95), with caps": "risk", "fair baseline, value index (section 5)": "fair", "random (section 5)": "random"}
+    for name, tag in tags.items():
+        row = pol.loc[name]
+        add(f"pol_{tag}_n", str(int(row["requests"])), int(row["requests"]), "results/policy_comparison.csv", f"{name}: requests")
+        add(f"pol_{tag}_enpv", f"{row['expected_npv_$M']:+,.0f}".replace("-", "−"), row["expected_npv_$M"], "results/policy_comparison.csv", f"{name}: expected NPV $M")
+        add(f"pol_{tag}_es", f"{row['es95_$M']:+,.0f}".replace("-", "−"), row["es95_$M"], "results/policy_comparison.csv", f"{name}: ES95 $M")
+        add(f"pol_{tag}_pneg", pct(row["p_negative_npv"], 0), row["p_negative_npv"], "results/policy_comparison.csv", f"{name}: P(NPV < 0)")
+        add(f"pol_{tag}_ops", str(int(row["realised_operations_5yr"])), int(row["realised_operations_5yr"]), "results/policy_comparison.csv", f"{name}: realised operations")
+        add(f"pol_{tag}_mw", f"{row['realised_mw_5yr']:,.0f}", row["realised_mw_5yr"], "results/policy_comparison.csv", f"{name}: realised MW")
+        add(f"pol_{tag}_rnpv", f"{row['realised_npv_$M']:+,.0f}".replace("-", "−"), row["realised_npv_$M"], "results/policy_comparison.csv", f"{name}: realised NPV $M")
+        add(f"pol_{tag}_conc", pct(row["max_region_share"], 0), row["max_region_share"], "results/policy_comparison.csv", f"{name}: largest region share")
+    pack = read("decision_pack.csv")
+    add("pack_n", f"{len(pack):,}", len(pack), "results/decision_pack.csv", "rows of the decision pack")
+    for cls in ["invest", "hold", "exit"]:
+        v = int((pack["decision_entry_h3"] == cls).sum())
+        add(f"pack_entry_{cls}", f"{v:,}", v, "results/decision_pack.csv", f"entry decision {cls}")
+
+
+def v5_books():
+    """Notebook 20 §10: the floor book per region."""
+    rec = read("recommended_books.csv")
+    for chooser, tag in [("M — landmark model", "m"), ("LA — lookup with agreement status", "la")]:
+        for region in config.TRACK_A_REGIONS + ["all"]:
+            row = rec[(rec["chooser"] == chooser) & (rec["region"] == region)].iloc[0]
+            add(f"book_{tag}_{region.lower()}_n", str(int(row["requests_added"])), int(row["requests_added"]), "results/recommended_books.csv", f"{chooser}, {region}: requests added")
+            add(f"book_{tag}_{region.lower()}_ops", str(int(row["realised_operations"])), int(row["realised_operations"]), "results/recommended_books.csv", "realised operations")
+            add(f"book_{tag}_{region.lower()}_iv", f"[{row['ops_low']:.0f}, {row['ops_high']:.0f}]", (row["ops_low"], row["ops_high"]), "results/recommended_books.csv", "its interval")
+            add(f"book_{tag}_{region.lower()}_exp", num(row["expected_operations"], 1), row["expected_operations"], "results/recommended_books.csv", "expected operations")
+            add(f"book_{tag}_{region.lower()}_mw", f"{row['realised_mw']:,.0f}", row["realised_mw"], "results/recommended_books.csv", "realised MW")
+            add(f"book_{tag}_{region.lower()}_pool", f"{int(row['pool_requests']):,}", int(row["pool_requests"]), "results/recommended_books.csv", "pool requests")
+            add(f"book_{tag}_{region.lower()}_pool_ops", str(int(row["pool_operations"])), int(row["pool_operations"]), "results/recommended_books.csv", "pool operations")
+            if tag == "m":
+                add(f"book_m_{region.lower()}_npv", f"{row['expected_npv_$M']:+,.0f}".replace("-", "−"), row["expected_npv_$M"], "results/recommended_books.csv", "expected NPV of the adds, $M")
+                add(f"book_m_{region.lower()}_diff_iv", f"[{signed(row['diff_M_minus_LA_low'], count=True)}, {signed(row['diff_M_minus_LA_high'], count=True)}]",
+                    (row["diff_M_minus_LA_low"], row["diff_M_minus_LA_high"]), "results/recommended_books.csv", "M − LA operations, interval")
+
+
+def v5_archetypes():
+    """Notebook 03b §5: the state archetypes."""
+    prof = read("archetype_profiles.csv")
+    add("arch_k", str(len(prof)), len(prof), "results/archetype_profiles.csv", "archetypes")
+    add("arch_states", str(int(prof["states"].sum())), int(prof["states"].sum()), "results/archetype_profiles.csv", "states clustered")
+    for i, row in prof.reset_index(drop=True).iterrows():
+        add(f"arch_{i + 1}_name", row["name"], row["name"], "results/archetype_profiles.csv", f"archetype {i + 1} name")
+        add(f"arch_{i + 1}_rate", pct(row["completion_2017_2019"], 1), row["completion_2017_2019"], "results/archetype_profiles.csv", f"archetype {i + 1}: 2017–2019 entrants operating by end-2024")
+        add(f"arch_{i + 1}_iv", f"[{pct(row['low'], 0)}, {pct(row['high'], 0)}]", (row["low"], row["high"]), "results/archetype_profiles.csv", "its interval")
+        add(f"arch_{i + 1}_n", f"{int(row['n_2017_2019']):,}", int(row["n_2017_2019"]), "results/archetype_profiles.csv", "2017–2019 entrants")
+        add(f"arch_{i + 1}_states", str(int(row["states"])), int(row["states"]), "results/archetype_profiles.csv", "states")
+        add(f"arch_{i + 1}_list", row["state_list"], row["state_list"], "results/archetype_profiles.csv", "states in the archetype")
+        add(f"arch_{i + 1}_qof", num(row["queue_over_fleet"], 1), row["queue_over_fleet"], "results/archetype_profiles.csv", "median queue over fleet")
+        add(f"arch_{i + 1}_storage", pct(row["storage_share"], 0), row["storage_share"], "results/archetype_profiles.csv", "median storage share of waiting MW")
+        add(f"arch_{i + 1}_recent", pct(row["recent_entry_share"], 0), row["recent_entry_share"], "results/archetype_profiles.csv", "median recent-entry share")
+
+
+def v5_extras():
+    """Loose ends the report quotes: billions, the decision-pack cross-tabulation, costs per MW, the gas price, the silhouette."""
+    r = read("portfolio_review_summary.csv").set_index(["gate", "h", "region", "decision"])
+    for gate, tag, cls in [("G1 entry", "g1", "exit"), ("G2 two years", "g2", "exit")]:
+        v = r.loc[(gate, 3.0, "all", cls), "realised_npv_$M"] / 1e3
+        add(f"{tag}_exit_npv_bn", f"{abs(v):.1f}", v, "results/portfolio_review_summary.csv", f"{gate} exit class: realised NPV, $ billion (loss)")
+    for gate, tag, cls in [("G1 entry", "g1", "invest"), ("G2 two years", "g2", "accelerate")]:
+        v = r.loc[(gate, 3.0, "all", cls), "realised_npv_$M"] / 1e3
+        add(f"{tag}_{cls}_npv_bn", f"{v:.1f}", v, "results/portfolio_review_summary.csv", f"{gate} {cls} class: realised NPV, $ billion")
+    n_all = int(r.loc[("G1 entry", 3.0, "all")]["n"].sum())
+    share_exit = r.loc[("G1 entry", 3.0, "all", "exit"), "n"] / n_all
+    add("g1_exit_share_of_cohort", pct(share_exit, 0), share_exit, "results/portfolio_review_summary.csv", "share of the test cohort the entry gate marks for exit")
+    share_commit = (r.loc[("G1 entry", 3.0, "all", "invest"), "n"] + r.loc[("G2 two years", 3.0, "all", "accelerate"), "n"]) / n_all
+    add("gates_commit_share", pct(share_commit, 0), share_commit, "results/portfolio_review_summary.csv", "invest + accelerate requests as a share of the cohort")
+    pack = read("decision_pack.csv")
+    ct = pd.crosstab(pack["decision_entry_h3"], pack["decision_2y_h3"].fillna("not in pool"))
+    for a, b, tag in [("invest", "accelerate", "inv_acc"), ("invest", "exit", "inv_exit"), ("invest", "not in pool", "inv_gone"),
+                      ("exit", "exit", "exit_exit"), ("exit", "accelerate", "exit_acc"), ("hold", "hold or sell", "hold_hold")]:
+        v = int(ct.loc[a, b]) if b in ct.columns else 0
+        add(f"pack_{tag}", str(v), v, "results/decision_pack.csv", f"entry {a} → two-year {b}")
+    pol = read("policy_comparison.csv").set_index("policy")
+    v = pol.loc["fair baseline, value index (section 5)", "es95_$M"] / 1e3
+    add("pol_fair_es_bn", f"{abs(v):.1f}", v, "results/policy_comparison.csv", "fair baseline value-index book: ES95, $ billion (loss)")
+    v = pol.loc["fair baseline, value index (section 5)", "expected_npv_$M"] / 1e3
+    add("pol_fair_enpv_bn", f"{abs(v):.1f}", v, "results/policy_comparison.csv", "fair baseline value-index book: expected NPV, $ billion (loss)")
+    lo = min(pol.loc[n, "realised_npv_$M"] for n in ["NPV per dollar, with caps", "model expected NPV, no caps", "risk-adjusted (E[NPV] − λ·ES95), with caps"])
+    hi = max(pol.loc[n, "realised_npv_$M"] for n in ["NPV per dollar, with caps", "model expected NPV, no caps", "risk-adjusted (E[NPV] − λ·ES95), with caps"])
+    add("pol_npv_books_range", f"+${lo:,.0f} to +${hi:,.0f}", (lo, hi), "results/policy_comparison.csv", "realised NPV range of the three NPV-based books, $M")
+    cost = read("cost_table.csv").set_index("size_regime")
+    for regime, tag in [("20–<100", "20_100"), ("≥500", "ge500")]:
+        v = cost.loc[regime, "sunk_per_mw_base"]
+        add(f"sunk_{tag}", f"{v:,.0f}", v, "results/cost_table.csv", f"deposit to the next gate, $ per MW, {regime} MW, base")
+    va = read("value_assumptions.csv").set_index("input")
+    gp = float(va.loc["natural gas price, $/MMBtu", "value"])
+    add("gas_price", f"{gp:.2f}", gp, "results/value_assumptions.csv", "gas price assumption, $/MMBtu")
+    rec = read("recommended_books.csv")
+    v = rec[(rec["chooser"] == "M — landmark model") & (rec["region"] == "all")]["expected_operations"].iloc[0]
+    add("book_m_all_exp_int", f"{v:.0f}", v, "results/recommended_books.csv", "model's own expectation for the floor book, operations")
+    arch = read("state_archetypes.csv")
+    from sklearn.metrics import silhouette_score
+    from sklearn.preprocessing import StandardScaler
+    feats = ["queue_over_fleet", "solar_share", "storage_share", "gas_share", "median_mw_waiting", "recent_entry_share", "share_built_2010_2018"]
+    sil = silhouette_score(StandardScaler().fit_transform(arch[feats]), arch["archetype"])
+    add("arch_silhouette", f"{sil:.2f}", sil, "results/state_archetypes.csv", "silhouette of the chosen clustering")
+
+
 def build():
     """Collect every cited number and write ``results/report_numbers.csv``.
 
@@ -1078,7 +1352,8 @@ def build():
     ROWS.clear()
     for step in (design_constants, gathering_and_cleaning, eda, modelling, evaluation, explanation, posthoc,
                  v3_data, v3_fair_baseline, v3_level, v3_landmark, v3_value, v3_miso_spp, v3_portfolio,
-                 v3_extras, v3_appendix, v4_managed_book):
+                 v3_extras, v3_appendix, v4_managed_book, v5_drivers, v5_segments, v5_timing, v5_tournament, v5_npv,
+                 v5_review, v5_books, v5_archetypes, v5_extras):
         step()
     table = pd.DataFrame(ROWS)
     table.to_csv(paths.RESULTS / "report_numbers.csv", index=False)

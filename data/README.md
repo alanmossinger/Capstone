@@ -177,7 +177,7 @@ the API fails; not needed so far.
   <https://oedi-data-lake.s3.amazonaws.com/ATB/electricity/parquet/2024/v3.0.0/ATBe.parquet>;
   SHA-256 `22e75dfcb93f8c61e94f9fa3390f04bf943d67ad224b1c6b428c71cfbea7350b`.
 - **Terms:** U.S. Government work, public; cite NREL. Not committed, to keep
-  the repository small; `make data` fetches it.
+  the repository small; notebook 15 fetches and verifies it (`src/value.fetch_atb`).
 - **Known limits:** costs are national averages in 2022 dollars for a
   representative class, not site estimates; gas fuel is not in the file
   (heat rate × a gas-price assumption, `results/value_assumptions.csv`).

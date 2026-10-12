@@ -19,13 +19,14 @@ Used by: notebooks 15 and 16; ``tests/test_value.py``.
 """
 
 import glob
+import pathlib
 import re
 import subprocess
 
 import numpy as np
 import pandas as pd
 
-from src import paths
+from src import config, paths
 
 RAW_VALUE = paths.DATA_RAW / "value"
 RAW_COSTS = paths.DATA_RAW / "lbnl_costs"
@@ -218,7 +219,7 @@ def expected_value(p_by_year, mw, values_by_year, sunk_cost):
     return float((increments * earned).sum() * mw - sunk_cost)
 
 
-RAW_ATB = paths.DATA_RAW / "atb" / "ATBe_2024_v3.parquet"
+RAW_ATB = paths.DATA_RAW / "atb" / config.ATB_FILENAME
 # LBNL technology group → the ATB technology and the one representative detail row used for its costs.
 # Defaults are ATB's own (``default == 1``) where one exists; gas has none, so the F-frame 2-on-1 combined
 # cycle is taken as the common new-build; "Other" (hydro, nuclear, coal, geothermal, biomass) takes the median
@@ -232,6 +233,32 @@ ATB_MAP = {
     "Gas": ("NaturalGas_FE", "NG 2-on-1 Combined Cycle (F-Frame)"),
 }
 ATB_PARAMETERS = {"CAPEX": "capex_per_kw", "Fixed O&M": "fom_per_kw_year", "Variable O&M": "vom_per_mwh", "Heat Rate": "heat_rate_mmbtu_per_mwh"}
+
+
+def fetch_atb(dest=RAW_ATB):
+    """Download the ATB parquet if it is not on disk, and verify its SHA-256 either way.
+
+    Notes
+    -----
+    The raw file is not committed (data/README.md, S12); this makes a fresh
+    clone rebuild notebook 15 without a manual step. A hash mismatch stops
+    the run rather than valuing plants on a file that is not the one the
+    report used.
+    """
+    import hashlib
+
+    import requests
+
+    dest = pathlib.Path(dest)
+    if not dest.exists():
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        response = requests.get(config.ATB_URL, timeout=300)
+        response.raise_for_status()
+        dest.write_bytes(response.content)
+    digest = hashlib.sha256(dest.read_bytes()).hexdigest()
+    if digest != config.ATB_SHA256:
+        raise RuntimeError(f"{dest.name}: SHA-256 {digest[:16]}… differs from the recorded {config.ATB_SHA256[:16]}…")
+    return dest
 
 
 def atb_costs(file=RAW_ATB, year=2024, scenario="Moderate", case="Market", crp="20"):

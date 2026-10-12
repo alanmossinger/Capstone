@@ -66,7 +66,7 @@ make setup     # .venv, pinned packages, Jupyter kernel "queue-survival"
 make all       # notebooks 01 → 09, then 01b and 11 → 20, stopping at the first error
 make v3        # only the portfolio layer (01b, 11 → 19)
 make test      # pytest
-make report    # report/report.pdf from report/*.md (needs pandoc and typst)
+make report    # report/report.pdf and report/report.docx from report/report.md + references.md (needs pandoc and typst)
 ```
 
 Each step also has its own target (`make data`, `make clean`, `make explore`, …;
@@ -84,8 +84,8 @@ src/         small helper package used by the notebooks (paths, config, data acc
 data/        raw/ (not committed) · interim/ (not committed) · processed/ (small final tables)
 results/     every number the report cites, written by the notebooks
 figures/     every figure, PNG + SVG; figures/<notebook>/ holds each notebook's exploratory figures
-report/      report.md, references.md, appendix.md, figure_notes.md (caption stubs from the notebooks);
-             `make report` builds report.pdf (needs pandoc and typst)
+report/      report.md, references.md, playbooks.md, figure_notes.md (caption stubs from the notebooks);
+             `make report` builds report.pdf and report.docx (needs pandoc and typst)
 docs/        journal.md (work log), decisions.md, data_readiness.md, mentor_feedback.md
 tests/       pytest checks on the audit, cleaning, features, metrics, baselines, drift, landmarks, value and the book
 ```

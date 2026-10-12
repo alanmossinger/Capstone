@@ -601,7 +601,7 @@ cohort_mw,"348,901",348901.41776,results/expected_value_by_request.csv,test coho
 ev_median,$5.5,5459652.79724217,results/expected_value_by_request.csv,"median expected value per request, repaired base, $M"
 sens_spearman_min,0.97,0.973,results/value_sensitivity.csv,lowest Spearman correlation across value cases
 sens_overlap_low,90%,0.9026548672566372,results/value_sensitivity.csv,"top-decile overlap, low vs base"
-n_assumptions,15,15,results/value_assumptions.csv,rows in the assumption table
+n_assumptions,22,22,results/value_assumptions.csv,rows in the assumption table
 ms_miso_usable,"5,169",5169,results/miso_spp_samples.csv,MISO usable requests
 ms_miso_test,737,737,results/miso_spp_samples.csv,MISO test requests
 ms_miso_ops,54,54,results/miso_spp_samples.csv,MISO test operations within 5 years
@@ -943,6 +943,34 @@ ae_14_value,150000,150000,results/value_assumptions.csv,E row 14 value
 ae_14_low,50000,50000,results/value_assumptions.csv,E row 14 low
 ae_14_high,500000,500000,results/value_assumptions.csv,E row 14 high
 ae_14_source,assumption,assumption,results/value_assumptions.csv,E row 14 source
+ae_15_value,"NREL ATB 2024 v3, Moderate / Market / 20-year CRP, one class per technology (src/value.ATB_MAP); 2022 dollars","NREL ATB 2024 v3, Moderate / Market / 20-year CRP, one class per technology (src/value.ATB_MAP); 2022 dollars",results/value_assumptions.csv,E row 15 value
+ae_15_low,,nan,results/value_assumptions.csv,E row 15 low
+ae_15_high,,nan,results/value_assumptions.csv,E row 15 high
+ae_15_source,"data/raw/atb/ATBe_2024_v3.parquet (OEDI data lake, downloaded 2026-10-12)","data/raw/atb/ATBe_2024_v3.parquet (OEDI data lake, downloaded 2026-10-12)",results/value_assumptions.csv,E row 15 source
+ae_16_value,"{'Solar': 0.266, 'Solar+Battery': 0.28, 'Wind': 0.455, 'Offshore Wind': 0.461, 'Battery': 0.0, 'Gas': 0.376, 'Other': 0.3}","{'Solar': 0.266, 'Solar+Battery': 0.28, 'Wind': 0.455, 'Offshore Wind': 0.461, 'Battery': 0.0, 'Gas': 0.376, 'Other': 0.3}",results/value_assumptions.csv,E row 16 value
+ae_16_low,,nan,results/value_assumptions.csv,E row 16 low
+ae_16_high,,nan,results/value_assumptions.csv,E row 16 high
+ae_16_source,"ATB 2024 class CF for solar, hybrid, wind, offshore; EIA fleet CF for gas; section 3 assumption for Other","ATB 2024 class CF for solar, hybrid, wind, offshore; EIA fleet CF for gas; section 3 assumption for Other",results/value_assumptions.csv,E row 16 source
+ae_17_value,3.5,3.5,results/value_assumptions.csv,E row 17 value
+ae_17_low,5.0,5.0,results/value_assumptions.csv,E row 17 low
+ae_17_high,2.5,2.5,results/value_assumptions.csv,E row 17 high
+ae_17_source,assumption; Henry Hub traded between about $2 and $6 over 2017–2024,assumption; Henry Hub traded between about $2 and $6 over 2017–2024,results/value_assumptions.csv,E row 17 source
+ae_18_value,"30% of CAPEX for Solar, Solar+Battery, Battery, Offshore Wind in service by 2027; wind takes the production credit instead","30% of CAPEX for Solar, Solar+Battery, Battery, Offshore Wind in service by 2027; wind takes the production credit instead",results/value_assumptions.csv,E row 18 value
+ae_18_low,0 after the deadline,0 after the deadline,results/value_assumptions.csv,E row 18 low
+ae_18_high,,nan,results/value_assumptions.csv,E row 18 high
+ae_18_source,IRC §48E base rate; deadline as the production credit (IRS Notice 2025-42),IRC §48E base rate; deadline as the production credit (IRS Notice 2025-42),results/value_assumptions.csv,E row 18 source
+ae_19_value,first 10 operating years,first 10 operating years,results/value_assumptions.csv,E row 19 value
+ae_19_low,,nan,results/value_assumptions.csv,E row 19 low
+ae_19_high,,nan,results/value_assumptions.csv,E row 19 high
+ae_19_source,IRC §45Y,IRC §45Y,results/value_assumptions.csv,E row 19 source
+ae_20_value,8%,8%,results/value_assumptions.csv,E row 20 value
+ae_20_low,10%,10%,results/value_assumptions.csv,E row 20 low
+ae_20_high,6%,6%,results/value_assumptions.csv,E row 20 high
+ae_20_source,"assumption; reported at 6%, 8% and 10%","assumption; reported at 6%, 8% and 10%",results/value_assumptions.csv,E row 20 source
+ae_21_value,20 years,20 years,results/value_assumptions.csv,E row 21 value
+ae_21_low,,nan,results/value_assumptions.csv,E row 21 low
+ae_21_high,,nan,results/value_assumptions.csv,E row 21 high
+ae_21_source,ATB 20-year cost-recovery period,ATB 20-year cost-recovery period,results/value_assumptions.csv,E row 21 source
 af_0_requests,"2,064",2064,results/landmark_coverage.csv,F row 0 requests
 af_0_large,"1,644",1644,results/landmark_coverage.csv,F row 0 ≥ 20 MW
 af_0_ops1,40,40,results/landmark_coverage.csv,F row 0 operations within 1
@@ -1013,3 +1041,553 @@ a4_6_diff,"+365 [−337, +846]","(365.3100000000002, -337.20274999999987, 846.36
 a4_7_diff,"+498 [−871, +1,238]","(498.4499999999998, -871.1514999999999, 1237.5815000000005)",results/success_criteria_v4_scored.csv,A4 row 7: M − E
 a4_8_intercept,"−0.44 [−0.59, −0.28]","(-0.4379767570469098, -0.5908161363454739, -0.2849358476769875)",results/success_criteria_v4_scored.csv,A4 row 8: repaired intercept
 a4_9_intercept,"−0.50 [−0.68, −0.32]","(-0.4953322241131015, -0.6811455814965313, -0.3192377281002943)",results/success_criteria_v4_scored.csv,A4 row 9: repaired intercept
+drv_n,"5,497",5497,results/drivers_5yr.csv,entrants 2010–2019 in the drivers cohort
+drv_size_pjm_lt5,24%,0.2441860465116279,results/drivers_5yr.csv,PJM <5 MW: five-year completion
+drv_size_pjm_ge500,4%,0.0441988950276243,results/drivers_5yr.csv,PJM ≥500 MW: five-year completion
+drv_size_pjm_200,4%,0.0403587443946188,results/drivers_5yr.csv,PJM 200–<500 MW: five-year completion
+drv_size_caiso_lt5,14%,0.1388888888888889,results/drivers_5yr.csv,CAISO <5 MW: five-year completion
+drv_size_ercot_ge500,11%,0.108695652173913,results/drivers_5yr.csv,ERCOT ≥500 MW: five-year completion
+drv_size_ercot_100,23%,0.2342657342657342,results/drivers_5yr.csv,ERCOT 100–<200 MW: five-year completion
+drv_tech_pjm_gas,32%,0.3216783216783216,results/drivers_5yr.csv,PJM Gas: five-year completion
+drv_tech_pjm_gas_n,572,572,results/drivers_5yr.csv,its n
+drv_tech_ercot_gas,24%,0.2446808510638297,results/drivers_5yr.csv,ERCOT Gas: five-year completion
+drv_tech_ercot_gas_n,94,94,results/drivers_5yr.csv,its n
+drv_tech_pjm_solar,9%,0.094081942336874,results/drivers_5yr.csv,PJM Solar: five-year completion
+drv_tech_pjm_solar_n,1977,1977,results/drivers_5yr.csv,its n
+drv_tech_ercot_solar,12%,0.1246943765281173,results/drivers_5yr.csv,ERCOT Solar: five-year completion
+drv_tech_ercot_solar_n,409,409,results/drivers_5yr.csv,its n
+drv_tech_caiso_solar,4%,0.0418118466898954,results/drivers_5yr.csv,CAISO Solar: five-year completion
+drv_tech_caiso_solar_n,574,574,results/drivers_5yr.csv,its n
+drv_tech_pjm_batt,7%,0.0696864111498257,results/drivers_5yr.csv,PJM Battery: five-year completion
+drv_tech_pjm_batt_n,287,287,results/drivers_5yr.csv,its n
+drv_tech_ercot_wind,26%,0.2613240418118467,results/drivers_5yr.csv,ERCOT Wind: five-year completion
+drv_tech_ercot_wind_n,287,287,results/drivers_5yr.csv,its n
+drv_tech_caiso_hyb,0.5%,0.0046728971962616,results/drivers_5yr.csv,CAISO Solar+Battery: five-year completion
+drv_tech_caiso_hyb_n,214,214,results/drivers_5yr.csv,its n
+drv_tech_pjm_hyb,5%,0.053763440860215,results/drivers_5yr.csv,PJM Solar+Battery: five-year completion
+drv_tech_pjm_hyb_n,93,93,results/drivers_5yr.csv,its n
+drv_tech_pjm_off,0.0%,0.0,results/drivers_5yr.csv,PJM Offshore Wind: five-year completion
+drv_tech_pjm_off_n,37,37,results/drivers_5yr.csv,its n
+drv_queue_pjm_q1,23%,0.2251461988304093,results/drivers_5yr.csv,PJM queue fifth 1: five-year completion
+drv_queue_pjm_q5,10%,0.097953216374269,results/drivers_5yr.csv,PJM queue fifth 5: five-year completion
+drv_crowd_pjm_c0,19%,0.1903520208604954,results/drivers_5yr.csv,PJM county crowding 0: five-year completion
+drv_crowd_pjm_c11,10%,0.0993227990970654,results/drivers_5yr.csv,PJM county crowding 11+: five-year completion
+drv_service_pjm_nris,14%,0.1429043996030433,results/drivers_5yr.csv,PJM NRIS: five-year completion
+drv_service_pjm_eris,13%,0.1316455696202531,results/drivers_5yr.csv,PJM ERIS: five-year completion
+drv_ia_ercot_in2,63%,0.6330275229357798,results/drivers_5yr.csv,"ERCOT, agreement signed within 2 years: five-year completion"
+drv_ia_ercot_in2_n,218,218,results/drivers_5yr.csv,its n
+drv_ia_ercot_none,0.8%,0.0082644628099173,results/drivers_5yr.csv,"ERCOT, agreement not dated: five-year completion"
+drv_ia_ercot_none_n,484,484,results/drivers_5yr.csv,its n
+drv_ia_ercot_later,18%,0.1781609195402299,results/drivers_5yr.csv,"ERCOT, agreement signed later: five-year completion"
+drv_ia_ercot_later_n,174,174,results/drivers_5yr.csv,its n
+drv_ia_caiso_later,11%,0.1058201058201058,results/drivers_5yr.csv,"CAISO, agreement signed later: five-year completion"
+drv_ia_caiso_later_n,189,189,results/drivers_5yr.csv,its n
+drv_ia_caiso_none,1.5%,0.0150753768844221,results/drivers_5yr.csv,"CAISO, agreement not dated: five-year completion"
+drv_ia_caiso_none_n,995,995,results/drivers_5yr.csv,its n
+hz_wd_caiso_1,48%,0.4796342477140482,results/hazards_by_queue_year.csv,CAISO year 1: withdrawal hazard
+hz_wd_caiso_2,31%,0.3065810593900481,results/hazards_by_queue_year.csv,CAISO year 2: withdrawal hazard
+hz_wd_pjm_1,31%,0.3127559976594499,results/hazards_by_queue_year.csv,PJM year 1: withdrawal hazard
+hz_wd_pjm_2,21%,0.2054553453585569,results/hazards_by_queue_year.csv,PJM year 2: withdrawal hazard
+hz_wd_ercot_1,7%,0.071917808219178,results/hazards_by_queue_year.csv,ERCOT year 1: withdrawal hazard
+hz_wd_ercot_5,16%,0.1633466135458167,results/hazards_by_queue_year.csv,ERCOT year 5: withdrawal hazard
+hz_wd_ercot_7,20%,0.2025316455696202,results/hazards_by_queue_year.csv,ERCOT year 7: withdrawal hazard
+hz_wd_caiso_5,6%,0.060200668896321,results/hazards_by_queue_year.csv,CAISO year 5: withdrawal hazard
+hz_op_ercot_5,11%,0.1095617529880478,results/hazards_by_queue_year.csv,ERCOT year 5: operation hazard
+hz_op_caiso_5,8%,0.0769230769230769,results/hazards_by_queue_year.csv,CAISO year 5: operation hazard
+hz_op_pjm_7,20%,0.1956521739130435,results/hazards_by_queue_year.csv,PJM year 7: operation hazard
+stage_caiso_sis,82%,0.8197242841993637,results/exit_stage.csv,CAISO: share of withdrawals leaving during the system impact study
+stage_pjm_sis,42%,0.4155172413793103,results/exit_stage.csv,PJM: share of withdrawals leaving during the system impact study
+stage_pjm_feas,27%,0.2672413793103448,results/exit_stage.csv,PJM: share of withdrawals leaving during the feasibility study
+stage_ercot_fac,87%,0.8675213675213675,results/exit_stage.csv,ERCOT: share of withdrawals leaving during the facilities study
+stage_ercot_ia,13%,0.1324786324786324,results/exit_stage.csv,ERCOT: share of withdrawals leaving during the agreement executed
+stage_pjm_ia,6%,0.0620689655172413,results/exit_stage.csv,PJM: share of withdrawals leaving during the agreement executed
+exit_years_caiso_sis,1.0,0.971937029431896,results/exit_timing.csv,"CAISO: median years to withdrawal, system impact study"
+exit_years_pjm_sis,1.9,1.8590006844626967,results/exit_timing.csv,"PJM: median years to withdrawal, system impact study"
+exit_years_pjm_feas,0.6,0.5859000684462696,results/exit_timing.csv,"PJM: median years to withdrawal, feasibility study"
+exit_years_ercot_fac,3.4,3.444216290212184,results/exit_timing.csv,"ERCOT: median years to withdrawal, facilities study"
+exit_years_ercot_ia,5.5,5.508555783709788,results/exit_timing.csv,"ERCOT: median years to withdrawal, agreement executed"
+hold_ercot_0,7%,0.0742009132420091,results/completion_given_survival.csv,ERCOT: share operating within the next 3 years after surviving 0 years
+hold_ercot_2,21%,0.2138964577656675,results/completion_given_survival.csv,ERCOT: share operating within the next 3 years after surviving 2 years
+hold_pjm_0,9%,0.0886483323581041,results/completion_given_survival.csv,PJM: share operating within the next 3 years after surviving 0 years
+hold_pjm_2,16%,0.163375224416517,results/completion_given_survival.csv,PJM: share operating within the next 3 years after surviving 2 years
+hold_caiso_0,1.0%,0.0099750623441396,results/completion_given_survival.csv,CAISO: share operating within the next 3 years after surviving 0 years
+hold_caiso_2,10%,0.0974477958236658,results/completion_given_survival.csv,CAISO: share operating within the next 3 years after surviving 2 years
+seg_S1_fit,47%,0.4661016949152542,results/segments.csv,S1 (not CAISO; not Solar; ≤ 66 MW; Gas): fitting-cohort rate
+seg_S1_test,48%,0.4787234042553192,results/segments.csv,S1: 2017–2019 rate
+seg_S1_n_test,94,94,results/segments.csv,S1: 2017–2019 requests
+seg_S2_fit,28%,0.2794759825327511,results/segments.csv,S2 (not CAISO; not Solar; > 66 MW; ERCOT): fitting-cohort rate
+seg_S2_test,23%,0.2317880794701986,results/segments.csv,S2: 2017–2019 rate
+seg_S2_n_test,151,151,results/segments.csv,S2: 2017–2019 requests
+seg_S3_fit,24%,0.2446236559139785,results/segments.csv,S3 (not CAISO; not Solar; ≤ 66 MW; not Gas): fitting-cohort rate
+seg_S3_test,14%,0.1386554621848739,results/segments.csv,S3: 2017–2019 rate
+seg_S3_n_test,238,238,results/segments.csv,S3: 2017–2019 requests
+seg_S4_fit,19%,0.1895043731778425,results/segments.csv,S4 (not CAISO; Solar; no earlier request in county): fitting-cohort rate
+seg_S4_test,6%,0.0617283950617283,results/segments.csv,S4: 2017–2019 rate
+seg_S4_n_test,243,243,results/segments.csv,S4: 2017–2019 requests
+seg_S5_fit,14%,0.1372549019607843,results/segments.csv,S5 (not CAISO; Solar; 1+ earlier requests in county; ≤ 8 MW): fitting-cohort rate
+seg_S5_test,19%,0.1944444444444444,results/segments.csv,S5: 2017–2019 rate
+seg_S5_n_test,108,108,results/segments.csv,S5: 2017–2019 requests
+seg_S6_fit,9%,0.0859598853868194,results/segments.csv,S6 (not CAISO; not Solar; > 66 MW; not ERCOT): fitting-cohort rate
+seg_S6_test,5%,0.0502092050209205,results/segments.csv,S6: 2017–2019 rate
+seg_S6_n_test,239,239,results/segments.csv,S6: 2017–2019 requests
+seg_S7_fit,9%,0.0851063829787234,results/segments.csv,S7 (CAISO; ≤ 25 MW): fitting-cohort rate
+seg_S7_test,20%,0.2,results/segments.csv,S7: 2017–2019 rate
+seg_S7_n_test,20,20,results/segments.csv,S7: 2017–2019 requests
+seg_S8_fit,7%,0.0737864077669902,results/segments.csv,S8 (not CAISO; Solar; 1+ earlier requests in county; > 8 MW): fitting-cohort rate
+seg_S8_test,6%,0.0642939150401837,results/segments.csv,S8: 2017–2019 rate
+seg_S8_n_test,871,871,results/segments.csv,S8: 2017–2019 requests
+seg_S9_fit,3%,0.0256410256410256,results/segments.csv,S9 (CAISO; > 25 MW; ≤ 5 earlier requests in county): fitting-cohort rate
+seg_S9_test,2%,0.0246913580246913,results/segments.csv,S9: 2017–2019 rate
+seg_S9_n_test,162,162,results/segments.csv,S9: 2017–2019 requests
+seg_S10_fit,0.4%,0.003610108303249,results/segments.csv,S10 (CAISO; > 25 MW; 6+ earlier requests in county): fitting-cohort rate
+seg_S10_test,1.4%,0.0140845070422535,results/segments.csv,S10: 2017–2019 rate
+seg_S10_n_test,142,142,results/segments.csv,S10: 2017–2019 requests
+seg_count,10,10,results/segments.csv,segments
+seg_fit_n,"3,229",3229,results/segments.csv,fitting-cohort requests
+seg_rho,0.77,0.7696969696969697,results/segments.csv,"Spearman rank correlation of segment rates, fitting vs later cohort"
+seg_range,1% to 47%,"(np.float64(0.0140845070422535), np.float64(0.4661016949152542))",results/segments.csv,range of segment rates quoted in the report
+time_all_lgbm_mae,1.19,1.191731235056668,results/timing_error.csv,"all, dt_lgbm: mean absolute error, years"
+time_all_lgbm_within1,52%,0.5185185185185185,results/timing_error.csv,share within a year
+time_all_lgbm_signed,+0.44,0.440520561994159,results/timing_error.csv,median signed error
+time_all_median_mae,1.59,1.5925257595346576,results/timing_error.csv,"all, training median by region: mean absolute error, years"
+time_all_median_within1,33%,0.3333333333333333,results/timing_error.csv,share within a year
+time_all_median_signed,−0.48,-0.4832306639288162,results/timing_error.csv,median signed error
+time_pjm_lgbm_mae,1.07,1.0653873920974095,results/timing_error.csv,"PJM, dt_lgbm: mean absolute error, years"
+time_pjm_lgbm_within1,58%,0.578125,results/timing_error.csv,share within a year
+time_pjm_lgbm_signed,+0.27,0.2685302341391313,results/timing_error.csv,median signed error
+time_pjm_median_mae,1.88,1.880475701574264,results/timing_error.csv,"PJM, training median by region: mean absolute error, years"
+time_pjm_median_within1,21%,0.2083333333333333,results/timing_error.csv,share within a year
+time_pjm_median_signed,−0.83,-0.8336755646817249,results/timing_error.csv,median signed error
+time_ercot_lgbm_mae,1.39,1.3926596563483475,results/timing_error.csv,"ERCOT, dt_lgbm: mean absolute error, years"
+time_ercot_lgbm_within1,41%,0.4130434782608695,results/timing_error.csv,share within a year
+time_ercot_lgbm_signed,+1.00,0.9957073333437902,results/timing_error.csv,median signed error
+time_ercot_median_mae,1.00,1.0022914620718388,results/timing_error.csv,"ERCOT, training median by region: mean absolute error, years"
+time_ercot_median_within1,59%,0.5869565217391305,results/timing_error.csv,share within a year
+time_ercot_median_signed,−0.51,-0.506502395619439,results/timing_error.csv,median signed error
+time_n_built,297,297,results/timing_error.csv,test requests built within 7 years
+time_ercot_median_obs,3.8,3.845311430527036,results/timing_error.csv,ERCOT: median observed years to operation among the built
+time_ercot_bench,3.3,3.338809034907597,results/timing_error.csv,ERCOT: training-cohort median years to operation
+t_star,T3,T3,results/tournament_choice.json,the learner chosen on 2016
+t_brier16_k0,0.0996,0.099603,results/tournament_choice.json,K0: mean 2016 Brier
+t_brier16_t1,0.1034,0.103364,results/tournament_choice.json,T1: mean 2016 Brier
+t_brier16_t2,0.1024,0.102379,results/tournament_choice.json,T2: mean 2016 Brier
+t_brier16_t3,0.0995,0.09953,results/tournament_choice.json,T3: mean 2016 Brier
+c18_verdict,FAIL,FAIL,results/tournament_criteria.csv,C18 verdict
+c18_lines,3 of 4,3,results/tournament_criteria.csv,C18 lines passed
+c19_verdict,FAIL,FAIL,results/tournament_criteria.csv,C19 verdict
+c19_lines,2 of 4,2,results/tournament_criteria.csv,C19 lines passed
+t_big_lgbm_uno3_diff,+0.015,0.0149659225072448,results/tournament.csv,"T* − dt_lgbm, uno_c, 3 y, ≥ 20 MW"
+t_big_lgbm_uno3_iv,"[+0.002, +0.028]","(np.float64(0.0024448533769371), np.float64(0.0284333591386051))",results/tournament.csv,its interval
+t_big_lgbm_uno5_diff,−0.007,-0.0071336065959147,results/tournament.csv,"T* − dt_lgbm, uno_c, 5 y, ≥ 20 MW"
+t_big_lgbm_uno5_iv,"[−0.020, +0.005]","(np.float64(-0.0203100842655871), np.float64(0.0052423675403035))",results/tournament.csv,its interval
+t_big_fair_uno3_diff,+0.011,0.0109007727809381,results/tournament.csv,"T* − fair_baseline, uno_c, 3 y, ≥ 20 MW"
+t_big_fair_uno3_iv,"[−0.032, +0.060]","(np.float64(-0.0315923741326479), np.float64(0.0597373577093276))",results/tournament.csv,its interval
+t_big_fair_uno5_diff,−0.025,-0.0248265751422234,results/tournament.csv,"T* − fair_baseline, uno_c, 5 y, ≥ 20 MW"
+t_big_fair_uno5_iv,"[−0.055, +0.005]","(np.float64(-0.054749909732107), np.float64(0.0046615104765465))",results/tournament.csv,its interval
+t_all_lgbm_uno5_diff,−0.014,-0.0138358114909042,results/tournament.csv,"T* − dt_lgbm, uno_c, 5 y, all sizes"
+t_all_lgbm_uno5_iv,"[−0.024, −0.005]","(np.float64(-0.023670616578295), np.float64(-0.0052500806951609))",results/tournament.csv,its interval
+t_all_lgbm_uno7_diff,−0.016,-0.0159158998130303,results/tournament.csv,"T* − dt_lgbm, uno_c, 7 y, all sizes"
+t_all_lgbm_uno7_iv,"[−0.026, −0.007]","(np.float64(-0.0261346218693193), np.float64(-0.0071229737165068))",results/tournament.csv,its interval
+t_t1_uno5,0.66,0.6580152781073805,results/tournament_all_candidates_test.csv,"T1: Uno's C at 5 years, all sizes"
+t_t2_uno5,0.68,0.6800742219785435,results/tournament_all_candidates_test.csv,"T2: Uno's C at 5 years, all sizes"
+t_lgbm_uno5,0.76,0.7597380545167388,results/tournament_all_candidates_test.csv,"dt_lgbm: Uno's C at 5 years, all sizes"
+npv_2024_ercot_wind,0.34,0.34469920000000004,results/npv_table.csv,"NPV per MW, $M, Wind ERCOT, COD 2024, base"
+npv_2024_ercot_solar,−0.37,-0.36518870000000003,results/npv_table.csv,"NPV per MW, $M, Solar ERCOT, COD 2024, base"
+npv_2024_ercot_gas,−0.94,-0.9445271999999999,results/npv_table.csv,"NPV per MW, $M, Gas ERCOT, COD 2024, base"
+npv_2024_ercot_batt,−1.79,-1.7911653,results/npv_table.csv,"NPV per MW, $M, Battery ERCOT, COD 2024, base"
+npv_2024_ercot_hyb,−1.28,-1.2801595,results/npv_table.csv,"NPV per MW, $M, Solar+Battery ERCOT, COD 2024, base"
+npv_2024_ercot_off,−3.31,-3.3106543,results/npv_table.csv,"NPV per MW, $M, Offshore Wind ERCOT, COD 2024, base"
+npv_2024_pjm_wind,1.18,1.1831977,results/npv_table.csv,"NPV per MW, $M, Wind PJM, COD 2024, base"
+npv_2024_pjm_solar,0.03,0.028402200000000002,results/npv_table.csv,"NPV per MW, $M, Solar PJM, COD 2024, base"
+npv_2024_pjm_gas,0.22,0.2166844,results/npv_table.csv,"NPV per MW, $M, Gas PJM, COD 2024, base"
+npv_2024_pjm_batt,−1.27,-1.2714469,results/npv_table.csv,"NPV per MW, $M, Battery PJM, COD 2024, base"
+npv_2024_pjm_hyb,−0.64,-0.6410003000000001,results/npv_table.csv,"NPV per MW, $M, Solar+Battery PJM, COD 2024, base"
+npv_2024_pjm_off,−2.21,-2.2083942999999997,results/npv_table.csv,"NPV per MW, $M, Offshore Wind PJM, COD 2024, base"
+npv_2024_caiso_wind,0.09,0.0902897,results/npv_table.csv,"NPV per MW, $M, Wind CAISO, COD 2024, base"
+npv_2024_caiso_solar,−0.61,-0.6101040999999999,results/npv_table.csv,"NPV per MW, $M, Solar CAISO, COD 2024, base"
+npv_2024_caiso_gas,−0.91,-0.9125518,results/npv_table.csv,"NPV per MW, $M, Gas CAISO, COD 2024, base"
+npv_2024_caiso_batt,−1.27,-1.2727671,results/npv_table.csv,"NPV per MW, $M, Battery CAISO, COD 2024, base"
+npv_2024_caiso_hyb,−1.36,-1.3551123,results/npv_table.csv,"NPV per MW, $M, Solar+Battery CAISO, COD 2024, base"
+npv_2024_caiso_off,−3.39,-3.3860984,results/npv_table.csv,"NPV per MW, $M, Offshore Wind CAISO, COD 2024, base"
+npv_positive_2024,5,5,results/npv_table.csv,"technology-region pairs with positive base NPV, COD 2024"
+npv_2028_ercot_wind,−0.35,-0.3457929,results/npv_table.csv,"NPV per MW, $M, Wind ERCOT, COD 2028, base"
+npv_2028_ercot_solar,−0.80,-0.8043308,results/npv_table.csv,"NPV per MW, $M, Solar ERCOT, COD 2028, base"
+npv_2028_ercot_gas,−0.90,-0.8981693000000001,results/npv_table.csv,"NPV per MW, $M, Gas ERCOT, COD 2028, base"
+npv_2028_ercot_batt,−2.37,-2.3726263999999997,results/npv_table.csv,"NPV per MW, $M, Battery ERCOT, COD 2028, base"
+npv_2028_ercot_hyb,−1.99,-1.9876519,results/npv_table.csv,"NPV per MW, $M, Solar+Battery ERCOT, COD 2028, base"
+npv_2028_ercot_off,−5.06,-5.0591826,results/npv_table.csv,"NPV per MW, $M, Offshore Wind ERCOT, COD 2028, base"
+npv_2028_pjm_wind,0.55,0.5509613000000001,results/npv_table.csv,"NPV per MW, $M, Wind PJM, COD 2028, base"
+npv_2028_pjm_solar,−0.39,-0.3887204,results/npv_table.csv,"NPV per MW, $M, Solar PJM, COD 2028, base"
+npv_2028_pjm_gas,0.36,0.3600274,results/npv_table.csv,"NPV per MW, $M, Gas PJM, COD 2028, base"
+npv_2028_pjm_batt,−1.79,-1.7881087,results/npv_table.csv,"NPV per MW, $M, Battery PJM, COD 2028, base"
+npv_2028_pjm_hyb,−1.30,-1.2990374,results/npv_table.csv,"NPV per MW, $M, Solar+Battery PJM, COD 2028, base"
+npv_2028_pjm_off,−3.87,-3.8693508,results/npv_table.csv,"NPV per MW, $M, Offshore Wind PJM, COD 2028, base"
+npv_2028_caiso_wind,−0.66,-0.6638347,results/npv_table.csv,"NPV per MW, $M, Wind CAISO, COD 2028, base"
+npv_2028_caiso_solar,−1.09,-1.0864361999999999,results/npv_table.csv,"NPV per MW, $M, Solar CAISO, COD 2028, base"
+npv_2028_caiso_gas,−0.93,-0.9318976999999999,results/npv_table.csv,"NPV per MW, $M, Gas CAISO, COD 2028, base"
+npv_2028_caiso_batt,−1.85,-1.8542281999999999,results/npv_table.csv,"NPV per MW, $M, Battery CAISO, COD 2028, base"
+npv_2028_caiso_hyb,−2.10,-2.1041689,results/npv_table.csv,"NPV per MW, $M, Solar+Battery CAISO, COD 2028, base"
+npv_2028_caiso_off,−5.20,-5.203166700000001,results/npv_table.csv,"NPV per MW, $M, Offshore Wind CAISO, COD 2028, base"
+npv_positive_2028,2,2,results/npv_table.csv,"technology-region pairs with positive base NPV, COD 2028"
+npv_pjm_gas_low,−1.1,-1066330.9,results/npv_table.csv,PJM gas 2024: low case $M
+npv_pjm_gas_high,1.4,1397370.6,results/npv_table.csv,PJM gas 2024: high case $M
+be_solar,$57,56.8,results/npv_table.csv,"break-even flat price, $/MWh, Solar"
+be_wind,$51,50.8,results/npv_table.csv,"break-even flat price, $/MWh, Wind"
+be_gas,$80,80.2,results/npv_table.csv,"break-even flat price, $/MWh, Gas"
+be_hyb,$97,96.6,results/npv_table.csv,"break-even flat price, $/MWh, Solar+Battery"
+captured_ercot_solar,$30,29.8,results/npv_table.csv,"captured energy price, $/MWh, Solar ERCOT, 2024"
+captured_ercot_wind,$57,57.3,results/npv_table.csv,"captured energy price, $/MWh, Wind ERCOT, 2024"
+captured_pjm_solar,$40,39.5,results/npv_table.csv,"captured energy price, $/MWh, Solar PJM, 2024"
+captured_pjm_wind,$68,67.8,results/npv_table.csv,"captured energy price, $/MWh, Wind PJM, 2024"
+captured_caiso_solar,$35,34.7,results/npv_table.csv,"captured energy price, $/MWh, Solar CAISO, 2024"
+captured_caiso_wind,$66,66.4,results/npv_table.csv,"captured energy price, $/MWh, Wind CAISO, 2024"
+capex_solar,"$1,551",1551.273,results/atb_costs.csv,Solar: ATB CAPEX $/kW
+capex_wind,"$1,676",1676.095,results/atb_costs.csv,Wind: ATB CAPEX $/kW
+capex_gas,"$1,475",1475.294,results/atb_costs.csv,Gas: ATB CAPEX $/kW
+capex_batt,"$1,938",1938.204,results/atb_costs.csv,Battery: ATB CAPEX $/kW
+enpv_median,−0.3,-0.34465717366064946,results/npv_by_request.csv,"median expected NPV at entry, $M, level repaired, base"
+enpv_mean,−7,-7287537.844945177,results/npv_by_request.csv,"mean expected NPV at entry, $M"
+npv_pos_share_ercot,22%,0.22129436325678498,results/npv_by_request.csv,ERCOT: share of test requests whose plant has a positive NPV if built in year 3
+npv_pos_share_pjm,42%,0.4150170648464164,results/npv_by_request.csv,PJM: share of test requests whose plant has a positive NPV if built in year 3
+npv_pos_share_caiso,7%,0.06790123456790123,results/npv_by_request.csv,CAISO: share of test requests whose plant has a positive NPV if built in year 3
+enpv_wind_ercot,14,14.35059915568184,results/npv_by_request.csv,"ERCOT wind: median expected NPV at entry, $M"
+enpv_wind_pjm,14,14.024954636606571,results/npv_by_request.csv,"PJM wind: median expected NPV at entry, $M"
+enpv_wind_caiso,0.9,0.9084433249411388,results/npv_by_request.csv,"CAISO wind: median expected NPV at entry, $M"
+g1_exit_h2_n,"1,468",1468,results/portfolio_review_summary.csv,"G1 entry, h=2, exit: requests"
+g1_exit_h2_share,7%,0.0694822888283378,results/portfolio_review_summary.csv,"G1 entry, h=2, exit: operated share"
+g1_exit_h2_iv,"[6%, 8%]","(0.0575669872315973, 0.0836449475309477)",results/portfolio_review_summary.csv,its Wilson interval
+g1_exit_h2_ops,102,102,results/portfolio_review_summary.csv,operations in the class
+g1_exit_h2_pool_share,45%,0.4493392070484581,results/portfolio_review_summary.csv,share of the pool's operations
+g1_exit_h2_mw,"266,131",266130.70776,results/portfolio_review_summary.csv,MW in the class
+g1_exit_h2_npv,"−8,889",-8889.0533224976,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1_hold_h2_n,693,693,results/portfolio_review_summary.csv,"G1 entry, h=2, hold: requests"
+g1_hold_h2_share,14%,0.1414141414141414,results/portfolio_review_summary.csv,"G1 entry, h=2, hold: operated share"
+g1_hold_h2_iv,"[12%, 17%]","(0.1174437256247435, 0.1693382345796988)",results/portfolio_review_summary.csv,its Wilson interval
+g1_hold_h2_ops,98,98,results/portfolio_review_summary.csv,operations in the class
+g1_hold_h2_pool_share,43%,0.4317180616740088,results/portfolio_review_summary.csv,share of the pool's operations
+g1_hold_h2_mw,"59,055",59055.055,results/portfolio_review_summary.csv,MW in the class
+g1_hold_h2_npv,−537,-537.2334413492033,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1_invest_h2_n,107,107,results/portfolio_review_summary.csv,"G1 entry, h=2, invest: requests"
+g1_invest_h2_share,25%,0.2523364485981308,results/portfolio_review_summary.csv,"G1 entry, h=2, invest: operated share"
+g1_invest_h2_iv,"[18%, 34%]","(0.1796031695000159, 0.3422370060297489)",results/portfolio_review_summary.csv,its Wilson interval
+g1_invest_h2_ops,27,27,results/portfolio_review_summary.csv,operations in the class
+g1_invest_h2_pool_share,12%,0.118942731277533,results/portfolio_review_summary.csv,share of the pool's operations
+g1_invest_h2_mw,"23,716",23715.654999999995,results/portfolio_review_summary.csv,MW in the class
+g1_invest_h2_npv,"+1,457",1456.828376347329,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1_exit_n,"1,468",1468,results/portfolio_review_summary.csv,"G1 entry, h=3, exit: requests"
+g1_exit_share,7%,0.0694822888283378,results/portfolio_review_summary.csv,"G1 entry, h=3, exit: operated share"
+g1_exit_iv,"[6%, 8%]","(0.0575669872315973, 0.0836449475309477)",results/portfolio_review_summary.csv,its Wilson interval
+g1_exit_ops,102,102,results/portfolio_review_summary.csv,operations in the class
+g1_exit_pool_share,45%,0.4493392070484581,results/portfolio_review_summary.csv,share of the pool's operations
+g1_exit_mw,"266,131",266130.70776,results/portfolio_review_summary.csv,MW in the class
+g1_exit_npv,"−8,889",-8889.0533224976,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1_hold_n,699,699,results/portfolio_review_summary.csv,"G1 entry, h=3, hold: requests"
+g1_hold_share,14%,0.1430615164520744,results/portfolio_review_summary.csv,"G1 entry, h=3, hold: operated share"
+g1_hold_iv,"[12%, 17%]","(0.1190531413026354, 0.1709718088426035)",results/portfolio_review_summary.csv,its Wilson interval
+g1_hold_ops,100,100,results/portfolio_review_summary.csv,operations in the class
+g1_hold_pool_share,44%,0.4405286343612334,results/portfolio_review_summary.csv,share of the pool's operations
+g1_hold_mw,"59,150",59150.08,results/portfolio_review_summary.csv,MW in the class
+g1_hold_npv,−529,-528.7277816197607,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1_invest_n,101,101,results/portfolio_review_summary.csv,"G1 entry, h=3, invest: requests"
+g1_invest_share,25%,0.2475247524752475,results/portfolio_review_summary.csv,"G1 entry, h=3, invest: operated share"
+g1_invest_iv,"[17%, 34%]","(0.1736472685476873, 0.3399046039914574)",results/portfolio_review_summary.csv,its Wilson interval
+g1_invest_ops,25,25,results/portfolio_review_summary.csv,operations in the class
+g1_invest_pool_share,11%,0.1101321585903083,results/portfolio_review_summary.csv,share of the pool's operations
+g1_invest_mw,"23,621",23620.63,results/portfolio_review_summary.csv,MW in the class
+g1_invest_npv,"+1,448",1448.322716617886,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1_exit_h5_n,"1,468",1468,results/portfolio_review_summary.csv,"G1 entry, h=5, exit: requests"
+g1_exit_h5_share,7%,0.0694822888283378,results/portfolio_review_summary.csv,"G1 entry, h=5, exit: operated share"
+g1_exit_h5_iv,"[6%, 8%]","(0.0575669872315973, 0.0836449475309477)",results/portfolio_review_summary.csv,its Wilson interval
+g1_exit_h5_ops,102,102,results/portfolio_review_summary.csv,operations in the class
+g1_exit_h5_pool_share,45%,0.4493392070484581,results/portfolio_review_summary.csv,share of the pool's operations
+g1_exit_h5_mw,"266,131",266130.70776,results/portfolio_review_summary.csv,MW in the class
+g1_exit_h5_npv,"−8,889",-8889.0533224976,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1_hold_h5_n,703,703,results/portfolio_review_summary.csv,"G1 entry, h=5, hold: requests"
+g1_hold_h5_share,15%,0.1450924608819345,results/portfolio_review_summary.csv,"G1 entry, h=5, hold: operated share"
+g1_hold_h5_iv,"[12%, 17%]","(0.1209854679457403, 0.1730572143185745)",results/portfolio_review_summary.csv,its Wilson interval
+g1_hold_h5_ops,102,102,results/portfolio_review_summary.csv,operations in the class
+g1_hold_h5_pool_share,45%,0.4493392070484581,results/portfolio_review_summary.csv,share of the pool's operations
+g1_hold_h5_mw,"59,357",59357.18,results/portfolio_review_summary.csv,MW in the class
+g1_hold_h5_npv,−500,-499.9884180657579,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1_invest_h5_n,97,97,results/portfolio_review_summary.csv,"G1 entry, h=5, invest: requests"
+g1_invest_h5_share,24%,0.2371134020618556,results/portfolio_review_summary.csv,"G1 entry, h=5, invest: operated share"
+g1_invest_h5_iv,"[16%, 33%]","(0.1635136085792717, 0.3307427300746171)",results/portfolio_review_summary.csv,its Wilson interval
+g1_invest_h5_ops,23,23,results/portfolio_review_summary.csv,operations in the class
+g1_invest_h5_pool_share,10%,0.1013215859030837,results/portfolio_review_summary.csv,share of the pool's operations
+g1_invest_h5_mw,"23,414",23413.53,results/portfolio_review_summary.csv,MW in the class
+g1_invest_h5_npv,"+1,420",1419.5833530638836,results/portfolio_review_summary.csv,"realised NPV, $M"
+g1_ercot_exit_share,15%,0.1501340482573726,results/portfolio_review_summary.csv,"G1 entry, ERCOT, exit: operated share"
+g1_ercot_exit_n,373,373,results/portfolio_review_summary.csv,requests
+g1_ercot_hold_share,0%,0.0,results/portfolio_review_summary.csv,"G1 entry, ERCOT, hold: operated share"
+g1_ercot_hold_n,9,9,results/portfolio_review_summary.csv,requests
+g1_ercot_invest_share,25%,0.2474226804123711,results/portfolio_review_summary.csv,"G1 entry, ERCOT, invest: operated share"
+g1_ercot_invest_n,97,97,results/portfolio_review_summary.csv,requests
+g1_pjm_exit_share,5%,0.0479274611398963,results/portfolio_review_summary.csv,"G1 entry, PJM, exit: operated share"
+g1_pjm_exit_n,772,772,results/portfolio_review_summary.csv,requests
+g1_pjm_hold_share,14%,0.1436865021770682,results/portfolio_review_summary.csv,"G1 entry, PJM, hold: operated share"
+g1_pjm_hold_n,689,689,results/portfolio_review_summary.csv,requests
+g1_pjm_invest_share,25%,0.25,results/portfolio_review_summary.csv,"G1 entry, PJM, invest: operated share"
+g1_pjm_invest_n,4,4,results/portfolio_review_summary.csv,requests
+g1_caiso_exit_share,3%,0.0278637770897832,results/portfolio_review_summary.csv,"G1 entry, CAISO, exit: operated share"
+g1_caiso_exit_n,323,323,results/portfolio_review_summary.csv,requests
+g1_caiso_hold_share,100%,1.0,results/portfolio_review_summary.csv,"G1 entry, CAISO, hold: operated share"
+g1_caiso_hold_n,1,1,results/portfolio_review_summary.csv,requests
+g1_caiso_invest_share,n/a,,results/portfolio_review_summary.csv,"G1 entry, CAISO, invest: operated share"
+g1_caiso_invest_n,0,0,results/portfolio_review_summary.csv,requests
+g2_exit_h2_n,630,630,results/portfolio_review_summary.csv,"G2 two years, h=2, exit: requests"
+g2_exit_h2_share,10%,0.1,results/portfolio_review_summary.csv,"G2 two years, h=2, exit: operated share"
+g2_exit_h2_iv,"[8%, 13%]","(0.0789434595319779, 0.125905196662251)",results/portfolio_review_summary.csv,its Wilson interval
+g2_exit_h2_ops,63,63,results/portfolio_review_summary.csv,operations in the class
+g2_exit_h2_pool_share,41%,0.4144736842105263,results/portfolio_review_summary.csv,share of the pool's operations
+g2_exit_h2_mw,"144,133",144133.0806,results/portfolio_review_summary.csv,MW in the class
+g2_exit_h2_npv,"−8,316",-8315.693795996869,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2_hold_sell_h2_n,621,621,results/portfolio_review_summary.csv,"G2 two years, h=2, hold or sell: requests"
+g2_hold_sell_h2_share,11%,0.1062801932367149,results/portfolio_review_summary.csv,"G2 two years, h=2, hold or sell: operated share"
+g2_hold_sell_h2_iv,"[8%, 13%]","(0.0844142747595712, 0.1329873835167022)",results/portfolio_review_summary.csv,its Wilson interval
+g2_hold_sell_h2_ops,66,66,results/portfolio_review_summary.csv,operations in the class
+g2_hold_sell_h2_pool_share,43%,0.4342105263157895,results/portfolio_review_summary.csv,share of the pool's operations
+g2_hold_sell_h2_mw,"49,288",49288.085,results/portfolio_review_summary.csv,MW in the class
+g2_hold_sell_h2_npv,+77,76.64135322235924,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2_accelerate_h2_n,47,47,results/portfolio_review_summary.csv,"G2 two years, h=2, accelerate: requests"
+g2_accelerate_h2_share,49%,0.4893617021276595,results/portfolio_review_summary.csv,"G2 two years, h=2, accelerate: operated share"
+g2_accelerate_h2_iv,"[35%, 63%]","(0.3527532433660351, 0.6275778241062712)",results/portfolio_review_summary.csv,its Wilson interval
+g2_accelerate_h2_ops,23,23,results/portfolio_review_summary.csv,operations in the class
+g2_accelerate_h2_pool_share,15%,0.1513157894736842,results/portfolio_review_summary.csv,share of the pool's operations
+g2_accelerate_h2_mw,"9,700",9699.835,results/portfolio_review_summary.csv,MW in the class
+g2_accelerate_h2_npv,"+1,234",1233.6115750381696,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2_exit_n,630,630,results/portfolio_review_summary.csv,"G2 two years, h=3, exit: requests"
+g2_exit_share,10%,0.1,results/portfolio_review_summary.csv,"G2 two years, h=3, exit: operated share"
+g2_exit_iv,"[8%, 13%]","(0.0789434595319779, 0.125905196662251)",results/portfolio_review_summary.csv,its Wilson interval
+g2_exit_ops,63,63,results/portfolio_review_summary.csv,operations in the class
+g2_exit_pool_share,41%,0.4144736842105263,results/portfolio_review_summary.csv,share of the pool's operations
+g2_exit_mw,"144,133",144133.0806,results/portfolio_review_summary.csv,MW in the class
+g2_exit_npv,"−8,316",-8315.693795996869,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2_hold_sell_n,629,629,results/portfolio_review_summary.csv,"G2 two years, h=3, hold or sell: requests"
+g2_hold_sell_share,11%,0.1096979332273449,results/portfolio_review_summary.csv,"G2 two years, h=3, hold or sell: operated share"
+g2_hold_sell_iv,"[9%, 14%]","(0.0876034809362981, 0.1365309628170834)",results/portfolio_review_summary.csv,its Wilson interval
+g2_hold_sell_ops,69,69,results/portfolio_review_summary.csv,operations in the class
+g2_hold_sell_pool_share,45%,0.4539473684210526,results/portfolio_review_summary.csv,share of the pool's operations
+g2_hold_sell_mw,"49,603",49603.0,results/portfolio_review_summary.csv,MW in the class
+g2_hold_sell_npv,+82,82.43178869742101,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2_accelerate_n,39,39,results/portfolio_review_summary.csv,"G2 two years, h=3, accelerate: requests"
+g2_accelerate_share,51%,0.5128205128205128,results/portfolio_review_summary.csv,"G2 two years, h=3, accelerate: operated share"
+g2_accelerate_iv,"[36%, 66%]","(0.3619910864569657, 0.661350712168669)",results/portfolio_review_summary.csv,its Wilson interval
+g2_accelerate_ops,20,20,results/portfolio_review_summary.csv,operations in the class
+g2_accelerate_pool_share,13%,0.131578947368421,results/portfolio_review_summary.csv,share of the pool's operations
+g2_accelerate_mw,"9,385",9384.92,results/portfolio_review_summary.csv,MW in the class
+g2_accelerate_npv,"+1,228",1227.821139563108,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2_exit_h5_n,630,630,results/portfolio_review_summary.csv,"G2 two years, h=5, exit: requests"
+g2_exit_h5_share,10%,0.1,results/portfolio_review_summary.csv,"G2 two years, h=5, exit: operated share"
+g2_exit_h5_iv,"[8%, 13%]","(0.0789434595319779, 0.125905196662251)",results/portfolio_review_summary.csv,its Wilson interval
+g2_exit_h5_ops,63,63,results/portfolio_review_summary.csv,operations in the class
+g2_exit_h5_pool_share,41%,0.4144736842105263,results/portfolio_review_summary.csv,share of the pool's operations
+g2_exit_h5_mw,"144,133",144133.0806,results/portfolio_review_summary.csv,MW in the class
+g2_exit_h5_npv,"−8,316",-8315.693795996869,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2_hold_sell_h5_n,633,633,results/portfolio_review_summary.csv,"G2 two years, h=5, hold or sell: requests"
+g2_hold_sell_h5_share,11%,0.1105845181674565,results/portfolio_review_summary.csv,"G2 two years, h=5, hold or sell: operated share"
+g2_hold_sell_h5_iv,"[9%, 14%]","(0.0884626672456169, 0.1374044871613816)",results/portfolio_review_summary.csv,its Wilson interval
+g2_hold_sell_h5_ops,70,70,results/portfolio_review_summary.csv,operations in the class
+g2_hold_sell_h5_pool_share,46%,0.4605263157894737,results/portfolio_review_summary.csv,share of the pool's operations
+g2_hold_sell_h5_mw,"49,735",49734.6,results/portfolio_review_summary.csv,MW in the class
+g2_hold_sell_h5_npv,+88,87.6281124772515,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2_accelerate_h5_n,35,35,results/portfolio_review_summary.csv,"G2 two years, h=5, accelerate: requests"
+g2_accelerate_h5_share,54%,0.5428571428571428,results/portfolio_review_summary.csv,"G2 two years, h=5, accelerate: operated share"
+g2_accelerate_h5_iv,"[38%, 70%]","(0.3818945134013751, 0.6953422636623914)",results/portfolio_review_summary.csv,its Wilson interval
+g2_accelerate_h5_ops,19,19,results/portfolio_review_summary.csv,operations in the class
+g2_accelerate_h5_pool_share,12%,0.125,results/portfolio_review_summary.csv,share of the pool's operations
+g2_accelerate_h5_mw,"9,253",9253.32,results/portfolio_review_summary.csv,MW in the class
+g2_accelerate_h5_npv,"+1,223",1222.6248157832774,results/portfolio_review_summary.csv,"realised NPV, $M"
+g2_ercot_exit_share,18%,0.1758957654723127,results/portfolio_review_summary.csv,"G2 two years, ERCOT, exit: operated share"
+g2_ercot_exit_n,307,307,results/portfolio_review_summary.csv,requests
+g2_ercot_hold_sell_share,17%,0.1666666666666666,results/portfolio_review_summary.csv,"G2 two years, ERCOT, hold or sell: operated share"
+g2_ercot_hold_sell_n,24,24,results/portfolio_review_summary.csv,requests
+g2_ercot_accelerate_share,60%,0.6,results/portfolio_review_summary.csv,"G2 two years, ERCOT, accelerate: operated share"
+g2_ercot_accelerate_n,30,30,results/portfolio_review_summary.csv,requests
+g2_pjm_exit_share,2%,0.015,results/portfolio_review_summary.csv,"G2 two years, PJM, exit: operated share"
+g2_pjm_exit_n,200,200,results/portfolio_review_summary.csv,requests
+g2_pjm_hold_sell_share,10%,0.1029900332225913,results/portfolio_review_summary.csv,"G2 two years, PJM, hold or sell: operated share"
+g2_pjm_hold_sell_n,602,602,results/portfolio_review_summary.csv,requests
+g2_pjm_accelerate_share,22%,0.2222222222222222,results/portfolio_review_summary.csv,"G2 two years, PJM, accelerate: operated share"
+g2_pjm_accelerate_n,9,9,results/portfolio_review_summary.csv,requests
+g2_caiso_exit_share,5%,0.048780487804878,results/portfolio_review_summary.csv,"G2 two years, CAISO, exit: operated share"
+g2_caiso_exit_n,123,123,results/portfolio_review_summary.csv,requests
+g2_caiso_hold_sell_share,100%,1.0,results/portfolio_review_summary.csv,"G2 two years, CAISO, hold or sell: operated share"
+g2_caiso_hold_sell_n,3,3,results/portfolio_review_summary.csv,requests
+g2_caiso_accelerate_share,n/a,,results/portfolio_review_summary.csv,"G2 two years, CAISO, accelerate: operated share"
+g2_caiso_accelerate_n,0,0,results/portfolio_review_summary.csv,requests
+g2_pool_n,"1,298",1298,results/portfolio_review_summary.csv,"the +2 pool, all sizes"
+g2_pool_ops,152,152,results/portfolio_review_summary.csv,operations within 3 years in the +2 pool
+pol_equal_n,25,25,results/policy_comparison.csv,equal regional split: requests
+pol_equal_enpv,+429,429.0267203059688,results/policy_comparison.csv,equal regional split: expected NPV $M
+pol_equal_es,−31,-31.094159313553195,results/policy_comparison.csv,equal regional split: ES95 $M
+pol_equal_pneg,5%,0.0548,results/policy_comparison.csv,equal regional split: P(NPV < 0)
+pol_equal_ops,4,4,results/policy_comparison.csv,equal regional split: realised operations
+pol_equal_mw,754,753.66,results/policy_comparison.csv,equal regional split: realised MW
+pol_equal_rnpv,+221,220.82352681530688,results/policy_comparison.csv,equal regional split: realised NPV $M
+pol_equal_conc,34%,0.3361438962269305,results/policy_comparison.csv,equal regional split: largest region share
+pol_npvdollar_n,20,20,results/policy_comparison.csv,"NPV per dollar, with caps: requests"
+pol_npvdollar_enpv,+476,475.5760836955047,results/policy_comparison.csv,"NPV per dollar, with caps: expected NPV $M"
+pol_npvdollar_es,−28,-28.29532705989572,results/policy_comparison.csv,"NPV per dollar, with caps: ES95 $M"
+pol_npvdollar_pneg,7%,0.0668,results/policy_comparison.csv,"NPV per dollar, with caps: P(NPV < 0)"
+pol_npvdollar_ops,1,1,results/policy_comparison.csv,"NPV per dollar, with caps: realised operations"
+pol_npvdollar_mw,525,525.0,results/policy_comparison.csv,"NPV per dollar, with caps: realised MW"
+pol_npvdollar_rnpv,+146,145.81431436110216,results/policy_comparison.csv,"NPV per dollar, with caps: realised NPV $M"
+pol_npvdollar_conc,69%,0.6860340921916225,results/policy_comparison.csv,"NPV per dollar, with caps: largest region share"
+pol_nocaps_n,27,27,results/policy_comparison.csv,"model expected NPV, no caps: requests"
+pol_nocaps_enpv,+593,592.8215639397092,results/policy_comparison.csv,"model expected NPV, no caps: expected NPV $M"
+pol_nocaps_es,−23,-23.23977923857472,results/policy_comparison.csv,"model expected NPV, no caps: ES95 $M"
+pol_nocaps_pneg,4%,0.035,results/policy_comparison.csv,"model expected NPV, no caps: P(NPV < 0)"
+pol_nocaps_ops,2,2,results/policy_comparison.csv,"model expected NPV, no caps: realised operations"
+pol_nocaps_mw,561,561.3,results/policy_comparison.csv,"model expected NPV, no caps: realised MW"
+pol_nocaps_rnpv,+182,181.63128087715504,results/policy_comparison.csv,"model expected NPV, no caps: realised NPV $M"
+pol_nocaps_conc,88%,0.8834023079227724,results/policy_comparison.csv,"model expected NPV, no caps: largest region share"
+pol_risk_n,19,19,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: requests"
+pol_risk_enpv,+475,475.2147775562096,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: expected NPV $M"
+pol_risk_es,−27,-27.22765615674005,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: ES95 $M"
+pol_risk_pneg,7%,0.07,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: P(NPV < 0)"
+pol_risk_ops,3,3,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: realised operations"
+pol_risk_mw,739,738.8,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: realised MW"
+pol_risk_rnpv,+214,214.47319650248772,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: realised NPV $M"
+pol_risk_conc,69%,0.6923799482299716,results/policy_comparison.csv,"risk-adjusted (E[NPV] − λ·ES95), with caps: largest region share"
+pol_fair_n,22,22,results/policy_comparison.csv,"fair baseline, value index (section 5): requests"
+pol_fair_enpv,"−1,369",-1368.522862772023,results/policy_comparison.csv,"fair baseline, value index (section 5): expected NPV $M"
+pol_fair_es,"−4,772",-4772.051790225815,results/policy_comparison.csv,"fair baseline, value index (section 5): ES95 $M"
+pol_fair_pneg,86%,0.863,results/policy_comparison.csv,"fair baseline, value index (section 5): P(NPV < 0)"
+pol_fair_ops,2,2,results/policy_comparison.csv,"fair baseline, value index (section 5): realised operations"
+pol_fair_mw,"1,035",1035.0,results/policy_comparison.csv,"fair baseline, value index (section 5): realised MW"
+pol_fair_rnpv,−362,-362.09727835928027,results/policy_comparison.csv,"fair baseline, value index (section 5): realised NPV $M"
+pol_fair_conc,50%,0.5011528649171587,results/policy_comparison.csv,"fair baseline, value index (section 5): largest region share"
+pol_random_n,22,22,results/policy_comparison.csv,random (section 5): requests
+pol_random_enpv,−191,-190.50884636662167,results/policy_comparison.csv,random (section 5): expected NPV $M
+pol_random_es,−879,-879.4013421910194,results/policy_comparison.csv,random (section 5): ES95 $M
+pol_random_pneg,100%,1.0,results/policy_comparison.csv,random (section 5): P(NPV < 0)
+pol_random_ops,2,2,results/policy_comparison.csv,random (section 5): realised operations
+pol_random_mw,258,258.4,results/policy_comparison.csv,random (section 5): realised MW
+pol_random_rnpv,−147,-146.94149500821953,results/policy_comparison.csv,random (section 5): realised NPV $M
+pol_random_conc,43%,0.4258536500914142,results/policy_comparison.csv,random (section 5): largest region share
+pack_n,"2,268",2268,results/decision_pack.csv,rows of the decision pack
+pack_entry_invest,101,101,results/decision_pack.csv,entry decision invest
+pack_entry_hold,699,699,results/decision_pack.csv,entry decision hold
+pack_entry_exit,"1,468",1468,results/decision_pack.csv,entry decision exit
+book_m_ercot_n,167,167,results/recommended_books.csv,"M — landmark model, ERCOT: requests added"
+book_m_ercot_ops,70,70,results/recommended_books.csv,realised operations
+book_m_ercot_iv,"[55, 87]","(np.float64(55.0), np.float64(87.025))",results/recommended_books.csv,its interval
+book_m_ercot_exp,60.6,60.61034660032479,results/recommended_books.csv,expected operations
+book_m_ercot_mw,"11,973",11972.86,results/recommended_books.csv,realised MW
+book_m_ercot_pool,347,347,results/recommended_books.csv,pool requests
+book_m_ercot_pool_ops,75,75,results/recommended_books.csv,pool operations
+book_m_ercot_npv,"−3,973",-3972.860584664717,results/recommended_books.csv,"expected NPV of the adds, $M"
+book_m_ercot_diff_iv,"[−9.03, −1]","(np.float64(-9.025), np.float64(-1.0))",results/recommended_books.csv,"M − LA operations, interval"
+book_m_pjm_n,241,241,results/recommended_books.csv,"M — landmark model, PJM: requests added"
+book_m_pjm_ops,24,24,results/recommended_books.csv,realised operations
+book_m_pjm_iv,"[15, 34]","(np.float64(15.0), np.float64(34.0))",results/recommended_books.csv,its interval
+book_m_pjm_exp,42.3,42.34183455822623,results/recommended_books.csv,expected operations
+book_m_pjm_mw,"1,184",1183.6999999999998,results/recommended_books.csv,realised MW
+book_m_pjm_pool,665,665,results/recommended_books.csv,pool requests
+book_m_pjm_pool_ops,37,37,results/recommended_books.csv,pool operations
+book_m_pjm_npv,−139,-139.32791154777763,results/recommended_books.csv,"expected NPV of the adds, $M"
+book_m_pjm_diff_iv,"[−14, −2]","(np.float64(-14.0), np.float64(-2.0))",results/recommended_books.csv,"M − LA operations, interval"
+book_m_caiso_n,2,2,results/recommended_books.csv,"M — landmark model, CAISO: requests added"
+book_m_caiso_ops,1,1,results/recommended_books.csv,realised operations
+book_m_caiso_iv,"[0, 3]","(np.float64(0.0), np.float64(3.0))",results/recommended_books.csv,its interval
+book_m_caiso_exp,0.9,0.8814835495356551,results/recommended_books.csv,expected operations
+book_m_caiso_mw,38,38.0,results/recommended_books.csv,realised MW
+book_m_caiso_pool,120,120,results/recommended_books.csv,pool requests
+book_m_caiso_pool_ops,7,7,results/recommended_books.csv,pool operations
+book_m_caiso_npv,−36,-36.31692368970947,results/recommended_books.csv,"expected NPV of the adds, $M"
+book_m_caiso_diff_iv,"[−6, +0]","(np.float64(-6.0), np.float64(0.0))",results/recommended_books.csv,"M − LA operations, interval"
+book_m_all_n,410,410,results/recommended_books.csv,"M — landmark model, all: requests added"
+book_m_all_ops,95,95,results/recommended_books.csv,realised operations
+book_m_all_iv,"[79, 114]","(np.float64(78.975), np.float64(114.025))",results/recommended_books.csv,its interval
+book_m_all_exp,103.8,103.83366470808669,results/recommended_books.csv,expected operations
+book_m_all_mw,"13,195",13194.56,results/recommended_books.csv,realised MW
+book_m_all_pool,"1,132",1132,results/recommended_books.csv,pool requests
+book_m_all_pool_ops,119,119,results/recommended_books.csv,pool operations
+book_m_all_npv,"−4,149",-4148.505419902203,results/recommended_books.csv,"expected NPV of the adds, $M"
+book_m_all_diff_iv,"[−24, −8]","(np.float64(-24.0), np.float64(-8.0))",results/recommended_books.csv,"M − LA operations, interval"
+book_la_ercot_n,347,347,results/recommended_books.csv,"LA — lookup with agreement status, ERCOT: requests added"
+book_la_ercot_ops,75,75,results/recommended_books.csv,realised operations
+book_la_ercot_iv,"[59, 92]","(np.float64(59.0), np.float64(92.05))",results/recommended_books.csv,its interval
+book_la_ercot_exp,69.2,69.2421052631579,results/recommended_books.csv,expected operations
+book_la_ercot_mw,"13,395",13394.52,results/recommended_books.csv,realised MW
+book_la_ercot_pool,347,347,results/recommended_books.csv,pool requests
+book_la_ercot_pool_ops,75,75,results/recommended_books.csv,pool operations
+book_la_pjm_n,503,503,results/recommended_books.csv,"LA — lookup with agreement status, PJM: requests added"
+book_la_pjm_ops,34,34,results/recommended_books.csv,realised operations
+book_la_pjm_iv,"[22, 43]","(np.float64(22.0), np.float64(43.0))",results/recommended_books.csv,its interval
+book_la_pjm_exp,96.1,96.09548583410935,results/recommended_books.csv,expected operations
+book_la_pjm_mw,"1,967",1967.2,results/recommended_books.csv,realised MW
+book_la_pjm_pool,665,665,results/recommended_books.csv,pool requests
+book_la_pjm_pool_ops,37,37,results/recommended_books.csv,pool operations
+book_la_caiso_n,10,10,results/recommended_books.csv,"LA — lookup with agreement status, CAISO: requests added"
+book_la_caiso_ops,4,4,results/recommended_books.csv,realised operations
+book_la_caiso_iv,"[1, 8]","(np.float64(0.9750000000000004), np.float64(8.0))",results/recommended_books.csv,its interval
+book_la_caiso_exp,4.0,4.020098441345365,results/recommended_books.csv,expected operations
+book_la_caiso_mw,"1,053",1053.0,results/recommended_books.csv,realised MW
+book_la_caiso_pool,120,120,results/recommended_books.csv,pool requests
+book_la_caiso_pool_ops,7,7,results/recommended_books.csv,pool operations
+book_la_all_n,860,860,results/recommended_books.csv,"LA — lookup with agreement status, all: requests added"
+book_la_all_ops,113,113,results/recommended_books.csv,realised operations
+book_la_all_iv,"[92, 130]","(np.float64(92.0), np.float64(130.0))",results/recommended_books.csv,its interval
+book_la_all_exp,169.4,169.35768953861262,results/recommended_books.csv,expected operations
+book_la_all_mw,"16,415",16414.719999999998,results/recommended_books.csv,realised MW
+book_la_all_pool,"1,132",1132,results/recommended_books.csv,pool requests
+book_la_all_pool_ops,119,119,results/recommended_books.csv,pool operations
+arch_k,4,4,results/archetype_profiles.csv,archetypes
+arch_states,47,47,results/archetype_profiles.csv,states clustered
+arch_1_name,"light queue, mixed, settled","light queue, mixed, settled",results/archetype_profiles.csv,archetype 1 name
+arch_1_rate,19.7%,0.197,results/archetype_profiles.csv,archetype 1: 2017–2019 entrants operating by end-2024
+arch_1_iv,"[18%, 22%]","(0.177, 0.219)",results/archetype_profiles.csv,its interval
+arch_1_n,"1,358",1358,results/archetype_profiles.csv,2017–2019 entrants
+arch_1_states,8,8,results/archetype_profiles.csv,states
+arch_1_list,"DE, FL, MD, MT, OH, PA, VA, WV","DE, FL, MD, MT, OH, PA, VA, WV",results/archetype_profiles.csv,states in the archetype
+arch_1_qof,0.8,0.794,results/archetype_profiles.csv,median queue over fleet
+arch_1_storage,30%,0.3,results/archetype_profiles.csv,median storage share of waiting MW
+arch_1_recent,30%,0.305,results/archetype_profiles.csv,median recent-entry share
+arch_2_name,"crowded queue, storage-heavy, hot","crowded queue, storage-heavy, hot",results/archetype_profiles.csv,archetype 2 name
+arch_2_rate,11.5%,0.115,results/archetype_profiles.csv,archetype 2: 2017–2019 entrants operating by end-2024
+arch_2_iv,"[10%, 13%]","(0.103, 0.128)",results/archetype_profiles.csv,its interval
+arch_2_n,"2,565",2565,results/archetype_profiles.csv,2017–2019 entrants
+arch_2_states,20,20,results/archetype_profiles.csv,states
+arch_2_list,"CT, IA, ID, IL, IN, MA, ME, MI, ND, NH, NJ, NM, NY, OK, SD, TX, VT, WA, WI, WY","CT, IA, ID, IL, IN, MA, ME, MI, ND, NH, NJ, NM, NY, OK, SD, TX, VT, WA, WI, WY",results/archetype_profiles.csv,states in the archetype
+arch_2_qof,1.4,1.43,results/archetype_profiles.csv,median queue over fleet
+arch_2_storage,38%,0.378,results/archetype_profiles.csv,median storage share of waiting MW
+arch_2_recent,68%,0.678,results/archetype_profiles.csv,median recent-entry share
+arch_3_name,"crowded queue, storage-heavy, settled","crowded queue, storage-heavy, settled",results/archetype_profiles.csv,archetype 3 name
+arch_3_rate,7.0%,0.07,results/archetype_profiles.csv,archetype 3: 2017–2019 entrants operating by end-2024
+arch_3_iv,"[6%, 9%]","(0.055, 0.089)",results/archetype_profiles.csv,its interval
+arch_3_n,895,895,results/archetype_profiles.csv,2017–2019 entrants
+arch_3_states,5,5,results/archetype_profiles.csv,states
+arch_3_list,"AZ, CA, NV, OR, UT","AZ, CA, NV, OR, UT",results/archetype_profiles.csv,states in the archetype
+arch_3_qof,3.5,3.5,results/archetype_profiles.csv,median queue over fleet
+arch_3_storage,80%,0.795,results/archetype_profiles.csv,median storage share of waiting MW
+arch_3_recent,54%,0.542,results/archetype_profiles.csv,median recent-entry share
+arch_4_name,"light queue, gas-leaning, hot","light queue, gas-leaning, hot",results/archetype_profiles.csv,archetype 4 name
+arch_4_rate,5.5%,0.055,results/archetype_profiles.csv,archetype 4: 2017–2019 entrants operating by end-2024
+arch_4_iv,"[4%, 7%]","(0.044, 0.069)",results/archetype_profiles.csv,its interval
+arch_4_n,"1,287",1287,results/archetype_profiles.csv,2017–2019 entrants
+arch_4_states,14,14,results/archetype_profiles.csv,states
+arch_4_list,"AL, AR, CO, GA, KS, KY, LA, MN, MO, MS, NC, NE, SC, TN","AL, AR, CO, GA, KS, KY, LA, MN, MO, MS, NC, NE, SC, TN",results/archetype_profiles.csv,states in the archetype
+arch_4_qof,1.2,1.212,results/archetype_profiles.csv,median queue over fleet
+arch_4_storage,26%,0.262,results/archetype_profiles.csv,median storage share of waiting MW
+arch_4_recent,67%,0.674,results/archetype_profiles.csv,median recent-entry share
+g1_exit_npv_bn,8.9,-8.8890533224976,results/portfolio_review_summary.csv,"G1 entry exit class: realised NPV, $ billion (loss)"
+g2_exit_npv_bn,8.3,-8.31569379599687,results/portfolio_review_summary.csv,"G2 two years exit class: realised NPV, $ billion (loss)"
+g1_invest_npv_bn,1.4,1.448322716617886,results/portfolio_review_summary.csv,"G1 entry invest class: realised NPV, $ billion"
+g2_accelerate_npv_bn,1.2,1.227821139563108,results/portfolio_review_summary.csv,"G2 two years accelerate class: realised NPV, $ billion"
+g1_exit_share_of_cohort,65%,0.6472663139329806,results/portfolio_review_summary.csv,share of the test cohort the entry gate marks for exit
+gates_commit_share,6%,0.06172839506172839,results/portfolio_review_summary.csv,invest + accelerate requests as a share of the cohort
+pack_inv_acc,29,29,results/decision_pack.csv,entry invest → two-year accelerate
+pack_inv_exit,29,29,results/decision_pack.csv,entry invest → two-year exit
+pack_inv_gone,24,24,results/decision_pack.csv,entry invest → two-year not in pool
+pack_exit_exit,575,575,results/decision_pack.csv,entry exit → two-year exit
+pack_exit_acc,4,4,results/decision_pack.csv,entry exit → two-year accelerate
+pack_hold_hold,344,344,results/decision_pack.csv,entry hold → two-year hold or sell
+pol_fair_es_bn,4.8,-4.772051790225815,results/policy_comparison.csv,"fair baseline value-index book: ES95, $ billion (loss)"
+pol_fair_enpv_bn,1.4,-1.368522862772023,results/policy_comparison.csv,"fair baseline value-index book: expected NPV, $ billion (loss)"
+pol_npv_books_range,+$146 to +$214,"(np.float64(145.81431436110216), np.float64(214.47319650248772))",results/policy_comparison.csv,"realised NPV range of the three NPV-based books, $M"
+sunk_20_100,"8,169",8168.88366005468,results/cost_table.csv,"deposit to the next gate, $ per MW, 20–<100 MW, base"
+sunk_ge500,841,841.3804366678892,results/cost_table.csv,"deposit to the next gate, $ per MW, ≥500 MW, base"
+gas_price,3.50,3.5,results/value_assumptions.csv,"gas price assumption, $/MMBtu"
+book_m_all_exp_int,104,103.83366470808669,results/recommended_books.csv,"model's own expectation for the floor book, operations"
+arch_silhouette,0.20,0.20323617718549083,results/state_archetypes.csv,silhouette of the chosen clustering

@@ -1,0 +1,5 @@
+archetype,states,queue_over_fleet,solar_share,storage_share,gas_share,median_mw_waiting,recent_entry_share,share_built_2010_2018,n_2017_2019,operating,completion_2017_2019,low,high,name,state_list
+0,8,0.794,0.379,0.3,0.034,55.25,0.305,0.236,1358,268,0.197,0.177,0.219,"light queue, mixed, settled","DE, FL, MD, MT, OH, PA, VA, WV"
+3,20,1.43,0.234,0.378,0.026,150.0,0.678,0.252,2565,295,0.115,0.103,0.128,"crowded queue, storage-heavy, hot","CT, IA, ID, IL, IN, MA, ME, MI, ND, NH, NJ, NM, NY, OK, SD, TX, VT, WA, WI, WY"
+2,5,3.5,0.047,0.795,0.03,254.855,0.542,0.159,895,63,0.07,0.055,0.089,"crowded queue, storage-heavy, settled","AZ, CA, NV, OR, UT"
+1,14,1.212,0.423,0.262,0.16,151.75,0.674,0.119,1287,71,0.055,0.044,0.069,"light queue, gas-leaning, hot","AL, AR, CO, GA, KS, KY, LA, MN, MO, MS, NC, NE, SC, TN"
