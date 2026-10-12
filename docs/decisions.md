@@ -846,3 +846,22 @@ alternative rejected.
     lease lines on the level (a rule changed after the result is no rule);
     dropping the price lines (a fail against the random walk is the
     expected and reportable answer for a unit-root series).
+68. **The upstream cost grid, confirmed; results and impact shown to everyone
+    in the dashboard** (Alan, 2026-10-12, "confirm 6"). The twenty Gulf
+    candidates are valued with the grid of journal question 37, labelled
+    ASSUMED on every export: workover or recompletion $4M / $8M / $15M per
+    well; incremental uplift +10% / +20% / +30% of the lease's current rate
+    on the Arps baseline, decaying with the lease's own decline; operating
+    cost $12 / $18 / $28 per boe; federal royalty 18.75% (12.5% as the low
+    case); abandonment $1M / $3M / $8M per well at the lease's end; a
+    24-month lead time; oil at WTI minus $3 / $5 / $8, gas at Henry Hub minus
+    $0.3 / $0.5 / $0.8 per MMBtu; the ATB real cost of capital for offshore
+    (5.1%) with 8% as the stress. The three redevelopment cases of notebook
+    02 part C (young oil, mature oil watering out, gas tail) carry the same
+    grid until Alan says otherwise. *Alan's condition:* the dashboard shows
+    these numbers and their impact to every viewer — the grid itself, the
+    change in each candidate's NPV and in the book when any assumption moves
+    (the tornado), and each project's impact on the portfolio (its share of
+    expected NPV, of CVaR and of emissions) — so no modeled cost is hidden
+    behind a result. *Rejected:* per-lease cost estimates (no public file
+    holds them); a single base case without ranges.
