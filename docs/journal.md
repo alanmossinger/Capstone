@@ -888,3 +888,89 @@ stays on the list. New open question:
 32. The PPA index prices (solar $57, wind $62, hybrids $70, offshore $110
     per MWh) are stated as assumptions in `value_assumptions.csv`; please
     confirm or replace them with the index you want cited.
+
+## 2026-10-12 (session 10) — v5 begins: the ERCOT API test, the 22 → 10 consolidation, the proposal update, the energy sources and their gate
+
+Alan's direction (12 Oct, decision #62): the capstone becomes a real
+integrated U.S. energy portfolio — twenty Gulf of Mexico lease
+redevelopments and twenty ERCOT power candidates anchored to real queue
+requests — with everything built kept as the completion-and-timing engine,
+an LLM advisor grounded only in result tables that recommends, challenges
+the human and is scored in a decision gym, a dashboard, the notebooks
+consolidated to the story layout, and an executive + data-science +
+portfolio report. Later the same day he added: the AI is part of every
+decision and may be overridden only after the human answers the reasoning
+prompts (override gate, decision ledger); two dashboard modes (learn from
+history, decide forward, scenario plans with probabilities on request);
+all regions in the candidate universe, with thinner data showing up as
+wider uncertainty and tighter constraints, never as silence (PLAN.md §14
+addenda).
+
+**Done**
+
+- **HANDOFF.md** rewritten with the session-10 handoff, **PLAN.md §14**
+  added from the plan of 12 Oct, decisions #62–#64.
+- **(0) ERCOT Public API.** `src/ercot_api.py` ported from my Milestone II
+  loader (B2C sign-in, paged reports, secret scrubbing, a year-by-year pull
+  with hashes, `python -m src.ercot_api 2018 2023`), four tests. From this
+  machine the sign-in succeeds and every ercot.com host (api, apiexplorer,
+  www) answers the Incapsula interstitial to the report call whatever the
+  headers; the 2018–2023 pull has to run from another network. The
+  2020–2023 ERCOT months stay a labelled assumption until it does.
+- **(1) The consolidation, 22 → 10 (decision #63).** Seven notebooks now:
+  `01_problem_and_data` (01, 02, 01b), `02_eda` (03, 03b),
+  `03_statistics_and_features` (04), `04_forecast_queue` (05, 06, 07, 11,
+  12, 13, 14, 19), `06_evaluation_record` (08, 08b, 09, 18), `07_economics`
+  (15), `09_portfolio` (16, 17, 20). Three sections moved so that no
+  notebook reads a later one's file (the 2020–2022 early incidence, the
+  leakage ablation and the ten entry rules, all into 04); 17 went whole
+  into 09; 06 runs last. Gate: `make all` before (1 h 25 min) and after
+  (30 min): 196 of 201 result files byte-identical; the five others are the
+  two timing checks (seconds of run time) and the three tournament tables
+  (6.7e-16 and 1.6e-15 on the scored tables; one MLP cell of the 2016
+  validation table moves by 7e-5 between any two runs, before the merge
+  too); `predictions_tournament.parquet` within 5.6e-17; all 66 report
+  figures and 262 exploratory figures byte-identical; 111 tests. Old
+  notebooks and figure folders deleted in the same commit; Makefile,
+  `run_pipeline.py`, README, `report_numbers.py` sources and every notebook
+  mention in `src/` and `tests/` updated.
+- **(3) Proposal update** for 19 October: `docs/proposal_update_2026-10-19.md`
+  (the Group 13 form answered again for the integrated portfolio).
+- **(2) Notebook 01 parts D and E (decision #64).** Six sources fetched,
+  hashed and parsed (`src/energy_data.py`, nine tests): BSEE OGOR-A
+  2010–2024 (1,672,579 completion-months → 203,963 lease-months, 2,229
+  leases, 1,041 with ≥ 60 producing months), EIA-923 Texas 2018–2024 via
+  the API (186,744 rows → 61,136 plant × prime-mover months, 947 plants;
+  with ≥ 36 generating months: gas CC 69, solar 108, wind 201, storage 18),
+  WTI and Henry Hub monthly, the five ERCOT 2024 files with pinned hashes,
+  eGRID2023 (824 Texas plants, 98.8% of the plants generating in 2023
+  joined), BLS CPI-U (a 2018 dollar is 1.25 2024 dollars). Market table
+  2017–2024 with the ERCOT series labelled observed / derived / assumed;
+  release lags written down; audits R10–R13 touch nothing. Figures
+  01_D1–01_D3 with provenance labels (`plots.finish(provenance=…)`). The
+  v5 gate reads **GO** (12 blocking lines pass; the ERCOT hourly 2018–2023
+  line fails and does not block). First evaluation read NO-GO on an eGRID
+  line I had specified against the wrong year; corrected and recorded.
+- `save_fig` retries a write OneDrive has briefly locked (three runs failed
+  on it before the retry).
+- Commits: the ERCOT client; the consolidation; the proposal update;
+  notebook 01 parts D–E. Nothing pushed.
+
+**Next**
+
+- (4) `02_eda` part C (energy EDA) and `03_statistics_and_features` part B
+  (statistics, leakage-safe features, split protocol, truncation test), C20
+  registered first; (5) `05_forecast_energy`; (6) `07` candidates and
+  economics (ASK ALAN: the upstream cost grid); (7) `08`; (8) `09` MILP with
+  C21–C24; (9) `10` advisor and gym; (10) dashboard, report v4.
+
+**Open questions for Alan**
+
+33. Run `python -m src.ercot_api 2018 2023` from a network ERCOT's edge
+    accepts (the credentials are in `.env`) and drop the six files into
+    `data/raw/ercot/`; the gate line turns PASS and the assumed months go.
+34. Paste the verbatim text of your two prompts (the motivated-reasoning
+    check and the ideological Turing test) for `prompts/` and the appendix.
+35. `ANTHROPIC_API_KEY` into `.env` before notebook 10.
+36. (carried) EIA key and ERCOT password rotation; `git push` when wanted;
+    the PPA index prices (#32); the upstream cost grid before notebook 07.
