@@ -831,3 +831,16 @@ Decisions #59 (scope) and #60 (NREL ATB as the cost source); PLAN.md §13.
 30. The hurdle h = 3 and the discount rate 8% are the two company
     parameters; both are reported at alternatives. Any other value?
 31. (carried) EIA key rotation; `git push` when you want.
+
+### Addendum, 2026-10-12 — the decision board
+
+Alan asked for images that explain the report's decisions on their own, for
+a portfolio page or a poster. Notebook 18 §4 now draws seven of them from
+the result tables alone (`results/decision_board.csv` holds the headline
+numbers): D0 the board (six decisions, each with its numbers and its rule),
+D1 where, D2 which and when, D3 why, D4 what a plant is worth, D5 the book
+and where to add, D6 six ways to spend the same budget. Saved as
+`figures/D0_decision_board` … `D6_policies` (PNG and SVG). Open question 29
+(a contracted PPA case through the gates, the ATB cost of capital per
+technology, a hurdle of 2 at the second gate) stands; the images show the
+merchant case as the report does.

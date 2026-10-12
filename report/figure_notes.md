@@ -1292,6 +1292,76 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** Observed and predicted three-year operation after the two-year landmark by entry cohort, before and after the level repair.
 <!-- /fig:20_02_level_at_the_landmark -->
 
+<!-- fig:D0_decision_board -->
+### D0_decision_board
+
+![D0_decision_board](../figures/D0_decision_board.png)
+
+*Notebook:* `notebooks/18_evaluate_v2.ipynb` · *Files:* `figures/D0_decision_board.png`, `.svg`
+
+**Caption (stub).** The decision board: the six decisions of the report, each with its headline numbers and its rule, read from the result tables.
+<!-- /fig:D0_decision_board -->
+
+<!-- fig:D1_where -->
+### D1_where
+
+![D1_where](../figures/D1_where.png)
+
+*Notebook:* `notebooks/18_evaluate_v2.ipynb` · *Files:* `figures/D1_where.png`, `.svg`
+
+**Caption (stub).** Decision 1, where: five-year completion by region and the four state archetypes with the share of 2017–2019 entrants operating by end-2024.
+<!-- /fig:D1_where -->
+
+<!-- fig:D2_which_and_when -->
+### D2_which_and_when
+
+![D2_which_and_when](../figures/D2_which_and_when.png)
+
+*Notebook:* `notebooks/18_evaluate_v2.ipynb` · *Files:* `figures/D2_which_and_when.png`, `.svg`
+
+**Caption (stub).** Decision 2, which and when: ranking at entry against averages, the landmark gain from the agreement, and the fall of the level across entry cohorts.
+<!-- /fig:D2_which_and_when -->
+
+<!-- fig:D3_why -->
+### D3_why
+
+![D3_why](../figures/D3_why.png)
+
+*Notebook:* `notebooks/18_evaluate_v2.ipynb` · *Files:* `figures/D3_why.png`, `.svg`
+
+**Caption (stub).** Decision 3, why requests fail: five-year completion by size, technology and the executed agreement within each region, and the annual withdrawal hazard by year in the queue.
+<!-- /fig:D3_why -->
+
+<!-- fig:D4_worth -->
+### D4_worth
+
+![D4_worth](../figures/D4_worth.png)
+
+*Notebook:* `notebooks/18_evaluate_v2.ipynb` · *Files:* `figures/D4_worth.png`, `.svg`
+
+**Caption (stub).** Decision 4, what a plant is worth: NPV per MW by technology and region at a 2024 operation date, and the break-even flat price against the captured energy price.
+<!-- /fig:D4_worth -->
+
+<!-- fig:D5_book -->
+### D5_book
+
+![D5_book](../figures/D5_book.png)
+
+*Notebook:* `notebooks/18_evaluate_v2.ipynb` · *Files:* `figures/D5_book.png`, `.svg`
+
+**Caption (stub).** Decision 5, the book: the gate classes scored on what happened, and the model's floor book per region two years in.
+<!-- /fig:D5_book -->
+
+<!-- fig:D6_policies -->
+### D6_policies
+
+![D6_policies](../figures/D6_policies.png)
+
+*Notebook:* `notebooks/18_evaluate_v2.ipynb` · *Files:* `figures/D6_policies.png`, `.svg`
+
+**Caption (stub).** Decision 5, continued: six allocation policies under the same deposit budget, expected NPV, expected shortfall and realised NPV.
+<!-- /fig:D6_policies -->
+
 <!-- fig:F10_gains_over_baselines -->
 ### F10_gains_over_baselines
 
