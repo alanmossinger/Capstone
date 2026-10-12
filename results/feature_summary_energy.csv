@@ -1,0 +1,4 @@
+table,rows,keys,horizons,features,targets,lag_months
+features_lease,262110,1041,"[np.int64(3), np.int64(6), np.int64(12)]","['oil_lag1', 'oil_lag3', 'oil_lag6', 'oil_lag12', 'gas_lag1', 'gas_lag3', 'gas_lag6', 'gas_lag12', 'oil_mean3', 'gas_mean3', 'oil_slope12', 'gas_slope12', 'water_ratio3', 'producing_months', 'months_since_first', 'oil_share12', 'n_completions', 'days_on_prod', 'seasonal_oil', 'seasonal_gas']","y_oil, y_gas",3
+features_plant,55988,424,"[np.int64(1), np.int64(3)]","['cf_lag1', 'cf_lag3', 'cf_lag12', 'cf_mean12', 'zero_months12', 'heat_rate3', 'fuel_cost3', 'nameplate_mw', 'target_month_of_year', 'cf_seasonal']",y_cf,2
+features_market,504,3,"[np.int64(1), np.int64(3)]","['log_p0', 'log_p1', 'log_p2', 'log_p3', 'log_p6', 'log_p12', 'ret1', 'ret3', 'ret12', 'vol3', 'vol12']",y_log,0

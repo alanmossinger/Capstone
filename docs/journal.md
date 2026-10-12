@@ -974,3 +974,26 @@ addenda).
 35. `ANTHROPIC_API_KEY` into `.env` before notebook 10.
 36. (carried) EIA key and ERCOT password rotation; `git push` when wanted;
     the PPA index prices (#32); the upstream cost grid before notebook 07.
+
+### Addendum, 2026-10-12 — step (4): the energy EDA, the statistics, the features and C20
+
+- **Notebook 02 part C** (six families, figures 02_C1–02_C6 with provenance
+  labels): a quarter of lease-months are zero by nature; the median lease
+  keeps half its peak oil for 12 months (pooled Arps b = 1.47, the physics
+  floor); Texas wind 33%, solar 22%, gas CC 23% of nameplate with the
+  seasonal shapes a revenue model needs; Henry Hub twice as volatile as WTI
+  (67% vs 35% annualised since 2018); MC and GC hold 70% of the eligible
+  leases' 2024 oil; prices and output barely co-move month to month
+  (WTI–Henry Hub 0.06, ERCOT–Henry Hub 0.38); the decline clusters are weak
+  (silhouette 0.34) and decide nothing.
+- **Notebook 03 part B.** C20 and the split protocol registered first
+  (`results/success_criteria_v6.csv`, decision #66; twelve lines; quarterly
+  refits — amended before anything was scored or committed). Price levels
+  are unit roots and their changes stationary; ERCOT follows Henry Hub
+  within the month. Three feature tables at rolling origins
+  (`features_lease` 262,110 rows, `features_plant` 55,988, `features_market`
+  504), lagged by the release schedule; the truncation test passes at nine
+  of nine builder × origin checks and `tests/test_energy_features.py`.
+- Modules `src/decline.py`, `src/energy_features.py`, `src/energy_stats.py`
+  with tests (128 pass); `statsmodels` and `xlrd` pinned (decision #65).
+- Next: step (5), `05_forecast_energy`.

@@ -362,6 +362,66 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** Share of each request-year cohort still active or suspended at the end of 2024, for CAISO, ERCOT and PJM.
 <!-- /fig:02_09_unresolved_share_by_cohort -->
 
+<!-- fig:02_C1_data_quality -->
+### 02_C1_data_quality
+
+![02_C1_data_quality](../figures/02_eda/02_C1_data_quality.png)
+
+*Notebook:* `notebooks/02_eda.ipynb` · *Files:* `figures/02_eda/02_C1_data_quality.png`, `.svg`
+
+**Caption (stub).** Share of zero lease-months by year and of zero plant-months by technology and year.
+<!-- /fig:02_C1_data_quality -->
+
+<!-- fig:02_C2_decline_and_mix -->
+### 02_C2_decline_and_mix
+
+![02_C2_decline_and_mix](../figures/02_eda/02_C2_decline_and_mix.png)
+
+*Notebook:* `notebooks/02_eda.ipynb` · *Files:* `figures/02_eda/02_C2_decline_and_mix.png`, `.svg`
+
+**Caption (stub).** Normalised oil decline after the peak month with an Arps fit, and the oil share against water cut per lease.
+<!-- /fig:02_C2_decline_and_mix -->
+
+<!-- fig:02_C3_capacity_factor_by_season -->
+### 02_C3_capacity_factor_by_season
+
+![02_C3_capacity_factor_by_season](../figures/02_eda/02_C3_capacity_factor_by_season.png)
+
+*Notebook:* `notebooks/02_eda.ipynb` · *Files:* `figures/02_eda/02_C3_capacity_factor_by_season.png`, `.svg`
+
+**Caption (stub).** Monthly capacity-factor distributions by technology and season, Texas plants 2018–2024.
+<!-- /fig:02_C3_capacity_factor_by_season -->
+
+<!-- fig:02_C4_price_regimes -->
+### 02_C4_price_regimes
+
+![02_C4_price_regimes](../figures/02_eda/02_C4_price_regimes.png)
+
+*Notebook:* `notebooks/02_eda.ipynb` · *Files:* `figures/02_eda/02_C4_price_regimes.png`, `.svg`
+
+**Caption (stub).** WTI and Henry Hub monthly prices with rolling volatility and the four episodes the scenarios must reproduce.
+<!-- /fig:02_C4_price_regimes -->
+
+<!-- fig:02_C5_asset_map -->
+### 02_C5_asset_map
+
+![02_C5_asset_map](../figures/02_eda/02_C5_asset_map.png)
+
+*Notebook:* `notebooks/02_eda.ipynb` · *Files:* `figures/02_eda/02_C5_asset_map.png`, `.svg`
+
+**Caption (stub).** Gulf of Mexico oil by protraction area and Texas plants by fuel category and size.
+<!-- /fig:02_C5_asset_map -->
+
+<!-- fig:02_C6_correlation_and_clusters -->
+### 02_C6_correlation_and_clusters
+
+![02_C6_correlation_and_clusters](../figures/02_eda/02_C6_correlation_and_clusters.png)
+
+*Notebook:* `notebooks/02_eda.ipynb` · *Files:* `figures/02_eda/02_C6_correlation_and_clusters.png`, `.svg`
+
+**Caption (stub).** Cross-sector correlation of monthly log changes and the k-means centroids of lease decline profiles.
+<!-- /fig:02_C6_correlation_and_clusters -->
+
 <!-- fig:03_01_still_in_queue_by_region -->
 ### 03_01_still_in_queue_by_region
 
@@ -461,6 +521,16 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 
 **Caption (stub).** Number of withdrawals per month by recorded withdrawal date in CAISO, ERCOT and PJM, showing ERCOT's single bulk withdrawal date.
 <!-- /fig:03_10_withdrawal_date_spikes -->
+
+<!-- fig:03_B1_lagged_correlation_and_stationarity -->
+### 03_B1_lagged_correlation_and_stationarity
+
+![03_B1_lagged_correlation_and_stationarity](../figures/03_statistics_and_features/03_B1_lagged_correlation_and_stationarity.png)
+
+*Notebook:* `notebooks/03_statistics_and_features.ipynb` · *Files:* `figures/03_statistics_and_features/03_B1_lagged_correlation_and_stationarity.png`, `.svg`
+
+**Caption (stub).** Lagged cross-correlations of monthly log changes and ADF/KPSS verdicts for the price and output series.
+<!-- /fig:03_B1_lagged_correlation_and_stationarity -->
 
 <!-- fig:03b_02_built_share_by_state -->
 ### 03b_02_built_share_by_state

@@ -1,0 +1,39 @@
+{
+  "decided": "2026-10-12",
+  "decision": 66,
+  "n_boot": 1000,
+  "block_months": 3,
+  "level": 0.95,
+  "seed": 2020,
+  "split": {
+    "development": [
+      "2018-01",
+      "2022-12"
+    ],
+    "validation": [
+      "2023-01",
+      "2023-06"
+    ],
+    "holdout": [
+      "2023-07",
+      "2024-12"
+    ]
+  },
+  "origins": "the end of every month from 2018-01 to 2024-12; a line's holdout origins are those whose target month is on or before 2024-12 and, for ERCOT, OBSERVED",
+  "release_lags": "data/processed/release_lags.csv (BSEE 3 months, EIA-923 2, prices 0)",
+  "challengers": {
+    "ElasticNet": "on standardised features, alpha and l1_ratio chosen by validation MAE from a small grid",
+    "LightGBM": "300 trees, learning rate 0.05, 31 leaves, min 50 rows per leaf, seed 2020",
+    "LightGBM quantile": "the same with the quantile objective at 0.05 and 0.95, for interval coverage (reported, not registered)"
+  },
+  "fit protocol": "expanding window, refitted every third origin (quarterly) on rows whose target month is on or before the refit origin; the origins between refits use the latest fit, so every prediction rests on older data only",
+  "paired test": "one MAE per origin per model; differences at matched origins; moving-block bootstrap over origins (blocks of 3 months)",
+  "reported, not registered": [
+    "RMSE",
+    "bias",
+    "90% interval coverage of the quantile model",
+    "leave-some-leases-out",
+    "technology cold start"
+  ],
+  "thesis rule": "H1 is supported for a target when every registered line of that target passes; a failed line is reported, never removed"
+}

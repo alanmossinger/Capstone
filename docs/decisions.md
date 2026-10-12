@@ -792,3 +792,34 @@ alternative rejected.
     shares (the proposal's own warning); pulling EIA-923 for every state now
     (one call per state when the all-region candidates of §14's addendum are
     built in notebook 07).
+65. **`statsmodels` and `xlrd` added** (2026-10-12; notebooks 02 part C and
+    03 part B). `statsmodels` 0.14.6 for the ADF and KPSS stationarity tests
+    and the OLS behind the Chow break test (`src/energy_stats.py`); `xlrd`
+    2.0.2 because EIA's monthly spot-price workbooks are `.xls` files that
+    pandas cannot read without it (it was already present as a transitive
+    dependency and is now pinned because it is relied on). *Rejected:* hand
+    implementations of the unit-root tests (critical values are tabulated
+    and easy to get wrong); converting the `.xls` files by hand (the raw
+    layer is never edited).
+66. **Pre-registered criterion C20 and the split protocol of the energy
+    forecasts** (2026-10-12; written by notebook 03 part B's first cell to
+    `results/success_criteria_v6.csv` and committed before notebook 05 ran
+    any model). *Targets:* lease oil and gas output 3, 6 and 12 months ahead
+    (eligible leases); plant capacity factor one month ahead for Texas gas
+    CC, solar and wind; WTI, Henry Hub and ERCOT log price one month ahead.
+    *Baselines:* last value, seasonal naive and the Arps decline for leases;
+    last value, seasonal naive and the technology-month median for plants;
+    the random walk and seasonal naive for prices. *Challengers:* ElasticNet
+    and LightGBM; the one with the lower validation MAE is "the challenger"
+    of each line, named before the holdout is scored. *Split:* origins
+    2018-01 to 2022-12 development, 2023-01 to 2023-06 validation, 2023-07
+    to 2024-12 holdout, restricted to origins whose target exists by 2024-12
+    (and, for ERCOT, is observed); expanding window refitted quarterly on
+    rows whose target is on or before the refit origin. *Test:* MAE per origin, paired difference
+    challenger − best baseline, 1,000 moving-block bootstrap resamples of the
+    holdout origins (blocks of three months), seed 2020. Pass: the 95%
+    interval entirely below zero. Twelve lines. *Rejected:* a random
+    temporal split (the proposal forbids it); a single pooled MAE without
+    pairing (origins differ in difficulty); registering interval coverage as
+    a criterion (reported instead: the quantile model is a tool, not the
+    claim).
