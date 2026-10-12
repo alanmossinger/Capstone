@@ -6,39 +6,45 @@ else
 PYTHON := .venv/bin/python
 endif
 
-.PHONY: setup data clean explore features models evaluate explain v3 figures numbers report test all
+.PHONY: setup data eda features forecast energy economics scenarios portfolio record advisor figures numbers report app test all
 
 setup:            ## create .venv, install pinned packages, register the notebook kernel
 	python -m venv .venv
 	$(PYTHON) -m pip install -r requirements.txt
 	$(PYTHON) -m ipykernel install --user --name queue-survival --display-name "Python 3.11 (queue-survival)"
 
-data:             ## 01: get LBNL + EIA-860M, readiness gate
+data:             ## 01: sources, cleaning rules R1–R9, the 2026 edition, readiness gates
 	$(PYTHON) run_pipeline.py --only 01
 
-clean:            ## 02: cleaning rules R1–R9
+eda:              ## 02: survival curves, drivers, map, archetypes (F1–F3, F8, F9, F19, F20, F25)
 	$(PYTHON) run_pipeline.py --only 02
 
-explore:          ## 03: survival curves, F1 F2 F3 F8; 03b: project map F9
-	$(PYTHON) run_pipeline.py --only 03 03b
+features:         ## 03: outcomes, Track A/B samples, entry-time features
+	$(PYTHON) run_pipeline.py --only 03
 
-features:         ## 04: events, Track A/B samples, entry-time features
+forecast:         ## 04: entry models, fair baseline, entry rules, level repair, ablation, milestones, landmarks, MISO/SPP
 	$(PYTHON) run_pipeline.py --only 04
 
-models:           ## 05–07: Cox, discrete-time, all-regions models
-	$(PYTHON) run_pipeline.py --only 05 06 07
+energy:           ## 05: production, generation and price forecasts (v5)
+	$(PYTHON) run_pipeline.py --only 05
 
-evaluate:         ## 08: metrics, calibration, F4 F5; 08b: post-hoc improvements
-	$(PYTHON) run_pipeline.py --only 08 08b
+economics:        ## 07: value, cost, project NPV, candidates
+	$(PYTHON) run_pipeline.py --only 07
 
-explain:          ## 09: forest plot, SHAP, ranking table, F6 F7
+scenarios:        ## 08: joint scenarios, stresses, risk (v5)
+	$(PYTHON) run_pipeline.py --only 08
+
+portfolio:        ## 09: scorecards, books, gates, levers, managed book, MILP (v5)
 	$(PYTHON) run_pipeline.py --only 09
 
-v3:               ## 01b, 11-20: the portfolio layer (fair baseline, level, milestones, landmarks, value, book, levers, verdict, MISO/SPP, managed book)
-	$(PYTHON) run_pipeline.py --only 01b 11 12 13 14 15 16 17 18 19 20
+record:           ## 06: every registered criterion scored, explanation, decision board — runs after 09
+	$(PYTHON) run_pipeline.py --only 06
 
-figures:          ## every notebook that draws figures
-	$(PYTHON) run_pipeline.py --only 01 03 03b 08 09 01b 11 12 13 14 15 16 17 18 19 20
+advisor:          ## 10: the LLM advisor and the decision gym (v5; replay mode runs offline)
+	$(PYTHON) run_pipeline.py --only 10
+
+figures:          ## every notebook that draws figures, in pipeline order
+	$(PYTHON) run_pipeline.py --only 01 02 04 05 07 08 09 06 10
 
 numbers:          ## results/report_numbers.csv: every number the report cites, read from results/
 	$(PYTHON) -m src.report_numbers
@@ -47,8 +53,11 @@ report: numbers   ## report.md + references.md → report/report.pdf and report/
 	pandoc report/report.md report/references.md -f markdown-implicit_figures --resource-path=report --pdf-engine=typst -o report/report.pdf
 	pandoc report/report.md report/references.md -f markdown-implicit_figures --resource-path=report -o report/report.docx
 
+app:              ## the Streamlit dashboard (reads results/ only)
+	$(PYTHON) -m streamlit run app/app.py
+
 test:
 	$(PYTHON) -m pytest
 
-all:              ## notebooks 01 → 09 (with 03b and 08b), then 01b and 11 → 20, stop at the first error
+all:              ## notebooks 01 → 10 in dependency order (06 last), stop at the first error
 	$(PYTHON) run_pipeline.py

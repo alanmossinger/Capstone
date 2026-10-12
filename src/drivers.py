@@ -10,7 +10,7 @@ an interval and an n, and the same cohort definition in every panel.
 Keeping the arithmetic here keeps the notebooks to the story.
 Reads / writes: nothing; the notebooks read ``data/interim/trackA.parquet``
 and write ``results/``.
-Used by: notebook 03 (sections 13-14), notebook 09 (section 4b), notebook 16
+Used by: notebook 02 (part A) (sections 13-14), notebook 06 (part C) (section 4b), notebook 09 (part A)
 (section 9, through ``results/segments_by_request.csv``).
 """
 
@@ -75,7 +75,7 @@ def five_year_cohort(track_a, years=COHORT_YEARS, horizon=HORIZON_YEARS):
     Every entrant of 2010–2019 has at least five years between its request
     and the censor date (2024-12-31), so the five-year outcome is observed
     for all of them and a plain proportion is the right estimator — no
-    censoring correction is needed, unlike the 7-year curves of notebook 03.
+    censoring correction is needed, unlike the 7-year curves of notebook 02 (part A).
     The function asserts that this holds rather than assuming it.
     """
     frame = track_a[track_a["q_year"].between(*years)].copy()
@@ -209,7 +209,7 @@ def segment_design(frame, crowding):
     crowding is log(1 + other requests in the same county in the two years
     before entry). Two things are left out on purpose. The entry year, so
     that a rule reads as a property of the request, not of its vintage (the
-    level drift is the subject of notebook 12). And the absolute GW waiting,
+    level drift is the subject of notebook 04 (part G)). And the absolute GW waiting,
     because it rises with calendar time in every region, so a tree given it
     splits the cohort into early and late entrants instead of into kinds of
     request (a first prototype did exactly that, and its leaf rates did
@@ -236,7 +236,7 @@ def fit_segment_tree(X, y, max_depth=4, min_samples_leaf=200, seed=0):
     Depth four and at least 200 requests per leaf keep the rules short enough
     to read and the leaf rates estimable (a 200-request leaf at 10% has a
     Wilson interval of about ±4 points). The tree is a description, not the
-    predictor; notebooks 05-08b hold the predictive models.
+    predictor; notebook 04 (parts A–C) and 06 (parts A–B) hold the predictive models.
     """
     tree = DecisionTreeClassifier(max_depth=max_depth, min_samples_leaf=min_samples_leaf, random_state=seed)
     return tree.fit(X, y)

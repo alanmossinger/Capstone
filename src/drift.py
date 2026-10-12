@@ -7,11 +7,11 @@ earlier than the cohort being scored; the early (1- and 2-year) incidence of
 recent entrants.
 Why: completion within 5 years fell from 12.8% for 2017 entrants to 8.3%
 and 9.6% for 2018 and 2019 entrants while the tree model, which cannot
-extrapolate the request year, stayed at 13–14% (notebook 08). A portfolio's
+extrapolate the request year, stayed at 13–14% (notebook 06 (part A)). A portfolio's
 expected MW online scales with the level, so the level has to be repaired
-before any book is priced (PLAN.md, notebook 12).
+before any book is priced (PLAN.md, notebook 04 (part G)).
 Reads / writes: nothing.
-Used by: notebook 12; ``tests/test_drift.py``.
+Used by: notebook 04 (part G); ``tests/test_drift.py``.
 """
 
 import numpy as np
@@ -66,7 +66,7 @@ def fit_intercept(p, y, w=None):
     -----
     A level shift only. With a slope as well the repair would also reshape
     the ranking, and the ranking is what the model is kept for; the slope is
-    reported, not fitted (PLAN.md, notebook 12). Weighted by the IPCW weights
+    reported, not fitted (PLAN.md, notebook 04 (part G)). Weighted by the IPCW weights
     so censored requests drop out.
     """
     p = np.clip(np.asarray(p, dtype=float), 1e-6, 1 - 1e-6)
@@ -155,7 +155,7 @@ def early_incidence(frame, entry_years, horizons=(1, 2), n_boot=200, seed=0):
     -----
     Used for the 2020–2022 entrants, whose 1- and 2-year outcomes are the
     newest evidence on the level; the model's predicted P(operation by 1
-    and 2 years) for the same requests is compared with these in notebook 12.
+    and 2 years) for the same requests is compared with these in notebook 04 (part G).
     """
     rows = []
     for y_i, year in enumerate(entry_years):

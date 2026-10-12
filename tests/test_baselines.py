@@ -1,4 +1,4 @@
-"""The fair baseline reduces to notebook 05's baseline when the size bands are collapsed."""
+"""The fair baseline reduces to notebook 04 (part A)'s baseline when the size bands are collapsed."""
 
 import numpy as np
 import pandas as pd

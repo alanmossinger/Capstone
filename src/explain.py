@@ -10,7 +10,7 @@ one hazard on one project-year would not say how a feature moves the number
 a developer or lender reads, P(operation within 5 years). Explaining the
 composed function answers that directly, in probability points.
 Reads / writes: nothing.
-Used by: notebook 09; ``tests/test_explain.py``.
+Used by: notebook 06 (part C); ``tests/test_explain.py``.
 """
 
 import numpy as np

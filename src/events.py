@@ -4,11 +4,11 @@ What: turns the clean queue table into one outcome per request — operation
 (event 1), withdrawal (event 2) or still in the queue at the censor date
 (event 0) — with the time from request to that outcome, and selects the
 Track A sample.
-Why: every survival curve and model in notebooks 03–09 must use the same
+Why: every survival curve and model in notebooks 02–06 must use the same
 clock and the same censoring rules, so they are written once here.
 Reads: the clean table (``data/interim/queue_clean.parquet``).
-Writes: nothing (notebook 04 saves the event table).
-Used by: notebooks 03 and 04; ``tests/test_features.py``.
+Writes: nothing (notebook 03 saves the event table).
+Used by: notebooks 02 and 03; ``tests/test_features.py``.
 
 Censoring rules: active, suspended (decision #4) and unknown requests are
 censored at 2024-12-31; so are withdrawals dated after that day, because on
@@ -32,7 +32,7 @@ def code_events(clean, censor_date=config.CENSOR_DATE):
     Parameters
     ----------
     clean : pandas.DataFrame
-        Output of notebook 02 (dates already checked by rules R1–R4).
+        Output of notebook 01 (part B) (dates already checked by rules R1–R4).
     censor_date : str
         End of follow-up.
 
@@ -97,7 +97,7 @@ def flag_bulk_withdrawals(events):
     -------
     pandas.Series of bool
         True for the stamped rows (decision #21). They stay in every sample;
-        the flag drives the as-recorded sensitivity run of notebook 08.
+        the flag drives the as-recorded sensitivity run of notebook 06 (part A).
     """
     return ((events["region"] == "ERCOT") & (events["q_status"] == "withdrawn")
             & (events["wd_date"] == pd.Timestamp(config.ERCOT_BULK_WD_DATE)))
@@ -135,7 +135,7 @@ def delayed_entry_years(events, region="ERCOT", date=config.ERCOT_BULK_WD_DATE):
 
 
 def split_label(q_year):
-    """Temporal split of PLAN.md §6 (notebook 08): train, validation, test, later.
+    """Temporal split of PLAN.md §6 (notebook 06 (part A)): train, validation, test, later.
 
     Notes
     -----
@@ -170,7 +170,7 @@ def track_b_sample(events):
     No dates beyond the status are needed, so the six regions without exit
     dates can join. Keeping only resolved requests drops the slow ones that
     are still waiting; the later the cohort, the larger that selection, which
-    is why Track B stops at the 2017 entrants (PLAN.md §6, notebook 07).
+    is why Track B stops at the 2017 entrants (PLAN.md §6, notebook 04 (part C)).
     """
     keep = (events["q_year"].astype(float) <= config.TRACK_B_MAX_YEAR) \
         & events["q_status"].isin(["operational", "withdrawn"])
@@ -184,7 +184,7 @@ def entry_cohort(q_year):
 
     Notes
     -----
-    2000–09, 2010–14 and 2015–19 (PLAN.md §6, notebook 03); later entrants
+    2000–09, 2010–14 and 2015–19 (PLAN.md §6, notebook 02 (part A)); later entrants
     have too little follow-up for a 5-year view and are labelled 2020–24.
     """
     bins = [1999, 2009, 2014, 2019, 2024]

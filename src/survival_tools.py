@@ -11,7 +11,7 @@ Aalen–Johansen splits the exits correctly. The estimator is written out in
 numpy (a few lines, checked against lifelines in the tests) because the
 bootstrap refits it tens of thousands of times.
 Reads / writes: nothing.
-Used by: notebooks 03 and 05 (baseline predictor), 08b (Cox refits);
+Used by: notebook 02 and notebook 04 part A (baseline predictor), notebook 06 part B (Cox refits);
 ``tests/test_survival_tools.py``.
 """
 
@@ -81,7 +81,7 @@ def bootstrap_bands(durations, events, times, n_boot=500, seed=0, level=0.95):
     durations, events, times
         As in ``aalen_johansen``.
     n_boot : int
-        Number of resamples (500 in notebook 03).
+        Number of resamples (500 in notebook 02 (part A)).
     seed : int
         Seed for the random generator, so bands reproduce exactly.
     level : float
@@ -246,7 +246,7 @@ def baseline_cif(train, target, horizons, min_n=50):
     -----
     This is what a developer or lender uses today: the historical completion
     rate of similar projects. Withdrawal dates do not enter the operation
-    curve's risk sets in a way that changes it (notebook 04 shows stamped
+    curve's risk sets in a way that changes it (notebook 03 shows stamped
     withdrawals leave it unchanged), so the cells use the dates as recorded.
     """
     cells, regions = {}, {}
@@ -351,7 +351,7 @@ def cause_specific_cif(model_operation, model_withdrawal, X, horizons, step=1 / 
 
 
 def fit_cause_specific_cox(frame, cause, penalizer, delayed=True):
-    """One cause-specific Cox model (the other exit treated as censoring), as fitted in notebook 05.
+    """One cause-specific Cox model (the other exit treated as censoring), as fitted in notebook 04 (part A).
 
     Parameters
     ----------
@@ -360,16 +360,16 @@ def fit_cause_specific_cox(frame, cause, penalizer, delayed=True):
         ``event`` and ``entry_years``.
     cause : {"operation", "withdrawal"}
     penalizer : float
-        Ridge penalty (notebook 05 tuned it on the 2016 cohort).
+        Ridge penalty (notebook 04 (part A) tuned it on the 2016 cohort).
     delayed : bool
         ERCOT delayed entry (decision #21): requests that left before their
         entry time are dropped and the others enter the risk set late.
 
     Notes
     -----
-    The same steps as the fit inside notebook 05, moved here so notebook 08b
-    can refit Cox on entrants to 2015; notebook 08b checks that the refit
-    reproduces notebook 05's predictions.
+    The same steps as the fit inside notebook 04 (part A), moved here so notebook 06 (part B)
+    can refit Cox on entrants to 2015; notebook 06 (part B) checks that the refit
+    reproduces notebook 04 (part A)'s predictions.
     """
     code = OPERATION if cause == "operation" else WITHDRAWAL
     data = cox_design(frame).assign(T=frame["duration_years"], E=(frame["event"] == code).astype(int),
@@ -397,7 +397,7 @@ def cif_from_cumulative_hazards(cum_op, cum_wd, grid, horizons):
     -----
     The same arithmetic as ``cause_specific_cif``: CIF_op(t) = Σ S(t_{k−1}) ·
     ΔΛ_op(t_k) with S = exp(−Λ_op − Λ_wd). Kept separate so the Cox function
-    that notebooks 05–08 scored stays byte-for-byte as it was.
+    that notebook 04 (parts A–C) and notebook 06 (part A) scored stays byte-for-byte as it was.
     """
     survival = np.exp(-(cum_op + cum_wd))
     before = np.concatenate([np.ones((cum_op.shape[0], 1)), survival[:, :-1]], axis=1)
@@ -425,7 +425,7 @@ def fit_rsf_pair(frame, min_samples_leaf, n_estimators=300, seed=0):
         Track A requests with the ``cox_design`` columns, ``duration_years``,
         ``event`` and ``entry_years``.
     min_samples_leaf : int
-        The one tuned setting (chosen on the 2016 cohort in notebook 08b).
+        The one tuned setting (chosen on the 2016 cohort in notebook 06 (part B)).
     n_estimators, seed : int
         Fixed in the protocol.
 

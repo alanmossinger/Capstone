@@ -8,14 +8,14 @@ expected value of a request from its P(operation by year) curve.
 Why: a portfolio needs more than a probability — expected MW online and a
 value behind each request — and every number in that value must trace to
 a file on disk or to an assumption stated in `results/value_assumptions.csv`
-with its range (PLAN.md, notebook 15).
+with its range (PLAN.md, notebook 07).
 Reads: ``data/raw/value/ice_electric-<year>final.xlsx`` (EIA, public
 domain), ``data/raw/atb/ATBe_2024_v3.parquet`` (NREL Annual Technology
 Baseline 2024, v3; CAPEX and O&M per kW), ``data/raw/value/2024-som-pjm-sec5.pdf`` (Monitoring Analytics,
 2024 State of the Market, Section 5), ``data/raw/lbnl_costs/pjm_costs_2022_clean_data.xlsx``
-(LBNL), EIA API responses cached by notebook 15.
+(LBNL), EIA API responses cached by notebook 07.
 Writes: nothing.
-Used by: notebooks 15 and 16; ``tests/test_value.py``.
+Used by: notebooks 07 and 09; ``tests/test_value.py``.
 """
 
 import glob
@@ -143,7 +143,7 @@ def capacity_factors(generation, capacity):
 
 def pjm_cost_table(file=RAW_COSTS / "pjm_costs_2022_clean_data.xlsx"):
     """LBNL's project-level PJM interconnection cost estimates, $2022 per kW, with the request's size band."""
-    from src import features  # local import: the size regime rule of notebook 04
+    from src import features  # local import: the size regime rule of notebook 03
     d = pd.read_excel(file, sheet_name="data")
     d = d.rename(columns={"Project #": "q_id", "Nameplate MW": "mw", "$2022 Total Cost/kW": "total_cost_per_kw",
                           "$2022 Network Cost/kW": "network_cost_per_kw", "$2022 POI Cost/kW": "poi_cost_per_kw",
@@ -210,7 +210,7 @@ def expected_value(p_by_year, mw, values_by_year, sunk_cost):
     The incidence curve's yearly increments are the probabilities of
     operating in each year; a plant that starts in year j earns the values
     of years j … end of window. No discounting: the window is short and the
-    report compares books, not absolute worth (stated in notebook 15).
+    report compares books, not absolute worth (stated in notebook 07).
     """
     p = np.asarray(p_by_year, dtype=float)
     increments = np.diff(np.concatenate([[0.0], p]))
@@ -241,7 +241,7 @@ def fetch_atb(dest=RAW_ATB):
     Notes
     -----
     The raw file is not committed (data/README.md, S12); this makes a fresh
-    clone rebuild notebook 15 without a manual step. A hash mismatch stops
+    clone rebuild notebook 07 without a manual step. A hash mismatch stops
     the run rather than valuing plants on a file that is not the one the
     report used.
     """
@@ -286,7 +286,7 @@ def atb_costs(file=RAW_ATB, year=2024, scenario="Moderate", case="Market", crp="
     One representative class per technology (``ATB_MAP``): a capstone-scale
     cost, not a site estimate. Costs are in 2022 dollars while the value
     table is in the dollars of each year; the mismatch is a few percent and
-    is stated in notebook 15. Battery CAPEX is per kW of a four-hour system.
+    is stated in notebook 07. Battery CAPEX is per kW of a four-hour system.
     """
     d = pd.read_parquet(file)
     d = d[(d["scenario"] == scenario) & (d["core_metric_case"] == case) & (d["crpyears"] == str(crp))
@@ -325,7 +325,7 @@ def npv_per_mw(revenue_by_year, capex_per_kw, fom_per_kw_year, variable_per_mwh,
         Generation per MW-year (capacity factor × 8,760); 0 for storage,
         whose value in the table is capacity revenue only.
     rate : float
-        Real discount rate; 8% base, 6% and 10% as cases (notebook 15).
+        Real discount rate; 8% base, 6% and 10% as cases (notebook 07).
     life : int
         Operating years valued.
 
@@ -357,11 +357,11 @@ def atb_capacity_factors(file=RAW_ATB, year=2024, scenario="Moderate", case="Mar
     dict
         Technology group -> capacity factor, for the groups whose ATB class
         carries one (solar, hybrid, wind, offshore wind). Gas and storage have
-        none in the ATB; notebook 15 states what it uses for them.
+        none in the ATB; notebook 07 states what it uses for them.
 
     Notes
     -----
-    Used for the NPV only. The value table of notebook 15 keeps the fleet
+    Used for the NPV only. The value table of notebook 07 keeps the fleet
     capacity factors of EIA data (2024 generation over 2026 nameplate), which
     describe the plants that exist; a plant built today is designed to the
     class figure, and the two differ by a factor of two for PJM solar.
@@ -392,7 +392,7 @@ def atb_wacc(file=RAW_ATB, year=2024, case="Market", crp="20"):
     -----
     Practice discounts operating cash flows at the project's cost of capital
     and carries the chance of never reaching operation as a probability, not
-    as a higher rate; the gate rule of notebook 16 has that shape. The ATB
+    as a higher rate; the gate rule of notebook 09 (part A) has that shape. The ATB
     Market case gives 4.2% real for utility solar and hybrids, 4.9% for land
     wind, 5.2% for offshore wind and 5.4% for gas (2024 values).
     """

@@ -1,4 +1,4 @@
-"""Tests for the Track B helpers of notebook 07.
+"""Tests for the Track B helpers of notebook 04 (part C).
 
 They check the state encoding (no request sees its own outcome), the base
 rate's fallback to the region, the binned isotonic map (monotone, no step

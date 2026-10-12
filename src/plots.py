@@ -110,7 +110,7 @@ def finish(fig, title, subtitle, cohort, eia=False, lbnl=True, lbnl_2026=False):
     lbnl : bool
         Credit the LBNL file (False for figures drawn from EIA data only).
     lbnl_2026 : bool
-        Also credit the 2026 edition (figures of notebooks 01b, 12 and 19).
+        Also credit the 2026 edition (figures of notebook 01 (part C) and notebook 04 (parts F, G and K)).
 
     Notes
     -----

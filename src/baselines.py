@@ -1,15 +1,15 @@
 """The fair baseline: Aalen–Johansen incidence per region × technology × size band.
 
-What: the "industry average" of notebook 05 (region × technology) with one
+What: the "industry average" of notebook 04 (part A) (region × technology) with one
 more cut, the FERC size band, and shrinkage to the parent cell when a cell
 is thin.
-Why: size is the second-strongest driver in notebook 09's explanation and
+Why: size is the second-strongest driver in notebook 06 (part C)'s explanation and
 the v1 baseline ignores it, so part of the measured gain over the baseline
 could be a size lookup rather than machine learning. Scoring every v2
 criterion against this baseline as well shows what survives a lookup table
 that any analyst could build (PLAN.md §8, decision #42).
 Reads / writes: nothing.
-Used by: notebook 11 (and every later notebook that compares with a
+Used by: notebook 04 (part D) (and every later notebook that compares with a
 baseline); ``tests/test_baselines.py``.
 """
 
@@ -17,7 +17,7 @@ import pandas as pd
 
 from src import survival_tools
 
-MIN_CELL = 50  # a cell with fewer training requests falls back to its parent, as in notebook 05's baseline
+MIN_CELL = 50  # a cell with fewer training requests falls back to its parent, as in notebook 04 (part A)'s baseline
 
 
 def fair_baseline_cif(train, target, horizons, min_n=MIN_CELL):
@@ -48,7 +48,7 @@ def fair_baseline_cif(train, target, horizons, min_n=MIN_CELL):
     finest cell with at least ``min_n`` training requests. With a single
     size band the function reduces to ``survival_tools.baseline_cif``, which
     ``tests/test_baselines.py`` checks. Withdrawal dates enter the operation
-    curve's risk sets as recorded, as in notebook 05.
+    curve's risk sets as recorded, as in notebook 04 (part A).
     """
     def curves(groupby, at_least):
         return {key: survival_tools.aalen_johansen(part["duration_years"], part["event"], horizons)["cif_operation"].to_numpy()
@@ -56,7 +56,7 @@ def fair_baseline_cif(train, target, horizons, min_n=MIN_CELL):
 
     fine = curves(["region", "tech", "size_regime"], min_n)
     mid = curves(["region", "tech"], min_n)
-    coarse = curves("region", 1)  # the region curve always exists, as in notebook 05 …
+    coarse = curves("region", 1)  # the region curve always exists, as in notebook 04 (part A) …
     overall = survival_tools.aalen_johansen(train["duration_years"], train["event"], horizons)["cif_operation"].to_numpy()
     rows, used = [], []
     for region, tech, size in zip(target["region"], target["tech"], target["size_regime"]):
@@ -69,7 +69,7 @@ def fair_baseline_cif(train, target, horizons, min_n=MIN_CELL):
         elif region in coarse:
             rows.append(coarse[region])
             used.append("region")
-        else:  # … unless the training data hold no request of that region at all (a late landmark, notebook 14)
+        else:  # … unless the training data hold no request of that region at all (a late landmark, notebook 04 (part J))
             rows.append(overall)
             used.append("all regions")
     out = pd.DataFrame(rows, index=target.index, columns=horizons)

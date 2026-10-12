@@ -1,4 +1,4 @@
-"""Tests for the blending and recalibration helpers of notebook 08b."""
+"""Tests for the blending and recalibration helpers of notebook 06 (part B)."""
 
 import numpy as np
 

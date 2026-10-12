@@ -8,10 +8,12 @@ by hand. With one table of quoted values, ``tests/test_report.py`` can
 check that each number in the report's text appears here, and anyone can
 look up where a number comes from (``source`` column).
 Reads: CSV and JSON files in ``results/``; design constants from
-``src/config.py`` and ``src/track_b.py``. The ``v3_*`` steps read the
-portfolio-layer tables of notebooks 01b and 11–19;
-``v4_managed_book`` reads notebooks 13 and 20; the ``v5_*`` steps read the
-v4 additions of notebooks 03, 08, 08b, 09, 15, 16 and 20 (PLAN.md §13).
+``src/config.py`` and ``src/track_b.py``. The steps are named after the
+layers that produced the tables (v1 entry models, v3 portfolio layer, v4
+managed book, v5 the capital-allocation additions; PLAN.md §13) and read the
+notebooks that own them since the consolidation of 2026-10-12 (PLAN.md
+§14): 01 data, 02 EDA, 03 features, 04 forecasting, 06 the record, 07
+economics, 09 the portfolio.
 Writes: ``results/report_numbers.csv`` (key, text, value, source, note).
 Used by: ``make numbers`` (``python -m src.report_numbers``), before the
 report is written or rebuilt; ``tests/test_report.py``.
@@ -117,7 +119,7 @@ def design_constants():
 
 
 def gathering_and_cleaning():
-    """Source files, the readiness gate, the cleaning rules and the samples (notebooks 01, 02, 04)."""
+    """Source files, the readiness gate, the cleaning rules and the samples (notebooks 01 and 03)."""
     audit = read("audit_counts.json")
     add("lbnl_rows", f"{audit['n_rows']:,}", audit["n_rows"], "results/audit_counts.json", "rows in the LBNL file")
     add("lbnl_cols", str(audit["n_cols"]), audit["n_cols"], "results/audit_counts.json", "columns in the LBNL file")
@@ -211,7 +213,7 @@ def gathering_and_cleaning():
 
 
 def eda():
-    """Survival curves, size and congestion views, reproduced LBNL figures (notebook 03)."""
+    """Survival curves, size and congestion views, reproduced LBNL figures (notebook 02 (part A))."""
     cif = read("cif_horizons.csv")
     reg = cif[(cif["grouping"] == "region") & (cif["time"] == 5.0)].set_index("group")
     for region in config.TRACK_A_REGIONS:
@@ -261,7 +263,7 @@ def eda():
 
 
 def modelling():
-    """Sample of project-years, hyperparameter searches and their choices (notebooks 05–07)."""
+    """Sample of project-years, hyperparameter searches and their choices (notebook 04, parts A–C)."""
     rows = read("dt_rows_summary.csv").set_index("region")
     add("dt_project_years", f"{int(rows.loc['all', 'project-years']):,}", rows.loc["all", "project-years"],
         "results/dt_rows_summary.csv", "project-years in the final discrete-time fit")
@@ -326,7 +328,7 @@ def modelling():
 
 
 def evaluation():
-    """The registered criteria and the other notebook 08 results."""
+    """The registered criteria and the other notebook 06 (part A) results."""
     crit = read("success_criteria.csv")
     crit["h"] = crit["horizon"].fillna(0).astype(int)
     passes = int((crit["result"] == "PASS").sum())
@@ -437,7 +439,7 @@ def evaluation():
 
 
 def explanation():
-    """SHAP, partial dependence, sanity checks, ranking book and worked examples (notebook 09)."""
+    """SHAP, partial dependence, sanity checks, ranking book and worked examples (notebook 06 (part C))."""
     shap = read("shap_values.csv")
     cols = [c for c in shap.columns if c.startswith("shap_")]
     mean_abs = (100 * shap[cols].abs().mean()).sort_values(ascending=False)
@@ -451,7 +453,7 @@ def explanation():
     size = pd_[pd_["feature"] == "size_mw"].copy()
     size["value"] = size["value"].astype(float)
     for mw in [3, 1000]:
-        add(f"pd_size_point_{mw}", f"{mw:,}", mw, "notebooks/09_explain_and_rank.ipynb", "size at which partial dependence is quoted, MW")
+        add(f"pd_size_point_{mw}", f"{mw:,}", mw, "notebooks/06_evaluation_record.ipynb", "size at which partial dependence is quoted, MW")
         near = size.assign(gap=(np.log(size["value"]) - np.log(mw)).abs()).sort_values("gap").groupby("region").first()["p"]
         add(f"pd_size_ercot_{mw}", pct(near["ERCOT"]), near["ERCOT"], "results/partial_dependence.csv",
             f"ERCOT mean P(operation within 5 years) near {mw} MW")
@@ -514,7 +516,7 @@ def explanation():
 
 
 def posthoc():
-    """The post-hoc analysis of notebook 08b (decision #34)."""
+    """The post-hoc analysis of notebook 06 (part B) (decision #34)."""
     choice = read("posthoc_choice.json")
     briers = choice["mean_brier_2016"]
     add("ph_brier_min", num(min(briers.values()), 4), min(briers.values()), "results/posthoc_choice.json", "lowest 2016 mean Brier")
@@ -528,7 +530,7 @@ def posthoc():
     add("ph_paired", str(len(paired)), len(paired), "results/posthoc_validation_2016.csv", "2016 paired Brier comparisons")
 
     crit = read("posthoc_criteria.csv")
-    for status, key in [("post-hoc", "ph_pass"), ("registered (notebook 08)", "ph_reg_pass")]:
+    for status, key in [("post-hoc", "ph_pass"), ("registered (notebook 08)", "ph_reg_pass")]:  # the status text as results/posthoc_criteria.csv spells it
         part = crit[crit["status"] == status]
         add(key, str(int((part["result"] == "PASS").sum())), int((part["result"] == "PASS").sum()),
             "results/posthoc_criteria.csv", f"Track A lines passed, {status}")
@@ -537,13 +539,13 @@ def posthoc():
 
 
 # ---------------------------------------------------------------------------
-# v3: the portfolio layer (notebooks 01b, 11–19)
+# v3: the portfolio layer (notebook 01 part C, notebook 04 parts D–K, notebooks 07 and 09)
 # ---------------------------------------------------------------------------
 
 def v3_data():
-    """The 2026 LBNL file beside the frozen one, and the milestones (notebooks 01b and 13)."""
+    """The 2026 LBNL file beside the frozen one, and the milestones (notebook 01 part C and notebook 04 part I)."""
     recon = read("lbnl_2026_reconciliation.csv").set_index("region")
-    add("e26_rows", "38,201", 38201, "notebooks/01b_lbnl_2026_reconcile.ipynb", "rows of the 2026 edition, raw")
+    add("e26_rows", "38,201", 38201, "notebooks/01_problem_and_data.ipynb", "rows of the 2026 edition, raw")
     add("e26_found", pct(recon.loc["all", "share_found"]), recon.loc["all", "share_found"], "results/lbnl_2026_reconciliation.csv",
         "2025 requests found in 2026")
     add("e26_found_pjm", pct(recon.loc["PJM", "share_found"]), recon.loc["PJM", "share_found"], "results/lbnl_2026_reconciliation.csv",
@@ -814,7 +816,7 @@ def v3_portfolio():
     add("sim_real5", f"{sim.loc[5, 'realised_mw_by_end_2024']:,.0f}", sim.loc[5, "realised_mw_by_end_2024"], "results/book_simulation.csv", "realised MW, 5 years")
     add("sim_miss", pct(sim.loc[5, "p_miss_half_target"], 0), sim.loc[5, "p_miss_half_target"], "results/book_simulation.csv", "P(less than half the expected MW by year 5)")
     choice = read("book_choice.csv").set_index("chooser")
-    add("budget", "$20.11M", 20.11e6, "notebooks/16_portfolio.ipynb", "deposit budget (median 25-request 2019 book)")
+    add("budget", "$20.11M", 20.11e6, "notebooks/09_portfolio.ipynb", "deposit budget (median 25-request 2019 book)")
     for name, tag in [("v2 model, level repaired", "model"), ("fair baseline", "fair"), ("v1 baseline", "v1"), ("random", "random"), ("v2 model, raw", "raw")]:
         r = choice.loc[name]
         add(f"bk_{tag}_n", str(int(r["requests"])), int(r["requests"]), "results/book_choice.csv", f"{name}: requests chosen")
@@ -847,7 +849,7 @@ def v3_portfolio():
     add("cov_band_low", f"{cov['band_low']:,.0f}", cov["band_low"], "results/book_coverage.csv", "C11 band, low")
     add("cov_band_high", f"{cov['band_high']:,.0f}", cov["band_high"], "results/book_coverage.csv", "C11 band, high")
     add("cov_expected", f"{cov['expected_mw_5yr']:,.0f}", cov["expected_mw_5yr"], "results/book_coverage.csv", "model book expected MW online, 5 years")
-    # notebook 17
+    # notebook 09 (part B)
     cm = read("constraint_map.csv").set_index(["region", "q_year"])
     for region, year in [("PJM", 2012), ("PJM", 2021), ("CAISO", 2012), ("CAISO", 2021), ("ERCOT", 2012), ("ERCOT", 2021)]:
         add(f"cm_gw_{region.lower()}_{year}", f"{cm.loc[(region, year), 'gw_waiting_at_entry']:.0f}", cm.loc[(region, year), "gw_waiting_at_entry"],
@@ -870,7 +872,7 @@ def v3_portfolio():
     add("levers_n", str(len(levers)), len(levers), "results/levers.csv", "levers listed")
     add("levers_with_number", str(int(levers["source"].str.contains(".csv").sum())), int(levers["source"].str.contains(".csv").sum()), "results/levers.csv",
         "levers with a number from this project")
-    # notebook 18
+    # notebook 06 (part D)
     scored = read("success_criteria_v2_scored.csv")
     add("v2_lines", str(len(scored)), len(scored), "results/success_criteria_v2_scored.csv", "registered v2 lines")
     add("v2_pass", str(int((scored["result"] == "PASS").sum())), int((scored["result"] == "PASS").sum()), "results/success_criteria_v2_scored.csv", "v2 lines passed")
@@ -908,9 +910,9 @@ def v3_extras():
     add("caiso_cp_high", "$144", 144, "results/value_assumptions.csv", "CAISO capacity price range, high")
     add("study_cost", "$150,000", 150000, "results/value_assumptions.csv", "study cost to the next gate, base")
     costs = read("cost_table.csv")
-    add("cost_overall_median", "$61", 61, "notebooks/15_value_and_cost.ipynb", "PJM median interconnection cost, $/kW")
-    add("whatif_cut_mw", "19.9", 19.9, "notebooks/16_portfolio.ipynb", "what-if size, MW")
-    add("whatif_quiet", "25%", 0.25, "notebooks/16_portfolio.ipynb", "what-if congestion cut")
+    add("cost_overall_median", "$61", 61, "notebooks/07_economics.ipynb", "PJM median interconnection cost, $/kW")
+    add("whatif_cut_mw", "19.9", 19.9, "notebooks/09_portfolio.ipynb", "what-if size, MW")
+    add("whatif_quiet", "25%", 0.25, "notebooks/09_portfolio.ipynb", "what-if congestion cut")
     wi = read("whatifs.csv")
     for column, tag in [("cut to 19.9 MW (if ≥ 20 MW)", "cut"), ("add storage (if solar)", "storage"), ("enter a 25% quieter queue", "quiet")]:
         add(f"wi_{tag}_min", num(100 * wi[column].min(), 1, True), 100 * wi[column].min(), "results/whatifs.csv", f"{column}: minimum, points")
@@ -1015,12 +1017,12 @@ def signed(x, digits=0, count=False):
 
 
 def v4_managed_book():
-    """Notebook 13's PJM and ERCOT files and notebook 20's registered milestone-managed book (C15–C17)."""
+    """Notebook 13's PJM and ERCOT files and notebook 09 (part C)'s registered milestone-managed book (C15–C17)."""
     join = read("iso_join_rates.csv").set_index("iso")
     add("pjm_join_test", pct(join.loc["PJM", "share_found_2017_2019"], 0), join.loc["PJM", "share_found_2017_2019"], "results/iso_join_rates.csv",
         "PJM 2017–2019 entrants found in PJM's export")
     add("pjm_same_day", f"{int(join.loc['PJM', 'found_in_iso_file']):,}", int(join.loc["PJM", "found_in_iso_file"]), "results/iso_join_rates.csv",
-        "PJM requests found in the export; every shared request date on the same day (notebook 13)")
+        "PJM requests found in the export; every shared request date on the same day (notebook 04 (part I))")
     cont = read("iso_file_contents.csv").set_index(["file", "item"])
     for column, tag in [("operated", "op"), ("withdrew", "wd")]:
         v = int(cont.loc[("ERCOT", "test requests"), column])

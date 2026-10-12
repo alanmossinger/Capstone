@@ -167,11 +167,11 @@ Three cards from the decision pack show the rule at work. A 525 MW ERCOT wind re
 
 | Criteria | Registered before | Lines | Passed | What they say |
 |---|---|---|---|---|
-| C1–C5 | notebook 08 | 12 | 8 | the model beats cohort averages at 3 and 5 years; calibration slope fails |
-| C6–C12 | notebook 11 | 12 | 3 | at utility scale the fair lookup ties; the landmark model wins at +2 years (C8); the simulated band covers the realised book (C11); no leakage (C12) |
-| C13–C14 | notebook 19 | 12 | 3 | MISO: +0.067 [+0.008, +0.127] at 5 years; SPP too thin |
-| C15–C17 | notebook 20 | 10 | 4 | the milestone book wins on operations, not MW; the level is not repaired at the landmark |
-| C18–C19 | notebook 08b | 8 | 5 | other learners tie LightGBM (C18 fails on one line) and do not beat the lookup (C19 fails) |
+| C1–C5 | notebook 06, part A | 12 | 8 | the model beats cohort averages at 3 and 5 years; calibration slope fails |
+| C6–C12 | notebook 04, part D | 12 | 3 | at utility scale the fair lookup ties; the landmark model wins at +2 years (C8); the simulated band covers the realised book (C11); no leakage (C12) |
+| C13–C14 | notebook 04, part K | 12 | 3 | MISO: +0.067 [+0.008, +0.127] at 5 years; SPP too thin |
+| C15–C17 | notebook 09, part C | 10 | 4 | the milestone book wins on operations, not MW; the level is not repaired at the landmark |
+| C18–C19 | notebook 06, part B | 8 | 5 | other learners tie LightGBM (C18 fails on one line) and do not beat the lookup (C19 fails) |
 
 *Table 2.* Every registered criterion, as registered, pass or fail. Sources: `results/success_criteria*_scored.csv`, `results/tournament_criteria.csv`.
 

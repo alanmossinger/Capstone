@@ -1,9 +1,9 @@
-"""Tests for the discrete-time models of notebook 06.
+"""Tests for the discrete-time models of notebook 04 (part B).
 
 The unit tests check the project-year rows (delayed entry, congestion without
 the project itself), the state encoding (no row sees its own outcome) and the
 hazard → incidence arithmetic on toy data. ``test_model_cif_inside_aj_bands``
-is notebook 06's acceptance check: averaged by region, each model's
+is notebook 04 (part B)'s acceptance check: averaged by region, each model's
 P(operation by 3/5/7 years) must lie inside the Aalen–Johansen 95% bootstrap
 band of the same requests — the entrants it was fitted on for PJM and CAISO,
 the 2016 entrants for ERCOT (decision #28) — read from the rows of
@@ -103,7 +103,7 @@ def test_logit_design_has_fixed_columns():
 
 def _band_rows():
     if not BAND_FILE.exists():
-        pytest.skip(f"{BAND_FILE.name} missing — run notebook 06 first")
+        pytest.skip(f"{BAND_FILE.name} missing — run notebook 04 (part B) first")
     return pd.read_csv(BAND_FILE)
 
 

@@ -7,11 +7,11 @@ probability, a budget-constrained choice of requests by mixed-integer
 programming, and the realised outcome of a book.
 Why: a portfolio manager does not hold one request; the question is what a
 *book* delivers and how wrong that can go. Independent draws understate the
-risk when a whole cohort slows down together, which notebook 12 showed it
+risk when a whole cohort slows down together, which notebook 04 (part G) showed it
 does. The choice of book is the decision the report is for, and the backtest
 is how the choice is judged (criteria C9–C11).
 Reads / writes: nothing.
-Used by: notebook 16; ``tests/test_portfolio.py``.
+Used by: notebook 09 (part A); ``tests/test_portfolio.py``.
 """
 
 import numpy as np
@@ -216,7 +216,7 @@ def top_n_book(score, groups, n, cap_share, tiebreak):
 
 def gate_decision(p_low, p_high, p_floor, ev_low, ev_base, ev_high, c_low, c_base, c_high, h=3.0, exit_share=1.0,
                   labels=("invest", "hold", "exit")):
-    """The stage-gate rule of notebook 16, vectorised: invest, hold or exit for every request.
+    """The stage-gate rule of notebook 09 (part A), vectorised: invest, hold or exit for every request.
 
     Parameters
     ----------
@@ -278,7 +278,7 @@ def simulate_operation_years(P, groups, rho, n_draws=5000, seed=0, level_factors
         As in ``simulate_book``.
     level_factors : array-like, optional
         One multiplier per draw applied to every request's curve (the
-        cohort level risk of notebook 12: the whole book runs hot or cold
+        cohort level risk of notebook 04 (part G): the whole book runs hot or cold
         together). ``None`` means 1.
     chunk : int
         Draws per block, to keep memory small.
@@ -350,7 +350,7 @@ def greedy_risk_adjusted(npv_draws, cost, budget, lam=1.0, caps=(), level=0.95):
     dollar is added, as long as it fits the budget and the caps and the gain
     is positive. Greedy is not optimal, but it is transparent, fast for
     thousands of candidates and 5,000 scenarios, and the comparison in
-    notebook 16 is between policies, not solvers.
+    notebook 09 (part A) is between policies, not solvers.
     """
     npv_draws = np.asarray(npv_draws, float)
     cost = np.asarray(cost, float)

@@ -1,8 +1,8 @@
 """Execute the project notebooks in order, top to bottom, in place.
 
-What: runs ``notebooks/01_*.ipynb`` … ``09_*.ipynb`` (with ``03b_*`` and ``08b_*``), then the v3 notebooks ``01b`` and ``11`` … ``20``, with ``jupyter nbconvert
---execute --inplace`` on the ``queue-survival`` kernel and stops at the first
-notebook that fails.
+What: runs the story notebooks ``notebooks/01_*.ipynb`` … ``10_*.ipynb`` in
+dependency order (PLAN.md §14) with ``jupyter nbconvert --execute --inplace``
+on the ``queue-survival`` kernel and stops at the first notebook that fails.
 Why: one command rebuilds every interim table, result and figure from the
 raw files (PLAN.md §4), and each notebook's saved outputs always match the
 code that produced them.
@@ -11,9 +11,9 @@ Used by: ``make all`` and the per-step ``make`` targets.
 
 Usage::
 
-    python run_pipeline.py              # every notebook 01–09 that exists
+    python run_pipeline.py              # every notebook of the pipeline that exists
     python run_pipeline.py --only 01    # just notebook 01
-    python run_pipeline.py --only 05 06 # several
+    python run_pipeline.py --only 04 07 # several
 """
 
 import argparse
@@ -23,8 +23,9 @@ import time
 from pathlib import Path
 
 NOTEBOOKS = Path(__file__).resolve().parent / "notebooks"
-PIPELINE = ["01", "02", "03", "03b", "04", "05", "06", "07", "08", "08b", "09",  # v1: the registered pipeline on the 2025 file
-            "01b", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"]  # v3: the portfolio layer (PLAN.md v3); 10 was dropped
+# The notebooks are numbered by the story (PLAN.md §14) and run in dependency order: 06, the evaluation
+# record, runs last because it reads every scored table (decision #63); 05, 08 and 10 join as they are built.
+PIPELINE = ["01", "02", "03", "04", "05", "07", "08", "09", "06", "10"]
 KERNEL = "queue-survival"  # registered from .venv by `make setup`
 
 

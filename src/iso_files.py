@@ -6,13 +6,13 @@ service, backfeed, test energy) and its study and agreement *statuses*;
 ``read_ercot_gis`` reads the project sheets of ERCOT's monthly Generator
 Interconnection Status (GIS) report into one row per INR with the dated
 study phases and the sheet the request was listed on.
-Why: notebook 13 needs to know what each file can date after entry for the
+Why: notebook 04 (part I) needs to know what each file can date after entry for the
 2017–2019 test cohort before anything from it is used in a landmark
 (decision #53, #57). The readers only parse; joining and judging the
 coverage happen in the notebook, where they are printed.
 Reads: ``data/raw/iso/pjm_queue_<date>.xml``, ``data/raw/iso/ercot_gis_<date>.xlsx``.
 Writes: nothing.
-Used by: notebook 13; ``tests/test_iso_files.py``.
+Used by: notebook 04 (part I); ``tests/test_iso_files.py``.
 """
 
 import xml.etree.ElementTree as ET
@@ -94,7 +94,7 @@ def read_ercot_gis(path):
     The report lists requests that are still active, plus the month's
     inactive and cancelled ones; a request that reached commercial operation
     or withdrew earlier is no longer in it. Being listed is therefore
-    information about the outcome, which notebook 13 measures before any
+    information about the outcome, which notebook 04 (part I) measures before any
     date from the report is used.
     """
     parts = []

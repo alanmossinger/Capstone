@@ -251,9 +251,9 @@ mean_abs_shap_congestion_rank,1.61,1.6091649937754242,results/shap_values.csv,"m
 shap_features,9,9,results/shap_values.csv,features the models use
 shap_n,300,300,results/shap_values.csv,test requests explained
 shap_background,100,100,docs/decisions.md #33,background test requests for SHAP
-pd_size_point_3,3,3,notebooks/09_explain_and_rank.ipynb,"size at which partial dependence is quoted, MW"
+pd_size_point_3,3,3,notebooks/06_evaluation_record.ipynb,"size at which partial dependence is quoted, MW"
 pd_size_ercot_3,41.8%,0.4179475331450031,results/partial_dependence.csv,ERCOT mean P(operation within 5 years) near 3 MW
-pd_size_point_1000,"1,000",1000,notebooks/09_explain_and_rank.ipynb,"size at which partial dependence is quoted, MW"
+pd_size_point_1000,"1,000",1000,notebooks/06_evaluation_record.ipynb,"size at which partial dependence is quoted, MW"
 pd_size_ercot_1000,7.4%,0.0742753560076774,results/partial_dependence.csv,ERCOT mean P(operation within 5 years) near 1000 MW
 pd_step_ERCOT,+1.8,1.7640182941274174,results/partial_dependence.csv,"ERCOT change at 20 MW, points"
 pd_step_PJM,+1.4,1.3575178911041208,results/partial_dependence.csv,"PJM change at 20 MW, points"
@@ -312,7 +312,7 @@ ph_paired,12,12,results/posthoc_validation_2016.csv,2016 paired Brier comparison
 ph_pass,5,5,results/posthoc_criteria.csv,"Track A lines passed, post-hoc"
 ph_reg_pass,6,6,results/posthoc_criteria.csv,"Track A lines passed, registered (notebook 08)"
 ph_lines,10,10,results/posthoc_criteria.csv,Track A criterion lines
-e26_rows,"38,201",38201,notebooks/01b_lbnl_2026_reconcile.ipynb,"rows of the 2026 edition, raw"
+e26_rows,"38,201",38201,notebooks/01_problem_and_data.ipynb,"rows of the 2026 edition, raw"
 e26_found,96.9%,0.9689087696045946,results/lbnl_2026_reconciliation.csv,2025 requests found in 2026
 e26_found_pjm,92.9%,0.929003580688974,results/lbnl_2026_reconciliation.csv,PJM requests found in 2026
 e26_new,"2,759",2759,results/lbnl_2026_reconciliation.csv,rows new in 2026
@@ -631,7 +631,7 @@ sim_p5,0,0.0,results/book_simulation.csv,5th percentile
 sim_p95,586,586.4575000000001,results/book_simulation.csv,95th percentile
 sim_real5,72,72.25,results/book_simulation.csv,"realised MW, 5 years"
 sim_miss,44%,0.4414,results/book_simulation.csv,P(less than half the expected MW by year 5)
-budget,$20.11M,20110000.0,notebooks/16_portfolio.ipynb,deposit budget (median 25-request 2019 book)
+budget,$20.11M,20110000.0,notebooks/09_portfolio.ipynb,deposit budget (median 25-request 2019 book)
 bk_model_n,26,26,results/book_choice.csv,"v2 model, level repaired: requests chosen"
 bk_model_mw,"17,799",17798.9,results/book_choice.csv,"v2 model, level repaired: MW chosen"
 bk_model_exp,"1,473",1473.3631680854571,results/book_choice.csv,"v2 model, level repaired: expected MW online within 5 years"
@@ -722,9 +722,9 @@ ercot_price_ratio,0.77,0.7691392390207294,results/energy_prices.csv,ERCOT/PJM on
 caiso_cp_low,$48,48,results/value_assumptions.csv,"CAISO capacity price range, low, $/kW-year"
 caiso_cp_high,$144,144,results/value_assumptions.csv,"CAISO capacity price range, high"
 study_cost,"$150,000",150000,results/value_assumptions.csv,"study cost to the next gate, base"
-cost_overall_median,$61,61,notebooks/15_value_and_cost.ipynb,"PJM median interconnection cost, $/kW"
-whatif_cut_mw,19.9,19.9,notebooks/16_portfolio.ipynb,"what-if size, MW"
-whatif_quiet,25%,0.25,notebooks/16_portfolio.ipynb,what-if congestion cut
+cost_overall_median,$61,61,notebooks/07_economics.ipynb,"PJM median interconnection cost, $/kW"
+whatif_cut_mw,19.9,19.9,notebooks/09_portfolio.ipynb,"what-if size, MW"
+whatif_quiet,25%,0.25,notebooks/09_portfolio.ipynb,what-if congestion cut
 wi_cut_min,−2.1,-2.1436129618189503,results/whatifs.csv,"cut to 19.9 MW (if ≥ 20 MW): minimum, points"
 wi_cut_max,+8.5,8.49606529770043,results/whatifs.csv,"cut to 19.9 MW (if ≥ 20 MW): maximum, points"
 wi_storage_min,−4.1,-4.06268937224083,results/whatifs.csv,"add storage (if solar): minimum, points"
@@ -1005,7 +1005,7 @@ af_3_ops3,98,98,results/landmark_coverage.csv,F row 3 operations within 3
 af_3_wd3,19,19,results/landmark_coverage.csv,F row 3 withdrawals within 3
 a_horizon_years,0.8–1.2,"(0.8, 1.2)",docs/decisions.md #52,C7/C14 slope range
 pjm_join_test,94%,0.9447098976109216,results/iso_join_rates.csv,PJM 2017–2019 entrants found in PJM's export
-pjm_same_day,"7,051",7051,results/iso_join_rates.csv,PJM requests found in the export; every shared request date on the same day (notebook 13)
+pjm_same_day,"7,051",7051,results/iso_join_rates.csv,PJM requests found in the export; every shared request date on the same day (notebook 04 (part I))
 ercot_test_op,92,92,results/iso_file_contents.csv,ERCOT test requests that operated (none listed in the GIS report)
 ercot_test_wd,223,223,results/iso_file_contents.csv,ERCOT test requests that withdrew (none listed in the GIS report)
 mb_pool,"1,132",1132,results/managed_book_pool.csv,"pool at +2, ≥ 20 MW"

@@ -9,8 +9,8 @@ Why: the readiness gate (PLAN.md §5.3) asks whether the public file can
 carry a time-to-event model, and these numbers answer it. They are computed
 before any cleaning so the gate judges the file, not my edits to it.
 Reads: the raw DataFrame from ``get_lbnl.load_queue``.
-Writes: nothing (notebook 01 saves the outputs to ``results/``).
-Used by: notebook 01; ``tests/test_cleaning.py`` pins the counts.
+Writes: nothing (notebook 01 (part A) saves the outputs to ``results/``).
+Used by: notebook 01 (part A); ``tests/test_cleaning.py`` pins the counts.
 
 Run as a script (``python -m src.audit_queue``) it prints the audit.
 """
@@ -42,7 +42,7 @@ def excel_serial_to_datetime(values):
     LBNL file is a whole day, so the numbers are converted as integer days:
     ``pd.to_datetime(floats, unit="D")`` multiplies floats under numpy's
     raise-on-overflow setting, which on Windows intermittently raised a
-    spurious ``FloatingPointError`` in one run of notebook 01.
+    spurious ``FloatingPointError`` in one run of notebook 01 (part A).
     """
     numbers = pd.to_numeric(values, errors="coerce")
     days = numbers.round().astype("Int64")
@@ -67,7 +67,7 @@ def with_dates(raw):
     Notes
     -----
     Only a view for auditing: placeholders are flagged, not removed. Removing
-    them is cleaning rule R2 in notebook 02.
+    them is cleaning rule R2 in notebook 01 (part B).
     """
     dated = raw.copy()
     for column in config.LBNL_DATE_COLS:

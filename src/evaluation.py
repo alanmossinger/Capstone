@@ -13,7 +13,7 @@ score a different question. Every function takes an optional
 ``sample_weight`` (how many times each request is drawn), so the bootstrap
 reuses the same code instead of copying rows.
 Reads / writes: nothing.
-Used by: notebook 08; ``tests/test_evaluation.py``.
+Used by: notebook 06 (part A); ``tests/test_evaluation.py``.
 """
 
 import numpy as np

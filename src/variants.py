@@ -1,13 +1,13 @@
-"""The fixed list of size-aware model variants of notebook 11, shared with the notebooks that reuse the chosen one.
+"""The fixed list of size-aware model variants of notebook 04 (part D), shared with the notebooks that reuse the chosen one.
 
 What: the candidates K0–K3 (LightGBM) and the K1/K2 logits as named
 specifications, and one function that fits a specification with notebook
 06's settings on a given training frame.
-Why: notebook 11 chooses a candidate on 2016 entrants; notebooks 12, 14 and
+Why: notebook 04 (part D) chooses a candidate on 2016 entrants; notebook 04's parts G, J and
 16 must refit exactly that candidate on other frames (other cohorts, other
 horizons) without copying its definition.
 Reads / writes: nothing.
-Used by: notebooks 11, 12, 14, 16; ``tests/test_variants.py``.
+Used by: notebook 04 (parts D, G, J) and notebook 09; ``tests/test_variants.py``.
 """
 
 import pandas as pd
@@ -39,7 +39,7 @@ CANDIDATES = {
 
 
 def at_least_20(frame):
-    """Requests in a size regime of 20 MW or more (the same rule as notebook 08's robustness run)."""
+    """Requests in a size regime of 20 MW or more (the same rule as notebook 06 (part A)'s robustness run)."""
     return ~frame["size_regime"].astype(str).isin(SMALL_REGIMES)
 
 
@@ -49,7 +49,7 @@ def fit_key(spec):
 
 
 def fit_candidate(spec, frame, clean, tuning):
-    """Fit a candidate's specification on ``frame`` with notebook 06's settings.
+    """Fit a candidate's specification on ``frame`` with notebook 04 (part B)'s settings.
 
     Parameters
     ----------

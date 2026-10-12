@@ -190,7 +190,7 @@ and are committed. Nothing in `data/raw/` or `data/interim/` is committed.
 <!-- dictionary:start -->
 ## Data dictionary
 
-*This section is written by `notebooks/01_get_data.ipynb`; edit the notebook, not this text.*
+*This section is written by `notebooks/01_problem_and_data.ipynb`; edit the notebook, not this text.*
 
 ### LBNL sheet `03. Complete Queue Data` (36,441 rows × 31 columns)
 

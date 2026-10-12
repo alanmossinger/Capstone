@@ -10,7 +10,7 @@ they cannot enter the timing models; resolved requests still say whether a
 project was built. One row per request makes this a plain classification
 problem, but with the same leakage rules as Track A.
 Reads / writes: nothing.
-Used by: notebook 07; ``tests/test_track_b.py``.
+Used by: notebook 04 (part C); ``tests/test_track_b.py``.
 """
 
 from statistics import NormalDist
@@ -78,7 +78,7 @@ def logit_design(frame):
     Indicators against PJM, solar, 20–<100 MW and NRIS; numeric request
     year, log size, log GW waiting at entry, congestion rank and the state
     rate. The hybrid flag is left out because Solar+Battery carries it (as
-    in notebooks 05 and 06). Fixed level lists give every design the same
+    in notebook 04, parts A and B). Fixed level lists give every design the same
     columns.
     """
     X = pd.DataFrame(index=frame.index)
@@ -132,7 +132,7 @@ def base_rates(train, target, min_n=50):
 
     Notes
     -----
-    Track B's version of notebook 05's baseline: what an analyst would
+    Track B's version of notebook 04 (part A)'s baseline: what an analyst would
     quote for a new request from the historical record of similar ones.
     """
     cells = train.groupby(["region", "tech"])["built"].agg(["mean", "size"])

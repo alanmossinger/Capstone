@@ -8,7 +8,7 @@ never learn from what happened later (decision #7). Congestion is the
 mechanism Johnston, Liu & Yang (2023) point to: a crowded queue slows studies
 and raises the chance of dropping out.
 Reads / writes: nothing.
-Used by: notebooks 03 (figure F8) and 04 (full feature table);
+Used by: notebooks 02 (figure F8) and 03 (full feature table);
 ``tests/test_features.py``.
 """
 
@@ -181,7 +181,7 @@ def ambition_gap(frame):
     Notes
     -----
     Values below −1 or above 20 years are treated as missing: they are typing
-    errors (notebook 01 found proposed dates in 1905 and gaps of 49 years).
+    errors (notebook 01 (part A) found proposed dates in 1905 and gaps of 49 years).
     The field appears to be updated after entry (decision #22), so this
     feature never enters the main models.
     """
@@ -195,7 +195,7 @@ def build_features(clean):
     Parameters
     ----------
     clean : pandas.DataFrame
-        Output of notebook 02.
+        Output of notebook 01 (part B).
 
     Returns
     -------
@@ -206,9 +206,9 @@ def build_features(clean):
     -----
     Size uses the first component's capacity (``mw1``) rather than the total,
     because the second component's capacity is missing for most hybrids
-    outside CAISO (notebook 02); composition is carried by ``hybrid``.
+    outside CAISO (notebook 01 (part B)); composition is carried by ``hybrid``.
     ``state`` is left as text: it is target-encoded inside the
-    cross-validation folds of notebooks 06–07, never on the whole table.
+    cross-validation folds of notebook 04 (parts B–C), never on the whole table.
     """
     size = clean["mw1"].where(clean["mw1"] > 0, clean["mw"])
     congestion = congestion_at_entry(clean)

@@ -1,4 +1,4 @@
-"""The monotone constraint of candidate K3 lands on log_mw, and the size rule matches notebook 08's."""
+"""The monotone constraint of candidate K3 lands on log_mw, and the size rule matches notebook 06 (part A)'s."""
 
 import pandas as pd
 

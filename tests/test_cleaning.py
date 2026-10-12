@@ -2,7 +2,7 @@
 
 Three kinds of test:
 
-* ``test_audit_counts`` compares ``results/audit_counts.json`` (notebook 01)
+* ``test_audit_counts`` compares ``results/audit_counts.json`` (notebook 01 (part A))
   with the counts of the 2026-10-03 audit, typed in here by hand so the test
   does not share a constant with the code it checks;
 * one small hand-made table per rule, so each rule is checked without the
@@ -136,7 +136,7 @@ def test_r9_flags_hybrids():
     assert touched["hybrid without mw2 (second capacity unknown)"] == 1
 
 
-# --- the real clean table (after notebook 02) -------------------------------
+# --- the real clean table (after notebook 01 (part B)) -------------------------------
 
 @pytest.fixture(scope="module")
 def clean():

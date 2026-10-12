@@ -3,12 +3,12 @@
 SIADS 699 Capstone (Master of Applied Data Science, University of Michigan), Group 13.
 Author: Alan Mössinger.
 
-> **Status (2026-10-08):** the v1 pipeline (notebooks 01–09, the registered
-> verdict on the frozen 2025 file) and the v3 portfolio layer (notebooks 01b
-> and 11–20: fair baseline, level repair, milestones, landmark models, value
-> and cost, the book and its backtest, levers and playbooks, the v2 verdict,
-> MISO/SPP, the milestone-managed book) run end to end with `make all`.
-> Report v2 updated with notebook 20's registered verdict.
+> **Status (2026-10-12):** the 22 notebooks of v1–v4 were consolidated into
+> the story layout of PLAN.md §14 (01 data, 02 EDA, 03 features, 04
+> forecasting the queue, 06 the evaluation record, 07 economics, 09 the
+> portfolio; 05, 08 and 10 are the v5 additions to come). Every result table
+> came out byte-identical after the merge (decision #63). `make all` runs
+> them end to end; the registered verdicts are untouched.
 
 ## About
 
@@ -63,23 +63,28 @@ make setup     # .venv, pinned packages, Jupyter kernel "queue-survival"
 3. Run:
 
 ```bash
-make all       # notebooks 01 → 09, then 01b and 11 → 20, stopping at the first error
-make v3        # only the portfolio layer (01b, 11 → 19)
+make all       # notebooks 01 → 10 in dependency order (06, the record, runs last), stopping at the first error
 make test      # pytest
 make report    # report/report.pdf and report/report.docx from report/report.md + references.md (needs pandoc and typst)
 ```
 
-Each step also has its own target (`make data`, `make clean`, `make explore`, …;
-see the `Makefile`). `python run_pipeline.py --only 01` runs a single notebook.
+Each notebook also has its own target (`make data`, `make eda`, `make features`,
+`make forecast`, `make economics`, `make portfolio`, `make record`, …; see the
+`Makefile`). `python run_pipeline.py --only 01` runs a single notebook.
 
 ## Map of the repository
 
 ```
-notebooks/   01_get_data … 09_explain_and_rank — the v1 analysis (registered verdict), run in order;
-             03b (map), 01b (2026 file), 11 (fair baseline, utility scale), 12 (level), 13 (milestones),
-             14 (landmark models), 15 (value and cost), 16 (the book and its backtest),
-             17 (constraints, levers, playbooks), 18 (the v2 verdict), 19 (MISO and SPP),
-             20 (the milestone-managed book, registered)
+notebooks/   01_problem_and_data (sources, cleaning rules, the 2026 edition, readiness gates)
+             02_eda (survival curves, drivers, the map, state archetypes)
+             03_statistics_and_features (outcomes, samples, split, entry-time features)
+             04_forecast_queue (entry models, fair baseline, entry rules, level repair, ablation,
+                milestones, landmark models, MISO/SPP — the completion and timing engine)
+             06_evaluation_record (every registered criterion scored, post-hoc and tournament,
+                explanation, the decision board; runs last)
+             07_economics (value, cost, project NPV)
+             09_portfolio (scorecards, books, gates, levers, the managed book)
+             Each notebook is made of lettered parts; a part header says which old notebook it was.
 src/         small helper package used by the notebooks (paths, config, data access, plots)
 data/        raw/ (not committed) · interim/ (not committed) · processed/ (small final tables)
 results/     every number the report cites, written by the notebooks

@@ -1,4 +1,4 @@
-"""Tests for the evaluation metrics of notebook 08.
+"""Tests for the evaluation metrics of notebook 06 (part A).
 
 Each metric is checked on a toy dataset small enough to work out by hand,
 and the bootstrap's ``sample_weight`` is checked against literally repeating

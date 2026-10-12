@@ -13,7 +13,7 @@ Reads: ``data/raw/geo/cb_2020_us_state_20m.zip``,
 Bureau). The 2020 vintage is used because LBNL's county codes predate the
 2022 change of Connecticut's counties to planning regions.
 Writes: nothing.
-Used by: notebook 03b (figure F9) and notebook 17 (playbook maps).
+Used by: notebook 02 (part B) (figure F9) and notebook 09 (part B) (playbook maps).
 """
 
 import geopandas as gpd
@@ -106,7 +106,7 @@ def queue_points(queue):
     Parameters
     ----------
     queue : pandas.DataFrame
-        The clean queue table (notebook 02) with ``fips_codes``.
+        The clean queue table (notebook 01 (part B)) with ``fips_codes``.
 
     Returns
     -------
@@ -128,7 +128,7 @@ def eia_points(generators):
     Parameters
     ----------
     generators : pandas.DataFrame
-        The EIA-860M pull (notebook 01) with ``latitude``, ``longitude`` and
+        The EIA-860M pull (notebook 01 (part A)) with ``latitude``, ``longitude`` and
         ``balancing_authority_code``.
 
     Returns

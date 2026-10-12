@@ -1,16 +1,16 @@
-"""Blending and recalibration for the post-hoc analysis of notebook 08b.
+"""Blending and recalibration for the post-hoc analysis of notebook 06 (part B).
 
 What: a grid of blend weights on the simplex, the weights that minimise the
 Brier score of a weighted average of several models' P(operation by t), a
 logistic recalibration (intercept and slope on the logit scale), and a
 cross-fitting helper that scores either step on data it was not fitted on.
-Why: notebooks 08 and 09 found that the discrete-time logit is the best
+Why: notebook 06 (parts A and C) found that the discrete-time logit is the best
 calibrated model at 3 and 5 years, Cox ranks best at 7 years and LightGBM's
 probabilities run high; a blend or a recalibration may combine their
 strengths. Both are fitted on the 2016 cohort, so their 2016 score must be
 cross-fitted to be compared fairly with models that never saw 2016.
 Reads / writes: nothing.
-Used by: notebook 08b; ``tests/test_posthoc.py``.
+Used by: notebook 06 (part B); ``tests/test_posthoc.py``.
 """
 
 from itertools import product

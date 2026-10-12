@@ -1,4 +1,4 @@
-"""Tests for the FIPS parsing behind the project map (notebook 03b)."""
+"""Tests for the FIPS parsing behind the project map (notebook 02 (part B))."""
 
 import pandas as pd
 

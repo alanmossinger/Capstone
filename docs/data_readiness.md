@@ -1,6 +1,6 @@
 # Data readiness report (Phase 0 gate)
 
-*Written by `notebooks/01_get_data.ipynb` on 2026-10-12. Every number below was computed by that notebook; thresholds are in `src/config.py`.*
+*Written by `notebooks/01_problem_and_data.ipynb` on 2026-10-12. Every number below was computed by that notebook; thresholds are in `src/config.py`.*
 
 ## Sources
 
@@ -54,9 +54,9 @@
 
 **Outcome (2026-10-12): GO**
 
-## v3 sources — S6, the LBNL 2026 data file (notebook 01b)
+## v3 sources — S6, the LBNL 2026 data file (notebook 01, part C)
 
-Written by `notebooks/01b_lbnl_2026_reconcile.ipynb`. File `LBNL_Ix_Queue_Data_File_thru2025.xlsx`, SHA-256 `794582d3…a08b6`.
+Written by `notebooks/01_problem_and_data.ipynb`. File `LBNL_Ix_Queue_Data_File_thru2025.xlsx`, SHA-256 `794582d3…a08b6`.
 
 | Check (PLAN.md §5.2) | Value | Result |
 |---|---|---|

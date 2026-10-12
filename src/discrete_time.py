@@ -6,13 +6,13 @@ year), builds the design matrices of the multinomial logit and of LightGBM,
 target-encodes the state inside the training rows only, fits both models
 and turns their yearly hazards into P(operation by t) and an expected time
 to operation.
-Why: the Cox models of notebook 05 assume each effect is constant over the
+Why: the Cox models of notebook 04 (part A) assume each effect is constant over the
 wait, and 17 of 36 effects fail that test. A discrete-time model gives every
 year in the queue its own baseline hazard and lets effects differ early and
 late, and the two causes (operation, withdrawal) are modelled together as
 the three outcomes of a year: stay, operate, withdraw.
 Reads / writes: nothing.
-Used by: notebook 06 (fits and predictions) and notebook 08 (sensitivity
+Used by: notebook 04 (part B) (fits and predictions) and notebook 06 (part A) (sensitivity
 refits); ``tests/test_discrete_time.py``.
 """
 
@@ -28,7 +28,7 @@ from src import config, features, survival_tools
 
 MAX_YEARS = 10  # project-years beyond the tenth year in the queue are dropped; horizons stop at 7
 POOLED_FROM = 8  # the logit gives years 8–10 one shared effect: only 6% of the fitted project-years are that late
-EARLY_YEARS = 3  # "early" years for the logit's interactions: notebook 05 found fast profiles fast in years 0–3
+EARLY_YEARS = 3  # "early" years for the logit's interactions: notebook 04 (part A) found fast profiles fast in years 0–3
 STATE_PRIOR_ROWS = 200  # smoothing of the state encoding: a state with 200 project-years gets half its own rate
 TECH_LEVELS = list(config.TECH_COLORS)  # Solar (reference) first; same seven groups as the baseline and Cox
 SERVICE_LEVELS = ["NRIS", "ERIS", "missing"]  # NRIS/ERIS occurs only in SPP, outside Track A
@@ -81,7 +81,7 @@ def project_years(frame, clean, delayed=True, max_years=MAX_YEARS, tech_column="
     congestion : {"yearly", "entry"}
         "yearly" (main) recounts the GW waiting on the first day of every
         project-year; "entry" keeps the value at the request date in every
-        year, as every prediction made at entry does (notebook 08b,
+        year, as every prediction made at entry does (notebook 06 (part B),
         decision #34).
 
     Returns
@@ -156,7 +156,7 @@ def prediction_rows(frame, max_years=MAX_YEARS, tech_column="tech"):
     A prediction made at entry cannot know how crowded the queue will be in
     later years, so congestion stays at its entry value in every year (a
     persistence forecast). The models are fitted on the realised yearly
-    values; notebook 06 measures on the 2016 cohort how much this costs.
+    values; notebook 04 (part B) measures on the 2016 cohort how much this costs.
     """
     years = np.tile(np.arange(1, max_years + 1), len(frame))
     rows = pd.DataFrame({"project": np.repeat(frame.index.to_numpy(), max_years), "year_in_queue": years})
@@ -258,9 +258,9 @@ def logit_design(rows, interactions=True):
     still waiting for a separate effect per year), indicators against PJM,
     solar, 20–<100 MW and NRIS, and the numeric features. The hybrid flag is
     left out because the Solar+Battery group already carries it (as in the
-    Cox design of notebook 05); LightGBM keeps it. With ``interactions`` the CAISO, technology and size
+    Cox design of notebook 04 (part A)); LightGBM keeps it. With ``interactions`` the CAISO, technology and size
     indicators also get an "early" copy (years 1–3), so an attribute can
-    matter more early than late — the drift notebook 05's Schoenfeld
+    matter more early than late — the drift notebook 04 (part A)'s Schoenfeld
     diagnostics showed. ERCOT gets no early copy: under delayed entry its
     training requests are almost never watched in their first three years
     (no rows in the fit on entrants to 2015, 24 in the fit to 2016), so the
@@ -407,7 +407,7 @@ def cif_table(h_operation, h_withdrawal, index, horizons=config.HORIZONS, max_ye
 
 
 def fit_both(frame, clean, tuning, delayed=True, extra=None, pool_regions=False, congestion="yearly", params=None):
-    """Refit the logit and LightGBM with notebook 06's settings on ``frame``.
+    """Refit the logit and LightGBM with notebook 04 (part B)'s settings on ``frame``.
 
     Parameters
     ----------
@@ -420,7 +420,7 @@ def fit_both(frame, clean, tuning, delayed=True, extra=None, pool_regions=False,
         ERCOT delayed entry (main) or dates as recorded.
     extra : callable, optional
         ``extra(rows) -> DataFrame`` of columns added to LightGBM's design
-        (the leakage ablation of notebook 08); the logit is left as it is.
+        (the leakage ablation of notebook 06 (part A)); the logit is left as it is.
     pool_regions : bool
         Give every row the same region after congestion has been counted in
         the real one, so neither model can use region (leave-one-ISO-out:
@@ -428,7 +428,7 @@ def fit_both(frame, clean, tuning, delayed=True, extra=None, pool_regions=False,
     congestion : {"yearly", "entry"}
         Passed to ``project_years``.
     params : dict, optional
-        LightGBM parameters merged over the tuned ones (notebook 11 adds a
+        LightGBM parameters merged over the tuned ones (notebook 04 (part D) adds a
         monotone constraint on ``log_mw``); the logit is left as it is.
 
     Returns
@@ -441,7 +441,7 @@ def fit_both(frame, clean, tuning, delayed=True, extra=None, pool_regions=False,
     -----
     Settings are not re-tuned: a sensitivity run asks what changes when the
     data change, with the model held fixed. Notebook 08 checks that refitting
-    the main version reproduces notebook 06's predictions.
+    the main version reproduces notebook 04 (part B)'s predictions.
     """
     rows = project_years(frame, clean, delayed=delayed, congestion=congestion)
     if pool_regions:
@@ -462,7 +462,7 @@ def predict_both(fitted, target, horizons=config.HORIZONS):
 
     Notes
     -----
-    Same steps as notebook 06's predictions: years 1–10 with congestion
+    Same steps as notebook 04 (part B)'s predictions: years 1–10 with congestion
     frozen at entry, state rates from the fitting rows, hazards → incidence.
     """
     rows = prediction_rows(target)
@@ -507,7 +507,7 @@ def fit_mlp_hazard(frame, clean, hidden=(64, 32), alpha=1e-3, seed=0, delayed=Tr
 
     Notes
     -----
-    The rows, the state encoding and the design are notebook 06's logit
+    The rows, the state encoding and the design are notebook 04 (part B)'s logit
     design without the hand-made early-years interactions: a network can
     form its own interactions, which is the one thing it might add over the
     logit and LightGBM. Softmax over stay / operate / withdraw keeps the two

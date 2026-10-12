@@ -7,12 +7,12 @@ at L (queue congestion on that day, whether an agreement has been
 executed), the conditional cumulative incidence from L, and the shifted
 outcomes to score it with.
 Why: a portfolio is managed at milestones, not at entry. The discrete-time
-hazard models of notebook 06 already describe every year in the queue, so a
+hazard models of notebook 04 (part B) already describe every year in the queue, so a
 landmark prediction is the same model read from year k + 1 on, with the
 time-varying covariates set to their value at L rather than frozen at entry
 — and only information dated before L is used (criterion C12).
 Reads / writes: nothing.
-Used by: notebook 14; ``tests/test_landmark.py``.
+Used by: notebook 04 (part J); ``tests/test_landmark.py``.
 """
 
 import numpy as np

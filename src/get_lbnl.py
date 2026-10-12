@@ -7,7 +7,7 @@ Why: every result depends on one exact release of the file (decision #2), so
 the file is never silently replaced and its identity is provable.
 Reads: https://emp.lbl.gov/queues (only when the file is not on disk yet).
 Writes: ``data/raw/lbnl/<file>.xlsx`` and ``data/raw/lbnl/SHA256.txt``.
-Used by: notebook 01.
+Used by: notebook 01 (part A).
 
 The LBNL site sits behind a bot filter that usually refuses scripted
 requests. When that happens ``download()`` stops with instructions for the
@@ -174,11 +174,11 @@ def load_queue(path):
     -------
     pandas.DataFrame
         36,441 rows × 31 columns for the frozen release; dates are still
-        Excel serial numbers (converted by rule R1 in notebook 02).
+        Excel serial numbers (converted by rule R1 in notebook 01 (part B)).
 
     Notes
     -----
     ``header=1`` skips the title banner in row 0. No cleaning happens here so
-    that the audit in notebook 01 describes the file as LBNL published it.
+    that the audit in notebook 01 (part A) describes the file as LBNL published it.
     """
     return pd.read_excel(path, sheet_name=config.LBNL_SHEET, header=config.LBNL_HEADER_ROW)

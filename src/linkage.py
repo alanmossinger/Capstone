@@ -9,10 +9,10 @@ whether the match is right.
 Why: the public LBNL file has no operation dates for MISO, SPP, the West and
 most of the Southeast. If projects can be linked to EIA-860M, the EIA
 operating month could fill that gap (stretch notebook 10). The quick test in
-notebook 01 measures the rule where both sources have dates (ERCOT, PJM).
+notebook 01 (part A) measures the rule where both sources have dates (ERCOT, PJM).
 Reads: the raw LBNL DataFrame (with dates) and the EIA-860M pull.
-Writes: nothing (notebook 01 saves the summary to ``results/``).
-Used by: notebook 01 (quick test) and notebook 10 (stretch).
+Writes: nothing (notebook 01 (part A) saves the summary to ``results/``).
+Used by: notebook 01 (part A) (quick test) and notebook 10 (stretch).
 """
 
 import re

@@ -8,7 +8,7 @@ every region, which the public LBNL file lacks outside CAISO/ERCOT/PJM
 Reads: the API key from ``.env`` (``EIA_API_KEY``); the EIA API.
 Writes: ``data/raw/eia860m/api_<period>_page<N>.json`` (one file per page,
 as returned) and ``data/raw/eia860m/eia860m_<period>.parquet`` (all pages).
-Used by: notebook 01 (and notebook 10 for the linkage stretch).
+Used by: notebook 01 (part A) (and notebook 10 for the linkage stretch).
 
 The key is personal. It is passed only as a request parameter and is never
 printed, logged, stored in a page file or put in an error message.

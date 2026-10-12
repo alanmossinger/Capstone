@@ -1,4 +1,4 @@
-"""Tests for the feature encoding behind notebook 09's explanations.
+"""Tests for the feature encoding behind notebook 06 (part C)'s explanations.
 
 The encoding must round-trip, and size must land on the right side of the
 FERC 20 MW step when the size regime is rebuilt from MW.

@@ -24,7 +24,7 @@ def test_npv_subtracts_fixed_and_variable_costs():
 
 def test_atb_costs_cover_every_technology_group():
     if not value.RAW_ATB.exists():
-        return  # the raw file is not committed; notebook 15 checks it on disk
+        return  # the raw file is not committed; notebook 07 checks it on disk
     costs = value.atb_costs()
     assert set(costs.index) == set(value.ATB_MAP) | {"Other"}
     assert (costs["capex_per_kw"] > 500).all() and (costs["capex_per_kw"] < 10_000).all()

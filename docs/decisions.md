@@ -686,3 +686,70 @@ alternative rejected.
     which pushed solar below zero everywhere. *Rejected:* a single blended
     rate (hides the technology difference the ATB documents); a merchant-only
     report (the contract is where the sign of solar is decided).
+62. **v5 scope: an integrated U.S. energy portfolio, with the queue models as
+    its timing engine** (2026-10-12; Alan's direction, PLAN.md §14). The
+    capstone extends from a book of interconnection-queue requests to a real
+    integrated U.S. energy portfolio: 20 federal offshore Gulf of Mexico
+    oil-and-gas lease redevelopments (BSEE OGOR-A production, a modeled
+    redevelopment against an Arps baseline) and 20 ERCOT power candidates
+    anchored to real queue requests of the 2017–2019 cohort (5 gas
+    combined-cycle, 5 solar, 5 wind, 5 storage), under joint price, output,
+    cost and timing uncertainty. Everything built stays: the entry, landmark
+    and managed-book models become the completion and timing engine of the
+    power candidates, and every registered verdict C1–C19 is untouched.
+    Added: an LLM advisor (Anthropic API, key in `.env`, never printed)
+    grounded only in result tables, with a recommend mode, a challenge mode
+    built from Alan's two prompts (motivated-reasoning check, ideological
+    Turing test) and a decision gym scored against realized NPV, with a
+    replay mode that re-serves recorded answers so the pipeline runs offline;
+    a Streamlit dashboard that reads `results/` only; the 22 notebooks
+    consolidated into 10 story notebooks (merge map in PLAN.md §14) with
+    every result table byte-identical after the merge (tournament tables
+    within 1e-16) before any v5 line is written; figures drawn by named,
+    documented functions with a provenance footnote (OBSERVED / DERIVED /
+    FORECAST / ASSUMED); the report reorganised as an executive, data-science
+    and portfolio report that opens with a one-page Capital Allocation Memo
+    and the Decision Board. Self-reuse from Alan's other repositories
+    (Forecast to Dispatch: ERCOT 2024 hourly prices and the battery dispatch
+    LP; MADS_Milestone2: the ERCOT Public API client; the net-load
+    repository) is credited in the statement of work. New criteria C20–C24
+    are registered before scoring. *Reason:* the proposal of 12 Oct widens
+    the decision to the capital allocation an energy company actually makes
+    across sectors, and the queue work is the piece no public portfolio study
+    has — a modeled chance that a power asset never arrives, or arrives
+    late. *Rejected:* a new repository (the timing engine and its registered
+    record would have to be rebuilt or cited at arm's length); a synthetic
+    portfolio (every candidate is anchored to a real lease or request, and
+    modeled costs are labelled as such); an advisor free to use its own
+    knowledge (every number must come from a result table and is checked by
+    code); large candidate counts (forty show the method and keep the gym
+    scorable).
+63. **The 22 notebooks consolidated into the story layout, with the result
+    tables as the gate** (2026-10-12; PLAN.md §14, Alan's merge map). Seven
+    notebooks exist after the merge — `01_problem_and_data` (01, 02, 01b),
+    `02_eda` (03, 03b), `03_statistics_and_features` (04),
+    `04_forecast_queue` (05, 06, 07, 11, 12, 13, 14, 19),
+    `06_evaluation_record` (08, 08b, 09, 18), `07_economics` (15),
+    `09_portfolio` (16, 17, 20) — and 05, 08 and 10 are the v5 additions.
+    Each old notebook became a lettered part with its own setup, sections,
+    Reading-this cells and takeaways; the part header names the notebook it
+    was; `NOTEBOOK` constants and figure folders carry the new names. Three
+    sections changed notebook because a merged notebook must not read a
+    file a later one writes: the early incidence of the 2020–2022 entrants
+    (01b §5, which needs the Track A sample of 03) sits in 04 next to the
+    level repair that uses it; the labelled leakage ablation (08 §9, the
+    ceiling of the C12 guard) sits in 04 ahead of the landmark models; the
+    ten entry rules (09 §4b, read by the entry gate) sit in 04 ahead of the
+    portfolio. Notebook 17 went whole into 09 because its scenarios are
+    multipliers on the simulated book of 16. The notebooks are numbered by
+    the story and `make all` runs them in dependency order — 06, the
+    record, runs last because it reads every scored table. *Gate:* `make
+    all` before and after the merge from the raw files, every file in
+    `results/` byte-identical except the tournament tables, which are
+    identical within 1e-16 (`report_numbers.csv` is rebuilt by `make
+    numbers` and changes only its `source` column); the test suite green;
+    old notebooks and their figure folders deleted in the same commit.
+    *Rejected:* moving the record into 09 to keep a numeric run order (the
+    record would no longer hold every criterion); renumbering so that the
+    run order is numeric (the numbers are the plan's); leaving the old
+    notebooks beside the new ones (dead files).

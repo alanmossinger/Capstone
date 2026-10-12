@@ -6,9 +6,9 @@ records that dict in a log and ``clean_queue`` runs all nine in order.
 Why: every change to the published file is named, counted and testable, so
 the clean table can be traced back to the raw one rule by rule.
 Reads: the raw sheet from ``get_lbnl.load_queue``.
-Writes: nothing (notebook 02 saves ``data/interim/queue_clean.parquet`` and
+Writes: nothing (notebook 01 (part B) saves ``data/interim/queue_clean.parquet`` and
 ``results/clean_log.csv``).
-Used by: notebook 02; ``tests/test_cleaning.py``.
+Used by: notebook 01 (part B); ``tests/test_cleaning.py``.
 
 The order matters. Dates are converted (R1) and placeholders removed (R2)
 before date checks (R3, R4); non-generation rows go (R5) before capacities
@@ -129,7 +129,7 @@ def r4_withdrawal_dates(frame):
     -----
     Same logic as R3: the status wins over a stray date, and a withdrawal
     cannot precede the request. Withdrawal dates after the censor date are
-    left alone here; notebook 04 censors them.
+    left alone here; notebook 03 censors them.
     """
     out = frame.copy()
     wrong_status = out["wd_date"].notna() & (out["q_status"] != "withdrawn")
