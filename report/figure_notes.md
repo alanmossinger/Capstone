@@ -1382,6 +1382,16 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** Operations and MW realised within three years by the books each chooser keeps two years after the request, with bootstrap intervals.
 <!-- /fig:F18_managed_book -->
 
+<!-- fig:F19_drivers -->
+### F19_drivers
+
+![F19_drivers](../figures/F19_drivers.png)
+
+*Notebook:* `notebooks/03_explore_survival_curves.ipynb` · *Files:* `figures/F19_drivers.png`, `.svg`
+
+**Caption (stub).** Five-year completion by six drivers (size, technology, regional queue at entry, county crowding, service type, executed agreement within two years) within each region, 2010–2019 entrants, with 95% Wilson intervals.
+<!-- /fig:F19_drivers -->
+
 <!-- fig:F1_cif_by_region -->
 ### F1_cif_by_region
 
@@ -1391,6 +1401,46 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 
 **Caption (stub).** Cumulative incidence of reaching commercial operation and of withdrawing, by years since the interconnection request, for CAISO, ERCOT and PJM, with 95% bootstrap bands.
 <!-- /fig:F1_cif_by_region -->
+
+<!-- fig:F20_when_requests_die -->
+### F20_when_requests_die
+
+![F20_when_requests_die](../figures/F20_when_requests_die.png)
+
+*Notebook:* `notebooks/03_explore_survival_curves.ipynb` · *Files:* `figures/F20_when_requests_die.png`, `.svg`
+
+**Caption (stub).** When and where requests leave the queue: annual withdrawal and operation hazards by year in the queue, the study stage reached at withdrawal, and the share operating within the next three years conditional on surviving s years, by region, 2010–2019 entrants.
+<!-- /fig:F20_when_requests_die -->
+
+<!-- fig:F21_segments -->
+### F21_segments
+
+![F21_segments](../figures/F21_segments.png)
+
+*Notebook:* `notebooks/09_explain_and_rank.ipynb` · *Files:* `figures/F21_segments.png`, `.svg`
+
+**Caption (stub).** Five-year completion by the ten leaves of a depth-4 classification tree on entry attributes, on the fitting cohort (2010–2016) and the later cohort (2017–2019) with Wilson intervals.
+<!-- /fig:F21_segments -->
+
+<!-- fig:F22_tournament -->
+### F22_tournament
+
+![F22_tournament](../figures/F22_tournament.png)
+
+*Notebook:* `notebooks/08b_posthoc_improvements.ipynb` · *Files:* `figures/F22_tournament.png`, `.svg`
+
+**Caption (stub).** The chosen alternative learner (T3 blend of five) against the registered LightGBM and the fair lookup: paired differences in Uno's C and Brier score by horizon, all sizes and 20 MW and more, test cohort 2017–2019, 95% bootstrap intervals.
+<!-- /fig:F22_tournament -->
+
+<!-- fig:F26_npv_per_mw -->
+### F26_npv_per_mw
+
+![F26_npv_per_mw](../figures/F26_npv_per_mw.png)
+
+*Notebook:* `notebooks/15_value_and_cost.ipynb` · *Files:* `figures/F26_npv_per_mw.png`, `.svg`
+
+**Caption (stub).** Net present value per MW at operation by technology and region for a plant entering operation in 2024 (credits apply) and 2028 (after the credit deadline), 20-year life, 8% real discount rate, low and high value cases as lines; revenue from the value table with new-build capacity factors, capital and O&M from NREL ATB 2024.
+<!-- /fig:F26_npv_per_mw -->
 
 <!-- fig:F2_operation_by_technology -->
 ### F2_operation_by_technology

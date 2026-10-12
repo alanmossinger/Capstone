@@ -14,3 +14,10 @@ case multipliers,"{'low': {'energy': 0.7, 'capacity': 0.5, 'credit': 0.0}, 'base
 interconnection cost per kW outside PJM,PJM median by size band,× 0.5,× 2,LBNL PJM cost data (no CAISO/ERCOT file),proxy
 deposit share of interconnection cost to the next gate,0.1,0.05,0.2,assumption,assumption
 "study cost to the next gate, $ per request",150000,50000,500000,assumption,assumption
+capital and O&M cost per kW,"NREL ATB 2024 v3, Moderate / Market / 20-year CRP, one class per technology (src/value.ATB_MAP); 2022 dollars",,,"data/raw/atb/ATBe_2024_v3.parquet (OEDI data lake, downloaded 2026-10-12)",parsed
+capacity factor of a new plant (NPV only),"{'Solar': 0.266, 'Solar+Battery': 0.28, 'Wind': 0.455, 'Offshore Wind': 0.461, 'Battery': 0.0, 'Gas': 0.376, 'Other': 0.3}",,,"ATB 2024 class CF for solar, hybrid, wind, offshore; EIA fleet CF for gas; section 3 assumption for Other",parsed; choice stated
+"natural gas price, $/MMBtu",3.5,5.0,2.5,assumption; Henry Hub traded between about $2 and $6 over 2017–2024,assumption
+investment tax credit,"30% of CAPEX for Solar, Solar+Battery, Battery, Offshore Wind in service by 2027; wind takes the production credit instead",0 after the deadline,,IRC §48E base rate; deadline as the production credit (IRS Notice 2025-42),statute; election is an assumption
+production credit duration (NPV only),first 10 operating years,,,IRC §45Y,statute
+real discount rate,8%,10%,6%,"assumption; reported at 6%, 8% and 10%",assumption
+operating life valued,20 years,,,ATB 20-year cost-recovery period,by design

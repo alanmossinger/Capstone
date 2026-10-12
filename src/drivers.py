@@ -252,7 +252,10 @@ def _condition(name, sign, threshold):
     if name == "log_mw":
         return f"{'≤' if le else '>'} {np.exp(threshold):,.0f} MW"
     if name == "county_crowding":
-        return f"{'≤' if le else '>'} {np.expm1(threshold):.1f} requests in county"
+        count = int(np.floor(np.expm1(threshold)))  # the split falls between count and count + 1 earlier requests
+        if le:
+            return "no earlier request in county" if count == 0 else f"≤ {count} earlier requests in county"
+        return "1+ earlier requests in county" if count == 0 else f"{count + 1}+ earlier requests in county"
     if name.startswith("region_") or name.startswith("tech_"):
         return f"{'not ' if le else ''}{name.split('_', 1)[1]}"
     if name in ("hybrid", "service_ERIS"):

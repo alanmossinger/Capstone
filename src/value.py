@@ -10,7 +10,8 @@ value behind each request — and every number in that value must trace to
 a file on disk or to an assumption stated in `results/value_assumptions.csv`
 with its range (PLAN.md, notebook 15).
 Reads: ``data/raw/value/ice_electric-<year>final.xlsx`` (EIA, public
-domain), ``data/raw/value/2024-som-pjm-sec5.pdf`` (Monitoring Analytics,
+domain), ``data/raw/atb/ATBe_2024_v3.parquet`` (NREL Annual Technology
+Baseline 2024, v3; CAPEX and O&M per kW), ``data/raw/value/2024-som-pjm-sec5.pdf`` (Monitoring Analytics,
 2024 State of the Market, Section 5), ``data/raw/lbnl_costs/pjm_costs_2022_clean_data.xlsx``
 (LBNL), EIA API responses cached by notebook 15.
 Writes: nothing.
@@ -215,3 +216,136 @@ def expected_value(p_by_year, mw, values_by_year, sunk_cost):
     values = np.asarray(values_by_year, dtype=float)
     earned = np.array([values[j:].sum() for j in range(len(increments))])
     return float((increments * earned).sum() * mw - sunk_cost)
+
+
+RAW_ATB = paths.DATA_RAW / "atb" / "ATBe_2024_v3.parquet"
+# LBNL technology group → the ATB technology and the one representative detail row used for its costs.
+# Defaults are ATB's own (``default == 1``) where one exists; gas has none, so the F-frame 2-on-1 combined
+# cycle is taken as the common new-build; "Other" (hydro, nuclear, coal, geothermal, biomass) takes the median
+# of the six mapped groups, stated as such.
+ATB_MAP = {
+    "Solar": ("UtilityPV", "Class5"),
+    "Solar+Battery": ("Utility-Scale PV-Plus-Battery", "Class5"),
+    "Wind": ("LandbasedWind", "Class4"),
+    "Offshore Wind": ("OffShoreWind", "Class3"),
+    "Battery": ("Utility-Scale Battery Storage", "4Hr Battery Storage"),
+    "Gas": ("NaturalGas_FE", "NG 2-on-1 Combined Cycle (F-Frame)"),
+}
+ATB_PARAMETERS = {"CAPEX": "capex_per_kw", "Fixed O&M": "fom_per_kw_year", "Variable O&M": "vom_per_mwh", "Heat Rate": "heat_rate_mmbtu_per_mwh"}
+
+
+def atb_costs(file=RAW_ATB, year=2024, scenario="Moderate", case="Market", crp="20"):
+    """Overnight capital and operating costs per technology group from the NREL ATB.
+
+    Parameters
+    ----------
+    file : path
+        The ATB electricity parquet (``data/raw/atb/``).
+    year : int
+        ATB projection year to read (the cost of a plant built in that year).
+    scenario, case, crp : str
+        ATB's Moderate scenario, Market financial case, 20-year cost-recovery period.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Index = LBNL technology group; ``capex_per_kw`` ($2022/kW),
+        ``fom_per_kw_year`` ($2022/kW-year), ``vom_per_mwh`` ($2022/MWh, 0
+        where ATB gives none), ``heat_rate_mmbtu_per_mwh`` (gas only),
+        ``atb_technology`` and ``atb_detail``.
+
+    Notes
+    -----
+    One representative class per technology (``ATB_MAP``): a capstone-scale
+    cost, not a site estimate. Costs are in 2022 dollars while the value
+    table is in the dollars of each year; the mismatch is a few percent and
+    is stated in notebook 15. Battery CAPEX is per kW of a four-hour system.
+    """
+    d = pd.read_parquet(file)
+    d = d[(d["scenario"] == scenario) & (d["core_metric_case"] == case) & (d["crpyears"] == str(crp))
+          & (d["core_metric_variable"] == year) & d["core_metric_parameter"].isin(ATB_PARAMETERS)]
+    rows = {}
+    for group, (tech, detail) in ATB_MAP.items():
+        part = d[(d["technology"] == tech) & (d["techdetail"] == detail)]
+        values = part.groupby("core_metric_parameter")["value"].first()
+        rows[group] = {ATB_PARAMETERS[p]: float(values.get(p, np.nan)) for p in ATB_PARAMETERS}
+        rows[group].update({"atb_technology": tech, "atb_detail": detail})
+    out = pd.DataFrame(rows).T
+    numeric = list(ATB_PARAMETERS.values())
+    out[numeric] = out[numeric].astype(float)
+    out.loc["Other", numeric] = out[numeric].median()
+    out.loc["Other", ["atb_technology", "atb_detail"]] = ["median of the six mapped groups", ""]
+    out["vom_per_mwh"] = out["vom_per_mwh"].fillna(0.0)
+    out["heat_rate_mmbtu_per_mwh"] = out["heat_rate_mmbtu_per_mwh"].fillna(0.0)
+    out.index.name = "tech"
+    return out
+
+
+def npv_per_mw(revenue_by_year, capex_per_kw, fom_per_kw_year, variable_per_mwh, mwh_per_mw_year, rate=0.08, life=20):
+    """Net present value of one MW at its commercial operation date: −CAPEX + Σ (revenue − O&M − variable cost)/(1+r)^t.
+
+    Parameters
+    ----------
+    revenue_by_year : array-like
+        $/MW-year of value for operating years 1 … ``life`` (from the value
+        table, held at its last year beyond the table).
+    capex_per_kw, fom_per_kw_year : float
+        $/kW and $/kW-year (ATB).
+    variable_per_mwh : float
+        $/MWh of generation: variable O&M plus fuel (heat rate × gas price)
+        for gas; 0 for the rest.
+    mwh_per_mw_year : float
+        Generation per MW-year (capacity factor × 8,760); 0 for storage,
+        whose value in the table is capacity revenue only.
+    rate : float
+        Real discount rate; 8% base, 6% and 10% as cases (notebook 15).
+    life : int
+        Operating years valued.
+
+    Returns
+    -------
+    float
+        $ per MW at the operation date; negative when the plant does not
+        earn back its capital at this rate.
+
+    Notes
+    -----
+    The simplest form of a project DCF: no financing structure, no tax
+    depreciation, no degradation, no terminal value. Enough to rank
+    technologies and regions and to put a sign on a request; not enough to
+    price one, which the report says.
+    """
+    revenue = np.asarray(revenue_by_year, dtype=float)
+    assert len(revenue) == life, "one revenue value per operating year"
+    cash = revenue - fom_per_kw_year * 1000 - variable_per_mwh * mwh_per_mw_year
+    discount = (1 + rate) ** np.arange(1, life + 1)
+    return float(-capex_per_kw * 1000 + (cash / discount).sum())
+
+
+def atb_capacity_factors(file=RAW_ATB, year=2024, scenario="Moderate", case="Market", crp="20"):
+    """Design capacity factor of a new plant per technology group, from the same ATB rows as ``atb_costs``.
+
+    Returns
+    -------
+    dict
+        Technology group -> capacity factor, for the groups whose ATB class
+        carries one (solar, hybrid, wind, offshore wind). Gas and storage have
+        none in the ATB; notebook 15 states what it uses for them.
+
+    Notes
+    -----
+    Used for the NPV only. The value table of notebook 15 keeps the fleet
+    capacity factors of EIA data (2024 generation over 2026 nameplate), which
+    describe the plants that exist; a plant built today is designed to the
+    class figure, and the two differ by a factor of two for PJM solar.
+    """
+    d = pd.read_parquet(file)
+    d = d[(d["scenario"] == scenario) & (d["core_metric_case"] == case) & (d["crpyears"] == str(crp))
+          & (d["core_metric_variable"] == year) & (d["core_metric_parameter"] == "CF")]
+    out = {}
+    for group, (tech, detail) in ATB_MAP.items():
+        part = d[(d["technology"] == tech) & (d["techdetail"] == detail)]
+        if len(part):
+            out[group] = float(part["value"].iloc[0])
+    return out
+

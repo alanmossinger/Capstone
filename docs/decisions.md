@@ -649,3 +649,18 @@ alternative rejected.
     land, transmission and financing data (not obtainable by December 14;
     stated as out of scope); multistate models (PJM has no dated stages);
     cutting the v2 report to 3,000 words without changing its organisation.
+
+60. **NREL ATB 2024 added as the cost source for a project NPV** (2026-10-12;
+    notebook 15 §8, PLAN.md §13). One public file (5 MB parquet, source S12
+    in `data/README.md`) gives overnight capital cost, fixed and variable
+    O&M and heat rate per technology. The NPV per MW is the simplest project
+    DCF: 20-year life from the operation date, revenue from the existing
+    value table, 8% real discount rate (6% and 10% as cases), gas fuel from
+    heat rate × a gas-price assumption, no financing, tax or degradation.
+    *Reason:* the value index of notebook 15 had no capital cost, so a large
+    request always looked worth more and a battery worth nothing; the gates
+    of notebook 16 need a sign and an order that include what a plant costs.
+    *Rejected:* a full financing model (data the public files do not hold;
+    out of scope for a capstone); the ATB's R&D case (the Market case is the
+    one investors see); typing CAPEX by hand (the rule is that every cost
+    is parsed from a file or listed as an assumption with a range).

@@ -4,3 +4,5 @@ SHAP values add up to each prediction minus the background mean (gap < 1e-6),Tru
 "ranking table: 25 requests, no missing value",True,PASS
 every outside fact has a verdict,True,PASS
 F6 and F7 saved,True,PASS
+segments: leaf order holds out of time (Spearman ≥ 0.7) and F21 saved,True,PASS
+segments_by_request.csv covers every test request,True,PASS

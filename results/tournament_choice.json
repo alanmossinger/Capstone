@@ -1,0 +1,13 @@
+{
+  "chosen": "T3",
+  "label": "T3 blend of five",
+  "T1_min_samples_leaf": 20,
+  "T2_alpha": 0.01,
+  "mean_brier_2016": {
+    "K0": 0.099603,
+    "T1": 0.103364,
+    "T2": 0.102379,
+    "T3": 0.09953
+  },
+  "rule": "within T1 and T2 the setting with the lowest mean IPCW Brier over 3, 5, 7 years on the 2016 cohort; T3's 2016 score cross-fitted on two halves (seed 34); the chosen learner T* is the candidate with the lowest 2016 mean Brier"
+}

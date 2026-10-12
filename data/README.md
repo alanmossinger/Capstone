@@ -163,6 +163,25 @@ the API fails; not needed so far.
 - **Terms:** U.S. Government work, public domain. Not committed, because
   `data/raw/` is not; the files are 0.3 and 0.9 MB.
 
+### S12 — NREL Annual Technology Baseline 2024 (notebook 15, section 8)
+
+- **What:** `data/raw/atb/ATBe_2024_v3.parquet` (5.0 MB): the 2024 ATB
+  electricity data (v3.0.0), one row per technology, class, scenario,
+  financial case, cost-recovery period, parameter and year. Used for
+  overnight capital cost, fixed and variable O&M and heat rate per
+  technology (Moderate scenario, Market case, 20-year CRP; one
+  representative class per LBNL technology group, `src/value.ATB_MAP`).
+- **Publisher:** National Renewable Energy Laboratory. NREL (2024). *2024
+  Annual Technology Baseline.* <https://atb.nrel.gov/electricity/2024/data>
+- **How to obtain:** downloaded 2026-10-12 from the OEDI data lake,
+  <https://oedi-data-lake.s3.amazonaws.com/ATB/electricity/parquet/2024/v3.0.0/ATBe.parquet>;
+  SHA-256 `22e75dfcb93f8c61e94f9fa3390f04bf943d67ad224b1c6b428c71cfbea7350b`.
+- **Terms:** U.S. Government work, public; cite NREL. Not committed, to keep
+  the repository small; `make data` fetches it.
+- **Known limits:** costs are national averages in 2022 dollars for a
+  representative class, not site estimates; gas fuel is not in the file
+  (heat rate × a gas-price assumption, `results/value_assumptions.csv`).
+
 ## What is redistributed
 
 `data/processed/` tables, `results/` and `figures/` are derived from S1 and S2

@@ -6,3 +6,4 @@ censoring is administrative: censored durations equal the follow-up windows,True
 weights are 1 for every test request at 3 and 5 years,True,PASS
 refitting the main version reproduces notebooks 05–06 (largest gap < 1e-9),True,PASS
 tests/test_evaluation.py exists (metrics checked by hand),True,PASS
+"timing_error.csv: one row per region × model, no missing value",True,PASS
