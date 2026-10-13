@@ -1185,3 +1185,11 @@ their impact visible to every viewer in the dashboard.
   deprecated argument. 163 tests pass, 1 skipped.
 - `data/README.md`: the scenario parquet and the decision tables of
   notebooks 09 and 10 added to the dictionary.
+- Open question 34: on 13 Oct Alan pasted a list of generic business-plan
+  prompts (idea generation, validation, canvas); it does not hold the two
+  reasoning prompts. Two of its lines fit the challenge round and are now
+  in the templates — "if you were trying to convince me this is a terrible
+  idea, what would be your strongest arguments against it?" opens the
+  opposing case, and "the top three risks and what would mitigate them" is
+  step 4 of the motivated-reasoning check. The draft status stays until
+  the two prompts' own text arrives.
