@@ -381,3 +381,25 @@ cohorts, all nine regions: 2,980 rows.
 | logit, lgbm | raw P(built) from the logistic regression and LightGBM fitted on entrants to 2015 |
 | logit_cal, lgbm_cal | the same after isotonic calibration on the 2016 cohort (cross-fitted for 2016 requests; decision #30) |
 | built | observed outcome (1 built, 0 withdrawn) — scored only in notebook 08 |
+
+### `data/processed/candidate_npv_scenarios.parquet` (notebook 08)
+
+One row per scenario per generator per revenue case: 2,000 scenarios × three generators (primary block bootstrap, held-out copula, independent) × two cases (merchant, contracted), 12,000 rows.
+
+| column | meaning |
+|---|---|
+| generator, revenue_case, scenario | which scenario set, which revenue case, the scenario index |
+| one column per candidate (`LEASE|…`, `REQ|ERCOT|…`) | the candidate's NPV in that scenario, 2024 dollars; a request that never operates carries −its cost to carry |
+
+### The decision tables of notebooks 09 and 10 (`results/`)
+
+| table | one row per | columns that matter |
+|---|---|---|
+| `decision_ledger.csv` | decision (a book, a proposal, an override, a gym pick) | entry_id, date, actor (rule, optimizer, advisor, human), mode (forward book, gym), horizon, revenue_case, budget, lam, technology_cap, members, n_members, capex, expected_npv_oos, cvar_loss_oos, override, reasoning_answered, realized_npv, scored_on, note |
+| `decision_gym_situations.csv` | situation | situation, kind (queue, lease), as_of, n_candidates, budget_$M, total_cost_$M, hindsight_best_$M, n_positive_realized |
+| `decision_gym_scores.csv` | situation × actor | realized_$M, cost_$M, regret_$M (hindsight minus the actor), vs_instinct_$M, members, advisor_status |
+| `advisor_recommendations.csv` | named scenario or horizon | status (replayed, live, not recorded), book, n_members, jaccard_to_D, cited expected NPV and tail, binding_constraint, weakest_provenance, grounding_rate, ungrounded, why, what_would_change_the_answer, model |
+| `advisor_evaluation.csv`, `advisor_rubric.csv`, `advisor_checks.csv` | metric; recorded answer; check | the evaluation of the AI outputs (section 6 of notebook 10) |
+| `advisor_runs.jsonl` | API call | key (hash of model, system, user), time, mode, tag, model, temperature, max_tokens, system, user, response, usage, verification — the replay record |
+| `horizon_view.csv` | candidate × horizon (1, 2, 3, 5, 10, 20 years) | expected_npv_within_horizon, p_operation_by_horizon |
+| `horizon_books.csv` | horizon | n_members, capex_$B, expected_npv_within_horizon_$B, full-life expected NPV, CVaR95 and P(NPV < 0) out of sample, jaccard_to_D, n_leases, n_requests, members, advisor_status |

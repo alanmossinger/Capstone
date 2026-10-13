@@ -107,7 +107,7 @@ def ledger():
 def figure(name, caption):
     path = FIG / f"{name}.png"
     if path.exists():
-        st.image(str(path), caption=caption, use_container_width=True)
+        st.image(str(path), caption=caption, width="stretch")
 
 
 # --- sidebar -----------------------------------------------------------------------------------

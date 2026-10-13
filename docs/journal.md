@@ -1174,3 +1174,14 @@ their impact visible to every viewer in the dashboard.
   the check tables; the report's PJM gas five-year rate reads 31.9% as the
   table has it. 161 tests pass, 1 skipped (the word limit, decision #44).
   Report v4 built to PDF and DOCX.
+
+### Addendum, 2026-10-13 — after the push
+
+- Pushed main (26 commits, `d3b744f..ee84d45`); Alan's "1 to 4 yes" of
+  13 Oct authorised the push; the key, the verbatim prompts and the ERCOT
+  pull are still his to do (HANDOFF lists the commands).
+- `tests/test_app.py`: the dashboard runs headless in both modes through
+  Streamlit's AppTest (34 s), no key needed; `width="stretch"` replaces the
+  deprecated argument. 163 tests pass, 1 skipped.
+- `data/README.md`: the scenario parquet and the decision tables of
+  notebooks 09 and 10 added to the dictionary.
