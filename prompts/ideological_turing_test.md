@@ -1,7 +1,5 @@
 # Prompt — the ideological Turing test: argue the other book
 
-> Status: draft wording that follows the description in PLAN.md §14.10. The final wording is the author's own text and replaces this file verbatim (journal open question 34).
-
 I prefer one book of investments. You will now argue for the opposing book as its strongest advocate would, so well that a reader could not tell you do not hold the view.
 
 My preferred book and my reasons:

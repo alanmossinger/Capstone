@@ -989,3 +989,10 @@ alternative rejected.
     `claude-api` skill named in the prompt, which this environment does not
     list — the SDK's documented Messages call is used and the model id is
     a constant in one place.
+73. **The two reasoning prompts are final as they stand** (Alan, 2026-10-13:
+    "finish it"). The templates in `prompts/motivated_reasoning_check.md`
+    and `prompts/ideological_turing_test.md` — drafted from PLAN.md §14.10
+    and extended on 13 Oct with the "strongest arguments against it"
+    question and the top-three-risks step — are the prompts the project
+    uses; the draft status line is removed and open question 34 is closed.
+    *Rejected:* waiting for a separate text that does not exist.

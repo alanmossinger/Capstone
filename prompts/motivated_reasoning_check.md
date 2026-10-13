@@ -1,7 +1,5 @@
 # Prompt — reason my thinking: the motivated-reasoning check
 
-> Status: draft wording that follows the description in PLAN.md §14.10. The final wording is the author's own text and replaces this file verbatim (journal open question 34).
-
 I am about to make a capital decision and I want you to test whether I am reasoning toward the truth or toward the answer I already prefer.
 
 Here is my decision and my reasons:

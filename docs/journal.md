@@ -1193,3 +1193,7 @@ their impact visible to every viewer in the dashboard.
   opposing case, and "the top three risks and what would mitigate them" is
   step 4 of the motivated-reasoning check. The draft status stays until
   the two prompts' own text arrives.
+- Open question 34 closed (decision #73): the two reasoning prompts are
+  final as written; the draft lines are gone. Notebook 10 rerun so its
+  printed prompts match. Still open: #35 the key (then `make advisor`),
+  #33 the ERCOT pull, #36 rotation.
