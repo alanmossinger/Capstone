@@ -1201,3 +1201,6 @@ their impact visible to every viewer in the dashboard.
   the release lags as one set of numbers, one row per key and month in the
   built panel) and F36, the AI workflow diagram drawn by notebook 10 for
   Appendix A (Figure 22). 166 tests pass, 1 skipped. Report rebuilt.
+- Poster draft: `report/poster.typ` → `report/poster.pdf` (`make poster`,
+  A1 landscape, six panels built from the memo's sentences and F29, F33,
+  F34, F35, F36; every number is the report's). README gains the target.

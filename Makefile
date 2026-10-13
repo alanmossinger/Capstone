@@ -6,7 +6,7 @@ else
 PYTHON := .venv/bin/python
 endif
 
-.PHONY: setup data eda features forecast energy economics scenarios portfolio record advisor figures numbers report app test all
+.PHONY: setup data eda features forecast energy economics scenarios portfolio record advisor figures numbers report poster app test all
 
 setup:            ## create .venv, install pinned packages, register the notebook kernel
 	python -m venv .venv
@@ -52,6 +52,9 @@ numbers:          ## results/report_numbers.csv: every number the report cites, 
 report: numbers   ## report.md + references.md → report/report.pdf and report/report.docx (needs pandoc and typst)
 	pandoc report/report.md report/references.md -f markdown-implicit_figures --resource-path=report --pdf-engine=typst -o report/report.pdf
 	pandoc report/report.md report/references.md -f markdown-implicit_figures --resource-path=report -o report/report.docx
+
+poster:           ## report/poster.pdf from report/poster.typ (needs typst)
+	typst compile --root . report/poster.typ report/poster.pdf
 
 app:              ## the Streamlit dashboard (reads results/ only)
 	$(PYTHON) -m streamlit run app/app.py

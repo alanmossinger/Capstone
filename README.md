@@ -78,6 +78,7 @@ make setup     # .venv, pinned packages, Jupyter kernel "queue-survival"
 make all       # notebooks 01 → 10 in dependency order (06, the record, runs last), stopping at the first error
 make test      # pytest
 make report    # report/report.pdf and report/report.docx from report/report.md + references.md (needs pandoc and typst)
+make poster    # report/poster.pdf from report/poster.typ (needs typst)
 make app       # the dashboard at http://localhost:8501 (reads results/ only)
 ```
 
@@ -110,7 +111,7 @@ prompts/     the advisor's system prompt, the recommend and gym templates, the t
 data/        raw/ (not committed) · interim/ (not committed) · processed/ (small final tables)
 results/     every number the report cites, written by the notebooks; advisor_runs.jsonl is the replay record
 figures/     every figure, PNG + SVG; figures/<notebook>/ holds each notebook's exploratory figures
-report/      report.md, references.md, playbooks.md, figure_notes.md (caption stubs from the notebooks);
+report/      report.md, references.md, playbooks.md, figure_notes.md (caption stubs from the notebooks), poster.typ;
              `make report` builds report.pdf and report.docx (needs pandoc and typst)
 docs/        journal.md (work log), decisions.md, data_readiness.md, mentor_feedback.md, ai_use.md,
              proposal_update_2026-10-19.md
