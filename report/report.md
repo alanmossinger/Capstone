@@ -338,6 +338,10 @@ The advisor is a system component, documented in `docs/ai_use.md`; this appendix
 
 **Evaluation** (`results/advisor_evaluation.csv`, `results/advisor_rubric.csv`): grounding rate over recorded answers; agreement with book D (Jaccard and by name) over the 7 named scenarios and the 6 horizons; gym score against instinct and regret against hindsight; the rubric on up to ten answers. On this machine: 0 recorded answers, 33 calls missing; the first live run records them.
 
+![Figure 22](../figures/F36_ai_workflow.png)
+
+*Figure 22.* The AI workflow: the tables as the only input, the grounding check, the record and replay, the override gate, the ledger and the gym.
+
 **System prompt** (`prompts/advisor_system.md`), **recommend** (`prompts/recommend.md`), **gym** (`prompts/gym_pick.md`), **the motivated-reasoning check** (`prompts/motivated_reasoning_check.md`) and **the ideological Turing test** (`prompts/ideological_turing_test.md`) are committed in `prompts/` and printed in full in notebook 10, section 1. The two reasoning prompts are my instruments for a decision meeting, written as templates with a `{human_statement}` and an `{opposing_book}` slot.
 
 ## Changes after mentor feedback

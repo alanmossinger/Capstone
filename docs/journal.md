@@ -1197,3 +1197,7 @@ their impact visible to every viewer in the dashboard.
   final as written; the draft lines are gone. Notebook 10 rerun so its
   printed prompts match. Still open: #35 the key (then `make advisor`),
   #33 the ERCOT pull, #36 rotation.
+- 13 Oct, later: `tests/test_panel.py` (the audits on a synthetic panel,
+  the release lags as one set of numbers, one row per key and month in the
+  built panel) and F36, the AI workflow diagram drawn by notebook 10 for
+  Appendix A (Figure 22). 166 tests pass, 1 skipped. Report rebuilt.

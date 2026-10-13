@@ -1752,6 +1752,16 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** The forward view: expected NPV within 1, 2, 3, 5, 10 and 20 years by sector, and the book at each horizon.
 <!-- /fig:F35_horizon_view -->
 
+<!-- fig:F36_ai_workflow -->
+### F36_ai_workflow
+
+![F36_ai_workflow](../figures/F36_ai_workflow.png)
+
+*Notebook:* `notebooks/10_advisor_and_gym.ipynb` · *Files:* `figures/F36_ai_workflow.png`, `.svg`
+
+**Caption (stub).** The AI workflow: grounding, verification, record and replay, the override gate, the ledger and the gym.
+<!-- /fig:F36_ai_workflow -->
+
 <!-- fig:F3_five_year_by_size -->
 ### F3_five_year_by_size
 
