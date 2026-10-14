@@ -31,13 +31,37 @@ def test_replay_serves_the_record_and_returns_none_when_offline_without_record(t
     assert out["response"] == "recorded" and out["replayed"] is True and b.calls["replayed"] == 1
 
 
-def test_live_mode_without_key_raises(monkeypatch):
+def test_live_mode_without_backend_raises(monkeypatch):
     monkeypatch.setattr(adv, "api_key", lambda: None)
+    monkeypatch.setattr(adv, "cli_path", lambda: None)
     try:
         adv.Advisor(mode="live")
-        assert False, "live mode must refuse to start without a key"
+        assert False, "live mode must refuse to start without a key or the claude command"
     except RuntimeError as err:
         assert "ANTHROPIC_API_KEY" in str(err)
+
+
+def test_auto_mode_falls_back_when_the_command_line_fails(monkeypatch, tmp_path):
+    """An expired subscription sign-in must not stop an offline run: the call is counted missing and the reason kept."""
+    monkeypatch.setattr(adv, "api_key", lambda: None)
+    monkeypatch.setattr(adv, "cli_path", lambda: "claude")
+
+    def failing(*args, **kwargs):
+        raise RuntimeError("claude -p reported an error: sign-in expired")
+
+    monkeypatch.setattr(adv, "ask_cli", failing)
+    a = adv.Advisor(mode="auto", runs_path=tmp_path / "runs.jsonl")
+    assert a.backend == "cli" and a.live
+    assert a.ask("sys", "user", "test") is None
+    assert a.calls["missing"] == 1 and not a.live and "sign-in" in a.last_error
+
+
+def test_cli_environment_drops_session_variables(monkeypatch):
+    monkeypatch.setenv("CLAUDECODE", "1")
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "placeholder")
+    env = adv.cli_environment()
+    assert "CLAUDECODE" not in env and "ANTHROPIC_API_KEY" not in env
+    assert env["CLAUDE_CODE_DISABLE_CLAUDE_MDS"] == "1"
 
 
 def test_prompts_render_and_json_parses():

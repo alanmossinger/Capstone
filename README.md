@@ -1,4 +1,6 @@
-# From Queue to Grid: AI-Driven Portfolio Management for the U.S. Power-Plant Pipeline
+# Beyond Prediction: AI-Driven Energy Portfolio Decisions Under Uncertainty
+
+*From Machine Learning to Risk-Aware Capital Allocation*
 
 SIADS 699 Capstone (Master of Applied Data Science, University of Michigan), Group 13.
 Author: Alan Mössinger.
@@ -71,7 +73,7 @@ make setup     # .venv, pinned packages, Jupyter kernel "queue-survival"
 ```
 
 1. Save `lbnl_ix_queue_data_file_thru2024_v2.xlsx` in `data/raw/lbnl/`.
-2. Copy `.env.example` to `.env` and add your EIA API key (and, for live advisor calls, `ANTHROPIC_API_KEY`; without it the advisor replays its record).
+2. Copy `.env.example` to `.env` and add your EIA API key. For live advisor calls either add `ANTHROPIC_API_KEY` or sign in to the `claude` command line with a Claude subscription (`claude auth login`); with neither, the advisor replays its record.
 3. Run:
 
 ```bash
@@ -140,21 +142,20 @@ From `results/` (notebooks 01–03):
 
 From `results/` (Part II, notebooks 05–10):
 
-- The twenty lease redevelopments carry $14.6B of incremental NPV at base
-  under the confirmed cost grid, every one positive; the twenty ERCOT
-  requests are worth −$0.76B merchant and −$0.28B contracted once the queue
-  models' chance of operating is priced in (`results/candidate_npv.csv`).
-- No book of the forty loses money in any of 2,000 joint scenarios, so
-  the registered allocation criteria C21–C24 fail as registered: risk
-  aversion has nothing to buy here (`results/success_criteria_v7_scored.csv`,
-  decision #71).
-- In the decision gym the registered rule beat instinct by $100M a
-  situation over sixteen past situations (`results/decision_gym_scores.csv`);
-  the advisor's answers replay from `results/advisor_runs.jsonl` once a
-  live run has recorded them.
-- The forward view: the lease book is negative within two years and
-  $14.6B at twenty; a request is a carry cost until it operates
-  (`results/horizon_view.csv`, `results/horizon_books.csv`).
+- Under the registered cost grid the twenty lease redevelopments carry
+  $14.6B of incremental NPV; priced as an investment committee would
+  (capital per incremental barrel, an 8% real rate) they carry $7.0B on
+  four times the capital (`results/posthoc_lease_values.csv`, labelled
+  post-hoc, decision #74). Contracted wind is the only power request that
+  earns its capital, in either draw of candidates.
+- The registered allocation criteria C21–C24 fail as registered: on the
+  held-out scenarios the worst 5% of each optimised book is still a
+  profit, so risk aversion buys nothing. Under the committee grid the
+  risk-aware book halves the tail at a cost in expected value
+  (`results/posthoc_books_committee.csv`).
+- The decision gym scores Part I's gate rule against instinct in sixteen
+  past situations (`results/decision_gym_scores.csv`); the LLM advisor is
+  built and gated, and is scored once `ANTHROPIC_API_KEY` is in `.env`.
 
 ## References
 

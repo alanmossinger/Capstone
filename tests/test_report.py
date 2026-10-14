@@ -67,3 +67,17 @@ def test_report_is_under_the_word_limit():
     text = re.sub(r"^\|[-| ]+\|$", " ", text, flags=re.MULTILINE)  # table rule lines
     words = [w for w in re.split(r"\s+", text) if re.search(r"\w", w)]
     assert len(words) <= WORD_LIMIT, f"{len(words)} words"
+
+
+def test_every_number_on_the_poster_is_in_report_numbers():
+    """The poster cites the report's numbers only; layout sizes (mm, pt, %) and colours are not quantities."""
+    table = pd.read_csv(paths.RESULTS / "report_numbers.csv")
+    cited = set()
+    for text in table["text"].astype(str):
+        cited |= numbers_in(text)
+    poster = (paths.REPORT / "poster.typ").read_text(encoding="utf-8")
+    poster = "\n".join(line for line in poster.splitlines() if not line.lstrip().startswith(("//", "#set", "#let")))
+    poster = re.sub(r'#(?:text|image|v|line|grid|align|block)\([^)]*\)', " ", poster)  # typst calls carry sizes, not findings
+    poster = re.sub(r"\b\d+(?:\.\d+)?(?:mm|pt|em)\b|\d+%(?=\))", " ", poster)
+    missing = sorted(numbers_in(poster) - cited)
+    assert not missing, f"numbers on the poster not in results/report_numbers.csv: {missing}"

@@ -42,3 +42,12 @@ def test_real_price_path_holds_the_last_value_flat():
     cpi = pd.DataFrame({"month": months, "cpi_u": 100.0})
     path = gym.real_price_path(nominal, cpi, "2016-06-01", 12, base_year=2016)
     assert len(path) == 12 and path[-1] == path[6] == 52.0 and path[0] == 40.0
+
+
+def test_the_rule_funds_on_accelerate_at_the_two_year_gate():
+    pack = _pack()
+    pack["decision_2y_contracted"] = ["accelerate"] * 3 + ["exit"] * 5
+    s = gym.queue_situation(pack, "ERCOT", 2018, "2y", n_show=8, budget_share=1.0)
+    chosen = gym.optimizer_book(s)
+    assert chosen and set(chosen) <= set(pack.loc[pack["decision_2y_contracted"] == "accelerate", "project_key"])
+

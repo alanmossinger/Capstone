@@ -34,8 +34,11 @@ REGIMES = {  # name -> start month of the realized price path the lease candidat
 
 # --- queue situations ---------------------------------------------------------------------------
 
-def queue_situation(pack, region, cohort, gate="entry", n_show=15, budget_share=0.4, budget_cut=0.0):
-    """One situation: the ``n_show`` largest requests of a region and cohort, as of entry or the two-year gate.
+FUND_VERDICT = {"entry": "invest", "2y": "accelerate"}  # the gate rule's funding verdict at each gate (notebook 09 part B)
+
+
+def queue_situation(pack, region, cohort, gate="entry", n_show=15, budget_share=0.4, budget_cut=0.0, seed=2020):
+    """One situation: ``n_show`` requests of a region and cohort drawn at random, as of entry or the two-year gate.
 
     Returns
     -------
@@ -56,7 +59,7 @@ def queue_situation(pack, region, cohort, gate="entry", n_show=15, budget_share=
     rows = pack[(pack["region"] == region) & (pack["q_year"] == cohort)]
     if gate == "2y":
         rows = rows[rows["in_pool_2y"]]
-    rows = rows.sort_values("mw", ascending=False).head(n_show)
+    rows = rows.sample(n=min(n_show, len(rows)), random_state=seed).sort_values("mw", ascending=False)  # a random draw: the largest requests fail most, which would stack the rooms toward abstention
     if len(rows) < 5:
         return None
     cost = rows["cost_to_next_gate_base_$M"].to_numpy(float)
@@ -160,13 +163,13 @@ def instinct_book(situation):
 
 
 def optimizer_book(situation):
-    """The registered rule: the gate verdict 'invest' filled by NPV per dollar (requests); the risk-aware MILP (leases)."""
+    """The registered rule: the gate's funding verdict ('invest' at entry, 'accelerate' two years in) filled by NPV per dollar (requests); the risk-aware MILP (leases)."""
     t = situation["table"]
     if situation["kind"] == "lease":
         return list(situation["optimizer_book"].index[situation["optimizer_book"].to_numpy() == 1])
     keys = t[situation["key"]].to_numpy()
     value, cost = t[situation["value_col"]].to_numpy(float), t[situation["cost_col"]].to_numpy(float)
-    invest = situation["optimizer_rule"].reindex(keys).to_numpy() == "invest"
+    invest = situation["optimizer_rule"].reindex(keys).to_numpy() == FUND_VERDICT[situation["gate"]]
     order = np.argsort(-(value / np.where(cost > 0, cost, np.nan)))
     chosen, spent = [], 0.0
     for i in order:

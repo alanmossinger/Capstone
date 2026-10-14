@@ -1,19 +1,19 @@
 line,label,registered,enet_alpha,enet_l1_ratio,val_mae_elasticnet,val_mae_lightgbm,challenger,val_origins,hold_origins,seconds
-lease_oil_h3,lease oil +3 m,True,0.1,0.8,15640377.830984445,16446.526619433702,lightgbm,6,15,17.9
-lease_gas_h3,lease gas +3 m,True,0.1,0.8,55809407.6279588,23333.221596669977,lightgbm,6,15,17.1
-lease_oil_h6,lease oil +6 m,True,0.1,0.8,14332175.567855606,19370.86497063922,lightgbm,6,12,14.0
-lease_gas_h6,lease gas +6 m,True,0.1,0.8,55936514.728199996,24930.389524147817,lightgbm,6,12,13.9
-lease_oil_h12,lease oil +12 m,True,0.1,0.8,8666547.05944056,21316.694868065697,lightgbm,6,6,7.6
-lease_gas_h12,lease gas +12 m,True,0.1,0.8,40839287.04082157,27487.883396008107,lightgbm,6,6,9.1
-cf_Gas CC_h1,Gas CC CF +1 m,True,0.001,0.2,0.07821701325927513,0.07184499490457746,lightgbm,6,17,5.4
+lease_oil_h3,lease oil +3 m,True,0.1,0.8,15640377.830984445,16446.526619433702,lightgbm,6,15,20.5
+lease_gas_h3,lease gas +3 m,True,0.1,0.8,55809407.6279588,23333.221596669977,lightgbm,6,15,18.1
+lease_oil_h6,lease oil +6 m,True,0.1,0.8,14332175.567855606,19370.86497063922,lightgbm,6,12,15.4
+lease_gas_h6,lease gas +6 m,True,0.1,0.8,55936514.728199996,24930.389524147817,lightgbm,6,12,14.5
+lease_oil_h12,lease oil +12 m,True,0.1,0.8,8666547.05944056,21316.694868065697,lightgbm,6,6,9.2
+lease_gas_h12,lease gas +12 m,True,0.1,0.8,40839287.04082157,27487.883396008107,lightgbm,6,6,9.7
+cf_Gas CC_h1,Gas CC CF +1 m,True,0.001,0.2,0.07821701325927513,0.07184499490457746,lightgbm,6,17,5.5
 cf_Gas CC_h3,Gas CC CF +3 m,False,0.001,0.2,0.07911326241308089,0.0674935905229279,lightgbm,6,15,4.4
-cf_Solar_h1,Solar CF +1 m,True,0.01,0.2,0.0367091684998639,0.040429954885123395,elasticnet,6,17,4.4
-cf_Solar_h3,Solar CF +3 m,False,0.001,0.8,0.042889372461769916,0.04252096763985976,lightgbm,6,15,3.8
-cf_Wind_h1,Wind CF +1 m,True,0.01,0.5,0.0705241240305931,0.08071973358423691,elasticnet,6,17,5.4
-cf_Wind_h3,Wind CF +3 m,False,0.001,0.8,0.06094720838144294,0.07061698532324118,elasticnet,6,15,4.7
-price_WTI_h1,WTI log price +1 m,True,0.01,0.8,0.0622071931852212,0.18390732916931185,elasticnet,6,17,0.3
-price_WTI_h3,WTI log price +3 m,False,0.1,0.8,0.1377274651344056,0.22697905430456577,elasticnet,6,15,0.2
+cf_Solar_h1,Solar CF +1 m,True,0.01,0.2,0.0367091684998639,0.040429954885123395,elasticnet,6,17,8.7
+cf_Solar_h3,Solar CF +3 m,False,0.001,0.8,0.042889372461769916,0.04252096763985976,lightgbm,6,15,3.2
+cf_Wind_h1,Wind CF +1 m,True,0.01,0.5,0.0705241240305931,0.08071973358423691,elasticnet,6,17,6.0
+cf_Wind_h3,Wind CF +3 m,False,0.001,0.8,0.06094720838144294,0.07061698532324118,elasticnet,6,15,4.9
+price_WTI_h1,WTI log price +1 m,True,0.01,0.8,0.0622071931852212,0.18390732916931185,elasticnet,6,17,0.7
+price_WTI_h3,WTI log price +3 m,False,0.1,0.8,0.1377274651344056,0.22697905430456577,elasticnet,6,15,0.3
 price_Henry Hub_h1,Henry Hub log price +1 m,True,0.1,0.8,0.13523817250234668,0.34950458090309633,elasticnet,6,17,0.3
-price_Henry Hub_h3,Henry Hub log price +3 m,False,0.1,0.8,0.2874861471788877,0.32018510952893336,elasticnet,6,15,0.3
+price_Henry Hub_h3,Henry Hub log price +3 m,False,0.1,0.8,0.2874861471788877,0.32018510952893336,elasticnet,6,15,0.2
 price_ERCOT_h1,ERCOT log price +1 m,True,0.1,0.8,0.01819958535430355,0.058435764378347965,elasticnet,6,12,0.2
 price_ERCOT_h3,ERCOT log price +3 m,False,0.1,0.8,0.05083417807282298,0.0648996610074779,elasticnet,6,12,0.2

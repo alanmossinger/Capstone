@@ -1204,3 +1204,113 @@ their impact visible to every viewer in the dashboard.
 - Poster draft: `report/poster.typ` → `report/poster.pdf` (`make poster`,
   A1 landscape, six panels built from the memo's sentences and F29, F33,
   F34, F35, F36; every number is the report's). README gains the target.
+
+## Session 11 — 2026-10-14: the outside review, report v5
+
+**Done**
+
+- Outside review of report v4 logged item by item (`docs/mentor_feedback.md`,
+  decision #74). Bugs found and fixed: the gym's two-year rule never funded
+  (it looked for 'invest', the gate issues 'accelerate'); the EDA's gas
+  combined-cycle capacity factor divided each prime-mover part by the
+  whole plant (23% → 45% at plant level). The gym's rooms are now fifteen
+  requests drawn at random, not the fifteen largest.
+- Notebook 09 part E (post-hoc, labelled): the committee grid ($40k per
+  incremental flowing boe/d, 8% real; ranges $25–60k and 5.1–10%): the
+  twenty leases fall from $14.6B to $7.0B on four times the capital; the
+  default book's median is $17.2B (registered) and $8.9B (committee)
+  against means of $20.7B and $11.4B; under the committee grid it loses
+  money in 16% of scenarios. The four books under the committee grid: D
+  halves A's tail ($2.7B vs $5.3B worst-5% loss) at $3.4B of expected value;
+  A still wins on the registered metric by $755M. Sustained $42 oil for
+  five years: $11.5B (registered) and $4.25B (committee). Second power
+  draw (the entry rule's invest class): contracted wind is still the only
+  technology that pays. Naive-forecast ablation (proposal §10): book D is
+  identical with naive output errors (overlap 1.00) — the allocation comes
+  from the grid and the optimizer.
+- Corrected gym: the registered rules beat instinct by $236M a situation
+  (regret $18M vs $253M), almost all in the three lease regimes; queue
+  rooms +$3.7M a room; the ERCOT 2017 two-year room +$41M.
+- Figures: every report title cut to ≤ 12 words (`plots.SHORT_TITLES`);
+  PNGs at 450 dpi; the PDF embeds the SVGs; y-labels taller than their
+  axes shrink to fit; F0 (the project in one picture, report Figure 1),
+  F37 (the committee grid), F36 at 11 inches.
+- Report v5 under Alan's title, *Beyond Prediction: AI-Driven Energy
+  Portfolio Decisions Under Uncertainty — From Machine Learning to
+  Risk-Aware Capital Allocation*: short abstract, one-page memo led by the
+  committee grid, reading guide and glossary, the questions and hypotheses
+  up front, related work (15 references added), Part I rewritten finding
+  first, a bridge, Part II in the proposal's order with an energy EDA
+  section, a results table mapped to RQ1–RQ4, the proposal's five decision
+  questions, limitations, conclusion, solo statement of work, the review's
+  changes inline, appendices (record, advisor, proposal map, figures).
+- `src/report_numbers.py`: v7 collectors (rounded Part I values, the
+  post-hoc tables, the EDA facts, the five questions, the gym); the
+  capacity factors are now read from the EDA table instead of typed.
+
+**Next**
+
+- One live run of notebook 10 with `ANTHROPIC_API_KEY` in `.env` scores
+  the advisor; then `make numbers` and `make report`.
+- The ERCOT 2020–2023 pull from another network.
+
+**Open questions for Alan**
+
+38. The memo recommends book D under the committee grid and states book A
+    as the alternative; whether the committee's risk appetite favours A
+    or D is a choice the report leaves to the reader — confirm that framing.
+
+## Session 12 — 2026-10-14: closing session 11, the figure review, the advisor on the subscription
+
+**Done**
+
+- Session 11 was still running when this session started. It handed over
+  at 07:54 without committing, and only one session committed.
+- The figure review of all 26 report figures against the report. Every
+  figure was already 11 inches wide at 450 dpi, with a title of 12 words
+  or fewer. Fixed:
+  - two titles that contradicted their own figure (F16, F23);
+  - legends on the data (F27, F28, F33);
+  - raw column names and a decision number (F29);
+  - stale notebook pointers (F23, F26);
+  - the old names "fair baseline" and "v2 model" (F11, F12, F22);
+  - non-integer member counts (F35) and a missing dollar sign (F37);
+  - a label touching a line (F24).
+- The report, reviewed against the proposal:
+  - §11's tornado sentence was wrong and is rewritten;
+  - §6 states the ERCOT exception at entry;
+  - §13 adds the carbon-price and risk-aversion sensitivities that the
+    proposal's §10 asked for (overlaps 0.96 and 0.84);
+  - Appendix A's tail sentence now names the held-out scenarios;
+  - the Figure 6 caption and Table 8's RQ4 row are corrected;
+  - `results/` paths are out of the body prose;
+  - the proposal's correlation heatmap and asset map are added as
+    Appendix Figures A8 and A9.
+- The advisor gained a second backend (decision #76): `claude -p` on
+  Alan's Claude subscription, with no tools, no files and no memory.
+  Live calls failed with "OAuth access token has been revoked", so the
+  command line needs `claude auth login`.
+- A latent bug fixed: `claude-sonnet-5-5` rejects `temperature=0`, which
+  the API path used to send.
+- The poster now carries v5 numbers only, and a test checks every number
+  on it against `results/report_numbers.csv`. Alan does not like the
+  design; a new poster is to be built.
+- `docs/demo_video_script.md`: about 4 minutes, numbers from the report.
+- The ERCOT 2018–2023 pull was tried. `api.ercot.com` and `www.ercot.com`
+  both return HTTP 403 to this machine, so it still needs another network.
+- Open question 38 is closed (decision #77): D is recommended, with A as
+  the alternative.
+
+**Next**
+
+- `claude auth login`, then rerun notebook 10 (live), then `make numbers`
+  and `make report`. The advisor lines change from "not yet scored" to the
+  measured results; commit `results/advisor_runs.jsonl`.
+- The new poster.
+- The ERCOT pull from another network.
+- The v1.0 tag after a clean `make all`.
+
+**Open questions for Alan**
+
+39. The poster design: what should the new one look like (layout, which
+    figures, the message)?

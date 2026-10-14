@@ -1472,6 +1472,16 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** Decision 5, continued: six allocation policies under the same deposit budget, contracted and merchant revenue: expected NPV, expected shortfall and realised NPV.
 <!-- /fig:D6_policies -->
 
+<!-- fig:F0_overview -->
+### F0_overview
+
+![F0_overview](../figures/F0_overview.png)
+
+*Notebook:* `notebooks/10_advisor_and_gym.ipynb` · *Files:* `figures/F0_overview.png`, `.svg`
+
+**Caption (stub).** The project in one picture: four asset classes, the queue engine, the five steps and the decision they produce.
+<!-- /fig:F0_overview -->
+
 <!-- fig:F10_gains_over_baselines -->
 ### F10_gains_over_baselines
 
@@ -1609,7 +1619,7 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 
 *Notebook:* `notebooks/06_evaluation_record.ipynb` · *Files:* `figures/F22_tournament.png`, `.svg`
 
-**Caption (stub).** The chosen alternative learner (T3 blend of five) against the registered LightGBM and the fair lookup: paired differences in Uno's C and Brier score by horizon, all sizes and 20 MW and more, test cohort 2017–2019, 95% bootstrap intervals.
+**Caption (stub).** The chosen alternative learner (T3 blend of five) against the registered LightGBM and the lookup: paired differences in Uno's C and Brier score by horizon, all sizes and 20 MW and more, test cohort 2017–2019, 95% bootstrap intervals.
 <!-- /fig:F22_tournament -->
 
 <!-- fig:F23_portfolio_review -->
@@ -1761,6 +1771,16 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 
 **Caption (stub).** The AI workflow: grounding, verification, record and replay, the override gate, the ledger and the gym.
 <!-- /fig:F36_ai_workflow -->
+
+<!-- fig:F37_committee_grid -->
+### F37_committee_grid
+
+![F37_committee_grid](../figures/F37_committee_grid.png)
+
+*Notebook:* `notebooks/09_portfolio.ipynb` · *Files:* `figures/F37_committee_grid.png`, `.svg`
+
+**Caption (stub).** The registered and the committee grid compared: book means and medians, and the lease book under two oil stresses.
+<!-- /fig:F37_committee_grid -->
 
 <!-- fig:F3_five_year_by_size -->
 ### F3_five_year_by_size

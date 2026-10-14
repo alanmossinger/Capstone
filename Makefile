@@ -50,7 +50,9 @@ numbers:          ## results/report_numbers.csv: every number the report cites, 
 	$(PYTHON) -m src.report_numbers
 
 report: numbers   ## report.md + references.md → report/report.pdf and report/report.docx (needs pandoc and typst)
-	pandoc report/report.md report/references.md -f markdown-implicit_figures --resource-path=report --pdf-engine=typst -o report/report.pdf
+	sed 's/\.png)/.svg)/' report/report.md > report/report_vector.md  # the PDF embeds the vector SVGs: sharp at any zoom
+	pandoc report/report_vector.md report/references.md -f markdown-implicit_figures --resource-path=report --include-in-header=report/typst_header.typ --pdf-engine=typst -o report/report.pdf
+	rm report/report_vector.md
 	pandoc report/report.md report/references.md -f markdown-implicit_figures --resource-path=report -o report/report.docx
 
 poster:           ## report/poster.pdf from report/poster.typ (needs typst)

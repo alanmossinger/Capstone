@@ -41,6 +41,23 @@ UPSTREAM_GRID = pd.DataFrame([
     {"item": "wacc_real", "low": 0.051, "base": 0.051, "high": 0.08, "unit": "real rate", "note": "ATB offshore cost of capital; 8% as the stress"},
 ])
 CASES = ("low", "base", "high")
+
+# --- the committee grid (post-hoc, decision #74): what an E&P investment committee would set ------------
+# The registered grid prices a redevelopment as a workover of the existing wells. On the largest deepwater
+# leases a 20% uplift is a development (new wells, tie-backs), so its capital scales with the incremental
+# flowing rate it buys; and an E&P committee discounts at 8–10% real, not at the ATB offshore-wind rate.
+# Every value is ASSUMED; ``grid`` overrides in ``lease_cash_flows`` apply them on top of a registered case.
+COMMITTEE_GRID = pd.DataFrame([
+    {"item": "dev_cost_per_flowing_boed_usd", "low": 25000.0, "base": 40000.0, "high": 60000.0, "unit": "$ per incremental flowing boe/d",
+     "note": "deepwater development or tie-back capital per barrel of oil equivalent a day of new capacity"},
+    {"item": "workover_cost_per_well_usd", "low": 0.0, "base": 0.0, "high": 0.0, "unit": "$ per well", "note": "folded into the development cost"},
+    {"item": "wacc_real", "low": 0.051, "base": 0.08, "high": 0.10, "unit": "real rate", "note": "E&P committee hurdle; the ATB offshore rate is the low case"},
+])
+
+
+def committee_case(case):
+    """Overrides of the committee grid for one case, to pass as ``grid=`` on top of the registered case."""
+    return dict(zip(COMMITTEE_GRID["item"], COMMITTEE_GRID[case]))
 MCF_PER_MMBTU = 1.0 / 1.037  # 1 Mcf of pipeline gas ≈ 1.037 MMBtu
 BOE_PER_MCF = 1.0 / 6.0  # 6 Mcf per barrel of oil equivalent
 ECONOMIC_LIMIT_BOE_PER_MONTH = 300.0  # a lease below this rate is shut in and abandoned (ASSUMED)
@@ -101,7 +118,8 @@ def lease_cash_flows(base_oil, base_gas, wti, hh, n_wells, case="base", grid=Non
     The uplift adds ``uplift_share`` of the baseline rate after the lead
     time and decays with the baseline, so it is a share of what the lease
     would do anyway, never a new field. The workover cost is paid at month
-    zero; abandonment is paid in the month the lease reaches its economic
+    zero; under the committee grid the capital is instead the development
+    cost per incremental flowing boe/d times the rate the uplift buys; abandonment is paid in the month the lease reaches its economic
     limit (both cases) and is incremental only through its timing.
     """
     g = {**grid_case(case), **(grid or {})}
@@ -123,7 +141,9 @@ def lease_cash_flows(base_oil, base_gas, wti, hh, n_wells, case="base", grid=Non
     opex = boe * g["opex_usd_per_boe"]
     capex = np.zeros(months)
     if redevelop:
-        capex[0] = g["workover_cost_per_well_usd"] * n_wells
+        # incremental flowing rate the uplift buys, at its first month (boe per day); zero cost unless the committee grid is applied
+        incremental_boed = g["uplift_share"] * (base_oil[min(lead, months - 1)] + base_gas[min(lead, months - 1)] * BOE_PER_MCF) / 30.4
+        capex[0] = g["workover_cost_per_well_usd"] * n_wells + g.get("dev_cost_per_flowing_boed_usd", 0.0) * incremental_boed
     abandonment = np.zeros(months)
     end = int(alive.sum())
     if end < months:

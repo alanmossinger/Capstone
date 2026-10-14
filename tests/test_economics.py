@@ -62,3 +62,14 @@ def test_capture_factors_weight_price_by_shape():
     out = ec.capture_factors(price, solar, wind, gas_marginal_cost=30.0)
     assert abs(out["solar"] - 60.0 / 40.0) < 1e-9 and abs(out["wind"] - 1.0) < 1e-9
     assert abs(out["gas"] - 1.5) < 1e-9 and abs(out["gas_hours_share"] - 0.5) < 1e-9
+
+
+def test_committee_grid_scales_capital_with_the_uplift_and_discounts_harder():
+    bo, bg = np.full(240, 300000.0), np.full(240, 150000.0)  # ~10,800 boe/d
+    wti, hh = np.full(240, 75.0), np.full(240, 3.0)
+    reg = ec.lease_cash_flows(bo, bg, wti, hh, 10, "base")
+    com = ec.lease_cash_flows(bo, bg, wti, hh, 10, "base", grid=ec.committee_case("base"))
+    boed = 0.20 * (300000 + 150000 / 6) / 30.4
+    assert abs(com["capex"].iloc[0] - 40000 * boed) < 1.0 and reg["capex"].iloc[0] == 8e6 * 10
+    assert ec.incremental_npv(bo, bg, wti, hh, 10, "base", ec.committee_case("base")) < ec.incremental_npv(bo, bg, wti, hh, 10, "base")
+

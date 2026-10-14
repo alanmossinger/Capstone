@@ -4,7 +4,7 @@ This note describes the AI component of the project — the LLM advisor of noteb
 
 ## 1. Where the advisor sits
 
-The advisor is one actor in a decision process with four: instinct (top-N expected NPV), the registered rule (the gate verdict of notebook 09 part B for queue requests; the risk-aware MILP for the book), the advisor (an Anthropic model called through the Messages API) and the human. It works in two modes, in this order:
+The advisor is one actor in a decision process with four: instinct (top-N expected NPV), the registered rule (the gate verdict of notebook 09 part B for queue requests; the risk-aware MILP for the book), the advisor (an Anthropic model, called through the Messages API with a key or, without one, through the `claude` command line on a Claude subscription) and the human. It works in two modes, in this order:
 
 - **Learn from history.** The decision gym replays sixteen documented situations as of their date — queue requests at entry and at the two-year gate in ERCOT, PJM and CAISO; the lease candidates at the start of the 2014, 2020 and 2022 oil-price regimes; a 2018 budget cut. Each actor picks a book under the same budget from the same as-of table; the realized value is revealed; one score per actor per situation goes to `results/decision_gym_scores.csv`.
 - **Decide forward.** For the book of 2025–2044 the advisor recommends a book for the base case and each named stress, and for each horizon (1, 2, 3, 5, 10, 20 years), from the result tables; the human reviews it in the dashboard, may challenge it, and may override it through the gate.
@@ -17,9 +17,9 @@ Every number in an answer is checked mechanically (`advisor.verify_numbers`): it
 
 ## 3. Record and replay
 
-Every call is appended to `results/advisor_runs.jsonl` with the model id, temperature, token limits, the full system and user prompts, the response, the token usage and the verification. The key of a record is the hash of (model, system prompt, user message). A call whose key is recorded is served from the record; so `make all` runs offline, the report's AI section reproduces without a key, and a reader can audit each answer against the prompt that produced it. With no key and no record, the advisor's rows read "not recorded" and nothing else in the pipeline changes.
+Every call is appended to `results/advisor_runs.jsonl` with the model id, the backend, the sampling setting, the token limit, the full system and user prompts, the response, the token usage and the verification. The key of a record is the hash of (model, system prompt, user message). A call whose key is recorded is served from the record; so `make all` runs offline, the report's AI section reproduces without a key, and a reader can audit each answer against the prompt that produced it. With no key and no record, the advisor's rows read "not recorded" and nothing else in the pipeline changes.
 
-The key lives in `.env` (`ANTHROPIC_API_KEY`), read by `python-dotenv`; it is never printed, logged, written into a notebook output or committed. Model id: `claude-sonnet-5-5`; temperature 0.
+The key, when used, lives in `.env` (`ANTHROPIC_API_KEY`), read by `python-dotenv`; it is never printed, logged, written into a notebook output or committed. Without a key, `src/advisor.ask_cli` runs `claude -p` signed in to the author's Claude subscription, with the system prompt replaced, no tools, no MCP servers, no CLAUDE.md or memory, in an empty folder, so the model receives exactly the system prompt and user message the API would (decision #76). Model id: `claude-sonnet-5-5`, at the model's default sampling, because this model rejects any other temperature and the command line exposes none.
 
 ## 4. The three modes and their prompts
 

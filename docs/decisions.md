@@ -996,3 +996,81 @@ alternative rejected.
     question and the top-three-risks step — are the prompts the project
     uses; the draft status line is removed and open question 34 is closed.
     *Rejected:* waiting for a separate text that does not exist.
+74. **After the outside review of 14 Oct: four corrections and a labelled
+    post-hoc part** (2026-10-14). *Corrections (bugs, not choices):* (a)
+    the gym's two-year rooms checked the gate rule for an 'invest' verdict
+    the two-year rule never issues ('accelerate' is its funding verdict),
+    so the rule funded nothing in every gate room — fixed in `src/gym.py`;
+    (b) the gym's rooms were the fifteen largest requests, which stacks
+    them toward requests that fail (size is Part I's strongest predictor of
+    failure) and rewards abstention — now fifteen drawn at random, seed
+    2020; (c) the EDA's gas combined-cycle capacity factor divided each
+    prime-mover part by the whole plant's nameplate, roughly halving it —
+    now plant-level (C20's registered lines are unchanged: target and
+    forecast share the same definition, and the scored ratios are
+    unaffected); (d) report figure titles cut to the finding in twelve
+    words or fewer (`plots.SHORT_TITLES`). *Post-hoc, labelled (notebook
+    09 part E):* the committee grid — lease capital at $25k / $40k / $60k
+    per incremental flowing boe/d and a real rate of 5.1% / 8% / 10% — on
+    the same scenario paths and draws; the scenario median beside the
+    mean; a sustained oil stress (WTI $42 real for five years); a second
+    draw of power candidates from the entry rule's invest class. C21–C24
+    stand as registered; the committee-grid books are reported, not
+    scored. *Not done, and why:* ERCOT 2020–2023 prices stay bridged
+    because EIA's ICE files stop quoting ERCOT North after 2019 and
+    ercot.com refuses this machine (decision #53); the advisor stays
+    unscored until `ANTHROPIC_API_KEY` is in `.env` (cloud-session credits
+    do not pay for the project's own API calls). *Rejected:* replacing the
+    registered grid and re-scoring C21–C24 (moves a registered verdict
+    after seeing it).
+75. **Report v5: structure, title and figure standard** (Alan, 2026-10-14).
+    Title *Beyond Prediction: AI-Driven Energy Portfolio Decisions Under
+    Uncertainty*, subtitle *From Machine Learning to Risk-Aware Capital
+    Allocation*. Two parts kept with a bridge (the reviewer's advice) and
+    Part II ordered as the proposal's paper outline (the proposal map is in
+    Appendix C); the memo leads with the committee grid and states the
+    registered verdicts beside it; codes, decision numbers and file paths
+    move to the appendices. Figures: titles ≤ 12 words, 11-inch width,
+    PNG at 450 dpi, SVG in the PDF. *Rejected:* merging Parts I and II into
+    one portfolio chapter (loses the scored gate results); leading the memo
+    with the registered grid (the review showed it is the generous case).
+76. **The advisor runs on the Claude subscription when there is no API key**
+    (Alan, 2026-10-14: "use my Max plan to run"). `src/advisor.py` gains a
+    second backend, `ask_cli`, which calls `claude -p` signed in to the
+    author's Claude subscription. The system prompt is replaced
+    (`--system-prompt-file`), the user message goes on standard input, and
+    the child runs with `--tools ""`, `--strict-mcp-config`,
+    `--no-session-persistence`, no CLAUDE.md or memory, in an empty folder
+    and an environment stripped of every `CLAUDE*`, `ANTHROPIC_*` and `MCP_*`
+    variable. The model therefore receives the same two texts the Messages
+    API would, and the grounding check means the same. The record key stays
+    the hash of (model, system, user), so a call recorded through either
+    backend replays identically; each record names its backend. In auto
+    mode a failed call (an expired sign-in) falls back to "not recorded" and
+    the notebook prints the reason, so `make all` still runs offline; live
+    mode raises. *Also fixed:* `claude-sonnet-5-5` rejects any non-default
+    temperature, so the API path no longer sends `temperature=0`
+    (`TEMPERATURE = None`), and the record says "model default". *Rejected:*
+    piggybacking on the desktop app's session token (not the author's own
+    sign-in, and it routes through another process); a scripted fallback that
+    writes advisor rows without a model (decision #72).
+77. **Open question 38 closed; figure and text corrections before v1.0**
+    (Alan, 2026-10-14: "ok, use the recommended"). The memo recommends book
+    D under the committee grid and states book A as the alternative for a
+    committee with more appetite for risk. A figure review against the
+    report found two titles that contradicted their own figure (F16: queues
+    swell while recent entrants withdraw less, not more; F23: at entry
+    ERCOT's exits operated at least as often as its funded requests) and
+    legends on data (F27, F28, F33), raw column names and a decision number
+    (F29), stale notebook pointers (F23, F26), the old names "fair baseline"
+    and "v2 model" (F11, F12, F22), non-integer counts (F35) and a missing
+    dollar sign (F37); all fixed in the notebooks. In the text: §11's claim
+    that the tornado's top items are the committee grid's two items was
+    wrong (the tornado ranks uplift, operating cost, then the rate) and is
+    rewritten; Appendix A's tail sentence now names the held-out scenarios;
+    §6 states the ERCOT exception; §13 adds the carbon-price and
+    risk-aversion sensitivities the proposal's §10 asked for (overlaps 0.96
+    and 0.84, already in `results/portfolio_sensitivity.csv`). The poster
+    now carries v5 numbers only, checked by `test_report.py`; its design is
+    to be redone (Alan). *Rejected:* leaving the titles and fixing the
+    captions instead (the title is what a reader takes away).

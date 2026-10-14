@@ -1,7 +1,11 @@
 """The LLM advisor: grounded in result tables, recorded on every call, replayable offline, number-checked.
 
-What: a thin client of the Anthropic Messages API with three disciplines
-(PLAN.md §14.10). *Grounding* — the model sees only the result tables of
+What: a thin client of Claude with three disciplines (PLAN.md §14.10). It
+reaches the model through one of two backends: the Anthropic Messages API
+when ``ANTHROPIC_API_KEY`` is in ``.env``, or otherwise the Claude Code
+command line (``claude -p``) signed in to the author's Claude subscription,
+run with no tools, no project files and no memory, so it sees exactly the
+same system prompt and user message as the API would (decision #76). *Grounding* — the model sees only the result tables of
 ``results/`` pasted into the user message, and ``verify_numbers`` checks
 that every number in an answer appears in that context. *Recording* —
 every call is appended to ``results/advisor_runs.jsonl`` (prompts, model,
@@ -15,8 +19,8 @@ gate and the decision-ledger append.
 Why: the course asks for an AI component whose outputs are evaluated, and
 the report must reproduce without a key; a recommendation that cites a
 number the tables do not hold is worthless, so the check is mechanical.
-Reads: ``.env`` (``ANTHROPIC_API_KEY``, never printed), ``prompts/*.md``,
-``results/advisor_runs.jsonl``.
+Reads: ``.env`` (``ANTHROPIC_API_KEY`` if present, never printed), the
+``claude`` command's own sign-in, ``prompts/*.md``, ``results/advisor_runs.jsonl``.
 Writes: ``results/advisor_runs.jsonl``, ``results/decision_ledger.csv`` (append).
 Used by: notebook 10, the dashboard (``app/app.py``); ``tests/test_advisor.py``.
 """
@@ -25,6 +29,9 @@ import hashlib
 import json
 import os
 import re
+import shutil
+import subprocess
+import tempfile
 from datetime import date, datetime, timezone
 
 import numpy as np
@@ -35,7 +42,8 @@ from src import paths
 
 MODEL = "claude-sonnet-5-5"  # the model id recorded with every call; the dashboard shows it
 MAX_TOKENS = 1800
-TEMPERATURE = 0.0  # a recommendation is a deterministic function of the tables, as far as the API allows
+TEMPERATURE = None  # the model's default: claude-sonnet-5-5 rejects any other sampling setting, and the command line has none
+CLI_TIMEOUT_S = 600  # one answer; the tables run to about 60 KB of input
 PROMPTS = paths.REPO / "prompts"
 RUNS = paths.RESULTS / "advisor_runs.jsonl"
 LEDGER = paths.RESULTS / "decision_ledger.csv"
@@ -59,6 +67,80 @@ def api_key():
     load_dotenv(paths.ENV_FILE)
     key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
     return key or None
+
+
+def cli_path():
+    """The ``claude`` command on PATH, or None."""
+    return shutil.which("claude")
+
+
+def cli_environment():
+    """The environment for a ``claude -p`` child: this process's, without any Claude or Anthropic session variables.
+
+    Notes
+    -----
+    A notebook run from inside a Claude Code session inherits that session's
+    variables (``CLAUDECODE``, ``ANTHROPIC_BASE_URL`` and the like), which
+    would make the child refuse to start or route it through the parent
+    session. An ``ANTHROPIC_API_KEY`` would also take precedence over the
+    subscription sign-in. Removing every ``CLAUDE*``, ``ANTHROPIC_*`` and
+    ``MCP_*`` variable leaves the child as if started from a fresh terminal;
+    the two variables added back keep every CLAUDE.md and memory file out of
+    its context.
+    """
+    env = {k: v for k, v in os.environ.items() if not k.upper().startswith(("CLAUDE", "ANTHROPIC_", "MCP_"))}
+    env["CLAUDE_CODE_DISABLE_CLAUDE_MDS"] = "1"
+    env["CLAUDE_CODE_DISABLE_AUTO_MEMORY"] = "1"
+    return env
+
+
+def ask_cli(system, user, model=MODEL, timeout=CLI_TIMEOUT_S):
+    """One answer from ``claude -p`` on the Claude subscription: the system prompt replaced, no tools, nothing loaded from disk.
+
+    Returns
+    -------
+    dict
+        ``text``, ``model`` (the id the command reports having used),
+        ``input_tokens`` and ``output_tokens``.
+
+    Raises
+    ------
+    RuntimeError
+        If the command is missing, fails, or reports an error (for example a
+        sign-in that has expired); the message carries the command's own
+        error text, which holds no secret.
+
+    Notes
+    -----
+    The system prompt goes in a file and the user message on standard input,
+    because the Windows command line stops at about 32 KB and the tables are
+    longer. The child runs in an empty temporary folder with ``--tools ""``
+    and ``--strict-mcp-config``, so the only text it reads is the prompt it
+    is given, which keeps the grounding check meaningful. Sampling cannot be
+    set from the command line; the record says so.
+    """
+    exe = cli_path()
+    if exe is None:
+        raise RuntimeError("the claude command is not on PATH")
+    with tempfile.TemporaryDirectory() as folder:
+        system_file = os.path.join(folder, "system.md")
+        with open(system_file, "w", encoding="utf-8") as f:
+            f.write(system)
+        args = [exe, "-p", "Answer the task in the input.", "--system-prompt-file", system_file, "--tools", "", "--strict-mcp-config",
+                "--no-session-persistence", "--output-format", "json", "--model", model]
+        done = subprocess.run(args, input=user.encode("utf-8"), capture_output=True, cwd=folder, env=cli_environment(), timeout=timeout)
+    out = done.stdout.decode("utf-8", errors="replace")
+    try:
+        body = json.loads(out)
+    except json.JSONDecodeError:
+        raise RuntimeError(f"claude -p exited {done.returncode}: {(out or done.stderr.decode('utf-8', errors='replace'))[:300]}") from None
+    if body.get("is_error") or body.get("subtype") != "success":
+        raise RuntimeError(f"claude -p reported an error: {str(body.get('result'))[:300]}")
+    used = list(body.get("modelUsage", {}))
+    usage = body.get("usage", {})
+    return {"text": body.get("result", ""), "model": used[0] if used else model,
+            "input_tokens": usage.get("input_tokens", 0) + usage.get("cache_read_input_tokens", 0) + usage.get("cache_creation_input_tokens", 0),
+            "output_tokens": usage.get("output_tokens", 0)}
 
 
 def load_prompt(name):
@@ -169,24 +251,41 @@ def parse_json(text):
 # --- the client ---------------------------------------------------------------------------------
 
 class Advisor:
-    """Calls the API or replays the record; every call is written down.
+    """Calls Claude or replays the record; every call is written down.
 
     Parameters
     ----------
     mode : {"auto", "live", "replay"}
-        ``auto`` calls the API when a key is present and replays otherwise;
-        ``replay`` never calls (``make all`` offline); ``live`` requires the key.
+        ``auto`` calls Claude when a backend is available and replays
+        otherwise; ``replay`` never calls (``make all`` offline); ``live``
+        requires a backend.
     model : str
         Model id recorded with the call.
     runs_path : pathlib.Path
         The JSONL record.
+    backend : {"auto", "api", "cli"}
+        ``api`` is the Messages API with ``ANTHROPIC_API_KEY``; ``cli`` is
+        ``claude -p`` on the Claude subscription; ``auto`` takes the API when
+        the key is present and the command line otherwise.
+
+    Notes
+    -----
+    A record is keyed by (model, system, user) only, so a call recorded
+    through either backend replays identically; the backend is stored with
+    the record for the reader.
     """
 
-    def __init__(self, mode="auto", model=MODEL, runs_path=RUNS, max_tokens=MAX_TOKENS, temperature=TEMPERATURE):
+    def __init__(self, mode="auto", model=MODEL, runs_path=RUNS, max_tokens=MAX_TOKENS, temperature=TEMPERATURE, backend="auto"):
         key = api_key()
-        if mode == "live" and key is None:
-            raise RuntimeError("ANTHROPIC_API_KEY is missing from .env (live mode); use mode='replay' to run offline")
-        self.live = mode == "live" or (mode == "auto" and key is not None)
+        if backend == "auto":
+            backend = "api" if key is not None else ("cli" if cli_path() else None)
+        available = backend == "cli" and cli_path() is not None or backend == "api" and key is not None
+        if mode == "live" and not available:
+            raise RuntimeError("no backend for live mode: put ANTHROPIC_API_KEY in .env or sign in to the claude command; use mode='replay' to run offline")
+        self.backend = backend if available else None
+        self.live = mode == "live" or (mode == "auto" and available)
+        self.strict = mode == "live"  # in auto mode a failed call falls back to "not recorded" so the pipeline still runs offline
+        self.last_error = None
         self.model, self.max_tokens, self.temperature, self.runs_path = model, max_tokens, temperature, runs_path
         self._client = None
         self.records = self._load()
@@ -213,15 +312,30 @@ class Advisor:
         if not self.live:
             self.calls["missing"] += 1
             return None
-        if self._client is None:
-            import anthropic  # imported here so the module loads without the package in replay-only environments
-            self._client = anthropic.Anthropic(api_key=api_key())
-        response = self._client.messages.create(model=self.model, max_tokens=self.max_tokens, temperature=self.temperature, system=system,
-                                                messages=[{"role": "user", "content": user}])
-        text = "".join(block.text for block in response.content if getattr(block, "type", "") == "text")
-        record = {"key": key, "time": datetime.now(timezone.utc).isoformat(timespec="seconds"), "mode": mode_name, "tag": tag, "model": response.model,
-                  "temperature": self.temperature, "max_tokens": self.max_tokens, "system": system, "user": user, "response": text,
-                  "usage": {"input_tokens": response.usage.input_tokens, "output_tokens": response.usage.output_tokens},
+        if self.backend == "cli":
+            try:
+                answer = ask_cli(system, user, self.model)
+            except (RuntimeError, OSError, subprocess.TimeoutExpired) as error:
+                if self.strict:
+                    raise
+                self.live, self.last_error = False, str(error)  # stop trying for the rest of the run; the notebook reports the reason
+                self.calls["missing"] += 1
+                return None
+            text, used, usage = answer["text"], answer["model"], {"input_tokens": answer["input_tokens"], "output_tokens": answer["output_tokens"]}
+        else:
+            if self._client is None:
+                import anthropic  # imported here so the module loads without the package in replay-only environments
+                self._client = anthropic.Anthropic(api_key=api_key())
+            sampling = {} if self.temperature is None else {"temperature": self.temperature}
+            response = self._client.messages.create(model=self.model, max_tokens=self.max_tokens, system=system,
+                                                    messages=[{"role": "user", "content": user}], **sampling)
+            text = "".join(block.text for block in response.content if getattr(block, "type", "") == "text")
+            used, usage = response.model, {"input_tokens": response.usage.input_tokens, "output_tokens": response.usage.output_tokens}
+        record = {"key": key, "time": datetime.now(timezone.utc).isoformat(timespec="seconds"), "mode": mode_name, "tag": tag, "model": used,
+                  "backend": "claude -p (Claude subscription)" if self.backend == "cli" else "Messages API",
+                  "temperature": "model default" if self.temperature is None else self.temperature,
+                  "max_tokens": self.max_tokens if self.backend == "api" else "not set (command line)",
+                  "system": system, "user": user, "response": text, "usage": usage,
                   "verification": verify_numbers(text, system + "\n" + user)}
         with open(self.runs_path, "a", encoding="utf-8") as f:
             f.write(json.dumps(record, ensure_ascii=False) + "\n")

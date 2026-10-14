@@ -4,3 +4,10 @@ Each feedback item, what changed because of it, and where.
 
 | # | Date | Feedback | Change made | Where |
 |---|---|---|---|---|
+| 1 | 2026-10-14 | Outside review of report v4: internal contradictions (the "no book loses money" sentence against P(loss) of 1.8–3.5%; memo vs book D on gas; landmark lift text vs figure; PJM size cliff 200 vs 500 MW; "no contracts"; table numbering; 22 vs 19 operations; H2/H3 undefined; one rounding per number) | Every contradiction fixed in report v5; risk claims restated as "every book's worst 5% is still a profit" under the registered grid | `report/report.md` |
+| 2 | 2026-10-14 | The lease grid is the result: capital not tied to uplift size; leases discounted at 5.1% | Post-hoc committee grid ($/flowing boe/d capital, 8% base rate) on the same scenarios; the memo leads with it | notebook 09 part E; decision #74 |
+| 3 | 2026-10-14 | Scenario mean vs flat path; oil-collapse stress shows no effect | Median reported beside the mean; sustained $42-for-five-years stress added and the 2020-shape result explained | notebook 09 part E |
+| 4 | 2026-10-14 | Power candidates are the largest requests, the ones Part I says fail most | Second draw from the entry rule's invest class | notebook 09 part E |
+| 5 | 2026-10-14 | Gym composition, the ERCOT two-year room, rooms of the largest requests | Bug found and fixed (the two-year rule never funded); rooms drawn at random; result split by kind of room | `src/gym.py`, notebook 10 |
+| 6 | 2026-10-14 | Gas CC capacity factor of 23% looks like a prime-mover artefact | Confirmed and fixed at plant level in the EDA | notebook 02 part C |
+| 7 | 2026-10-14 | Figure titles of 30–40 words; report hard to read (numbers in every sentence, codes in the prose, shifting names) | Titles ≤ 12 words; report rewritten: short abstract, one-page memo, reading map and glossary, two stages with a bridge, one name per object, intervals in tables, closing results table | `src/plots.py`, `report/report.md` |

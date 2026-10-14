@@ -1,7 +1,7 @@
 """One figure style for the whole project, and one way to save figures.
 
 What: ``set_style()`` (fonts, sizes, grid), ``finish()`` (finding title,
-subtitle and source note), ``save_fig()`` (PNG 300 dpi + SVG, plus a
+subtitle and source note), ``save_fig()`` (PNG 450 dpi + SVG, plus a
 caption stub in ``report/figure_notes.md``) and small color helpers.
 Why: every figure readable at report size, colorblind-safe,
 ERCOT/PJM/CAISO always in the same colors, a title that states the finding
@@ -69,7 +69,7 @@ def set_style():
         "lines.markersize": 7,
         "patch.linewidth": 0,
         "text.color": INK,
-        "savefig.dpi": 300,
+        "savefig.dpi": 450,  # readable when a figure is printed at page width (outside review, 14 Oct)
         "savefig.facecolor": "white",
         "svg.fonttype": "none",
         "svg.hashsalt": "queue-survival",  # stable element ids, so reruns do not churn git
@@ -91,6 +91,51 @@ def tech_group(type_clean):
     every other hybrid and minor technology goes to "Other".
     """
     return type_clean if type_clean in config.TECH_COLORS else "Other"
+
+
+
+# Report-figure titles: the finding in twelve words or fewer (outside review, 14 Oct 2026). The long sentence a
+# notebook passes to ``finish`` carries numbers; those live in the report's text and in each notebook's
+# *Reading this* cell, and ``save_fig`` redraws the title from this table for every figure named here.
+SHORT_TITLES = {
+    "02_C5_asset_map": "Two areas hold most Gulf oil; Texas plants cluster by fuel",
+    "02_C6_correlation_and_clusters": "Prices and output barely move together; decline shapes split in two",
+    "F1_cif_by_region": "ERCOT requests reach operation most often; CAISO's least",
+    "F2_operation_by_technology": "Gas is built fastest; batteries and hybrids slowest",
+    "F3_five_year_by_size": "Small requests are built more often in PJM and CAISO",
+    "F4_calibration_by_horizon": "The model's probabilities run high in the middle range",
+    "F5_auc_brier_by_horizon": "The model ranks requests better than cohort averages",
+    "F6_hazard_ratios": "ERCOT and gas requests reach operation fastest",
+    "F7_shap_summary": "State, size and technology drive the model's predictions",
+    "F8_congestion_vs_completion": "In PJM, a crowded queue lowers the chance of operation",
+    "F9_project_map": "Three ISOs hold most of the capacity waiting to connect",
+    "F10_gains_over_baselines": "At entry, a careful lookup matches the model at utility scale",
+    "F11_level_by_entry_year": "Recent cohorts complete far below the historical level",
+    "F12_landmark_models": "Two years in, updated information sharpens the model's ranking",
+    "F13_expected_mw_and_value": "Raw model levels overstate the megawatts a cohort delivers",
+    "F14_simulated_book": "The simulated band brackets what a book delivers",
+    "F15_backtest": "At entry, the model's book delivers what the lookup's does",
+    "F16_constraint_map": "Queues swell; recent entrants neither leave nor get built as before",
+    "F17_miso_spp": "In MISO the model beats the lookup; SPP is too thin",
+    "F18_managed_book": "Two years in, the model's book holds more operations",
+    "F19_drivers": "Size, technology and the agreement decide which requests get built",
+    "F20_when_requests_die": "CAISO and PJM cull in year one; ERCOT after year four",
+    "F21_segments": "Ten entry rules sort requests by their odds of completion",
+    "F22_tournament": "Other learners tie LightGBM and do not beat the lookup",
+    "F23_portfolio_review": "Funded requests operated more often than exits, except ERCOT's at entry",
+    "F24_book_per_region": "Two years in, the floor book operates at twice the pool rate",
+    "F25_state_archetypes": "State markets fall into archetypes that separate completion",
+    "F26_npv_per_mw": "With capital counted, few plants pay at merchant prices",
+    "F27_forecast_gains": "Machine learning beats baselines for plant output, not for leases",
+    "F28_candidates": "Leases carry positive value; most power requests do not",
+    "F29_cost_tornado": "The uplift share and operating cost decide the lease book",
+    "F30_price_scenarios": "Scenarios keep history's price jumps around a reverting level",
+    "F31_candidate_risk": "Leases rarely lose money; most power requests usually do",
+    "F32_stresses": "Every named stress leaves the default book positive",
+    "F33_four_books": "The risk-aware book does not beat NPV ranking out of sample",
+    "F35_horizon_view": "Leases pay from year three; queue requests stay a cost",
+    "F36_ai_workflow": "The advisor sees only result tables; humans override through a gate",
+}
 
 
 def finish(fig, title, subtitle, cohort, eia=False, lbnl=True, lbnl_2026=False, sources=None, provenance=None):
@@ -149,18 +194,32 @@ def finish(fig, title, subtitle, cohort, eia=False, lbnl=True, lbnl_2026=False, 
     bottom = 0.012 + src_h * len(source_lines) + 0.012
     fig.tight_layout(rect=[0, bottom, 1, top])
     renderer = fig.canvas.get_renderer()
+    # a y-label taller than its axes runs into the subtitle or the source note: shrink it until it fits (outside review, 14 Oct)
+    shrunk = False
+    for ax in fig.axes:
+        label = ax.yaxis.label
+        if not label.get_text():
+            continue
+        while label.get_window_extent(renderer).height > ax.get_window_extent(renderer).height and label.get_fontsize() > 9:
+            label.set_fontsize(label.get_fontsize() - 0.5)
+            shrunk = True
+    if shrunk:
+        fig.tight_layout(rect=[0, bottom, 1, top])
     left = min(ax.get_tightbbox(renderer).x0 for ax in fig.axes) / fig.bbox.width
     left = max(left, 0.01)
-    fig.text(left, 0.98, "\n".join(title_lines), ha="left", va="top",
-             fontsize=16, fontweight="bold", color=INK, linespacing=1.15)
-    fig.text(left, sub_y, "\n".join(subtitle_lines), ha="left", va="top",
-             fontsize=13, color=MUTED, linespacing=1.15)
-    fig.text(left, 0.012, "\n".join(source_lines), ha="left", va="bottom",
-             fontsize=10.5, color=MUTED, linespacing=1.15)
+    texts = [fig.text(left, 0.98, "\n".join(title_lines), ha="left", va="top",
+                      fontsize=16, fontweight="bold", color=INK, linespacing=1.15),
+             fig.text(left, sub_y, "\n".join(subtitle_lines), ha="left", va="top",
+                      fontsize=13, color=MUTED, linespacing=1.15),
+             fig.text(left, 0.012, "\n".join(source_lines), ha="left", va="bottom",
+                      fontsize=10.5, color=MUTED, linespacing=1.15)]
+    # kept so save_fig can redraw the title from SHORT_TITLES without the notebook changing
+    fig._finish = {"texts": texts, "subtitle": subtitle, "cohort": cohort, "eia": eia, "lbnl": lbnl, "lbnl_2026": lbnl_2026,
+                   "sources": sources, "provenance": provenance}
 
 
 def save_fig(fig, name, caption, notebook, folder=None):
-    """Save a figure as PNG (300 dpi) and SVG and record its caption stub.
+    """Save a figure as PNG (450 dpi) and SVG and record its caption stub.
 
     Parameters
     ----------
@@ -188,6 +247,12 @@ def save_fig(fig, name, caption, notebook, folder=None):
     instead of appending a duplicate, and blocks stay sorted by name so the
     file reads as a gallery the report's captions are chosen from.
     """
+    if name in SHORT_TITLES and getattr(fig, "_finish", None):
+        kept = fig._finish
+        for text in kept["texts"]:
+            text.remove()
+        finish(fig, SHORT_TITLES[name], kept["subtitle"], kept["cohort"], eia=kept["eia"], lbnl=kept["lbnl"], lbnl_2026=kept["lbnl_2026"],
+               sources=kept["sources"], provenance=kept["provenance"])
     out_dir = paths.FIGURES / folder if folder else paths.FIGURES
     out_dir.mkdir(parents=True, exist_ok=True)
     png, svg = out_dir / f"{name}.png", out_dir / f"{name}.svg"

@@ -1424,9 +1424,9 @@ def v6_data():
 def v6_forecasts():
     """Part II §15–§16: the EDA facts and C20."""
     eda = read("energy_eda_summary.csv") if (paths.RESULTS / "energy_eda_summary.csv").exists() else None
-    add("v6_cf_wind", "33%", 0.33, "notebook 02 part C", "Texas wind capacity factor")
-    add("v6_cf_solar", "22%", 0.22, "notebook 02 part C", "Texas solar capacity factor")
-    add("v6_cf_gas", "23%", 0.23, "notebook 02 part C", "Texas gas CC capacity factor")
+    cf = read("eda_capacity_factor_ci.csv").set_index("technology")["estimate"]
+    for tech_, key in (("Wind", "v6_cf_wind"), ("Solar", "v6_cf_solar"), ("Gas CC", "v6_cf_gas")):
+        add(key, pct(cf[tech_], 0), cf[tech_], "results/eda_capacity_factor_ci.csv", f"Texas {tech_} capacity factor, plant level, 2018–2024")
     sc = read("success_criteria_v6_scored.csv")
     reg = sc[sc["registered"]]
     add("v6_c20_lines", str(len(reg)), len(reg), "results/success_criteria_v6_scored.csv", "C20 registered lines")
@@ -1595,6 +1595,150 @@ def v6_advisor():
     add("v6_grid_factor", "four", 4, "results/cost_sensitivity.csv", "the two largest grid items move the book by about this factor")
 
 
+def rounded(new_key, from_key, fmt, note=""):
+    """Record a rounded form of a number already collected (report v5 rounds in prose, keeps detail in tables)."""
+    row = next(r for r in ROWS if r["key"] == from_key)
+    value = float(row["value"])
+    add(new_key, fmt(value), value, row["source"], note or f"rounded from {from_key}")
+
+
+def v7_rounded():
+    """Report v5, Part I: the rounded forms the prose uses (outside review of 14 Oct: round in prose, detail in tables)."""
+    two = lambda v: f"{v:.2f}"
+    p0 = lambda v: f"{100 * v:.0f}%"
+    for new, old, fmt in [("r_auc3", "auc_dt_lgbm_3", two), ("r_auc3_base", "auc_baseline_3", two), ("r_c3_lookup", "c_large_fair_3", two),
+                          ("r_lm_c", "lm_l2_ia_uno_c", two), ("r_lm_entry", "lm_l2_entry_uno_c", two), ("r_lm_gain", "lm_l2_ia_uno_c_diff", two),
+                          ("r_lm_lookup", "lm_l2_fair_uno_c", two), ("r_sig_ercot_yes", "sig_ercot_yes", p0)]:
+        rounded(new, old, fmt)
+    cpi = pd.read_parquet(paths.DATA_INTERIM / "cpi_monthly.parquet")
+    ratio = cpi[cpi["month"].dt.year == 2024]["cpi_u"].mean() / cpi[cpi["month"].dt.year == 2022]["cpi_u"].mean()
+    add("r_cpi_2022_2024", f"{ratio:.2f}", ratio, "data/interim/cpi_monthly.parquet", "CPI-U 2024 mean over 2022 mean")
+
+
+def v7_posthoc():
+    """Report v5, Part II: the committee grid, the medians, the oil stresses, the books under the committee grid (notebook 09 part E)."""
+    b = lambda v, d=1: f"{v / 1e9:.{d}f}"
+    grid = read("posthoc_committee_grid.csv").set_index("item")
+    for case in ("low", "base", "high"):
+        v = grid.loc["dev_cost_per_flowing_boed_usd", case]
+        add(f"ph_dev_cost_{case}", f"{v:,.0f}", v, "results/posthoc_committee_grid.csv", f"committee grid: capital per flowing boe/d, {case}")
+        w = grid.loc["wacc_real", case]
+        add(f"ph_wacc_{case}", f"{100 * w:.1f}%" if case == "low" else f"{100 * w:.0f}%", w, "results/posthoc_committee_grid.csv", f"committee grid: real rate, {case}")
+    lv = read("posthoc_lease_values.csv")
+    for col, key in [("npv_base", "ph_lease_npv_base"), ("npv_low", "ph_lease_npv_low"), ("npv_high", "ph_lease_npv_high"),
+                     ("capex_base", "ph_lease_capex"), ("capex_registered", "ph_lease_capex_registered"), ("npv_registered_base", "ph_lease_npv_registered")]:
+        v = lv[col].sum()
+        add(key, b(v, 2 if "capex" in col else 1), v, "results/posthoc_lease_values.csv", col)
+    add("ph_lease_positive", str(int((lv["npv_base"] > 0).sum())), int((lv["npv_base"] > 0).sum()), "results/posthoc_lease_values.csv", "leases positive at base, committee grid")
+    cand = read("candidate_npv.csv")
+    leases = cand[cand["sector"] != "ERCOT power"]
+    for col, key in [("expected_npv_low_cost", "ph_reg_low"), ("expected_npv_high_cost", "ph_reg_high")]:
+        add(key, b(leases[col].sum()), leases[col].sum(), "results/candidate_npv.csv", f"registered grid, {col}")
+    dist = read("posthoc_book_distribution.csv").set_index(["book", "grid"])
+    for grid_name in ("registered", "committee"):
+        r = dist.loc[("default book of forty", grid_name)]
+        g = grid_name[:3]
+        add(f"ph_default_mean_{g}", b(r["mean"]), r["mean"], "results/posthoc_book_distribution.csv", f"default book mean, {grid_name}")
+        add(f"ph_default_median_{g}", b(r["median"]), r["median"], "results/posthoc_book_distribution.csv", f"default book median, {grid_name}")
+        add(f"ph_default_q05_{g}", b(r["q05"]), r["q05"], "results/posthoc_book_distribution.csv", f"default book 5th percentile, {grid_name}")
+        add(f"ph_default_pneg_{g}", f"{100 * r['p_negative']:.1f}%", r["p_negative"], "results/posthoc_book_distribution.csv", f"default book P(loss), {grid_name}")
+        add(f"ph_default_pneg0_{g}", f"{100 * r['p_negative']:.0f}%", r["p_negative"], "results/posthoc_book_distribution.csv", f"default book P(loss), rounded, {grid_name}")
+        add(f"ph_default_cvar_{g}", b(r["cvar95_loss"]), r["cvar95_loss"], "results/posthoc_book_distribution.csv", f"default book CVaR95 loss, {grid_name}")
+    stress = pd.read_csv(paths.RESULTS / "posthoc_oil_stress.csv").set_index("stress")
+    for name, key in [("flat 2024 base", "flat"), ("2020 shape from month one", "2020"), ("sustained $42 for five years", "sustained")]:
+        for grid_name, d in (("registered", 1), ("committee", 2)):
+            v = stress.loc[name, grid_name]
+            add(f"ph_oil_{key}_{grid_name[:3]}", b(v, d), v, "results/posthoc_oil_stress.csv", f"lease book, {name}, {grid_name}")
+    add("ph_oil_price", "$42", 42.0, "notebook 09 part E", "sustained WTI, real 2024 $/bbl (ASSUMED)")
+    flat = read("stress_tests.csv").set_index("stress").loc["base", "book_npv"]
+    add("ph_flat_book", b(flat), flat, "results/stress_tests.csv", "default book on the flat 2024 path")
+    bc = read("posthoc_books_committee.csv").set_index("book")
+    short = {"A top-N NPV": "a", "B equal capital": "b", "C deterministic MILP": "c", "D risk-aware MILP": "d"}
+    for name, k in short.items():
+        r = bc.loc[name]
+        add(f"ph_book_{k}_n", str(int(r["n_selected"])), int(r["n_selected"]), "results/posthoc_books_committee.csv", f"{name}: members")
+        for col in ("mean", "median", "cvar95_loss", "capex"):
+            add(f"ph_book_{k}_{col}", b(r[col]), r[col], "results/posthoc_books_committee.csv", f"{name}: {col}")
+        add(f"ph_book_{k}_pneg", f"{100 * r['p_negative']:.0f}%", r["p_negative"], "results/posthoc_books_committee.csv", f"{name}: P(loss)")
+    gap = bc.loc["A top-N NPV", "mean"] - bc.loc["D risk-aware MILP", "mean"]
+    add("ph_gap_a_d", b(gap), gap, "results/posthoc_books_committee.csv", "A minus D, expected NPV")
+    dva = read("posthoc_d_vs_a_committee.csv").iloc[0]
+    add("ph_dva", f"{abs(dva['diff']) / 1e6:,.0f}", dva["diff"], "results/posthoc_d_vs_a_committee.csv", "D minus A on the metric, committee grid")
+    cap = read("posthoc_lease_values.csv")
+    total_capex = cap["capex_base"].sum() + cand.loc[cand["sector"] == "ERCOT power", "capex"].sum()
+    add("ph_budget", b(0.40 * total_capex, 2), 0.40 * total_capex, "results/posthoc_lease_values.csv; results/candidate_npv.csv", "committee-grid budget: 40% of the forty's capital")
+    sc_ = pd.read_parquet(paths.DATA_PROCESSED / "candidate_npv_scenarios.parquet")
+    gas = list(cand.loc[cand["technology"] == "Gas CC", "project_id"])
+    part = sc_[(sc_["generator"] == "primary") & (sc_["revenue_case"] == "contracted")]
+    v = part[gas].sum(axis=1).mean()
+    add("ph_gas_scen_mean", f"${v / 1e6:.0f}M", v, "data/processed/candidate_npv_scenarios.parquet", "the five gas requests, mean across primary scenarios")
+    reg = read("portfolio_scores.csv")
+    oos = reg[reg["scenarios"].str.startswith("held-out") & (reg["revenue_case"] == "contracted")].set_index("book")
+    for name, k in (("A top-N NPV", "a"), ("D risk-aware MILP", "d")):
+        add(f"ph_reg_{k}_mean", b(oos.loc[name, "expected_npv"]), oos.loc[name, "expected_npv"], "results/portfolio_scores.csv", f"registered {name}, held-out mean")
+    # the record totals of Appendix A, counted from the scored files (registered lines only)
+    def count(name, column="result", registered_only=False):
+        d = read(name)
+        if registered_only:
+            d = d[d["registered"]]
+        passed = d[column].astype(str).str.upper().isin(["PASS", "TRUE"])
+        return len(d), int(passed.sum())
+    parts = [count("success_criteria.csv"), count("success_criteria_v2_scored.csv"), count("success_criteria_v3_scored.csv"),
+             count("success_criteria_v4_scored.csv", "pass"), count("success_criteria_v5_scored.csv"),
+             count("success_criteria_v6_scored.csv", registered_only=True), count("success_criteria_v7_scored.csv")]
+    total, passed = sum(n for n, _ in parts), sum(k for _, k in parts)
+    add("ph_record_lines", str(total), total, "results/success_criteria*_scored.csv", "registered lines, all criteria")
+    add("ph_record_pass", str(passed), passed, "results/success_criteria*_scored.csv", "registered lines passed")
+
+
+def v7_questions():
+    """Report v5: the energy EDA facts and the answers to the proposal's five decision questions."""
+    q = read("eda_energy_quality.csv").set_index("series").loc["lease-months (BSEE)"]
+    add("q_lease_zero", str(q["zero or missing"]), q["zero or missing"], "results/eda_energy_quality.csv", "lease-months with no oil or gas")
+    add("q_lease_months", f"{int(q['rows']):,}", int(q["rows"]), "results/eda_energy_quality.csv", "lease-months in the panel")
+    corr = read("eda_cross_sector_correlation.csv").set_index("Unnamed: 0")
+    for a, b_, key in (("WTI", "Henry Hub", "q_corr_wti_hh"), ("Henry Hub", "ERCOT", "q_corr_hh_ercot"), ("Wind CF", "Gas CC CF", "q_corr_wind_gas")):
+        v = corr.loc[a, b_]
+        add(key, f"{v:.2f}".replace("-", "−"), v, "results/eda_cross_sector_correlation.csv", f"monthly correlation, {a} and {b_}")
+    sens = read("portfolio_sensitivity.csv").set_index("change")
+    v = sens.loc[[c for c in sens.index if c.startswith("budget")][0], "jaccard_to_D"]
+    add("q_budget_jaccard", f"{v:.2f}", v, "results/portfolio_sensitivity.csv", "overlap with book D after a budget cut of a fifth")
+    for prefix, key, note in (("carbon", "q_carbon_jaccard", "a carbon price on the gas plants' emissions"), ("λ", "q_lambda_jaccard", "the weight on the tail doubled")):
+        v = sens.loc[[c for c in sens.index if c.startswith(prefix)][0], "jaccard_to_D"]
+        add(key, f"{v:.2f}", v, "results/portfolio_sensitivity.csv", f"overlap with book D under {note} (proposal §10)")
+    stab = read("portfolio_stability.csv").set_index("stress")
+    for stress, key in (("oil collapse (2020 path)", "q_stab_oil"), ("high gas, low spark spread", "q_stab_gas")):
+        v = stab.loc[stress, "jaccard_D"]
+        add(key, f"{v:.2f}", v, "results/portfolio_stability.csv", f"overlap of book D with itself under {stress}")
+    abl = read("portfolio_ablations.csv").set_index("ablation")
+    v = abl.loc[[c for c in abl.index if c.startswith("no oil and gas")][0], "p_negative"]
+    add("q_power_only_pneg", f"{100 * v:.0f}%", v, "results/portfolio_ablations.csv", "power-only book: chance of a loss")
+    lv = read("posthoc_lease_values.csv")
+    n_neg = int((lv["npv_high"] < 0).sum())
+    add("q_leases_neg_high", str(n_neg), n_neg, "results/posthoc_lease_values.csv", "leases negative at the committee grid's high case")
+    add("q_leases_pos_high", str(len(lv) - n_neg), len(lv) - n_neg, "results/posthoc_lease_values.csv", "leases positive at the committee grid's high case")
+    ab = read("posthoc_ablation_naive_forecasts.csv")
+    nv = ab[ab["book"].str.contains("naive")].iloc[0]
+    add("q_ablation_n", str(int(nv["n_selected"])), int(nv["n_selected"]), "results/posthoc_ablation_naive_forecasts.csv", "book D re-solved with naive output errors: members")
+    gs = read("decision_gym_scores.csv")
+    rule = gs[gs["actor"] == "optimizer"]
+    ins = gs[gs["actor"] == "instinct"]
+    add("q_gym_rule_vs_instinct", f"${rule['vs_instinct_$M'].mean():,.0f}M", rule["vs_instinct_$M"].mean(), "results/decision_gym_scores.csv", "rule minus instinct, mean per situation")
+    add("q_gym_regret_rule", f"${rule['regret_$M'].mean():,.0f}M", rule["regret_$M"].mean(), "results/decision_gym_scores.csv", "rule: mean regret against hindsight")
+    add("q_gym_regret_instinct", f"${ins['regret_$M'].mean():,.0f}M", ins["regret_$M"].mean(), "results/decision_gym_scores.csv", "instinct: mean regret against hindsight")
+    kind = read("decision_gym_by_kind.csv").set_index("kind")
+    add("q_gym_lease_mean", f"${kind.loc['lease', 'mean_$M'] / 1e3:.1f}B", kind.loc["lease", "mean_$M"], "results/decision_gym_by_kind.csv", "lease regimes: rule minus instinct, mean")
+    add("q_gym_queue_mean", f"${kind.loc['queue', 'mean_$M']:.1f}M", kind.loc["queue", "mean_$M"], "results/decision_gym_by_kind.csv", "queue rooms: rule minus instinct, mean")
+    add("q_gym_n_queue", str(int(kind.loc["queue", "situations"])), int(kind.loc["queue", "situations"]), "results/decision_gym_by_kind.csv", "queue rooms")
+    rooms = read("decision_gym_rooms.csv").set_index("situation")
+    v = rooms.loc["ERCOT 2017 2-year gate", "rule_minus_instinct"]
+    add("q_gym_ercot_gate", f"${v:,.0f}M", v, "results/decision_gym_rooms.csv", "ERCOT 2017 two-year room: rule minus instinct")
+    sit = read("decision_gym_situations.csv")
+    q = sit[sit["kind"] == "queue"]
+    add("q_gym_empty", str(int((q["hindsight_best_$M"] <= 0).sum())), int((q["hindsight_best_$M"] <= 0).sum()), "results/decision_gym_situations.csv", "queue rooms where no drawn request operated")
+    add("q_ablation_jaccard", f"{nv['jaccard_to_registered_D']:.2f}", nv["jaccard_to_registered_D"], "results/posthoc_ablation_naive_forecasts.csv", "overlap with the registered book D")
+
+
 def build():
     """Collect every cited number and write ``results/report_numbers.csv``.
 
@@ -1613,7 +1757,7 @@ def build():
     for step in (design_constants, gathering_and_cleaning, eda, modelling, evaluation, explanation, posthoc,
                  v3_data, v3_fair_baseline, v3_level, v3_landmark, v3_value, v3_miso_spp, v3_portfolio,
                  v3_extras, v3_appendix, v4_managed_book, v5_drivers, v5_segments, v5_timing, v5_tournament, v5_npv,
-                 v5_review, v5_books, v5_archetypes, v5_extras, v6_data, v6_forecasts, v6_economics, v6_scenarios, v6_books, v6_advisor):
+                 v5_review, v5_books, v5_archetypes, v5_extras, v6_data, v6_forecasts, v6_economics, v6_scenarios, v6_books, v6_advisor, v7_rounded, v7_posthoc, v7_questions):
         step()
     table = pd.DataFrame(ROWS)
     table.to_csv(paths.RESULTS / "report_numbers.csv", index=False)
