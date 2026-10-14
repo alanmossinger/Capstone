@@ -1,0 +1,34 @@
+# ERCOT refuses connections from outside the United States (decision #53), so the public yearly
+# price files are fetched on a U.S. runner and handed back as an artifact; nothing is committed.
+# Start it from the Actions tab or with: gh workflow run ercot_history.yml
+name: ERCOT historical DAM prices
+
+on:
+  workflow_dispatch:
+    inputs:
+      first_year:
+        description: first year to pull
+        default: "2018"
+      last_year:
+        description: last year to pull
+        default: "2023"
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install the parser's dependencies
+        run: pip install pandas==2.3.3 pyarrow==25.0.1 openpyxl==3.1.5 requests==2.34.2 numpy
+      - name: Download and parse the yearly files
+        run: python -m src.ercot_history ${{ inputs.first_year }} ${{ inputs.last_year }} --out ercot_out
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ercot-dam-spp-${{ inputs.first_year }}-${{ inputs.last_year }}
+          path: ercot_out
+          retention-days: 14
+          if-no-files-found: error
