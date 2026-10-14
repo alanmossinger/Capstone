@@ -1374,3 +1374,26 @@ the report; do not override, I need both")**
 - `tests/test_report.py` checks every number in the typst source against
   `results/report_numbers.csv`. First pass is configuration and figures;
   content is next, step by step with Alan.
+
+**Later — the method stages, the executive figures, the challenge page**
+
+- Stages 2–9 of the Petrobras report deepened: the regional clocks, the
+  drivers, the ten rules, the clock, book sizing, the two gates with
+  their table and the region-by-region rule; the leakage discipline; the
+  per-candidate risk distribution; a sensitivity table; the gym room by
+  room; the advisor's recommendation per stress.
+- Alan: "the images are not professional, look at my example." The
+  example's figures are single-panel, full text width, the finding and
+  one line inside, no footer. `plots.save_executive` now saves a copy of
+  every figure in that style (9 inches wide, tight bounding box, subtitle
+  of at most two lines, no source footer; figures of three or more panels
+  keep their width) in `figures/executive/`, called from `save_fig`; the
+  academic figure is unchanged. The Petrobras report reads the copies at
+  full text width with the source and provenance in the caption. A full
+  `make all` regenerates them.
+- `app/challenge.py` (`make challenge`, port 8502): the challenge round as
+  one page in three steps — state the book and pick the alternative, answer
+  the advisor's five questions, read the verdict and the opposing case;
+  the gate opens on the answers; the decision goes to the ledger with the
+  transcript. `tests/test_challenge_app.py`. The portfolio dashboard is
+  untouched.

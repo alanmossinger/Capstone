@@ -6,7 +6,7 @@ else
 PYTHON := .venv/bin/python
 endif
 
-.PHONY: setup data eda features forecast energy economics scenarios portfolio record advisor figures numbers report poster petrobras app test all
+.PHONY: setup data eda features forecast energy economics scenarios portfolio record advisor figures numbers report poster petrobras app challenge test all
 
 setup:            ## create .venv, install pinned packages, register the notebook kernel
 	python -m venv .venv
@@ -63,6 +63,9 @@ petrobras:        ## report/Petrobras_Report.pdf, the executive edition, from re
 
 app:              ## the Streamlit dashboard (reads results/ only)
 	$(PYTHON) -m streamlit run app/app.py
+
+challenge:        ## the challenge round as one page: state the book, answer the five questions, read the verdict (app/challenge.py)
+	$(PYTHON) -m streamlit run app/challenge.py
 
 test:
 	$(PYTHON) -m pytest

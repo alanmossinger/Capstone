@@ -214,7 +214,7 @@ def finish(fig, title, subtitle, cohort, eia=False, lbnl=True, lbnl_2026=False, 
              fig.text(left, 0.012, "\n".join(source_lines), ha="left", va="bottom",
                       fontsize=10.5, color=MUTED, linespacing=1.15)]
     # kept so save_fig can redraw the title from SHORT_TITLES without the notebook changing
-    fig._finish = {"texts": texts, "subtitle": subtitle, "cohort": cohort, "eia": eia, "lbnl": lbnl, "lbnl_2026": lbnl_2026,
+    fig._finish = {"texts": texts, "title": title, "subtitle": subtitle, "cohort": cohort, "eia": eia, "lbnl": lbnl, "lbnl_2026": lbnl_2026,
                    "sources": sources, "provenance": provenance}
 
 
@@ -258,6 +258,7 @@ def save_fig(fig, name, caption, notebook, folder=None):
     png, svg = out_dir / f"{name}.png", out_dir / f"{name}.svg"
     _save_with_retry(fig, png)
     _save_with_retry(fig, svg, metadata={"Date": None})  # no timestamp: identical reruns give identical files
+    save_executive(fig, name)
     rel = png.relative_to(paths.REPO).as_posix()
     block = (f"<!-- fig:{name} -->\n### {name}\n\n"
              f"![{name}](../{rel})\n\n"
@@ -265,6 +266,72 @@ def save_fig(fig, name, caption, notebook, folder=None):
              f"**Caption (stub).** {caption}\n<!-- /fig:{name} -->\n")
     _upsert_figure_note(name, block)
     return png
+
+
+EXECUTIVE_WIDTH = 9.0  # inches; placed at a 6.5-inch text width the 13-pt base type reads at about 9.5 pt, the size of an executive report's figures
+EXECUTIVE_DIR = paths.FIGURES / "executive"
+
+
+def _shorten(text, limit):
+    """The text cut at the last sentence or clause boundary before ``limit`` characters; whole if it fits."""
+    if len(text) <= limit:
+        return text
+    cut = max(text.rfind(". ", 0, limit), text.rfind("; ", 0, limit))  # a sentence or clause end, never a comma inside a parenthesis
+    if cut <= 40:
+        return text[:limit].rstrip() + "…"
+    return text[:cut].rstrip(" ,;") + ("." if text[cut] == "." else "")
+
+
+def save_executive(fig, name, out_dir=EXECUTIVE_DIR):
+    """Save the executive copy of a finished figure: narrower, the finding and one short subtitle inside, no source footer.
+
+    Parameters
+    ----------
+    fig : matplotlib.figure.Figure
+        A figure after ``finish`` (and after ``save_fig``'s academic copies).
+    name : str
+        File stem; the copy goes to ``figures/executive/<name>.svg`` and ``.png``.
+
+    Notes
+    -----
+    The executive report (``report/petrobras_report.typ``) places figures at
+    full text width with the source and provenance in the caption, as an
+    executive report does, so the copy drops the source footer and keeps a
+    subtitle of at most two lines; the finding stays in the image. The
+    figure is 9 inches wide (its height scaled; a figure of three or more
+    panels keeps its width) and saved with a tight bounding box, so at the report's 6.5-inch width the type reads at about
+    0.72 of its point size: 15-pt titles at 11 pt, 12-pt ticks at 9 pt. The academic figure is restored afterwards, so
+    the notebook shows what ``save_fig`` saved.
+    """
+    kept = getattr(fig, "_finish", None)
+    if kept is None:
+        return None
+    width, height = fig.get_size_inches()
+    for text in kept["texts"]:
+        text.remove()
+    panels = {round(ax.get_position().x0, 2) for ax in fig.axes if ax.get_position().width > 0.12}  # columns of panels (colour bars excluded)
+    exec_width = EXECUTIVE_WIDTH if len(panels) <= 2 else width  # three or more panels keep their width: their titles would collide
+    fig.set_size_inches(exec_width, height * exec_width / width)
+    exec_height = fig.get_figheight()
+    title_lines = textwrap.wrap(kept["title"], 62)
+    subtitle_lines = textwrap.wrap(_shorten(kept["subtitle"], 200), 100)[:2]
+    title_h, sub_h = (size * 1.25 / 72 / exec_height for size in (15, 10.5))
+    sub_y = 0.985 - title_h * len(title_lines) - 0.006
+    top = sub_y - sub_h * len(subtitle_lines) - 0.025
+    fig.tight_layout(rect=[0, 0.01, 1, top])
+    renderer = fig.canvas.get_renderer()
+    left = max(min(ax.get_tightbbox(renderer).x0 for ax in fig.axes) / fig.bbox.width, 0.01)
+    texts = [fig.text(left, 0.985, "\n".join(title_lines), ha="left", va="top", fontsize=15, fontweight="bold", color=INK, linespacing=1.15),
+             fig.text(left, sub_y, "\n".join(subtitle_lines), ha="left", va="top", fontsize=10.5, color=MUTED, linespacing=1.15)]
+    out_dir.mkdir(parents=True, exist_ok=True)
+    _save_with_retry(fig, out_dir / f"{name}.svg", metadata={"Date": None}, bbox_inches="tight", pad_inches=0.06)  # the canvas grows to hold every label
+    _save_with_retry(fig, out_dir / f"{name}.png", bbox_inches="tight", pad_inches=0.06)
+    for text in texts:
+        text.remove()
+    fig.set_size_inches(width, height)
+    finish(fig, kept["title"], kept["subtitle"], kept["cohort"], eia=kept["eia"], lbnl=kept["lbnl"], lbnl_2026=kept["lbnl_2026"],
+           sources=kept["sources"], provenance=kept["provenance"])
+    return out_dir / f"{name}.svg"
 
 
 def _save_with_retry(fig, path, attempts=6, wait_s=0.5, **kwargs):

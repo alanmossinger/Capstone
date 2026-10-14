@@ -26,7 +26,7 @@
 #set heading(numbering: none)
 #show heading.where(level: 1): it => { v(10pt); block(sticky: true, text(fill: blue, size: 16pt, weight: "bold")[#it.body]); v(6pt) }  // sticky: never the last line of a page; a stage follows the last one, as in the example
 #show heading.where(level: 2): it => { v(6pt); block(sticky: true, text(fill: blue, size: 12.5pt, weight: "bold")[#it.body]); v(3pt) }
-#show figure.caption: it => block(width: 84%, align(left, text(size: 9pt, style: "italic", fill: muted)[#it]))
+#show figure.caption: it => block(width: 100%, align(left, text(size: 9pt, style: "italic", fill: muted)[#it]))
 #show figure: set block(breakable: false, above: 10pt, below: 10pt)
 #set figure(gap: 6pt)
 #show table: set text(size: 9.2pt)
@@ -35,8 +35,8 @@
 #show link: set text(fill: blue)
 
 // a figure from figures/, full text width, with the finding as caption and the consequence for the committee
-#let fig(path, caption, consequence, width: 80%) = figure(
-  image("../figures/" + path, width: width),  // four fifths of the text width: a figure and two paragraphs share a page
+#let fig(path, caption, consequence, width: 100%) = figure(
+  image("../figures/executive/" + path.split("/").last(), width: width),  // the executive copy: the finding and one line inside, the source in the caption
   caption: [#caption #text(fill: ink)[_Business consequence:_ #consequence]],
 )
 #let callout(body) = block(width: 100%, inset: 9pt, radius: 3pt, fill: rgb("#EEF3F8"), stroke: (left: 2.5pt + blue))[#text(size: 10pt)[#body]]
@@ -91,7 +91,7 @@ Petrobras allocates capital under uncertainty for a living. A mature field to re
 
 This report is a completed, working proof of that frontier, built on public records so that nothing in it is illustrative. An energy company holds twenty producing offshore leases it could redevelop and twenty requests to connect new power plants — gas, solar, wind and storage — to the Texas grid. It must decide, request by request, whether to fund, hold or exit, and across the whole book how to split one budget. The system answers both questions and scores its answers on what happened.
 
-#fig("F0_overview.svg", width: 92%, [The work in one picture: four asset classes under one budget, the queue engine that times every power project, the five steps from data to decision, and the decision they produce.], [one process serves every asset class; less information shows up as more risk and more constraint, never as silence.])
+#fig("F0_overview.svg", [The work in one picture: four asset classes under one budget, the queue engine that times every power project, the five steps from data to decision, and the decision they produce.], [one process serves every asset class; less information shows up as more risk and more constraint, never as silence.])
 
 The headline results, all reproduced by code from the public files:
 
@@ -114,7 +114,7 @@ Why should governed, prescriptive decision-making be an executive concern in 202
 
 This project was built to demonstrate, with running code, that all three concerns can be answered at once: a portfolio decision across asset classes, measured honestly, with an AI advisor whose every claim is checked and whose every exchange with the human is on the record. The next sections walk through how, in the order the decision is made.
 
-#callout[*How to read the figures.* Every figure states its finding in its title, its method and cohort in the subtitle, and the provenance of its numbers in the footnote: OBSERVED (a public record), DERIVED (arithmetic on records), FORECAST (a model's output) or ASSUMED (a stated assumption). Dollar figures for the queue are in 2022 dollars, for the portfolio in 2024 dollars. Intervals are drawn wherever a number is uncertain.]
+#callout[*How to read the figures.* Every figure states its finding in its title and its method in one line beneath; the caption says what the figure shows and what it means for the Committee. The queue figures rest on the Lawrence Berkeley National Laboratory's _Queued Up_ file (2025 and 2026 editions); the energy figures on BSEE production, EIA generation and prices, ERCOT settlement prices and EPA eGRID — all public. Every number is OBSERVED (a public record), DERIVED (arithmetic on records), FORECAST (a model's output) or ASSUMED (a stated assumption); the captions say where a figure rests on an assumption. Dollar figures for the queue are in 2022 dollars, for the portfolio in 2024 dollars. Intervals are drawn wherever a number is uncertain.]
 
 // ===================================================================== stage 1
 = Stage 1 — The data and the candidates
@@ -130,13 +130,35 @@ The forty candidates are the twenty leases with the most 2024 output among the 5
 // ===================================================================== stage 2
 = Stage 2 — Will it be built, and when: the queue engine
 
-A developer who wants to build a power plant must first ask the grid operator for a connection. The request enters a queue and leaves years later as an operating plant or a withdrawal; most leave as withdrawals. Every request costs money to keep alive — a deposit, a study, a larger deposit, a longer study — so the first decision is which requests to fund, which to hold and which to drop.
+A developer who wants to build a power plant must first ask the grid operator for a connection. The request enters a queue and leaves years later as an operating plant or a withdrawal; most leave as withdrawals. Every request costs money to keep alive — a deposit, a study, a larger deposit, a longer study — so the first decision is which requests to fund, which to hold and which to drop. This stage builds that decision in five steps: where the base rate is, what decides the odds, what a model adds at entry and two years in, how to size a book, and the gate rules scored on what happened.
+
+== Where the opportunity is
 
 #fig("F1_cif_by_region.svg", [Share of requests operating (and withdrawn) by years since the request, by region; Aalen–Johansen estimates with 95% intervals.], [ERCOT is where requests get built — 18.4% of entrants operate within five years against 4.8% in CAISO — so the region decides the base rate before the project does.])
+
+The regions also run on different clocks. CAISO and PJM cull early — 48% of CAISO's waiting requests leave in their first year, mostly out of the system impact study, and 31% of PJM's — while ERCOT culls late, after year four, out of the facilities study. Surviving two years roughly triples the odds of operating in the next three. For a company that holds requests, this fixes the review calendar: review in year two in CAISO and PJM, after the cull; review at the agreement in ERCOT.
+
+#fig("F20_when_requests_die.svg", [Annual withdrawal and operation hazards by year in the queue, the study stage reached at withdrawal, and the share operating within the next three years among requests still waiting, by region.], [the moment to review a request is set by the region's clock, not by the calendar; a review that comes before the cull pays for study costs that the queue would have saved.])
+
+== What decides the odds
+
+Size, technology and the agreement decide the odds, and they can be read off public records without a model. On the 5,497 entrants of 2010–2019, five-year completion runs 12.8% overall. In PJM it falls from 24% for requests under 5 MW to 4% at 500 MW and up; ERCOT is flat up to 500 MW. Gas builds most often — 32% in PJM, 24% in ERCOT — wind 26% in ERCOT, solar 9% to 12%, batteries 7%, and none of PJM's 37 offshore wind requests operated within five years. The executed interconnection agreement dominates everything: where the file dates one within two years of the request, 63% of ERCOT's requests were operating within five years; where none is dated, 0.8%.
+
+#fig("F19_drivers.svg", [Five-year completion by six drivers within each region, 2010–2019 entrants, 95% Wilson intervals.], [an investment committee can screen requests on size, technology and the agreement before paying for a model; the agreement alone separates a 63% chance from a 0.8% one.])
+
+A depth-four decision tree on the entry attributes turns these drivers into ten rules a company can apply by hand, fitted on 2010–2016 entrants and re-measured on 2017–2019: the order held out of time (rank correlation 0.77). Small gas outside CAISO is the best segment, 47% then 48%; large CAISO requests in crowded counties are the worst, below 2% in both periods. The one rule that broke — solar in a county with no earlier request, 19% then 6% — shows that crowding measured at entry is a weaker guide than size and technology.
+
+#fig("F21_segments.svg", [Five-year completion by the ten rules, fitting cohort (2010–2016) and later cohort (2017–2019), with Wilson intervals.], [ten rules that held out of time are a screening policy a committee can adopt today: enter the top two segments, enter the middle ones only with the two-year review scheduled, do not enter the bottom three on entry information alone.])
+
+== What a model adds at entry, and two years in
 
 Three predictors were compared, always in the same order: *the model*, a gradient-boosted discrete-time hazard model that sees only what is known on the request date; *the lookup*, the share built among earlier requests of the same region, technology and size — what a careful analyst computes by hand; and *the cohort average*. At entry the model beats cohort averages (AUC 0.86 against 0.73 at three years) but ties the lookup at utility scale. Two years in, with the executed interconnection agreement known, the picture changes: the landmark model ranks the next three years at a concordance of 0.80 against 0.69 for the entry model, a gain of 0.11, while the lookup conditioned on surviving two years falls to 0.59.
 
 #fig("F12_landmark_models.svg", [Gain in ranking (Uno's C) and calibration (Brier score) over the entry model at each landmark, three years ahead; 95% intervals.], [do not pay for prediction at entry; re-score every request still held two years in, when the agreement is known.])
+
+The same holds for the clock. Among test requests that operated within seven years, the model's expected year of operation is within a year of the truth 52% of the time, against 33% for the regional median — but the gain is all in PJM (58% against 21%); in ERCOT the historical median does as well (59% against 41%). Three other learners — a random survival forest, a neural hazard model and a blend — were registered and scored once; none beat the lookup either. At entry, the ceiling is what the file records about a request, not the learner.
+
+== Sizing a book
 
 The test that settles the question is a book. Two years in, a book of 25 requests chosen by the landmark model held 19 that reached operation within three years, against 11 for the lookup that knew the same agreement status; a book of 50 held 33 against 24. The same books held fewer megawatts: the model picks more plants that get built, not more capacity.
 
@@ -146,7 +168,26 @@ Two further facts set the rules a company can apply by hand. Size, technology an
 
 #fig("F11_level_by_entry_year.svg", [Five-year completion observed and predicted by entry year, requests of 20 MW and more.], [the cohort level is the risk a model does not see; size every book to the newest completed cohort.])
 
-#callout[*The gate rules, scored on what happened.* At entry the rule funds a request when its chance of operating is at least the pool's and its value at least three times the cost of the next gate; two years in, twice. On the 2017–2019 requests the funded class reached operation 26% of the time against 10% for the cohort and returned +\$4.1B at merchant prices; the accelerated class two years in operated 18–20% of the time against 8% for the exits.]
+In megawatts, the 2017–2019 cohort was expected to bring 29.2 GW online within five years and brought 18.8 GW; refitting the model's intercept on the newest completed cohort removes about 40% of the error and none of the post-2020 gap. The 2020–2022 entrants operate within two years at about a quarter of the predicted rate.
+
+== Fund, hold or exit: the gates, scored on what happened
+
+The rules are two gates. At entry (the first gate) and two years in (the second), the company compares three things: the chance the request operates, its value if it does, and the cost of the next gate. It *funds* when the chance is at least the pool's own rate and the value is at least _h_ times the cost — _h_ is 3 at entry and 2 two years in; it *exits* when the chance is well below the pool or the value is negative even in the best case; it *holds* otherwise. At entry the chance comes from the lookup, because the model did not beat it; two years in, from the landmark model.
+
+#fig("F23_portfolio_review.svg", width: 94%, [Share of requests that reached operation by gate decision and region, merchant and contracted revenue, with Wilson intervals.], [the gates separate the pool: funded requests operated two and a half times as often as the cohort, and the one exception — ERCOT at entry, where the entry attributes do not separate requests and the agreement does — is itself the argument for the second gate.])
+
+#table(
+  columns: (2fr, 1fr, 1fr, 1fr, 1.4fr, 1.4fr, 1.4fr),
+  [Gate, revenue], [Funded], [Held], [Exited], [Funded: operated], [Exited: operated], [Funded: value],
+  [Entry, merchant], [237], [964], [1,067], [26%], [5%], [+\$4.1B],
+  [Entry, contracted], [326], [903], [1,039], [21%], [5%], [+\$9.3B],
+  [Two years in, merchant], [316], [577], [405], [18%], [8%], [+\$3.6B],
+  [Two years in, contracted], [410], [493], [395], [20%], [8%], [+\$9.0B],
+)
+
+Carried to the end, the funded class at entry returned +\$4.1B at merchant prices and +\$9.3B under contract, while the dropped class would have lost about \$5B. Two years in, the accelerated class returned +\$3.6B and +\$9.0B. In ERCOT under contract, the 120 accelerated requests hold more than half the region's operations.
+
+#callout[*The rule, region by region.* _ERCOT:_ invest; enter wind, enter solar with a contract, hold storage, and review every request at the agreement. _PJM:_ invest in gas, wind and solar, prefer the light queues and requests under 66 MW, and review after the system impact study. _CAISO:_ hold capital; enter only with a signed agreement and a contract. Every rule here was scored on the 2017–2019 requests after it was written.]
 
 // ===================================================================== stage 3
 = Stage 3 — What the energy data say, and what the models may know
@@ -155,22 +196,34 @@ A quarter of lease-months produce nothing — 25.3% of 203,963 — because lease
 
 #fig("02_eda/02_C6_correlation_and_clusters.svg", [Correlation of monthly log changes across the three prices, Gulf output and Texas capacity factors, and the two shapes of lease oil decline after the peak.], [the diversification a portfolio can claim lives in these correlations; the ones that are near zero are where it comes from.])
 
+== What the model may know: the leakage discipline
+
 Every feature is built only from what was public at the forecast date. Each source has a release lag — BSEE production three months, EIA generation two, prices none — and a truncation test proves it: features rebuilt after deleting all later data are identical. Twelve forecast lines were registered before scoring. Three pass, all for plants: the challengers cut the seasonal-naive error for gas, solar and wind capacity factors by 8%, 12% and 15%. The lease lines fail — the registered challenger's error at three months is 1.35 times the last-value baseline's — and prices behave as random walks, as they should.
 
 #fig("F27_forecast_gains.svg", [Forecast error of the challenger relative to the best baseline, by registered line, with paired moving-block bootstrap intervals.], [machine learning helps where there is a seasonal shape to learn; where a decline curve already carries the physics, the honest answer is that it does not.])
 
-Does the forecast change the decision? No. With the naive baseline's errors in place of the machine-learning model's, the risk-aware book picks exactly the same 26 candidates (overlap 1.00). The allocation comes from the cost grid and the optimizer; the forecasts move the size of the tail, not the choice.
+== Does the forecast change the decision?
+
+No. With the naive baseline's errors in place of the machine-learning model's, the risk-aware book picks exactly the same 26 candidates (overlap 1.00). The allocation comes from the cost grid and the optimizer; the forecasts move the size of the tail, not the choice.
 
 // ===================================================================== stage 4
 = Stage 4 — What each candidate is worth, and what that rests on
 
+== Two kinds of asset, one valuation
+
 A lease redevelopment is an uplift on a producing asset: an Arps decline baseline from its last 36 months, a 20% uplift after a two-year lead time, and the value of the cash flow it adds over doing nothing. A power request is a plant that may never be built: its value if built uses the 2024 hourly prices — solar earns 92% of the flat hub price, wind 83% and gas 135%, because Texas wind blows at night, solar produces at midday and a gas plant runs only in the hours when prices clear its fuel cost — weighted by the queue engine's chance of operating in each of seven years, net of the cost of keeping the request alive.
 
-#fig("F28_candidates.svg", [The forty candidates: incremental NPV of the lease redevelopments and timing-weighted expected NPV of the ERCOT requests, with provenance.], [on the flat path the leases carry the book and only contracted wind among the requests earns its capital; the chance of never operating is the power side's cost.])
+#fig("F28_candidates.svg", [The forty candidates: incremental NPV of the lease redevelopments and timing-weighted expected NPV of the ERCOT requests, with provenance. Lease costs are ASSUMED; production is FORECAST.], [on the flat path the leases carry the book and only contracted wind among the requests earns its capital; the chance of never operating is the power side's cost.])
+
+Across the 2,000 scenarios the picture holds: the leases rarely lose money, and most power requests usually do. The spread matters as much as the mean — the largest lease runs from a small loss to \$5.8B across the middle 90% of paths — and a committee that sees only the flat-path number sees neither.
+
+#fig("F31_candidate_risk.svg", [NPV of each candidate across the 2,000 primary scenarios: interquartile boxes, medians, and 5–95% whiskers. Merchant revenue case.], [a candidate is a distribution, not a number; the leases' downside is a small loss and their upside is large, while the merchant power requests are negative in almost every path.])
+
+== The grid that decides the lease side
 
 That result rests on two generous assumptions, and the committee grid replaces them. The registered grid prices a 20% uplift on the largest deepwater leases as a workover of existing wells, at \$4–15 million a well; on the largest lease the uplift alone is nearly twenty thousand barrels of oil equivalent a day, a development whose capital scales with the barrels it buys. The registered grid also discounts the leases at 5.1% real, where an oil and gas committee uses 8–10%. The *committee grid* prices capital at \$40,000 per incremental flowing barrel of oil equivalent a day (range \$25,000–\$60,000) and discounts at 8% (range 5.1–10%). It was added after the registered results, at an outside reviewer's request, and is labelled as such.
 
-#fig("F29_cost_tornado.svg", [Change in the book's NPV when each registered grid item moves across its range, one at a time.], [the uplift and the operating cost decide the lease side under the registered grid; the capital per barrel decides it under the committee's — every one of them an assumption the committee should own.])
+#fig("F29_cost_tornado.svg", [Change in the book's NPV when each registered grid item moves across its range, one at a time. Every bar is an assumption, not a measurement.], [the uplift and the operating cost decide the lease side under the registered grid; the capital per barrel decides it under the committee's — every one of them an assumption the committee should own.])
 
 #table(
   columns: (2.2fr, 1fr, 1fr),
@@ -183,14 +236,14 @@ That result rests on two generous assumptions, and the committee grid replaces t
 
 Under the committee grid the leases still pay, at half the value and four times the capital; every lease stays positive at base, but 17 of the 20 turn negative at the high-cost case. The conclusion that capital goes where the asset already produces survives; the size of the prize does not.
 
-#fig("F37_committee_grid.svg", [Left: mean and median (with 5–95% range) of the default book and book D under the two grids. Right: the twenty leases on the flat path under the 2020 shape and under five years at \$42 oil.], [the stress that matters is a sustained one — five years of \$42 oil takes the lease book to \$4.25B under the committee grid — not a replay of a collapse that recovered before the barrels arrived.])
+#fig("F37_committee_grid.svg", [Left: mean and median (with 5–95% range) of the default book and book D under the two grids. Right: the twenty leases on the flat path under the 2020 shape and under five years at \$42 oil. Both grids are ASSUMED; the committee grid was added after the registered results.], [the stress that matters is a sustained one — five years of \$42 oil takes the lease book to \$4.25B under the committee grid — not a replay of a collapse that recovered before the barrels arrived.])
 
 // ===================================================================== stage 5
 = Stage 5 — Scenarios and risk
 
 Prices, output, costs and timing are drawn together. 2,000 joint paths of twenty years resample calendar-year blocks of the 2018–2024 monthly changes of WTI, Henry Hub and ERCOT, the same months for all three, so the 2020, 2021 and 2022 episodes travel together and a spike stays with its reversal. Monthly changes are capped at ±1.5, a ×4.5 move, the largest the history shows outside February 2021: Winter Storm Uri took the hub from \$26 to \$1,772 a MWh and back in two months, and an uncapped draw that lands the spike without its reversal holds a ×69 price for years. The log prices revert toward their 2018–2024 real geometric means with a four-year half-life. A second, held-out set of 2,000 paths with its own seed is used only to score books.
 
-#fig("F30_price_scenarios.svg", [The joint price scenarios against the real-dollar history: median, interquartile and 5–95% bands by year.], [the scenarios keep history's jumps and its correlations; what they add is a stated level to revert to, which is the one assumption a committee can argue with.])
+#fig("F30_price_scenarios.svg", [The joint price scenarios against the real-dollar history: median, interquartile and 5–95% bands by year. The level the prices revert to and the four-year half-life are ASSUMED.], [the scenarios keep history's jumps and its correlations; what they add is a stated level to revert to, which is the one assumption a committee can argue with.])
 
 #table(
   columns: (2.2fr, 1fr, 1fr),
@@ -204,7 +257,7 @@ Prices, output, costs and timing are drawn together. 2,000 joint paths of twenty
 
 The tail is the committee grid's. Under the registered grid the default book never loses money in 2,000 scenarios; under the committee grid it loses money in 6% of them and its worst 5% averages a \$1.7B loss. Removing the correlations between prices changes the book's tail by \$0.6B, which is what modelling them jointly is worth. The named deterministic stresses — the 2020 oil path, high gas, a weak wind year, solar curtailment, a two-year delay, all at once — leave the default book positive on the flat path; the stress that bites is a sustained one.
 
-#fig("F32_stresses.svg", [The default book under the registered named stresses, on the flat path.], [single stresses are survivable; a committee should ask for the sustained one and for the joint scenarios, not for a list of one-at-a-time shocks.])
+#fig("F32_stresses.svg", [The default book under the registered named stresses, on the flat path. The stress multipliers are ASSUMED.], [single stresses are survivable; a committee should ask for the sustained one and for the joint scenarios, not for a list of one-at-a-time shocks.])
 
 // ===================================================================== stage 6
 = Stage 6 — Allocating the budget
@@ -227,7 +280,20 @@ On the observed prices two of the four criteria pass and two fail. Book D earns 
 
 With the budget set by the same rule (\$7.81B), book A takes eighteen leases and four gas requests and expects \$7.7B, with a 5% chance of a loss and a worst-5% loss of \$1.3B. Book D takes ten leases, three contracted wind requests and four gas requests and expects \$5.8B, with a 3% chance of a loss and a worst-5% loss of \$0.3B. On the registered metric A still wins by \$888M, with an interval entirely on A's side. Whether D is the better book depends on how much the committee will pay to cut its tail — a policy choice, not a statistical one, and the first question this report puts to the Committee.
 
-#callout[*Two settings a committee might change barely move book D.* A carbon price of \$50 a tonne on the gas plants' emissions drops one gas request (overlap 0.88); doubling the weight on the tail changes nothing (overlap 1.00); a budget cut of a fifth keeps most of the book (overlap 0.82). The gas requests are the least secure line: negative on the flat path, worth \$427M between them in the scenarios because ERCOT prices spike, as they did in 2019, 2021 and 2023.]
+== What moves the book
+
+Four settings a committee might change were applied to book D one at a time, and the book re-solved. None of them changes the lease side; what moves is the handful of power requests at the margin.
+
+#table(
+  columns: (2.4fr, 1fr, 1.6fr, 3fr),
+  [Setting changed], [Members], [Overlap with book D], [What moves],
+  [Budget cut by a fifth], [25], [0.82], [one lease and two gas requests out, two gas requests in],
+  [Weight on the tail doubled], [26], [1.00], [nothing],
+  [Carbon price of \$50 a tonne on the gas plants], [23], [0.88], [three gas requests out],
+  [Technology cap tightened to 25%], [24], [0.92], [two requests out],
+)
+
+#callout[*The least secure line of the book.* The gas requests are negative on the flat 2024 path and worth \$427M between them in the scenarios, because ERCOT prices spike there as they did in 2019, 2021 and 2023. A committee should treat them as the line that rests on the spikes recurring, and the carbon-price row above as the test of how much of the book that line is.]
 
 // ===================================================================== stage 7
 = Stage 7 — When: the book at one to twenty years
@@ -241,16 +307,33 @@ A twenty-year NPV says nothing about what the owner holds at year three. Countin
 
 The gym scores decisions on outcomes, not prose. Sixteen past situations are rebuilt as of their date, with no outcome shown: fifteen requests drawn at random from each region's 2017, 2018 and 2019 entrants, the 2017 entrants again two years in, ERCOT 2018 with a budget cut of a fifth, and the twenty leases at the start of the 2014, 2020 and 2022 oil-price regimes. In each, instinct (top-N expected NPV), the registered rule, the AI advisor and the human pick a book under the same budget; then the realized value is revealed.
 
-#fig("F34_decision_gym.svg", width: 72%, [Realized value of the book chosen by instinct, the registered rule and the advisor in each past situation, against the best book with hindsight. Top: queue rooms. Bottom: lease regimes.], [the registered rules beat instinct by \$236M a situation and the advisor by \$228M, almost all of it in the oil-price regimes where a budget-bound optimizer beats a greedy ranking by about \$1.2B each.])
+#fig("F34_decision_gym.svg", width: 90%, [Realized value of the book chosen by instinct, the registered rule and the advisor in each past situation, against the best book with hindsight. Top: queue rooms. Bottom: lease regimes.], [the registered rules beat instinct by \$236M a situation and the advisor by \$228M, almost all of it in the oil-price regimes where a budget-bound optimizer beats a greedy ranking by about \$1.2B each.])
 
-Over the sixteen situations the rule's mean regret against hindsight was \$18M, the advisor's \$26M and instinct's \$253M. In the 13 queue rooms the rule is ahead by only \$3.7M a room: in 6 of them none of the drawn requests operated, so the best any rule can do is spend nothing on gate costs. In the room the queue engine calls decisive — ERCOT's 2017 entrants two years in — the rule beat instinct by \$41M.
+Over the sixteen situations the rule's mean regret against hindsight was \$18M, the advisor's \$26M and instinct's \$253M. The table reads the rooms one by one.
+
+#table(
+  columns: (2.6fr, 1.1fr, 1.1fr, 1.3fr, 3fr),
+  [Situation], [Instinct], [Rule], [Rule − instinct], [What the room shows],
+  [Oil collapse from June 2014], [\$9.6B], [\$10.7B], [+\$1.1B], [a budget-bound optimizer beats a greedy ranking of leases],
+  [The 2020 collapse from January 2020], [\$11.6B], [\$12.9B], [+\$1.3B], [the same, on a path that recovered before the barrels arrived],
+  [The 2022 spike from March 2022], [\$11.7B], [\$13.0B], [+\$1.3B], [the rule matched hindsight],
+  [ERCOT 2017 two years in], [\$430M], [\$471M], [+\$41M], [the decisive room: the agreement is known and the rule uses it],
+  [ERCOT 2017 at entry], [\$1,059M], [\$1,042M], [−\$17M], [at entry the rule and instinct fund almost the same requests],
+  [ERCOT 2018 at entry], [\$196M], [\$197M], [+\$0.6M], [the same],
+  [ERCOT 2019 at entry], [\$328M], [\$329M], [+\$0.8M], [the same],
+  [ERCOT 2018 with the budget cut by a fifth], [\$198M], [\$198M], [\$0M], [the cut does not reach the requests that paid],
+  [PJM, four rooms], [−\$5M to \$14M], [−\$4M to \$14M], [+\$0M to +\$2M], [few of the drawn requests operated; the rule saves gate costs],
+  [CAISO, four rooms], [−\$6M to −\$3M], [\$0M], [+\$3M to +\$6M], [none of the drawn requests operated; the best book is empty and the rule found it],
+)
+
+In the 13 queue rooms the rule is ahead by only \$3.7M a room: in 6 of them none of the drawn requests operated, so the best any rule can do is spend nothing on gate costs, and the rule did. The edge is where the queue engine said it would be — the room where the agreement is known — and in the lease regimes, where the budget binds and a greedy ranking leaves value on the table.
 
 // ===================================================================== stage 9
 = Stage 9 — The AI advisor: help the decision, challenge the decision-maker
 
 The advisor is one actor in a decision process with four — instinct, the registered rule, the advisor and the human — and it is built to be trusted the way a committee trusts a colleague: on the record, and with the right to be overruled.
 
-#fig("F36_ai_workflow.svg", width: 90%, [The advisor's workflow: result tables as the only input, the number check, the record and replay, the five questions and the override gate, the ledger and the gym.], [the advisor cannot invent a number, cannot be run without a trace, and cannot be overridden without the reasoning on record.])
+#fig("F36_ai_workflow.svg", [The advisor's workflow: result tables as the only input, the number check, the record and replay, the five questions and the override gate, the ledger and the gym.], [the advisor cannot invent a number, cannot be run without a trace, and cannot be overridden without the reasoning on record.])
 
 == What it sees and how it is checked
 
@@ -259,6 +342,20 @@ The advisor receives a system prompt, a task, and a block of result tables rende
 == How it helps
 
 For the base case and each named stress the advisor recommends a book, names the expected NPV and the tail it cites, the binding constraint, and what would change the answer; it does the same for each horizon. Run live, its stress books overlapped the optimizer's by 0.89 and it named the risk-aware book in 3 of 7 stresses, choosing the leases alone in the simultaneous downside — a defensible reading, stated with its reasons.
+
+#table(
+  columns: (2.2fr, 2fr, 1fr, 1.3fr, 1.4fr),
+  [Scenario], [Book the advisor named], [Members], [Overlap with D], [Numbers grounded],
+  [Base case], [C deterministic], [26], [0.86], [100%],
+  [Oil collapse, 2020 path], [D risk-aware], [26], [1.00], [95%],
+  [High gas, low spark spread], [Leases only], [20], [0.77], [95%],
+  [Weak wind year], [D risk-aware], [26], [1.00], [100%],
+  [Solar curtailment], [C deterministic], [26], [0.86], [95%],
+  [Two-year delay], [D risk-aware], [26], [1.00], [100%],
+  [Simultaneous downside], [Leases only], [20], [0.77], [100%],
+)
+
+Where it departed from the optimizer it said why: under high gas and under the simultaneous downside it held the twenty leases and nothing else, citing the power side's negative flat-path values; in the base case it took book C over D because the two differ by \$61M on the registered metric and C has the higher mean. These are the readings a careful analyst would give, stated with the numbers behind them.
 
 == How it challenges — the human in the loop
 
