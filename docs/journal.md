@@ -1392,8 +1392,13 @@ the report; do not override, I need both")**
   full text width with the source and provenance in the caption. A full
   `make all` regenerates them.
 - `app/challenge.py` (`make challenge`, port 8502): the challenge round as
-  one page in three steps — state the book and pick the alternative, answer
-  the advisor's five questions, read the verdict and the opposing case;
-  the gate opens on the answers; the decision goes to the ledger with the
-  transcript. `tests/test_challenge_app.py`. The portfolio dashboard is
-  untouched.
+  one page. Alan: "explain first the alternatives, a little more
+  interactive, still simple; I want an AI to decide and help to decide;
+  make the HITL think." Four steps: the six books with capital, expected
+  NPV, worst-5% and chance of a loss, and the advisor's recorded pick with
+  its reasons and the figure at which its answer flips; the human picks a
+  book, states why, and writes down what would change their mind before
+  the advisor speaks; the five questions and the answers; the verdict, the
+  case for the other book, the human's flip condition beside the advisor's
+  final say, the two books' numbers side by side, the gate and the ledger.
+  `tests/test_challenge_app.py`. The portfolio dashboard is untouched.
