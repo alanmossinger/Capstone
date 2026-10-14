@@ -75,11 +75,11 @@ price_Henry Hub_h3,Henry Hub log price +3 m,False,elasticnet,challenger,True,0.2
 price_Henry Hub_h3,Henry Hub log price +3 m,False,lightgbm,challenger,False,0.3255521726725757,0.3929307587649928,0.3245967705842212,15,15
 price_Henry Hub_h3,Henry Hub log price +3 m,False,base_random_walk,baseline,False,0.23711342974646882,0.3144078766514216,0.014189876496873992,15,15
 price_Henry Hub_h3,Henry Hub log price +3 m,False,base_seasonal,baseline,False,0.5212508162499379,0.706655680614482,0.48512704501465065,15,15
-price_ERCOT_h1,ERCOT log price +1 m,True,elasticnet,challenger,True,0.29278010904348145,0.4040383562425179,0.10202605741782537,12,12
-price_ERCOT_h1,ERCOT log price +1 m,True,lightgbm,challenger,False,0.3627542347123239,0.41852439109076545,0.2719675024157994,12,12
-price_ERCOT_h1,ERCOT log price +1 m,True,base_random_walk,baseline,False,0.3590906277512065,0.4609266065329587,0.02151281192637892,12,12
-price_ERCOT_h1,ERCOT log price +1 m,True,base_seasonal,baseline,False,0.35743707764447485,0.4046849493291052,0.2998085787414487,12,12
-price_ERCOT_h3,ERCOT log price +3 m,False,elasticnet,challenger,True,0.3573726224856942,0.4271267706825317,0.1729183220237356,12,12
-price_ERCOT_h3,ERCOT log price +3 m,False,lightgbm,challenger,False,0.3675276821206814,0.42350084076544214,0.28217446994820755,12,12
-price_ERCOT_h3,ERCOT log price +3 m,False,base_random_walk,baseline,False,0.42456489515273493,0.5252884849499689,0.07005260201031942,12,12
-price_ERCOT_h3,ERCOT log price +3 m,False,base_seasonal,baseline,False,0.4848682302679151,0.6628647770260437,0.42723973136488885,12,12
+price_ERCOT_h1,ERCOT log price +1 m,True,elasticnet,challenger,True,0.4380776624166129,0.5905315920362135,0.08504166730783765,17,17
+price_ERCOT_h1,ERCOT log price +1 m,True,lightgbm,challenger,False,0.4856212318352326,0.6603229511313088,0.12256580732555519,17,17
+price_ERCOT_h1,ERCOT log price +1 m,True,base_random_walk,baseline,False,0.5261538058535364,0.6894154011311229,0.04763208432159396,17,17
+price_ERCOT_h1,ERCOT log price +1 m,True,base_seasonal,baseline,False,0.6228590173743027,0.8315173951664306,0.4560810852753693,17,17
+price_ERCOT_h3,ERCOT log price +3 m,False,lightgbm,challenger,True,0.37906993593316635,0.4491054715389252,0.33355173118731674,15,15
+price_ERCOT_h3,ERCOT log price +3 m,False,elasticnet,challenger,False,0.47735284673338435,0.5474553507017688,0.4169052570005319,15,15
+price_ERCOT_h3,ERCOT log price +3 m,False,base_random_walk,baseline,False,0.5682671766295819,0.7932083701098578,0.2826194651604471,15,15
+price_ERCOT_h3,ERCOT log price +3 m,False,base_seasonal,baseline,False,0.858698599846249,1.0689382608008857,0.7121516813229742,15,15

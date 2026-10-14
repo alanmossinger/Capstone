@@ -38,30 +38,59 @@ STRESSES = {  # name -> what moves; every multiplier is ASSUMED and stated in th
 
 # --- price paths ----------------------------------------------------------------------------
 
-def joint_log_changes(market, series=SERIES, start="2018-01-01", end="2024-12-01"):
-    """Monthly log changes of the price series over the window, as a (months × series) array."""
+MAX_MONTHLY_LOG_CHANGE = 1.5  # ASSUMED: a monthly log change is capped at ±1.5 (a ×4.5 move), the largest the history shows outside February 2021 (decision #81)
+
+
+def joint_log_changes(market, series=SERIES, start="2018-01-01", end="2024-12-01", cap=MAX_MONTHLY_LOG_CHANGE):
+    """Monthly log changes of the price series over the window, as a (months × series) array, capped at ±``cap``.
+
+    Notes
+    -----
+    Winter Storm Uri took the ERCOT North hub from $26 to $1,772 a MWh and
+    back within two months (log changes of +4.2 and −4.3). A generator that
+    draws months one at a time, or a block that ends between the two
+    months, carries the spike without its reversal, and a four-year
+    half-life then holds a ×67 price for years: the first rerun on the
+    observed prices put the books' expected NPV in the trillions while
+    their medians stayed near $16B. The cap keeps the month as an extreme
+    one (×4.5, as large as the August 2019 and August 2023 spikes) and
+    applies to every series alike; ``cap=None`` disables it.
+    """
     m = market.set_index("month").sort_index().loc[start:end, series]
-    return np.log(m).diff().dropna().to_numpy()
+    changes = np.log(m).diff().dropna().to_numpy()
+    return np.clip(changes, -cap, cap) if cap is not None else changes
 
 
-def block_bootstrap_paths(changes, n_scenarios, horizon_months, block=12, seed=2020):
-    """Joint monthly log-change paths by moving-block bootstrap of the historical rows.
+def block_bootstrap_paths(changes, n_scenarios, horizon_months, block=12, seed=2020, aligned=True):
+    """Joint monthly log-change paths by block bootstrap of the historical rows.
+
+    Parameters
+    ----------
+    aligned : bool
+        True draws blocks that start at multiples of ``block`` months from
+        the first row (calendar years when the history starts in February
+        and ``block`` is 12), so a spike and its reversal in the next month
+        stay in one block; False is the moving-block bootstrap, which can
+        start a block anywhere.
 
     Returns
     -------
     numpy.ndarray
         Shape (n_scenarios, horizon_months, n_series). A block takes the
         same consecutive months for every series, so cross-correlation and
-        the 2020 and 2022 episodes travel together.
+        the 2020, 2021 and 2022 episodes travel together.
     """
     rng = np.random.default_rng(seed)
     n, k = changes.shape
-    n_blocks = int(np.ceil(horizon_months / block))
     out = np.empty((n_scenarios, horizon_months, k))
+    allowed = np.arange(0, n, block) if aligned else np.arange(0, n - block + 1)  # aligned: every calendar year, the last one as far as the history runs
     for s in range(n_scenarios):
-        starts = rng.integers(0, n - block + 1, size=n_blocks)
-        path = np.concatenate([changes[st: st + block] for st in starts])[:horizon_months]
-        out[s] = path
+        pieces, length = [], 0
+        while length < horizon_months:  # blocks until the horizon is covered; an aligned last-year block may be short
+            st = rng.choice(allowed)
+            pieces.append(changes[st: st + block])
+            length += len(pieces[-1])
+        out[s] = np.concatenate(pieces)[:horizon_months]
     return out
 
 

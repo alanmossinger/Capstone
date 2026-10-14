@@ -297,6 +297,22 @@ def verify_ercot_files(folder=paths.RAW_ERCOT):
     return pd.DataFrame(rows)
 
 
+def verify_ercot_history(folder=paths.RAW_ERCOT):
+    """Check the 2018–2023 yearly files against the hashes pinned in ``config``; a missing file is ``present`` False and ``sha256_ok`` False.
+
+    Notes
+    -----
+    The files come from ``src/ercot_history.py`` run on a U.S. GitHub runner
+    (ERCOT refuses this machine, decision #53) and are not committed, so the
+    hashes are what tie a rerun to the same prices.
+    """
+    rows = []
+    for name, expected in config.ERCOT_HISTORY_FILES.items():
+        path = folder / name
+        rows.append({"file": name, "present": path.exists(), "sha256_ok": path.exists() and sha256(path) == expected})
+    return pd.DataFrame(rows)
+
+
 def ercot_dam_monthly(path, hubs=config.ERCOT_HUBS):
     """Monthly mean day-ahead price per trading hub from the hourly 2024 file.
 

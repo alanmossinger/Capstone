@@ -1584,6 +1584,29 @@ def v6_advisor():
     add("v6_adv_recorded", str(ev.loc["recorded answers in advisor_runs.jsonl", "value"]), ev.loc["recorded answers in advisor_runs.jsonl", "value"], "results/advisor_evaluation.csv", "recorded answers")
     calls = str(ev.loc["calls this run (replayed / live / missing)", "value"]).split("/")[-1].strip()
     add("v6_adv_missing", calls, int(calls), "results/advisor_evaluation.csv", "calls with no record and no key")
+    # the advisor scored (session 12, decision #76): the live run through the author's Claude subscription
+    n_rec = sum(1 for line in (paths.RESULTS / "advisor_runs.jsonl").read_text(encoding="utf-8").splitlines() if line.strip())
+    add("adv_recorded", str(n_rec), n_rec, "results/advisor_runs.jsonl", "recorded answers")
+    g = float(ev.loc["mean number-grounding rate over recorded answers", "value"])
+    add("adv_grounding", f"{100 * g:.0f}%", g, "results/advisor_evaluation.csv", "mean share of the advisor's numbers found in its tables")
+    f = float(ev.loc["answers with every number grounded (share)", "value"])
+    add("adv_fully_grounded", f"{100 * f:.0f}%", f, "results/advisor_evaluation.csv", "answers with every number grounded")
+    j = float(ev.loc["mean Jaccard of recommended members to book D (stresses)", "value"])
+    add("adv_jaccard_d", f"{j:.2f}", j, "results/advisor_evaluation.csv", "overlap of the advisor's book with book D over the seven stresses")
+    nm = float(ev.loc["share naming book D (stresses)", "value"])
+    rec = read("advisor_recommendations.csv")
+    stress_rows = rec[~rec["scenario"].str.startswith("forward")]
+    add("adv_names_d", f"{int(round(nm * len(stress_rows)))} of {len(stress_rows)}", nm, "results/advisor_evaluation.csv", "stresses in which the advisor names book D")
+    gs = read("decision_gym_scores.csv")
+    advr = gs[gs["actor"] == "advisor"]
+    add("adv_gym_vs_instinct", "$" + money_m(advr["vs_instinct_$M"].mean() * 1e6), advr["vs_instinct_$M"].mean(), "results/decision_gym_scores.csv", "advisor minus instinct, mean per situation")
+    add("adv_gym_regret", "$" + money_m(advr["regret_$M"].mean() * 1e6), advr["regret_$M"].mean(), "results/decision_gym_scores.csv", "advisor: mean regret against hindsight")
+    add("adv_gym_wins", str(int((advr["vs_instinct_$M"] > 0).sum())), int((advr["vs_instinct_$M"] > 0).sum()), "results/decision_gym_scores.csv", "situations in which the advisor beat instinct")
+    add("adv_gym_ties", str(int((advr["vs_instinct_$M"].abs() < 1e-6).sum())), int((advr["vs_instinct_$M"].abs() < 1e-6).sum()), "results/decision_gym_scores.csv", "situations in which the advisor matched instinct")
+    add("adv_gym_losses", str(int((advr["vs_instinct_$M"] < -1e-6).sum())), int((advr["vs_instinct_$M"] < -1e-6).sum()), "results/decision_gym_scores.csv", "situations in which the advisor did worse than instinct")
+    ch = (paths.RESULTS / "advisor_transcripts" / "challenge_all_leases.md").read_text(encoding="utf-8")
+    m = re.search(r"CONVERGE:\s*(.*?)\s*\|", ch)
+    add("adv_challenge_converge", m.group(1).strip() if m else "no convergence line", 0, "results/advisor_transcripts/challenge_all_leases.md", "the opposing case's convergence line, all-leases statement")
     add("v6_adv_scenarios", "7", 7, "results/advisor_recommendations.csv", "named scenarios the advisor recommends for")
     add("v6_adv_horizons", "6", 6, "results/advisor_recommendations.csv", "horizons the advisor recommends for")
     add("v6_adv_min_chars", "20", 20, "src/advisor.py", "characters required per answer at the override gate")
@@ -1739,6 +1762,48 @@ def v7_questions():
     add("q_ablation_jaccard", f"{nv['jaccard_to_registered_D']:.2f}", nv["jaccard_to_registered_D"], "results/posthoc_ablation_naive_forecasts.csv", "overlap with the registered book D")
 
 
+def v8_bridged():
+    """Appendix A: the registered record as first scored on the bridged ERCOT prices (results/registered_bridged/, decision #80)."""
+    folder = "registered_bridged/"
+    v6 = read(folder + "success_criteria_v6_scored.csv")
+    reg = v6[v6["registered"]]
+    add("rb_c20_pass", str(int((reg["result"] == "PASS").sum())), int((reg["result"] == "PASS").sum()), "results/registered_bridged/success_criteria_v6_scored.csv", "C20 lines passed, bridged prices")
+    v7 = read(folder + "success_criteria_v7_scored.csv").set_index("id")
+    add("rb_c21_24_pass", str(int((v7["result"] == "PASS").sum())), int((v7["result"] == "PASS").sum()), "results/registered_bridged/success_criteria_v7_scored.csv", "C21–C24 lines passed, bridged prices")
+    for cid in ["C21", "C22", "C24"]:
+        r = v7.loc[cid]
+        add(f"rb_{cid.lower()}_diff", ("−$" + money_m(-r["diff"])) if r["diff"] < 0 else "+$" + money_m(r["diff"]), r["diff"], "results/registered_bridged/success_criteria_v7_scored.csv", f"{cid} difference, bridged prices")
+        add(f"rb_{cid.lower()}_low", ("−$" + money_m(-r["low"])) if r["low"] < 0 else "+$" + money_m(r["low"]), r["low"], "results/registered_bridged/success_criteria_v7_scored.csv", f"{cid} interval low, bridged prices")
+        add(f"rb_{cid.lower()}_high", ("−$" + money_m(-r["high"])) if r["high"] < 0 else "+$" + money_m(r["high"]), r["high"], "results/registered_bridged/success_criteria_v7_scored.csv", f"{cid} interval high, bridged prices")
+    sc = read(folder + "portfolio_scores.csv")
+    oos = sc[sc["scenarios"].str.startswith("held-out") & (sc["revenue_case"] == "contracted")].set_index("book")
+    for name, k in (("A top-N NPV", "a"), ("D risk-aware MILP", "d")):
+        add(f"rb_{k}_npv_oos", "$" + money_b(oos.loc[name, "expected_npv"]), oos.loc[name, "expected_npv"], "results/registered_bridged/portfolio_scores.csv", f"{name}, held-out mean, bridged prices")
+        add(f"rb_{k}_cvar_oos", ("−$" + money_b(-oos.loc[name, "cvar_loss"])) if oos.loc[name, "cvar_loss"] < 0 else "$" + money_b(oos.loc[name, "cvar_loss"]), oos.loc[name, "cvar_loss"], "results/registered_bridged/portfolio_scores.csv", f"{name}, CVaR95 loss, bridged prices")
+    bc = read(folder + "posthoc_books_committee.csv").set_index("book")
+    for name, k in (("A top-N NPV", "a"), ("D risk-aware MILP", "d")):
+        add(f"rb_book_{k}_mean", "$" + money_b(bc.loc[name, "mean"]), bc.loc[name, "mean"], "results/registered_bridged/posthoc_books_committee.csv", f"{name}: mean, committee grid, bridged prices")
+        add(f"rb_book_{k}_cvar", "$" + money_b(bc.loc[name, "cvar95_loss"]), bc.loc[name, "cvar95_loss"], "results/registered_bridged/posthoc_books_committee.csv", f"{name}: worst-5% loss, committee grid, bridged prices")
+    add("rb_bridge_ratio", "0.77", 0.77, "src/config.py", "the bridge: ERCOT 2020–2023 = PJM West × this")
+    # the observed ERCOT history and the engine's cap (decisions #78, #81)
+    from src import scenarios
+    add("sc_cap", f"{scenarios.MAX_MONTHLY_LOG_CHANGE:g}", scenarios.MAX_MONTHLY_LOG_CHANGE, "src/scenarios.py", "cap on a monthly log change (ASSUMED)")
+    add("sc_cap_factor", f"×{np.exp(scenarios.MAX_MONTHLY_LOG_CHANGE):.1f}", np.exp(scenarios.MAX_MONTHLY_LOG_CHANGE), "src/scenarios.py", "the cap as a price multiple within a month")
+    market = pd.read_parquet(paths.DATA_INTERIM / "market_monthly.parquet").set_index("month")["ercot_usd_mwh_real2024"]
+    before, peak = market.loc["2021-01-01"], market.loc["2021-02-01"]
+    add("uri_before", f"${before:,.0f}", before, "data/interim/market_monthly.parquet", "ERCOT North, January 2021, real 2024 $/MWh")
+    add("uri_peak", f"${peak:,.0f}", peak, "data/interim/market_monthly.parquet", "ERCOT North, February 2021 (Winter Storm Uri), real 2024 $/MWh")
+    add("uri_ratio", f"×{peak / before:.0f}", peak / before, "data/interim/market_monthly.parquet", "the Uri month as a multiple of the month before")
+    add("uri_log_up", f"+{np.log(peak / before):.1f}", np.log(peak / before), "data/interim/market_monthly.parquet", "log change into the Uri month")
+    after = market.loc["2021-03-01"]
+    add("uri_log_down", f"−{-np.log(after / peak):.1f}", np.log(after / peak), "data/interim/market_monthly.parquet", "log change out of the Uri month")
+    by_year = market.groupby(market.index.year).mean()
+    for y in (2021,):
+        add(f"ercot_mean_{y}", f"${by_year.loc[y]:,.0f}", by_year.loc[y], "data/interim/market_monthly.parquet", f"ERCOT North annual mean, {y}, real 2024 $/MWh")
+    assumed = int((pd.read_parquet(paths.DATA_INTERIM / "market_monthly.parquet")["ercot_provenance"] == "ASSUMED").sum())
+    add("ercot_assumed_months", str(assumed), assumed, "data/interim/market_monthly.parquet", "ERCOT months still assumed")
+
+
 def build():
     """Collect every cited number and write ``results/report_numbers.csv``.
 
@@ -1757,7 +1822,7 @@ def build():
     for step in (design_constants, gathering_and_cleaning, eda, modelling, evaluation, explanation, posthoc,
                  v3_data, v3_fair_baseline, v3_level, v3_landmark, v3_value, v3_miso_spp, v3_portfolio,
                  v3_extras, v3_appendix, v4_managed_book, v5_drivers, v5_segments, v5_timing, v5_tournament, v5_npv,
-                 v5_review, v5_books, v5_archetypes, v5_extras, v6_data, v6_forecasts, v6_economics, v6_scenarios, v6_books, v6_advisor, v7_rounded, v7_posthoc, v7_questions):
+                 v5_review, v5_books, v5_archetypes, v5_extras, v6_data, v6_forecasts, v6_economics, v6_scenarios, v6_books, v6_advisor, v7_rounded, v7_posthoc, v7_questions, v8_bridged):
         step()
     table = pd.DataFrame(ROWS)
     table.to_csv(paths.RESULTS / "report_numbers.csv", index=False)

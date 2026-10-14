@@ -31,6 +31,7 @@ import os
 import re
 import shutil
 import subprocess
+import sys
 import tempfile
 from datetime import date, datetime, timezone
 
@@ -56,7 +57,7 @@ REASONING_QUESTIONS = {  # the five questions of the motivated-reasoning check; 
     "evidence": "Which evidence did I emphasise and which did I dismiss?",
     "framing": "What alternative did I leave off the table?",
 }
-NUMBER = re.compile(r"(?<![\w.])-?\d[\d,]*(?:\.\d+)?(?!\w|\.\d)")
+NUMBER = re.compile(r"(?<![\w.])-?\d[\d,]*(?:\.\d+)?(?=[BMk%]?(?!\w)|\s|$)(?!\.\d)")  # "6.15B", "40%" and "150k" are numbers too
 YEAR_RANGE = (1980, 2060)
 
 
@@ -292,11 +293,14 @@ class Advisor:
         self.calls = {"replayed": 0, "live": 0, "missing": 0}
 
     def _load(self):
+        """The record, keyed; each record's verification is recomputed with the current checker, so a checker fix rescores the record without a call."""
         records = {}
         if self.runs_path.exists():
             for line in self.runs_path.read_text(encoding="utf-8").splitlines():
                 if line.strip():
                     rec = json.loads(line)
+                    if "system" in rec and "user" in rec:
+                        rec["verification"] = verify_numbers(rec["response"], rec["system"] + "\n" + rec["user"])
                     records[rec["key"]] = rec
         return records
 
@@ -344,30 +348,147 @@ class Advisor:
         return {**record, "replayed": False}
 
 
-# --- the challenge round and the override gate ------------------------------------------------
+# --- the portfolio context (the only facts the advisor sees) ------------------------------------
 
-def challenge(advisor, human_statement, opposing_book, context, tag=""):
-    """One round of "reason my thinking": the motivated-reasoning check, then the opposing case.
+def portfolio_context(stress="base", case="contracted"):
+    """The DATA block of the recommend and challenge modes: the forty candidates under one stress, the six books, capital by technology, the stresses.
+
+    Parameters
+    ----------
+    stress : str
+        A stress name of ``results/stress_tests.csv`` (``"base"`` is the flat path).
+    case : str
+        The revenue case the books were scored in.
+
+    Returns
+    -------
+    str
+        Pipe tables rendered by ``format_table``, each with its provenance label.
+
+    Notes
+    -----
+    Read from ``results/`` only, so notebook 10, the dashboard and the
+    terminal session (``python -m src.advisor``) show the model the same
+    tables, and the grounding check compares against the same text.
+    """
+    R = paths.RESULTS
+    cand = pd.read_csv(R / "candidate_npv.csv")
+    ids = list(cand["project_id"])
+    books = pd.read_csv(R / "portfolio_books.csv", index_col=0)
+    book_names = [c for c in books.columns if c not in ("technology", "capex")]
+    scores = pd.read_csv(R / "portfolio_scores.csv")
+    oos = scores[scores["scenarios"].str.startswith("held-out") & (scores["revenue_case"] == case)].set_index("book")
+    stresses = pd.read_csv(R / "stress_tests.csv")
+    stress_c = pd.read_csv(R / "stress_candidates.csv")
+    alloc = pd.read_csv(R / "portfolio_allocation.csv")
+    registered = json.loads((R / "success_criteria_v7_registered.json").read_text(encoding="utf-8"))
+    cap = registered.get("technology_cap", 0.4)
+    budget = float(pd.read_csv(R / "decision_ledger.csv").loc[0, "budget"])  # the registered budget of notebook 09
+    capex = cand.set_index("project_id")["capex"].reindex(ids).to_numpy()
+    x_d = books["D risk-aware MILP"].reindex(ids).to_numpy(int)
+    npv_stress = stress_c[stress_c["stress"] == stress].set_index("project_id")["npv"]
+    candidates = pd.DataFrame({"project_id": cand["project_id"], "technology": cand["technology"], "capex_$M": cand["capex"] / 1e6,
+                               "expected_npv_merchant_$M": cand["expected_npv_base"] / 1e6, "expected_npv_contracted_$M": cand["expected_npv_contracted"] / 1e6,
+                               f"npv_under_{stress.replace(' ', '_')}_$M": cand["project_id"].map(npv_stress) / 1e6,
+                               "p_operation_7y": cand["p_operation_7y"].fillna(1.0), "breakeven": cand["breakeven"], "breakeven_unit": cand["breakeven_unit"],
+                               "data_completeness": cand["data_completeness"], "in_book_D": x_d.astype(bool), "provenance": cand["provenance"]})
+    rows = []
+    for b in book_names:
+        x = books[b].reindex(ids).to_numpy(int)
+        rows.append({"book": b, "n_members": int(x.sum()), "capex_$B": float(capex @ x) / 1e9, "expected_npv_oos_$B": oos.loc[b, "expected_npv"] / 1e9,
+                     "cvar95_loss_oos_$B": oos.loc[b, "cvar_loss"] / 1e9, "p_negative_oos": oos.loc[b, "p_negative"], "members": ";".join(np.array(ids)[x == 1])})
+    s = stresses.copy()
+    for c in ("book_npv_leases", "book_npv_power", "book_npv", "change_vs_base"):
+        s[c + "_$B"] = s[c] / 1e9
+    s = s[["stress", "book_npv_leases_$B", "book_npv_power_$B", "book_npv_$B", "change_vs_base_$B", "wti_path", "hh", "wind_cf", "solar_revenue", "delay_years", "cost"]]
+    parts = [format_table(candidates, f"The forty candidates and their NPV under the stress '{stress}'", "FORECAST; lease costs ASSUMED (the upstream grid)",
+                          note="Expected NPVs are timing-weighted (P(operation) from the queue models) at the flat 2024 real prices; $ million, 2024 dollars."),
+             format_table(pd.DataFrame(rows), "The six books scored out of sample on the held-out scenarios", "FORECAST",
+                          note=f"Budget ${budget / 1e9:.2f}B, no technology above {cap:.0%} of it; {case} revenue case; CVaR95 loss negative = the worst 5% is still a profit."),
+             format_table(alloc.assign(**{c: alloc[c] / 1e9 for c in alloc.columns if c != "book"}).rename(columns=lambda c: c if c == "book" else c + "_$B"),
+                          "Capital by technology in each book ($ billion)", "DERIVED"),
+             format_table(s, "The default book of forty under the named stresses (flat base path)", "FORECAST; multipliers ASSUMED")]
+    return "\n".join(parts)
+
+
+OPPOSING_BOOK_D = ("Book D (risk-aware MILP): the leases plus the contracted wind requests and some gas combined cycle, chosen to maximise expected NPV minus "
+                   "the worst-5% loss within the same budget and the 40% technology cap.")
+
+
+# --- the challenge round (human in the loop) and the override gate ------------------------------
+
+def format_answers(questions, answers):
+    """The advisor's five questions paired with the human's answers, as the text the verdict and the opposing case receive.
+
+    Parameters
+    ----------
+    questions : str or None
+        The advisor's numbered questions (step 1), or None when the human
+        answered the standing questions of ``REASONING_QUESTIONS`` instead.
+    answers : dict
+        Keyed as ``REASONING_QUESTIONS``; missing keys read "(no answer)".
+    """
+    asked = [q.strip() for q in re.split(r"\n\s*(?=\d+[.)]\s)", "\n" + (questions or "")) if q.strip()]
+    lines = []
+    for n, (key, standing) in enumerate(REASONING_QUESTIONS.items(), start=1):
+        question = re.sub(r"^\d+[.)]\s*", "", asked[n - 1] if n - 1 < len(asked) else standing)
+        answer = str(answers.get(key, "")).strip() or "(no answer)"
+        lines.append(f"Q{n}. {question}\nA{n}. {answer}")
+    return "\n\n".join(lines)
+
+
+def challenge(advisor, human_statement, opposing_book, context, answers=None, tag=""):
+    """The "reason my thinking" round with the human in the loop: the advisor asks, the human answers, then it judges and argues the other book.
+
+    Parameters
+    ----------
+    advisor : Advisor
+    human_statement : str
+        The book the human prefers and the reasons, in the human's words.
+    opposing_book : str
+        The alternative the advisor must argue for (``OPPOSING_BOOK_D`` in the terminal session).
+    context : str
+        The DATA block (``portfolio_context``).
+    answers : dict or None
+        The human's answers to the five questions, keyed as ``REASONING_QUESTIONS``.
+        With None the questions are still asked and recorded, and the verdict
+        judges the statement alone, so a one-shot caller still gets an answer.
+    tag : str
+        Recorded with the calls.
 
     Returns
     -------
     dict
-        ``check`` and ``opposing`` (the two responses or None), ``converge``
-        and ``disagree`` parsed from the opposing case's last line, and a
-        markdown ``transcript``.
+        ``questions`` (the step-1 response), ``check`` and ``opposing`` (the
+        two responses or None), ``converge`` and ``disagree`` parsed from the
+        opposing case's last line, and a markdown ``transcript``.
+
+    Notes
+    -----
+    Step 1 asks exactly five questions tied to the statement, one per item
+    of the override gate, and nothing else; the human's answers to them are
+    the answers the gate needs (``override_allowed``), so the challenge and
+    the override are one exchange, not two forms. Steps 2 and 3 receive the
+    statement and the answers, so the verdict and the opposing case argue
+    against what the human actually said (decision #79).
     """
     system = load_prompt("advisor_system") + "\nDATA\n\n" + context
-    check = advisor.ask(system, render("motivated_reasoning_check", human_statement=human_statement), "challenge/check", tag)
-    opposing = advisor.ask(system, render("ideological_turing_test", human_statement=human_statement, opposing_book=opposing_book), "challenge/opposing", tag)
+    questions = advisor.ask(system, render("motivated_reasoning_questions", human_statement=human_statement), "challenge/questions", tag)
+    question_text = questions["response"] if questions else None
+    answer_text = format_answers(question_text, answers) if answers else "(no answers were given; judge the statement alone)"
+    check = advisor.ask(system, render("motivated_reasoning_check", human_statement=human_statement, answers=answer_text), "challenge/check", tag)
+    opposing = advisor.ask(system, render("ideological_turing_test", human_statement=human_statement, answers=answer_text, opposing_book=opposing_book),
+                           "challenge/opposing", tag)
     converge, disagree = None, None
     if opposing is not None:
         m = re.search(r"CONVERGE:\s*(.*?)\s*\|\s*DISAGREE:\s*(.*)", opposing["response"], flags=re.S)
         if m:
             converge, disagree = m.group(1).strip(), m.group(2).strip()
-    lines = ["## The human's statement", "", human_statement, "", "## The motivated-reasoning check", "",
-             check["response"] if check else "_not recorded (no key, no record)_", "", "## The opposing case", "",
-             opposing["response"] if opposing else "_not recorded (no key, no record)_", ""]
-    return {"check": check, "opposing": opposing, "converge": converge, "disagree": disagree, "transcript": "\n".join(lines)}
+    missing = "_not recorded (no backend, no record)_"
+    lines = ["## The human's statement", "", human_statement, "", "## The advisor's questions", "", question_text or missing, "",
+             "## The human's answers", "", answer_text, "", "## The motivated-reasoning check", "", check["response"] if check else missing, "",
+             "## The opposing case", "", opposing["response"] if opposing else missing, ""]
+    return {"questions": questions, "check": check, "opposing": opposing, "converge": converge, "disagree": disagree, "transcript": "\n".join(lines)}
 
 
 def override_allowed(answers, opposing_case_read=False, min_chars=20):
@@ -392,3 +513,69 @@ def ledger_append(row, path=LEDGER):
     ledger = pd.concat([ledger, pd.DataFrame([full])], ignore_index=True)
     ledger.to_csv(path, index=False)
     return ledger
+
+
+def read_block(prompt):
+    """Lines typed at the terminal until an empty line; returns them joined."""
+    print(prompt, flush=True)
+    lines = []
+    while True:
+        try:
+            line = input()
+        except EOFError:
+            break
+        if not line.strip():
+            break
+        lines.append(line)
+    return "\n".join(lines).strip()
+
+
+def terminal_session(tag=None, opposing_book=OPPOSING_BOOK_D, stress="base"):
+    """Reason my thinking at the keyboard: state the book, answer the advisor's five questions, read its verdict and the opposing case.
+
+    Notes
+    -----
+    Writes ``results/advisor_transcripts/challenge_<tag>.md`` and appends a
+    ledger row (actor "human", mode "challenge/hitl") with the five answers,
+    which are also what the override gate needs. Every model call is recorded
+    like any other, so the transcript replays offline.
+    """
+    tag = tag or datetime.now().strftime("hitl_%Y%m%d_%H%M")
+    advisor = Advisor(mode="auto")
+    if not advisor.live:
+        print("no backend: put ANTHROPIC_API_KEY in .env or sign in to the claude command (claude auth login); recorded exchanges still replay")
+    context = portfolio_context(stress)
+    statement = read_block("Your preferred book and your reasons (end with an empty line):")
+    if not statement:
+        print("nothing stated; nothing asked")
+        return None
+    system = load_prompt("advisor_system") + "\nDATA\n\n" + context
+    questions = advisor.ask(system, render("motivated_reasoning_questions", human_statement=statement), "challenge/questions", tag)
+    if questions is None:
+        print("the advisor could not answer (no backend and no record)")
+        return None
+    print("\nThe advisor asks:\n")
+    print(questions["response"])
+    answers = {}
+    for n, key in enumerate(REASONING_QUESTIONS, start=1):
+        answers[key] = read_block(f"\nYour answer to question {n} (end with an empty line):")
+    result = challenge(advisor, statement, opposing_book, context, answers=answers, tag=tag)
+    print("\n## The motivated-reasoning check\n")
+    print(result["check"]["response"] if result["check"] else "(not recorded)")
+    print("\n## The opposing case\n")
+    print(result["opposing"]["response"] if result["opposing"] else "(not recorded)")
+    allowed, missing = override_allowed(answers, opposing_case_read=result["opposing"] is not None)
+    print(f"\nOverride gate: {'open' if allowed else 'closed'}" + ("" if allowed else f" (missing: {', '.join(missing)})"))
+    folder = paths.RESULTS / "advisor_transcripts"
+    folder.mkdir(exist_ok=True)
+    path = folder / f"challenge_{tag}.md"
+    path.write_text(f"# Challenge round — {tag} (human in the loop)\n\n" + result["transcript"], encoding="utf-8")
+    ledger_append({"entry_id": f"HITL-{tag}", "actor": "human", "mode": "challenge/hitl", "override": allowed,
+                   "reasoning_answered": " | ".join(f"{k}: {v}" for k, v in answers.items() if v),
+                   "note": f"converge: {result['converge']}; disagree: {result['disagree']}"})
+    print(f"\ntranscript: {path.relative_to(paths.REPO)}; ledger entry HITL-{tag}")
+    return result
+
+
+if __name__ == "__main__":  # python -m src.advisor [tag]
+    terminal_session(sys.argv[1] if len(sys.argv) > 1 else None)

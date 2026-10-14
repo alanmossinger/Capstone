@@ -1301,16 +1301,56 @@ their impact visible to every viewer in the dashboard.
 - Open question 38 is closed (decision #77): D is recommended, with A as
   the alternative.
 
+**Done, afternoon (Alan's answers: use the Max plan; pull ERCOT; the
+recommendation stands; a new poster later; the challenge round with the
+human in the loop; "do your recommendation" on the registered verdicts)**
+
+- The advisor runs on the Claude subscription (decision #76): Alan signed
+  the `claude` command in; notebook 10 ran live three times today as the
+  tables changed, 96 calls recorded. Scores: 94% of its numbers are in
+  its tables (52% of answers fully grounded; the rest is arithmetic it did
+  itself), its stress books overlap book D by 0.89 (D named in 3 of 7),
+  and in the gym it beat instinct by $228M a situation (rule $236M),
+  matching the rule in 11 of 16 situations, regret $26M against hindsight.
+  The checker now reads unit suffixes ("$6.15B") and re-verifies records
+  on load.
+- The "reason my thinking" round is a human-in-the-loop exchange written
+  for the portfolio decision (decision #79): five questions tied to the
+  statement, the human's answers, then the check and the opposing case;
+  `python -m src.advisor` at the keyboard; the answers open the override
+  gate. The DATA block moved to `advisor.portfolio_context`.
+- ERCOT 2018–2023 hourly prices (decision #78): `src/ercot_history.py`
+  parses ERCOT's public yearly files; `.github/workflows/ercot_history.yml`
+  runs it on a U.S. runner (ERCOT refuses Brazilian addresses, hotspot
+  included); six files, hashes pinned. February 2021 (Uri) is $1,772 a
+  MWh real; 2021 averages $156.
+- The pipeline rerun on the observed prices (decision #80); the
+  bridged-price scoring kept in `results/registered_bridged/`. The first
+  rerun put the books' means in the trillions: the block bootstrap and the
+  copula carried the Uri spike without its reversal. Fixed (decisions
+  #81–#82): monthly log changes capped at ±1.5, calendar-year blocks, a
+  geometric long-run level, and the held-out set as a second draw of the
+  bootstrap (the copula cannot keep a spike with its reversal). Results:
+  default book mean $15.8B, median $14.9B; C23 and C24 pass on the
+  observed prices, C21 and C22 fail; committee grid: D $5.8B with a $0.3B
+  worst-5% loss against A's $7.7B and $1.3B; A still wins the registered
+  metric by $888M. Gas requests are worth $427M between them in the
+  scenarios (ERCOT spikes), negative on the flat path.
+- Report Part II rewritten on the new numbers; Appendix A shows both
+  scorings; Appendix B carries the advisor's scores and the new prompts;
+  the poster's numbers updated (design still to be replaced).
+
 **Next**
 
-- `claude auth login`, then rerun notebook 10 (live), then `make numbers`
-  and `make report`. The advisor lines change from "not yet scored" to the
-  measured results; commit `results/advisor_runs.jsonl`.
-- The new poster.
-- The ERCOT pull from another network.
-- The v1.0 tag after a clean `make all`.
+- A clean `make all`, `make test`, `make report`, `make poster`, then the
+  v1.0 tag.
+- The new poster (open question 39).
+- Rotation of the EIA key and the ERCOT password (Alan).
 
 **Open questions for Alan**
 
 39. The poster design: what should the new one look like (layout, which
     figures, the message)?
+40. The scenario engine's cap of ±1.5 on a monthly log change (decision
+    #81) is the one new assumption of the day; it keeps Winter Storm Uri an
+    event rather than a level. Confirm, or name the bound you would use.

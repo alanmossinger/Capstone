@@ -73,7 +73,7 @@ make setup     # .venv, pinned packages, Jupyter kernel "queue-survival"
 ```
 
 1. Save `lbnl_ix_queue_data_file_thru2024_v2.xlsx` in `data/raw/lbnl/`.
-2. Copy `.env.example` to `.env` and add your EIA API key. For live advisor calls either add `ANTHROPIC_API_KEY` or sign in to the `claude` command line with a Claude subscription (`claude auth login`); with neither, the advisor replays its record.
+2. Copy `.env.example` to `.env` and add your EIA API key. For live advisor calls either add `ANTHROPIC_API_KEY` or sign in to the `claude` command line with a Claude subscription (`claude auth login`); with neither, the advisor replays its record. To challenge your own decision at the keyboard, run `python -m src.advisor`: state the book you prefer, answer the advisor's five questions, and read its verdict and the opposing case (the transcript goes to `results/advisor_transcripts/`).
 3. Run:
 
 ```bash

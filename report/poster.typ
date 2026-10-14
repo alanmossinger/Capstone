@@ -46,9 +46,9 @@
     ]
     #v(7mm)
     #box("Part II — one budget across twenty leases and twenty ERCOT requests", color: orange)[
-      2,000 joint price scenarios; Part I's models time every power request. Under the registered cost grid the leases are worth \$14.6B and carry the book. *Priced as an investment committee would* — \$40k per incremental flowing barrel a day and an 8% real rate, added after the registered results and labelled post-hoc — they fall to \$7.0B on four times the capital, and five years of \$42 oil take them to \$4.25B.
+      2,000 joint price scenarios drawn from observed prices, Winter Storm Uri included; Part I's models time every power request. Under the registered cost grid the leases are worth \$14.6B and carry the book. *Priced as an investment committee would* — \$40k per incremental flowing barrel a day and an 8% real rate, added after the registered results and labelled post-hoc — they fall to \$7.0B on four times the capital, and five years of \$42 oil take them to \$4.25B.
       #align(center)[#image("../figures/F37_committee_grid.png", width: 88%)]
-      #note[Under the registered grid the four allocation criteria fail as registered: the risk-aware book earns \$20.7B against \$21.1B for NPV ranking, and none of the four books' held-out tail is a loss. Under the committee grid the risk-aware book halves the tail; on the registered metric NPV ranking still wins by \$755M.]
+      #note[Under the registered grid the risk-aware book earns \$15.9B against \$16.1B for NPV ranking and none of the four books' held-out tail is a loss, so two of the four allocation criteria pass and two fail. Under the committee grid the risk-aware book cuts the worst-5% loss from \$1.3B to \$0.3B; on the registered metric NPV ranking still wins by \$888M.]
     ]
   ],
   // column 3: the gym, the AI, the recommendation
@@ -60,11 +60,11 @@
     #v(7mm)
     #box("The AI inside the decision", color: green)[
       #align(center)[#image("../figures/F36_ai_workflow.png", height: 95mm)]
-      An LLM advisor reads only the result tables, must match every number it writes to them, argues the opposing book, and can be overridden only after the human answers five questions about the decision. Every call is recorded and replays offline.
+      An LLM advisor reads only the result tables, must match every number it writes to them, asks the human five questions and argues the opposing book, and can be overridden only after the answers. Run live on 96 recorded calls: 94% of its numbers are in its tables, its book overlaps the optimizer's by 0.89, and it beat instinct by \$228M a situation.
     ]
     #v(7mm)
     #box("Recommendation", color: orange)[
-      *Fund the risk-aware book:* ten lease redevelopments, four wind requests under 15-year contracts and one gas request, \$6.6B of a \$7.81B budget. It expects \$8.1B (median \$6.7B), loses money in 9% of scenarios, and its worst 5% averages a \$2.7B loss. *The alternative* for a committee with more appetite for risk: all twenty leases and three gas requests, \$11.5B expected with a \$5.3B worst-5% loss. No solar or storage at 2024 prices.
+      *Fund the risk-aware book:* ten lease redevelopments, three wind requests under 15-year contracts and four gas requests, \$7.4B of a \$7.81B budget. It expects \$5.8B (median \$5.3B), loses money in 3% of scenarios, and its worst 5% averages a \$0.3B loss. *The alternative* for a committee with more appetite for risk: eighteen leases and four gas requests, \$7.7B expected with a \$1.3B worst-5% loss. No solar or storage at 2024 prices.
       #v(2mm)
       #note[Prediction is necessary and not sufficient: the decision is made by the assumptions, the timing and the tail. Data: LBNL Queued Up 2025 (Rand et al., 2025); BSEE OGOR-A; EIA-923 and EIA spot prices; ERCOT settlement-point prices; EPA eGRID; NREL ATB. Author's analysis.]
     ]

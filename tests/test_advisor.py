@@ -84,3 +84,49 @@ def test_ledger_append_keeps_the_fixed_columns(tmp_path):
     path = tmp_path / "ledger.csv"
     ledger = adv.ledger_append({"entry_id": "T1", "actor": "human", "members": "a;b", "n_members": 2}, path=path)
     assert list(ledger.columns) == adv.LEDGER_COLUMNS and len(ledger) == 1 and ledger.loc[0, "date"]
+
+
+def test_numbers_in_reads_unit_suffixes():
+    found = adv.numbers_in("Budget $6.15B, cap 40%, 150k rows, 20.7, 1,234.5 and -0.30; v2; 3.4.5")
+    assert {"6.15", "40", "150", "20.7", "1234.5", "-0.3"} <= found
+    assert "2" not in found  # "v2" is a name, not a quantity
+
+
+def test_format_answers_pairs_the_questions_with_the_answers():
+    questions = "1. What if the leases fail?\n2. What does the lender want?\n3. Where is the sunk cost?\n4. Which table?\n5. What is off the table?"
+    text = adv.format_answers(questions, {"context_and_stakes": "We lose the capital.", "framing": "A mixed book."})
+    assert "Q1. What if the leases fail?\nA1. We lose the capital." in text
+    assert "A2. (no answer)" in text and "Q5. What is off the table?\nA5. A mixed book." in text
+    standing = adv.format_answers(None, {"parties": "The lender wants a thin tail."})
+    assert "Q2. What does each party to the decision want?\nA2. The lender wants a thin tail." in standing
+
+
+class FakeAdvisor:
+    """Answers every call with its mode name, so the round's wiring can be checked without a model."""
+
+    def __init__(self):
+        self.asked = []
+
+    def ask(self, system, user, mode_name="", tag=""):
+        self.asked.append((mode_name, user))
+        text = {"challenge/questions": "1. Q one?\n2. Q two?\n3. Q three?\n4. Q four?\n5. Q five?",
+                "challenge/opposing": "The case.\nCONVERGE: book D | DISAGREE: the grid"}.get(mode_name, "The verdict.")
+        return {"response": text, "replayed": False, "verification": {"rate": 1.0, "n_numbers": 0, "n_grounded": 0, "ungrounded": []}}
+
+
+def test_challenge_asks_then_judges_with_the_answers():
+    fake = FakeAdvisor()
+    answers = {k: f"my answer to {k}, long enough to count" for k in adv.REASONING_QUESTIONS}
+    out = adv.challenge(fake, "I want the leases only.", "Book D", "DATA tables", answers=answers, tag="t")
+    modes = [m for m, _ in fake.asked]
+    assert modes == ["challenge/questions", "challenge/check", "challenge/opposing"]
+    assert "Q1. Q one?" in fake.asked[1][1] and "my answer to framing" in fake.asked[2][1]  # the verdict and the opposing case see the answers
+    assert out["converge"] == "book D" and out["disagree"] == "the grid"
+    assert "## The human's answers" in out["transcript"]
+    assert adv.override_allowed(answers, opposing_case_read=True)[0]  # the same answers open the gate
+
+
+def test_challenge_without_answers_still_returns_a_verdict():
+    fake = FakeAdvisor()
+    out = adv.challenge(fake, "I want the leases only.", "Book D", "DATA tables")
+    assert out["check"] is not None and "no answers were given" in fake.asked[1][1]

@@ -6,7 +6,7 @@ S14 EIA-923 pull complete,rows received = total reported; window covered,"186,74
 S14 Texas plants per technology,">= 5 plants with >= 36 generating months for each of Gas CC, Solar, Wind, Storage","Gas CC 69, Solar 108, Wind 201, Storage 18",PASS,True
 S15/S16 monthly prices cover the window,"WTI, Henry Hub and ERCOT present for every month (ERCOT: observed, derived or labelled assumed)","wti_usd_bbl complete, hh_usd_mmbtu complete, ercot_usd_mwh complete",PASS,True
 S16 ERCOT 2024 files verified,"five files, SHA-256 as pinned in src/config.py",5 of 5,PASS,True
-S16 ERCOT hourly prices 2018–2023 on disk (not blocking),ercot_dam_spp_<year>.parquet for 2018–2023 from the ERCOT Public API pull,years on disk: [2024]; assumed months: 48,FAIL,False
+S16 ERCOT hourly prices 2018–2023 on disk and hashed,"ercot_dam_spp_<year>.parquet for 2018–2023 from ERCOT's yearly files, SHA-256 as pinned in src/config.py","years on disk: [2018, 2019, 2020, 2021, 2022, 2023, 2024]; verified: 6 of 6; assumed months: 0",PASS,False
 S17 eGRID joins the generation panel,>= 95% of the EIA-923 plants generating in 2023 found in eGRID2023,98.8%,PASS,True
 S18 CPI-U covers the window,2016–2024 monthly,"2016-01 to 2024-12, 108 months",PASS,True
 Manifest complete,"every raw file of S13–S18 hashed with URL, vintage, units, grain","6 sources, 25 files",PASS,True

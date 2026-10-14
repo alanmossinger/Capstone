@@ -240,13 +240,18 @@ the API fails; not needed so far.
   in `data/raw/value/` (S9).
 - **Publisher:** ERCOT, public market information. <https://www.ercot.com/mktinfo>
 - **How to obtain:** 2024 through `gridstatus` from a network ERCOT's edge
-  accepts; 2018–2023 hourly through the ERCOT Public API
-  (`python -m src.ercot_api 2018 2023`, subscription and credentials in
-  `.env`); this machine is refused by ERCOT's edge (decision #53, #64).
+  accepts; 2018–2023 hourly from ERCOT's public yearly files ("Historical
+  DAM Load Zone and Hub Prices", report 13060) through
+  `python -m src.ercot_history 2018 2023`, run on a U.S. GitHub runner by
+  `.github/workflows/ercot_history.yml` because ERCOT's edge refuses
+  connections from outside the United States (decisions #53, #78); the
+  artifact's six files go into `data/raw/ercot/` and their hashes are pinned
+  in `src/config.ERCOT_HISTORY_FILES`.
 - **Terms:** public market data under ERCOT's terms of use; not committed.
-- **Known limits:** until the 2018–2023 pull runs, the 2020–2023 months are an
+- **Known limits:** with the six yearly files on disk every month of
+  2018–2024 is OBSERVED; without them the 2020–2023 months fall back to an
   ASSUMED bridge (0.77 × PJM West, `results/value_assumptions.csv`) and every
-  figure that uses them says so.
+  figure that uses them says so. 2017 stays DERIVED (ICE annual peak).
 
 ### S17 — EPA eGRID2023 plant emission rates (notebook 01, part D)
 

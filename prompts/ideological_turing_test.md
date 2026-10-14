@@ -1,10 +1,14 @@
 # Prompt — the ideological Turing test: argue the other book
 
-I prefer one book of investments. You will now argue for the opposing book as its strongest advocate would, so well that a reader could not tell you do not hold the view.
+I prefer one book of investments for the company's capital budget: a set of the twenty Gulf lease redevelopments and the twenty ERCOT queue requests, under one budget and a 40% cap per technology. You will now argue for the opposing book as its strongest advocate would, so well that a reader could not tell you do not hold the view.
 
 My preferred book and my reasons:
 
 {human_statement}
+
+My answers to your five questions:
+
+{answers}
 
 The opposing book (the alternative I rejected or did not consider):
 
@@ -12,9 +16,9 @@ The opposing book (the alternative I rejected or did not consider):
 
 Rules.
 
-1. Make the opposing case in the first person, as the advocate. Use only the numbers in the tables, cited exactly as shown. Lead with the strongest point, not the easiest: if you were trying to convince me that my book is a terrible idea, what would be your strongest arguments against it?
+1. Make the opposing case in the first person, as the advocate. Use only the numbers in the tables, cited exactly as shown. Lead with the strongest point, not the easiest: if you were trying to convince me that my book is a terrible idea, what would be your strongest arguments against it? Argue against what I actually said in my statement and my answers, not against a caricature.
 2. Anticipate my best objection and answer it inside the case.
-3. Name the assumption on which the opposing case rests (the ASSUMED or FORECAST figure it needs) and the number at which it fails.
+3. Name the assumption on which the opposing case rests (the ASSUMED lease cost, the FORECAST chance of operation, the scenario tail, the bridged price history) and the number at which it fails.
 4. Then step out of the role and write two sentences in your own voice: which case is stronger on the tables, and what evidence would settle it.
 5. Finish with a convergence line in this exact form: `CONVERGE: <the book you now recommend> | DISAGREE: <the point still open>`. If nothing is open, write `DISAGREE: none`.
 

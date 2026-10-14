@@ -1,6 +1,6 @@
 table,grain,rows,keys,span,units,provenance
 data/interim/upstream_monthly.parquet,lease-month,203963,2229,2010-01 to 2024-12,"bbl, Mcf, days",OBSERVED
 data/interim/generation_monthly.parquet,plant × prime mover × month,61136,947,2018-01 to 2024-12,"MWh, MMBtu",OBSERVED
-data/interim/market_monthly.parquet,month,96,3,2017-01 to 2024-12,"$/bbl, $/MMBtu, $/MWh (nominal and real 2024)","OBSERVED; ERCOT 2017–2019 DERIVED, 2020–2023 ASSUMED"
+data/interim/market_monthly.parquet,month,96,3,2017-01 to 2024-12,"$/bbl, $/MMBtu, $/MWh (nominal and real 2024)","OBSERVED; ERCOT observed 84 months, derived 12 months"
 data/interim/plant_generators_tx.parquet,generator,2480,1090,2026-07,MW,OBSERVED
 data/interim/egrid_plants_tx.parquet,plant-year,824,824,2023,"lb CO2/MWh, MW",OBSERVED

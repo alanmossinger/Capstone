@@ -69,3 +69,17 @@ def test_key_level_ratios_sum_within_each_key():
                               "pred": [10] * 6 + [10] * 6, "y": [0, 20, 10, 10, 10, 10] + [5] * 6})
     ratios = sc.key_level_ratios(forecasts, "lease_oil", min_rows=6)
     assert sorted(np.round(ratios, 3).tolist()) == [0.5, 1.0]
+
+
+def test_log_changes_are_capped_and_aligned_blocks_keep_a_spike_with_its_reversal():
+    """A one-month spike (+4, then −4) must never be carried without its reversal (decision #81)."""
+    import pandas as pd
+    months = pd.date_range("2017-12-01", periods=85, freq="MS")
+    level = np.full(85, 50.0)
+    level[38], level[39] = 50 * np.exp(4.0), 50.0  # a spike in month 38 and the return in month 39
+    market = pd.DataFrame({"month": months, "wti_usd_bbl": 60.0, "hh_usd_mmbtu": 3.0, "ercot_usd_mwh": level})
+    changes = sc.joint_log_changes(market)
+    assert changes.shape[0] == 83 and np.abs(changes).max() <= sc.MAX_MONTHLY_LOG_CHANGE + 1e-12
+    paths = sc.block_bootstrap_paths(changes, n_scenarios=200, horizon_months=240, block=12, seed=7)
+    cum = np.cumsum(paths[:, :, 2], axis=1)
+    assert np.abs(cum).max() <= sc.MAX_MONTHLY_LOG_CHANGE + 1e-9  # every block that carries the spike carries its reversal, so the level never drifts

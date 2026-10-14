@@ -1,1 +1,11 @@
 tag,names_a_book,cites_three_grounded_numbers,every_number_grounded,states_what_would_change,names_weakest_provenance,human_label
+recommend:base,True,True,False,True,True,
+recommend:oil collapse (2020 path),True,True,True,True,True,
+"recommend:high gas, low spark spread",True,True,True,True,True,
+recommend:weak wind year,True,True,True,True,True,
+recommend:solar curtailment,True,True,False,True,True,
+recommend:two-year delay,True,True,True,True,True,
+recommend:simultaneous downside,True,True,True,True,True,
+gym:ERCOT 2017 entry,True,True,False,True,False,
+gym:ERCOT 2018 entry,True,True,False,True,False,
+gym:ERCOT 2019 entry,True,True,False,True,False,

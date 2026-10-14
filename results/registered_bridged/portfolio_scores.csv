@@ -1,0 +1,19 @@
+book,n_selected,expected_npv,cvar_loss,p_negative,metric,scenarios,revenue_case
+A top-N NPV,27,20726605098.088955,614581266.5099792,0.026,20112023831.578976,primary (selection set),contracted
+B equal capital,25,20652160967.037083,557154635.3143176,0.025,20095006331.722767,primary (selection set),contracted
+C deterministic MILP,26,20673211253.489773,456242083.3604452,0.0245,20216969170.129326,primary (selection set),contracted
+D risk-aware MILP,24,20574048468.52219,340380283.8084907,0.025,20233668184.7137,primary (selection set),contracted
+leases only (D rule),20,20416997722.383236,361263515.79995155,0.024,20055734206.583282,primary (selection set),contracted
+power only (D rule),3,99325663.2427257,17533255.979456842,0.705,81792407.26326886,primary (selection set),contracted
+A top-N NPV,27,21071281806.120663,-303231127.2422987,0.0175,21374512933.36296,held-out copula (scoring set),contracted
+B equal capital,25,20915233499.414017,-189810658.71384993,0.0185,21105044158.127865,held-out copula (scoring set),contracted
+C deterministic MILP,26,20856643057.751617,-266361444.57155398,0.018,21123004502.32317,held-out copula (scoring set),contracted
+D risk-aware MILP,24,20654071781.32522,-300776356.9728305,0.0185,20954848138.29805,held-out copula (scoring set),contracted
+leases only (D rule),20,20422161127.036476,-115697085.15506391,0.02,20537858212.19154,held-out copula (scoring set),contracted
+power only (D rule),3,107496973.93975396,17676934.93659223,0.706,89820039.00316173,held-out copula (scoring set),contracted
+A top-N NPV,27,21046951233.347923,-220008109.31529945,0.0185,21266959342.663223,held-out copula (scoring set),merchant
+B equal capital,25,20908035762.190624,-147582978.17774156,0.019,21055618740.368366,held-out copula (scoring set),merchant
+C deterministic MILP,26,20831136170.907234,-175825879.99999285,0.0185,21006962050.907227,held-out copula (scoring set),merchant
+D risk-aware MILP,24,20621192187.953133,-224488190.9287456,0.019,20845680378.881878,held-out copula (scoring set),merchant
+leases only (D rule),20,20422161127.036476,-115697085.15506391,0.02,20537858212.19154,held-out copula (scoring set),merchant
+power only (D rule),3,80638803.71941988,573904163.366826,0.857,-493265359.64740616,held-out copula (scoring set),merchant

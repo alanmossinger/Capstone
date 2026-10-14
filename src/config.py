@@ -201,6 +201,14 @@ ERCOT_2024_FILES = {  # my Forecast-to-Dispatch pull (gridstatus, July 2026), co
     "ercot_native_load_2024.parquet": "9dad8c1a23ec12dea68b95264fb27146c279aecd0094da780ed1bdf6de64f1c4",
     "ercot_wind_solar_2024.parquet": "b08fab037aa3ef3a6d71fe0a100ab6b7e122dfcbddef2bee74f2bf9b4ade0397",
 }
+ERCOT_HISTORY_FILES = {  # ERCOT's yearly "Historical DAM Load Zone and Hub Prices" files parsed by src/ercot_history.py on a U.S. runner (2026-10-14)
+    "ercot_dam_spp_2018.parquet": "3c01950a105297ab924d7e28d740e17381942ab8736b406be8000958259d9e91",
+    "ercot_dam_spp_2019.parquet": "248498491439c250a1b0823b56d5c5b6f5a96baa0fea8ca4d10d3bfc195c4cd7",
+    "ercot_dam_spp_2020.parquet": "68caf44dbae2e6cb1d9f8892d448c1e0c0a53a5a2105312bdf5afa678a59055c",
+    "ercot_dam_spp_2021.parquet": "bdcc3a4281af99bf684e42035577b739d3dd317e58c604dea12da2cefe7d8074",
+    "ercot_dam_spp_2022.parquet": "27d161f1ab2647eb6e06f04da74b0095cdb0e64fee4441a4f29ad5f6bfc9a16c",
+    "ercot_dam_spp_2023.parquet": "10e135cbf56914e0d566383baa152539305486e5885f7fa07b7f528d2d1328f1",
+}
 ERCOT_PRICE_HUB = "HB_NORTH"  # the hub carried as "the ERCOT price": it is the hub the ICE ERCOT North series quotes
 PRIME_MOVER_TECH = {  # EIA-923 prime mover -> the candidate technologies (combined-cycle parts, PV, wind, batteries)
     "CA": "Gas CC", "CT": "Gas CC", "CS": "Gas CC", "PV": "Solar", "WT": "Wind", "BA": "Storage",
@@ -212,7 +220,7 @@ PROVENANCE = ("OBSERVED", "DERIVED", "FORECAST", "ASSUMED")  # the audit labels 
 SOURCE_BSEE = "BSEE OGOR-A production (data.bsee.gov)."
 SOURCE_EIA923 = "EIA-923 via EIA API v2 (electricity/facility-fuel)."
 SOURCE_EIA_PRICES = "EIA WTI and Henry Hub monthly spot prices."
-SOURCE_ERCOT = "ERCOT DAM/RTM settlement point prices (gridstatus pull, 2024)."
+SOURCE_ERCOT = "ERCOT DAM/RTM settlement point prices (gridstatus pull, 2024; ERCOT yearly DAM files, 2018–2023)."
 SOURCE_EGRID = "EPA eGRID2023."
 BLS_API_URL = "https://api.bls.gov/publicAPI/v2/timeseries/data/"  # public, no key; 10 years per call (source S18)
 CPI_SERIES = "CUUR0000SA0"  # CPI-U, all items, U.S. city average, not seasonally adjusted (1982–84 = 100)

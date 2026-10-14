@@ -1074,3 +1074,110 @@ alternative rejected.
     now carries v5 numbers only, checked by `test_report.py`; its design is
     to be redone (Alan). *Rejected:* leaving the titles and fixing the
     captions instead (the title is what a reader takes away).
+78. **ERCOT 2018–2023 hourly prices from ERCOT's public yearly files,
+    pulled on a U.S. GitHub runner** (Alan, 2026-10-14: "set up the GitHub
+    Actions ERCOT pull"). ERCOT's edge refuses connections from outside the
+    United States (a phone hotspot in Brazil was refused the same way), so
+    the pull cannot run from Alan's machine on any local network.
+    `src/ercot_history.py` lists report 13060 ("Historical DAM Load Zone and
+    Hub Prices"), downloads one zip per year, parses the monthly sheets and
+    writes `ercot_dam_spp_<year>.parquet` in the gridstatus layout of the
+    2024 file, with the fall-back hour resolved by the repeated-hour flag.
+    `.github/workflows/ercot_history.yml` runs it on `ubuntu-latest` and
+    returns the files as a private artifact (never committed); the six
+    hashes are pinned in `config.ERCOT_HISTORY_FILES` and checked by
+    `energy_data.verify_ercot_history` in notebook 01. Notebook 01 now takes
+    the observed DAM North hub monthly mean for every year on disk, so
+    2018–2023 become OBSERVED and the PJM West bridge is used only for a
+    year with no file. Annual means of the observed hub: 2018 $33, 2019 $38,
+    2020 $22, 2021 $156 (February 2021 alone $1,486), 2022 $64, 2023 $55.
+    *Not yet done:* the rerun of 01→10 on the observed prices, because it
+    re-scores C20–C24 on new data — a registered-verdict question for Alan
+    (handoff). *Rejected:* the ERCOT Public API with credentials in GitHub
+    secrets (the public files need none); a VPN (not reproducible).
+79. **The "reason my thinking" round is a human-in-the-loop exchange,
+    written for this portfolio decision** (Alan, 2026-10-14: "I want the
+    reasoning my thinking prompt to HITL. We must adjust them for this
+    purpose of deciding in the portfolio"; supersedes #73). The round is now
+    three calls: `prompts/motivated_reasoning_questions.md` asks exactly
+    five questions tied to the human's statement, one per item of the
+    override gate (stakes, parties, emotional investment, evidence,
+    framing), and nothing else; the human answers; then
+    `motivated_reasoning_check.md` judges the statement and the answers,
+    naming the patterns this decision invites (judging the leases on the
+    flat path and the requests on the scenarios, treating an ASSUMED cost
+    or a FORECAST chance as observed, counting paid deposits), and
+    `ideological_turing_test.md` argues the opposing book against what the
+    human actually said. The answers are keyed as the override gate keys
+    them, so the challenge and the override are one exchange. At the
+    keyboard: `python -m src.advisor` (the terminal session), which writes
+    the transcript and a ledger row. Notebook 10 runs the two scripted
+    statements with the author's own answers so the pipeline reproduces
+    offline. The DATA block moved to `advisor.portfolio_context` so the
+    notebook, the terminal and the dashboard show the model the same
+    tables. A one-shot caller with no answers (the dashboard, untouched)
+    still gets a verdict, judged on the statement alone. *Also:* the
+    grounding check now reads a unit suffix ("$6.15B", "40%", "150k"), and
+    a replayed record is re-verified with the current checker, so a checker
+    fix rescores the record without a call; the rubric covers the JSON
+    answers only. *Rejected:* a form with the five standing questions
+    (the questions must come from what the human wrote).
+80. **The pipeline reruns on the observed ERCOT prices; the bridged-price
+    verdicts are kept as registered** (Alan, 2026-10-14: "do your
+    recommendation"). With the 2018–2023 hourly files on disk (decision
+    #78) the ERCOT price history that the scenario engine resamples and
+    reverts to changes (2021 alone moves from about $45 to $156 a MWh), so
+    every table that rests on the scenarios moves: the books, C21–C24, the
+    committee-grid tables, the memo. The main results are now the rerun on
+    the observed prices. The criteria stay as registered; their first
+    scoring, on the bridged prices, is kept unchanged in
+    `results/registered_bridged/` and reported beside the rescoring in
+    Appendix A, so a reader sees the verdict as registered and the verdict
+    on the corrected data. *Rejected:* keeping the bridged run as the main
+    line with the observed prices as a sensitivity (the bridge was a stand-in
+    for missing data, not an assumption with a claim of its own).
+81. **The scenario engine on the observed ERCOT prices: capped monthly
+    shocks, year-aligned blocks, a geometric long-run level** (2026-10-14,
+    after the first rerun of decision #80). Winter Storm Uri took the
+    ERCOT North hub from $26 to $1,772 a MWh and back within two months
+    (log changes +4.2, −4.3). The registered engine (decision #69) draws
+    twelve-month blocks that can start anywhere and a copula that draws
+    months independently; both can carry the spike without its reversal,
+    and the four-year half-life then holds a ×69 price for years. The
+    first rerun put book D's expected NPV out of sample at $2,098B against
+    a median of $15.8B, and the ERCOT 5–95% band at $1,900 a MWh for two
+    decades — a generator artefact, not a risk. Three changes, each
+    applied to all three series: (a) monthly log changes are capped at
+    ±1.5 (a ×4.5 move, the largest the history shows outside February
+    2021), so the Uri month stays an extreme month and no longer a new
+    level; (b) the primary blocks are aligned to calendar years, so a spike
+    and its reversal travel together and the 2020, 2021 and 2022 episodes
+    stay whole; (c) the long-run level the log price reverts to is the
+    geometric mean of the 2018–2024 real prices, consistent with a model in
+    logs (the arithmetic mean let one month lift the ERCOT target by about
+    40%). The bridged-price verdicts of `results/registered_bridged/` were
+    scored with the registered engine and are kept as they are. *Rejected:*
+    dropping February 2021 from the history (it happened); winsorising at a
+    quantile (with 83 months the 99th percentile is set by the Uri pair
+    itself); keeping the moving blocks and the trillions (the median would
+    carry the report, but every mean, tail and criterion would be noise).
+82. **The held-out scoring set is a second draw of the block bootstrap,
+    not a Gaussian copula** (2026-10-14, after the rerun of decision #81).
+    With the shocks capped and the blocks aligned, the primary set behaved
+    (the default book's mean $16.0B against a median of $14.8B), but the
+    copula set still put the books' held-out means at $90–107B against
+    medians near $10–13B: a copula draws months independently, so a capped
+    +1.5 month lands with no reversal and the four-year half-life keeps a
+    ×4.5 price for years. That is the copula's design, not a parameter, so
+    it cannot be the scoring set once the ERCOT months are observed. The
+    held-out set is now the same generator with seed 2021, so every scored
+    path is one the optimizer never saw while the generator's assumptions
+    are the same on both sides, as in a train/test split of simulations.
+    The file key `generator == "copula"` is kept so the parquet, notebooks
+    09 and 10 and the dashboard read as before; the labels say "held-out".
+    The registered criteria name the copula set and are not rewritten; the
+    bridged-price scoring in `results/registered_bridged/` used it.
+    `scenarios.gaussian_copula_paths` stays in the module for that record.
+    *Rejected:* a copula over calendar-year blocks (seven blocks give a
+    rank correlation on seven points); scoring on the primary set (the
+    optimizer selected on it).
