@@ -55,14 +55,14 @@
     #text(fill: red, size: 10pt, weight: "bold")[INTERNAL — CONFIDENTIAL] \
     #v(4pt)
     #text(size: 9.5pt)[Author: Alan Mössinger — Strategic Advisor, AI & Energy] \
-    #text(size: 9.5pt)[Distribution: Executive Committee · AI Steering Committee] \
+    #text(size: 9.5pt)[Distribution: Executive Committee] \
     #text(size: 9.5pt)[October 2026]
   ]
 ]
 
 = Cover letter
 
-To the Executive Committee and the AI Steering Committee,
+To the Executive Committee,
 
 Every consequential decision Petrobras makes shares one structure: commit capital now, under uncertainty, and be able to defend the decision later — to our own controls, to the TCU and CGU, and to the market through our SEC filings. The question that decides whether artificial intelligence creates value or risk in that structure is no longer whether a model is accurate. It is whether a committee can trust a recommendation it did not compute, challenge it, and show afterwards what it knew, what it assumed and why it decided.
 
@@ -72,13 +72,13 @@ Three results matter for this Committee. First, the value of the producing asset
 
 The dollars belong to a demonstration portfolio, not to a Petrobras forecast. What transfers is the chain — registered criteria, provenance on every figure, a scenario engine that keeps history's shocks, an optimizer with a stated risk appetite, and a human-in-the-loop advisor that challenges rather than flatters — and that chain describes our mature-field revitalization, our thermal and transition portfolio and our capital program equally well.
 
-I built Petrobras's first enterprise AI Center of Excellence and chaired its Executive AI Steering Committee; this project is the same discipline, advanced to capital allocation and proven in public. I submit it as a working artifact for the Committee's consideration.
+I submit it as a working artifact for the Committee's consideration: every number in it can be reproduced from public files, and every exchange with the advisor is on the record.
 
 Respectfully,
 
 *Alan Mössinger* \
-Strategic Advisor — AI & Energy · Founder, VEX AI-Tech Global \
-#text(size: 9.5pt, fill: muted)[20+ years at Petrobras · built the enterprise AI Center of Excellence · chaired the Executive AI Steering Committee · Master of Applied Data Science candidate, University of Michigan]
+Strategic Advisor — AI & Energy \
+#text(size: 9.5pt, fill: muted)[Master of Applied Data Science candidate, University of Michigan]
 
 #pagebreak()
 = Contents
@@ -101,7 +101,7 @@ The headline results, all reproduced by code from the public files:
 - *Rules against instinct.* In sixteen past situations rebuilt as of their date, the registered rules beat instinct by \$236M a situation, almost all of it in the oil-price regimes.
 - *The AI advisor.* Run live on 96 recorded calls, 94% of the numbers it wrote were in its tables, its book overlapped the optimizer's by 0.89, and it beat instinct by \$228M a situation. Its challenge round — five questions, the human's answers, a verdict on the reasoning and the opposing case — is the human-in-the-loop instrument this report proposes for the Committee.
 
-#callout[*The recommendation* is deliberately modest in scope and specific in mechanics: adopt the governed decision loop — registered criteria, provenance, scenarios, a stated risk appetite, and an advisor that challenges the decision-maker on the record — on one Petrobras capital decision, then scale it through the AI Center of Excellence and the Steering Committee. The reference implementation runs end to end offline; verification is an analyst-week, not a procurement cycle.]
+#callout[*The recommendation* is deliberately modest in scope and specific in mechanics: adopt the governed decision loop — registered criteria, provenance, scenarios, a stated risk appetite, and an advisor that challenges the decision-maker on the record — on one Petrobras capital decision, then scale it through the structures the company already operates. The reference implementation runs end to end offline; verification is an analyst-week, not a procurement cycle.]
 
 #pagebreak()
 = Purpose and context
@@ -328,7 +328,7 @@ A decision system of this kind yields a small set of standing, executive-legible
 - *The gym (do our rules beat instinct where it counts?).* Past situations rebuilt as of their date and scored on what happened, for the rule, the advisor and the human — the instrument that turns "AI helps" from a slogan into a number.
 - *The advisor's record (what did it cite, what did it ask, who overrode it?).* The grounding rate, the challenge transcripts and the override ledger — the audit trail of every decision in which the advisor took part.
 
-These instruments slot into the structures Petrobras already operates — the AI Steering Committee for portfolio-level review and the Center of Excellence as the owner of the reference implementation. No new committee is required; what changes is that the committee reviews a stated risk appetite, a register and a ledger instead of a pilot narrative.
+These instruments slot into the structures Petrobras already operates: the investment committee reviews the book and its tail, and the data and AI function owns the reference implementation. No new committee is required; what changes is that the committee reviews a stated risk appetite, a register and a ledger instead of a pilot narrative.
 
 #callout[*One cultural instrument matters as much as the five quantitative ones.* A book that looks too good is a risk to investigate, not a success to announce. This project encodes that norm twice: a cost grid that doubles the capital and halves the prize was added because the first result was generous, and a scenario engine that put expected values three orders of magnitude above their medians was repaired before any number from it was reported.]
 
@@ -339,7 +339,7 @@ The recommendation is deliberately modest in scope and specific in mechanics: pr
 
 + *Phase 1 — Diagnostic (about six weeks).* Select one recurring capital decision — the transfer map's strongest candidates are mature-field revitalization ranking and the transition power portfolio — and run a structured diagnostic: define the decision moment, inventory what is knowable at it, write the cost grid with its ranges and the criteria that will score the books, and state the risk appetite. Deliverable: a one-page decision dossier with the register, before any model is built.
 + *Phase 2 — Proof of value (about one quarter).* Reproduce this project's loop on that decision with Petrobras data: the timing engine where projects can fail to happen, the valuation with provenance, the joint scenarios, the four books, the gym on past decisions, and the advisor with its challenge round from day one. Success criteria declared in advance and scored on held-out scenarios; failures reported as registered.
-+ *Phase 3 — Scale through the CoE (following quarters).* The Center of Excellence owns the reference implementation, the register and the ledger; each business unit owns its decisions and its overrides; the AI Steering Committee reviews the five instruments across deployed decisions. Add domains by repeating Phases 1–2, not by bespoke builds.
++ *Phase 3 — Scale (following quarters).* The data and AI function owns the reference implementation, the register and the ledger; each business unit owns its decisions and its overrides; the investment committee reviews the five instruments across deployed decisions. Add domains by repeating Phases 1–2, not by bespoke builds.
 
 *Verification and handling.* The reference build behind this report runs end to end offline from public files; a reviewer can reproduce every figure and every number in this document, and replay every one of the advisor's recorded answers without a model call. This report is internal; distribution should follow normal information-classification handling, and nothing in Phase 2 requires exposing Petrobras data outside company infrastructure — the pattern travels to the data, not the reverse.
 
