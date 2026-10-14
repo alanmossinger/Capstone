@@ -6,7 +6,7 @@ else
 PYTHON := .venv/bin/python
 endif
 
-.PHONY: setup data eda features forecast energy economics scenarios portfolio record advisor figures numbers report poster app test all
+.PHONY: setup data eda features forecast energy economics scenarios portfolio record advisor figures numbers report poster petrobras app test all
 
 setup:            ## create .venv, install pinned packages, register the notebook kernel
 	python -m venv .venv
@@ -57,6 +57,9 @@ report: numbers   ## report.md + references.md → report/report.pdf and report/
 
 poster:           ## report/poster.pdf from report/poster.typ (needs typst)
 	typst compile --root . report/poster.typ report/poster.pdf
+
+petrobras:        ## report/Petrobras_Report.pdf, the executive edition, from report/petrobras_report.typ (needs typst)
+	typst compile --root . report/petrobras_report.typ report/Petrobras_Report.pdf
 
 app:              ## the Streamlit dashboard (reads results/ only)
 	$(PYTHON) -m streamlit run app/app.py

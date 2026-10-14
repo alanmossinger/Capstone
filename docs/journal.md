@@ -1356,3 +1356,21 @@ human in the loop; "do your recommendation" on the registered verdicts)**
 40. The scenario engine's cap of ±1.5 on a monthly log change (decision
     #81) is the one new assumption of the day; it keeps Winter Storm Uri an
     event rather than a level. Confirm, or name the bound you would use.
+
+**Evening — the Petrobras Report (Alan: "this report will become a Petrobras
+report, professional and executive, adjusted step by step; images inside
+the report; do not override, I need both")**
+
+- `report/petrobras_report.typ` → `make petrobras` → `report/Petrobras_Report.pdf`
+  (25 pages, letter), modelled on the Forecast-to-Dispatch Petrobras report:
+  cover, cover letter, contents, executive summary, purpose, nine stages
+  with the figure under the paragraph that discusses it and a business
+  consequence in every caption, results at a glance, why it matters for
+  Petrobras, the transfer map, the management model, recommendations,
+  limitations, one appendix (the record and the data). The academic report
+  `report/report.md` is untouched.
+- Stage 9 is written around the human-in-the-loop advisor: the five
+  questions, the answers, the verdict, the opposing case, the gate.
+- `tests/test_report.py` checks every number in the typst source against
+  `results/report_numbers.csv`. First pass is configuration and figures;
+  content is next, step by step with Alan.

@@ -81,3 +81,18 @@ def test_every_number_on_the_poster_is_in_report_numbers():
     poster = re.sub(r"\b\d+(?:\.\d+)?(?:mm|pt|em)\b|\d+%(?=\))", " ", poster)
     missing = sorted(numbers_in(poster) - cited)
     assert not missing, f"numbers on the poster not in results/report_numbers.csv: {missing}"
+
+
+def test_every_number_in_the_petrobras_report_is_in_report_numbers():
+    """The executive edition cites the report's numbers only; typst sizes, colours and file names are not quantities."""
+    table = pd.read_csv(paths.RESULTS / "report_numbers.csv")
+    cited = set()
+    for text in table["text"].astype(str):
+        cited |= numbers_in(text)
+    typ = (paths.REPORT / "petrobras_report.typ").read_text(encoding="utf-8")
+    typ = "\n".join(line for line in typ.splitlines() if not line.lstrip().startswith(("//", "#set", "#let", "#show")))
+    typ = re.sub(r'#(?:text|image|v|line|h|counter|page|outline|block)\([^)]*\)', " ", typ)
+    typ = re.sub(r"\b\d+(?:\.\d+)?(?:pt|em|in|fr)\b|\d+%(?=[,)])", " ", typ)  # typst sizes, column fractions and widths
+    typ = re.sub(r'"[^"]*\.svg"', " ", typ)  # figure file names
+    missing = sorted(numbers_in(typ) - cited)
+    assert not missing, f"numbers in the Petrobras report not in results/report_numbers.csv: {missing}"
