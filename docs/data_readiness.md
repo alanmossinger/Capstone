@@ -89,6 +89,6 @@ Event-date coverage by region in both editions: `results/lbnl_2026_date_coverage
 | Audits R10–R13 | no duplicate keys, no negative volumes, no missing priced month | R10 duplicate (lease, month) keys: 0; R10 duplicate (plant, prime mover, month) keys: 0; R11 lease-months with a negative volume: 0; R11 lease-months with zero oil and gas: 51603; R13 wti_usd_bbl: months missing in 2018-01→2024-12: 0; R13 hh_usd_mmbtu: months missing in 2018-01→2024-12: 0; R13 ercot_usd_mwh: months missing in 2018-01→2024-12: 0; R13 wti_usd_bbl_real2024: months missing in 2018-01→2024-12: 0; R13 hh_usd_mmbtu_real2024: months missing in 2018-01→2024-12: 0; R13 ercot_usd_mwh_real2024: months missing in 2018-01→2024-12: 0 | PASS |
 | Secrets safe | no API key in any saved page | 38 EIA-923 pages checked | PASS |
 
-Non-blocking lines are reported for the record; the ERCOT hourly pull replaces the assumed months when it runs (decision #64).
+Non-blocking lines are reported for the record; with the 2018–2023 hourly files on disk (decision #78) no ERCOT month is assumed, and without them the bridge of decision #64 fills 2020–2023.
 
 **Outcome (2026-10-14): GO**

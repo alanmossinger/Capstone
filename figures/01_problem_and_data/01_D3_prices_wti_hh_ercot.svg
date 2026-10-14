@@ -1106,7 +1106,6 @@ L 612.205624 356.498269
 L 613.927925 356.498269 
 " clip-path="url(#p58ebacca23)" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #0072b2; stroke-width: 1.6"/>
    </g>
-   <g id="line2d_97"/>
    <g id="patch_9">
     <path d="M 586.454349 360.591576 
 L 586.454349 129.004 
@@ -1118,7 +1117,7 @@ L 769.024028 360.591576
 " style="fill: none; stroke: #666666; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="legend_1">
-    <g id="line2d_98">
+    <g id="line2d_97">
      <path d="M 595.454349 142.102438 
 L 605.454349 142.102438 
 L 615.454349 142.102438 
@@ -1127,7 +1126,7 @@ L 615.454349 142.102438
     <g id="text_53">
      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #222222" x="623.454349" y="145.602438" transform="rotate(-0 623.454349 145.602438)">observed</text>
     </g>
-    <g id="line2d_99">
+    <g id="line2d_98">
      <path d="M 595.454349 157.103219 
 L 605.454349 157.103219 
 L 615.454349 157.103219 
@@ -1136,29 +1135,20 @@ L 615.454349 157.103219
     <g id="text_54">
      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #222222" x="623.454349" y="160.603219" transform="rotate(-0 623.454349 160.603219)">derived</text>
     </g>
-    <g id="line2d_100">
-     <path d="M 595.454349 172.104 
-L 605.454349 172.104 
-L 615.454349 172.104 
-" style="fill: none; stroke-dasharray: 1.6,2.64; stroke-dashoffset: 0; stroke: #999999; stroke-width: 1.6"/>
-    </g>
-    <g id="text_55">
-     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #222222" x="623.454349" y="175.604" transform="rotate(-0 623.454349 175.604)">assumed</text>
-    </g>
    </g>
   </g>
-  <g id="text_56">
+  <g id="text_55">
    <text style="font-weight: 700; font-size: 16px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #222222" transform="translate(14.04 22.9125)">WTI fell to $17/bbl in April 2020 and Henry Hub peaked at $8.8/MMBtu</text>
    <text style="font-weight: 700; font-size: 16px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #222222" transform="translate(14.04 41.3125)">in August 2022; the ERCOT series is observed for 2018–2024 and derived</text>
    <text style="font-weight: 700; font-size: 16px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #222222" transform="translate(14.04 61.325)">for 2017</text>
   </g>
-  <g id="text_57">
+  <g id="text_56">
    <text style="font-size: 13px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #666666" transform="translate(14.04 84.166187)">Monthly spot prices 2017–2024. WTI and Henry Hub: EIA (observed). ERCOT: DAM North hub monthly means</text>
    <text style="font-size: 13px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #666666" transform="translate(14.04 99.116187)">2018–2024 (observed), ICE North peak annual means 2017 (derived).</text>
   </g>
-  <g id="text_58">
+  <g id="text_57">
    <text style="font-size: 10.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #666666" transform="translate(14.04 447.168844)">Figure: Alan Mössinger. Data: EIA WTI and Henry Hub monthly spot prices. ERCOT DAM/RTM settlement point prices (gridstatus</text>
-   <text style="font-size: 10.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #666666" transform="translate(14.04 459.243844)">pull, 2024). Provenance: OBSERVED. Cohort: monthly prices 2017-01 to 2024-12</text>
+   <text style="font-size: 10.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #666666" transform="translate(14.04 459.243844)">pull, 2024; ERCOT yearly DAM files, 2018–2023). Provenance: OBSERVED. Cohort: monthly prices 2017-01 to 2024-12</text>
   </g>
  </g>
  <defs>

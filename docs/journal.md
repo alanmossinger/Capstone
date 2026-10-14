@@ -1340,10 +1340,12 @@ human in the loop; "do your recommendation" on the registered verdicts)**
   scorings; Appendix B carries the advisor's scores and the new prompts;
   the poster's numbers updated (design still to be replaced).
 
+- A clean `make all` reproduced every result offline (the advisor
+  replayed its 96 calls); 178 tests pass; report and poster rebuilt;
+  tagged v1.0 and pushed.
+
 **Next**
 
-- A clean `make all`, `make test`, `make report`, `make poster`, then the
-  v1.0 tag.
 - The new poster (open question 39).
 - Rotation of the EIA key and the ERCOT password (Alan).
 
