@@ -1402,3 +1402,11 @@ the report; do not override, I need both")**
   case for the other book, the human's flip condition beside the advisor's
   final say, the two books' numbers side by side, the gate and the ledger.
   `tests/test_challenge_app.py`. The portfolio dashboard is untouched.
+- Every figure's executive copy reviewed: figures of two or more panels
+  keep their drawn width (their panel titles collide when narrowed); the
+  F21 and F32 legends moved off the data; the diagrams F0 and F36 keep
+  their width. Floating figures were tried in the Petrobras report and
+  rejected: they drift across stage boundaries and away from the
+  paragraph that discusses them, which is the one thing the example gets
+  right. The gym's room-by-room numbers are collected
+  (`report_numbers.v7_questions`, `room_*` keys).

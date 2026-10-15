@@ -270,6 +270,7 @@ def save_fig(fig, name, caption, notebook, folder=None):
 
 EXECUTIVE_WIDTH = 9.0  # inches; placed at a 6.5-inch text width the 13-pt base type reads at about 9.5 pt, the size of an executive report's figures
 EXECUTIVE_DIR = paths.FIGURES / "executive"
+EXECUTIVE_KEEP_WIDTH = {"F0_overview", "F36_ai_workflow"}  # diagrams drawn in figure coordinates: their boxes and labels are placed for the 11-inch width
 
 
 def _shorten(text, limit):
@@ -298,7 +299,7 @@ def save_executive(fig, name, out_dir=EXECUTIVE_DIR):
     full text width with the source and provenance in the caption, as an
     executive report does, so the copy drops the source footer and keeps a
     subtitle of at most two lines; the finding stays in the image. The
-    figure is 9 inches wide (its height scaled; a figure of three or more
+    figure is 9 inches wide (its height scaled; a figure of two or more
     panels keeps its width) and saved with a tight bounding box, so at the report's 6.5-inch width the type reads at about
     0.72 of its point size: 15-pt titles at 11 pt, 12-pt ticks at 9 pt. The academic figure is restored afterwards, so
     the notebook shows what ``save_fig`` saved.
@@ -310,7 +311,8 @@ def save_executive(fig, name, out_dir=EXECUTIVE_DIR):
     for text in kept["texts"]:
         text.remove()
     panels = {round(ax.get_position().x0, 2) for ax in fig.axes if ax.get_position().width > 0.12}  # columns of panels (colour bars excluded)
-    exec_width = EXECUTIVE_WIDTH if len(panels) <= 2 else width  # three or more panels keep their width: their titles would collide
+    keep = len(panels) >= 2 or name in EXECUTIVE_KEEP_WIDTH  # two or more panels, or a diagram laid out in figure coordinates, keep their width: their titles and labels are set for it
+    exec_width = width if keep else EXECUTIVE_WIDTH
     fig.set_size_inches(exec_width, height * exec_width / width)
     exec_height = fig.get_figheight()
     title_lines = textwrap.wrap(kept["title"], 62)

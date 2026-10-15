@@ -28,6 +28,8 @@
 #show heading.where(level: 2): it => { v(6pt); block(sticky: true, text(fill: blue, size: 12.5pt, weight: "bold")[#it.body]); v(3pt) }
 #show figure.caption: it => block(width: 100%, align(left, text(size: 9pt, style: "italic", fill: muted)[#it]))
 #show figure: set block(breakable: false, above: 10pt, below: 10pt)
+#show table: set block(breakable: true)
+
 #set figure(gap: 6pt)
 #show table: set text(size: 9.2pt)
 #show table.cell.where(y: 0): set text(weight: "bold")
@@ -35,7 +37,7 @@
 #show link: set text(fill: blue)
 
 // a figure from figures/, full text width, with the finding as caption and the consequence for the committee
-#let fig(path, caption, consequence, width: 100%) = figure(
+#let fig(path, caption, consequence, width: 92%) = figure(
   image("../figures/executive/" + path.split("/").last(), width: width),  // the executive copy: the finding and one line inside, the source in the caption
   caption: [#caption #text(fill: ink)[_Business consequence:_ #consequence]],
 )
@@ -314,8 +316,8 @@ Over the sixteen situations the rule's mean regret against hindsight was \$18M, 
 #table(
   columns: (2.6fr, 1.1fr, 1.1fr, 1.3fr, 3fr),
   [Situation], [Instinct], [Rule], [Rule − instinct], [What the room shows],
-  [Oil collapse from June 2014], [\$9.6B], [\$10.7B], [+\$1.1B], [a budget-bound optimizer beats a greedy ranking of leases],
-  [The 2020 collapse from January 2020], [\$11.6B], [\$12.9B], [+\$1.3B], [the same, on a path that recovered before the barrels arrived],
+  [Oil collapse from June 2014], [\$9.6B], [\$10.7B], [+\$1.1B], [the optimizer beats a greedy ranking of leases],
+  [The 2020 collapse from January 2020], [\$11.6B], [\$12.9B], [+\$1.3B], [the same; the path recovered before the barrels arrived],
   [The 2022 spike from March 2022], [\$11.7B], [\$13.0B], [+\$1.3B], [the rule matched hindsight],
   [ERCOT 2017 two years in], [\$430M], [\$471M], [+\$41M], [the decisive room: the agreement is known and the rule uses it],
   [ERCOT 2017 at entry], [\$1,059M], [\$1,042M], [−\$17M], [at entry the rule and instinct fund almost the same requests],

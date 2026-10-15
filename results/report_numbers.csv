@@ -2042,11 +2042,11 @@ v6_hz_power_20,−$0.84B,-841408999.3232245,results/horizon_view.csv,requests wi
 v6_hz_members_3,12,12,results/horizon_books.csv,members of the book at 3 years
 v6_hz_members_5,19,19,results/horizon_books.csv,members of the book at 5 years
 v6_hz_members_10,20,20,results/horizon_books.csv,members of the book at 10 years
-v6_adv_recorded,96,96,results/advisor_evaluation.csv,recorded answers
+v6_adv_recorded,97,97,results/advisor_evaluation.csv,recorded answers
 v6_adv_missing,0,0,results/advisor_evaluation.csv,calls with no record and no key
-adv_recorded,96,96,results/advisor_runs.jsonl,recorded answers
-adv_grounding,94%,0.943,results/advisor_evaluation.csv,mean share of the advisor's numbers found in its tables
-adv_fully_grounded,52%,0.521,results/advisor_evaluation.csv,answers with every number grounded
+adv_recorded,97,97,results/advisor_runs.jsonl,recorded answers
+adv_grounding,94%,0.942,results/advisor_evaluation.csv,mean share of the advisor's numbers found in its tables
+adv_fully_grounded,52%,0.515,results/advisor_evaluation.csv,answers with every number grounded
 adv_jaccard_d,0.89,0.893,results/advisor_evaluation.csv,overlap of the advisor's book with book D over the seven stresses
 adv_names_d,3 of 7,0.429,results/advisor_evaluation.csv,stresses in which the advisor names book D
 adv_gym_vs_instinct,$228M,227.78521410375717,results/decision_gym_scores.csv,"advisor minus instinct, mean per situation"
@@ -2161,6 +2161,54 @@ q_gym_lease_mean,$1.2B,1241.4969750459234,results/decision_gym_by_kind.csv,"leas
 q_gym_queue_mean,$3.7M,3.68998783851609,results/decision_gym_by_kind.csv,"queue rooms: rule minus instinct, mean"
 q_gym_n_queue,13,13,results/decision_gym_by_kind.csv,queue rooms
 q_gym_ercot_gate,$41M,41.0,results/decision_gym_rooms.csv,ERCOT 2017 two-year room: rule minus instinct
+room_oil_collapse_from_june_2014_instinct,$9.6B,9566.9,results/decision_gym_rooms.csv,oil collapse from June 2014: instinct's realized value
+room_oil_collapse_from_june_2014_rule,$10.7B,10652.4,results/decision_gym_rooms.csv,oil collapse from June 2014: the rule's realized value
+room_oil_collapse_from_june_2014_diff,+$1.1B,1085.5,results/decision_gym_rooms.csv,oil collapse from June 2014: rule minus instinct
+room_the_2020_collapse_from_january_2020_instinct,$11.6B,11616.0,results/decision_gym_rooms.csv,the 2020 collapse from January 2020: instinct's realized value
+room_the_2020_collapse_from_january_2020_rule,$12.9B,12930.9,results/decision_gym_rooms.csv,the 2020 collapse from January 2020: the rule's realized value
+room_the_2020_collapse_from_january_2020_diff,+$1.3B,1314.9,results/decision_gym_rooms.csv,the 2020 collapse from January 2020: rule minus instinct
+room_the_2022_spike_from_march_2022_instinct,$11.7B,11699.8,results/decision_gym_rooms.csv,the 2022 spike from March 2022: instinct's realized value
+room_the_2022_spike_from_march_2022_rule,$13.0B,13023.9,results/decision_gym_rooms.csv,the 2022 spike from March 2022: the rule's realized value
+room_the_2022_spike_from_march_2022_diff,+$1.3B,1324.1,results/decision_gym_rooms.csv,the 2022 spike from March 2022: rule minus instinct
+room_caiso_2017_2_year_gate_instinct,$-5M,-4.9,results/decision_gym_rooms.csv,CAISO 2017 2-year gate: instinct's realized value
+room_caiso_2017_2_year_gate_rule,$0M,0.0,results/decision_gym_rooms.csv,CAISO 2017 2-year gate: the rule's realized value
+room_caiso_2017_2_year_gate_diff,$4.9M,4.9,results/decision_gym_rooms.csv,CAISO 2017 2-year gate: rule minus instinct
+room_caiso_2017_entry_instinct,$-6M,-6.3,results/decision_gym_rooms.csv,CAISO 2017 entry: instinct's realized value
+room_caiso_2017_entry_rule,$0M,0.0,results/decision_gym_rooms.csv,CAISO 2017 entry: the rule's realized value
+room_caiso_2017_entry_diff,$6.3M,6.3,results/decision_gym_rooms.csv,CAISO 2017 entry: rule minus instinct
+room_caiso_2018_entry_instinct,$-4M,-3.5,results/decision_gym_rooms.csv,CAISO 2018 entry: instinct's realized value
+room_caiso_2018_entry_rule,$0M,0.0,results/decision_gym_rooms.csv,CAISO 2018 entry: the rule's realized value
+room_caiso_2018_entry_diff,$3.5M,3.5,results/decision_gym_rooms.csv,CAISO 2018 entry: rule minus instinct
+room_caiso_2019_entry_instinct,$-3M,-2.6,results/decision_gym_rooms.csv,CAISO 2019 entry: instinct's realized value
+room_caiso_2019_entry_rule,$0M,0.0,results/decision_gym_rooms.csv,CAISO 2019 entry: the rule's realized value
+room_caiso_2019_entry_diff,$2.6M,2.6,results/decision_gym_rooms.csv,CAISO 2019 entry: rule minus instinct
+room_ercot_2017_2_year_gate_instinct,$430M,430.4,results/decision_gym_rooms.csv,ERCOT 2017 2-year gate: instinct's realized value
+room_ercot_2017_2_year_gate_rule,$471M,471.4,results/decision_gym_rooms.csv,ERCOT 2017 2-year gate: the rule's realized value
+room_ercot_2017_2_year_gate_diff,$41M,41.0,results/decision_gym_rooms.csv,ERCOT 2017 2-year gate: rule minus instinct
+room_ercot_2017_entry_instinct,"$1,059M",1058.6,results/decision_gym_rooms.csv,ERCOT 2017 entry: instinct's realized value
+room_ercot_2017_entry_rule,"$1,042M",1041.6,results/decision_gym_rooms.csv,ERCOT 2017 entry: the rule's realized value
+room_ercot_2017_entry_diff,$-17M,-17.0,results/decision_gym_rooms.csv,ERCOT 2017 entry: rule minus instinct
+room_ercot_2018_entry_instinct,$196M,196.1,results/decision_gym_rooms.csv,ERCOT 2018 entry: instinct's realized value
+room_ercot_2018_entry_rule,$197M,196.8,results/decision_gym_rooms.csv,ERCOT 2018 entry: the rule's realized value
+room_ercot_2018_entry_diff,$0.6M,0.6,results/decision_gym_rooms.csv,ERCOT 2018 entry: rule minus instinct
+room_ercot_2018_entry_budget_20_instinct,$198M,197.9,results/decision_gym_rooms.csv,"ERCOT 2018 entry, budget −20%: instinct's realized value"
+room_ercot_2018_entry_budget_20_rule,$198M,197.9,results/decision_gym_rooms.csv,"ERCOT 2018 entry, budget −20%: the rule's realized value"
+room_ercot_2018_entry_budget_20_diff,$-0.0M,-0.0,results/decision_gym_rooms.csv,"ERCOT 2018 entry, budget −20%: rule minus instinct"
+room_ercot_2019_entry_instinct,$328M,328.2,results/decision_gym_rooms.csv,ERCOT 2019 entry: instinct's realized value
+room_ercot_2019_entry_rule,$329M,329.0,results/decision_gym_rooms.csv,ERCOT 2019 entry: the rule's realized value
+room_ercot_2019_entry_diff,$0.8M,0.8,results/decision_gym_rooms.csv,ERCOT 2019 entry: rule minus instinct
+room_pjm_2017_2_year_gate_instinct,$14M,14.0,results/decision_gym_rooms.csv,PJM 2017 2-year gate: instinct's realized value
+room_pjm_2017_2_year_gate_rule,$14M,14.0,results/decision_gym_rooms.csv,PJM 2017 2-year gate: the rule's realized value
+room_pjm_2017_2_year_gate_diff,$0.0M,0.0,results/decision_gym_rooms.csv,PJM 2017 2-year gate: rule minus instinct
+room_pjm_2017_entry_instinct,$3M,2.7,results/decision_gym_rooms.csv,PJM 2017 entry: instinct's realized value
+room_pjm_2017_entry_rule,$5M,5.1,results/decision_gym_rooms.csv,PJM 2017 entry: the rule's realized value
+room_pjm_2017_entry_diff,$2.4M,2.4,results/decision_gym_rooms.csv,PJM 2017 entry: rule minus instinct
+room_pjm_2018_entry_instinct,$-5M,-4.6,results/decision_gym_rooms.csv,PJM 2018 entry: instinct's realized value
+room_pjm_2018_entry_rule,$-4M,-3.6,results/decision_gym_rooms.csv,PJM 2018 entry: the rule's realized value
+room_pjm_2018_entry_diff,$1.0M,1.0,results/decision_gym_rooms.csv,PJM 2018 entry: rule minus instinct
+room_pjm_2019_entry_instinct,$-3M,-3.4,results/decision_gym_rooms.csv,PJM 2019 entry: instinct's realized value
+room_pjm_2019_entry_rule,$-2M,-1.5,results/decision_gym_rooms.csv,PJM 2019 entry: the rule's realized value
+room_pjm_2019_entry_diff,$1.9M,1.9,results/decision_gym_rooms.csv,PJM 2019 entry: rule minus instinct
 q_gym_empty,6,6,results/decision_gym_situations.csv,queue rooms where no drawn request operated
 q_ablation_jaccard,1.00,1.0,results/posthoc_ablation_naive_forecasts.csv,overlap with the registered book D
 rb_c20_pass,3,3,results/registered_bridged/success_criteria_v6_scored.csv,"C20 lines passed, bridged prices"

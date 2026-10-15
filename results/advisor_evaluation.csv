@@ -1,8 +1,8 @@
 metric,value
 calls this run (replayed / live / missing),35 / 0 / 0
-recorded answers in advisor_runs.jsonl,96
-mean number-grounding rate over recorded answers,0.943
-answers with every number grounded (share),0.521
+recorded answers in advisor_runs.jsonl,97
+mean number-grounding rate over recorded answers,0.942
+answers with every number grounded (share),0.515
 scenario recommendations recorded (of 7 stresses + 6 horizons),13 of 13
 mean Jaccard of recommended members to book D (stresses),0.893
 share naming book D (stresses),0.429

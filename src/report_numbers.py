@@ -1756,6 +1756,18 @@ def v7_questions():
     rooms = read("decision_gym_rooms.csv").set_index("situation")
     v = rooms.loc["ERCOT 2017 2-year gate", "rule_minus_instinct"]
     add("q_gym_ercot_gate", f"${v:,.0f}M", v, "results/decision_gym_rooms.csv", "ERCOT 2017 two-year room: rule minus instinct")
+    # the gym room by room (the Petrobras report's Stage 8 table): instinct and the rule, $M for queue rooms, $B for the lease regimes
+    for situation, r in rooms.iterrows():
+        slug = re.sub(r"[^a-z0-9]+", "_", situation.lower()).strip("_")
+        if r["kind"] == "lease":
+            add(f"room_{slug}_instinct", f"${r['instinct'] / 1e3:.1f}B", r["instinct"], "results/decision_gym_rooms.csv", f"{situation}: instinct's realized value")
+            add(f"room_{slug}_rule", f"${r['optimizer'] / 1e3:.1f}B", r["optimizer"], "results/decision_gym_rooms.csv", f"{situation}: the rule's realized value")
+            add(f"room_{slug}_diff", f"+${r['rule_minus_instinct'] / 1e3:.1f}B", r["rule_minus_instinct"], "results/decision_gym_rooms.csv", f"{situation}: rule minus instinct")
+        else:
+            add(f"room_{slug}_instinct", f"${r['instinct']:,.0f}M", r["instinct"], "results/decision_gym_rooms.csv", f"{situation}: instinct's realized value")
+            add(f"room_{slug}_rule", f"${r['optimizer']:,.0f}M", r["optimizer"], "results/decision_gym_rooms.csv", f"{situation}: the rule's realized value")
+            d = r["rule_minus_instinct"]
+            add(f"room_{slug}_diff", (f"${d:,.1f}M" if abs(d) < 10 else f"${d:,.0f}M"), d, "results/decision_gym_rooms.csv", f"{situation}: rule minus instinct")
     sit = read("decision_gym_situations.csv")
     q = sit[sit["kind"] == "queue"]
     add("q_gym_empty", str(int((q["hindsight_best_$M"] <= 0).sum())), int((q["hindsight_best_$M"] <= 0).sum()), "results/decision_gym_situations.csv", "queue rooms where no drawn request operated")
