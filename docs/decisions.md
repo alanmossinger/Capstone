@@ -1218,3 +1218,33 @@ alternative rejected.
     fool myself) is written from the registered record; the Slack one-pager
     `docs/evaluation_plan.md` and its PDF are copied from it, so the two
     cannot diverge, and every number in both is in `report_numbers.csv`.
+86. **`value.pjm_capacity_revenue` reads the RPM table from `pdftotext -layout`**
+    (2026-10-17, found by a clean-environment reproduction). The plain text
+    order of `pdftotext` differs between poppler versions, and poppler 24.02
+    on Linux drops the body of Table 5-23 from the default output entirely,
+    so the parser that split the text after the caption failed with an
+    IndexError in notebook 07. Layout mode keeps each row on one line (year,
+    weighted average RPM price, cleared UCAP); the rows are matched by that
+    shape, the "2007/2008" delivery-year rows of the next table are excluded,
+    and the twenty calendar years 2007–2026 are asserted. The parsed prices
+    equal the committed `results/capacity_prices.csv` to the cent, so no
+    result changes. README names `pdftotext` as a requirement. *Rejected:*
+    typing the twenty prices into `config.py` (the rule is that no cited
+    number is typed by hand); a Python PDF library (a new dependency for one
+    table).
+87. **Reproduction record for v1.1** (2026-10-17). (a) On the author's
+    machine, a full `make all` (01 → 10, 66 minutes) changed only the
+    decision ledger's dates and float rounding in the tournament tables
+    (commit 61a8177; no cited number moved); every other notebook, result,
+    processed table and figure came back byte-identical. (b) In a clean Linux environment built from
+    `requirements.txt` on Python 3.11, notebooks 02 → 10 ran end to end from
+    notebook 01's outputs (01 needs the EIA key and network); of 310 result
+    files 249 were identical or equal within 1e-6 and 61 differed by
+    floating-point drift (typically 1e-5 to 1e-3 relative); every registered
+    verdict (C1–C24, the tournament) was identical; of the 2,241 numbers the
+    report cites, 2,234 were identical as printed, two moved in the last digit
+    ($5.9B → $5.8B at the low uplift; $13.83B → $13.82B on the flat path) and
+    five are advisor statistics that changed only because that environment
+    had a live backend and the replay missed 17 of 114 calls on the drifted
+    tables; 182 tests passed. The committed results stay as the author's
+    machine produced them.

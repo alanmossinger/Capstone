@@ -77,18 +77,26 @@ def pjm_capacity_revenue(pdf=RAW_VALUE / "2024-som-pjm-sec5.pdf"):
 
     Notes
     -----
-    The table is read from the PDF's text (``pdftotext``), not typed: the
-    years run as one list and the prices as another, in the same order.
+    The table is read from the PDF's text (``pdftotext -layout``), not typed.
+    Layout mode keeps each table row on one line (year, weighted average RPM
+    price, cleared UCAP), so the rows are matched by their shape; the plain
+    text order of ``pdftotext`` without ``-layout`` differs between poppler
+    versions and, on some, drops the table body from the text entirely.
     """
-    text = subprocess.run(["pdftotext", str(pdf), "-"], capture_output=True, text=True, encoding="utf-8",
-                          errors="replace").stdout
+    text = subprocess.run(["pdftotext", "-layout", str(pdf), "-"], capture_output=True, text=True,
+                          encoding="utf-8", errors="replace").stdout
     start = text.rfind("Table 5-23 RPM revenue by calendar year")
-    block = text[start:start + 3000]
-    year_list = block.split("Year", 1)[1].split("Weighted Average")[0]  # the list after the "Year" header, before the price header
-    years = [int(y) for y in re.findall(r"\b(20[0-2]\d)\b", year_list)]
-    prices = [float(p.replace(",", "")) for p in re.findall(r"\$(\d{2,3}\.\d{2})\b", block.split("Effective Days")[0])]
-    assert len(years) == len(prices) == 20, f"unexpected table shape: {len(years)} years, {len(prices)} prices"
-    return pd.Series(prices, index=pd.Index(years, name="year"), name="usd_per_mw_day")
+    block = "\n".join(text[start:].split("\n")[:60])  # the caption, the header and the twenty rows
+    # a calendar year (not a "2007/2008" delivery year), the $ per MW-day price, the cleared UCAP
+    row = re.compile(r"(?<![/\d])(20[0-2]\d)\s+\$(\d{2,3}\.\d{2})\s+[\d,]+\.\d\b")
+    found = {}
+    for year, price in row.findall(block):
+        found.setdefault(int(year), float(price))  # the first match per year is the row of this table
+        if len(found) == 20:
+            break
+    assert sorted(found) == list(range(2007, 2027)), f"unexpected table shape: years {sorted(found)}"
+    years = sorted(found)
+    return pd.Series([found[y] for y in years], index=pd.Index(years, name="year"), name="usd_per_mw_day")
 
 
 ELCC_CLASSES = ["Onshore Wind", "Offshore Wind", "Solar Fixed", "Solar Tracking", "Landfill", "Intermittent Hydro",

@@ -1482,3 +1482,20 @@ chapter; the Oct 19 proposal reframed. Decisions #83–#85.
   keep, fix or discard?
 - Carried: F0 four-stage labels; the Petrobras report's title; the live
   challenge round; the ±1.5 cap; the poster refresh; key rotation.
+
+**Later — the end-to-end runs before the tag**
+
+- Data: all 39 pinned raw files (25 in `manifest_v5.json`, 14 in
+  `config.py`) match their SHA-256 hashes.
+- `make all` on this machine, 01 → 10: only the decision ledger's dates and
+  float rounding in the tournament tables changed (commit 61a8177, no cited
+  number moved); every other notebook, result, processed table and figure
+  came back byte-identical.
+- A clean Linux environment (Python 3.11, `requirements.txt`) ran 02 → 10
+  end to end. Notebook 07 failed on the first pass: `pdftotext` without
+  `-layout` drops Table 5-23 on poppler 24.02, so `value.pjm_capacity_revenue`
+  now reads the layout rows (decision #86; same prices to the cent). Second
+  pass clean; 182 tests pass there; the registered verdicts and 2,234 of
+  2,241 cited numbers identical (decision #87 has the record).
+- README: `pdftotext` named as a requirement; the advisor replay's exact-text
+  key explained.
