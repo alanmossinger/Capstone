@@ -52,3 +52,45 @@ def test_paired_bootstrap_passes_for_a_clearly_better_book():
     assert out["pass"] and out["low"] > 0
     out2 = opt.score_books({"better": better, "worse": worse}, A)
     assert out2.loc[0, "metric"] > out2.loc[1, "metric"]
+
+
+def test_capped_comparators_stay_within_budget_and_cap_on_random_instances():
+    rng = np.random.default_rng(7)
+    groups = np.array(["lease"] * 10 + ["gas"] * 4 + ["wind"] * 4)
+    for _ in range(50):
+        mu = rng.normal(2.0, 2.0, size=18)
+        capex = rng.uniform(1.0, 10.0, size=18)
+        budget = 0.4 * capex.sum()
+        for x in (opt.top_n_by_npv(mu, capex, budget, groups=groups, group_cap=0.4),
+                  opt.equal_capital_by_sector(mu, capex, np.where(groups == "lease", "oil", "power"), budget, groups=groups, group_cap=0.4)):
+            assert opt.violations(x, capex, budget, groups, 0.4) == {}
+
+
+def test_without_the_cap_top_n_can_breach_it_and_violations_reports_it():
+    mu = np.array([9.0, 8.0, 7.0, 1.0])
+    capex = np.array([10.0, 10.0, 10.0, 10.0])
+    groups = np.array(["lease", "lease", "lease", "wind"])
+    x = opt.top_n_by_npv(mu, capex, budget=30.0)  # the comparator as first run: three leases, 100% in one group
+    assert set(opt.violations(x, capex, 30.0, groups, 0.4)) == {"lease"}
+    capped = opt.top_n_by_npv(mu, capex, budget=30.0, groups=groups, group_cap=0.4)
+    assert capped.tolist() == [1, 0, 0, 1]  # one lease (10 ≤ 12), the next lease would breach, wind fills
+
+
+def test_cvar_averages_exactly_the_worst_five_percent_of_2000():
+    losses = np.arange(2000, dtype=float)  # the worst 100 are 1900 … 1999
+    assert opt.tail_count(2000, 0.95) == 100
+    assert opt.cvar(losses, 0.95) == np.mean(np.arange(1900, 2000))
+
+
+def test_cvar_equals_the_ru_objective_at_the_optimum():
+    A, mu = _scenarios(S=400)
+    capex = np.ones(8) * 10.0
+    out = opt.solve_milp(A, capex, budget=30.0, lam=1.0)
+    assert abs(out["cvar_loss"] - opt.cvar(-(A @ out["x"]), 0.95)) < 1e-9
+
+
+def test_one_cvar_definition_across_modules():
+    from src import portfolio, scenarios
+    npv = np.random.default_rng(3).normal(10.0, 5.0, size=2000)
+    assert abs(scenarios.risk_measures(npv)["cvar"] - (-opt.cvar(-npv, 0.95))) < 1e-9
+    assert abs(portfolio.expected_shortfall(npv, 0.95) - (-opt.cvar(-npv, 0.95))) < 1e-9

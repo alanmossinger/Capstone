@@ -1499,3 +1499,48 @@ chapter; the Oct 19 proposal reframed. Decisions #83–#85.
   2,241 cited numbers identical (decision #87 has the record).
 - README: `pdftotext` named as a requirement; the advisor replay's exact-text
   key explained.
+
+## Session 15 — 2026-10-17: the independent audit, the v8 plan, the implementation corrections
+
+**Done**
+
+- The open question on `src/value.py` is closed: the `-layout` parser was
+  committed as decision #86. It needs poppler (scoop's 25.07 reads all twenty
+  years); Git Bash's mingw Xpdf 4.00 finds only the even years, so the
+  pipeline runs with poppler first on the PATH.
+- An independent audit of report v6 and its code: `docs/audit_2026-10-17.md`
+  (issue register with severity, evidence, correction, files). Five
+  findings change the memo: A1 (books A and B ignored the registered 40%
+  technology cap), E1 (10 of the 20 ERCOT candidates were withdrawn or
+  operating by the end of 2024; all five gas requests are resolved), E2 (10
+  of the 20 lease baselines fitted with zero decline), G1 (the gym's lease
+  rooms use 2024 leases, 2024 fits and the realized future's mean), G5 (the
+  advisor trails the rule by $8.0M a situation, CI [−17.5, −1.3]).
+- `docs/implementation_plan_v8.md`: freeze → implementation corrections →
+  framing corrections (need Alan) → six decision layers → the
+  decision-process evaluation → figures → report. Decisions #88–#89.
+- Phase A: `results/registered_v7/` holds the v7 scoring at 61a8177, with a
+  hash manifest and `tests/test_registered_frozen.py`.
+- Phase B (implementation corrections A1, A13, E10, G2): the cap on the
+  comparators, one CVaR with the right tail count, the gas heat content, the
+  gate floor from the pool's expected rate. Notebooks 07, 08, 09, 06, 10
+  rerun. Against the frozen record: C21 −$19M [−71, +33] (was −$61M; still
+  FAIL, the interval now spans zero), C22 +$46M (FAIL), C23 and C24 PASS as
+  before. Committee grid: capped A expects $5.52B with a $0.44B worst-5% loss;
+  D $5.86B and $0.29B; D − A = +$494M [+423, +554]. The queue rooms' rule edge
+  over instinct is now −$0.65M a room (was +$3.69M). 197 tests pass; the
+  three report-number tests fail because the report text is v6 and the
+  numbers moved — the report is rewritten once Phase C lands.
+- Work is on branch `v8-corrections`; `main` keeps the consistent v6 report.
+
+**Next**
+
+- Phase C after Alan's four decisions (decision date, decline floor, power
+  budget charge, scope and word limit); then Phase D.
+
+**Open questions for Alan**
+
+- The four decisions of `docs/implementation_plan_v8.md`.
+- Push `v8-corrections`?
+- Carried: F0 labels; the Petrobras title; the live challenge round; the
+  ±1.5 cap; key rotation.

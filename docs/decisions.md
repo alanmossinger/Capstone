@@ -1248,3 +1248,35 @@ alternative rejected.
     had a live backend and the replay missed 17 of 114 calls on the drifted
     tables; 182 tests passed. The committed results stay as the author's
     machine produced them.
+88. **The 17 October audit and the v8 plan; the v7 record frozen**
+    (2026-10-17). An independent audit of report v6 and its code
+    (`docs/audit_2026-10-17.md`) found that the prediction layer holds and
+    that valuation, allocation and the gym do not: the comparator books A and
+    B were not held to the registered 40% technology cap (A1), ten of the
+    twenty ERCOT candidates were already withdrawn or operating by the end of
+    2024 (E1), ten of the twenty lease baselines were fitted with zero decline
+    (E2), and the gym's edge came from lease rooms built with 2024 data (G1).
+    The scored record as it stood at commit 61a8177 is copied to
+    `results/registered_v7/` with a hash manifest and a test, and is never
+    edited; corrections are scored beside it. `docs/implementation_plan_v8.md`
+    orders the work: freeze, implementation corrections, framing corrections,
+    the decision layers, the evaluation of decision processes, figures,
+    report. *Rejected:* rescoring the registered criteria in place (it would
+    erase what was registered); fixing only the report text (the numbers
+    themselves move).
+89. **Implementation corrections, labelled as such** (2026-10-17). Where the
+    code did not do what the registration or the docstring said, the code is
+    fixed and the main tables rerun, and the change is called an
+    *implementation correction*, not a new result: (A1) `top_n_by_npv` and
+    `equal_capital_by_sector` take the technology cap, and notebook 09 passes
+    it to all four books, with `optimizer.violations` checking every book;
+    (A13) one CVaR, `optimizer.cvar`, averaging exactly the worst
+    `tail_count` scenarios (100 of 2,000, not 101), used by
+    `scenarios.risk_measures` too; (E10) gas revenue multiplies Mcf by 1.037
+    MMBtu/Mcf (it divided); (G2) the gate rule's floor is the pool's expected
+    rate from the probabilities the gate reads, not the cohort's realized
+    rate. The registered verdicts in `results/registered_v7/` stand as
+    scored. *Rejected:* a training-cohort realized rate as the floor (the
+    five-year rate of entrants through 2016 closes in 2021, after the 2017–2019
+    gates; the latest cohort closed before a gate is 2012–2014, a level the
+    queue has since left).

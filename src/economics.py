@@ -58,7 +58,7 @@ COMMITTEE_GRID = pd.DataFrame([
 def committee_case(case):
     """Overrides of the committee grid for one case, to pass as ``grid=`` on top of the registered case."""
     return dict(zip(COMMITTEE_GRID["item"], COMMITTEE_GRID[case]))
-MCF_PER_MMBTU = 1.0 / 1.037  # 1 Mcf of pipeline gas ≈ 1.037 MMBtu
+MMBTU_PER_MCF = 1.037  # 1 Mcf of pipeline gas ≈ 1.037 MMBtu; revenue = Mcf × MMBtu/Mcf × $/MMBtu (the first version divided, audit E10)
 BOE_PER_MCF = 1.0 / 6.0  # 6 Mcf per barrel of oil equivalent
 ECONOMIC_LIMIT_BOE_PER_MONTH = 300.0  # a lease below this rate is shut in and abandoned (ASSUMED)
 VALUATION_MONTH = pd.Timestamp("2025-01-01")  # common valuation date of every candidate
@@ -136,7 +136,7 @@ def lease_cash_flows(base_oil, base_gas, wti, hh, n_wells, case="base", grid=Non
     oil, gas, boe = oil * alive, gas * alive, boe * alive
     price_oil = np.maximum(np.asarray(wti, float)[:months] - g["oil_differential_usd_per_bbl"], 0.0)
     price_gas = np.maximum(np.asarray(hh, float)[:months] - g["gas_differential_usd_per_mmbtu"], 0.0)
-    revenue = oil * price_oil + gas * MCF_PER_MMBTU * price_gas
+    revenue = oil * price_oil + gas * MMBTU_PER_MCF * price_gas
     royalty = revenue * g["royalty_share"]
     opex = boe * g["opex_usd_per_boe"]
     capex = np.zeros(months)

@@ -1,0 +1,19 @@
+book,n_selected,expected_npv,cvar_loss,p_negative,metric,scenarios,revenue_case
+A top-N NPV,27,15814278425.67934,-5064751221.330808,0.0,20879029647.010147,primary (selection set),contracted
+B equal capital,25,15703811531.157827,-5044181115.324007,0.0,20747992646.481834,primary (selection set),contracted
+C deterministic MILP,26,15689657199.938206,-5097571139.268876,0.0,20787228339.20708,primary (selection set),contracted
+D risk-aware MILP,26,15663458150.432922,-5148802139.2720375,0.0,20812260289.70496,primary (selection set),contracted
+leases only (D rule),20,15317750289.325142,-4990252405.719015,0.0,20308002695.04416,primary (selection set),contracted
+power only (D rule),3,97120178.35715427,17689169.972390484,0.705,79431008.38476378,primary (selection set),contracted
+A top-N NPV,27,16067572581.465712,-4899138048.700656,0.0,20966710630.166367,held-out (scoring set),contracted
+B equal capital,25,15949350612.924377,-4933950795.255785,0.0,20883301408.18016,held-out (scoring set),contracted
+C deterministic MILP,26,15935060292.998438,-4989248205.219616,0.0,20924308498.218056,held-out (scoring set),contracted
+D risk-aware MILP,26,15921292114.426754,-4984063786.901941,0.0,20905355901.328697,held-out (scoring set),contracted
+leases only (D rule),20,15559511558.943256,-4923258031.307605,0.0,20482769590.250862,held-out (scoring set),contracted
+power only (D rule),3,98518894.37235852,16459496.663984085,0.7065,82059397.70837443,held-out (scoring set),contracted
+A top-N NPV,27,16018198853.59857,-4796217843.496876,0.0,20814416697.095444,held-out (scoring set),merchant
+B equal capital,25,15927024716.833696,-4868171255.865669,0.0,20795195972.699364,held-out (scoring set),merchant
+C deterministic MILP,26,15863111458.479168,-4828694575.982489,0.0,20691806034.461655,held-out (scoring set),merchant
+D risk-aware MILP,26,15854820628.682133,-4794165164.692272,0.0,20648985793.374405,held-out (scoring set),merchant
+leases only (D rule),20,15559511558.943256,-4923258031.307605,0.0,20482769590.250862,held-out (scoring set),merchant
+power only (D rule),3,27325472.9419564,427462062.2423226,0.852,-400136589.3003662,held-out (scoring set),merchant

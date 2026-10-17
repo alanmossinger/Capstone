@@ -23,6 +23,7 @@ import pandas as pd
 from scipy import stats
 
 from src import economics as ec
+from src import optimizer as opt
 
 SERIES = ["wti_usd_bbl", "hh_usd_mmbtu", "ercot_usd_mwh"]
 STRESSES = {  # name -> what moves; every multiplier is ASSUMED and stated in the report
@@ -216,8 +217,10 @@ def risk_measures(npv_draws, level=0.95):
     """P(NPV < 0), mean, VaR and CVaR of an NPV distribution (losses in the lower tail)."""
     x = np.asarray(npv_draws, float)
     q = np.quantile(x, 1 - level)
+    # CVaR is the mean NPV of the worst (1 − level) share, the same count as optimizer.cvar (audit A13):
+    # one definition across the optimizer, the risk tables and the gates
     return {"mean": float(x.mean()), "sd": float(x.std()), "p_negative": float((x < 0).mean()), "var": float(q),
-            "cvar": float(x[x <= q].mean()) if (x <= q).any() else float(q)}
+            "cvar": -opt.cvar(-x, level)}
 
 
 def stress_prices(base_prices, stress, wti_2020_path=None):

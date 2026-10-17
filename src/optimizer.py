@@ -24,11 +24,21 @@ import pandas as pd
 from scipy.optimize import LinearConstraint, milp, Bounds
 
 
+def tail_count(n, level=0.95):
+    """Number of scenarios in the worst (1 − level) share of ``n``.
+
+    Notes
+    -----
+    Rounded before the ceiling: (1 − 0.95) × 2000 is 100.00000000000009 in
+    floating point, which an unrounded ceiling turns into 101 (audit A13).
+    """
+    return max(1, int(np.ceil(round((1 - level) * n, 9))))
+
+
 def cvar(losses, level=0.95):
-    """CVaR of a loss sample: the mean of the worst (1 − level) share."""
+    """CVaR of a loss sample: the mean of the worst (1 − level) share, the same count the R–U objective divides by."""
     x = np.sort(np.asarray(losses, float))[::-1]
-    k = max(1, int(np.ceil((1 - level) * len(x))))
-    return float(x[:k].mean())
+    return float(x[:tail_count(len(x), level)].mean())
 
 
 def book_metric(npv_scenarios, x, lam=1.0, level=0.95):
@@ -116,34 +126,79 @@ def solve_milp(npv_scenarios, capex, budget, lam=1.0, level=0.95, groups=None, g
             "status": res.message, "capex_used": float(capex @ x * scale)}
 
 
-def top_n_by_npv(expected_npv, capex, budget):
-    """Comparator A: take candidates in order of expected NPV while the budget allows (positive NPV only)."""
+def _fits(i, capex, spent_group, groups, group_cap, budget):
+    """True when candidate ``i`` keeps its group within ``group_cap`` × ``budget`` (always true without a cap)."""
+    if groups is None or group_cap is None:
+        return True
+    return spent_group.get(groups[i], 0.0) + capex[i] <= group_cap * budget + 1e-9
+
+
+def top_n_by_npv(expected_npv, capex, budget, groups=None, group_cap=None):
+    """Comparator A: take candidates in order of expected NPV while the budget and the group cap allow (positive NPV only).
+
+    Notes
+    -----
+    The registration of C21–C24 applies the 40% technology cap to every book;
+    the comparator as first run ignored it, so it could put two thirds of the
+    budget into leases while C and D could not (audit A1). With ``groups`` and
+    ``group_cap`` a candidate that would breach its group's cap is skipped and
+    the ranking continues, as an analyst filling a capped book by hand would.
+    """
+    groups = None if groups is None else np.asarray(groups)
     x = np.zeros(len(expected_npv), int)
-    spent = 0.0
+    spent, spent_group = 0.0, {}
     for i in np.argsort(-np.asarray(expected_npv, float)):
         if expected_npv[i] <= 0:
             break
-        if spent + capex[i] <= budget:
+        if spent + capex[i] <= budget and _fits(i, capex, spent_group, groups, group_cap, budget):
             x[i] = 1
             spent += capex[i]
+            if groups is not None:
+                spent_group[groups[i]] = spent_group.get(groups[i], 0.0) + capex[i]
     return x
 
 
-def equal_capital_by_sector(expected_npv, capex, sectors, budget):
-    """Comparator B: the budget split equally across sectors, each filled by NPV per dollar of capital (positive NPV only)."""
+def equal_capital_by_sector(expected_npv, capex, sectors, budget, groups=None, group_cap=None):
+    """Comparator B: the budget split equally across sectors, each filled by NPV per dollar of capital (positive NPV only).
+
+    Notes
+    -----
+    ``groups`` and ``group_cap`` hold B to the same technology cap as the
+    other books (audit A1); the cap is a share of the whole budget, not of the
+    sector's half.
+    """
     sectors = np.asarray(sectors)
+    groups = None if groups is None else np.asarray(groups)
     x = np.zeros(len(expected_npv), int)
     per_sector = budget / len(np.unique(sectors))
     ratio = np.asarray(expected_npv, float) / np.asarray(capex, float)
+    spent_group = {}
     for s in np.unique(sectors):
         spent = 0.0
         for i in np.argsort(-ratio):
             if sectors[i] != s or expected_npv[i] <= 0:
                 continue
-            if spent + capex[i] <= per_sector:
+            if spent + capex[i] <= per_sector and _fits(i, capex, spent_group, groups, group_cap, budget):
                 x[i] = 1
                 spent += capex[i]
+                if groups is not None:
+                    spent_group[groups[i]] = spent_group.get(groups[i], 0.0) + capex[i]
     return x
+
+
+def violations(x, capex, budget, groups=None, group_cap=None):
+    """Constraint violations of a book: budget overrun and each group above its cap ($; empty when feasible)."""
+    x, capex = np.asarray(x, float), np.asarray(capex, float)
+    out = {}
+    if capex @ x > budget + 1e-6:
+        out["budget"] = float(capex @ x - budget)
+    if groups is not None and group_cap is not None:
+        groups = np.asarray(groups)
+        for g in np.unique(groups):
+            over = capex[groups == g] @ x[groups == g] - group_cap * budget
+            if over > 1e-6:
+                out[str(g)] = float(over)
+    return out
 
 
 def jaccard(x, y):

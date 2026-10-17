@@ -1,14 +1,14 @@
 metric,value
-calls this run (replayed / live / missing),35 / 0 / 0
-recorded answers in advisor_runs.jsonl,97
+calls this run (replayed / live / missing),13 / 22 / 0
+recorded answers in advisor_runs.jsonl,119
 mean number-grounding rate over recorded answers,0.942
-answers with every number grounded (share),0.515
+answers with every number grounded (share),0.529
 scenario recommendations recorded (of 7 stresses + 6 horizons),13 of 13
-mean Jaccard of recommended members to book D (stresses),0.893
-share naming book D (stresses),0.429
+mean Jaccard of recommended members to book D (stresses),0.901
+share naming book D (stresses),0.571
 "gym: advisor minus instinct, mean $M (situations recorded)",+227.8 (16)
-"gym: optimizer minus instinct, mean $M",+235.8 (16)
+"gym: optimizer minus instinct, mean $M",+232.3 (16)
 gym: advisor wins against instinct (situations),4
-"gym: mean regret against hindsight, instinct / optimizer / advisor ($M)",253.4 / 17.6 / 25.6
+"gym: mean regret against hindsight, instinct / optimizer / advisor ($M)",253.5 / 21.3 / 25.7
 "challenge calls recorded (of 6: questions, check and opposing case for two statements)",6
 model,claude-sonnet-5-5

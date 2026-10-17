@@ -1,17 +1,17 @@
 kind,situation,instinct,optimizer,rule_minus_instinct
-lease,oil collapse from June 2014,9566.9,10652.4,1085.5
-lease,the 2020 collapse from January 2020,11616.0,12930.9,1314.9
-lease,the 2022 spike from March 2022,11699.8,13023.9,1324.1
+lease,oil collapse from June 2014,9595.7,10681.2,1085.5
+lease,the 2020 collapse from January 2020,11642.8,12957.8,1315.0
+lease,the 2022 spike from March 2022,11723.7,13047.8,1324.1
 queue,CAISO 2017 2-year gate,-4.9,0.0,4.9
 queue,CAISO 2017 entry,-6.3,0.0,6.3
 queue,CAISO 2018 entry,-3.5,0.0,3.5
 queue,CAISO 2019 entry,-2.6,0.0,2.6
-queue,ERCOT 2017 2-year gate,430.4,471.4,41.0
-queue,ERCOT 2017 entry,1058.6,1041.6,-17.0
-queue,ERCOT 2018 entry,196.1,196.8,0.6
-queue,"ERCOT 2018 entry, budget −20%",197.9,197.9,-0.0
+queue,ERCOT 2017 2-year gate,430.4,471.9,41.5
+queue,ERCOT 2017 entry,1058.6,977.8,-80.9
+queue,ERCOT 2018 entry,196.1,197.0,0.8
+queue,"ERCOT 2018 entry, budget −20%",197.9,198.0,0.1
 queue,ERCOT 2019 entry,328.2,329.0,0.8
-queue,PJM 2017 2-year gate,14.0,14.0,0.0
+queue,PJM 2017 2-year gate,14.0,15.9,2.0
 queue,PJM 2017 entry,2.7,5.1,2.4
-queue,PJM 2018 entry,-4.6,-3.6,1.0
-queue,PJM 2019 entry,-3.4,-1.5,1.9
+queue,PJM 2018 entry,-4.6,-0.4,4.2
+queue,PJM 2019 entry,-3.4,0.0,3.4

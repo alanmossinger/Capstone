@@ -73,3 +73,12 @@ def test_committee_grid_scales_capital_with_the_uplift_and_discounts_harder():
     assert abs(com["capex"].iloc[0] - 40000 * boed) < 1.0 and reg["capex"].iloc[0] == 8e6 * 10
     assert ec.incremental_npv(bo, bg, wti, hh, 10, "base", ec.committee_case("base")) < ec.incremental_npv(bo, bg, wti, hh, 10, "base")
 
+
+
+def test_gas_revenue_converts_mcf_to_mmbtu_upward():
+    # 1,000,000 Mcf at $1/MMBtu is 1,037,000 MMBtu of heat, worth $1,037,000 before royalty (audit E10);
+    # the volume is above the economic limit and the differential is set to zero so only the conversion counts
+    months = 3
+    flows = ec.lease_cash_flows(np.zeros(months), np.full(months, 1e6), np.zeros(months), np.ones(months), n_wells=1,
+                                grid={"gas_differential_usd_per_mmbtu": 0.0}, redevelop=False)
+    assert abs(flows["revenue"].iloc[0] - 1.037e6) < 1e-3

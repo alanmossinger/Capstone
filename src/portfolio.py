@@ -225,7 +225,9 @@ def gate_decision(p_low, p_high, p_floor, ev_low, ev_base, ev_high, c_low, c_bas
         the lookup cell and the segment rate; at the milestone both are the
         landmark probability).
     p_floor : float
-        The observed outcome rate of the pool the decision is made in.
+        The pool's expected outcome rate, from the same probabilities the gate
+        reads (never the pool's realized rate, which is not known when the
+        gate is passed; audit G2).
     ev_low, ev_base, ev_high : array-like
         Probability-weighted, discounted expected NPV of the request from
         the gate onward, before the gate's own cost, in the low, base and

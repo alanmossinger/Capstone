@@ -6,120 +6,145 @@ I want the twenty leases and nothing else. The leases earn $14.6B at base and ev
 
 ## The advisor's questions
 
-1. You say the twenty-lease book earns $14.6B at base. If that number is wrong, which part carries the loss: the production forecast, the assumed redevelopment costs, or the flat oil price behind it? How large a shortfall on that book would you call a failure, and what would it do to the company?
+1. You say the leases earn $14.6B at base and that every one is positive. If the twenty-lease book is wrong, which number carries the loss: the production forecast, the cost grid, or the oil price? How large a shortfall from $14.6B do you have in mind as the worst case, and what would it do to the company?
 
-2. What does each party want from this book? The committee that sets the budget, the lender who looks at the worst 5% of outcomes, the operator who has to run twenty redevelopments at once, and the regulator or grid operator who decides whether any ERCOT request is built. Which of them would object to a book of twenty leases and nothing else?
+2. What does each party want from this book? The committee that sets the budget: the highest expected NPV, or a book it can defend if oil falls? The lender who sees the tail: how bad is the worst 5% allowed to be? The operator who runs the twenty leases: can it run all twenty at once? The regulator or grid operator who decides whether a request is built: what would you need from them if you funded any power at all?
 
-3. You wrote that oil has always paid for this company and that you do not see why it should learn a new business. Is any of that a sunk cost, such as a lease we already hold or deposits already paid on a request? Is it a past position you have defended, or simply a sector you like and one you distrust?
+3. You write that oil has always paid for this company and that you see no reason to learn a new business. Which part of this is a sunk cost: deposits already paid, leases already held, or a position you defended in the past? If none of the twenty leases were yet ours, would you still pick the same twenty?
 
-4. You leaned on the base figure of $14.6B and on the claim that the power requests lose money and mostly never reach operation. Which table or figure did you pass over: the flat-price path or the stress scenarios, the mean or the median, the registered grid of lease costs or the committee's, and the chance that each request is ever built? Did you look at how the lease book behaves in the scenario tail, where oil, gas, wind, solar, delay and cost all move against us together?
+4. You lean on the $14.6B base figure and on the loss from the power requests at 2024 prices. Did you look at the scenarios beyond the flat base path, especially the simultaneous downside? Did you compare the mean with the median? Did you test the lease costs, which come from a registered grid, against the committee's own cost figures? For the requests, did you weigh the chance that each one is ever built, or only the loss if it is?
 
-5. You framed the choice as twenty leases or the power requests. What did you leave off the table: a mixed book that stays inside the budget and the 40% cap, a smaller lease book that does not spend the whole budget, waiting for the queue and prices to clear, or funding nothing? Which of these would you rule out, and why?
+5. Your statement leaves four alternatives off the table. One is a book that mixes leases with some power. One is a smaller lease book that does not spend the whole budget. One is waiting. One is funding nothing. If you fund only leases, what happens to the rest of the budget, given the 40% cap per technology? Which of the four did you consider, and why did you rule it out?
 
 ## The human's answers
 
-Q1. You say the twenty-lease book earns $14.6B at base. If that number is wrong, which part carries the loss: the production forecast, the assumed redevelopment costs, or the flat oil price behind it? How large a shortfall on that book would you call a failure, and what would it do to the company?
+Q1. You say the leases earn $14.6B at base and that every one is positive. If the twenty-lease book is wrong, which number carries the loss: the production forecast, the cost grid, or the oil price? How large a shortfall from $14.6B do you have in mind as the worst case, and what would it do to the company?
 A1. If the leases are wrong the loss is the redevelopment capital, about $1.4B under the registered grid and four times that under the committee's; the worst case I have in mind is five years of $42 oil.
 
-Q2. What does each party want from this book? The committee that sets the budget, the lender who looks at the worst 5% of outcomes, the operator who has to run twenty redevelopments at once, and the regulator or grid operator who decides whether any ERCOT request is built. Which of them would object to a book of twenty leases and nothing else?
+Q2. What does each party want from this book? The committee that sets the budget: the highest expected NPV, or a book it can defend if oil falls? The lender who sees the tail: how bad is the worst 5% allowed to be? The operator who runs the twenty leases: can it run all twenty at once? The regulator or grid operator who decides whether a request is built: what would you need from them if you funded any power at all?
 A2. The committee wants the budget on what already produces; the lender wants a thin tail; the operator wants workovers it knows how to run; the grid operator decides nothing on the lease side, which is part of why I like it.
 
-Q3. You wrote that oil has always paid for this company and that you do not see why it should learn a new business. Is any of that a sunk cost, such as a lease we already hold or deposits already paid on a request? Is it a past position you have defended, or simply a sector you like and one you distrust?
+Q3. You write that oil has always paid for this company and that you see no reason to learn a new business. Which part of this is a sunk cost: deposits already paid, leases already held, or a position you defended in the past? If none of the twenty leases were yet ours, would you still pick the same twenty?
 A3. The company has run offshore oil for thirty years and I have defended the Gulf position in every budget round; the queue deposits already paid are small and I do not count them.
 
-Q4. You leaned on the base figure of $14.6B and on the claim that the power requests lose money and mostly never reach operation. Which table or figure did you pass over: the flat-price path or the stress scenarios, the mean or the median, the registered grid of lease costs or the committee's, and the chance that each request is ever built? Did you look at how the lease book behaves in the scenario tail, where oil, gas, wind, solar, delay and cost all move against us together?
+Q4. You lean on the $14.6B base figure and on the loss from the power requests at 2024 prices. Did you look at the scenarios beyond the flat base path, especially the simultaneous downside? Did you compare the mean with the median? Did you test the lease costs, which come from a registered grid, against the committee's own cost figures? For the requests, did you weigh the chance that each one is ever built, or only the loss if it is?
 A4. I leaned on the flat-path lease NPVs and on every lease being positive at base; I passed over the scenario median, the committee grid's high case and the contracted wind requests that are positive.
 
-Q5. You framed the choice as twenty leases or the power requests. What did you leave off the table: a mixed book that stays inside the budget and the 40% cap, a smaller lease book that does not spend the whole budget, waiting for the queue and prices to clear, or funding nothing? Which of these would you rule out, and why?
+Q5. Your statement leaves four alternatives off the table. One is a book that mixes leases with some power. One is a smaller lease book that does not spend the whole budget. One is waiting. One is funding nothing. If you fund only leases, what happens to the rest of the budget, given the 40% cap per technology? Which of the four did you consider, and why did you rule it out?
 A5. I did not put a mixed book on the table, nor a smaller lease book that leaves room for the four contracted wind requests.
 
 ## The motivated-reasoning check
 
-We find the tables do not reject your book, but they reject most of your reasoning for it. The leases-only book scores 15.6 expected NPV ($B), a 5% tail of -4.92 and a 0.00 chance of loss, on 1.37 of capital. Book D scores 15.9, -4.98 and 0.00 on 5.20. All of these are FORECAST, and the lease costs underneath are ASSUMED.
+# Motivated-reasoning check on the twenty-lease book
 
-## 1 and 2. Patterns and what the tables show
+I give each pattern with your sentence in section 1, then what the tables show in section 2. Section 3 lists the risks and section 4 gives the verdict.
 
-**Working backward from the conclusion.**
-- Your words: "I want the twenty leases and nothing else", and "I do not see why we should learn a new business now."
-- The preference comes before the evidence, and the second sentence is not evidence.
-- The tables show the six books almost tied. Book A is 16.1 with a tail of -4.90, D is 15.9 with -4.98, and leases-only is 15.6 with -4.92.
-- Adding power buys 0.3 of expected NPV for 3.83 more capital (5.20 minus 1.37), and the loss chance stays at 0.00. That is a weak case for the mixed book, and you did not make it.
+## 1. Patterns in your statement and answers
 
-**Double standard.**
-- Your words: "the power requests lose money at 2024 prices and most of them never reach operation."
-- You judge the leases on the flat base path and the requests on the merchant case. The contracted case gives five wind requests a positive NPV: 24.9, 25.7, 20.0, 27.6 and 21.9 ($M).
-- The requests' expected NPVs are already weighted by P(operation), which runs from 0.06 to 0.23. Citing "never reach operation" as a second reason counts it twice.
-- Your lease NPVs carry p_operation_7y of 1.00 and data completeness of 0.80. The requests carry 1.00 completeness and OBSERVED 2024 prices.
-- You are right on one point. The power-only book has expected NPV of 0.10, a tail of 0.02 (a loss) and a 0.71 chance of loss.
+**P1. Working backward from the conclusion.**
+- "I want the twenty leases and nothing else." The preference comes first and the reasons follow.
+- "The grid operator decides nothing on the lease side, which is part of why I like it." This is a reason about convenience, not value.
+- A5: you did not put a mixed book or a smaller lease book on the table.
 
-**Cherry-picking the flat path.**
-- Your words (A4): "I leaned on the flat-path lease NPVs."
-- The stress table is in your favour. The simultaneous downside takes the lease book from 14.6 to 12.9, still positive, with cost at 1.20.
-- You did not look at it, though. The oil-collapse row shows leases unchanged at 14.6, with 2,020 in the wti_path column. We cannot tell what price path was applied, so we do not read that row as proof of oil resilience.
-- The tables hold no scenario median and no committee-grid case.
+**P2. Moving the goalposts.**
+- Q1 asked for the shortfall from $14.6B. A1 answers "the loss is the redevelopment capital", which is a different measure.
+- Q2 asked whether the committee wants a book it can defend if oil falls. A2 says it "wants the budget on what already produces."
+- The test drifts from NPV to familiarity: "workovers it knows how to run."
 
-**ASSUMED and FORECAST treated as observed.**
-- Your words: "every one of them is positive", and "the leases earn $14.6B."
-- The provenance is "FORECAST production; ASSUMED costs; DERIVED NPV". Weakest label: ASSUMED.
-- Your own A1 says the committee's grid is four times the registered one. That case is not in the tables, so the 14.6 is the soft number it appears to be.
-- "What already produces" is also not what the tables show. Each lease needs capex, and production is FORECAST.
+**P3. Double standard.**
+- Leases: "every one of them is positive" and A4 "the flat-path lease NPVs".
+- Power: "lose money at 2024 prices and most of them never reach operation."
+- The leases are judged at base. The power requests are judged on their worst case, and A4 "passed over … the contracted wind requests that are positive."
 
-**Moving the goalposts.**
-- Q1 asked what shortfall you would call failure. A1 gave none. It substituted a worst case you set yourself, five years of $42 oil.
-- The $42 figure is not in the tables. The nearest evidence is the breakevens.
-- Q2 asked who would object, and you named no objector.
+**P4. Cherry-picking.**
+- A4: you passed over "the scenario median, the committee grid's high case and the contracted wind requests."
+- Your own worst case, "five years of $42 oil", is one you chose. No table scores it.
 
-**Defending a past position.**
-- Your words: "I have defended the Gulf position in every budget round."
-- That is commitment to a past stance, not a sunk-cost error.
-- You are right to leave out the queue deposits. The tables hold no deposit figure.
+**P5. Treating an ASSUMED figure as observed.**
+- "Every one of them is positive."
+- "About $1.4B under the registered grid."
 
-**Options left off.**
-- You counted four contracted wind requests. The tables show five with a positive contracted NPV.
-- Leases-only spends 1.37 of the 6.15 budget (4.78 unspent) and sits far below the 40% cap. So the binding constraint is the supply of twenty documented leases, not the budget.
-- In the books above, gas capital of 3.25 in A and 2.54 in B is above 40% of 6.15 (2.46, our arithmetic). Those two books may not be like-for-like with D.
+**P6. Defending a position already taken.**
+- "Oil has always paid for this company."
+- "I have defended the Gulf position in every budget round."
+- A3 answers with deposits and skips the question: would you pick the same twenty if none were ours?
 
-## 3. Top three risks of your book
+## 2. What the tables show
 
-1. **ASSUMED lease costs.**
-   - Capex of 1.37 is an assumption, and data completeness is 0.80. The 1.20 cost stress is mild next to your four-times case, which is not in the tables.
-   - Mitigation: run the committee's grid through the same tables.
-2. **Oil price on the thin leases.**
-   - Breakevens are 41.7 (G15610), 47.7 (G07962) and 53.2 (G17001) flat WTI $/bbl. At your flat $42, G07962 (NPV 138.1, capex 80.0) and G17001 (NPV 56.9, capex 64.0) sit below breakeven.
-   - Mitigation: a smaller position, with those two behind a later gate.
-3. **Concentration.**
-   - G14658 (2,602) and G15607 (1,795) together carry 4,397 $M of the 14.6B. G15607 also has the largest capex, at 192.0.
-   - Mitigation: stage its capital behind a later gate.
+**P1.**
+- Leases only: expected NPV $15.6B out of sample, CVaR95 loss -4.94, p_negative 0.00, capex $1.37B.
+- Book D (leases plus six power requests): $16.0B, -5.00, 0.00, capex $5.20B.
+- Book D's gain is about $0.4B expected, and its tail is only 0.06 deeper in profit. Both books have a 0.00 chance of a loss.
+- The tables do not explain the $0.4B. Every gas CC request is negative at base (-31.3 to -36.4), and the wind requests add little.
+- Power only: $0.10B, CVaR95 loss +0.02, p_negative 0.71. This supports your rejection of power as a stand-alone book.
+- The budget is $6.15B, so leases only leaves $4.78B unspent. The 40% cap is $2.46B, and the lease book at $1.37B sits well under it. The cap does not bind. The supply of twenty leases does.
+- No table scores waiting or funding nothing.
+
+**P2.**
+- Lender: the leases-only worst 5% is still a profit of $4.94B. This supports you.
+- Committee: the "oil collapse (2020 path)" stress shows leases at 14.6, a change of +0.02. That tells us nothing about an oil fall, and we should not read it as safety.
+- The simultaneous downside takes leases from 14.6 to 13.0 and the book from 13.9 to 12.1 (-1.74).
+- $42 appears in no table. Breakevens are in flat WTI $/bbl. G17001 is at 53.2, G07962 at 47.7 and G15610 at 41.7. Two leases sit above $42 and a third is 0.3 below it.
+- Operator: the tables hold nothing on whether it can run all twenty at once.
+
+**P3.**
+- The power NPVs are already weighted by P(operation) of 0.06 to 0.23. "Most never reach operation" is in the number, so using it again counts it twice.
+- Leases carry p_operation_7y of 1.00 with no queue risk modelled.
+- Five wind requests, not four, have positive contracted NPV: 24.9, 25.7, 20.0, 27.6 and 21.9 ($M). Their merchant NPVs are -32.1 to -43.0, with a merchant breakeven of $50.0/MWh. The out-of-sample scoring uses the contracted case.
+- Gas CC, storage and solar are negative in the contracted case too. Solar is -8.01 to -17.2.
+
+**P4.**
+- Even the simultaneous downside leaves the lease book positive at $13.0B. The scenarios you skipped do not flip the sign.
+- Tables hold no median, only expected values.
+- The committee grid is not in the tables, and the only cost stress scored is 1.20. By your own "four times", capex would be about $5.5B (my arithmetic from your claim), close to the $6.15B budget. No table gives the NPV under that grid.
+
+**P5.**
+- Lease provenance is "FORECAST production; ASSUMED costs; DERIVED NPV", with data_completeness 0.80. Power is "OBSERVED 2024 prices", with completeness 1.00.
+- The weakest label behind your case is ASSUMED lease costs. You treat the weaker-labelled numbers as firm and the stronger-labelled ones as weak.
+- The tables give two figures for the same twenty leases: $14.6B (base) and $15.6B (out of sample). They do not reconcile them.
+
+**P6.**
+- The tables hold no deposit figure, so "small" cannot be checked. The NPVs are forward from capex, so deposits do not enter them.
+- A fresh-start test would hit the thin leases: G17001 (NPV 56.9, breakeven 53.2), G07962 (139.3, 47.7) and G15610 (160.1, 41.7).
+
+## 3. Top three risks of the lease book
+
+1. **ASSUMED lease costs.** All twenty NPVs rest on them, and completeness is 0.80. *Mitigation:* score the book under the committee's grid case before committing.
+2. **Oil price.**
+   - Leases fall from 14.6 to 13.0 in the simultaneous downside.
+   - Three leases have breakevens of 41.7 to 53.2.
+   - *Mitigation:* put G17001, G07962 and G15610 behind a later gate or a smaller position. Together their NPVs are 356.3 ($M).
+3. **Concentration.** G14658 (2,607) and G15607 (1,799) carry 4,406 of the $14.6B ($M). *Mitigation:* stage their capital (96.0 and 192.0 $M) behind a gate on early results.
 
 ## 4. Verdict
 
-Your decision survives on the numbers but not on the reasoning, and the one change is to run the leases-only book on the committee's cost grid and the flat $42 case, then state in advance the shortfall you would call failure.
+As reasoned, your decision does not survive. The leases-only conclusion is not contradicted by the tables (15.6 against 16.0, both with p_negative 0.00). The single change is to rest it on that comparison and show it holds under the committee's cost grid, which the tables do not contain.
 
 ## The opposing case
 
 ## The case for Book D, argued as its advocate
 
-**Your own worst case breaks your own claim.** You said every lease is positive, and at base that is true. You also named five years of $42 oil as your worst case. The tables give flat-WTI breakevens for each lease, and two sit above $42: G07962 at 47.7 and G17001 at 53.2 $/bbl. A third, G15610, sits at 41.7, a margin of 0.3. At your own worst case, three of your twenty leases are at or below zero. The tables do not hold the base WTI price or a five-year $42 path, so I cannot size the loss. I can say that "every one positive" holds only while oil stays above 53.2.
+**1. Your $14.6B rests on one label, and you have not tested it.** Lease production is FORECAST and lease costs are ASSUMED. In A4 you passed over the scenario median, the committee's high-cost grid and the contracted wind. The one table that stresses costs is the simultaneous downside, with cost at 1.20. There the leases fall from $14.6B to $13.0B, while power moves only from -0.76 to -0.86. The leases carry almost all of the -1.74 loss. Your four-times cost case is not in the tables, so we cannot size it. That is the problem: your book bets everything on the input nobody has checked.
 
-**The tail you cannot see is mostly lease risk.** In the simultaneous downside, the forty-candidate book falls from 13.8 to 12.1, a change of -1.76. Leases fall from 14.6 to 12.9, a drop of 1.7. Power moves from -0.76 to -0.86. A leases-only book carries nearly all of that shock, and nothing else in it offsets it. The oil-collapse row shows leases at 14.6, unchanged, against breakevens running from 29.5 to 53.2. We should not read that row as proof that oil risk is small. It looks like the path was not applied, or the label "2,020" is a year, not a price.
+**2. We keep your twenty leases.** Book D holds the same twenty, $1.37B of capex. Every lease is positive at base, from 56.9 to 2,607 in $M, so history is not our argument. In A3 you said you have defended the Gulf in every budget round. Your answers never say whether you would pick these twenty from a blank page, and the numbers do not need that answer. The open question is the other $4.78B of the $6.15B budget, which your book leaves idle (A5).
 
-**Your loss answer rests on ASSUMED costs.** You put the lease loss at the capital, about $1.4B on the registered grid and four times that on the committee's. The tables show lease capex of 1.37 in total, and the stress table tests only a cost multiplier of 1.20. They do not test your four-times case, so I cannot say what it does. The weakest label under your book is ASSUMED costs, and you have no cost number from the tables behind it.
+**3. Book D scores higher on both measures, out of sample, in the contracted case.**
 
-**What Book D does.** On the held-out scenarios, with contracted revenue:
+| Book | Expected NPV | CVaR95 loss | p_negative | Capex |
+|---|---|---|---|---|
+| D risk-aware MILP | $16.0B | -5.00 | 0.00 | $5.20B |
+| Leases only | $15.6B | -4.94 | 0.00 | $1.37B |
 
-| book | expected NPV ($B) | CVaR95 loss ($B) | p_negative |
-|---|---|---|---|
-| D risk-aware MILP | 15.9 | -4.98 | 0.00 |
-| leases only | 15.6 | -4.92 | 0.00 |
+**4. The power sleeve fails differently from the leases.** Its NPVs rest on OBSERVED 2024 prices, not on the ASSUMED cost grid. You said the power requests lose money, and that is true merchant. Under contract, five wind requests are positive: 24.9, 25.7, 20.0, 27.6 and 21.9 in $M. You counted four. Book D holds three of them: 20INR0047, 20INR0264 and 21INR0467.
 
-D holds the same twenty leases, so it keeps everything you value. It adds three wind requests (20INR0047, 20INR0264, 21INR0467) and three gas CC requests (20INR0223, 20INR0225, 20INR0231). It earns 0.3 more in expectation. Its worst 5% is a profit of 4.98 against 4.92. It stays inside the budget and the cap, with 2.00 in gas and 1.83 in wind.
+**Your best objection, and our answer.** You will say we pay $3.83B more capital for $0.4B of expected NPV, that power alone has p_negative 0.71, and that the gas members lose money. We concede the gas. At -36.4, -33.1 and -31.3 in $M, the three gas members are negative in both revenue cases. We cannot defend them from the tables, and a book of leases plus wind only would be cleaner. Book D's p_negative is 0.00, the same as leases only, and its worst 5% is slightly better. Low chances of operation (0.09 to 0.15 for wind) already shrink the expected NPVs, so they are not a second penalty.
 
-**Your best objection, and my answer.** You will say D spends 5.20 against 1.37 to gain 0.3, and that the power requests lose money and mostly never get built. That is half right. The power-only book earns 0.10 with p_negative 0.71, so I would never fund it alone. All three gas requests have negative NPV in the contracted case (-36.4, -33.1, -31.3), and I cannot defend them one by one. The wind requests are different. They have positive contracted NPVs of 24.9, 25.7 and 21.9 $M, against -38.0, -38.6 and -34.1 merchant. The low probabilities of operation (0.13, 0.15, 0.11) are already inside the expected NPVs, because the NPVs are timing-weighted. The tables show five wind requests with positive contracted NPV (adding 20.0 and 27.6), not four, and D holds three of them. The NPVs are net of capital, so the extra 3.83 does not cost 3.83. It adds 0.3 of value. It does not lower your tail, and it does not raise p_negative.
+**The assumption Book D rests on, and where it fails.** It rests on the contracted revenue case, and the tables do not show the contract price. Without a contract, the three wind members are -38.0, -38.6 and -34.1 in $M, with a merchant breakeven of 50.0 $/MWh. Power only, in the contracted case, has expected NPV $0.10B and p_negative 0.71.
 
-**The assumption D rests on, and where it fails.** D rests on the contracted revenue case, with the FORECAST probability of operation as its weakest label. If no contract is signed, the three wind requests are at their merchant NPVs, a combined -110.7 $M. D's whole edge over leases-only is 0.3, so the case also fails if the true cost of the gas and wind sleeve exceeds that margin.
+The case also fails on traceability. Our sleeve's contracted NPVs at base sum to -28.3 in $M (wind 72.5, gas -100.8). The tables do not decompose how that becomes a +$0.4B edge, and a gap of 16.0 versus 15.6 is within one-decimal rounding. If the edge is not reproduced, Book D has no case.
 
 ## In my own voice
 
-On the tables, leases-only is at least as strong as D. D's 0.3 gain in expected NPV and 0.06 better tail are small, rest on contracts we do not yet hold, and include three gas requests with negative NPV. The evidence that would settle it is a scored book of the twenty leases plus only the three wind requests, run under your $42 path and the committee's cost grid, together with signed wind contracts.
+On the tables, leases only is the stronger case per dollar. It gives $15.6B expected and -4.94 at the 5% tail on $1.37B of capex, and the $0.4B Book D adds cannot be traced to its power members. A decomposition of the out-of-sample gain by sleeve, plus a signed contract price for the three wind requests, would settle it.
 
-CONVERGE: the twenty leases, plus the three wind requests 20INR0047, 20INR0264 and 21INR0467 only once contracts are signed, and no gas CC | DISAGREE: whether lease costs hold under the committee's grid and a five-year $42 path, which the tables do not test
+CONVERGE: the twenty leases alone ($1.37B), adding the contracted wind only once a contract price is documented and the book is rescored | DISAGREE: whether Book D's $0.4B out-of-sample edge (16.0 vs 15.6) is real
