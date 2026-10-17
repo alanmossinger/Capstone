@@ -1181,3 +1181,40 @@ alternative rejected.
     *Rejected:* a copula over calendar-year blocks (seven blocks give a
     rank correlation on seven points); scoring on the primary set (the
     optimizer selected on it).
+83. **Title and framing: prescriptive AI is the contribution** (Alan,
+    2026-10-17, after an outside review received that day). The report is now
+    *Beyond Prediction: Prescriptive AI for Energy Portfolio Optimization —
+    From Machine Learning to Risk-Aware Capital Allocation Across Oil, Gas,
+    Power, Renewables, and Storage*. One overarching question (can
+    prescriptive AI turn uncertain predictions into better capital-allocation
+    decisions than conventional methods) and four under it: Predict,
+    Quantify, Prescribe, Evaluate. H1–H3 and every criterion, verdict and
+    number are unchanged; the abstract, the opening section, the method and
+    the results are rewritten around the four stages (descriptive,
+    predictive, uncertainty, prescriptive) and the trade-off under the two
+    grids is the headline result, stated as a policy choice and not a win.
+    Three references added (Bertsimas & Kallus 2020; Elmachtoub & Grigas
+    2022; Lepenioti et al. 2020), each verified against its journal record.
+    The proposal update of 2026-10-19 carries the same title and questions.
+    *Rejected:* "From Predictive to Prescriptive AI: Optimizing Energy
+    Portfolios Under Uncertainty" (the review's alternative; weaker
+    identity).
+84. **Core + appendices; the word limit is back on at 3,500** (Alan,
+    2026-10-17; supersedes #44). The body is a core of about 3,400 words
+    (abstract, memo, sections 1–7, statement of work, changes after review)
+    with five figures; Parts I and II move in full to Appendices E and F,
+    renumbered E.1–E.8 and F.1–F.8 with their figures (E1–E9, F1–F4) and
+    tables (E1–E3, F1–F3); the full results table and the five decision
+    questions are Appendix G (G1, G2). Nothing was deleted. The course
+    suggests 3,000 words excluding references and appendices; Alan accepted
+    about 3,400 rather than move the Capital Allocation Memo out of the body
+    or thin the evaluation chapter, so `tests/test_report.py` counts the
+    text before Appendix A against a limit of 3,500 and is no longer skipped.
+    *Rejected:* the memo as Appendix G.1 (it is the prescriptive output and
+    belongs up front); a 3,000-word body that drops the evaluation chapter.
+85. **The evaluation chapter is the source of the Nov 2 mini-deliverable**
+    (2026-10-17). Section 3 of the core ("How the work is evaluated": what
+    is measured and against what, what the models never see, how I could
+    fool myself) is written from the registered record; the Slack one-pager
+    `docs/evaluation_plan.md` and its PDF are copied from it, so the two
+    cannot diverge, and every number in both is in `report_numbers.csv`.

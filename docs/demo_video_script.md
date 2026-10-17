@@ -1,4 +1,4 @@
-# Demo video script — Beyond Prediction (about 4 minutes)
+# Demo video script — Beyond Prediction: Prescriptive AI for Energy Portfolio Optimization (about 4 minutes)
 
 Spoken text in plain type; what is on screen in *italics*. About 560 spoken words at roughly 140 words a
 minute. Every number below is one the report prints from `results/`; if a rerun changes a number, change it here
@@ -10,12 +10,13 @@ from the report, never from memory.
 
 An energy company has one budget and two kinds of choice. It holds requests to connect new power plants to the
 grid, and most of those requests are never built. It also holds oil and gas leases that already produce. This
-project asks how a company should split capital between the two, and it scores every answer on what actually
-happened.
+project goes one step past prediction: it asks what the company should do — which projects, how much capital,
+what risk to accept — and whether that recommendation beats the conventional ways of deciding. Predict,
+quantify, prescribe, evaluate. Every answer is scored on what actually happened.
 
 ## 0:30–1:30 — Part I: which queue requests get built
 
-*Figure 3 (F1, operation and withdrawal by region), then Figure 6 (F12, the landmark gain).*
+*Appendix Figure E2 (F1, operation and withdrawal by region), then Figure E4 (F12, the landmark gain).*
 
 Part I uses 13,366 requests in CAISO, ERCOT and PJM. ERCOT is where requests get built: about one entrant in
 five operates within five years, against one in twenty in CAISO.
@@ -23,14 +24,14 @@ five operates within five years, against one in twenty in CAISO.
 At entry, a gradient-boosted hazard model ranks requests better than cohort averages, but no better than a careful
 lookup by region, technology and size. Two years in, with the executed agreement known, the model earns its keep.
 
-*Figure 11 (F18, the managed book).*
+*Appendix Figure E9 (F18, the managed book).*
 
 A book of 25 requests chosen by the landmark model held 19 that reached operation, against 11 for the lookup.
 The lesson for a developer: do not pay for prediction at entry; re-score at the milestone.
 
 ## 1:30–2:45 — Part II: one budget across leases and power
 
-*Figure 13 (F28, the forty candidates), then Figure 15 (F37, the committee grid).*
+*Appendix Figure F2 (F28, the forty candidates), then Figure 4 (F37, the committee grid).*
 
 Part II places twenty Gulf of Mexico lease redevelopments and twenty ERCOT requests under one budget and 2,000
 joint price scenarios. Under the registered cost assumptions the leases are worth $14.6 billion and carry the
@@ -48,7 +49,7 @@ $11.5 billion, with twice the tail. Which to fund is a choice about risk appetit
 
 ## 2:45–3:30 — Did the rules beat instinct?
 
-*Figure 18 (F34, the decision gym).*
+*Figure 5 (F34, the decision gym).*
 
 The decision gym rebuilds sixteen past situations as of their date and reveals what happened afterwards. The
 registered rules beat instinct by $236 million a situation, almost all of it in the three oil-price regimes.

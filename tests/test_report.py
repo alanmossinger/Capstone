@@ -1,14 +1,13 @@
-"""Every number in the report traces to results/report_numbers.csv; the word-limit test records that the limit is off (decision #44)."""
+"""Every number in the report traces to results/report_numbers.csv; the core of the report stays under the word limit (decision #84)."""
 
 import re
 
 import pandas as pd
-import pytest
 
 from src import paths, report_numbers
 
 REPORT = paths.REPORT / "report.md"
-WORD_LIMIT = 3000  # course limit, excluding references and appendix
+WORD_LIMIT = 3500  # the course suggests 3,000 excluding references and appendices; 3,500 accepted (decision #84)
 NUMBER = re.compile(r"\d[\d,]*(?:\.\d+)?%?")
 
 # Labels and names that contain digits but are not cited quantities.
@@ -22,6 +21,8 @@ NOT_QUANTITIES = [
     r"\b(?:RQ|[CRKDSH])\d+\b",             # criteria C1–C5, rules R1–R9, post-hoc K, decisions D0–D7, sources S13, hypotheses H2, questions RQ1
     r"§\s?\d+(?:[–-]§?\d+)?",             # section marks in the Decision Board
     r"\bTables?\s+\d+",                    # table numbers
+    r"\b(?:Figure|Table)\s+[A-G]\d+",      # appendix figures and tables (Figure E4, Table G1)
+    r"\b[A-G]\.\d+\b",                     # appendix section references (E.3, F.6)
     r"\bPart I{1,2}\b",
     r"\bOrder No\. \d+",
     r"\bEIA-860M\b",
@@ -35,8 +36,8 @@ NOT_QUANTITIES = [
 
 
 def body(text):
-    """The counted part of the report: report.md holds no references or appendices."""
-    return text
+    """The counted part of the report: everything before Appendix A (references live in references.md)."""
+    return text.split("## Appendix A", 1)[0]
 
 
 def numbers_in(text):
@@ -61,7 +62,6 @@ def test_report_numbers_keys_are_unique():
     assert table["key"].is_unique
 
 
-@pytest.mark.skip(reason="word, figure and page limits are off for the v3 report (decision #44); the test stays so the limit can be restored by removing this line")
 def test_report_is_under_the_word_limit():
     text = re.sub(r"!\[[^\]]*\]\([^)]*\)", " ", body(REPORT.read_text(encoding="utf-8")))
     text = re.sub(r"^\|[-| ]+\|$", " ", text, flags=re.MULTILINE)  # table rule lines

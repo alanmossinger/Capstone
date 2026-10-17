@@ -1,11 +1,17 @@
-# Beyond Prediction: AI-Driven Energy Portfolio Decisions Under Uncertainty
+# Beyond Prediction: Prescriptive AI for Energy Portfolio Optimization
 
-*From Machine Learning to Risk-Aware Capital Allocation*
+*From Machine Learning to Risk-Aware Capital Allocation Across Oil, Gas, Power, Renewables, and Storage*
 
 SIADS 699 Capstone (Master of Applied Data Science, University of Michigan), Group 13.
 Author: Alan Mössinger.
 
-> **Status (2026-10-12, v5):** the project is an integrated U.S. energy
+> **Status (2026-10-17, v6):** the report is reorganised around the step from
+> predictive to prescriptive AI (decision #83): a core of about 3,400 words —
+> abstract, Capital Allocation Memo, the four stages and four questions, how
+> the work is evaluated, method, results, limitations, conclusion — with the
+> full method and evidence as Appendices E (the queue side) and F (the energy
+> portfolio) and every finding in Appendix G. No result changed. Before that:
+> the project is an integrated U.S. energy
 > portfolio — twenty offshore Gulf of Mexico lease redevelopments (BSEE)
 > and twenty ERCOT power requests under one budget and 2,000 joint
 > scenarios — with the queue models of v1–v4 as the completion and timing

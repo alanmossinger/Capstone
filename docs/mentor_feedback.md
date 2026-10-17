@@ -1,6 +1,6 @@
 # Mentor feedback
 
-Each feedback item, what changed because of it, and where.
+Each feedback item, what changed because of it, and where. Items 1–8 come from outside reviews before a course mentor was assigned (the mentor is assigned after the proposal review of October 19); the mentor's items follow in the same table, marked *mentor*.
 
 | # | Date | Feedback | Change made | Where |
 |---|---|---|---|---|
@@ -11,3 +11,4 @@ Each feedback item, what changed because of it, and where.
 | 5 | 2026-10-14 | Gym composition, the ERCOT two-year room, rooms of the largest requests | Bug found and fixed (the two-year rule never funded); rooms drawn at random; result split by kind of room | `src/gym.py`, notebook 10 |
 | 6 | 2026-10-14 | Gas CC capacity factor of 23% looks like a prime-mover artefact | Confirmed and fixed at plant level in the EDA | notebook 02 part C |
 | 7 | 2026-10-14 | Figure titles of 30–40 words; report hard to read (numbers in every sentence, codes in the prose, shifting names) | Titles ≤ 12 words; report rewritten: short abstract, one-page memo, reading map and glossary, two stages with a bridge, one name per object, intervals in tables, closing results table | `src/plots.py`, `report/report.md` |
+| 8 | 2026-10-17 | Outside review of report v5: make the step from predictive to prescriptive AI the argument, not one chapter — one overarching question, RQs as Predict / Quantify / Prescribe / Evaluate, the objective and constraints stated, the trade-off (not a win) as the headline, and a stated boundary between model-based recommendations and demonstrated commercial outcomes | Title and subtitle changed; abstract, section 1 (four stages, overarching question, RQ1–RQ4), section 4 (the objective written out, where prediction enters the cash flows, what "better" means) and the results rewritten; Parts I–II kept in full as Appendices E–F; three prescriptive-analytics references added (decision #83) | `report/report.md`; `docs/decisions.md` #83–#85 |

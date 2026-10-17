@@ -1,4 +1,4 @@
-// Poster — Beyond Prediction (report v5). Built by `make poster` (typst). Every number is one the report prints (results/report_numbers.csv).
+// Poster — Beyond Prediction (report v6). Built by `make poster` (typst). Every number is one the report prints (results/report_numbers.csv).
 #set page(width: 841mm, height: 594mm, margin: (x: 20mm, y: 14mm), fill: white)
 #set text(font: "Calibri", size: 17pt, fill: rgb("#222222"))
 #set par(justify: false, leading: 0.55em)
@@ -16,8 +16,8 @@
 
 // header
 #grid(columns: (1fr, auto), align: (left, right),
-  [#text(size: 44pt, weight: "bold")[Beyond Prediction: AI-Driven Energy Portfolio Decisions Under Uncertainty] \
-   #text(size: 30pt, fill: muted)[From Machine Learning to Risk-Aware Capital Allocation]],
+  [#text(size: 44pt, weight: "bold")[Beyond Prediction: Prescriptive AI for Energy Portfolio Optimization] \
+   #text(size: 30pt, fill: muted)[From Machine Learning to Risk-Aware Capital Allocation Across Oil, Gas, Power, Renewables, and Storage]],
   [#text(size: 22pt)[Alan Mössinger · SIADS 699 Capstone, University of Michigan · Group 13 (a solo project) · 2026]]
 )
 #v(5mm)

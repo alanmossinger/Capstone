@@ -8,6 +8,8 @@ Arps, J. J. (1945). Analysis of decline curves. *Transactions of the AIME, 160*(
 
 Awerbuch, S., & Berger, M. (2003). *Applying portfolio theory to EU electricity planning and policy-making* (IEA/EET Working Paper EET/2003/03). International Energy Agency.
 
+Bertsimas, D., & Kallus, N. (2020). From predictive to prescriptive analytics. *Management Science, 66*(3), 1025–1044. https://doi.org/10.1287/mnsc.2018.3253
+
 Blanche, P., Dartigues, J.-F., & Jacqmin-Gadda, H. (2013). Estimating and comparing time-dependent areas under receiver operating characteristic curves for censored event times with competing risks. *Statistics in Medicine, 32*(30), 5381–5397. https://doi.org/10.1002/sim.5958
 
 Caplan, B. (2011, June 20). The ideological Turing test. *EconLog*. Library of Economics and Liberty. https://www.econlib.org/archives/2011/06/the_ideological.html
@@ -19,6 +21,8 @@ Cox, D. R. (1972). Regression models and life-tables. *Journal of the Royal Stat
 Davidson-Pilon, C. (2019). lifelines: Survival analysis in Python. *Journal of Open Source Software, 4*(40), 1317. https://doi.org/10.21105/joss.01317
 
 Dixit, A. K., & Pindyck, R. S. (1994). *Investment under uncertainty*. Princeton University Press.
+
+Elmachtoub, A. N., & Grigas, P. (2022). Smart "predict, then optimize". *Management Science, 68*(1), 9–26. https://doi.org/10.1287/mnsc.2020.3922
 
 Federal Energy Regulatory Commission. (2023). *Improvements to generator interconnection procedures and agreements* (Order No. 2023), 184 FERC ¶ 61,054.
 
@@ -43,6 +47,8 @@ Kunda, Z. (1990). The case for motivated reasoning. *Psychological Bulletin, 108
 Künsch, H. R. (1989). The jackknife and the bootstrap for general stationary observations. *The Annals of Statistics, 17*(3), 1217–1241. https://doi.org/10.1214/aos/1176347265
 
 Lawrence Berkeley National Laboratory. (2023). *Interconnection cost analysis in the PJM territory* [Technical brief and data file]. https://emp.lbl.gov/publications/interconnection-cost-analysis-pjm
+
+Lepenioti, K., Bousdekis, A., Apostolou, D., & Mentzas, G. (2020). Prescriptive analytics: Literature review and research challenges. *International Journal of Information Management, 50*, 57–70. https://doi.org/10.1016/j.ijinfomgt.2019.04.003
 
 Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., Küttler, H., Lewis, M., Yih, W., Rocktäschel, T., Riedel, S., & Kiela, D. (2020). Retrieval-augmented generation for knowledge-intensive NLP tasks. In *Advances in Neural Information Processing Systems 33* (pp. 9459–9474).
 

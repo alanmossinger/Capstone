@@ -1410,3 +1410,46 @@ the report; do not override, I need both")**
   paragraph that discusses them, which is the one thing the example gets
   right. The gym's room-by-room numbers are collected
   (`report_numbers.v7_questions`, `room_*` keys).
+
+## Session 13 — 2026-10-17: the prescriptive framing, report v6, the proposal update, the evaluation plan
+
+An outside review asked for the step from predictive to prescriptive AI to be
+the contribution. Decisions taken: the new title; a core + appendices report (he accepted about 3,400 words
+rather than move the memo out of the body); the Nov 2 evaluation plan as a
+chapter; the Oct 19 proposal reframed. Decisions #83–#85.
+
+**Done**
+
+- `docs/proposal_update_2026-10-19.md`: new title, the overarching question,
+  RQ1–RQ4 as Predict / Quantify / Prescribe / Evaluate, the prescriptive core in
+  §5, §8 rewritten from what was done (second bootstrap draw, not a copula;
+  rolling origins; the gym; 70 lines / 28 pass; both price scorings kept), §11.
+  Stale lines fixed (ERCOT 2018–2023 prices are observed). PDF built.
+- `report/report.md` v6: the core rewritten (abstract, memo kept, sections 1–7,
+  statement of work, changes after review); Parts I–II moved in full to
+  Appendices E and F with figures, tables and section references renumbered;
+  Appendix G holds the full results table and the five decision questions;
+  Appendix C's proposal map rewritten. Five figures stay in the core (F0, F11,
+  F33, F37, F34). Every number in the new text was checked against
+  `results/report_numbers.csv` before the test ran.
+- `tests/test_report.py`: word limit on at 3,500 over the text before Appendix A
+  (3,432 today); appendix labels excluded from the number scan.
+- `report/references.md`: three prescriptive-analytics references, verified.
+- `docs/evaluation_plan.md` + PDF: section 3 of the report in Slack form.
+- Title in README (status v6), poster.typ, the video script (figure references
+  renumbered); `docs/mentor_feedback.md` item 8 and the outside-review label.
+- HANDOFF rewritten at the top.
+
+**Next**
+
+- `make numbers && pytest -q` (report tests green on 2026-10-17); `make report`
+  (built: 45 pages); read the PDF; `make poster`; a clean `make all` in a
+  fresh environment before the tag; commit; tag v1.1.
+- Nov 2: post `docs/evaluation_plan.md` in the team+mentor channel; paste the
+  message link into Canvas.
+
+**Open questions for Alan**
+
+- Redraw F0 with the four-stage labels? (optional; one notebook rerun)
+- The Petrobras report's title: when.
+- Carried: the live challenge round; the ±1.5 cap; the poster refresh; key rotation.
