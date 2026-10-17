@@ -1453,3 +1453,32 @@ chapter; the Oct 19 proposal reframed. Decisions #83–#85.
 - Redraw F0 with the four-stage labels? (optional; one notebook rerun)
 - The Petrobras report's title: when.
 - Carried: the live challenge round; the ±1.5 cap; the poster refresh; key rotation.
+
+## Session 14 — 2026-10-17: the pipeline rerun end to end, the report rebuilt
+
+**Done**
+
+- Notebooks 01–05 rerun and committed (14e0023): dates, run times and float
+  rounding only.
+- Notebooks 07, 08, 09, 06, 10 rerun in pipeline order (40 s, 81 s, 467 s,
+  715 s, 20 s), all without error. Result changes are the decision-ledger dates
+  and last-digit float rounding in the tournament tables; no reported value moved.
+- `make numbers`: 2,241 numbers, identical to the committed file; `pytest -q`:
+  182 passed. `report/report.md` needed no edit.
+- Report PDF and DOCX rebuilt: 44 pages (the 13:16 build was 45; same text,
+  page breaks moved). Every page rendered and checked.
+
+**Next**
+
+- Copy the new PDF into `report/` once the open copy is closed (the file was
+  locked by a viewer), or rerun `make report`.
+- `make poster`; a clean `make all` in a fresh environment; tag v1.1.
+
+**Open questions for Alan**
+
+- `src/value.py` has an uncommitted edit (14:34) that reads the PJM capacity
+  table with `pdftotext -layout`. On this machine it finds only the even years
+  2008–2026 and fails its assertion; the committed parser works. Not committed:
+  keep, fix or discard?
+- Carried: F0 four-stage labels; the Petrobras report's title; the live
+  challenge round; the ±1.5 cap; the poster refresh; key rotation.
