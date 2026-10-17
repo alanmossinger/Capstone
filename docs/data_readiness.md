@@ -1,6 +1,6 @@
 # Data readiness report (Phase 0 gate)
 
-*Written by `notebooks/01_problem_and_data.ipynb` on 2026-10-14. Every number below was computed by that notebook; thresholds are in `src/config.py`.*
+*Written by `notebooks/01_problem_and_data.ipynb` on 2026-10-17. Every number below was computed by that notebook; thresholds are in `src/config.py`.*
 
 ## Sources
 
@@ -52,7 +52,7 @@
 
 - Linkage: 31.1% of ERCOT/PJM operational projects matched an EIA plant and 74.9% of matches agree on the operation month within six months.
 
-**Outcome (2026-10-14): GO**
+**Outcome (2026-10-17): GO**
 
 ## v3 sources — S6, the LBNL 2026 data file (notebook 01, part C)
 
@@ -71,7 +71,7 @@ Event-date coverage by region in both editions: `results/lbnl_2026_date_coverage
 
 ## v5 sources — the energy panel (notebook 01, parts D and E)
 
-*Written by `notebooks/01_problem_and_data.ipynb` on 2026-10-14. Every number below was computed by that notebook; thresholds are in `src/config.py` (PLAN.md §14.1).*
+*Written by `notebooks/01_problem_and_data.ipynb` on 2026-10-17. Every number below was computed by that notebook; thresholds are in `src/config.py` (PLAN.md §14.1).*
 
 | Check | Pass condition | Observed | Result |
 |---|---|---|---|
@@ -91,4 +91,4 @@ Event-date coverage by region in both editions: `results/lbnl_2026_date_coverage
 
 Non-blocking lines are reported for the record; with the 2018–2023 hourly files on disk (decision #78) no ERCOT month is assumed, and without them the bridge of decision #64 fills 2020–2023.
 
-**Outcome (2026-10-14): GO**
+**Outcome (2026-10-17): GO**
