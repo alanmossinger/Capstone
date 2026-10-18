@@ -1572,3 +1572,25 @@ Alan chose the recommended option on all four framing questions (decision #90).
 - The memo now presents a trade-off rather than one book; is that the framing you want for the committee?
 - Push `v8-corrections`, and merge it into `main` when you have read the report?
 - Carried: F0 labels (superseded by F43?); the Petrobras title; the live challenge round; key rotation.
+
+## Session 16 — 2026-10-18: the reading cells of notebooks 07–10 on v8
+
+**Done**
+
+- Rewrote the markdown that still described v7 so that every number is one the notebook now prints (code cells and outputs untouched; checked cell by cell against the committed notebooks).
+  - `07_economics`: cells 36 (Part A takeaways: test cohort vs the 2025 candidates), 37 (Part B introduction: one decision date, the live ERCOT pool, the stage-one charge), 40 (the decline floor), 44, 47 (was a placeholder), 51, 54, 55.
+  - `08_scenarios_and_risk`: cells 0 and 1 (introduction; inputs table, which named inputs the notebook does not read), 7, 15, 18, 21, 24.
+  - `09_portfolio`: cells 32, 36, 42, 45 (the gate counts after decision #89's floor: 166/203 invest at entry, 178/251 accelerate two years in), 101–102 (Part D introduction: what is registered, what is post-registration), 108, 115, 119, 124 (C21–C22 pass, C23–C24 fail on v8, the reverse of the frozen v7 verdict), 127, 130, 132, 133, 135, 138, 139, 141, 144, 146, 147 (Part E bullet added).
+  - `10_advisor_and_gym`: cells 7, 10, 14, 17, 21 (gym on fourteen effective situations: rule − instinct +$56M [−12, +176], advisor − rule −$5.1M [−11.0, −1.5]), 26, 35, 36.
+- 224 tests pass.
+
+**Next**
+
+- The poster and the Petrobras edition for v8; a clean-environment run; tag.
+
+**Open questions for Alan**
+
+- `results/decision_ledger.csv` keeps a `NB10-advisor-base` row from v7 (26 members, $5.37B of capital against the $1.79B budget): notebook 10 appends it only when absent, so it was never replaced. Delete the row and rerun 10?
+- F0's bottom line counts leases, wind and gas of the committee book D, which also holds $0.48B of solar; the label needs solar.
+- Notebook 09 E.6 scores the naive-forecast book on held-out values that reuse the primary set's output and cost draws (stated in its reading cell); redraw them as in notebook 08?
+- Notebook 09 E.5's second power draw can only hold 2017–2019 entrants still waiting in 2025 (the entry rule ran on that cohort); keep it as a post-hoc check or drop it?
