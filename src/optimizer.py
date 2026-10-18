@@ -47,8 +47,12 @@ def book_metric(npv_scenarios, x, lam=1.0, level=0.95):
     return float(total.mean() - lam * cvar(-total, level))
 
 
+class InfeasibleBook(RuntimeError):
+    """No book satisfies the constraints (a CVaR limit tighter than any book can meet, members forced in over the budget)."""
+
+
 def solve_milp(npv_scenarios, capex, budget, lam=1.0, level=0.95, groups=None, group_cap=None, co2=None, co2_cap=None,
-               exclusive=(), time_limit=300):
+               exclusive=(), time_limit=300, cvar_cap=None, forced_in=(), forced_out=()):
     """Maximise E[NPV] − λ·CVaR of the book subject to the budget and the caps.
 
     Parameters
@@ -73,12 +77,24 @@ def solve_milp(npv_scenarios, capex, budget, lam=1.0, level=0.95, groups=None, g
         Sets of candidate indices of which at most one may be chosen.
     time_limit : float
         Seconds for HiGHS.
+    cvar_cap : float, optional
+        Hard limit on the book's CVaR of loss ($): the committee's downside
+        rule written as a constraint rather than a penalty.
+    forced_in, forced_out : iterable of int
+        Candidate indices that must be in, or out of, the book (an existing
+        commitment; a project the committee has ruled out; the explanation's
+        forced re-solves).
 
     Returns
     -------
     dict
         ``x`` (0/1 array), ``expected_npv``, ``cvar_loss``, ``objective``,
         ``status``, ``capex_used``.
+
+    Raises
+    ------
+    InfeasibleBook
+        When no book meets the constraints.
 
     Notes
     -----
@@ -89,6 +105,9 @@ def solve_milp(npv_scenarios, capex, budget, lam=1.0, level=0.95, groups=None, g
     CVaR of the loss L_s = −NPV_s·x equals min_α α + Σ u_s / ((1 − level) S)
     with u_s ≥ L_s − α, so the objective −μ·x + λ(α + Σ u_s/((1−level)S))
     is linear. With λ = 0 the α and u variables are left in but do nothing.
+    A CVaR limit uses the same variables: α + Σ u_s/((1−level)S) ≤ cap holds
+    for some α exactly when the book's CVaR is at most the cap, because CVaR
+    is the minimum of that expression over α (Rockafellar and Uryasev, 2000).
     """
     scale = 1e6  # solve in $ millions: dollar-scale coefficients stall HiGHS's branch and bound
     A = np.asarray(npv_scenarios, float) / scale
@@ -115,9 +134,17 @@ def solve_milp(npv_scenarios, capex, budget, lam=1.0, level=0.95, groups=None, g
         row = np.zeros(n_var)
         row[list(members)] = 1.0
         constraints.append(LinearConstraint(row[None, :], lb=-np.inf, ub=1.0))
+    if cvar_cap is not None:
+        row = np.concatenate([np.zeros(n), [1.0], np.full(S, 1.0 / ((1 - level) * S))])
+        constraints.append(LinearConstraint(row[None, :], lb=-np.inf, ub=cvar_cap / scale))
     integrality = np.concatenate([np.ones(n), np.zeros(1 + S)])
-    bounds = Bounds(lb=np.concatenate([np.zeros(n), [-np.inf], np.zeros(S)]), ub=np.concatenate([np.ones(n), [np.inf], np.full(S, np.inf)]))
+    lower, upper = np.zeros(n), np.ones(n)
+    lower[list(forced_in)] = 1.0
+    upper[list(forced_out)] = 0.0
+    bounds = Bounds(lb=np.concatenate([lower, [-np.inf], np.zeros(S)]), ub=np.concatenate([upper, [np.inf], np.full(S, np.inf)]))
     res = milp(c, constraints=constraints, integrality=integrality, bounds=bounds, options={"time_limit": time_limit, "mip_rel_gap": 1e-4})
+    if res.status == 2:
+        raise InfeasibleBook(f"no book meets the constraints: {res.message}")
     if res.x is None or res.status != 0:
         raise RuntimeError(f"MILP did not reach an optimum: {res.message} (status {res.status})")
     x = np.round(res.x[:n]).astype(int)
@@ -232,3 +259,47 @@ def paired_scenario_bootstrap(npv_scenarios, x_a, x_b, lam=1.0, level=0.95, n_bo
     point = (ta.mean() - lam * cvar(-ta, level)) - (tb.mean() - lam * cvar(-tb, level))
     low, high = float(np.quantile(diffs, 0.025)), float(np.quantile(diffs, 0.975))
     return {"diff": float(point), "low": low, "high": high, "pass": bool(low > 0)}
+
+
+def book_diff(x_old, x_new, ids, npv_scenarios, charge, groups, level=0.95):
+    """What changes between two books: who enters and leaves, and the change in capital, value, tail and concentration.
+
+    Parameters
+    ----------
+    x_old, x_new : array-like
+        0/1 selections.
+    ids : list of str
+        Candidate ids in column order.
+    npv_scenarios : numpy.ndarray
+        Scenarios × candidates, the set both books are scored on.
+    charge : array-like
+        What each candidate costs the budget.
+    groups : array-like
+        Technology of each candidate.
+    level : float
+        CVaR level.
+
+    Returns
+    -------
+    dict
+        ``entered`` and ``left`` (ids), and for each book and their difference:
+        ``charge``, ``expected_npv``, ``median_npv``, ``p_loss``, ``cvar_loss``
+        and ``hhi`` (the Herfindahl index of the charge across technologies,
+        1 for a one-technology book).
+    """
+    ids = np.asarray(ids)
+    A = np.asarray(npv_scenarios, float)
+    charge, groups = np.asarray(charge, float), np.asarray(groups)
+
+    def describe(x):
+        x = np.asarray(x, int)
+        total = A @ x
+        spent = charge @ x
+        shares = np.array([charge[groups == g] @ x[groups == g] for g in np.unique(groups)]) / spent if spent > 0 else np.zeros(1)
+        return {"charge": float(spent), "expected_npv": float(total.mean()), "median_npv": float(np.median(total)), "p_loss": float((total < 0).mean()),
+                "cvar_loss": cvar(-total, level), "hhi": float((shares ** 2).sum()), "n": int(x.sum())}
+
+    old, new = describe(x_old), describe(x_new)
+    x_old, x_new = np.asarray(x_old, int), np.asarray(x_new, int)
+    return {"entered": list(ids[(x_new == 1) & (x_old == 0)]), "left": list(ids[(x_old == 1) & (x_new == 0)]),
+            "old": old, "new": new, "change": {k: new[k] - old[k] for k in old}}

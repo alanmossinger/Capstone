@@ -1816,6 +1816,130 @@ def v8_bridged():
     add("ercot_assumed_months", str(assumed), assumed, "data/interim/market_monthly.parquet", "ERCOT months still assumed")
 
 
+def dollars(x, unit="B", digits=2, sign=False):
+    """Money as the v8 report writes it: ``$1.92B``, ``−$146M``, ``+$293M``."""
+    v = x / (1e9 if unit == "B" else 1e6)
+    body = f"{abs(v):,.{digits}f}{unit}"
+    return ("−" if v < 0 else ("+" if sign else "")) + "$" + body
+
+
+def v8_report():
+    """Report v8: the decision date, the decision system of notebook 11, the rebuilt gym and the frozen record (decisions #88–#92)."""
+    v8 = "results/v8/"
+    bt = read("decision_date_backtest.csv").set_index(["decision_date", "method", "region"])
+    e20 = bt.loc[("2020-01-01", "model", "ERCOT")]
+    add("v8_bt_ercot_pred", f"{e20['predicted_p5']:.3f}", e20["predicted_p5"], "results/decision_date_backtest.csv", "ERCOT five-year chance predicted as of 2020")
+    add("v8_bt_ercot_obs", f"{e20['observed_p5']:.3f}", e20["observed_p5"], "results/decision_date_backtest.csv", "ERCOT five-year share observed")
+    for m in ("model", "lookup"):
+        r = bt.loc[("2020-01-01", m, "all")]
+        add(f"v8_bt_auc_{m}", f"{r['auc']:.3f}", r["auc"], "results/decision_date_backtest.csv", f"AUC as of 2020, {m}")
+    live = read("decision_date_live_requests.csv")
+    add("v8_live_gw", f"{live['gw'].sum():,.0f}", live["gw"].sum(), "results/decision_date_live_requests.csv", "GW of live ERCOT requests")
+    add("v8_live_n", f"{int(live['requests'].sum()):,}", int(live["requests"].sum()), "results/decision_date_live_requests.csv", "live ERCOT requests")
+    base = pd.read_csv(paths.RESULTS / "v8" / "base_books.csv").set_index("grid")
+    add("v8_budget", dollars(base.loc["committee", "budget"]), base.loc["committee", "budget"], v8 + "base_books.csv", "committee budget")
+    add("v8_reg_mean", dollars(base.loc["registered", "mean"]), base.loc["registered", "mean"], v8 + "base_books.csv", "registered grid book D mean")
+    add("v8_D_leases", str(int(base.loc["committee", "leases"])), int(base.loc["committee", "leases"]), v8 + "base_books.csv", "leases in book D")
+    add("v8_D_requests", str(int(base.loc["committee", "requests"])), int(base.loc["committee", "requests"]), v8 + "base_books.csv", "requests in book D")
+    add("v8_reg_leases", str(int(base.loc["registered", "leases"])), int(base.loc["registered", "leases"]), v8 + "base_books.csv", "leases in registered book D")
+    fr = pd.read_csv(paths.RESULTS / "v8" / "frontier.csv").set_index("policy")
+    for key, pol in (("lam0", "lambda 0"), ("lam1", "lambda 1"), ("lam2", "lambda 2")):
+        add(f"v8_{key}_mean", dollars(fr.loc[pol, "mean"]), fr.loc[pol, "mean"], v8 + "frontier.csv", f"{pol}: mean")
+        add(f"v8_{key}_cvar", dollars(fr.loc[pol, "cvar_loss"]), fr.loc[pol, "cvar_loss"], v8 + "frontier.csv", f"{pol}: CVaR loss")
+    pc = pd.read_csv(paths.RESULTS / "v8" / "process_comparison.csv")
+    pc["key"] = pc["process"].str[0]
+    for _, r in pc.drop_duplicates("key").iterrows():
+        k = r["key"]
+        n = r["members"].count(";") + 1
+        add(f"v8_p{k}_n", str(n), n, v8 + "process_comparison.csv", f"process {k}: candidates")
+        add(f"v8_p{k}_mean", f"{r['mean'] / 1e9:.2f}", r["mean"], v8 + "process_comparison.csv", f"process {k}: mean $B")
+        add(f"v8_p{k}_cvar", f"{r['cvar_loss'] / 1e9:.2f}", r["cvar_loss"], v8 + "process_comparison.csv", f"process {k}: CVaR $B")
+        add(f"v8_p{k}_ploss", pct(r["p_loss"], 0), r["p_loss"], v8 + "process_comparison.csv", f"process {k}: chance of a loss")
+        add(f"v8_p{k}_regret", f"{r['regret_vs_hindsight'] / 1e9:.2f}", r["regret_vs_hindsight"], v8 + "process_comparison.csv", f"process {k}: regret $B")
+    va = pd.read_csv(paths.RESULTS / "v8" / "value_added.csv")
+
+    def row(p, a):
+        return va[(va["process"] == p) & (va["against"] == a)].iloc[0]
+
+    for key, p, a in (("DA", "D risk-aware MILP", "A NPV ranking"), ("DB", "D risk-aware MILP", "B equal capital by sector"), ("DC", "D risk-aware MILP", "C deterministic MILP"),
+                      ("ML", "D risk-aware MILP", "F (the ML increment), model's scenarios"), ("MLL", "D risk-aware MILP", "F (the ML increment), lookup's scenarios")):
+        r = row(p, a)
+        for c in ("metric_diff", "metric_low", "metric_high"):
+            add(f"v8_{key}_{c}", dollars(r[c], "M", 0, sign=True), r[c], v8 + "value_added.csv", f"{p} vs {a}: {c}")
+        if pd.notna(r.get("mean_diff")):
+            add(f"v8_{key}_mean_diff", dollars(abs(r["mean_diff"]), "M", 0), r["mean_diff"], v8 + "value_added.csv", f"{p} vs {a}: expected NPV difference, magnitude")
+    flex = row("D + revision in 2027", "D risk-aware MILP (the value of flexibility)")
+    for c in ("mean_diff", "mean_low", "mean_high"):
+        add(f"v8_flex_{c}", dollars(flex[c], "M", 0), flex[c], v8 + "value_added.csv", f"value of flexibility: {c}")
+    dyn = pd.read_csv(paths.RESULTS / "v8" / "dynamic.csv")
+    add("v8_reserve_over", pct(dyn.loc[0, "construction_over_reserve_share"], 0), dyn.loc[0, "construction_over_reserve_share"], v8 + "dynamic.csv", "scenarios where construction exceeds the reserve")
+    voi = pd.read_csv(paths.RESULTS / "v8" / "value_of_information.csv")
+    evpi = voi.loc[voi["kind"] == "EVPI", "value"].iloc[0]
+    add("v8_evpi", dollars(evpi, "M", 0), evpi, v8 + "value_of_information.csv", "EVPI")
+    for name, key in (("ERCOT price level 2025–2029", "ercot"), ("oil price level 2025–2029", "oil"), ("lease cost draw", "cost")):
+        v = voi.loc[voi["information"] == name, "value"].iloc[0]
+        add(f"v8_pevpi_{key}", dollars(v, "M", 0), v, v8 + "value_of_information.csv", f"partial EVPI, {name}")
+    ev = voi[voi["kind"] == "EVSI"]
+    add("v8_evsi_min", dollars(ev["value"].min(), "M", 1), ev["value"].min(), v8 + "value_of_information.csv", "smallest EVSI of an agreement signal")
+    add("v8_evsi_max", dollars(ev["value"].max(), "M", 1), ev["value"].max(), v8 + "value_of_information.csv", "largest EVSI of an agreement signal")
+    st = pd.read_csv(paths.RESULTS / "v8" / "statuses.csv")["status"].value_counts()
+    for k in ("invest now", "invest in stages", "defer pending information", "monitor", "reject"):
+        add(f"v8_status_{k.replace(' ', '_')}", str(int(st.get(k, 0))), int(st.get(k, 0)), v8 + "statuses.csv", f"candidates with status {k}")
+    ex = pd.read_csv(paths.RESULTS / "v8" / "explanations.csv").set_index("project_id")
+    cand = read("candidate_npv.csv").set_index("project_id")
+    w, g = "REQ|ERCOT|26INR0113", "REQ|ERCOT|25INR0008"
+    add("v8_wind_mw", f"{cand.loc[w, 'mw']:,.0f}", cand.loc[w, "mw"], "results/candidate_npv.csv", "the agreement-backed wind request, MW")
+    add("v8_wind_cost", dollars(ex.loc[w, "objective_cost_$M"] * 1e6, "M", 0), ex.loc[w, "objective_cost_$M"], v8 + "explanations.csv", "its opportunity cost")
+    add("v8_gas_mw", f"{cand.loc[g, 'mw']:,.0f}", cand.loc[g, "mw"], "results/candidate_npv.csv", "the largest gas request, MW")
+    add("v8_gas_mean", dollars(ex.loc[g, "expected_npv_$M"] * 1e6, "M", 0), ex.loc[g, "expected_npv_$M"], v8 + "explanations.csv", "its expected NPV")
+    add("v8_gas_pneg", pct(ex.loc[g, "p_negative"], 0), ex.loc[g, "p_negative"], v8 + "explanations.csv", "its chance of a loss")
+    leases = cand[cand["sector"] != "ERCOT power"]
+    add("v8_lease_reg", dollars(leases["expected_npv_base"].sum()), leases["expected_npv_base"].sum(), "results/candidate_npv.csv", "lease book, registered grid")
+    add("v8_lease_reg_low", dollars(leases["expected_npv_low_cost"].sum()), leases["expected_npv_low_cost"].sum(), "results/candidate_npv.csv", "lease book, registered low case")
+    add("v8_lease_reg_high", dollars(leases["expected_npv_high_cost"].sum()), leases["expected_npv_high_cost"].sum(), "results/candidate_npv.csv", "lease book, registered high case")
+    pl = read("posthoc_lease_values.csv")
+    for c in ("npv_base", "npv_low", "npv_high", "capex_base"):
+        add(f"v8_lease_com_{c}", dollars(pl[c].sum()), pl[c].sum(), "results/posthoc_lease_values.csv", f"lease book, committee grid, {c}")
+    add("v8_lease_com_high_pos", str(int((pl["npv_high"] > 0).sum())), int((pl["npv_high"] > 0).sum()), "results/posthoc_lease_values.csv", "leases positive at the committee high case")
+    reg = pd.read_csv(paths.RESULTS / "registered_v7" / "success_criteria_v7_scored.csv").set_index("id")
+    cur = read("success_criteria_v7_scored.csv").set_index("id")
+    for cid in ("C21", "C22", "C24"):
+        for tag, table, src in (("rv7", reg, "results/registered_v7/success_criteria_v7_scored.csv"), ("v8", cur, "results/success_criteria_v7_scored.csv")):
+            for c in ("diff", "low", "high"):
+                add(f"{tag}_{cid.lower()}_{c}", dollars(table.loc[cid, c], "M", 0, sign=True), table.loc[cid, c], src, f"{cid} {c}, {'as registered and scored' if tag == 'rv7' else 'on the corrected system'}")
+    frozen = pd.read_csv(paths.RESULTS / "registered_v7" / "candidate_npv.csv")
+    old = frozen[frozen["sector"] != "ERCOT power"]["expected_npv_base"].sum()
+    add("v7_lease_reg", dollars(old, digits=1), old, "results/registered_v7/candidate_npv.csv", "lease book as scored in v7")
+    hz = read("horizon_books.csv").set_index("horizon_years")
+    add("v8_hz20", dollars(hz.loc[20, "expected_npv_within_horizon_$B"] * 1e9), hz.loc[20, "expected_npv_within_horizon_$B"], "results/horizon_books.csv", "best book within 20 years")
+    add("v8_hz3_leases", str(int(hz.loc[3, "n_leases"])), int(hz.loc[3, "n_leases"]), "results/horizon_books.csv", "leases at three years")
+    add("v8_hz5_leases", str(int(hz.loc[5, "n_leases"])), int(hz.loc[5, "n_leases"]), "results/horizon_books.csv", "leases from five years")
+    gs = read("decision_gym_summary_v8.csv").set_index("comparison")
+    for key, comp in (("ri", "optimizer minus instinct"), ("rp", "optimizer minus instinct per dollar"), ("ar", "advisor minus optimizer")):
+        r = gs.loc[comp]
+        small = abs(r["mean_$M"]) < 10
+        add(f"v8_gym_{key}", dollars(abs(r["mean_$M"]) * 1e6, "M", 1 if small else 0), r["mean_$M"], "results/decision_gym_summary_v8.csv", comp + ", magnitude")
+        add(f"v8_gym_{key}_low", dollars(r["low_$M"] * 1e6, "M", 1 if small else 0, sign=True), r["low_$M"], "results/decision_gym_summary_v8.csv", comp + ", low")
+        add(f"v8_gym_{key}_high", dollars(r["high_$M"] * 1e6, "M", 1 if small else 0, sign=True), r["high_$M"], "results/decision_gym_summary_v8.csv", comp + ", high")
+        add(f"v8_gym_{key}_worse", str(int(r["worse"])), int(r["worse"]), "results/decision_gym_summary_v8.csv", comp + ", situations worse")
+    add("v8_gym_n", str(int(gs["situations"].iloc[0])), int(gs["situations"].iloc[0]), "results/decision_gym_summary_v8.csv", "effective situations")
+    rooms = read("decision_gym_rooms.csv")
+    q = rooms[rooms["kind"] == "queue"]["rule_minus_instinct"].mean()
+    add("v8_gym_queue", dollars(abs(q) * 1e6, "M", 1), q, "results/decision_gym_rooms.csv", "rule minus instinct per queue room, magnitude")
+    cap = read("candidate_capture_factors.csv").set_index("technology")
+    add("v8_capture_gas", pct(cap.loc["Gas CC", "capture_factor"], 0), cap.loc["Gas CC", "capture_factor"], "results/candidate_capture_factors.csv", "gas capture")
+    ae = read("advisor_evaluation.csv").set_index("metric")["value"]
+    calls = int(ae["recorded answers in advisor_runs.jsonl"])
+    add("v8_adv_calls", str(calls), calls, "results/advisor_evaluation.csv", "recorded advisor calls")
+    add("v8_adv_grounding", pct(float(ae["mean number-grounding rate over recorded answers"]), 0), float(ae["mean number-grounding rate over recorded answers"]), "results/advisor_evaluation.csv", "grounding rate")
+    tools = pd.read_csv(paths.RESULTS / "v8" / "advisor_tools_eval.csv")
+    answered = tools[tools["status"] == "answered"]
+    add("v8_tools_correct", str(int(tools["translation_correct"].sum())), int(tools["translation_correct"].sum()), v8 + "advisor_tools_eval.csv", "questions read correctly")
+    add("v8_tools_checked", str(int(answered["numbers_checked"].sum())), int(answered["numbers_checked"].sum()), v8 + "advisor_tools_eval.csv", "numbers checked in the explanations")
+    grounded = int(round((answered["numbers_checked"] * answered["grounding_rate"]).sum()))
+    add("v8_tools_grounded", str(grounded), grounded, v8 + "advisor_tools_eval.csv", "of them grounded")
+
+
 def build():
     """Collect every cited number and write ``results/report_numbers.csv``.
 
@@ -1834,7 +1958,7 @@ def build():
     for step in (design_constants, gathering_and_cleaning, eda, modelling, evaluation, explanation, posthoc,
                  v3_data, v3_fair_baseline, v3_level, v3_landmark, v3_value, v3_miso_spp, v3_portfolio,
                  v3_extras, v3_appendix, v4_managed_book, v5_drivers, v5_segments, v5_timing, v5_tournament, v5_npv,
-                 v5_review, v5_books, v5_archetypes, v5_extras, v6_data, v6_forecasts, v6_economics, v6_scenarios, v6_books, v6_advisor, v7_rounded, v7_posthoc, v7_questions, v8_bridged):
+                 v5_review, v5_books, v5_archetypes, v5_extras, v6_data, v6_forecasts, v6_economics, v6_scenarios, v6_books, v6_advisor, v7_rounded, v7_posthoc, v7_questions, v8_bridged, v8_report):
         step()
     table = pd.DataFrame(ROWS)
     table.to_csv(paths.RESULTS / "report_numbers.csv", index=False)

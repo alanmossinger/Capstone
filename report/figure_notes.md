@@ -1782,6 +1782,26 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** The registered and the committee grid compared: book means and medians, and the lease book under two oil stresses.
 <!-- /fig:F37_committee_grid -->
 
+<!-- fig:F38_frontier -->
+### F38_frontier
+
+![F38_frontier](../figures/F38_frontier.png)
+
+*Notebook:* `notebooks/11_decision_system.ipynb` · *Files:* `figures/F38_frontier.png`, `.svg`
+
+**Caption (stub).** The efficient frontier over risk policies, the four registered books on it, and capital by technology along it.
+<!-- /fig:F38_frontier -->
+
+<!-- fig:F39_reallocation -->
+### F39_reallocation
+
+![F39_reallocation](../figures/F39_reallocation.png)
+
+*Notebook:* `notebooks/11_decision_system.ipynb` · *Files:* `figures/F39_reallocation.png`, `.svg`
+
+**Caption (stub).** How the book's capital moves under five committee questions.
+<!-- /fig:F39_reallocation -->
+
 <!-- fig:F3_five_year_by_size -->
 ### F3_five_year_by_size
 
@@ -1791,6 +1811,56 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 
 **Caption (stub).** Probability of reaching operation within five years by requested capacity (size regime) for CAISO, ERCOT and PJM, with the 20 MW FERC small/large generator threshold marked.
 <!-- /fig:F3_five_year_by_size -->
+
+<!-- fig:F40_attractiveness -->
+### F40_attractiveness
+
+![F40_attractiveness](../figures/F40_attractiveness.png)
+
+*Notebook:* `notebooks/11_decision_system.ipynb` · *Files:* `figures/F40_attractiveness.png`, `.svg`
+
+**Caption (stub).** Project-level value and uncertainty, and membership of book D.
+<!-- /fig:F40_attractiveness -->
+
+<!-- fig:F41_staged -->
+### F41_staged
+
+![F41_staged](../figures/F41_staged.png)
+
+*Notebook:* `notebooks/11_decision_system.ipynb` · *Files:* `figures/F41_staged.png`, `.svg`
+
+**Caption (stub).** Value of revising book D on 1 January 2027: the per-scenario gain and the two distributions.
+<!-- /fig:F41_staged -->
+
+<!-- fig:F42_value_added -->
+### F42_value_added
+
+![F42_value_added](../figures/F42_value_added.png)
+
+*Notebook:* `notebooks/11_decision_system.ipynb` · *Files:* `figures/F42_value_added.png`, `.svg`
+
+**Caption (stub).** Value added by each decision process over the conventional baselines, with paired bootstrap intervals.
+<!-- /fig:F42_value_added -->
+
+<!-- fig:F43_architecture -->
+### F43_architecture
+
+![F43_architecture](../figures/F43_architecture.png)
+
+*Notebook:* `notebooks/11_decision_system.ipynb` · *Files:* `figures/F43_architecture.png`, `.svg`
+
+**Caption (stub).** The decision system in six layers, and the evaluation that scores it.
+<!-- /fig:F43_architecture -->
+
+<!-- fig:F44_advisor_tools -->
+### F44_advisor_tools
+
+![F44_advisor_tools](../figures/F44_advisor_tools.png)
+
+*Notebook:* `notebooks/11_decision_system.ipynb` · *Files:* `figures/F44_advisor_tools.png`, `.svg`
+
+**Caption (stub).** The path of a committee question through the advisor with tools, the engine, the check, the decision and the ledger.
+<!-- /fig:F44_advisor_tools -->
 
 <!-- fig:F4_calibration_by_horizon -->
 ### F4_calibration_by_horizon

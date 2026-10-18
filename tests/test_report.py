@@ -69,9 +69,15 @@ def test_report_is_under_the_word_limit():
     assert len(words) <= WORD_LIMIT, f"{len(words)} words"
 
 
+# The poster and the Petrobras edition still describe report v6 and the record as scored before the audit of
+# 17 October 2026; until they are rewritten for v8 they are checked against the numbers table they were written
+# from, frozen with that record (results/registered_v7/report_numbers.csv, commit 61a8177).
+V7_NUMBERS = paths.RESULTS / "registered_v7" / "report_numbers.csv"
+
+
 def test_every_number_on_the_poster_is_in_report_numbers():
-    """The poster cites the report's numbers only; layout sizes (mm, pt, %) and colours are not quantities."""
-    table = pd.read_csv(paths.RESULTS / "report_numbers.csv")
+    """The poster cites the v7 report's numbers only; layout sizes (mm, pt, %) and colours are not quantities."""
+    table = pd.read_csv(V7_NUMBERS)
     cited = set()
     for text in table["text"].astype(str):
         cited |= numbers_in(text)
@@ -80,12 +86,12 @@ def test_every_number_on_the_poster_is_in_report_numbers():
     poster = re.sub(r'#(?:text|image|v|line|grid|align|block)\([^)]*\)', " ", poster)  # typst calls carry sizes, not findings
     poster = re.sub(r"\b\d+(?:\.\d+)?(?:mm|pt|em)\b|\d+%(?=\))", " ", poster)
     missing = sorted(numbers_in(poster) - cited)
-    assert not missing, f"numbers on the poster not in results/report_numbers.csv: {missing}"
+    assert not missing, f"numbers on the poster not in the v7 numbers table: {missing}"
 
 
 def test_every_number_in_the_petrobras_report_is_in_report_numbers():
-    """The executive edition cites the report's numbers only; typst sizes, colours and file names are not quantities."""
-    table = pd.read_csv(paths.RESULTS / "report_numbers.csv")
+    """The executive edition cites the v7 report's numbers only; typst sizes, colours and file names are not quantities."""
+    table = pd.read_csv(V7_NUMBERS)
     cited = set()
     for text in table["text"].astype(str):
         cited |= numbers_in(text)
@@ -95,4 +101,4 @@ def test_every_number_in_the_petrobras_report_is_in_report_numbers():
     typ = re.sub(r"\b\d+(?:\.\d+)?(?:pt|em|in|fr)\b|\d+%(?=[,)])", " ", typ)  # typst sizes, column fractions and widths
     typ = re.sub(r'"[^"]*\.svg"', " ", typ)  # figure file names
     missing = sorted(numbers_in(typ) - cited)
-    assert not missing, f"numbers in the Petrobras report not in results/report_numbers.csv: {missing}"
+    assert not missing, f"numbers in the Petrobras report not in the v7 numbers table: {missing}"

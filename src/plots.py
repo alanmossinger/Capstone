@@ -132,7 +132,7 @@ SHORT_TITLES = {
     "F30_price_scenarios": "Scenarios keep history's price jumps around a reverting level",
     "F31_candidate_risk": "Leases rarely lose money; most power requests usually do",
     "F32_stresses": "Every named stress leaves the default book positive",
-    "F33_four_books": "The risk-aware book does not beat NPV ranking out of sample",
+    "F33_four_books": "Four books under one budget and cap, scored out of sample",
     "F35_horizon_view": "Leases pay from year three; queue requests stay a cost",
     "F36_ai_workflow": "The advisor sees only result tables; humans override through a gate",
 }

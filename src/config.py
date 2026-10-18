@@ -236,3 +236,7 @@ RELEASE_LAGS = {  # months after the observation month a source is public (PLAN.
     "ERCOT DAM/RTM": 0,  # settlement point prices are published next day
     "BLS CPI-U": 1,  # the index is released mid-month for the previous month
 }
+DECISION_DATE = "2025-01-01"  # one decision date for both sectors (decision #90): leases valued and requests still active on CENSOR_DATE
+LEASE_TERMINAL_DECLINE = 0.08  # effective annual decline the lease baselines switch to (modified hyperbolic; ASSUMED, decision #90)
+LEASE_TERMINAL_DECLINE_RANGE = (0.05, 0.12)  # the sensitivity range reported beside the base
+LEASE_MIN_POST_PEAK_MONTHS = 12  # fewer positive months after the peak and the lease is still ramping: it declines from its recent level at the floor

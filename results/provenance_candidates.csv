@@ -1,12 +1,15 @@
 columns,provenance,source
-"boe_2024, n_wells, mw",OBSERVED,BSEE OGOR-A; LBNL queue file
-baseline production (Arps),FORECAST,src/decline.py on the last 36 months
+"boe_2024, n_wells, mw, age, agreement_known",OBSERVED,BSEE OGOR-A; LBNL queue file; agreement dates of notebook 04 part I
+baseline production,FORECAST,"src/decline.py: post-peak Arps fit on the last 36 months, terminal decline floor (ASSUMED, decision #90)"
 "workover, uplift, opex, royalty, abandonment, differentials, lead time",ASSUMED,"decision #68 grid, results/upstream_cost_grid.csv"
 "WTI, Henry Hub, ERCOT 2024 real means",OBSERVED,notebook 01 market table (ERCOT 2024 observed)
+the same prices held flat for twenty years,ASSUMED,the flat path; the scenarios of notebook 08 replace it
 "capture factors, battery revenue",DERIVED,2024 hourly DAM North hub × ERCOT system shapes; one-cycle LP
-"ATB capex, O&M, heat rate, WACC",OBSERVED,NREL ATB 2024 (part A)
+"ATB capex, O&M, heat rate",DERIVED,"NREL ATB 2024 projections, 2022 dollars converted to 2024 by the CPI-U"
+ATB real cost of capital,ASSUMED,NREL ATB 2024 financing assumption (after-tax rate on pre-tax cash flows)
 PPA prices,ASSUMED,value_assumptions.csv (decision #61)
-"P(operation by year), expected operation year",FORECAST,notebook 04 entry models
+tax credits and their deadline,ASSUMED,IRC §45Y/§48E base rates; IRS Notice 2025-42 deadline for wind and solar
+"P(operation by year), expected operation year",FORECAST,"notebook 04 part L: conditional on the age in the queue, level-corrected by the 2020 backtest"
 carry cost,DERIVED,cost_table.csv by size band (part A)
+stage-one charge,DERIVED,carry + P(operation within 7 y) × capital (decision #90)
 "expected NPV, break-even, tornado, impact shares",DERIVED,this notebook
-operated_by_2024,OBSERVED,"LBNL file, outcome through 2024-12-31"

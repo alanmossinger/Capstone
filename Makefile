@@ -6,7 +6,7 @@ else
 PYTHON := .venv/bin/python
 endif
 
-.PHONY: setup data eda features forecast energy economics scenarios portfolio record advisor figures numbers report poster petrobras app challenge test all
+.PHONY: setup data eda features forecast energy economics scenarios portfolio record advisor decide figures numbers report poster petrobras app challenge decide-page test all
 
 setup:            ## create .venv, install pinned packages, register the notebook kernel
 	python -m venv .venv
@@ -43,8 +43,11 @@ record:           ## 06: every registered criterion scored, explanation, decisio
 advisor:          ## 10: the LLM advisor and the decision gym (v5; replay mode runs offline)
 	$(PYTHON) run_pipeline.py --only 10
 
+decide:           ## 11: the decision system of v8 — frontier, what-ifs, explanations, value of information, staged decisions, processes compared, the advisor with tools
+	$(PYTHON) run_pipeline.py --only 11
+
 figures:          ## every notebook that draws figures, in pipeline order
-	$(PYTHON) run_pipeline.py --only 01 02 04 05 07 08 09 06 10
+	$(PYTHON) run_pipeline.py --only 01 02 04 05 07 08 09 06 10 11
 
 numbers:          ## results/report_numbers.csv: every number the report cites, read from results/
 	$(PYTHON) -m src.report_numbers
@@ -67,8 +70,11 @@ app:              ## the Streamlit dashboard (reads results/ only)
 challenge:        ## the challenge round as one page: state the book, answer the five questions, read the verdict (app/challenge.py)
 	$(PYTHON) -m streamlit run app/challenge.py
 
+decide-page:      ## the v8 decision page: alternatives, your book, the models' answers, a decision through the gated ledger (app/decide.py)
+	$(PYTHON) -m streamlit run app/decide.py
+
 test:
 	$(PYTHON) -m pytest
 
-all:              ## notebooks 01 → 10 in dependency order (06 last), stop at the first error
+all:              ## notebooks 01 → 11 in dependency order (06 after 09), stop at the first error
 	$(PYTHON) run_pipeline.py

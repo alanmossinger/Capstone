@@ -1,0 +1,5 @@
+check,passed,result
+no request in the 2025 table had left the queue by the decision date,True,PASS
+"curves are cumulative and within [0, 1]",True,PASS
+every backtest refits only on what was known on its date,True,PASS
+the level correction comes from a decision date whose outcomes closed before 2025,True,PASS

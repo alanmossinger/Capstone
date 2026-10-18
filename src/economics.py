@@ -26,7 +26,7 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import linprog
 
-from src import decline
+from src import config, decline
 
 # --- the upstream cost grid (decision #68; every value ASSUMED, in 2024 dollars) ---------------
 UPSTREAM_GRID = pd.DataFrame([
@@ -71,21 +71,39 @@ def grid_case(case):
 
 # --- lease cash flows ------------------------------------------------------------------------
 
-def lease_baseline(history_oil, history_gas, months=240, window=36):
-    """Arps baseline forecast of oil (bbl) and gas (Mcf) per month from the last ``window`` observed months.
+def lease_baseline(history_oil, history_gas, months=240, window=36, annual_floor=None):
+    """Baseline forecast of oil (bbl) and gas (Mcf) per month from the last ``window`` observed months.
+
+    Parameters
+    ----------
+    history_oil, history_gas : array-like
+        Monthly volumes, oldest first.
+    months : int
+        Forecast length.
+    window : int
+        Months of history the fit looks at.
+    annual_floor : float, optional
+        Terminal effective annual decline; ``config.LEASE_TERMINAL_DECLINE`` when None.
 
     Returns
     -------
     tuple of (numpy.ndarray, numpy.ndarray, dict, dict)
-        Oil and gas rates for the next ``months``, and the two Arps fits.
+        Oil and gas rates for the next ``months``, and the two fit records of
+        ``decline.floored_baseline``.
+
+    Notes
+    -----
+    Each stream is fitted after its own peak inside the window and declines
+    no slower than the floor (modified hyperbolic, decision #90). The first
+    version extrapolated an unbounded Arps fit, which returned no decline for
+    ten of the twenty candidate leases (audit E2).
     """
+    floor = config.LEASE_TERMINAL_DECLINE if annual_floor is None else annual_floor
     oil = np.asarray(history_oil, float)[-window:]
     gas = np.asarray(history_gas, float)[-window:]
-    fit_o, fit_g = decline.fit_arps(oil), decline.fit_arps(gas)
-    t = np.arange(1, months + 1)
-    base_o = np.array([decline.forecast_arps(fit_o, h, len(oil)) for h in t])
-    base_g = np.array([decline.forecast_arps(fit_g, h, len(gas)) for h in t])
-    return np.maximum(base_o, 0.0), np.maximum(base_g, 0.0), fit_o, fit_g
+    base_o, fit_o = decline.floored_baseline(oil, months, floor, config.LEASE_MIN_POST_PEAK_MONTHS)
+    base_g, fit_g = decline.floored_baseline(gas, months, floor, config.LEASE_MIN_POST_PEAK_MONTHS)
+    return base_o, base_g, fit_o, fit_g
 
 
 def lease_cash_flows(base_oil, base_gas, wti, hh, n_wells, case="base", grid=None, redevelop=True):

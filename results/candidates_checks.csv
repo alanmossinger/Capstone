@@ -3,6 +3,8 @@ default book: 20 leases and 5 requests per technology,True,PASS
 every candidate row has a provenance label and a completeness score,True,PASS
 "every grid item is in the exported grid with low, base and high",True,PASS
 "P(operation) curves are cumulative and within [0, 1]",True,PASS
+every power candidate was still in the queue on the decision date,True,PASS
+the stage-one charge is lease capital or carry plus the construction reserve,True,PASS
 power break-evens are finite for the generating technologies,True,PASS
 tornado rows: the book's NPV at base equals the sum of the candidates,True,PASS
 F28 and F29 saved,True,PASS

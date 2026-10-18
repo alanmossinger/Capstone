@@ -1544,3 +1544,31 @@ chapter; the Oct 19 proposal reframed. Decisions #83–#85.
 - Push `v8-corrections`?
 - Carried: F0 labels; the Petrobras title; the live challenge round; the
   ±1.5 cap; key rotation.
+
+## Session 15, continued — 2026-10-17: the framing corrections, the decision layers, report v8
+
+Alan chose the recommended option on all four framing questions (decision #90).
+
+**Done**
+
+- **Decision date 1 January 2025** (`src/decision_date.py`, notebook 04 part L). The power pool is the 1,649 ERCOT requests of 20 MW and more still waiting (about 359 GW); each request's seven-year chance is conditional on its age. Two guards were needed: a request without an agreement is read with the plain model (the agreement model holds the flag at zero for every later year), and the request year is capped at the last cohort with five closed years (read at 2024, the trees put a new request's first-year withdrawal at 0.73). Backtests as of 2018 and 2020: the model ranks better than the lookup (AUC 0.738 against 0.686 as of 2020) but over-predicts ERCOT's level (0.388 against 0.238); the ratio, 0.614, corrects the 2025 curves. The lookup travels with the candidates as the naive benchmark.
+- **Lease baselines** with an 8% terminal decline (`decline.floored_baseline`; C20's forecasting baseline untouched): registered lease book $8.23B (was $14.6B), committee $2.74B for $5.15B of capital.
+- **Valuation engine** (`src/valuation.py`): the repricing moved out of notebook 08; ATB costs in 2024 dollars; credits by operation year; the stage-one charge.
+- **Budget** (decision #92): 40% of the stage-one charges. A first attempt at 40% of full capital left nothing binding and books A, B and C identical; it stays as a sensitivity.
+- **Held-out set** redrawn in every component; the gym's lease rooms rebuilt as of their date and counted as one situation; two new actors (instinct per dollar, nothing).
+- **Decision layers** (decision #91): `src/whatif.py`, `src/advisor_tools.py` with `prompts/whatif_*.md`, `src/ledger.py`, `src/voi.py`, `src/dynamic.py`, `app/decide.py` (`make decide-page`); notebook 11 runs them (`make decide`).
+- **Results (committee grid, held-out, post-registration).** D beats NPV ranking by $293M [+151, +441] on the registered metric, for $130M of expected value; the lookup's book is not beaten by the model's (−$146M [−325, +30]); revision in 2027 −$13M [−24, −4]; EVPI $482M, ERCOT price level $40M; the advisor read six questions correctly and its 102 cited numbers were all in the fact sheets; its investment increment is zero; in the gym it trails the rule by $5.1M [−11.0, −1.5]. On the registered grid C21 and C22 pass on the corrected system (Table A2), labelled as new results.
+- **Report v8**: the eleven sections of the brief, core 3,499 words by the test's rule, every number keyed (`v8_report` in `src/report_numbers.py`); Appendix A keeps the registered record from `results/registered_v7/`; Appendices F, G rewritten; H added (the audit).
+- Figures F38–F44 looked at and fixed (titles that stated the wrong finding, legends over data, overflowing diagram text); F34 and F33 retitled from their results.
+- 224 tests pass. The poster and the Petrobras edition still describe v7; their number tests read the v7 numbers table frozen with the record.
+
+**Next**
+
+- Rewrite the Reading-this cells of notebooks 07–10 from their new outputs (they still describe v7).
+- Poster and Petrobras edition for v8; a clean-environment run of v8; tag.
+
+**Open questions for Alan**
+
+- The memo now presents a trade-off rather than one book; is that the framing you want for the committee?
+- Push `v8-corrections`, and merge it into `main` when you have read the report?
+- Carried: F0 labels (superseded by F43?); the Petrobras title; the live challenge round; key rotation.

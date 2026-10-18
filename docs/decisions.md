@@ -1280,3 +1280,70 @@ alternative rejected.
     five-year rate of entrants through 2016 closes in 2021, after the 2017–2019
     gates; the latest cohort closed before a gate is 2012–2014, a level the
     queue has since left).
+90. **The v8 framing, as Alan chose it** (Alan, 2026-10-17). (1) One
+    decision date for both sectors, 1 January 2025: the power pool is
+    redrawn from ERCOT requests still active on 31 December 2024 (the five
+    largest per technology), with the chance of operating conditional on
+    having survived to that date; the leases are already valued then.
+    (2) Lease baselines are modified hyperbolic with a terminal decline of
+    8% a year (ASSUMED; 5% and 12% as the range), fitted on post-peak
+    months, ramp-up leases fitted from their peak. (3) A two-stage budget:
+    stage 1 charges what is committed now — lease capital, and for a request
+    its deposits and studies plus a construction reserve — and construction
+    capital is decided at the agreement in the dynamic module. (4) The core
+    of the report stays within 3,500 words in the eleven sections of the
+    brief; the interface is one decision page that shows the alternatives
+    first and asks for the human's book before the advisor speaks.
+    *Rejected:* a backtest at 2019 (it duplicates the rebuilt gym and makes
+    the memo historical); a 12% floor as the base (kept as the range's top);
+    charging expected capital (not cash a committee can spend); a
+    multi-page dashboard (the earlier critique).
+91. **The decision layers of v8** (2026-10-17). Six modules, each with
+    tests: `src/decision_date.py` (the queue on 1 January 2025 — requests
+    still live, their chance of operating conditional on their age, read
+    with the agreement model when an agreement is signed and the plain model
+    otherwise, the request year capped at the last cohort with five closed
+    years because the trees otherwise extrapolate a 2024 request into
+    near-certain withdrawal, and the level corrected by a backtest as of
+    1 January 2020; the lookup life table beside it as the transparent
+    benchmark); `src/valuation.py` (the repricing that lived only in
+    notebook 08, with ATB costs in 2024 dollars and the credits by operation
+    year); `src/whatif.py` (a committee question as validated parameters,
+    repriced, re-solved and diffed; a statement of each candidate's status;
+    opportunity costs from forced re-solves); `src/advisor_tools.py` (the
+    language model translates a question into parameters or declines, the
+    engine computes, the model explains what was computed, every number
+    checked against the computed result in its unit); `src/ledger.py`
+    (append-only, a named authorizer on every row, overrides gated where
+    they are written, a hash chain); `src/voi.py` (EVPI, partial EVPI and
+    the EVSI of the agreement signal, reported as the most worth paying, not
+    a return); `src/dynamic.py` (commit in 2025, revise in 2027 on two years
+    of prices and the agreement signal, a least-squares continuation value
+    fitted on the primary scenarios and scored on the held-out ones — a
+    scenario-based extension that establishes no real-option value).
+    Notebook 11 runs them; all of it is post-registration and labelled so.
+    The advisor's investment increment is measured as zero when its book is
+    the optimizer's; its other contributions are scored on translation,
+    attributed grounding and refusals, with no money attached. *Rejected:*
+    letting the language model propose books or numbers (it cannot be held
+    to the constraints or the scenarios); a dynamic program over all forty
+    candidates (intractable at capstone scale; two dates and a regression
+    policy are enough to measure flexibility); a dollar value for
+    explanations (no evidence supports one).
+92. **The budget is 40% of the candidates, in the units it is spent in;
+    the revision faces the same cap** (2026-10-17, found while rehearsing
+    notebook 11 and rerunning notebook 09). The registered rule funds 40% of
+    the opportunity set: 40% of the forty candidates' capital when every
+    candidate's capital was spent at once. Under the two-stage budget of
+    decision #90 a candidate costs the budget its stage-one charge, so the
+    rule becomes 40% of the forty stage-one charges. A first attempt kept
+    the budget at 40% of full capital: with the 2025 requests' plant capital
+    of about $35B the budget rose to about $16B, nothing bound, and the
+    comparators A, B and C all funded the same 34 positive candidates — a
+    comparison with nothing to compare. That budget is reported in notebook
+    11 as a sensitivity. The same rehearsal found the staged policy starting
+    deferred leases past the 40% technology cap with capital released by
+    dropped requests — the error of audit A1 in a new place; the revision now
+    respects the cap the static book faces, with a test. *Rejected:* a
+    budget in dollars carried over from v6 ($7.81B; tied to a candidate set
+    that no longer exists); letting the revision exceed the cap.

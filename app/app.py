@@ -29,7 +29,7 @@ import pandas as pd
 import streamlit as st
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
-from src import advisor as adv, economics as ec, energy_data, gym, horizons as hz, optimizer as opt, paths, scenarios as sc  # noqa: E402
+from src import advisor as adv, config, energy_data, gym, horizons as hz, optimizer as opt, paths  # noqa: E402
 
 R, FIG = paths.RESULTS, paths.FIGURES
 st.set_page_config(page_title="Queue to Capital — the portfolio desk", layout="wide")
@@ -67,22 +67,13 @@ def load_situations():
         if s:
             out.append(s)
     out.append(gym.queue_situation(pack, "ERCOT", 2018, "entry", budget_cut=0.2))
-    cand = pd.read_csv(R / "candidate_npv.csv")
-    leases = cand[cand["sector"] == "offshore oil and gas"].reset_index(drop=True)
     upstream = pd.read_parquet(paths.DATA_INTERIM / "upstream_monthly.parquet")
-    market = pd.read_parquet(paths.DATA_INTERIM / "market_monthly.parquet")
     cpi = pd.read_parquet(paths.DATA_INTERIM / "cpi_monthly.parquet")
     wti = energy_data.read_eia_monthly_price(paths.RAW_PRICES / "RWTCm.xls", "wti_usd_bbl")
     hh = energy_data.read_eia_monthly_price(paths.RAW_PRICES / "RNGWHHDm.xls", "hh_usd_mmbtu")
-    lease_ids = [p.split("|")[1] for p in leases["project_id"]]
-    hist = upstream[upstream["lease_number"].isin(lease_ids)]
-    oil_w = hist.pivot(index="lease_number", columns="month", values="oil_bbl").fillna(0)
-    gas_w = hist.pivot(index="lease_number", columns="month", values="gas_mcf").fillna(0)
-    baselines = {lid: ec.lease_baseline(oil_w.loc[lid].to_numpy(), gas_w.loc[lid].to_numpy(), months=240)[:2] for lid in lease_ids}
-    changes = sc.joint_log_changes(market.rename(columns={"wti_usd_bbl_real2024": "w", "hh_usd_mmbtu_real2024": "h", "ercot_usd_mwh_real2024": "e"}), series=["w", "h", "e"])
     lam = float(pd.read_json(R / "success_criteria_v7_registered.json", typ="series")["lam"])
-    for name, start in gym.REGIMES.items():
-        out.append(gym.lease_situation(name, start, leases, baselines, wti, hh, cpi, changes, n_scen=300, seed=2020, lam=lam))
+    for name, start in gym.REGIMES.items():  # rebuilt as of their date, as notebook 10 (audit G1)
+        out.append(gym.lease_situation(name, start, upstream, wti, hh, cpi, lag_months=config.RELEASE_LAGS["BSEE OGOR-A"], n_scen=300, seed=2020, lam=lam))
     return out
 
 

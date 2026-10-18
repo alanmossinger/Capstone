@@ -1,0 +1,9 @@
+check,passed,result
+every book of every process meets the budget and the cap,True,PASS
+the four registered books face the same constraints,True,PASS
+books are chosen on the primary set and scored on the held-out set,True,PASS
+"the held-out set redraws output, costs and timing too",True,PASS
+the engine reproduces its own matrix,True,PASS
+the staged policy is fitted on the primary set only,True,PASS
+no value of information is negative,True,PASS
+the reported CVaR equals the optimizer's tail count,True,PASS

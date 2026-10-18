@@ -94,3 +94,35 @@ def test_one_cvar_definition_across_modules():
     npv = np.random.default_rng(3).normal(10.0, 5.0, size=2000)
     assert abs(scenarios.risk_measures(npv)["cvar"] - (-opt.cvar(-npv, 0.95))) < 1e-9
     assert abs(portfolio.expected_shortfall(npv, 0.95) - (-opt.cvar(-npv, 0.95))) < 1e-9
+
+
+def test_cvar_limit_binds_and_an_impossible_limit_is_reported():
+    A, mu = _scenarios(S=400)
+    capex = np.ones(8) * 10.0
+    free = opt.solve_milp(A, capex, budget=30.0, lam=0.0)
+    limit = free["cvar_loss"] - 1.0  # stricter than the free book's tail
+    capped = opt.solve_milp(A, capex, budget=30.0, lam=0.0, cvar_cap=limit * 1e6 / 1e6)
+    assert capped["cvar_loss"] <= limit + 1e-6
+    assert capped["expected_npv"] <= free["expected_npv"] + 1e-9  # a tighter tail costs expected value
+    try:
+        opt.solve_milp(A + 1000.0, capex, budget=30.0, lam=0.0, cvar_cap=-1e12, forced_in=[0])
+        assert False, "an impossible limit must raise"
+    except opt.InfeasibleBook:
+        pass
+
+
+def test_forced_members_are_respected():
+    A, mu = _scenarios()
+    capex = np.ones(8) * 10.0
+    out = opt.solve_milp(A, capex, budget=30.0, lam=0.0, forced_in=[6], forced_out=[0])
+    assert out["x"][6] == 1 and out["x"][0] == 0
+
+
+def test_book_diff_names_entries_exits_and_the_changes():
+    A, mu = _scenarios()
+    ids = [f"c{i}" for i in range(8)]
+    groups = np.array(["a"] * 4 + ["b"] * 4)
+    d = opt.book_diff([1, 1, 0, 0, 0, 0, 0, 0], [1, 0, 1, 0, 1, 0, 0, 0], ids, A, np.ones(8), groups)
+    assert d["entered"] == ["c2", "c4"] and d["left"] == ["c1"]
+    assert abs(d["change"]["charge"] - 1.0) < 1e-12
+    assert d["old"]["hhi"] == 1.0 and abs(d["new"]["hhi"] - (2 / 3) ** 2 - (1 / 3) ** 2) < 1e-12
