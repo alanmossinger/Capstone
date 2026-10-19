@@ -1347,3 +1347,23 @@ alternative rejected.
     respects the cap the static book faces, with a test. *Rejected:* a
     budget in dollars carried over from v6 ($7.81B; tied to a candidate set
     that no longer exists); letting the revision exceed the cap.
+93. **Four fixes after the v8 reading-cell rewrite** (Alan, 2026-10-19).
+    (1) The `NB10-advisor-base` row of `results/decision_ledger.csv` is
+    corrected and kept: notebook 10 replaced it only when it was absent, so
+    the v7 row (26 members, $5.37B against a $1.79B budget) survived the v8
+    rerun; the notebook now replaces its row on every run. (2) F0's bottom
+    line names every technology the committee-grid book D holds; it listed
+    leases, wind and gas and left out the book's solar. (3) Notebook 09 E.6
+    scores the naive-forecast book on a held-out set that redraws the naive
+    output errors with its own seed and uses the held-out cost draws, as
+    notebook 08 does (audit A7); before, its held-out values reused the
+    primary draws. The selection, made on the primary set, is unchanged.
+    (4) Notebook 09 E.5's second power draw applies part A's entry gate
+    (hurdle 3, floor at the pool's mean chance, contracted value before the
+    carry, the carry as the gate's cost) to the 1,649 requests live on
+    1 January 2025, with only that day's information; it took the 2017–2019
+    test cohort's entry decisions, which could reach only the entrants of
+    those years still waiting in 2025. Only the base value case exists for
+    the 2025 pool, so the rule's low and high cases take it. No new
+    notebook; notebooks 09 and 10 rerun. *Rejected:* deleting the ledger row
+    (Alan chose to keep the advisor's entry); dropping the second draw.

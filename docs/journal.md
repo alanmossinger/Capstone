@@ -1594,3 +1594,21 @@ Alan chose the recommended option on all four framing questions (decision #90).
 - F0's bottom line counts leases, wind and gas of the committee book D, which also holds $0.48B of solar; the label needs solar.
 - Notebook 09 E.6 scores the naive-forecast book on held-out values that reuse the primary set's output and cost draws (stated in its reading cell); redraw them as in notebook 08?
 - Notebook 09 E.5's second power draw can only hold 2017–2019 entrants still waiting in 2025 (the entry rule ran on that cohort); keep it as a post-hoc check or drop it?
+
+## Session 17 — 2026-10-19: the four open items of session 16 (decision #93)
+
+Alan's answers: correct and keep the ledger row; F0 shows every technology; redraw E.6's held-out draws; fix E.5. No new notebooks.
+
+**Done**
+
+- `10_advisor_and_gym`: the `NB10-advisor-base` ledger row is rewritten on every run; it is now the advisor's base pick (16 members, $1.79B of stage-one charges against the $1.79B budget, book C's held-out scores). F0's bottom line names every technology of the committee book D ("6 leases + 5 wind + 1 solar under contract + 2 gas"), set at 11 pt so it fits its box; the PART I band text no longer overlaps "queue engine". Reading cells 35 and 36 updated.
+- `09_portfolio` E.5: the second power draw applies part A's entry gate (hurdle 3) to the 1,649 requests live on 1 January 2025. It invests in 212 solar and 58 wind requests and exits every gas and storage request; the five largest solar (0.30 chance) and wind (0.30) all pay under contract (+$99M and +$877M). E.6: the naive book is scored on held-out output and cost draws (metric $9.56B against $9.81B; selection unchanged, Jaccard 0.95). Cells 124, 139, 141, 144 and 147 updated.
+- Notebooks 09 (781 s) and 10 (replay, 35 calls, none live) rerun; only `posthoc_power_draws.csv`, `posthoc_ablation_naive_forecasts.csv`, `decision_ledger.csv` and F0 changed.
+
+**Next**
+
+- The poster and the Petrobras edition for v8 (both embed F0); a clean-environment run; tag.
+
+**Open questions for Alan**
+
+- Push `v8-corrections`?
