@@ -1667,3 +1667,21 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 **Next**
 
 - Run notebook 11 (live advisor calls), score C25–C32, write the reading cells and figure F46.
+
+## Session 19, continued — 2026-10-20: phase 3 run and scored
+
+**Done**
+
+- Live run: 136 advisor calls (48 cases × 2 rounds, 40 readings), none failed; records in `results/advisor_runs.jsonl`, `results/v9/x1_outputs.jsonl`, `results/v9/x3_outputs.jsonl`. Notebook 11 section 11 replays them, scores C25–C32 and draws F46.
+- Six of eight registered lines pass. C25 11 of 12 reasoning flaws named (checklist 0); C26 24 of 24 (checklist 24); C27 fails (2 of 12 clean cases challenged with an unsupported claim); C28 fails by one memo (38 of 48 fully grounded; 14 of 1,771 numbers not on a sheet, no unit error); C29 +$192M per case [+108, +281] (checklist +$145M); C30 $240M of worst-5% loss avoided [+133, +345] (checklist $257M); C31 +$46M [+4, +116]; C32 32 of 32 read, 8 of 8 refused. H4 not supported; H5, H6, H7 supported.
+- Decision #97: C31 rests on four cases where the challenger chose the optimizer's book over the repair; against a fixed rule that takes the optimizer's book first the edge is +$1M [−50, +64]. Reading cells say so.
+- `report_numbers.v9_challenger` keys for the report.
+
+**Next**
+
+- Phase 4: the executive report (about 4,500 words) with the challenger as a findings section, F46 and a workflow figure; figure overhaul.
+
+**Open questions for Alan**
+
+- The case design let every reasoning-flaw case that warranted a new book also break a computed rule, so the language model's reasoning could not change a book on its own. A second round of cases where only the argument is wrong would test that — worth registering, or report the limit as it is?
+- Your own decision cases (the reserved slot): when you want to write them.

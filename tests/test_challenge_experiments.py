@@ -41,3 +41,17 @@ def test_the_case_bootstrap_interval_contains_the_mean():
 def test_numbers_match_within_one_percent_and_lists_as_sets():
     assert cx._same(0.1, 0.1) and cx._same(1001, 1000) and not cx._same(1100, 1000)
     assert cx._same(["Solar", "Storage"], ["Storage", "Solar"]) and cx._same(None, None) and not cx._same(0.1, None)
+
+
+def test_the_optimizer_first_rule_takes_the_optimizer_only_when_it_qualifies():
+    class S:
+        def vector(self, ids):
+            return tuple(sorted(ids))
+    case = {"members": ["a", "b"]}
+    alts = {"repair": {"members": ["a"], "rules_broken": [], "vs_proposal": {"clear_of_zero": False}},
+            "optimizer": {"members": ["c"], "rules_broken": [], "vs_proposal": {"clear_of_zero": False}}}
+    guided = {"checklist": {"level": "guide", "flags": ["rule broken: budget ($M)"], "recommended_book": "repair"}, "alternatives": alts}
+    assert cx.optimizer_first(S(), case, guided) == ("c",)
+    no_rule = {**guided, "checklist": {**guided["checklist"], "flags": ["fragile member: b"]}}
+    assert cx.optimizer_first(S(), case, no_rule) == ("a",)
+    assert cx.optimizer_first(S(), case, {**guided, "checklist": {**guided["checklist"], "level": "challenge"}}) == ("a", "b")

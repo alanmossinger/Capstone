@@ -1872,6 +1872,16 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** Book D's capital calls beyond its reserve, and the stability of its members under re-selection.
 <!-- /fig:F45_robustness -->
 
+<!-- fig:F46_challenger -->
+### F46_challenger
+
+![F46_challenger](../figures/F46_challenger.png)
+
+*Notebook:* `notebooks/11_decision_system.ipynb` · *Files:* `figures/F46_challenger.png`, `.svg`
+
+**Caption (stub).** The registered challenger experiments: flaws named by type, and the decision value on the committee's own objective.
+<!-- /fig:F46_challenger -->
+
 <!-- fig:F4_calibration_by_horizon -->
 ### F4_calibration_by_horizon
 

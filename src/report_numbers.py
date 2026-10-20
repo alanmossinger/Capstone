@@ -1967,6 +1967,45 @@ def v8_report():
     add("v8_lease_reg_high_pos", str(int((leases["expected_npv_high_cost"] > 0).sum())), int((leases["expected_npv_high_cost"] > 0).sum()), "results/candidate_npv.csv", "leases positive at the registered high case")
 
 
+def v9_challenger():
+    """The active challenger's registered experiments, X1-X3 and criteria C25-C32 (decision #96, notebook 11 section 11)."""
+    v9 = "results/v9/"
+    reg = read("v9/success_criteria_v9_registered.json")
+    add("v9_cases", str(reg["n_cases"]), reg["n_cases"], v9 + "success_criteria_v9_registered.json", "committee cases in X1")
+    add("v9_clean", str(reg["n_clean"]), reg["n_clean"], v9 + "success_criteria_v9_registered.json", "clean cases in X1")
+    add("v9_flawed", str(reg["n_cases"] - reg["n_clean"]), reg["n_cases"] - reg["n_clean"], v9 + "success_criteria_v9_registered.json", "flawed cases in X1")
+    add("v9_statements", str(reg["n_statements"]), reg["n_statements"], v9 + "success_criteria_v9_registered.json", "rule statements in X3")
+    sc = read("v9/success_criteria_v9_scored.csv").set_index("id")
+    add("v9_pass", str(int(sc["pass"].sum())), int(sc["pass"].sum()), v9 + "success_criteria_v9_scored.csv", "registered lines that pass")
+    x1 = read("v9/x1_scores.csv")
+    reasoning = x1[x1["flaw"].isin(["sunk", "double", "unsupported"])]
+    clean = x1[x1["flaw"] == "none"]
+    add("v9_c25_n", str(int(reasoning["challenger_detects"].sum())), int(reasoning["challenger_detects"].sum()), v9 + "x1_scores.csv", "reasoning flaws named by the challenger, of 12")
+    add("v9_c25", pct(sc.loc["C25", "estimate"], 0), sc.loc["C25", "estimate"], v9 + "success_criteria_v9_scored.csv", "C25 recall")
+    add("v9_c26", pct(sc.loc["C26", "estimate"], 0), sc.loc["C26", "estimate"], v9 + "success_criteria_v9_scored.csv", "C26 recall")
+    add("v9_c27_n", str(int(clean["false_challenge"].sum())), int(clean["false_challenge"].sum()), v9 + "x1_scores.csv", "clean cases falsely challenged, of 12")
+    add("v9_c27", pct(sc.loc["C27", "estimate"], 0), sc.loc["C27", "estimate"], v9 + "success_criteria_v9_scored.csv", "C27 false-challenge rate")
+    add("v9_c28", pct(sc.loc["C28", "estimate"], 0), sc.loc["C28", "estimate"], v9 + "success_criteria_v9_scored.csv", "C28 memos with every number grounded")
+    add("v9_c28_n", str(int(x1["all_numbers_grounded"].sum())), int(x1["all_numbers_grounded"].sum()), v9 + "x1_scores.csv", "memos with every number grounded, of 48")
+    for c, key in (("C29", "v9_c29"), ("C30", "v9_c30"), ("C31", "v9_c31")):
+        r = sc.loc[c]
+        add(key, dollars(r["estimate"], "M", 0, sign=True), r["estimate"], v9 + "success_criteria_v9_scored.csv", f"{c} mean per case")
+        add(key + "_ci", f"[{dollars(r['low'], 'M', 0, sign=True)}, {dollars(r['high'], 'M', 0, sign=True)}]", f"{r['low']}|{r['high']}",
+            v9 + "success_criteria_v9_scored.csv", f"{c} case-bootstrap 95% interval")
+    add("v9_c29_checklist", dollars(sc.loc["C29", "checklist"], "M", 0, sign=True), sc.loc["C29", "checklist"], v9 + "success_criteria_v9_scored.csv", "checklist minus proposal, per case")
+    add("v9_c30_checklist", dollars(sc.loc["C30", "checklist"], "M", 0, sign=True), sc.loc["C30", "checklist"], v9 + "success_criteria_v9_scored.csv", "loss avoided by the checklist, base world")
+    x3 = read("v9/x3_scores.csv")
+    add("v9_c32_in", str(int(x3[x3["in_scope"]]["correct"].sum())), int(x3[x3["in_scope"]]["correct"].sum()), v9 + "x3_scores.csv", "in-scope statements read exactly, of 32")
+    add("v9_c32_out", str(int(x3[~x3["in_scope"]]["correct"].sum())), int(x3[~x3["in_scope"]]["correct"].sum()), v9 + "x3_scores.csv", "out-of-scope statements refused, of 8")
+    sens = read("v9/c31_sensitivity.json")
+    add("v9_differ", str(sens["n_differ"]), sens["n_differ"], v9 + "c31_sensitivity.json", "flawed cases where challenger and checklist end with different books")
+    for k in ("without_largest", "vs_optimizer_first"):
+        b = sens[k]
+        add(f"v9_c31_{k}", dollars(b["mean"], "M", 0, sign=True), b["mean"], v9 + "c31_sensitivity.json", f"challenger edge, {k.replace('_', ' ')}")
+        add(f"v9_c31_{k}_ci", f"[{dollars(b['low'], 'M', 0, sign=True)}, {dollars(b['high'], 'M', 0, sign=True)}]", f"{b['low']}|{b['high']}",
+            v9 + "c31_sensitivity.json", f"its case-bootstrap interval")
+
+
 def build():
     """Collect every cited number and write ``results/report_numbers.csv``.
 
@@ -1985,7 +2024,7 @@ def build():
     for step in (design_constants, gathering_and_cleaning, eda, modelling, evaluation, explanation, posthoc,
                  v3_data, v3_fair_baseline, v3_level, v3_landmark, v3_value, v3_miso_spp, v3_portfolio,
                  v3_extras, v3_appendix, v4_managed_book, v5_drivers, v5_segments, v5_timing, v5_tournament, v5_npv,
-                 v5_review, v5_books, v5_archetypes, v5_extras, v6_data, v6_forecasts, v6_economics, v6_scenarios, v6_books, v6_advisor, v7_rounded, v7_posthoc, v7_questions, v8_bridged, v8_report):
+                 v5_review, v5_books, v5_archetypes, v5_extras, v6_data, v6_forecasts, v6_economics, v6_scenarios, v6_books, v6_advisor, v7_rounded, v7_posthoc, v7_questions, v8_bridged, v8_report, v9_challenger):
         step()
     table = pd.DataFrame(ROWS)
     table.to_csv(paths.RESULTS / "report_numbers.csv", index=False)

@@ -1,0 +1,9 @@
+id,estimate,low,high,pass,checklist,line,rule,result
+C25,0.9166666666666666,,,True,0.0,"the challenger names the keyed flaw in the 12 reasoning-flaw cases (sunk cost, double standard, unsupported claim)",recall >= 0.75,PASS
+C26,1.0,,,True,1.0,"the challenger names the keyed flaw in the 24 computable-flaw cases (cap, liquidity, chance of loss, tail, exclusion, fragile position)",recall >= 0.90,PASS
+C27,0.16666666666666666,,,False,0.0,the challenger does not challenge the 12 clean cases on grounds they do not have,rate <= 0.15,FAIL
+C28,0.7916666666666666,1.0,,False,,the memos cite only computed numbers and real facts,first >= 0.80 and second >= 0.95,FAIL
+C29,191809295.27059668,108130788.36748454,280662703.66600126,True,145473232.81669784,following the challenger improves the committee's own objective over its proposal,"case-bootstrap 95% interval (1,000 resamples, seed 2020) entirely above 0",PASS
+C30,239952995.19083464,132779441.5200594,344886833.85938966,True,257078566.71538475,following the challenger avoids loss,case-bootstrap 95% interval entirely above 0,PASS
+C31,46336062.453898855,4436860.553328382,115643257.512896,True,,the language model adds decision value beyond its tools,case-bootstrap 95% interval entirely above 0,PASS
+C32,1.0,8.0,,True,,the challenger reads the committee's rules from words,share >= 0.85 and at least 6 of 8 refused,PASS

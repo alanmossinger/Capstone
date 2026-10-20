@@ -1,0 +1,41 @@
+id,in_scope,correct,valid,statement,read,not_representable
+S01,True,True,True,We will not accept more than a ten percent chance of losing money on the book.,"{""max_p_loss"": 0.1}",
+S02,True,True,True,Our lenders cap the average loss in the worst five percent of outcomes at 750 million dollars.,"{""max_cvar_musd"": 750}",
+S03,True,True,True,"No gas, full stop.","{""excluded_technologies"": [""Gas CC""]}",
+S04,True,True,True,We can find 1.5 billion dollars beyond the reserve for construction.,"{""liquidity_line_musd"": 1500}",
+S05,True,True,True,Commit at least ninety percent of the budget.,"{""min_utilization"": 0.9}",
+S06,True,True,True,A one-in-twenty chance of a loss is our ceiling.,"{""max_p_loss"": 0.05}",
+S07,True,True,True,"Keep storage out of the book, and the worst-five-percent average loss under 600 million.","{""excluded_technologies"": [""Storage""], ""max_cvar_musd"": 600}",
+S08,True,True,True,A dollar lost in the worst five percent of outcomes counts twice as much to us as a dollar of expected value.,"{""lam"": 2}",
+S09,True,True,True,Only expected value matters to this committee; we are risk-neutral.,"{""lam"": 0}",
+S10,True,True,True,"We will not fund the 1,350 MW gas request, REQ|ERCOT|25INR0008.","{""excluded_ids"": [""REQ|ERCOT|25INR0008""]}","The statement gives no belief about prices or costs that a what-if parameter can test. Note also that the proposed book still lists REQ|ERCOT|25INR0008, which contradicts the stated exclusion."
+S11,True,True,True,No solar and no storage.,"{""excluded_technologies"": [""Solar"", ""Storage""]}","The statement gives no reason for the exclusion, so there is no market or cost belief to test with a what-if."
+S12,True,True,True,Our credit line for construction beyond the reserve is one billion dollars.,"{""liquidity_line_musd"": 1000}",
+S13,True,True,True,"We want at most an eight percent chance of losing money, and at least eighty percent of the budget committed.","{""max_p_loss"": 0.08, ""min_utilization"": 0.8}",
+S14,True,True,True,Treat a dollar of tail loss as half a dollar of value.,"{""lam"": 0.5}",
+S15,True,True,True,The worst five percent of outcomes may not cost us more than 1.2 billion dollars on average.,"{""max_cvar_musd"": 1200}",
+S16,True,True,True,We do not do wind.,"{""excluded_technologies"": [""Wind""]}","The statement gives no belief about markets or costs, so there is nothing to test with a what-if. Its proposed book may still contain wind requests, which would conflict with the exclusion, and the tables we have do not show which of the listed requests are wind."
+S17,True,True,True,Leave out the Gulf leases altogether.,"{""excluded_technologies"": [""Lease redevelopment""]}","The proposed book contradicts the statement: it lists six lease ids (G09982, G16942, G17015, G16783, G25814, G20351) alongside the ERCOT requests. The fields cannot hold that conflict. I followed the words and excluded the Lease redevelopment technology. The statement gives no market or cost belief, so I asked for no what-ifs."
+S18,True,True,True,"We can raise 500 million dollars for construction calls beyond what we reserve now, no more.","{""liquidity_line_musd"": 500}",
+S19,True,True,True,Spend at least three quarters of the budget.,"{""min_utilization"": 0.75}",
+S20,True,True,True,Our board accepts a chance of loss of up to fifteen percent.,"{""max_p_loss"": 0.15}",
+S21,True,True,True,"Exclude the 836 MW wind request REQ|ERCOT|26INR0113 and the 1,026 MW solar request REQ|ERCOT|26INR0155.","{""excluded_ids"": [""REQ|ERCOT|26INR0113"", ""REQ|ERCOT|26INR0155""]}","The statement gives no reason for the exclusions, so no belief about markets or costs can be tested. The proposed book also still lists both excluded requests, which conflicts with the exclusion; the rule is read from the statement, not from the book."
+S22,True,True,True,We weigh losses in the worst five percent four times as heavily as expected value.,"{""lam"": 4}",
+S23,True,True,True,"Batteries are out, and the average loss in the worst five percent must stay below 900 million.","{""excluded_technologies"": [""Storage""], ""max_cvar_musd"": 900}",
+S24,True,True,True,Two billion dollars is available for construction beyond the reserve.,"{""liquidity_line_musd"": 2000}",
+S25,True,True,True,A chance of losing money above six percent is unacceptable.,"{""max_p_loss"": 0.06}",
+S26,True,True,True,"No new gas plants, and at most a twelve percent chance of a loss.","{""excluded_technologies"": [""Gas CC""], ""max_p_loss"": 0.12}",
+S27,True,True,True,Put at least sixty percent of the budget to work.,"{""min_utilization"": 0.6}",
+S28,True,True,True,Our worst-five-percent average loss limit is 450 million dollars.,"{""max_cvar_musd"": 450}",
+S29,True,True,True,We count expected value and tail loss one for one.,"{""lam"": 1}",
+S30,True,True,True,"No solar requests, and we can call 800 million dollars beyond the reserve for construction.","{""excluded_technologies"": [""Solar""], ""liquidity_line_musd"": 800}",
+S31,True,True,True,Exclude the lease G14658.,"{""excluded_ids"": [""LEASE|G14658""]}",
+S32,True,True,True,"Risk-neutral, and no storage.","{""lam"": 0, ""excluded_technologies"": [""Storage""]}",
+S33,False,True,True,Interest rates will rise two points; choose the book that survives that.,{},"Interest rates and the discount rate are not among the what-if parameters, so a two-point rise cannot be tested directly. A higher rate lowers the present value of long-dated cash flows and raises financing cost, and none of the listed fields or parameters (price multipliers, capex multipliers, delay, volatility) stands in for that without guessing. The statement also gives no numeric rule, so we leave every preference field out."
+S34,False,True,True,Price carbon at 80 dollars a tonne in every project.,{},A carbon price of 80 dollars a tonne applied to every project. None of the preference fields or what-if parameters holds a carbon price. The credits switch only turns tax credits on or off and is not a carbon charge.
+S35,False,True,True,Every project must clear an internal rate of return of twelve percent.,{},"A project-by-project internal rate of return hurdle of twelve percent cannot be held by these fields, which cover tail weight, loss limits, exclusions, liquidity and utilization but not a return threshold. The statement also gives no belief about prices, costs or delays that a what-if could test."
+S36,False,True,True,Only fund projects with an ESG rating of A or better.,{},"An ESG rating screen cannot be held by these fields. No table gives ESG ratings, so we cannot map the rule to excluded technologies or excluded ids without inventing which candidates fall below A. The statement also names no loss limit, tail weight, liquidity line or utilization target."
+S37,False,True,True,Hedge the oil exposure with futures before committing.,{},"Futures hedging is a financial overlay with no field here: the model cannot hold a hedge position, hedge ratio or the sequencing 'hedge before committing'. The what-if shows only how the book fares if oil is low, not what a hedge would do."
+S38,False,True,True,Assume inflation runs at five percent a year.,{},"A general 5% annual inflation rate has no field. The what-ifs are real-dollar cost and price multipliers, and uniform inflation would leave real costs and prices unchanged, so we did not invent a multiplier for it."
+S39,False,True,True,Prefer projects that a partner would co-invest in.,{},"Whether a partner would co-invest is not a field here: the fields hold no partner appetite, co-investment or ownership-share setting, so the statement cannot be turned into a number, limit or exclusion without guessing."
+S40,False,True,True,Include hydrogen projects in the book.,{},"Hydrogen projects are not a technology or candidate in the model (the candidates are Gas CC, Lease redevelopment, Solar, Storage and Wind), so the request to include them cannot be held by any field or what-if, and the proposed book contains no hydrogen candidate."

@@ -396,6 +396,27 @@ def final_books(s, case, r):
     return {"proposal": x0, "checklist": x_chk, "challenger": x_llm}
 
 
+def optimizer_first(s, case, r):
+    """A second fixed rule, reported and not registered: when the checklist guides, take the optimizer's book if it qualifies, else the repair.
+
+    Notes
+    -----
+    The registered checklist takes the repair first (the smaller change).
+    The challenger may choose the optimizer's book instead; this rule asks
+    whether that choice alone, made without reading the committee's words,
+    explains the challenger's edge over the checklist (C31).
+    """
+    x0 = s.vector(case["members"])
+    chk, alts = r["checklist"], r["alternatives"]
+    if chk["level"] != "guide":
+        return x0
+    broken = any(f.startswith("rule broken") for f in chk["flags"])
+    best = alts.get("optimizer")
+    if best and not best["rules_broken"] and (broken or best["vs_proposal"]["clear_of_zero"]):
+        return s.vector(best["members"])
+    return s.vector(alts[chk["recommended_book"]]["members"])
+
+
 def score_x2(s, cases, results, world_set):
     """One row per flawed case, world and policy: the committee's own metric, the worst-5% loss and the chance of a loss."""
     rows = []

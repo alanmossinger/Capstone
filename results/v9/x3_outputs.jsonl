@@ -1,0 +1,40 @@
+{"id": "S01", "status": "read", "preferences": {"max_p_loss": 0.1}, "not_representable": ""}
+{"id": "S02", "status": "read", "preferences": {"max_cvar_musd": 750}, "not_representable": ""}
+{"id": "S03", "status": "read", "preferences": {"excluded_technologies": ["Gas CC"]}, "not_representable": ""}
+{"id": "S04", "status": "read", "preferences": {"liquidity_line_musd": 1500}, "not_representable": ""}
+{"id": "S05", "status": "read", "preferences": {"min_utilization": 0.9}, "not_representable": ""}
+{"id": "S06", "status": "read", "preferences": {"max_p_loss": 0.05}, "not_representable": ""}
+{"id": "S07", "status": "read", "preferences": {"excluded_technologies": ["Storage"], "max_cvar_musd": 600}, "not_representable": ""}
+{"id": "S08", "status": "read", "preferences": {"lam": 2}, "not_representable": ""}
+{"id": "S09", "status": "read", "preferences": {"lam": 0}, "not_representable": ""}
+{"id": "S10", "status": "read", "preferences": {"excluded_ids": ["REQ|ERCOT|25INR0008"]}, "not_representable": "The statement gives no belief about prices or costs that a what-if parameter can test. Note also that the proposed book still lists REQ|ERCOT|25INR0008, which contradicts the stated exclusion."}
+{"id": "S11", "status": "read", "preferences": {"excluded_technologies": ["Solar", "Storage"]}, "not_representable": "The statement gives no reason for the exclusion, so there is no market or cost belief to test with a what-if."}
+{"id": "S12", "status": "read", "preferences": {"liquidity_line_musd": 1000}, "not_representable": ""}
+{"id": "S13", "status": "read", "preferences": {"max_p_loss": 0.08, "min_utilization": 0.8}, "not_representable": ""}
+{"id": "S14", "status": "read", "preferences": {"lam": 0.5}, "not_representable": ""}
+{"id": "S15", "status": "read", "preferences": {"max_cvar_musd": 1200}, "not_representable": ""}
+{"id": "S16", "status": "read", "preferences": {"excluded_technologies": ["Wind"]}, "not_representable": "The statement gives no belief about markets or costs, so there is nothing to test with a what-if. Its proposed book may still contain wind requests, which would conflict with the exclusion, and the tables we have do not show which of the listed requests are wind."}
+{"id": "S17", "status": "read", "preferences": {"excluded_technologies": ["Lease redevelopment"]}, "not_representable": "The proposed book contradicts the statement: it lists six lease ids (G09982, G16942, G17015, G16783, G25814, G20351) alongside the ERCOT requests. The fields cannot hold that conflict. I followed the words and excluded the Lease redevelopment technology. The statement gives no market or cost belief, so I asked for no what-ifs."}
+{"id": "S18", "status": "read", "preferences": {"liquidity_line_musd": 500}, "not_representable": ""}
+{"id": "S19", "status": "read", "preferences": {"min_utilization": 0.75}, "not_representable": ""}
+{"id": "S20", "status": "read", "preferences": {"max_p_loss": 0.15}, "not_representable": ""}
+{"id": "S21", "status": "read", "preferences": {"excluded_ids": ["REQ|ERCOT|26INR0113", "REQ|ERCOT|26INR0155"]}, "not_representable": "The statement gives no reason for the exclusions, so no belief about markets or costs can be tested. The proposed book also still lists both excluded requests, which conflicts with the exclusion; the rule is read from the statement, not from the book."}
+{"id": "S22", "status": "read", "preferences": {"lam": 4}, "not_representable": ""}
+{"id": "S23", "status": "read", "preferences": {"excluded_technologies": ["Storage"], "max_cvar_musd": 900}, "not_representable": ""}
+{"id": "S24", "status": "read", "preferences": {"liquidity_line_musd": 2000}, "not_representable": ""}
+{"id": "S25", "status": "read", "preferences": {"max_p_loss": 0.06}, "not_representable": ""}
+{"id": "S26", "status": "read", "preferences": {"excluded_technologies": ["Gas CC"], "max_p_loss": 0.12}, "not_representable": ""}
+{"id": "S27", "status": "read", "preferences": {"min_utilization": 0.6}, "not_representable": ""}
+{"id": "S28", "status": "read", "preferences": {"max_cvar_musd": 450}, "not_representable": ""}
+{"id": "S29", "status": "read", "preferences": {"lam": 1}, "not_representable": ""}
+{"id": "S30", "status": "read", "preferences": {"excluded_technologies": ["Solar"], "liquidity_line_musd": 800}, "not_representable": ""}
+{"id": "S31", "status": "read", "preferences": {"excluded_ids": ["LEASE|G14658"]}, "not_representable": ""}
+{"id": "S32", "status": "read", "preferences": {"lam": 0, "excluded_technologies": ["Storage"]}, "not_representable": ""}
+{"id": "S33", "status": "read", "preferences": {}, "not_representable": "Interest rates and the discount rate are not among the what-if parameters, so a two-point rise cannot be tested directly. A higher rate lowers the present value of long-dated cash flows and raises financing cost, and none of the listed fields or parameters (price multipliers, capex multipliers, delay, volatility) stands in for that without guessing. The statement also gives no numeric rule, so we leave every preference field out."}
+{"id": "S34", "status": "read", "preferences": {}, "not_representable": "A carbon price of 80 dollars a tonne applied to every project. None of the preference fields or what-if parameters holds a carbon price. The credits switch only turns tax credits on or off and is not a carbon charge."}
+{"id": "S35", "status": "read", "preferences": {}, "not_representable": "A project-by-project internal rate of return hurdle of twelve percent cannot be held by these fields, which cover tail weight, loss limits, exclusions, liquidity and utilization but not a return threshold. The statement also gives no belief about prices, costs or delays that a what-if could test."}
+{"id": "S36", "status": "read", "preferences": {}, "not_representable": "An ESG rating screen cannot be held by these fields. No table gives ESG ratings, so we cannot map the rule to excluded technologies or excluded ids without inventing which candidates fall below A. The statement also names no loss limit, tail weight, liquidity line or utilization target."}
+{"id": "S37", "status": "read", "preferences": {}, "not_representable": "Futures hedging is a financial overlay with no field here: the model cannot hold a hedge position, hedge ratio or the sequencing 'hedge before committing'. The what-if shows only how the book fares if oil is low, not what a hedge would do."}
+{"id": "S38", "status": "read", "preferences": {}, "not_representable": "A general 5% annual inflation rate has no field. The what-ifs are real-dollar cost and price multipliers, and uniform inflation would leave real costs and prices unchanged, so we did not invent a multiplier for it."}
+{"id": "S39", "status": "read", "preferences": {}, "not_representable": "Whether a partner would co-invest is not a field here: the fields hold no partner appetite, co-investment or ownership-share setting, so the statement cannot be turned into a number, limit or exclusion without guessing."}
+{"id": "S40", "status": "read", "preferences": {}, "not_representable": "Hydrogen projects are not a technology or candidate in the model (the candidates are Gas CC, Lease redevelopment, Solar, Storage and Wind), so the request to include them cannot be held by any field or what-if, and the proposed book contains no hydrogen candidate."}

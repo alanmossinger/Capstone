@@ -1,0 +1,49 @@
+id,persona,flaw,n_members,rules_broken,fragile_members,verified
+X01,P1,cap,9,"budget ($M); technology cap, Lease redevelopment (share of budget)",0,True
+X02,P3,cap,6,"technology cap, Lease redevelopment (share of budget)",0,True
+X03,P10,cap,6,"technology cap, Lease redevelopment (share of budget)",0,True
+X04,P8,cap,10,"technology cap, Lease redevelopment (share of budget)",0,True
+X05,P4,liquidity,13,"construction calls beyond the reserve, 95th percentile ($M)",6,True
+X06,P6,liquidity,17,"construction calls beyond the reserve, 95th percentile ($M)",10,True
+X07,P7,liquidity,16,"construction calls beyond the reserve, 95th percentile ($M)",7,True
+X08,P3,liquidity,16,"construction calls beyond the reserve, 95th percentile ($M)",10,True
+X09,P4,ploss,13,chance of a loss,6,True
+X10,P6,ploss,17,chance of a loss,10,True
+X11,P8,ploss,16,chance of a loss,10,True
+X12,P2,ploss,16,chance of a loss,7,True
+X13,P6,tail,13,worst-5% average loss ($M),6,True
+X14,P4,tail,17,worst-5% average loss ($M),10,True
+X15,P10,tail,16,worst-5% average loss ($M),7,True
+X16,P8,tail,16,worst-5% average loss ($M),10,True
+X17,P2,excluded,13,excluded candidates held (count),6,True
+X18,P9,excluded,17,excluded candidates held (count),10,True
+X19,P9,excluded,13,excluded candidates held (count),6,True
+X20,P1,excluded,16,excluded candidates held (count),10,True
+X21,P5,fragile,13,,6,True
+X22,P2,fragile,13,,6,True
+X23,P7,fragile,7,,1,True
+X24,P3,fragile,13,,6,True
+X25,P5,sunk,13,,6,True
+X26,P9,sunk,13,,6,True
+X27,P8,sunk,17,,10,True
+X28,P1,sunk,13,,6,True
+X29,P1,double,7,,0,True
+X30,P2,double,16,,7,True
+X31,P5,double,17,,10,True
+X32,P6,double,6,,0,True
+X33,P3,unsupported,17,,10,True
+X34,P2,unsupported,16,,7,True
+X35,P5,unsupported,13,,6,True
+X36,P9,unsupported,7,,0,True
+X37,P8,none,13,,6,True
+X38,P3,none,17,,10,True
+X39,P6,none,14,,8,True
+X40,P4,none,13,,6,True
+X41,P10,none,13,,6,True
+X42,P2,none,16,,9,True
+X43,P9,none,13,,6,True
+X44,P7,none,13,,6,True
+X45,P4,none,9,,2,True
+X46,P6,none,12,,5,True
+X47,P1,none,15,,8,True
+X48,P5,none,15,,9,True

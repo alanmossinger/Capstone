@@ -1457,3 +1457,14 @@ alternative rejected.
     challenger's guidance be followed only when it agrees with the
     optimizer (that would score the optimizer, not the challenge); scoring
     on the optimizer's metric instead of the committee's stated objective.
+97. **Two checks on C31, reported and not registered** (2026-10-20;
+    notebook 11 section 11, `src/challenge_experiments.optimizer_first`).
+    The challenger's edge over the checklist came from four cases in which
+    it chose the optimizer's book where the checklist's fixed rule takes the
+    repair. I report the edge without its largest case and against a second
+    fixed rule that takes the optimizer's book first; the second removes the
+    edge. C31 stays scored as registered (PASS); the report says what it
+    rests on. Live calls that failed for infrastructure reasons would have
+    been retried, not scored (none failed: 136 calls).
+    *Rejected:* rescoring C31 against the second rule (it was chosen after
+    seeing the result); dropping the line.

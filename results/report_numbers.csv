@@ -2044,7 +2044,7 @@ v6_hz_members_5,14,14,results/horizon_books.csv,members of the book at 5 years
 v6_hz_members_10,14,14,results/horizon_books.csv,members of the book at 10 years
 v6_adv_recorded,171,171,results/advisor_evaluation.csv,recorded answers
 v6_adv_missing,0,0,results/advisor_evaluation.csv,calls with no record and no key
-adv_recorded,182,182,results/advisor_runs.jsonl,recorded answers
+adv_recorded,318,318,results/advisor_runs.jsonl,recorded answers
 adv_grounding,94%,0.942,results/advisor_evaluation.csv,mean share of the advisor's numbers found in its tables
 adv_fully_grounded,58%,0.585,results/advisor_evaluation.csv,answers with every number grounded
 adv_jaccard_d,0.96,0.961,results/advisor_evaluation.csv,overlap of the advisor's book with book D over the seven stresses
@@ -2395,3 +2395,30 @@ v8_q95_mean,$2.02B,2017311946.8202007,results/v8/robustness_capital_calls.csv,bo
 v8_reserve_over_1,44.5%,0.4445,results/v8/dynamic.csv,"scenarios where construction exceeds the reserve, one decimal"
 v8_gas_cost,$7.7M,7.655861474888325,results/v8/explanations.csv,the gas request's opportunity cost
 v8_lease_reg_high_pos,19,19,results/candidate_npv.csv,leases positive at the registered high case
+v9_cases,48,48,results/v9/success_criteria_v9_registered.json,committee cases in X1
+v9_clean,12,12,results/v9/success_criteria_v9_registered.json,clean cases in X1
+v9_flawed,36,36,results/v9/success_criteria_v9_registered.json,flawed cases in X1
+v9_statements,40,40,results/v9/success_criteria_v9_registered.json,rule statements in X3
+v9_pass,6,6,results/v9/success_criteria_v9_scored.csv,registered lines that pass
+v9_c25_n,11,11,results/v9/x1_scores.csv,"reasoning flaws named by the challenger, of 12"
+v9_c25,92%,0.9166666666666666,results/v9/success_criteria_v9_scored.csv,C25 recall
+v9_c26,100%,1.0,results/v9/success_criteria_v9_scored.csv,C26 recall
+v9_c27_n,2,2,results/v9/x1_scores.csv,"clean cases falsely challenged, of 12"
+v9_c27,17%,0.1666666666666666,results/v9/success_criteria_v9_scored.csv,C27 false-challenge rate
+v9_c28,79%,0.7916666666666666,results/v9/success_criteria_v9_scored.csv,C28 memos with every number grounded
+v9_c28_n,38,38,results/v9/x1_scores.csv,"memos with every number grounded, of 48"
+v9_c29,+$192M,191809295.27059668,results/v9/success_criteria_v9_scored.csv,C29 mean per case
+v9_c29_ci,"[+$108M, +$281M]",108130788.36748454|280662703.66600126,results/v9/success_criteria_v9_scored.csv,C29 case-bootstrap 95% interval
+v9_c30,+$240M,239952995.19083464,results/v9/success_criteria_v9_scored.csv,C30 mean per case
+v9_c30_ci,"[+$133M, +$345M]",132779441.5200594|344886833.85938966,results/v9/success_criteria_v9_scored.csv,C30 case-bootstrap 95% interval
+v9_c31,+$46M,46336062.453898855,results/v9/success_criteria_v9_scored.csv,C31 mean per case
+v9_c31_ci,"[+$4M, +$116M]",4436860.553328382|115643257.512896,results/v9/success_criteria_v9_scored.csv,C31 case-bootstrap 95% interval
+v9_c29_checklist,+$145M,145473232.81669784,results/v9/success_criteria_v9_scored.csv,"checklist minus proposal, per case"
+v9_c30_checklist,+$257M,257078566.71538475,results/v9/success_criteria_v9_scored.csv,"loss avoided by the checklist, base world"
+v9_c32_in,32,32,results/v9/x3_scores.csv,"in-scope statements read exactly, of 32"
+v9_c32_out,8,8,results/v9/x3_scores.csv,"out-of-scope statements refused, of 8"
+v9_differ,4,4,results/v9/c31_sensitivity.json,flawed cases where challenger and checklist end with different books
+v9_c31_without_largest,+$19M,18712312.058381,results/v9/c31_sensitivity.json,"challenger edge, without largest"
+v9_c31_without_largest_ci,"[+$0M, +$46M]",0.0|46233722.00848175,results/v9/c31_sensitivity.json,its case-bootstrap interval
+v9_c31_vs_optimizer_first,+$1M,1049135.518760936,results/v9/c31_sensitivity.json,"challenger edge, vs optimizer first"
+v9_c31_vs_optimizer_first_ci,"[−$50M, +$64M]",-49680165.87623404|64446245.35470056,results/v9/c31_sensitivity.json,its case-bootstrap interval
