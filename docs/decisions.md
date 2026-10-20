@@ -1392,3 +1392,38 @@ alternative rejected.
     view; lease history cut at the BSEE lag) come before the advisor work.
     *Rejected:* claiming the advisor beats the optimizer on the optimizer's
     own terms; a peer pilot (not feasible by 14 December).
+95. **The active challenger: its tools, its two rounds and its limits**
+    (2026-10-20; decision #94's advisor; `src/challenge.py`,
+    `prompts/challenge_read.md`, `prompts/challenge_memo.md`). (1) The
+    language model reads the committee's statement into typed
+    `Preferences` — tail weight, chance-of-loss limit, tail limit,
+    exclusions, a liquidity line for construction calls — and may ask for
+    up to two what-ifs to test a belief; it computes nothing. (2) Tools
+    diagnose the proposal on the held-out scenarios (rules, capital calls,
+    each member's tail dependence, risk contribution and drop test) and
+    compute two alternatives: the optimizer's book under the stated
+    preferences and the *repair*, the fewest changes to the committee's
+    book that keep its rules (`solve_milp` gains a change limit to a
+    reference book, and a liquidity line as a CVaR limit on construction
+    calls beyond the reserve — conservative, since CVaR is at least the
+    quantile). With a stated line every book is scored as it would be
+    funded within it (funding-or-forfeit), so a proposal is not credited
+    with calls the company cannot meet. (3) The model writes a memo from the
+    numbered fact sheet: at most three vulnerabilities, each tied to facts
+    and labelled computed fact, assumption, inference or hypothesis to test;
+    a level; the loss avoided; what would change it; "evidence insufficient"
+    allowed. (4) Code checks every number against the sheet, the fact
+    references and the guide rule: *guide* only toward an alternative that
+    keeps every rule and either repairs a rule the proposal breaks or beats
+    it with an interval clear of zero; otherwise it is downgraded and the
+    downgrade recorded. The ledger refuses a decision that departs from a
+    guided book unless the authorizer acknowledges the evidence; the human
+    may still decide otherwise. `checklist` runs the same tools with fixed
+    rules and no model — the control of the experiments. The advisor's
+    context now shows stage-one charges against the budget (it had shown
+    full capital; the advisor flagged the inconsistency itself).
+    *Rejected:* letting the model propose books of its own (it cannot beat
+    the optimizer on the optimizer's terms and its numbers could not be
+    checked); a free tool loop (two fixed rounds are auditable and
+    replayable); a chance constraint with scenario binaries (2,000 binaries
+    for a rule the CVaR form keeps conservatively).

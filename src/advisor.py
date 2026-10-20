@@ -384,10 +384,10 @@ def portfolio_context(stress="base", case="contracted"):
     registered = json.loads((R / "success_criteria_v7_registered.json").read_text(encoding="utf-8"))
     cap = registered.get("technology_cap", 0.4)
     budget = float(pd.read_csv(R / "decision_ledger.csv").loc[0, "budget"])  # the registered budget of notebook 09
-    capex = cand.set_index("project_id")["capex"].reindex(ids).to_numpy()
+    charge = cand.set_index("project_id")["stage1_charge"].reindex(ids).to_numpy()  # what a candidate costs the budget now (decision #90); full capital is shown beside it
     x_d = books["D risk-aware MILP"].reindex(ids).to_numpy(int)
     npv_stress = stress_c[stress_c["stress"] == stress].set_index("project_id")["npv"]
-    candidates = pd.DataFrame({"project_id": cand["project_id"], "technology": cand["technology"], "capex_$M": cand["capex"] / 1e6,
+    candidates = pd.DataFrame({"project_id": cand["project_id"], "technology": cand["technology"], "stage1_charge_$M": cand["stage1_charge"] / 1e6, "full_capital_$M": cand["capex"] / 1e6,
                                "expected_npv_merchant_$M": cand["expected_npv_base"] / 1e6, "expected_npv_contracted_$M": cand["expected_npv_contracted"] / 1e6,
                                f"npv_under_{stress.replace(' ', '_')}_$M": cand["project_id"].map(npv_stress) / 1e6,
                                "p_operation_7y": cand["p_operation_7y"].fillna(1.0), "breakeven": cand["breakeven"], "breakeven_unit": cand["breakeven_unit"],
@@ -395,7 +395,7 @@ def portfolio_context(stress="base", case="contracted"):
     rows = []
     for b in book_names:
         x = books[b].reindex(ids).to_numpy(int)
-        rows.append({"book": b, "n_members": int(x.sum()), "capex_$B": float(capex @ x) / 1e9, "expected_npv_oos_$B": oos.loc[b, "expected_npv"] / 1e9,
+        rows.append({"book": b, "n_members": int(x.sum()), "stage1_charge_$B": float(charge @ x) / 1e9, "expected_npv_oos_$B": oos.loc[b, "expected_npv"] / 1e9,
                      "cvar95_loss_oos_$B": oos.loc[b, "cvar_loss"] / 1e9, "p_negative_oos": oos.loc[b, "p_negative"], "members": ";".join(np.array(ids)[x == 1])})
     s = stresses.copy()
     for c in ("book_npv_leases", "book_npv_power", "book_npv", "change_vs_base"):
@@ -404,7 +404,7 @@ def portfolio_context(stress="base", case="contracted"):
     parts = [format_table(candidates, f"The forty candidates and their NPV under the stress '{stress}'", "FORECAST; lease costs ASSUMED (the upstream grid)",
                           note="Expected NPVs are timing-weighted (P(operation) from the queue models) at the flat 2024 real prices; $ million, 2024 dollars."),
              format_table(pd.DataFrame(rows), "The six books scored out of sample on the held-out scenarios", "FORECAST",
-                          note=f"Budget ${budget / 1e9:.2f}B, no technology above {cap:.0%} of it; {case} revenue case; CVaR95 loss negative = the worst 5% is still a profit."),
+                          note=f"Budget ${budget / 1e9:.2f}B of stage-one charges (a lease's capital; a request's deposits plus its construction reserve), no technology above {cap:.0%} of it; {case} revenue case; CVaR95 loss negative = the worst 5% is still a profit."),
              format_table(alloc.assign(**{c: alloc[c] / 1e9 for c in alloc.columns if c != "book"}).rename(columns=lambda c: c if c == "book" else c + "_$B"),
                           "Capital by technology in each book ($ billion)", "DERIVED"),
              format_table(s, "The default book of forty under the named stresses (flat base path)", "FORECAST; multipliers ASSUMED")]

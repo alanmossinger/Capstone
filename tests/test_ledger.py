@@ -42,3 +42,14 @@ def test_the_ledger_is_append_only_and_an_edit_breaks_the_chain(tmp_path):
     first["members"] = ["Z"]
     path.write_text("\n".join([json.dumps(first)] + lines[1:]) + "\n", encoding="utf-8")
     assert not ledger.verify_chain(path)
+
+
+def test_departing_from_a_guided_book_needs_the_evidence_acknowledged(tmp_path):
+    path = tmp_path / "l.jsonl"
+    guided = dict(advisor_level="guide", advisor_book=["A"])
+    with pytest.raises(ledger.NotAuthorized):
+        ledger.record(ledger.Decision("invest now", ["A", "G"], "Alan", ["A", "G"], **guided), path)
+    row = ledger.record(ledger.Decision("invest now", ["A", "G"], "Alan", ["A", "G"], contrary_evidence_acknowledged=True, **guided), path)
+    assert row["contrary_evidence_acknowledged"] is True  # the human may still decide otherwise, knowingly
+    ledger.record(ledger.Decision("invest now", ["A"], "Alan", ["A"], **guided), path)  # following the guidance needs nothing more
+    assert ledger.verify_chain(path)

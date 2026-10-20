@@ -126,3 +126,28 @@ def test_book_diff_names_entries_exits_and_the_changes():
     assert d["entered"] == ["c2", "c4"] and d["left"] == ["c1"]
     assert abs(d["change"]["charge"] - 1.0) < 1e-12
     assert d["old"]["hhi"] == 1.0 and abs(d["new"]["hhi"] - (2 / 3) ** 2 - (1 / 3) ** 2) < 1e-12
+
+
+def test_a_change_limit_keeps_the_book_close_to_its_reference():
+    rng = np.random.default_rng(3)
+    A = rng.normal([1.0, 2.0, 3.0, 4.0], 0.1, size=(200, 4))
+    capex = np.ones(4)
+    free = opt.solve_milp(A, capex, budget=2.0, lam=0.0)["x"]
+    assert list(free) == [0, 0, 1, 1]
+    ref = np.array([1, 1, 0, 0])
+    one = opt.solve_milp(A, capex, budget=2.0, lam=0.0, reference=ref, max_changes=1)["x"]  # one change cannot swap (it would unbalance the count by one)
+    assert int(np.abs(one - ref).sum()) <= 1
+    two = opt.solve_milp(A, capex, budget=2.0, lam=0.0, reference=ref, max_changes=2)["x"]
+    assert int(np.abs(two - ref).sum()) <= 2 and two[3] == 1 and two[1] == 1  # the best single swap: the worst member for the best candidate
+
+
+def test_a_liquidity_line_on_construction_calls_keeps_a_lumpy_request_out():
+    rng = np.random.default_rng(5)
+    S = 400
+    built = rng.random(S) < 0.3  # a large request that reaches its agreement in 30% of scenarios
+    A = np.column_stack([rng.normal(1.0, 0.1, S), np.where(built, 10.0, -0.5)])
+    calls = np.column_stack([np.zeros(S), np.where(built, 70.0, 0.0) - 0.3 * 70.0])  # the draw beyond the expected reserve
+    free = opt.solve_milp(A, np.ones(2), budget=2.0, lam=0.0)["x"]
+    assert list(free) == [1, 1]
+    tight = opt.solve_milp(A, np.ones(2), budget=2.0, lam=0.0, calls=calls, calls_cap=10.0)["x"]
+    assert list(tight) == [1, 0]  # the calls' CVaR (49) is above the line, so the request leaves

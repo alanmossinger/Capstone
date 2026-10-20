@@ -52,7 +52,8 @@ class InfeasibleBook(RuntimeError):
 
 
 def solve_milp(npv_scenarios, capex, budget, lam=1.0, level=0.95, groups=None, group_cap=None, co2=None, co2_cap=None,
-               exclusive=(), time_limit=300, cvar_cap=None, forced_in=(), forced_out=()):
+               exclusive=(), time_limit=300, cvar_cap=None, forced_in=(), forced_out=(), reference=None, max_changes=None,
+               calls=None, calls_cap=None):
     """Maximise E[NPV] − λ·CVaR of the book subject to the budget and the caps.
 
     Parameters
@@ -84,6 +85,20 @@ def solve_milp(npv_scenarios, capex, budget, lam=1.0, level=0.95, groups=None, g
         Candidate indices that must be in, or out of, the book (an existing
         commitment; a project the committee has ruled out; the explanation's
         forced re-solves).
+    reference : array-like of 0/1, optional
+        A book to stay close to (the committee's own proposal).
+    max_changes : int, optional
+        With ``reference``: at most this many candidates may differ from it
+        (added plus dropped). The repair tool of the challenger raises it one
+        step at a time to find the smallest change that meets the committee's
+        rules (decision #94).
+    calls, calls_cap : numpy.ndarray, float, optional
+        Scenarios × candidates construction capital called beyond each
+        candidate's reserve ($), and a limit on the CVaR at ``level`` of the
+        book's total: the committee's liquidity line as a constraint. CVaR is
+        at least the quantile, so the book's 95th-percentile excess is then
+        within the line too (a conservative linear form of the chance
+        constraint).
 
     Returns
     -------
@@ -115,33 +130,55 @@ def solve_milp(npv_scenarios, capex, budget, lam=1.0, level=0.95, groups=None, g
     capex = np.asarray(capex, float) / scale
     budget = budget / scale
     mu = A.mean(axis=0)
-    n_var = n + 1 + S  # x, alpha, u
-    c = np.concatenate([-mu, [lam], np.full(S, lam / ((1 - level) * S))])
+    liquidity = calls is not None and calls_cap is not None
+    extra = 1 + S if liquidity else 0  # beta and v_s for the CVaR of the construction calls
+    n_var = n + 1 + S + extra  # x, alpha, u (, beta, v)
+
+    def pad(head, tail=None):
+        """A row over every variable: ``head`` from the start (x, then alpha and u if given), ``tail`` over beta and v."""
+        row = np.zeros(n_var)
+        row[: len(head)] = head
+        if tail is not None:
+            row[n + 1 + S:] = tail
+        return row
+
+    c = np.concatenate([-mu, [lam], np.full(S, lam / ((1 - level) * S)), np.zeros(extra)])
     constraints = []
     # u_s + alpha + NPV_s · x >= 0
-    rows = np.hstack([A, np.ones((S, 1)), np.eye(S)])
+    rows = np.hstack([A, np.ones((S, 1)), np.eye(S), np.zeros((S, extra))])
     constraints.append(LinearConstraint(rows, lb=np.zeros(S), ub=np.full(S, np.inf)))
     # budget
-    constraints.append(LinearConstraint(np.concatenate([capex, np.zeros(1 + S)])[None, :], lb=-np.inf, ub=budget))
+    constraints.append(LinearConstraint(pad(capex)[None, :], lb=-np.inf, ub=budget))
     if groups is not None and group_cap is not None:
         groups = np.asarray(groups)
         for g in np.unique(groups):
-            row = np.concatenate([np.where(groups == g, capex, 0.0), np.zeros(1 + S)])
-            constraints.append(LinearConstraint(row[None, :], lb=-np.inf, ub=group_cap * budget))
+            constraints.append(LinearConstraint(pad(np.where(groups == g, capex, 0.0))[None, :], lb=-np.inf, ub=group_cap * budget))
     if co2 is not None and co2_cap is not None:
-        constraints.append(LinearConstraint(np.concatenate([np.asarray(co2, float), np.zeros(1 + S)])[None, :], lb=-np.inf, ub=co2_cap))
+        constraints.append(LinearConstraint(pad(np.asarray(co2, float))[None, :], lb=-np.inf, ub=co2_cap))
     for members in exclusive:
         row = np.zeros(n_var)
         row[list(members)] = 1.0
         constraints.append(LinearConstraint(row[None, :], lb=-np.inf, ub=1.0))
     if cvar_cap is not None:
-        row = np.concatenate([np.zeros(n), [1.0], np.full(S, 1.0 / ((1 - level) * S))])
+        row = pad(np.concatenate([np.zeros(n), [1.0], np.full(S, 1.0 / ((1 - level) * S))]))
         constraints.append(LinearConstraint(row[None, :], lb=-np.inf, ub=cvar_cap / scale))
-    integrality = np.concatenate([np.ones(n), np.zeros(1 + S)])
+    if reference is not None and max_changes is not None:
+        ref = np.asarray(reference, float)
+        # changes = sum over ref=1 of (1 - x_j) + sum over ref=0 of x_j = sum (1 - 2 ref_j) x_j + sum ref_j
+        constraints.append(LinearConstraint(pad(1.0 - 2.0 * ref)[None, :], lb=-np.inf, ub=max_changes - ref.sum()))
+    if liquidity:
+        C = np.asarray(calls, float) / scale
+        # v_s + beta - C_s · x >= 0, and beta + sum v_s / ((1 - level) S) <= cap: the CVaR of the calls within the line
+        rows = np.hstack([-C, np.zeros((S, 1 + S)), np.ones((S, 1)), np.eye(S)])
+        constraints.append(LinearConstraint(rows, lb=np.zeros(S), ub=np.full(S, np.inf)))
+        tail = np.concatenate([[1.0], np.full(S, 1.0 / ((1 - level) * S))])
+        constraints.append(LinearConstraint(pad(np.zeros(n), tail)[None, :], lb=-np.inf, ub=calls_cap / scale))
+    integrality = np.concatenate([np.ones(n), np.zeros(1 + S + extra)])
     lower, upper = np.zeros(n), np.ones(n)
     lower[list(forced_in)] = 1.0
     upper[list(forced_out)] = 0.0
-    bounds = Bounds(lb=np.concatenate([lower, [-np.inf], np.zeros(S)]), ub=np.concatenate([upper, [np.inf], np.full(S, np.inf)]))
+    lb_extra = np.concatenate([[-np.inf], np.zeros(S)]) if liquidity else np.zeros(0)
+    bounds = Bounds(lb=np.concatenate([lower, [-np.inf], np.zeros(S), lb_extra]), ub=np.concatenate([upper, [np.inf], np.full(S, np.inf), np.full(extra, np.inf)]))
     res = milp(c, constraints=constraints, integrality=integrality, bounds=bounds, options={"time_limit": time_limit, "mip_rel_gap": 1e-4})
     if res.status == 2:
         raise InfeasibleBook(f"no book meets the constraints: {res.message}")

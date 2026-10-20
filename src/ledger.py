@@ -50,6 +50,9 @@ class Decision:
     gate_answers: dict = field(default_factory=dict)
     opposing_case_read: bool = False
     note: str = ""
+    advisor_level: str = ""
+    advisor_book: list = field(default_factory=list)
+    contrary_evidence_acknowledged: bool = False
 
     @property
     def is_override(self):
@@ -65,7 +68,10 @@ def record(decision, path=LEDGER_V8, now=None):
     Checks, in order: the verb is one of ``VERBS``; a person is named; an
     override (members different from the model's book) carries an answer to
     every question of ``advisor.REASONING_QUESTIONS`` and a read opposing
-    case (``advisor.override_allowed``). The line is appended, never
+    case (``advisor.override_allowed``); and a decision that departs from a
+    book the challenger *guided* toward (``src/challenge.py``, allowed only on
+    computed evidence) records that the authorizer acknowledged that evidence
+    (decision #94). The human may still decide otherwise. The line is appended, never
     rewritten, with its own hash and the previous line's, so an edit to an
     earlier row breaks the chain (``verify_chain``).
     """
@@ -77,6 +83,8 @@ def record(decision, path=LEDGER_V8, now=None):
         allowed, missing = adv.override_allowed(decision.gate_answers, decision.opposing_case_read)
         if not allowed:
             raise NotAuthorized(f"an override needs an answer to each of the five questions and the opposing case read; missing: {missing}")
+    if decision.advisor_level == "guide" and set(decision.members) != set(decision.advisor_book) and not decision.contrary_evidence_acknowledged:
+        raise NotAuthorized("the challenger guided toward another book on computed evidence; a different decision must acknowledge that evidence")
     previous = ""
     if path.exists():
         lines = [line for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]

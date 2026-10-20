@@ -1639,3 +1639,18 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 **Open questions for Alan**
 
 - None blocking. Push `v8-corrections` when you have read the review?
+
+## Session 18, continued — 2026-10-20: phase 2, the active challenger (decision #95)
+
+**Done**
+
+- `src/challenge.py`: the language model reads the committee's statement into `Preferences` and may request up to two what-ifs; tools diagnose the proposal (rules, capital calls, tail dependence, risk contribution, drop tests) and compute the repair and the optimizer's book under the stated preferences; the model writes a challenge memo from the numbered fact sheet; code checks numbers, fact references and the guide rule. `checklist` is the no-model control. Prompts `challenge_read.md`, `challenge_memo.md`.
+- `optimizer.solve_milp`: a change limit to a reference book (the repair) and a liquidity line as a CVaR limit on construction calls beyond the reserve.
+- `ledger`: a decision that departs from a guided book needs the evidence acknowledged.
+- `advisor.portfolio_context` shows stage-one charges against the budget (the defect the advisor flagged in session 18).
+- A development trial on the gas example (records kept outside `results/`): the challenger read "one-in-eight chance of loss" and "one billion beyond the reserve" correctly, tested ERCOT prices 25% lower and half as volatile, found the proposal breaks its own liquidity line (95th-percentile calls $3,281M against $1,000M), and guided to the repair — drop the gas request and five fragile requests — which within the line gives up $373M of expected value and halves the worst-5% loss ($963M to $510M), its metric gain [−81, +243] not clear of zero, which the memo said. 44 of 45 numbers grounded.
+- Tests: 243 pass.
+
+**Next**
+
+- Phase 3: register the experiments (C25 onward) before any run — X1 seeded flaws, X2 misspecified worlds, X3 preference translation — with 8–12 committee personas and Alan's own decisions; then run them in notebook 11.
