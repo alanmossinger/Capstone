@@ -10,15 +10,23 @@ they were live in 2025, though ten had already been withdrawn or built
 2025; the same functions run as of 1 January 2020 give a backtest scored on
 2020–2024 outcomes, and its observed-to-predicted ratio is a level correction
 that was knowable on the decision date (audit E4).
+The same date governs the leases and the agreements: lease history stops at
+the last month BSEE had published (the release lag of ``config.RELEASE_LAGS``),
+and an agreement counts only if the edition frozen at the date dates it — the
+2026 edition's backfilled dates are later information (decision #94).
 Reads / writes: nothing; notebook 04 passes the tables in and saves
 `data/processed/predictions_2025.parquet` and `results/decision_date_backtest.csv`.
-Used by: notebook 04 (part F), notebook 07 (the power pool); `tests/test_decision_date.py`.
+Used by: notebook 04 (part L), notebooks 07–11 and `src/whatif.py` (the lease history and baselines);
+`tests/test_decision_date.py`.
 """
 
 import numpy as np
 import pandas as pd
 
-from src import config, discrete_time, landmark
+from src import config, discrete_time, economics as ec, landmark
+
+LEASE_LAG = config.RELEASE_LAGS["BSEE OGOR-A"]  # months between a production month and BSEE publishing it
+AGREEMENT_EDITION = "2025 edition"  # the LBNL edition that was the latest public record of the queue on the decision date
 
 
 def censor_at(frame, as_of):
@@ -239,3 +247,89 @@ def lookup_curves(known, target, as_of, years=7, group=("region", "type_clean"),
                 survive *= 1.0 - h_op[y - 1] - h_wd[y - 1]
             out[i, j] = cif
     return pd.DataFrame(out, index=target.index, columns=[f"p{h}" for h in range(1, years + 1)])
+
+
+def lease_history_on(upstream, as_of=config.DECISION_DATE, lag=LEASE_LAG):
+    """The lease months BSEE had published by ``as_of``.
+
+    Parameters
+    ----------
+    upstream : pandas.DataFrame
+        Monthly lease rows with a ``month`` column (``data/interim/upstream_monthly.parquet``).
+    as_of : str or pandas.Timestamp
+        The decision date.
+    lag : int
+        Months between a production month and its publication.
+
+    Returns
+    -------
+    pandas.DataFrame
+        The rows whose production month is earlier than ``as_of`` minus ``lag`` months.
+
+    Notes
+    -----
+    On 1 January 2025 the last published month was September 2024; the first
+    v8 run read through December 2024, three months no committee could have
+    seen (review of 19 October, §2.1). The files as served in 2026 also carry
+    later revisions of the published months, which cannot be undone without
+    archived copies; the report states it.
+    """
+    cutoff = pd.Timestamp(as_of) - pd.DateOffset(months=lag)
+    return upstream[upstream["month"] < cutoff]
+
+
+def lease_baseline_on(history_oil, history_gas, months, gap=LEASE_LAG, **kwargs):
+    """A lease's baseline from its published history, started at the decision date.
+
+    Parameters
+    ----------
+    history_oil, history_gas : array-like
+        Monthly volumes up to the last published month, oldest first.
+    months : int
+        Forecast length from the decision date.
+    gap : int
+        Months between the last published month and the decision date.
+    **kwargs
+        Passed to ``economics.lease_baseline``.
+
+    Returns
+    -------
+    tuple
+        As ``economics.lease_baseline``, with the forecast starting at the decision date.
+
+    Notes
+    -----
+    The decline fit sees only published months; its first ``gap`` forecast
+    months fall before the decision date and are dropped, so month 0 of the
+    baseline is month 0 of the price paths.
+    """
+    bo, bg, fo, fg = ec.lease_baseline(history_oil, history_gas, months=months + gap, **kwargs)
+    return bo[gap:], bg[gap:], fo, fg
+
+
+def agreement_dates_on(milestones, edition=AGREEMENT_EDITION):
+    """Agreement dates a committee could read on the decision date, by project key.
+
+    Parameters
+    ----------
+    milestones : pandas.DataFrame
+        ``data/interim/milestones.parquet`` indexed by ``project_key``.
+    edition : str
+        The ``ia_source`` value of the edition public on the date.
+
+    Returns
+    -------
+    pandas.Series
+        ``ia_date_best`` where the agreement falls inside the request's time in the queue
+        and the date comes from ``edition``; NaT otherwise.
+
+    Notes
+    -----
+    The merged dates fill the 2025 edition's gaps from the 2026 edition
+    (566 dates). That is right for the registered landmark tests, which score
+    the past, and wrong for any view as of a date, which must use what was
+    public then (review of 19 October, §2.1).
+    """
+    keep = milestones["ia_inside_queue"] & (milestones["ia_source"] == edition)
+    return milestones["ia_date_best"].where(keep)
+

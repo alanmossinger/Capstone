@@ -7,27 +7,29 @@ date: "SIADS 699 Capstone, University of Michigan — Group 13 (a solo project) 
 
 ## Abstract
 
-Can an AI-assisted prescriptive system improve how an energy company allocates capital, and can its contribution be measured apart from the forecasts and the optimizer beneath it? I build such a system for one decision — twenty Gulf of Mexico lease redevelopments and twenty ERCOT interconnection requests under one budget on 1 January 2025 — and evaluate it against conventional rules on the same held-out scenarios. An independent audit corrected errors that had decided the previous version's recommendation. Under equal constraints a risk-aware optimizer beats NPV ranking on the registered risk–return metric by $293M [+$151M, +$441M], buying a thinner tail with $130M of expected value. Machine-learning queue forecasts rank requests better than a transparent lookup in two backtests, yet the book chosen with them does not beat the book chosen with the lookup. Revising the book in 2027 adds nothing in this model. The AI advisor read six committee questions correctly — five into model parameters, the sixth refused as outside the model — and cited computed numbers only; its investment increment is zero, because the book is the optimizer's. The contribution is a decision system that shows a committee its trade-off and states where prediction, optimization and a language model add value, and where they do not.
+Can an AI-assisted prescriptive system improve how an energy company allocates capital, and can its contribution be measured apart from the forecasts and the optimizer beneath it? I build such a system for one decision — twenty Gulf of Mexico lease redevelopments and twenty ERCOT interconnection requests under one budget on 1 January 2025 — and evaluate it against conventional rules on the same held-out scenarios. An independent audit corrected errors that had decided the previous version's recommendation, and a later review removed three inputs that were not public on the decision date. Under equal constraints a risk-aware optimizer beats NPV ranking on the registered risk–return metric by $320M [+$142M, +$511M], buying a thinner tail with $274M of expected value; the ranking holds when the book is re-chosen on resampled scenarios, but its capital plan holds only with a contingent construction line. Machine-learning queue forecasts rank requests better than a transparent lookup in two backtests, yet the book chosen with them does not beat the book chosen with the lookup. Revising the book in 2027 adds nothing in this model. The AI advisor read six committee questions correctly — five into model parameters, the sixth refused as outside the model — and cited computed numbers only; its investment increment is zero, because the book is the optimizer's. The contribution is a decision system that shows a committee its trade-off and states where prediction, optimization and a language model add value, and where they do not.
 
 ## Capital Allocation Memo
 
 *To the investment committee, 1 January 2025. Every figure is a model output scored on held-out scenarios; lease costs are assumed.*
 
-**The ask.** Commit $3.31B now — 40% of what the forty candidates would cost the budget today — across twenty Gulf lease redevelopments and twenty ERCOT requests still in the queue, with no technology above 40% of the budget. A lease costs its redevelopment capital; a request costs its deposits plus a reserve for the construction it may need.
+**The ask.** Commit up to $3.42B now — 40% of what the forty candidates would cost the budget today — across twenty Gulf lease redevelopments and twenty ERCOT requests still in the queue, with no technology above 40% of the budget. A lease costs its redevelopment capital; a request costs its deposits plus a reserve for the construction it may need.
 
-**The choice.** There is no single right book, only a trade-off to price (Figure 2). The return-seeking book expects $2.12B with a worst-5% average loss of $1.69B. The registered risk-aware book expects $1.92B with a loss of $1.33B and a 13% chance of losing money. A defensive book expects $0.84B with a loss of $0.26B. I recommend the committee choose its tail weight first; at the registered weight that is the risk-aware book.
+**The choice.** There is no single right book, only a trade-off to price (Figure 2). The return-seeking book expects $2.36B with a worst-5% average loss of $1.60B. The registered risk-aware book expects $2.05B with a loss of $1.02B and a 10% chance of losing money. A defensive book expects $1.55B with a loss of $0.52B. I recommend the committee choose its tail weight first; at the registered weight that is the risk-aware book.
 
-**What to do with each candidate under that book.** Invest now in six leases and two requests with signed agreements. Invest in stages in six requests: pay the deposit now, commit construction at the agreement. Wait for information on six requests whose agreement signal is worth more than their deposit. Monitor seventeen; reject three.
+**What to do with each candidate under that book.** Invest now in six leases and two requests with signed agreements. Invest in stages in five requests: pay the deposit now, commit construction at the agreement. Wait for information on thirteen requests whose agreement signal is worth more than their deposit. Monitor thirteen; reject one.
+
+**What the commitment really is.** The construction reserve is an average: the capital the book's requests call exceeds it in 44.5% of scenarios. Without a contingent line the book is worth $1.40B, not $2.05B, because requests that reach their agreement cannot be built; a line of $3.28B restores $2.02B.
 
 **What would change it.** Oil at $45 a barrel for five years, or redevelopment capital 30% higher, removes every lease from the book. The two largest power positions rest on ERCOT prices spiking as they did in 2021 and on prices reverting upward from 2024's low level.
 
-**What information is worth.** Knowing everything before committing would be worth at most $482M; knowing the 2025–2029 ERCOT price level, $40M; one request's agreement signal, at most $4.8M.
+**What information is worth.** Knowing everything before committing would be worth at most $571M; knowing the 2025–2029 ERCOT price level, $52M; one request's agreement signal, at most $11.5M.
 
 ## 1 Introduction: why better predictions do not guarantee better investment decisions
 
 An energy company with one budget holds requests to connect new plants to the grid, most of which are never built, and oil and gas leases that already produce. Data science usually stops at the forecast. A forecast is not a decision: the decision also depends on costs, constraints, timing and how much loss the owner can bear, and on whether the machinery that joins them does what it says.
 
-The previous version of this report shows the second point. An independent audit (Appendix H) found five errors that no test of forecast accuracy would have caught. The comparison books faced different constraints, so the "price of cutting the tail" was really the price of a cap one book ignored. Ten of the twenty power candidates had already been withdrawn or built. Half the leases were projected never to decline. The backtest of past decisions used information from after their dates. And the AI advisor added nothing over the rule it was meant to improve. Each was corrected; the registered record is kept as it was scored (Appendix A).
+The previous version of this report shows the second point. An independent audit (Appendix H) found five errors that no test of forecast accuracy would have caught. The comparison books faced different constraints, so the "price of cutting the tail" was really the price of a cap one book ignored. Ten of the twenty power candidates had already been withdrawn or built. Half the leases were projected never to decline. The backtest of past decisions used information from after their dates. And the AI advisor added nothing over the rule it was meant to improve. Each was corrected; a later review found three inputs that were not public on 1 January 2025 — a tax-credit deadline set by a July 2025 law, agreement dates from a 2026 data release, and lease months not yet published — and those were removed too. The registered record is kept as it was scored (Appendix A).
 
 | Stage | Question | In this report |
 |------------------|----------------------------|----------------------------------------------------------------|
@@ -59,15 +61,15 @@ The contributions are three: a corrected prescriptive pipeline with the audit th
 
 Every source is public: LBNL's *Queued Up* interconnection files (2025 edition, 2026 edition for later outcomes), BSEE monthly lease production, EIA prices and plant generation, ERCOT's hourly settlement prices for 2018–2024 and the NREL Annual Technology Baseline. A readiness gate checked each source before any model was fitted.
 
-**One decision date.** Both sectors are decided on 1 January 2025. The leases are the twenty with the most 2024 output. The requests are the five largest of each technology — gas combined cycle, solar, wind, storage — among the 1,649 ERCOT requests of 20 MW and more still waiting on that date, about 359 GW. Each request's chance of operating within seven years is conditional on how long it has already waited and on whether it has signed its interconnection agreement.
+**One decision date.** Both sectors are decided on 1 January 2025, with only what was public that day: lease output to September 2024, agreements as the 2025 edition dates them, and the tax credits of the law then in force. The leases are the twenty with the most output in the twelve months published by that date. The requests are the five largest of each technology — gas combined cycle, solar, wind, storage — among the 1,649 ERCOT requests of 20 MW and more still waiting on that date, about 359 GW. Each request's chance of operating within seven years is conditional on how long it has already waited and on whether it has signed its interconnection agreement.
 
-**Valuation.** A lease redevelopment adds 20% to output after two years; its value is the cash flow it adds over a baseline fitted after the lease's peak that declines at least 8% a year (ASSUMED; 5–12% as the range). Redevelopment costs are not public, so every result is shown under two grids: the registered grid fixed before any result, and the harder committee grid an investment committee would use, which prices capital per incremental barrel and discounts at 8%. Under the registered grid the twenty leases are worth $8.23B; under the committee grid $2.74B, for $5.15B of capital. A power request is valued on the 2024 hourly prices, with ATB costs in 2024 dollars and the tax credits each plant would earn in its operation year.
+**Valuation.** A lease redevelopment adds 20% to output after two years; its value is the cash flow it adds over a baseline fitted after the lease's peak that declines at least 8% a year (ASSUMED; 5–12% as the range). Redevelopment costs are not public, so every result is shown under two grids: the registered grid fixed before any result, and the harder committee grid an investment committee would use, which prices capital per incremental barrel and discounts at 8%. Under the registered grid the twenty leases are worth $8.19B; under the committee grid $2.73B, for $5.12B of capital. A power request is valued on the 2024 hourly prices, with ATB costs in 2024 dollars and the tax credits each plant would earn under the law in force on the decision date; the 2027 deadline a July 2025 law set for wind and solar is a stress, not the base case.
 
 **The budget.** A lease spends its capital now. A request needs only its deposits now, plus a reserve for the construction it will call if it reaches its agreement; that is what it charges the budget. The budget is the registered rule in those units, 40% of the forty charges. Every dollar figure carries a provenance label: OBSERVED, DERIVED, FORECAST or ASSUMED.
 
 ## 4 Predictive modeling and uncertainty quantification
 
-**Queue completion.** Discrete-time LightGBM hazards on entry attributes, fitted on entrants to 2016 and tested once on 2017–2019 entrants, rank requests above cohort averages (AUC 0.86 against 0.73), but for requests of 20 MW and more a careful lookup — the share built among earlier requests of the same region, technology and size — ranks as well. Two years in, with the agreement known, the model wins (Appendix E). For the 2025 decision the models were refitted on what was known on each of two earlier dates and scored on what followed: as of 2020 the model ranked better than the lookup (AUC 0.738 against 0.686) but put ERCOT's five-year chance at 0.388 where 0.238 operated. That ratio, knowable on the decision date, corrects the 2025 curves.
+**Queue completion.** Discrete-time LightGBM hazards on entry attributes, fitted on entrants to 2016 and tested once on 2017–2019 entrants, rank requests above cohort averages (AUC 0.86 against 0.73), but for requests of 20 MW and more a careful lookup — the share built among earlier requests of the same region, technology and size — ranks as well. Two years in, with the agreement known, the model wins (Appendix E). For the 2025 decision the models were refitted on what was known on each of two earlier dates and scored on what followed: as of 2020 the model ranked better than the lookup (AUC 0.731 against 0.686) but put ERCOT's five-year chance at 0.380 where 0.238 operated. That ratio, knowable on the decision date, corrects the 2025 curves.
 
 **Energy forecasts.** Of twelve registered lines, machine learning beat the best of five transparent baselines for plant capacity factors and failed for lease output and prices (Appendix F).
 
@@ -93,33 +95,33 @@ The language model sits in one layer and never produces a number the decision us
 
 ## 8 Economic results and portfolio trade-offs
 
-**The trade-off is real and the committee must price it.** Along the frontier, expected value and tail fall together (Figure 2). Under the committee grid the deterministic book expects $2.12B with a worst-5% loss of $1.69B; the risk-aware book $1.92B and $1.33B; at λ = 2, $0.84B and $0.26B.
+**The trade-off is real and the committee must price it.** Along the frontier, expected value and tail fall together (Figure 2). Under the committee grid the deterministic book expects $2.36B with a worst-5% loss of $1.60B; the risk-aware book $2.05B and $1.02B; at λ = 2, $1.55B and $0.52B.
 
 ![Figure 2](../figures/F38_frontier.png)
 
 *Figure 2.* The frontier over risk policies on held-out scenarios, the four registered books on it, and capital by technology along it.
 
-**Under equal constraints, the risk-aware book wins on the registered metric.** It beats NPV ranking by $293M [+$151M, +$441M] and equal capital by $173M [+$54M, +$303M] on expected NPV minus CVaR95, while giving up $130M of expected value against NPV ranking (Figure 3). Under the registered grid, applying the same criteria to the corrected system, the risk-aware book beats NPV ranking by $551M and equal capital by $334M, and fails the stability and single-sector tests.
+**Under equal constraints, the risk-aware book wins on the registered metric.** It beats NPV ranking by $320M [+$142M, +$511M] and equal capital by $213M [+$120M, +$315M] on expected NPV minus CVaR95, while giving up $274M of expected value against NPV ranking (Figure 3). Re-chosen on 20 resampled scenario sets it beats NPV ranking every time, by $116M to $352M; 11 of its members are chosen in at least 80% of them. Under the registered grid, applying the same criteria to the corrected system, the risk-aware book beats NPV ranking by $1,332M, ties equal capital (+$24M, an interval that includes zero), and fails the stability and single-sector tests.
 
 ![Figure 3](../figures/F42_value_added.png)
 
 *Figure 3.* Each process against its comparator on the same held-out scenarios: expected NPV and the registered metric, with paired bootstrap intervals.
 
-| Committee grid, held-out | A NPV ranking | B equal capital | C deterministic | D risk-aware | F naive forecasts |
+| Committee grid, held-out | A NPV ranking | B equal capital | C deterministic | D risk-aware | F lookup forecasts |
 |-------------------------|--------------|----------------|----------------|-------------|------------------|
-| Candidates funded | 16 | 14 | 18 | 14 | 13 |
-| Expected NPV, $B | 2.05 | 1.96 | 2.12 | 1.92 | 1.50 |
-| Worst-5% loss, $B | 1.76 | 1.55 | 1.69 | 1.33 | 0.78 |
-| Chance of a loss | 16% | 14% | 14% | 13% | 11% |
-| Regret against perfect information, $B | 0.55 | 0.64 | 0.47 | 0.68 | 1.09 |
+| Candidates funded | 16 | 16 | 17 | 13 | 18 |
+| Expected NPV, $B | 2.33 | 2.08 | 2.36 | 2.05 | 1.84 |
+| Worst-5% loss, $B | 1.61 | 1.26 | 1.60 | 1.02 | 0.83 |
+| Chance of a loss | 13% | 12% | 13% | 10% | 9% |
+| Regret against perfect information, $B | 0.60 | 0.84 | 0.57 | 0.87 | 1.08 |
 
 *Table 2.* The decision processes on the same 2,000 held-out scenarios.
 
-**Machine learning does not improve this decision.** The book chosen with the lookup's queue curves (F) spends two thirds of the budget; book D expects $412M more but carries a heavier tail, and on the registered metric does not beat it: D minus F is −$146M [−$325M, +$30M] in the model's own scenarios and −$311M [−$484M, −$138M] in the lookup's. The model ranks requests better, but the decision turns on a few large requests whose chance of operating neither method knows well. By the rule this project set itself, the simpler forecast should be used for this decision.
+**Machine learning does not demonstrably improve this decision.** The book chosen with the lookup's queue curves (F) spends 91% of the budget; book D expects $209M more and on the registered metric scores +$22M [−$168M, +$207M] in the model's own scenarios and −$143M [−$375M, +$87M] in the lookup's — neither interval excludes zero. The model ranks requests better, but the decision turns on a few large requests whose chance of operating neither method knows well, and the two books differ in size. By the rule this project set itself, the simpler forecast should be used for this decision.
 
-**What drives value and downside.** Book D holds six leases — not the three largest producers, whose capital per budget dollar is high under the committee grid while the 40% cap binds — and eight requests. The position whose removal costs the most is an 836 MW wind request with a signed agreement: forcing it out lowers the objective by $373M. The largest power position, a 1,350 MW gas request four years into the queue, expects $499M yet loses money in 78% of scenarios; it earns its place through rare large outcomes.
+**What drives value and downside.** Book D holds six leases — not the three largest producers, whose capital per budget dollar is high under the committee grid while the 40% cap binds — and seven requests. The position whose removal costs the most is an 836 MW wind request with a signed agreement: forcing it out lowers the objective by $549M. The largest power position, a 1,350 MW gas request four years into the queue, expects $512M yet loses money in 77% of scenarios; it earns its place through rare large outcomes, and its place is worth only $7.7M at the registered tail weight — a committee slightly more averse to the tail would drop it.
 
-**How the book moves.** Re-solved under five committee questions (Figure 4), the book drops every lease when oil stays at $45 for five years or redevelopment capital rises 30%, keeping only wind. Halving ERCOT's volatility drops the gas requests and the agreement-backed solar request and swaps one lease. A budget cut of a fifth drops two leases and three requests. Capping the worst-5% loss at half of book D's swaps the two gas requests and one lease for another lease and a storage request.
+**How the book moves.** Re-solved under five committee questions (Figure 4), the book drops every lease when oil stays at $45 for five years or redevelopment capital rises 30%, keeping only wind. Halving ERCOT's volatility drops the gas request and brings in four solar requests. A budget cut of a fifth drops one lease and the gas request and brings in a solar request. Capping the worst-5% loss at half of book D's drops one lease and the gas request and brings in four solar requests.
 
 ![Figure 4](../figures/F39_reallocation.png)
 
@@ -127,15 +129,15 @@ The language model sits in one layer and never produces a number the decision us
 
 ## 9 Dynamic decisions and scenario analysis
 
-**Revising the book in 2027 adds nothing here.** Committing in 2025 and revising on 1 January 2027 — after two years of prices and the agreement signal, with the continuation values fitted on the primary scenarios — is worth −$13M [−$24M, −$4M] on the held-out scenarios (Figure 5). The cap leaves no room to start a deferred lease with released capital, so the revision can only drop requests, and its estimates drop some that would have paid. This is a scenario-based extension; it establishes no real-option value. It also shows the construction reserve is an average: the capital the book's requests actually call exceeds it in 45% of scenarios.
+**Revising the book in 2027 adds nothing here.** Committing in 2025 and revising on 1 January 2027 — after two years of prices and the agreement signal, with the continuation values fitted on the primary scenarios — is worth −$9M [−$16M, −$3M] on the held-out scenarios (Figure 5). The cap leaves no room to start a deferred lease with released capital, so the revision can only drop requests, and its estimates drop some that would have paid. A negative value says this rule's estimates are noisy, not that flexibility has negative value; it establishes no real-option value. The construction reserve is an average: the capital the book's requests actually call exceeds it in 44.5% of scenarios, and without a contingent line the book is worth $1.40B.
 
 ![Figure 5](../figures/F41_staged.png)
 
 *Figure 5.* Book D held, or revised on 1 January 2027, on the held-out scenarios.
 
-**Information is worth more than flexibility.** Perfect knowledge of everything before committing would raise the best book's expected value by $482M — the most any information could be worth. Knowing the 2025–2029 ERCOT price level is worth $40M, the oil price level $22M, the lease cost draw $18M. Learning within two years whether one request signs its agreement is worth between $0.1M and $4.8M depending on the request; for six requests outside the book that exceeds the deposit needed to wait, so their status is "defer pending information".
+**What information is worth.** Perfect knowledge of everything before committing would raise the best book's expected value by $571M — the most any information could be worth, on a risk-neutral objective. Knowing the 2025–2029 ERCOT price level is worth $52M, the oil price level $32M, the lease cost draw $30M. Learning within two years whether one request signs its agreement is worth between $0.5M and $11.5M depending on the request; for thirteen requests outside the book that exceeds the deposit needed to wait, so their status is "defer pending information".
 
-**The AI advisor helped the committee ask, not choose.** All six questions were translated correctly — five into parameters, the sixth, about interest rates, refused as outside the model. Its five explanations cited 102 numbers, all in the computed fact sheet in their units. Its investment increment is zero: the book is the optimizer's.
+**The AI advisor helped the committee ask, not choose.** All six questions were translated correctly — five into parameters, the sixth, about interest rates, refused as outside the model. Its five explanations cited 119 numbers, all in the computed fact sheet in their units. Its investment increment is zero: the book is the optimizer's.
 
 ## 10 Limitations, governance and practical implications
 
@@ -155,7 +157,7 @@ This is a solo project registered in a group slot (Group 13). All components of 
 
 ## Changes after review
 
-Two outside reviews in October 2026 led to the changes logged in `docs/mentor_feedback.md`. The second asked for a decision intelligence system, evaluated. Its first request was an independent audit; the audit's corrections and the new decision layers are this version. A course mentor is assigned after the proposal review; their feedback will be logged in the same file.
+Two outside reviews in October 2026 led to the changes logged in `docs/mentor_feedback.md`. The second asked for a decision intelligence system, evaluated. Its first request was an independent audit; the audit's corrections and the new decision layers are this version. A review on 19 October found three inputs that were not public on the decision date and the book's capital calls unpriced; both are corrected here (decisions #93–#94). A course mentor is assigned after the proposal review; their feedback will be logged in the same file.
 
 ## Appendix A — The evaluation record
 
@@ -177,18 +179,18 @@ Every claim in the body that says "registered" refers to a line below. Each crit
 
 **Scored first on the bridged prices.** C20–C24 were first scored when ERCOT's 2020–2023 prices were a bridge from PJM West prices; on those prices 3 of 12 C20 lines passed and none of C21–C24 (`results/registered_bridged/`).
 
-**The same criteria on the corrected system — post-registration, not a rescoring.** Applied to the system of this version — the 2025 candidates, the decline floor, the two-stage budget, every book under the same cap — the allocation criteria read as in Table A2. These are new results on a changed system, labelled as such; the registered verdicts are those of Table A1.
+**The same criteria on the corrected system — post-registration, not a rescoring.** Applied to the system of this version — the 2025 candidates as they could be seen that day, the decline floor, the two-stage budget, every book under the same cap — the allocation criteria read as in Table A2. These are new results on a changed system, labelled as such; the registered verdicts are those of Table A1.
 
 | Criterion, registered grid | As scored (v7) | On the corrected system (v8) |
 |------------------------------------------|-----------------|------------------------------|
-| C21: D minus NPV ranking, registered metric | −$61M, FAIL | +$551M [+$363M, +$748M], PASS |
-| C22: D minus equal capital | +$22M, FAIL | +$334M [+$136M, +$548M], PASS |
+| C21: D minus NPV ranking, registered metric | −$61M, FAIL | +$1,332M [+$1,131M, +$1,528M], PASS |
+| C22: D minus equal capital | +$22M, FAIL | +$24M [−$73M, +$122M], FAIL |
 | C23: stability under the stresses | PASS | FAIL |
-| C24: tail against the single-sector book | +$159M, PASS | +$21M [−$111M, +$151M], FAIL |
+| C24: tail against the single-sector book | +$159M, PASS | +$51M [−$90M, +$194M], FAIL |
 
 *Table A2.* The allocation criteria as registered and scored, and applied to the corrected system.
 
-**The hypotheses.** *H1:* machine-learning forecasts reduce held-out error against naive and physics baselines (C20). *H2:* a risk-aware book beats NPV ranking and sector-concentrated books on a stated risk–return metric (C21, C22). *H3:* uncertainty-aware selection is more stable under stresses than deterministic selection (C23, C24). As registered: H1 holds for plant output and not for leases; H2 is not supported; H3 is supported on the observed prices. On the corrected system H2 holds and H3 does not.
+**The hypotheses.** *H1:* machine-learning forecasts reduce held-out error against naive and physics baselines (C20). *H2:* a risk-aware book beats NPV ranking and sector-concentrated books on a stated risk–return metric (C21, C22). *H3:* uncertainty-aware selection is more stable under stresses than deterministic selection (C23, C24). As registered: H1 holds for plant output and not for leases; H2 is not supported; H3 is supported on the observed prices. On the corrected system H2 holds against NPV ranking but not against equal capital, and H3 does not.
 
 ## Appendix B — The AI advisor
 
@@ -202,7 +204,7 @@ Every claim in the body that says "registered" refers to a line below. Each crit
 
 **The prompts.** Eight templates sit in `prompts/`: the system prompt, the recommendation, the gym pick, the three of the challenge round (the five questions, the motivated-reasoning check and the ideological Turing test, unchanged since decision #73), and the two of v8, which translate a question into parameters and explain a computed result.
 
-**Scored.** On the six committee questions of notebook 11 it read all six correctly — five into parameters, the sixth refused — and its five explanations cited 102 numbers, all in the computed fact sheet. Across all modes, 152 calls are recorded; their numbers were in the tables shown 94% of the time. In the decision gym the advisor trailed the registered rule by $5.1M a situation [−$11.0M, −$1.5M], worse in 12 of 14.
+**Scored.** On the six committee questions of notebook 11 it read all six correctly — five into parameters, the sixth refused — and its five explanations cited 119 numbers, all in the computed fact sheet. Across all modes, 171 calls are recorded; their numbers were in the tables shown 94% of the time. In the decision gym the advisor trailed the registered rule by $5.1M a situation [−$11.0M, −$1.5M], worse in 12 of 14.
 
 ![Figure B1](../figures/F44_advisor_tools.png)
 
@@ -420,14 +422,14 @@ Part I answers the developer: which requests to fund and when. Part II answers t
 
 ### F.1 The candidates on 1 January 2025
 
-The leases are the twenty with the most 2024 output among the 513 producing at the end of 2024, out of 1,041 with at least sixty producing months. The requests are the five largest of each technology among the 1,649 ERCOT requests of 20 MW and more waiting on 1 January 2025. In v6 they were drawn from the 2017–2019 entrants and valued at entry, though ten of those twenty had been withdrawn or built by the end of 2024; drawing them from the requests still waiting on the decision date removes that inconsistency. Most of the twenty are 2023–2024 entrants of 500 MW and more, the size and age at which requests are least likely to operate, so their chances sit far below the queue's averages unless an agreement is signed.
+The leases are the twenty with the most output in the twelve months published by the decision date (to September 2024), among the 506 producing in 2024, out of 1,041 with at least sixty producing months. The requests are the five largest of each technology among the 1,649 ERCOT requests of 20 MW and more waiting on 1 January 2025. In v6 they were drawn from the 2017–2019 entrants and valued at entry, though ten of those twenty had been withdrawn or built by the end of 2024; drawing them from the requests still waiting on the decision date removes that inconsistency. Most of the twenty are 2023–2024 entrants of 500 MW and more, the size and age at which requests are least likely to operate, so their chances sit far below the queue's averages unless an agreement is signed.
 
 | Twenty leases, flat 2024 prices | Registered grid | Committee grid |
 |----------------------------------------|------------------------------|------------------------------|
-| Capital | $1.37B | $5.15B |
-| Incremental NPV, base | $8.23B | $2.74B |
-| Incremental NPV, low and high grid cases | $5.72B and $5.11B | $4.80B and −$4.82B |
-| Leases positive at the high case | 20 of 20 | 0 of 20 |
+| Capital | $1.35B | $5.12B |
+| Incremental NPV, base | $8.19B | $2.73B |
+| Incremental NPV, low and high grid cases | $5.69B and $5.10B | $4.77B and −$4.77B |
+| Leases positive at the high case | 19 of 20 | 0 of 20 |
 
 *Table F1.* The lease book under the two grids. The registered low case pairs low costs with a low uplift, which is why it sits below base.
 
@@ -447,7 +449,7 @@ Twelve forecast lines were registered before scoring: lease oil and gas at 3, 6 
 
 **A lease redevelopment is an uplift on a producing asset.** Each lease's baseline is an Arps decline fitted after the lease's peak in its last 36 months, switching to an 8% annual decline once its own decline falls below that; four leases still ramping decline at the floor from their recent level. The v6 fit had no floor, and ten of the twenty leases were projected never to decline. The redevelopment adds 20% of the baseline after a two-year lead time; its value is the cash flow it adds over doing nothing. The committee grid prices capital at $40,000 per incremental flowing barrel of oil equivalent a day and discounts at 8%; it was added after the registered results, at an outside reviewer's request, and is labelled ASSUMED.
 
-**A power request is a plant that may never be built.** Its value if built uses the 2024 hourly prices — solar earns 92% of the flat hub price, wind 83%, gas combined cycle 136% because it runs only when prices clear its fuel cost — with ATB costs converted to 2024 dollars and the tax credits of its operation year: wind the production credit and solar the investment credit if operating by 2027, storage the investment credit throughout. That value is weighted by the chance of operating in each of seven years and net of the deposits. On the flat 2024 path, under contract, all five wind requests and one of the two solar requests with a signed agreement are positive; every gas and storage request is negative.
+**A power request is a plant that may never be built.** Its value if built uses the 2024 hourly prices — solar earns 92% of the flat hub price, wind 83%, gas combined cycle 136% because it runs only when prices clear its fuel cost — with ATB costs converted to 2024 dollars and the tax credits of the law in force on 1 January 2025: wind the production credit, solar and storage the investment credit, in every operation year of the window. The 2027 deadline for wind and solar was set by a July 2025 law and IRS Notice 2025-42, after the decision date; it is a stress. That value is weighted by the chance of operating in each of seven years and net of the deposits. On the flat 2024 path, under contract, all ten wind and solar requests are positive (+$70M together) — but only with the credits: −$615M without them, −$284M under the 2027 deadline. Every gas and storage request is negative.
 
 ### F.5 Scenarios and risk
 
@@ -455,11 +457,11 @@ Prices, output, costs and timing are drawn together: 2,000 twenty-year paths res
 
 ### F.6 Allocating the budget
 
-Section 8 reports the books under the committee grid. Under the registered grid the leases are cheap against the barrels they buy, so the risk-aware book holds thirteen leases and eight requests, expects $7.59B and almost never loses money; risk aversion has little to buy there. The registered comparison on that grid is Table A2.
+Section 8 reports the books under the committee grid. Under the registered grid the leases are cheap against the barrels they buy, so the risk-aware book holds fourteen leases and seven requests, expects $7.67B and almost never loses money; risk aversion has little to buy there. The registered comparison on that grid is Table A2.
 
 ### F.7 When: the book at one to twenty years
 
-A twenty-year NPV says nothing about what the owner holds at year three. Counting only the cash that falls within each horizon, under the registered grid, the best book holds nothing at one or two years, twelve leases at three and thirteen from five; its value within twenty years is $6.64B. A queue request is a carrying cost until it operates (Figure F4).
+A twenty-year NPV says nothing about what the owner holds at year three. Counting only the cash that falls within each horizon, under the registered grid, the best book holds nothing at one or two years, eleven leases at three and fourteen from five; its value within twenty years is $6.56B. A queue request is a carrying cost until it operates (Figure F4).
 
 ![Figure F4](../figures/F35_horizon_view.png)
 
@@ -482,14 +484,14 @@ A twenty-year NPV says nothing about what the owner holds at year three. Countin
 | Where to look | ERCOT builds most often: 18.4% of requests operate within five years, against 4.8% in CAISO. | Appendix E.2 | Observed |
 | RQ1, at entry | The model beats cohort averages (AUC 0.86 against 0.73) but ties the lookup at utility scale. | Appendix E.3; C1–C12 | Partly |
 | RQ1, two years in | A book of 25 chosen by the landmark model held 19 operations, against 11 for the lookup. | Appendix E.7; C15 | Supported |
-| RQ1, on the decision date | Backtested as of 2020 the model ranks better than the lookup (AUC 0.738 against 0.686) but over-predicts ERCOT's level. | Section 4 | Supported for ranking |
+| RQ1, on the decision date | Backtested as of 2020 the model ranks better than the lookup (AUC 0.731 against 0.686) but over-predicts ERCOT's level. | Section 4 | Supported for ranking |
 | RQ1, output | Machine learning beats baselines for plant output, not for leases or prices. | Appendix F.3; C20 | Partly |
 | RQ1, in the decision | The book chosen with the lookup's curves is not beaten by the model's on the registered metric. | Section 8 | Not supported |
-| RQ2 | Under the committee grid the risk-aware book loses money in 13% of scenarios with a worst-5% loss of $1.33B. | Section 8 | Derived |
-| RQ3 | Under equal constraints the risk-aware book beats NPV ranking by $293M on the registered metric, for $130M of expected value. | Section 8 | Post-registration |
+| RQ2 | Under the committee grid the risk-aware book loses money in 10% of scenarios with a worst-5% loss of $1.02B; its construction calls exceed the reserve in 44.5% of scenarios. | Sections 8–9 | Derived |
+| RQ3 | Under equal constraints the risk-aware book beats NPV ranking by $320M on the registered metric, for $274M of expected value. | Section 8 | Post-registration |
 | RQ3, sensitivity | Cheaper oil or dearer redevelopment removes every lease from the book. | Section 8 | Derived |
-| RQ4, flexibility | Revising the book in 2027 is worth −$13M; the construction reserve is exceeded in 45% of scenarios. | Section 9 | Post-registration |
-| RQ4, information | Perfect information is worth at most $482M; the ERCOT price level $40M; an agreement signal at most $4.8M. | Section 9 | Post-registration |
+| RQ4, flexibility | Revising the book in 2027 with this rule is worth −$9M; without a construction line the book is worth $1.40B instead of $2.05B. | Section 9 | Post-registration |
+| RQ4, information | Perfect information is worth at most $571M; the ERCOT price level $52M; an agreement signal at most $11.5M. | Section 9 | Post-registration |
 | RQ4, the advisor | Its investment increment is zero; it read six questions correctly; it trails the rule in the gym. | Sections 8–9; Appendix B | Post-registration |
 
 *Table G1.* Every finding, its evidence and its verdict. Registered criteria are in Appendix A.
@@ -502,7 +504,7 @@ An independent audit of report v6 and its code (`docs/audit_2026-10-17.md`) foun
 |---------|----------------|--------------|
 | A1 | The top-N and equal-capital books ignored the registered 40% technology cap; the risk-aware book's "$1.9B for a smaller tail" was the price of the cap, not of risk aversion. | Every book is held to the same budget and cap and checked. |
 | E1 | Ten of the twenty power candidates had been withdrawn or built by the end of 2024, while the leases were valued at 2025. | One decision date; the requests are those still waiting, with chances conditional on their age. |
-| E2 | Ten of the twenty lease baselines were fitted with no decline. | A post-peak fit with an 8% terminal decline; the registered lease book fell from $14.6B to $8.23B. |
+| E2 | Ten of the twenty lease baselines were fitted with no decline. | A post-peak fit with an 8% terminal decline; the registered lease book fell from $14.6B to $8.19B in this version. |
 | G1 | The gym's lease rooms used 2024 leases, 2024 fits and the realized future's mean. | Rooms rebuilt as of their date and counted as one situation. |
 | G5 | The advisor's value over the rule was never reported; it was negative. | Reported, and the advisor rebuilt to work through the engine. |
 

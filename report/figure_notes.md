@@ -1862,6 +1862,16 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** The path of a committee question through the advisor with tools, the engine, the check, the decision and the ledger.
 <!-- /fig:F44_advisor_tools -->
 
+<!-- fig:F45_robustness -->
+### F45_robustness
+
+![F45_robustness](../figures/F45_robustness.png)
+
+*Notebook:* `notebooks/11_decision_system.ipynb` · *Files:* `figures/F45_robustness.png`, `.svg`
+
+**Caption (stub).** Book D's capital calls beyond its reserve, and the stability of its members under re-selection.
+<!-- /fig:F45_robustness -->
+
 <!-- fig:F4_calibration_by_horizon -->
 ### F4_calibration_by_horizon
 

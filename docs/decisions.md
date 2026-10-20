@@ -1367,3 +1367,28 @@ alternative rejected.
     the 2025 pool, so the rule's low and high cases take it. No new
     notebook; notebooks 09 and 10 rerun. *Rejected:* deleting the ledger row
     (Alan chose to keep the advisor's entry); dropping the second draw.
+94. **The scope after the review of 19 October: an executive report, an
+    active advisor with the human in the loop, the look-ahead fixed first**
+    (Alan, 2026-10-19; `docs/review_2026-10-19.md`; supersedes #84's word
+    limit). (1) The report becomes an executive report: a one-page summary,
+    the decision memo, findings sections that open with their conclusion,
+    methods and the record in appendices; the core may run to about 4,500
+    words. (2) Figures: fewer and larger, one message each, vector in the PDF
+    and 600 dpi PNGs, every figure looked at for overlap and clipping. (3) The
+    advisor is extended from explaining to challenging and guiding: it turns
+    the committee's words into objective terms and constraints, calls the
+    solver and diagnostic tools (including a repair tool: the smallest change
+    to the committee's book that removes its problems), and recommends; every
+    number still comes from a tool. Its value is measured against the
+    committee's own proposal (risk-adjusted NPV and **loss avoided**: chance
+    of loss, worst-5% loss, unfunded capital calls) and against the optimizer
+    when the model is wrong, never against the optimizer on its own objective,
+    where it cannot win; a no-LLM checklist using the same tools is the
+    control. (4) The human side is 8–12 scripted committee personas fixed
+    before any run, plus Alan's own decisions as one labelled human; reported
+    as a simulated human-in-the-loop study. (5) The three look-ahead fixes
+    (credits under the law in force on 1 January 2025 with the 2027 cliff as
+    a policy stress; agreement dates from the 2025 edition for every as-of
+    view; lease history cut at the BSEE lag) come before the advisor work.
+    *Rejected:* claiming the advisor beats the optimizer on the optimizer's
+    own terms; a peer pilot (not feasible by 14 December).

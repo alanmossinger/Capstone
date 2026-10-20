@@ -49,3 +49,28 @@ def test_lookup_curve_is_the_life_table_from_the_request_age():
     assert abs(out.loc[0, "p1"] - 0.2) < 1e-12  # age 0: year 1 hazard 2 / 10
     assert abs(out.loc[0, "p2"] - (0.2 + 0.6 * (1 / 6))) < 1e-12  # then 60% still waiting × 1/6
     assert abs(out.loc[1, "p1"] - 1 / 6) < 1e-12  # age 1: starts at year 2
+
+
+def test_lease_history_stops_at_the_last_month_bsee_had_published():
+    months = pd.date_range("2024-01-01", "2024-12-01", freq="MS")
+    upstream = pd.DataFrame({"month": months, "oil_bbl": 1.0})
+    seen = dd.lease_history_on(upstream, "2025-01-01", lag=3)
+    assert seen["month"].max() == pd.Timestamp("2024-09-01")
+
+
+def test_the_baseline_from_published_months_starts_at_the_decision_date():
+    import numpy as np
+    from src import economics as ec
+    oil = np.linspace(1000, 600, 48)
+    gas = np.linspace(500, 300, 48)
+    full_o, _, _, _ = ec.lease_baseline(oil, gas, months=27)
+    on_o, _, _, _ = dd.lease_baseline_on(oil, gas, months=24, gap=3)
+    assert len(on_o) == 24 and np.allclose(on_o, full_o[3:])
+
+
+def test_agreement_dates_on_the_date_ignore_the_later_edition():
+    ms = pd.DataFrame({"ia_date_best": pd.to_datetime(["2023-05-01", "2024-01-18", "2022-02-01"]),
+                       "ia_source": ["2025 edition", "2026 edition", "2025 edition"], "ia_inside_queue": [True, True, False]},
+                      index=["a", "b", "c"])
+    on = dd.agreement_dates_on(ms)
+    assert on["a"] == pd.Timestamp("2023-05-01") and pd.isna(on["b"]) and pd.isna(on["c"])

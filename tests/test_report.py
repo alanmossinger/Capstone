@@ -7,7 +7,7 @@ import pandas as pd
 from src import paths, report_numbers
 
 REPORT = paths.REPORT / "report.md"
-WORD_LIMIT = 3500  # the course suggests 3,000 excluding references and appendices; 3,500 accepted (decision #84)
+WORD_LIMIT = 4500  # the course suggests 3,000 excluding references and appendices; the executive report may run to about 4,500 (decision #94, superseding #84)
 NUMBER = re.compile(r"\d[\d,]*(?:\.\d+)?%?")
 
 # Labels and names that contain digits but are not cited quantities.

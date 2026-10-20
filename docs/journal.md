@@ -1612,3 +1612,30 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 **Open questions for Alan**
 
 - Push `v8-corrections`?
+
+## Session 18 — 2026-10-19/20: expert review, decision #94, phase 1 (the decision date made honest)
+
+**Done**
+
+- `docs/review_2026-10-19.md`: an expert review of report v8 (strengths, twelve issues rated, the active-advisor specification, experiments, report structure, roadmap), with read-only diagnostics. Alan's decisions are recorded as decision #94: an executive report of up to about 4,500 words; fewer, larger, vector figures; an advisor that challenges and guides through validated tools (including a repair tool), measured against the committee's own proposal in risk-adjusted NPV and loss avoided, with a no-LLM checklist as control; scripted committee personas plus Alan's own decisions as the human side; the look-ahead fixed first.
+- **Phase 1, the look-ahead.** An input-by-input audit found three leaks into the 1 January 2025 decision, now fixed: (1) the 2027 wind and solar credit deadline came from the July 2025 law and IRS Notice 2025-42 — the base case is now the law in force on the date, the deadline a "2025 law" stress (`valuation.CREDIT_POLICIES`); (2) agreement dates backfilled from the 2026 LBNL edition fed the 2025 view — every as-of view now uses the 2025 edition (`decision_date.agreement_dates_on`), the registered landmark tests keep the merged dates; (3) lease months October–December 2024 were not yet published — lease history now stops at September 2024 and baselines start at the decision date (`decision_date.lease_history_on`, `lease_baseline_on`), in notebooks 07–10 and the engine.
+- **Robustness in notebook 11** (`src/robustness.py`, section 9, figure F45): in- vs out-of-sample scores, re-selection on 20 resampled primary sets, capital calls against the reserve with a funding-or-forfeit valuation (funding order fixed in advance — a first version ranked by each scenario's realized value and flattered a limited line), and tail dependence.
+- Notebooks 04, 07, 08, 09, 06, 10, 11 rerun (07 onward under PowerShell: Git Bash's own `pdftotext` splits the PJM table differently, decision #86). Registered results unchanged (tournament files differ by float rounding only). Advisor: 19 live calls in notebook 10 and 11 in notebook 11, now recorded.
+- Reading and takeaway cells of 07–11 rewritten from the new outputs; notebook 11 made to print every table its cells cite.
+- Report v8 brought to the corrected numbers and verdicts (interim; the executive restructure is phase 4): the memo now names the contingent construction line; Table A2 and the hypotheses read C21 pass, C22–C24 fail on the corrected system; new number keys for the robustness results and the credit stress. Word limit 4,500 (decision #94).
+- Tests: 234 pass (10 new: credit policy, the as-of helpers, the robustness checks).
+
+**What moved (committee grid, held-out, post-registration)**
+
+- Book D: 13 members (6 leases, 5 wind, 1 solar, 1 gas), $2.05B expected, 10.4% chance of loss, worst-5% loss $1.02B (was 14 members, $1.92B, 13%, $1.33B). D beats NPV ranking by $320M [+142, +511] on the registered metric, giving up $274M of expected value; the ranking holds in all 20 re-selections ($116M–$352M); 11 of 13 members are core.
+- Capital: the construction reserve ($2.06B) is exceeded in 44.5% of scenarios; without a liquidity line book D is worth $1.40B, with a line at the 95th percentile of the excess ($3.28B) $2.02B.
+- With the credits in force all ten wind and solar requests of the default book pay under contract (+$70M; −$284M under the 2025-law stress). ML increment +$22M [−168, +207]; revision in 2027 −$9M; EVPI $571M, ERCOT price level $52.5M.
+- Registered grid, applied to the corrected system: C21 passes (+$1,332M), C22, C23 and C24 fail.
+
+**Next**
+
+- Phase 2: the challenger tools and prompts; fix `advisor.portfolio_context`, whose books table shows full capital where the budget counts stage-one charges (the advisor itself flagged it in the all-leases round).
+
+**Open questions for Alan**
+
+- None blocking. Push `v8-corrections` when you have read the review?

@@ -1,4 +1,4 @@
-"""The valuation engine agrees with the part A DCF, applies the credits by operation year, and values a scenario like the flat path when prices are flat."""
+"""The valuation engine agrees with the part A DCF, applies the credits of the law in force on the decision date (and the 2025-law stress) by operation year, and values a scenario like the flat path when prices are flat."""
 
 import numpy as np
 import pandas as pd
@@ -19,13 +19,28 @@ def test_merchant_npv_matches_the_part_a_dcf_without_credits():
     assert abs(va.npv_if_built(comp, "merchant") - expected) < 1e-6
 
 
-def test_wind_and_solar_lose_the_credit_after_2027_and_storage_keeps_it():
-    assert va.credit_eligible("Wind", 2027) and not va.credit_eligible("Wind", 2028)
-    assert va.credit_eligible("Solar", 2025) and not va.credit_eligible("Solar", 2030)
-    assert va.credit_eligible("Battery", 2031) and not va.credit_eligible("Gas", 2025)
+def test_the_law_in_force_on_the_decision_date_keeps_every_credit_in_the_window():
+    assert all(va.credit_eligible(t, y) for t in ("Wind", "Solar", "Battery") for y in range(2025, 2032))
+    assert not va.credit_eligible("Gas", 2025)
     comp = va.pv_components("Solar", ATB, BASIS, 30.0, 2.5)
-    early, late = va.npv_if_built(comp, "merchant", operation_year=1), va.npv_if_built(comp, "merchant", operation_year=5)
+    assert abs(va.npv_if_built(comp, "merchant", operation_year=1) - va.npv_if_built(comp, "merchant", operation_year=5)) < 1e-6
+
+
+def test_the_2025_law_stress_ends_wind_and_solar_credits_after_2027_and_storage_keeps_it():
+    assert va.credit_eligible("Wind", 2027, "2025 law") and not va.credit_eligible("Wind", 2028, "2025 law")
+    assert va.credit_eligible("Solar", 2025, "2025 law") and not va.credit_eligible("Solar", 2030, "2025 law")
+    assert va.credit_eligible("Battery", 2031, "2025 law")
+    comp = va.pv_components("Solar", ATB, BASIS, 30.0, 2.5)
+    early = va.npv_if_built(comp, "merchant", operation_year=1, credits="2025 law")
+    late = va.npv_if_built(comp, "merchant", operation_year=5, credits="2025 law")
     assert abs((early - late) - 0.30 * 1000.0 * 1000) < 1e-6  # the 30% investment credit on $1,000/kW
+    assert va.npv_if_built(comp, "merchant", operation_year=5, credits=False) == late
+
+
+def test_an_unknown_credit_policy_is_refused():
+    import pytest
+    with pytest.raises(ValueError):
+        va.credit_policy_of("repealed")
 
 
 def test_expected_npv_when_operation_is_certain_in_year_one():

@@ -2,4 +2,4 @@ draw,n_source_rows,mean,sd,provenance
 "lease output multiplier (per lease, scored months summed, volume-weighted draw)",1040,0.9952125652950483,0.26297783224730414,"FORECAST residuals (post-hoc level model), widened by 1/completeness"
 solar/wind CF multiplier (per plant),415,0.9796667789612311,0.2375309534171747,FORECAST residuals
 cost multiplier,0,1.0841073132035903,0.1614999966862197,ASSUMED triangular 0.75–1.5
-share of requests never operating within 7 y,20,0.911425,,FORECAST (queue models) through the ρ copula
+share of requests never operating within 7 y,20,0.90285,,FORECAST (queue models) through the ρ copula

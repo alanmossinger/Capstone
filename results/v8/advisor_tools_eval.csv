@@ -1,45 +1,47 @@
 question,status,reading,parameters,expected,translation_correct,numbers_checked,grounding_rate,ungrounded,unit_errors,explanation
-What happens if WTI falls to $45 per barrel for five years?,answered,"We read the question as holding WTI at $45 per barrel in real 2024 dollars for five years, with every other parameter left at its default.","{""wti_level"": 45.0}","{""wti_level"": 45.0, ""wti_years"": 5}",True,17.0,1.0,,,"At $45 WTI for five years, the book shrinks from 14 candidates to 5. Nothing entered. Nine left: six lease redevelopments, one solar request and two gas combined-cycle requests. The budget charge falls from 3,299 $M to 662.4 $M, so most of the 3,307 $M budget goes unused.
+What happens if WTI falls to $45 per barrel for five years?,answered,"We read the question as holding WTI at $45 per barrel in real 2024 dollars for five years, and we leave every other parameter at its default.","{""wti_level"": 45.0}","{""wti_level"": 45.0, ""wti_years"": 5}",True,27.0,1.0,,,"If WTI falls to $45 for five years, the model cuts the book from 13 candidates to 5. The budget charge falls from 3,299 to 806.1 $M, against a 3,417 $M budget.
 
-Expected NPV falls from 1,370 $M to 425.4 $M. Median NPV falls from 782.5 $M to -4.51 $M. The chance of a loss rises from 0.25 to 0.65. The worst-5% average loss (CVaR95) shrinks from 1,568 $M to 40.9 $M, but only because we hold far less capital at risk.
+Six lease redevelopments leave, along with the gas combined-cycle request REQ|ERCOT|25INR0008 and the solar request REQ|ERCOT|26INR0155. Each lease has a chance of loss of 0.34 to 0.40. The gas and solar requests have 0.77 and 0.74. The gas request still shows an expected NPV of 512.3 $M, but its median is -1.14 $M.
 
-The remaining book is five wind requests, so concentration across technologies is 1.00. One request, 26INR0113, supplies 262.6 $M of the 425.4 $M. Four of the five have a loss probability of 0.95 or higher.
+What remains is five wind requests. REQ|ERCOT|26INR0113 is the largest, with an expected NPV of 409.7 $M. The other four are ""invest in stages"" with a chance of loss of 0.95 to 0.97.
 
-The weakest label is FORECAST on ASSUMED costs. The answer rests most on the assumed lease costs, which drive the exit of all six leases. The model shows what the optimizer gives up under these scenarios and costs. It does not show why any project would succeed."
-What happens if ERCOT power prices become half as volatile?,answered,"We read 'half as volatile' as halving the spread of ERCOT prices around their median, so ercot_volatility is 0.5 and every other parameter stays at its default.","{""ercot_volatility"": 0.5}","{""ercot_volatility"": 0.5}",True,23.0,1.0,,,"**Answer.** If ERCOT power prices become half as volatile, we hold a smaller book with a much shallower downside. It gives up little expected value.
+Expected NPV falls from 1,484 to 626.6 $M, a drop of 857.2 $M. Median NPV falls from 967.1 to -4.51 $M. The chance of a loss rises from 0.21 to 0.58. CVaR95 falls from 1,279 to 30.7 $M, but only because the book is much smaller. Concentration (HHI) rises from 0.27 to 1.00, because the book is all wind.
 
-**What changed.** The book falls from 14 to 11 candidates. The budget charge falls from 3,299 $M to 1,911 $M, against a 3,307 $M budget. LEASE|G09867 enters (expected NPV 96.2 $M). Four candidates leave:
-- LEASE|G17565 (116.3 $M)
-- Solar REQ|ERCOT|24INR0075 (28.9 $M, p_negative 0.79)
-- Gas CC REQ|ERCOT|25INR0008 (-11.6 $M)
-- Gas CC REQ|ERCOT|27INR0071 (-6.63 $M)
+The answer rests most on the ASSUMED cost grid, with scenarios that are FORECAST. The model shows what the optimizer gives up, not why any project would succeed."
+What happens if ERCOT power prices become half as volatile?,answered,"Half as volatile ERCOT power prices means the spread of ERCOT prices around their median is scaled to 0.5, with the price level and every other parameter left at its default.","{""ercot_volatility"": 0.5}","{""ercot_volatility"": 0.5}",True,26.0,1.0,,,"With ERCOT volatility halved, the book grows from 13 to 16 candidates. Four ERCOT solar requests enter: 24INR0075, 26INR0046, 27INR0221 and 29INR0003. One gas combined-cycle request, 25INR0008, leaves. It charges 698.7 $M and has an expected NPV of -9.38 $M. Each solar entrant is small, with expected NPV between 8.86 and 17.6 $M. All four are marked ""invest in stages"", with median NPV below zero and p_negative of 0.88 to 0.95.
 
-**Cost and downside.** Expected NPV falls from 1,336 $M to 1,305 $M, a change of -30.7 $M. The worst-5% average loss (CVaR95) falls from 1,009 $M to 546.8 $M. The chance of a loss falls from 0.15 to 0.10.
+Expected NPV rises from 1,539 to 1,595 $M (+56.0). The budget charge moves from 3,299 to 3,323 $M, against a 3,417 $M budget. The downside improves more. CVaR95 falls from 806.6 to 494.3 $M (-312.3), and the chance of a loss falls from 0.11 to 0.08. Concentration across technologies rises from 0.27 to 0.35 on the HHI index.
 
-**Concentration.** HHI rises from 0.28 to 0.55. The new book is mostly lease redevelopments plus wind.
+The model shows what the optimizer gives up under these scenarios and costs. It does not show why any project would succeed.
 
-**Weakest assumption.** Lease costs are ASSUMED, and lease redevelopments dominate the new book. The scenario results are FORECAST. The model shows what the optimizer gives up under these scenarios and costs. It does not show why any project would succeed."
-What happens if the capital budget is reduced by 20%?,answered,"A 20% reduction in the capital budget is read as scaling the budget to 0.8 of its default, with every other parameter left unchanged.","{""budget_multiplier"": 0.8}","{""budget_multiplier"": 0.8}",True,24.0,1.0,,,"If the capital budget falls by 20% (multiplier 0.8), the book shrinks from 14.0 to 10.0 candidates. The budget charge falls from 3,299 to 1,633 $M.
+The answer rests most on the ASSUMED cost grid, including lease redevelopment costs. The scenario results are FORECAST on top of it, and six lease redevelopments sit in the new book."
+What happens if the capital budget is reduced by 20%?,answered,"A 20% cut in the capital budget means budget_multiplier = 0.8, with every other parameter left at its default.","{""budget_multiplier"": 0.8}","{""budget_multiplier"": 0.8}",True,26.0,1.0,,,"Under the 20% cut, we give up expected value and gain downside protection. The model reports a budget of 2,734 $M. The new book charges 2,727 $M, down 572.1 $M.
 
-The optimizer drops two leases, LEASE|G17565 (expected NPV 116.3 $M) and LEASE|G26315 (88.7 $M). It also drops three ERCOT requests: Solar 24INR0075, Gas CC 25INR0008 (charge 685.1 $M, expected NPV 499.0 $M) and Gas CC 27INR0071. It adds one storage request, 27INR0365, with a charge of 26.5 $M and an expected NPV of 1.13 $M.
+The book falls from 13 to 12 candidates. Expected NPV drops from 2,120 $M to 1,542 $M, a loss of 577.9 $M. Median NPV falls from 1,607 $M to 1,327 $M. The 5% tail improves: CVaR95 goes from 909.9 $M to 430.6 $M. The chance of a loss goes from 0.10 to 0.08.
 
-Expected NPV falls from 2,025 to 1,154 $M, a loss of 870.2 $M. Median NPV falls by 465.3 $M. The downside improves. The worst-5% average loss (CVaR95) falls from 1,179 to 388.9 $M, and the chance of a loss falls from 0.13 to 0.10. Concentration rises: HHI goes from 0.28 to 0.50.
+Two candidates leave. The gas combined-cycle request REQ|ERCOT|25INR0008 has a charge of 698.7 $M and an expected NPV of 512.3 $M, with a 0.77 chance of a negative NPV. Lease G20351 has a charge of 139.1 $M and an expected NPV of 92.0 $M. Solar request REQ|ERCOT|24INR0075 enters, with a charge of 265.7 $M and an expected NPV of only 26.4 $M. The model does not say why it is chosen.
 
-The answer rests most on the ASSUMED cost grid, including the lease costs. The scenarios are a FORECAST on top of it. The model shows what the optimizer gives up under these costs. It does not show why any project would succeed."
-What happens if offshore redevelopment costs rise by 30%?,answered,"Offshore redevelopment costs are lease redevelopment capital, so we scale lease_cost_multiplier by 1.3 (a 30% rise) and leave every other parameter at its default.","{""lease_cost_multiplier"": 1.3}","{""lease_cost_multiplier"": 1.3}",True,18.0,1.0,,,"If offshore redevelopment costs rise 30%, the book shrinks from 14.0 candidates to 5.00. Nothing enters. Six leases leave (G09982, G17565, G16942, G17015, G25814, G26315), along with one solar request and two gas CC requests (24INR0075, 25INR0008, 27INR0071). What remains is five wind requests, led by 26INR0113 (expected NPV 262.6 $M). The budget charge falls from 3,687 to 662.4 $M.
+Concentration across technologies rises, with HHI going from 0.27 to 0.34.
 
-Expected NPV falls from 1,605 to 425.4 $M. Median NPV falls from 1,033 to -4.51 $M. The chance of a loss rises from 0.23 to 0.65. The worst-5% average loss (CVaR95) falls from 1,655 to 40.9 $M, but only because the book is far smaller. Concentration rises from 0.31 to 1.00, because the book is now all wind.
+The answer rests most on the ASSUMED cost grid, which includes the lease costs. Scenario results are FORECAST on top of it. The model shows what an optimizer gives up under these scenarios and costs, not why any project would succeed."
+What happens if offshore redevelopment costs rise by 30%?,answered,"Offshore redevelopment costs are the capital of lease redevelopments, so we scale lease_cost_multiplier to 1.3 (a 30% rise) and leave every other parameter at its default.","{""lease_cost_multiplier"": 1.3}","{""lease_cost_multiplier"": 1.3}",True,21.0,1.0,,,"A 30% rise in offshore redevelopment costs shrinks the book from 13 candidates to 5. Nothing entered. Eight left: six lease redevelopments and two ERCOT requests (25INR0008 gas CC and 26INR0155 solar).
 
-The model does not say why each project dropped out. It shows only what the optimizer gives up under these scenarios and costs.
+The remaining book is five wind requests. The largest is 26INR0113, with a charge of 535.3 $M and an expected NPV of 409.7 $M. Four smaller wind requests follow, each with a charge of 86.7 $M or less.
 
-The answer rests most on the lease costs, which are ASSUMED. The scenarios behind the results are FORECAST."
-What if we refuse any book whose worst-5% average loss exceeds $150 million?,answered,"We read 'worst-5% average loss' as the model's CVaR at 5% and set it as a hard limit of $150 million, leaving every other parameter at its default.","{""cvar_limit_musd"": 150}","{""cvar_limit_musd"": 150.0}",True,20.0,1.0,,,"The model found a book that meets the $150 million limit. Its worst-5% average loss is 110.0 $M, against 1,179 $M for the base book.
+Expected NPV falls from 1,722 to 626.6 $M, a change of -1,096 $M. The median falls from 1,217 to -4.51 $M. The chance of a loss rises from 0.18 to 0.58. CVaR95 falls from 1,360 to 30.7 $M, but only because the book is far smaller. Concentration (HHI) rises from 0.30 to 1.00, since the book is all wind. The new book's budget charge is 806.1 $M.
 
-The book shrinks from 14.0 candidates to 6.00. Nothing enters. Eight leave: five lease redevelopments (G09982, G17565, G16942, G25814, G26315), one solar request (24INR0075) and two gas CC requests (25INR0008, 27INR0071). The two gas requests show high expected NPV (499.0 and 120.9 $M) but negative medians (-1.14 and -1.06 $M). That is the profile of a large loss in the tail.
+The model does not say why the leases left. Their expected NPVs still show as positive, from 47.4 to 178.3 $M. It shows what an optimizer gives up under these scenarios and costs, not why a project would succeed.
 
-The cost is large. Expected NPV falls from 2,025 to 593.2 $M, and median NPV from 1,442 to 262.7 $M. Chance of a loss moves from 0.13 to 0.11. Budget charge drops to 881.5 $M of 3,307 $M, so the tail limit binds, not the budget.
+The answer rests most on the lease cost grid, which is ASSUMED. The scenarios are a FORECAST on top of it."
+What if we refuse any book whose worst-5% average loss exceeds $150 million?,answered,"We read 'worst-5% average loss' as the model's CVaR at the 5% tail, and we set it as a hard limit of $150 million, leaving every other parameter at its default.","{""cvar_limit_musd"": 150}","{""cvar_limit_musd"": 150.0}",True,19.0,1.0,,,"The model found a book that meets the $150 million limit. Its worst-5% average loss (CVaR95) is 147.2 $M, down from 909.9 $M.
 
-Concentration rises: HHI goes from 0.28 to 0.63. The new book is mostly wind plus lease G17015.
+**What changed.** No candidate entered. Six left, so the book shrinks from 13 candidates to 7, and the budget charge falls from 3,299 $M to 1,160 $M. The four lease redevelopments that left are G09982, G16942, G16783 and G20351. The two ERCOT requests that left are the gas combined-cycle request 25INR0008 and the solar request 26INR0155. The gas request carries a 698.7 $M charge, 512.3 $M expected NPV and a 0.77 chance of a loss.
 
-The answer rests most on the ASSUMED lease costs. The scenarios are FORECAST. The model shows what an optimizer gives up under these costs and scenarios, not why any project would succeed."
-What happens if interest rates rise by two percentage points?,cannot answer,"The question needs a change in interest rates (the discount rate or cost of capital), and none of the parameters represents a discount rate, financing cost or interest rate, so any mapping onto capex, budget, delay or risk-penalty parameters would be an approximation.",null,null,True,,,,,
+**Cost.** Expected NPV falls from 2,120 $M to 899.6 $M, and median NPV falls from 1,607 $M to 573.4 $M. The chance of a loss moves only from 0.10 to 0.08.
+
+**Concentration.** The HHI rises from 0.27 to 0.58. The new book holds five wind requests and two leases.
+
+**Main assumption.** Lease costs and the committee cost grid are ASSUMED, and the scenarios are FORECAST on them. A different cost grid could change which candidates fit under the limit.
+
+The model shows what the optimizer gives up under these scenarios. It does not show why any project would succeed or fail."
+What happens if interest rates rise by two percentage points?,cannot answer,"The question needs an interest rate or discount rate input, and none of the parameters (prices, capital costs, budget, delay, credits, risk penalty, caps) represents the cost of capital, so we cannot translate a two-point rise without approximating it.",null,null,True,,,,,

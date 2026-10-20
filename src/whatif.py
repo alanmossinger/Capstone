@@ -26,7 +26,7 @@ from dataclasses import asdict, dataclass, field, fields
 import numpy as np
 import pandas as pd
 
-from src import config, economics as ec, energy_data, optimizer as opt, paths, valuation as va
+from src import config, decision_date, economics as ec, energy_data, optimizer as opt, paths, valuation as va
 
 LIMITS = {  # parameter -> (lowest, highest) the engine accepts; outside them the question is refused
     "wti_level": (10.0, 200.0), "wti_years": (1, 20), "hh_multiplier": (0.25, 4.0), "ercot_multiplier": (0.25, 4.0),
@@ -169,12 +169,12 @@ class Engine:
         self.horizon = self.prices.shape[1]
         self.leases = self.candidates[self.candidates["sector"] != "ERCOT power"].reset_index(drop=True)
         self.power = self.candidates[self.candidates["sector"] == "ERCOT power"].reset_index(drop=True)
-        upstream = pd.read_parquet(paths.DATA_INTERIM / "upstream_monthly.parquet")
+        upstream = decision_date.lease_history_on(pd.read_parquet(paths.DATA_INTERIM / "upstream_monthly.parquet"))  # the months BSEE had published on the date
         lids = [p.split("|")[1] for p in self.leases["project_id"]]
         part = upstream[upstream["lease_number"].isin(lids)]
         oil = part.pivot(index="lease_number", columns="month", values="oil_bbl").fillna(0)
         gas = part.pivot(index="lease_number", columns="month", values="gas_mcf").fillna(0)
-        self.baselines = [ec.lease_baseline(oil.loc[l].to_numpy(), gas.loc[l].to_numpy(), months=self.horizon)[:2] for l in lids]
+        self.baselines = [decision_date.lease_baseline_on(oil.loc[l].to_numpy(), gas.loc[l].to_numpy(), months=self.horizon)[:2] for l in lids]
         self.wells = self.leases["n_wells"].astype(int).to_numpy()
         cpi = energy_data.read_cpi(sorted(paths.RAW_PRICES.glob(f"bls_{config.CPI_SERIES}_*.json"))[-1])
         self.atb = va.atb_in_dollars_of(pd.read_csv(paths.RESULTS / "atb_costs.csv").set_index("tech"), va.cpi_ratio(cpi, 2022, config.REAL_DOLLAR_YEAR))

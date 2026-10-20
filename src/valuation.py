@@ -9,7 +9,8 @@ Why: the repricing lived only inside notebook 08 (audit S2), so no price,
 cost or credit question could be answered without rerunning a notebook; the
 decision layers of v8 (what-ifs, re-optimization, value of information) call
 these functions directly. Since decision #90 every request is valued from
-1 January 2025, its operation year j = 1 … 7 counted from that date.
+1 January 2025, its operation year j = 1 … 7 counted from that date, and since
+decision #94 its credits are those of the law in force on that date.
 Reads / writes: nothing; notebooks 07 and 08 and `src/whatif.py` pass the tables in.
 Used by: notebooks 07 and 08, `src/whatif.py`; `tests/test_valuation.py`.
 """
@@ -26,7 +27,11 @@ LIFE = 20  # operating years valued
 PTC_PER_MWH = 27.5  # IRC §45Y base rate, $/MWh, first ten operating years (results/value_assumptions.csv)
 PTC_YEARS = 10
 ITC_SHARE = 0.30  # IRC §48E base rate on capital
-CREDIT_LAST_YEAR_WIND_SOLAR = 2027  # wind and solar must be in service by the end of 2027 (IRS Notice 2025-42)
+CREDIT_POLICIES = {  # the last calendar year in which a wind or solar plant entering operation earns its credit, by policy
+    "in force": None,  # the law on 1 January 2025: the §45Y/§48E credits phase down no earlier than after 2032, beyond the seven-year window
+    "2025 law": 2027,  # the July 2025 law and IRS Notice 2025-42 (August 2025), after the decision date: in service by the end of 2027; a policy stress
+}
+CREDIT_POLICY = "in force"  # the base case: only the law in force on the decision date (decision #94; review of 19 October, §2.1)
 CREDIT_OF = {"Wind": "ptc", "Solar": "itc", "Battery": "itc"}  # wind takes the production credit, solar and storage the investment credit (part A's election)
 DECISION_YEAR = int(config.DECISION_DATE[:4])  # operation year 1 is this calendar year
 
@@ -51,19 +56,35 @@ def atb_in_dollars_of(atb, ratio):
     return out
 
 
-def credit_eligible(tech, calendar_year):
-    """True when a plant of ATB technology ``tech`` entering operation in ``calendar_year`` earns its credit.
+def credit_eligible(tech, calendar_year, policy=CREDIT_POLICY):
+    """True when a plant of ATB technology ``tech`` entering operation in ``calendar_year`` earns its credit under ``policy``.
 
     Notes
     -----
-    Wind and solar lose the credit after 2027 (IRS Notice 2025-42, the
-    deadline part A applies). Storage keeps its investment credit through the
-    seven-year window (ASSUMED: the 2025 law ended the credits for wind and
-    solar, not storage); gas earns none.
+    The base case is the law in force on the decision date, under which no
+    wind or solar plant entering operation in the seven-year window loses its
+    credit. The 2027 deadline of the July 2025 law (IRS Notice 2025-42) was
+    not law on 1 January 2025; the first v8 run applied it as certain, a
+    look-ahead (review of 19 October, §2.1). It is kept as the "2025 law"
+    stress, the policy risk a committee could see after the November 2024
+    election. Storage keeps its investment credit in both (ASSUMED: the 2025
+    law ended the credits for wind and solar, not storage); gas earns none.
     """
     if tech not in CREDIT_OF:
         return False
-    return tech == "Battery" or calendar_year <= CREDIT_LAST_YEAR_WIND_SOLAR
+    last = CREDIT_POLICIES[policy]
+    return tech == "Battery" or last is None or calendar_year <= last
+
+
+def credit_policy_of(credits):
+    """The credit policy a ``credits`` argument names: True is the base case, False no credits, a string a policy of ``CREDIT_POLICIES``."""
+    if credits is True:
+        return CREDIT_POLICY
+    if credits is False:
+        return None
+    if credits not in CREDIT_POLICIES:
+        raise ValueError(f"unknown credit policy {credits!r}; one of {list(CREDIT_POLICIES)}")
+    return credits
 
 
 def basis_2024(hub, solar_shape, wind_shape, atb, hh_base):
@@ -137,7 +158,8 @@ def npv_if_built(comp, case, operation_year=1, ercot_ratio=1.0, hh_ratio=1.0, cf
     else:
         pv_rev = comp["pv_rev"] * ercot_ratio * cf
     credit = comp["pv_credit"] * (cf if CREDIT_OF.get(comp["tech"]) == "ptc" else 1.0)
-    earned = credits and credit_eligible(comp["tech"], DECISION_YEAR + operation_year - 1)
+    policy = credit_policy_of(credits)
+    earned = policy is not None and credit_eligible(comp["tech"], DECISION_YEAR + operation_year - 1, policy)
     return pv_rev - comp["pv_fuel"] * hh_ratio - comp["pv_fixed"] + (credit if earned else 0.0)
 
 
@@ -155,8 +177,10 @@ def expected_power_npv(p_by_year, comp, mw, carry, case, credits=True, ercot_rat
     carry : float
         Deposits and studies spent whether or not it operates ($).
     case : {"merchant", "contracted"}
-    credits : bool
-        False for the credits-off sensitivity.
+    credits : bool or str
+        True for the credits of the law in force on the decision date, False
+        for the credits-off sensitivity, or a policy of ``CREDIT_POLICIES``
+        (``"2025 law"``: the 2027 deadline, a stress).
     ercot_ratio : float
         The flat hub price as a multiple of 2024's (the tornado's price lines).
 
@@ -199,7 +223,8 @@ def power_npv_matrix(power, components, prices, out_mult, op_year, base, horizon
     horizon : int
         Months in a path.
     case : {"merchant", "contracted"}
-    credits : bool
+    credits : bool or str
+        As in ``expected_power_npv``.
 
     Returns
     -------

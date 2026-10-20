@@ -1938,6 +1938,33 @@ def v8_report():
     add("v8_tools_checked", str(int(answered["numbers_checked"].sum())), int(answered["numbers_checked"].sum()), v8 + "advisor_tools_eval.csv", "numbers checked in the explanations")
     grounded = int(round((answered["numbers_checked"] * answered["grounding_rate"]).sum()))
     add("v8_tools_grounded", str(grounded), grounded, v8 + "advisor_tools_eval.csv", "of them grounded")
+    # decision #94: the decision date made honest, and the robustness of the book (notebook 11 section 9)
+    inv = read("investment_candidates.csv")
+    add("v8_lease_pool", f"{int((inv['sector'] != 'ERCOT power').sum()):,}", int((inv["sector"] != "ERCOT power").sum()), "results/investment_candidates.csv", "leases in the pool")
+    add("v8_lease_reg_capex", dollars(pl["capex_registered"].sum()), pl["capex_registered"].sum(), "results/posthoc_lease_values.csv", "lease capital, registered grid")
+    power = cand[cand["sector"] == "ERCOT power"]
+    for col, note in (("expected_npv_contracted", "contracted, credits in force"), ("expected_npv_contracted_no_credit", "contracted, no credits"),
+                      ("expected_npv_contracted_2025_law", "contracted, the 2025-law credit stress"), ("expected_npv_base", "merchant")):
+        add(f"v8_power_{col.replace('expected_npv_', '')}", dollars(power[col].sum(), "M", 0, sign=True), power[col].sum(), "results/candidate_npv.csv", f"the twenty requests, {note}")
+    add("v8_power_contracted_pos", str(int((power["expected_npv_contracted"] > 0).sum())), int((power["expected_npv_contracted"] > 0).sum()), "results/candidate_npv.csv", "requests positive under contract")
+    pc = read("v8/process_comparison.csv").set_index("process")
+    f_row = pc[pc.index.str.startswith("F ")].iloc[0]
+    add("v8_pF_util", pct(f_row["utilization"], 0), f_row["utilization"], v8 + "process_comparison.csv", "book F's use of the budget")
+    rs = read("v8/robustness_reselection.csv")
+    add("v8_resel_n", str(len(rs)), len(rs), v8 + "robustness_reselection.csv", "re-selections")
+    add("v8_resel_min", dollars(rs["d_minus_a_metric"].min(), "M", 0), rs["d_minus_a_metric"].min(), v8 + "robustness_reselection.csv", "D minus A across re-selections, lowest")
+    add("v8_resel_max", dollars(rs["d_minus_a_metric"].max(), "M", 0), rs["d_minus_a_metric"].max(), v8 + "robustness_reselection.csv", "D minus A across re-selections, highest")
+    sh = read("v8/robustness_selection_share.csv")
+    core = int(((sh["class"] == "core") & sh["in_book_D"]).sum())
+    add("v8_core", str(core), core, v8 + "robustness_selection_share.csv", "core members of book D")
+    cc = read("v8/robustness_capital_calls.csv").set_index("liquidity")
+    add("v8_noline_mean", dollars(cc.loc["no line", "mean"]), cc.loc["no line", "mean"], v8 + "robustness_capital_calls.csv", "book D with no liquidity line")
+    q95 = cc.loc["line at the 95th percentile of the excess"]
+    add("v8_q95_line", dollars(q95["line"]), q95["line"], v8 + "robustness_capital_calls.csv", "liquidity line at the 95th percentile of the excess")
+    add("v8_q95_mean", dollars(q95["mean"]), q95["mean"], v8 + "robustness_capital_calls.csv", "book D with that line")
+    add("v8_reserve_over_1", pct(dyn.loc[0, "construction_over_reserve_share"], 1), dyn.loc[0, "construction_over_reserve_share"], v8 + "dynamic.csv", "scenarios where construction exceeds the reserve, one decimal")
+    add("v8_gas_cost", dollars(ex.loc[g, "objective_cost_$M"] * 1e6, "M", 1), ex.loc[g, "objective_cost_$M"], v8 + "explanations.csv", "the gas request's opportunity cost")
+    add("v8_lease_reg_high_pos", str(int((leases["expected_npv_high_cost"] > 0).sum())), int((leases["expected_npv_high_cost"] > 0).sum()), "results/candidate_npv.csv", "leases positive at the registered high case")
 
 
 def build():
