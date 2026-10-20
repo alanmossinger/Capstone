@@ -40,6 +40,7 @@ LEVEL, CAP, N_BOOT, SEED = 0.95, 0.40, 1000, 2020
 LIMITS = {"lam": (0.0, 32.0), "max_p_loss": (0.0, 1.0), "max_cvar_musd": (0.0, 1e5), "liquidity_line_musd": (0.0, 1e5), "min_utilization": (0.0, 1.0)}
 LEVELS = ("explain", "challenge", "guide")
 KINDS = ("computed fact", "assumption", "inference", "hypothesis to test")
+TYPES = ("broken rule", "unfunded construction calls", "fragile position", "sunk cost", "double standard", "unsupported claim", "concentration", "other")  # what a vulnerability is about (decision #96: scored mechanically)
 MAX_WHATIFS = 2
 
 
@@ -314,9 +315,18 @@ def alternatives(s, x0, prefs):
     return out
 
 
+def held_matrix(s, w):
+    """The held-out matrix under a what-if, computed once per setting (a what-if costs a full repricing)."""
+    cache = s.__dict__.setdefault("_held_cache", {})
+    key = json.dumps(w.changes(), sort_keys=True)
+    if key not in cache:
+        cache[key] = s.held.matrix(w)[0]
+    return cache[key]
+
+
 def stress(s, x0, alts, w):
     """The proposal and the alternatives scored on the held-out scenarios under one what-if (a tested assumption)."""
-    A_w, _ = s.held.matrix(w)
+    A_w = held_matrix(s, w)
     books = {"proposal": x0, **{k: v["x"] for k, v in alts.items()}}
     return {name: scores(A_w, x, 1.0) for name, x in books.items()}
 
@@ -444,5 +454,7 @@ def challenge(advisor, s, statement, proposal_ids, system, tag=""):
         level = "challenge"  # the evidence does not let the advisor guide toward that book; the downgrade is recorded
     out.update(status="challenged", memo=memo, verification=at.verify_attributed(text, sheet, question=statement),
                fact_refs_ok=bool(refs) and all(f in known for f in refs) and len(memo.get("vulnerabilities", [])) <= 3,
+               types=[v.get("type") for v in memo.get("vulnerabilities", [])],
+               types_ok=all(v.get("type") in TYPES for v in memo.get("vulnerabilities", [])),
                level_requested=requested, level=level)
     return out

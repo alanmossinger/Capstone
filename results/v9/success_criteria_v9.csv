@@ -1,0 +1,9 @@
+id,experiment,line,metric,rule
+C25,X1 seeded flaws,"the challenger names the keyed flaw in the 12 reasoning-flaw cases (sunk cost, double standard, unsupported claim)",recall: share of the 12 cases whose memo names a vulnerability of the accepted type,recall >= 0.75
+C26,X1 seeded flaws,"the challenger names the keyed flaw in the 24 computable-flaw cases (cap, liquidity, chance of loss, tail, exclusion, fragile position)",recall over the 24 cases,recall >= 0.90
+C27,X1 seeded flaws,the challenger does not challenge the 12 clean cases on grounds they do not have,"false-challenge rate: share of clean cases with a guide, or a broken rule, sunk cost, double standard or unsupported claim named",rate <= 0.15
+C28,X1 seeded flaws,the memos cite only computed numbers and real facts,share of the 48 memos with every number grounded; share with valid fact references,first >= 0.80 and second >= 0.95
+C29,X2 misspecified worlds,following the challenger improves the committee's own objective over its proposal,"per flawed case, the mean over the five worlds of metric(challenger's final book) - metric(proposal), the committee's stated tail weight, funded within its stated line; averaged over the 36 cases","case-bootstrap 95% interval (1,000 resamples, seed 2020) entirely above 0"
+C30,X2 misspecified worlds,following the challenger avoids loss,"per flawed case, CVaR95 loss of the proposal minus that of the challenger's final book in the base world; averaged over the 36 cases",case-bootstrap 95% interval entirely above 0
+C31,X2 misspecified worlds,the language model adds decision value beyond its tools,"as C29, the challenger's final book minus the checklist's final book",case-bootstrap 95% interval entirely above 0
+C32,X3 rule reading,the challenger reads the committee's rules from words,"share of the 32 in-scope statements read exactly; out-of-scope statements refused (said so, set nothing)",share >= 0.85 and at least 6 of 8 refused

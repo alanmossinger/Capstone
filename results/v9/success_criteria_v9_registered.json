@@ -1,0 +1,98 @@
+{
+  "decided": "2026-10-20",
+  "decision": 96,
+  "criteria": [
+    {
+      "id": "C25",
+      "experiment": "X1 seeded flaws",
+      "line": "the challenger names the keyed flaw in the 12 reasoning-flaw cases (sunk cost, double standard, unsupported claim)",
+      "metric": "recall: share of the 12 cases whose memo names a vulnerability of the accepted type",
+      "rule": "recall >= 0.75"
+    },
+    {
+      "id": "C26",
+      "experiment": "X1 seeded flaws",
+      "line": "the challenger names the keyed flaw in the 24 computable-flaw cases (cap, liquidity, chance of loss, tail, exclusion, fragile position)",
+      "metric": "recall over the 24 cases",
+      "rule": "recall >= 0.90"
+    },
+    {
+      "id": "C27",
+      "experiment": "X1 seeded flaws",
+      "line": "the challenger does not challenge the 12 clean cases on grounds they do not have",
+      "metric": "false-challenge rate: share of clean cases with a guide, or a broken rule, sunk cost, double standard or unsupported claim named",
+      "rule": "rate <= 0.15"
+    },
+    {
+      "id": "C28",
+      "experiment": "X1 seeded flaws",
+      "line": "the memos cite only computed numbers and real facts",
+      "metric": "share of the 48 memos with every number grounded; share with valid fact references",
+      "rule": "first >= 0.80 and second >= 0.95"
+    },
+    {
+      "id": "C29",
+      "experiment": "X2 misspecified worlds",
+      "line": "following the challenger improves the committee's own objective over its proposal",
+      "metric": "per flawed case, the mean over the five worlds of metric(challenger's final book) - metric(proposal), the committee's stated tail weight, funded within its stated line; averaged over the 36 cases",
+      "rule": "case-bootstrap 95% interval (1,000 resamples, seed 2020) entirely above 0"
+    },
+    {
+      "id": "C30",
+      "experiment": "X2 misspecified worlds",
+      "line": "following the challenger avoids loss",
+      "metric": "per flawed case, CVaR95 loss of the proposal minus that of the challenger's final book in the base world; averaged over the 36 cases",
+      "rule": "case-bootstrap 95% interval entirely above 0"
+    },
+    {
+      "id": "C31",
+      "experiment": "X2 misspecified worlds",
+      "line": "the language model adds decision value beyond its tools",
+      "metric": "as C29, the challenger's final book minus the checklist's final book",
+      "rule": "case-bootstrap 95% interval entirely above 0"
+    },
+    {
+      "id": "C32",
+      "experiment": "X3 rule reading",
+      "line": "the challenger reads the committee's rules from words",
+      "metric": "share of the 32 in-scope statements read exactly; out-of-scope statements refused (said so, set nothing)",
+      "rule": "share >= 0.85 and at least 6 of 8 refused"
+    }
+  ],
+  "thesis_rule": {
+    "H4": "the challenger finds what tools alone cannot, without over-challenging: C25 and C27 pass",
+    "H5": "challenging improves the committee's decision: C29 and C30 pass",
+    "H6": "the language model adds decision value beyond its tools: C31 passes",
+    "H7": "the challenger reads rules reliably: C32 passes"
+  },
+  "model": "claude-sonnet-5-5",
+  "cases_sha256": "bba356a3df493256dd52f70a7e7ab587985ada40b2d9127180a5f0736cb711d8",
+  "statements_sha256": "888adcd4ad9c7ee3acf33c82f3ca37fa6885b89794882664ee30713d22d5b38c",
+  "prompts_sha256": {
+    "advisor_system": "a072c895a912d543312b838a74c10b4e1578a4f7b5cedfe521734af9f6005c2d",
+    "challenge_read": "1aeb32067b62868a56f10c653c57d130354001123c6e284885f5bfd2cb34f171",
+    "challenge_memo": "6ad8028c4724e95a00daad725b855e5b58616e8f131618628434a48335227dec"
+  },
+  "n_cases": 48,
+  "n_clean": 12,
+  "n_statements": 40,
+  "worlds": [
+    "base model",
+    "ERCOT prices 25% lower",
+    "ERCOT half as volatile",
+    "lease capital 30% higher",
+    "completion as the lookup says"
+  ],
+  "policies": {
+    "proposal": "the committee keeps its book",
+    "checklist": "adopt the checklist's book when it guides (no language model)",
+    "challenger": "adopt the book the challenger guides toward; otherwise keep the proposal"
+  },
+  "reported_not_registered": [
+    "checklist recall per flaw",
+    "results per world",
+    "changes in the chance of a loss",
+    "Alan's own cases, scored separately when he writes them"
+  ],
+  "status": "post-registration extension of report v8; scored once"
+}

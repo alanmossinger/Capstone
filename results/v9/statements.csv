@@ -1,0 +1,41 @@
+id,statement,key
+S01,We will not accept more than a ten percent chance of losing money on the book.,"{""max_p_loss"": 0.1}"
+S02,Our lenders cap the average loss in the worst five percent of outcomes at 750 million dollars.,"{""max_cvar_musd"": 750}"
+S03,"No gas, full stop.","{""excluded_technologies"": [""Gas CC""]}"
+S04,We can find 1.5 billion dollars beyond the reserve for construction.,"{""liquidity_line_musd"": 1500}"
+S05,Commit at least ninety percent of the budget.,"{""min_utilization"": 0.9}"
+S06,A one-in-twenty chance of a loss is our ceiling.,"{""max_p_loss"": 0.05}"
+S07,"Keep storage out of the book, and the worst-five-percent average loss under 600 million.","{""excluded_technologies"": [""Storage""], ""max_cvar_musd"": 600}"
+S08,A dollar lost in the worst five percent of outcomes counts twice as much to us as a dollar of expected value.,"{""lam"": 2.0}"
+S09,Only expected value matters to this committee; we are risk-neutral.,"{""lam"": 0.0}"
+S10,"We will not fund the 1,350 MW gas request, REQ|ERCOT|25INR0008.","{""excluded_ids"": [""REQ|ERCOT|25INR0008""]}"
+S11,No solar and no storage.,"{""excluded_technologies"": [""Solar"", ""Storage""]}"
+S12,Our credit line for construction beyond the reserve is one billion dollars.,"{""liquidity_line_musd"": 1000}"
+S13,"We want at most an eight percent chance of losing money, and at least eighty percent of the budget committed.","{""max_p_loss"": 0.08, ""min_utilization"": 0.8}"
+S14,Treat a dollar of tail loss as half a dollar of value.,"{""lam"": 0.5}"
+S15,The worst five percent of outcomes may not cost us more than 1.2 billion dollars on average.,"{""max_cvar_musd"": 1200}"
+S16,We do not do wind.,"{""excluded_technologies"": [""Wind""]}"
+S17,Leave out the Gulf leases altogether.,"{""excluded_technologies"": [""Lease redevelopment""]}"
+S18,"We can raise 500 million dollars for construction calls beyond what we reserve now, no more.","{""liquidity_line_musd"": 500}"
+S19,Spend at least three quarters of the budget.,"{""min_utilization"": 0.75}"
+S20,Our board accepts a chance of loss of up to fifteen percent.,"{""max_p_loss"": 0.15}"
+S21,"Exclude the 836 MW wind request REQ|ERCOT|26INR0113 and the 1,026 MW solar request REQ|ERCOT|26INR0155.","{""excluded_ids"": [""REQ|ERCOT|26INR0113"", ""REQ|ERCOT|26INR0155""]}"
+S22,We weigh losses in the worst five percent four times as heavily as expected value.,"{""lam"": 4.0}"
+S23,"Batteries are out, and the average loss in the worst five percent must stay below 900 million.","{""excluded_technologies"": [""Storage""], ""max_cvar_musd"": 900}"
+S24,Two billion dollars is available for construction beyond the reserve.,"{""liquidity_line_musd"": 2000}"
+S25,A chance of losing money above six percent is unacceptable.,"{""max_p_loss"": 0.06}"
+S26,"No new gas plants, and at most a twelve percent chance of a loss.","{""excluded_technologies"": [""Gas CC""], ""max_p_loss"": 0.12}"
+S27,Put at least sixty percent of the budget to work.,"{""min_utilization"": 0.6}"
+S28,Our worst-five-percent average loss limit is 450 million dollars.,"{""max_cvar_musd"": 450}"
+S29,We count expected value and tail loss one for one.,"{""lam"": 1.0}"
+S30,"No solar requests, and we can call 800 million dollars beyond the reserve for construction.","{""excluded_technologies"": [""Solar""], ""liquidity_line_musd"": 800}"
+S31,Exclude the lease G14658.,"{""excluded_ids"": [""LEASE|G14658""]}"
+S32,"Risk-neutral, and no storage.","{""lam"": 0.0, ""excluded_technologies"": [""Storage""]}"
+S33,Interest rates will rise two points; choose the book that survives that.,null
+S34,Price carbon at 80 dollars a tonne in every project.,null
+S35,Every project must clear an internal rate of return of twelve percent.,null
+S36,Only fund projects with an ESG rating of A or better.,null
+S37,Hedge the oil exposure with futures before committing.,null
+S38,Assume inflation runs at five percent a year.,null
+S39,Prefer projects that a partner would co-invest in.,null
+S40,Include hydrogen projects in the book.,null

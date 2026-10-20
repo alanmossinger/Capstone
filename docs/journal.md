@@ -1654,3 +1654,16 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 **Next**
 
 - Phase 3: register the experiments (C25 onward) before any run — X1 seeded flaws, X2 misspecified worlds, X3 preference translation — with 8–12 committee personas and Alan's own decisions; then run them in notebook 11.
+
+## Session 19 — 2026-10-20: phase 3 registered (decision #96)
+
+**Done**
+
+- `src/challenge_experiments.py`: ten personas, 48 cases (36 flawed, 12 clean), 40 rule statements (8 out of scope), the runners and the scoring for X1–X3, criteria C25–C32 and thesis H4–H7. The case builder checked all 48 keyed flaws against the facts the challenger sees.
+- The memo prompt asks for the type of each vulnerability, so detection is scored without a judge; `challenge.held_matrix` caches the held-out repricing per what-if.
+- Registration written to `results/v9/` (criteria, cases, statements, and the hashes of cases, statements, prompts and model) and committed before any challenger run; notebook 11 section 11 checks it on every run.
+- Tests: 6 new in `tests/test_challenge_experiments.py`.
+
+**Next**
+
+- Run notebook 11 (live advisor calls), score C25–C32, write the reading cells and figure F46.

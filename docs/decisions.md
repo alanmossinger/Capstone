@@ -1427,3 +1427,33 @@ alternative rejected.
     checked); a free tool loop (two fixed rounds are auditable and
     replayable); a chance constraint with scenario binaries (2,000 binaries
     for a rule the CVaR form keeps conservatively).
+96. **The challenger's experiments, registered before any run** (Alan,
+    2026-10-20; `src/challenge_experiments.py`,
+    `results/v9/success_criteria_v9_registered.json`, notebook 11 section
+    11). Three experiments on the 1 January 2025 decision. *X1, seeded
+    flaws:* 48 committee proposals from ten scripted personas — 36 with one
+    keyed flaw (four cases each of a broken technology cap, liquidity line,
+    chance-of-loss limit, tail limit and exclusion, a fragile position, a
+    sunk cost, a double standard, an unsupported claim) and 12 clean (the
+    optimizer's book under the committee's own rules, the statement
+    consistent with it); the builder checks that every keyed flaw is in the
+    facts the challenger sees. Detection is scored mechanically from the
+    *type* the memo gives each vulnerability (the memo prompt gains the
+    taxonomy), so no judge grades the memos. *X2, misspecified worlds:* for
+    the 36 flawed cases the book the committee ends with — its proposal, the
+    checklist's book, the challenger's — scored on the committee's own
+    objective (stated tail weight, funded within its stated line) in five
+    worlds (base, ERCOT prices −25%, ERCOT half as volatile, lease capital
+    +30%, completion as the lookup says). *X3, rule reading:* 40 statements,
+    8 outside the model. Criteria C25–C32 and the thesis rule H4–H7 are
+    registered with the hashes of the cases, the statements, the three
+    prompts and the model (claude-sonnet-5-5); notebook 11 refuses to run if
+    any of them changed. The checklist (same tools, fixed rules, no
+    language model) is the control: C31 asks whether the language model adds
+    decision value beyond it. The human side is simulated (personas); Alan's
+    own cases are a reserved slot scored separately. Scored once; a
+    post-registration extension of report v8.
+    *Rejected:* an LLM judge of memo quality (not checkable); letting the
+    challenger's guidance be followed only when it agrees with the
+    optimizer (that would score the optimizer, not the challenge); scoring
+    on the optimizer's metric instead of the committee's stated objective.
