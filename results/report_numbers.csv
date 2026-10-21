@@ -2417,6 +2417,17 @@ v9_c29_checklist,+$145M,145473232.81669784,results/v9/success_criteria_v9_scored
 v9_c30_checklist,+$257M,257078566.71538475,results/v9/success_criteria_v9_scored.csv,"loss avoided by the checklist, base world"
 v9_c32_in,32,32,results/v9/x3_scores.csv,"in-scope statements read exactly, of 32"
 v9_c32_out,8,8,results/v9/x3_scores.csv,"out-of-scope statements refused, of 8"
+v9_c26_n,24,24,results/v9/x1_scores.csv,"computable flaws named, of 24"
+v9_ungrounded_memos,10,10,results/v9/x1_scores.csv,memos with a number not on their sheet
+v9_c28_refs,100%,1.0,results/v9/x1_scores.csv,memos with valid fact references
+v9_calls,136,136,results/v9/success_criteria_v9_registered.json,"live advisor calls: two rounds per case, one reading per statement"
+v9_c25_rule,75%,0.75,results/v9/success_criteria_v9_registered.json,registered threshold
+v9_c26_rule,90%,0.9,results/v9/success_criteria_v9_registered.json,registered threshold
+v9_c27_rule,15%,0.15,results/v9/success_criteria_v9_registered.json,registered threshold
+v9_c28_rule,80%,0.8,results/v9/success_criteria_v9_registered.json,registered threshold
+v9_c28_refs_rule,95%,0.95,results/v9/success_criteria_v9_registered.json,registered threshold
+v9_c32_rule,85%,0.85,results/v9/success_criteria_v9_registered.json,registered threshold
+v9_c32_refused_rule,6,6,results/v9/success_criteria_v9_registered.json,registered threshold
 v9_differ,4,4,results/v9/c31_sensitivity.json,flawed cases where challenger and checklist end with different books
 v9_c31_without_largest,+$19M,18712312.058381,results/v9/c31_sensitivity.json,"challenger edge, without largest"
 v9_c31_without_largest_ci,"[+$0M, +$46M]",0.0|46233722.00848175,results/v9/c31_sensitivity.json,its case-bootstrap interval

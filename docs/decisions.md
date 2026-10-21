@@ -1468,3 +1468,22 @@ alternative rejected.
     been retried, not scored (none failed: 136 calls).
     *Rejected:* rescoring C31 against the second rule (it was chosen after
     seeing the result); dropping the line.
+98. **Report v9: an executive report with the challenger as a finding**
+    (Alan, 2026-10-20). The core gains an executive summary (the decision,
+    what the models say, what machine learning and the AI add, the
+    recommendation), a "before you sign" paragraph in the memo, a section on
+    the AI layer with the person who decides, and a findings section on the
+    challenger with its registered table; the limit of the case design (no
+    case in which only the argument is wrong) is reported as it is, at
+    Alan's word, not tested with a second round. Five figures in the core:
+    the workflow (F43 redrawn as prediction, uncertainty, prescription, AI
+    challenge, decision, outcome), the frontier, the value added (labels
+    fixed, "lookup" for "naive"), the capital calls (F45, legend moved) and
+    the challenger (F46); the reallocation and staged-decision figures move
+    to Appendix D. F28's title now says the wind and solar requests pay only
+    under contract, and its lease labels drop a case all twenty share. The
+    PDF embeds the SVGs, so figure resolution is set by the vector, not by
+    a higher PNG dpi. Core 4,223 words against the limit of 4,500.
+    *Rejected:* a second registered round of argument-only cases (Alan:
+    report the limit); 600-dpi PNGs for every figure (the PDF is vector; the
+    DOCX keeps 450 dpi).

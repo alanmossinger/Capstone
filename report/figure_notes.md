@@ -1849,7 +1849,7 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 
 *Notebook:* `notebooks/11_decision_system.ipynb` · *Files:* `figures/F43_architecture.png`, `.svg`
 
-**Caption (stub).** The decision system in six layers, and the evaluation that scores it.
+**Caption (stub).** The decision workflow in six stages — prediction, uncertainty, prescription, AI challenge, human decision, measured outcome — and what is measured.
 <!-- /fig:F43_architecture -->
 
 <!-- fig:F44_advisor_tools -->

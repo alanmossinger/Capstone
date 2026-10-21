@@ -1997,6 +1997,16 @@ def v9_challenger():
     x3 = read("v9/x3_scores.csv")
     add("v9_c32_in", str(int(x3[x3["in_scope"]]["correct"].sum())), int(x3[x3["in_scope"]]["correct"].sum()), v9 + "x3_scores.csv", "in-scope statements read exactly, of 32")
     add("v9_c32_out", str(int(x3[~x3["in_scope"]]["correct"].sum())), int(x3[~x3["in_scope"]]["correct"].sum()), v9 + "x3_scores.csv", "out-of-scope statements refused, of 8")
+    add("v9_c26_n", str(int(x1[x1["flaw"].isin(["cap", "liquidity", "ploss", "tail", "excluded", "fragile"])]["challenger_detects"].sum())),
+        int(x1[x1["flaw"].isin(["cap", "liquidity", "ploss", "tail", "excluded", "fragile"])]["challenger_detects"].sum()), v9 + "x1_scores.csv", "computable flaws named, of 24")
+    add("v9_ungrounded_memos", str(int((~x1["all_numbers_grounded"].astype(bool)).sum())), int((~x1["all_numbers_grounded"].astype(bool)).sum()), v9 + "x1_scores.csv", "memos with a number not on their sheet")
+    refs = float(x1["fact_refs_ok"].astype(bool).mean())
+    add("v9_c28_refs", pct(refs, 0), refs, v9 + "x1_scores.csv", "memos with valid fact references")
+    calls = 2 * reg["n_cases"] + reg["n_statements"]
+    add("v9_calls", str(calls), calls, v9 + "success_criteria_v9_registered.json", "live advisor calls: two rounds per case, one reading per statement")
+    for key, text, value in (("v9_c25_rule", "75%", 0.75), ("v9_c26_rule", "90%", 0.90), ("v9_c27_rule", "15%", 0.15), ("v9_c28_rule", "80%", 0.80),
+                             ("v9_c28_refs_rule", "95%", 0.95), ("v9_c32_rule", "85%", 0.85), ("v9_c32_refused_rule", "6", 6)):
+        add(key, text, value, v9 + "success_criteria_v9_registered.json", "registered threshold")
     sens = read("v9/c31_sensitivity.json")
     add("v9_differ", str(sens["n_differ"]), sens["n_differ"], v9 + "c31_sensitivity.json", "flawed cases where challenger and checklist end with different books")
     for k in ("without_largest", "vs_optimizer_first"):

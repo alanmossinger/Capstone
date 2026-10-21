@@ -127,7 +127,7 @@ SHORT_TITLES = {
     "F25_state_archetypes": "State markets fall into archetypes that separate completion",
     "F26_npv_per_mw": "With capital counted, few plants pay at merchant prices",
     "F27_forecast_gains": "Machine learning beats baselines for plant output, not for leases",
-    "F28_candidates": "Leases carry positive value; most power requests do not",
+    "F28_candidates": "Leases add value; wind and solar requests pay only under contract",
     "F29_cost_tornado": "The uplift share and operating cost decide the lease book",
     "F30_price_scenarios": "Scenarios keep history's price jumps around a reverting level",
     "F31_candidate_risk": "Leases rarely lose money; most power requests usually do",

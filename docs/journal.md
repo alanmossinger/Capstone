@@ -1685,3 +1685,16 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 
 - The case design let every reasoning-flaw case that warranted a new book also break a computed rule, so the language model's reasoning could not change a book on its own. A second round of cases where only the argument is wrong would test that — worth registering, or report the limit as it is?
 - Your own decision cases (the reserved slot): when you want to write them.
+
+## Session 19, continued — 2026-10-20: phase 4, the executive report (decision #98)
+
+**Done**
+
+- Report v9 core rewritten (4,223 words): abstract, executive summary, memo with "before you sign", twelve sections with three findings sections — the trade-off, capital and timing, and whether challenging improves the committee's decision — Table 3 for the challenger, limits and governance with the simulated committees named.
+- Appendices: Table A3 (C25–C32 and H4–H7, with the decision #97 checks), the challenger in Appendix B, the new modules in Appendix C, F39 and F41 moved to Appendix D, two rows in Appendix G; a stale "(Figure 2)" in E.3, left from v6, removed.
+- Figures: F43 redrawn as the six-stage workflow; F42 labels; F45 legend; F28 title and lease labels. Notebooks 07 and 11 rerun.
+- Answered Alan's question "is the LLM improving the results": the challenged decision is better than the proposal (+$192M per case, $240M of tail avoided), mostly through its tools (checklist +$145M, $257M); the language model's own part is reading rules and arguments.
+
+**Next**
+
+- Phase 5: the poster and the Petrobras edition brought to v9; a clean-environment run; tag on Alan's word.
