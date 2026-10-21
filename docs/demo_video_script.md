@@ -1,77 +1,73 @@
-# Demo video script — Beyond Prediction: Prescriptive AI for Energy Portfolio Optimization (about 4 minutes)
+# Demo video script — Beyond Prediction: Prescriptive AI for Energy Portfolio Optimization (about 4½ minutes)
 
-Spoken text in plain type; what is on screen in *italics*. About 560 spoken words at roughly 140 words a
-minute. Every number below is one the report prints from `results/`; if a rerun changes a number, change it here
-from the report, never from memory.
+Spoken text in plain type; what is on screen in *italics*. About 620 spoken words at roughly 140 words a
+minute. Every number below is one report v9 prints from `results/` (keyed in `results/report_numbers.csv`); if a
+rerun changes a number, change it here from the report, never from memory.
 
-## 0:00–0:30 — The decision
+## 0:00–0:35 — The decision
 
-*Report Figure 1 (F0, the project in one picture).*
+*Report title page, then Figure 1 (F43, the decision workflow).*
 
-An energy company has one budget and two kinds of choice. It holds requests to connect new power plants to the
-grid, and most of those requests are never built. It also holds oil and gas leases that already produce. This
-project goes one step past prediction: it asks what the company should do — which projects, how much capital,
-what risk to accept — and whether that recommendation beats the conventional ways of deciding. Predict,
-quantify, prescribe, evaluate. Every answer is scored on what actually happened.
+An energy company has one budget on the first of January 2025, and forty places to put it: twenty oil and gas
+leases in the Gulf of Mexico that already produce, and twenty requests to connect new power plants to the Texas
+grid — most of which are never built. I use only what was public that day. The project goes past prediction: it
+asks which projects to fund, how much risk to accept, and whether that answer beats the conventional ways of
+deciding. Then it asks a second question: can a language model help the committee make a better decision of its
+own?
 
-## 0:30–1:30 — Part I: which queue requests get built
+## 0:35–1:20 — Prediction is not the decision
 
-*Appendix Figure E2 (F1, operation and withdrawal by region), then Figure E4 (F12, the landmark gain).*
+*Appendix Figure F2 (F28, the forty candidates), then Figure 3 (F42, value added).*
 
-Part I uses 13,366 requests in CAISO, ERCOT and PJM. ERCOT is where requests get built: about one entrant in
-five operates within five years, against one in twenty in CAISO.
+Every lease adds value at the base cost; the wind and solar requests pay only under contract. My queue model,
+tested as of 2020, ranks requests better than a careful lookup — an AUC of 0.731 against 0.686. But when I let each
+method choose the book, the model's book is not demonstrably better: plus 22 million dollars, with an interval
+from minus 168 to plus 207. The decision turns on a few large requests whose chance of being built neither method
+knows well. For this decision, the simpler forecast is enough.
 
-At entry, a gradient-boosted hazard model ranks requests better than cohort averages, but no better than a careful
-lookup by region, technology and size. Two years in, with the executed agreement known, the model earns its keep.
+## 1:20–2:20 — The trade-off, and the weak point
 
-*Appendix Figure E9 (F18, the managed book).*
+*Figure 2 (F38, the frontier), then Figure 4 (F45, capital calls).*
 
-A book of 25 requests chosen by the landmark model held 19 that reached operation, against 11 for the lookup.
-The lesson for a developer: do not pay for prediction at entry; re-score at the milestone.
+There is no single right book, only a trade-off. The risk-aware book expects 2.05 billion dollars with a
+worst-five-percent loss of 1.02 billion; the return-seeking book expects 2.36 billion with 1.60 billion. Held to the
+same budget and cap, the risk-aware book beats ranking by expected value by 320 million dollars on the registered
+risk-return metric — and it does so in all 20 re-selections.
 
-## 1:30–2:45 — Part II: one budget across leases and power
+Its weak point is capital. The construction its requests call exceeds the reserve in 44.5 percent of scenarios.
+Without a contingent line, the requests that reach their agreement cannot be built and the book is worth 1.40
+billion, not 2.05. A line of 3.28 billion restores 2.02 billion. That is what the committee is really committing to.
 
-*Appendix Figure F2 (F28, the forty candidates), then Figure 4 (F37, the committee grid).*
+## 2:20–3:45 — Does an AI challenger improve the committee's decision?
 
-Part II places twenty Gulf of Mexico lease redevelopments and twenty ERCOT requests under one budget and 2,000
-joint price scenarios. Under the registered cost assumptions the leases are worth $14.6 billion and carry the
-book.
+*Figure 1 again, pointing at stage 4, the AI challenge; then Figure 5 (F46, the challenger), then Table 3.*
 
-Those assumptions turned out to be generous, so I added a committee grid after the registered results, and I
-label it as post-hoc work. It charges capital per incremental barrel and discounts at 8%. The lease book halves
-to $7.0 billion, and its tail becomes a real loss.
+The language model never computes a number. It reads the committee's rules from its words, tools test the
+committee's own proposal against them, and the model writes a memo whose every number is checked. A named person
+decides.
 
-*Table 7, the four books under the committee grid.*
+I registered the test before running it: 48 proposals from simulated committees, 36 with a flaw. Following the
+challenger improved the committee's own objective by 192 million dollars per flawed case and avoided 240 million of
+worst-five-percent loss. Avoiding loss was the larger effect.
 
-Under that grid the risk-aware book holds ten leases, four contracted wind requests and one gas request. It
-expects $8.1 billion and halves the worst-5% loss, to $2.7 billion. Ranking by expected NPV expects more,
-$11.5 billion, with twice the tail. Which to fund is a choice about risk appetite, and the memo says so.
+But a checklist with the same tools and no language model achieved 145 million and 257 million. Most of the gain is
+the tools'. What only the language model adds is understanding: it named 11 of 12 flaws of argument — a sunk
+cost, a double standard, a belief no fact supports — which the checklist cannot see, and it read 40 of 40 rules
+from plain words. It also over-challenged 2 of 12 sound proposals, and 6 of 8 registered lines pass.
 
-## 2:45–3:30 — Did the rules beat instinct?
+## 3:45–4:30 — What I would tell a committee
 
-*Figure 5 (F34, the decision gym).*
+*The Capital Allocation Memo page, then the executive summary's recommendation.*
 
-The decision gym rebuilds sixteen past situations as of their date and reveals what happened afterwards. The
-registered rules beat instinct by $236 million a situation, almost all of it in the three oil-price regimes.
-Registered criteria were written before scoring, and where they failed, the report says they failed: all four
-allocation criteria fail under the registered grid.
+Choose your tail weight first. At the registered weight, fund the risk-aware book with a contingent construction
+line. Before you sign, state your rules in words and let the challenger test your proposal against them; if you
+depart from its guidance, the ledger asks you to acknowledge the evidence.
 
-## 3:30–4:00 — The AI advisor, and what I would tell a committee
-
-*Appendix Figure B1 (F36, the advisor's workflow).*
-
-An LLM advisor reads only the result tables. It must cite a table for every number, it argues the opposing book,
-and a human can override it only after answering five questions about their reasoning. Its live scoring is the
-one step still open.
-
-*Back to the memo page.*
-
-The takeaway: prediction is necessary but not sufficient. The decision is made by the assumptions, the timing and
-the tail, and this project puts each of them next to the number it moves.
+Better predictions did not, by themselves, make better decisions here. The decision is made by the constraints,
+the capital plan and the tail — and a committee is helped most by tools that test its own rules.
 
 ## Recording notes
 
-- Record the screen at 1920 × 1080 from the PDF (`report/report.pdf`), zoomed to one figure at a time.
-- If the advisor has been scored by the time of recording, replace the first sentence of 3:30 with its measured
-  grounding rate and agreement with book D from `results/advisor_evaluation.csv`.
-- Do not show the dashboard.
+- Record the screen at 1920 × 1080 from `report/report.pdf` (the figures are vector; zoom to one figure at a time).
+- Say "simulated committees" once, as scripted: the challenger was not tested with real committees.
+- Do not show the dashboard or the decision page; neither is part of the evaluated result.

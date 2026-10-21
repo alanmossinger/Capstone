@@ -44,9 +44,12 @@ pushed on 2026-10-21. What remains:
 
 1. **A clean-environment run of v9** (Linux, Python 3.11, `requirements.txt`, `make setup`, `make all`, `pytest`), as
    decision #87 did for v6: report which cited numbers, if any, differ, and why. Notebook 11 replays every advisor call
-   from `results/advisor_runs.jsonl`, so it needs no API key.
-2. **`docs/demo_video_script.md`** still describes v6: rewrite it from report v9 (the decision, the trade-off, the
-   capital line, the challenger result and its limit), at most five minutes.
+   from `results/advisor_runs.jsonl`, so it needs no API key. WSL Ubuntu is on this machine but lacks Python 3.11 and
+   poppler, and `sudo` needs my password: ASK ALAN to run
+   `sudo apt install -y python3.11 python3.11-venv poppler-utils` (via the deadsnakes PPA if 3.11 is not in the
+   release), then clone the repository inside the Linux file system, copy `data/raw/` and `.env` across, and run there.
+2. **`docs/demo_video_script.md`** was rewritten for v9 (about 4½ minutes): record from `report/report.pdf` when
+   Alan is ready; nothing to do unless a number changes.
 3. **The decision page** (`app/decide.py`, `make decide-page`): ASK ALAN whether to expose the challenger (statement in,
    rules read back, memo and alternatives out) before the final submission; if yes, build it on `src/challenge.py`
    with replay, and test it headless.
