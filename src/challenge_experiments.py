@@ -383,7 +383,7 @@ def world_totals(s, x, prefs, A, op_year):
     lease[s.power_idx] = False
     reserve = float((s.capex_p * s.p7)[x[s.power_idx] == 1].sum())
     return A[:, lease] @ x[lease] + rb.funding_or_forfeit(A[:, s.power_idx], op_year, s.capex_p, s.carry_p, x[s.power_idx], reserve,
-                                                           prefs.liquidity_line_musd * 1e6, s.priority)
+                                                           prefs.liquidity_line_musd * 1e6, s.priority, fee=getattr(s, "fee", 0.0), rate=getattr(s, "rate", 0.0))
 
 
 def final_books(s, case, r):

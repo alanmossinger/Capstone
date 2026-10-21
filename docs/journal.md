@@ -1713,3 +1713,23 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 **Next**
 
 - A tag on Alan's word; a clean-environment (Linux) run of v9; Alan's own decision cases; the decision page could expose the challenger; `docs/demo_video_script.md` still describes v6.
+
+## Session 20 — 2026-10-21: plan v10 approved; phase 1 (decisions #100–#102)
+
+**Done**
+
+- Alan's critique review read and checked against the repository: the as-of claim fails (the 2025 edition did not exist on 1 January 2025); no cost of the line existed; the challenger's statements and keys were model-written; C29–C31 used 36 cases; nothing compared a reading with its statement. Plan written, checked against the capstone criteria, approved.
+- The liquidity line priced (`src/robustness.py`, config constants): notebook 12 sections 1–2 (the registration ledger, the line net of financing, F48). The line is worth having for expected value, not for the registered metric.
+- `src/registration_ledger.py`: 78 lines, 17 with a correction, 3 correction rows with a changed verdict; `docs/registration_ledger.md`.
+- `src/challenge_v10.py`: templated statements for the 24 computable cases, the loader and the blank form for Alan's 24 cases (`results/v10/cases_v10_form.json`), paraphrase and injection drafts, criteria C33–C41, H8–H10, `registration()`.
+- `decision_date.candidates_as_of`, `iso_files.read_ercot_gis(report_month)`, `get_lbnl.record_hash`, with tests; notebook 12 added to the pipeline and the Makefile; `report_numbers.v10_report`.
+- Tests: 261 pass.
+
+**Next**
+
+- Alan: fill `results/v10/cases_v10_form.json` (24 statements and keys), approve the paraphrase and injection drafts, download the 2024 LBNL data file and the 2024 monthly GIS reports (April–November) into `data/raw/lbnl/` and `data/raw/iso/gis_2024/`.
+- Then: hash the files, run the as-of build, write and commit the v10 registration, run the four arms.
+
+**Open questions for Alan**
+
+- Are the line's rates (0.5% undrawn, 8% drawn, two construction years) the ones to register, given that the interest may double-count ATB's construction-finance factor?

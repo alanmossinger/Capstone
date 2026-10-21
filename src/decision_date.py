@@ -333,3 +333,70 @@ def agreement_dates_on(milestones, edition=AGREEMENT_EDITION):
     keep = milestones["ia_inside_queue"] & (milestones["ia_source"] == edition)
     return milestones["ia_date_best"].where(keep)
 
+
+
+def candidates_as_of(frame, gis, as_of=config.DECISION_DATE, per_tech=5, min_mw=config.FERC_SIZE_STEP_MW,
+                     technologies=("Gas CC", "Solar", "Wind", "Storage")):
+    """The ERCOT candidates of a decision date from the records public that day: an LBNL edition's rows and ERCOT's monthly reports.
+
+    Parameters
+    ----------
+    frame : pandas.DataFrame
+        The requests of the edition public on ``as_of`` (``q_id``, ``region``,
+        ``type_clean``, ``mw``, ``q_date``, ``exit_date``, ``event``; ``ia_date``
+        when the edition has it).
+    gis : pandas.DataFrame
+        ERCOT's monthly GIS reports stacked (``iso_files.read_ercot_gis`` with a
+        ``report_month``): ``q_id``, ``listed_as``, ``report_month`` and the dated
+        fields it carries.
+    as_of : str
+        The decision date.
+    per_tech : int
+        How many of the largest live requests per technology become candidates.
+    min_mw : float
+        The size floor of the registered pool.
+
+    Returns
+    -------
+    pandas.DataFrame
+        The candidates: ``q_id``, ``type_clean``, ``mw``, ``q_date``,
+        ``liveness_source`` ("GIS <month>" or "edition: no GIS record") and
+        ``agreement_known`` (an agreement signed on or before ``as_of`` in a
+        report before it, or in the edition).
+
+    Notes
+    -----
+    The LBNL 2025 edition, which notebook 04 used for this view, was released
+    in August 2025: a committee on 1 January 2025 had the 2024 edition (data
+    through 2023) and ERCOT's monthly reports. A request is live if the latest
+    report before ``as_of`` lists it as active; one listed as inactive or
+    cancelled, or approved for energization, in any earlier report is not;
+    one no report mentions falls back to the edition's own record, which is
+    said in ``liveness_source``. The 2025 and 2026 editions supply outcome
+    labels later, never this view (review of 21 October).
+    """
+    as_of = pd.Timestamp(as_of)
+    pool = frame[(frame["region"] == "ERCOT") & (frame["q_date"] < as_of) & (frame["mw"] >= min_mw) & frame["type_clean"].isin(technologies)].copy()
+    pool["q_id"] = pool["q_id"].astype(str).str.strip()
+    before = gis[gis["report_month"] < as_of].copy()
+    before["q_id"] = before["q_id"].astype(str).str.strip()
+    latest_month = before["report_month"].max() if len(before) else pd.NaT
+    latest = before[before["report_month"] == latest_month]
+    active = set(latest.loc[latest["listed_as"].str.startswith("active"), "q_id"])
+    dead = set(before.loc[before["listed_as"].isin(["inactive", "cancelled"]), "q_id"])
+    if "energization_approved" in before:
+        dead |= set(before.loc[before["energization_approved"] <= as_of, "q_id"])
+    seen = set(before["q_id"])
+    edition_live = (pool["event"] == 0) | pool["exit_date"].isna() | (pool["exit_date"] > as_of)
+    in_gis = pool["q_id"].isin(seen)
+    live = np.where(in_gis, pool["q_id"].isin(active) & ~pool["q_id"].isin(dead), edition_live)
+    pool["liveness_source"] = np.where(in_gis, f"GIS {latest_month:%Y-%m}" if pd.notna(latest_month) else "GIS", "edition: no GIS record")
+    signed = set()
+    if "ia_signed" in before:
+        signed |= set(before.loc[before["ia_signed"] <= as_of, "q_id"])
+    if "ia_date" in pool:
+        signed |= set(pool.loc[pool["ia_date"] <= as_of, "q_id"])
+    pool["agreement_known"] = pool["q_id"].isin(signed)
+    pool = pool[live]
+    cols = ["q_id", "type_clean", "mw", "q_date", "liveness_source", "agreement_known"] + [c for c in ("project_key",) if c in pool]
+    return (pool.sort_values("mw", ascending=False).groupby("type_clean", group_keys=False).head(per_tech)[cols].reset_index(drop=True))

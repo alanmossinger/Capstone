@@ -17,6 +17,9 @@ LBNL_SHEET = "03. Complete Queue Data"  # project-level sheet; other sheets are 
 LBNL_HEADER_ROW = 1  # row 0 is a title banner
 
 # --- LBNL "Queued Up: 2026 Edition" data file (source S6; alongside, decision #43) ---
+LBNL_2024_FILENAME = None  # the 2024 edition (data through 2023, released April 2024): the latest LBNL record public on 1 January 2025; set when Alan downloads it (decision #101)
+LBNL_2024_SHA256 = None  # hash of that copy, recorded on download
+ERCOT_GIS_2024_FILES = {}  # ERCOT's monthly GIS reports of 2024 (file -> sha256), the record of who was still in the queue on the decision date; filled as downloaded (decision #101)
 LBNL_2026_FILENAME = "LBNL_Ix_Queue_Data_File_thru2025.xlsx"  # data through 2025; updated May 2026
 LBNL_2026_SHA256 = "794582d3281c6a305e9615fcfec3fae9dc85be2165216d33760b677e976a08b6"  # hash of the copy downloaded 2026-10-06
 LBNL_2026_REPORT = "Queued_Up_2026_Edition.pdf"  # the slide report, June 2026; sha256 in data/raw/lbnl/SHA256.txt
@@ -237,6 +240,11 @@ RELEASE_LAGS = {  # months after the observation month a source is public (PLAN.
     "BLS CPI-U": 1,  # the index is released mid-month for the previous month
 }
 DECISION_DATE = "2025-01-01"  # one decision date for both sectors (decision #90): leases valued and requests still active on CENSOR_DATE
+LINE_FEE = 0.005  # commitment fee a year on the undrawn part of the liquidity line (ASSUMED, decision #102; range 0.0025–0.01)
+LINE_RATE = 0.08  # interest a year on the drawn part, from the construction draw to operation (ASSUMED, decision #102; range 0.06–0.10)
+LINE_DISCOUNT = 0.08  # the rate the line's costs are discounted at: the committee grid's real hurdle (economics.COMMITTEE_GRID)
+CONSTRUCTION_YEARS = 2  # years a plant's capital is drawn before it operates (ASSUMED, decision #102)
+LINE_YEARS = 7  # the commitment period: the seven-year window in which a request can operate (HORIZON_YEARS)
 LEASE_TERMINAL_DECLINE = 0.08  # effective annual decline the lease baselines switch to (modified hyperbolic; ASSUMED, decision #90)
 LEASE_TERMINAL_DECLINE_RANGE = (0.05, 0.12)  # the sensitivity range reported beside the base
 LEASE_MIN_POST_PEAK_MONTHS = 12  # fewer positive months after the peak and the lease is still ramping: it declines from its recent level at the floor

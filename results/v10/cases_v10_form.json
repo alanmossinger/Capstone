@@ -1,0 +1,357 @@
+{
+  "_instructions": "Write each statement yourself, in one or two sentences a committee member would say, before any model sees the file; save it as cases_v10.json. A reasoning-flaw statement must carry the flaw in its words — 'sunk' (money already spent offered as a reason to keep spending), 'double' (one sector judged on one measure, another on a different one), 'unsupported' (a belief no fact in the model supports) — and its key lists the vulnerability types a correct memo names (one of: sunk cost, double standard, unsupported claim). A clean statement must be consistent with the book and the prefs and contain no flaw; its key stays null. Do not change id, persona, flaw, book or prefs: they fix the proposal the challenger sees.",
+  "cases": [
+    {
+      "id": "X25",
+      "persona": "P5",
+      "flaw": "sunk",
+      "book": {
+        "base": "D"
+      },
+      "prefs": {},
+      "statement": "",
+      "key": {
+        "types": []
+      }
+    },
+    {
+      "id": "X26",
+      "persona": "P9",
+      "flaw": "sunk",
+      "book": {
+        "base": "D"
+      },
+      "prefs": {},
+      "statement": "",
+      "key": {
+        "types": []
+      }
+    },
+    {
+      "id": "X27",
+      "persona": "P8",
+      "flaw": "sunk",
+      "book": {
+        "base": "C"
+      },
+      "prefs": {},
+      "statement": "",
+      "key": {
+        "types": []
+      }
+    },
+    {
+      "id": "X28",
+      "persona": "P1",
+      "flaw": "sunk",
+      "book": {
+        "base": "D"
+      },
+      "prefs": {},
+      "statement": "",
+      "key": {
+        "types": []
+      }
+    },
+    {
+      "id": "X29",
+      "persona": "P1",
+      "flaw": "double",
+      "book": {
+        "base": "L6",
+        "add": [
+          "REQ|ERCOT|26INR0113"
+        ]
+      },
+      "prefs": {},
+      "statement": "",
+      "key": {
+        "types": []
+      }
+    },
+    {
+      "id": "X30",
+      "persona": "P2",
+      "flaw": "double",
+      "book": {
+        "base": "B"
+      },
+      "prefs": {},
+      "statement": "",
+      "key": {
+        "types": []
+      }
+    },
+    {
+      "id": "X31",
+      "persona": "P5",
+      "flaw": "double",
+      "book": {
+        "base": "C"
+      },
+      "prefs": {},
+      "statement": "",
+      "key": {
+        "types": []
+      }
+    },
+    {
+      "id": "X32",
+      "persona": "P6",
+      "flaw": "double",
+      "book": {
+        "base": "L6"
+      },
+      "prefs": {},
+      "statement": "",
+      "key": {
+        "types": []
+      }
+    },
+    {
+      "id": "X33",
+      "persona": "P3",
+      "flaw": "unsupported",
+      "book": {
+        "base": "C"
+      },
+      "prefs": {},
+      "statement": "",
+      "key": {
+        "types": []
+      }
+    },
+    {
+      "id": "X34",
+      "persona": "P2",
+      "flaw": "unsupported",
+      "book": {
+        "base": "B"
+      },
+      "prefs": {},
+      "statement": "",
+      "key": {
+        "types": []
+      }
+    },
+    {
+      "id": "X35",
+      "persona": "P5",
+      "flaw": "unsupported",
+      "book": {
+        "base": "D"
+      },
+      "prefs": {},
+      "statement": "",
+      "key": {
+        "types": []
+      }
+    },
+    {
+      "id": "X36",
+      "persona": "P9",
+      "flaw": "unsupported",
+      "book": {
+        "base": "L6",
+        "add": [
+          "REQ|ERCOT|26INR0113"
+        ]
+      },
+      "prefs": {},
+      "statement": "",
+      "key": {
+        "types": []
+      }
+    },
+    {
+      "id": "X37",
+      "persona": "P8",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "lam": 1.0
+      },
+      "statement": "",
+      "key": {
+        "types": null
+      }
+    },
+    {
+      "id": "X38",
+      "persona": "P3",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "lam": 0.0
+      },
+      "statement": "",
+      "key": {
+        "types": null
+      }
+    },
+    {
+      "id": "X39",
+      "persona": "P6",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "lam": 2.0
+      },
+      "statement": "",
+      "key": {
+        "types": null
+      }
+    },
+    {
+      "id": "X40",
+      "persona": "P4",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "max_cvar_musd": 1300
+      },
+      "statement": "",
+      "key": {
+        "types": null
+      }
+    },
+    {
+      "id": "X41",
+      "persona": "P10",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "max_cvar_musd": 1100
+      },
+      "statement": "",
+      "key": {
+        "types": null
+      }
+    },
+    {
+      "id": "X42",
+      "persona": "P2",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "excluded_technologies": [
+          "Gas CC"
+        ]
+      },
+      "statement": "",
+      "key": {
+        "types": null
+      }
+    },
+    {
+      "id": "X43",
+      "persona": "P9",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "excluded_technologies": [
+          "Solar"
+        ]
+      },
+      "statement": "",
+      "key": {
+        "types": null
+      }
+    },
+    {
+      "id": "X44",
+      "persona": "P7",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "excluded_technologies": [
+          "Storage"
+        ]
+      },
+      "statement": "",
+      "key": {
+        "types": null
+      }
+    },
+    {
+      "id": "X45",
+      "persona": "P4",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "liquidity_line_musd": 2000
+      },
+      "statement": "",
+      "key": {
+        "types": null
+      }
+    },
+    {
+      "id": "X46",
+      "persona": "P6",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "liquidity_line_musd": 3000,
+        "max_cvar_musd": 1300
+      },
+      "statement": "",
+      "key": {
+        "types": null
+      }
+    },
+    {
+      "id": "X47",
+      "persona": "P1",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "lam": 0.5
+      },
+      "statement": "",
+      "key": {
+        "types": null
+      }
+    },
+    {
+      "id": "X48",
+      "persona": "P5",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "excluded_technologies": [
+          "Storage"
+        ],
+        "lam": 0.0
+      },
+      "statement": "",
+      "key": {
+        "types": null
+      }
+    }
+  ]
+}

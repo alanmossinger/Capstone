@@ -74,3 +74,32 @@ def test_agreement_dates_on_the_date_ignore_the_later_edition():
                       index=["a", "b", "c"])
     on = dd.agreement_dates_on(ms)
     assert on["a"] == pd.Timestamp("2023-05-01") and pd.isna(on["b"]) and pd.isna(on["c"])
+
+
+def test_candidates_as_of_reads_liveness_from_the_latest_report_before_the_date_and_agreements_from_either_record():
+    frame = pd.DataFrame({
+        "q_id": ["A", "B", "C", "D", "E", "F"], "region": ["ERCOT"] * 5 + ["PJM"], "type_clean": ["Wind", "Wind", "Solar", "Solar", "Gas CC", "Wind"],
+        "mw": [500.0, 400.0, 300.0, 10.0, 200.0, 900.0], "q_date": pd.to_datetime(["2022-01-01"] * 6),
+        "exit_date": [pd.NaT, pd.NaT, pd.NaT, pd.NaT, pd.Timestamp("2024-06-01"), pd.NaT], "event": [0, 0, 0, 0, 2, 0],
+        "ia_date": [pd.NaT, pd.Timestamp("2023-05-01"), pd.NaT, pd.NaT, pd.NaT, pd.NaT]})
+    gis = pd.DataFrame({
+        "q_id": ["A", "B", "A", "C"], "listed_as": ["active (large)", "cancelled", "active (large)", "active (large)"],
+        "report_month": pd.to_datetime(["2024-10-01", "2024-10-01", "2024-11-01", "2025-02-01"]),
+        "ia_signed": [pd.NaT, pd.NaT, pd.Timestamp("2024-11-15"), pd.NaT]})
+    out = dd.candidates_as_of(frame, gis, as_of="2025-01-01", per_tech=5, min_mw=20)
+    assert set(out["q_id"]) == {"A", "C"}  # B cancelled in a report; D below the floor; E exited in the edition, no GIS record; F not ERCOT
+    assert out.set_index("q_id").loc["A", "agreement_known"] and not out.set_index("q_id").loc["C", "agreement_known"]
+    assert out.set_index("q_id").loc["A", "liveness_source"] == "GIS 2024-11" and out.set_index("q_id").loc["C", "liveness_source"] == "edition: no GIS record"
+    # the February 2025 report is after the date: it did not make C live by itself, the edition did
+    later = dd.candidates_as_of(frame, gis, as_of="2025-03-01", per_tech=5, min_mw=20)
+    assert later.set_index("q_id").loc["C", "liveness_source"] == "GIS 2025-02"
+
+
+def test_record_hash_keeps_every_other_file_s_line(tmp_path):
+    from src import get_lbnl
+    p = tmp_path / "SHA256.txt"
+    get_lbnl.record_hash(p, "a.xlsx", "aaa")
+    get_lbnl.record_hash(p, "b.xlsx", "bbb")
+    get_lbnl.record_hash(p, "a.xlsx", "aaa2")
+    lines = p.read_text(encoding="utf-8").splitlines()
+    assert lines == ["bbb  b.xlsx", "aaa2  a.xlsx"]

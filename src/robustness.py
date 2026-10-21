@@ -18,7 +18,7 @@ Used by: notebook 11; `tests/test_robustness.py`.
 import numpy as np
 import pandas as pd
 
-from src import optimizer as opt
+from src import config, optimizer as opt
 
 
 def in_vs_out(books, A_selection, A_held, lam=1.0, level=0.95):
@@ -143,7 +143,20 @@ def capital_calls(op_year, capex, member, p_operation):
             "excess_q90": float(np.quantile(excess, 0.90)), "excess_q95": float(np.quantile(excess, 0.95)), "excess_max": float(excess.max())}
 
 
-def funding_or_forfeit(A_power, op_year, capex, carry, member, reserve, line, priority):
+def _funded(built_s, cap, pri, budget):
+    """Which of a scenario's built requests are funded: in priority order until ``budget`` is spent (one rule for both the value and its financing)."""
+    funded = np.zeros(len(cap), bool)
+    spent = 0.0
+    idx = np.where(built_s)[0]
+    for j in idx[np.argsort(-pri[idx], kind="stable")]:
+        if spent + cap[j] <= budget + 1e-6:
+            spent += cap[j]
+            funded[j] = True
+    return funded
+
+
+def funding_or_forfeit(A_power, op_year, capex, carry, member, reserve, line, priority, fee=0.0, rate=0.0,
+                       discount=config.LINE_DISCOUNT, build_years=config.CONSTRUCTION_YEARS, years=config.LINE_YEARS):
     """The power side of a book when construction calls beyond the reserve plus a liquidity line cannot be funded.
 
     Parameters
@@ -161,11 +174,18 @@ def funding_or_forfeit(A_power, op_year, capex, carry, member, reserve, line, pr
     priority : numpy.ndarray
         Each request's funding priority, known before the scenario unfolds
         (expected NPV per dollar of capital on the selection scenarios).
+    fee, rate : float
+        The line's commitment fee a year on its undrawn part and the interest
+        a year on its drawn part; both zero by default, so the value is gross
+        of financing as in report v9. See ``financing_cost``.
+    discount, build_years, years : float, int, int
+        Passed to ``financing_cost``.
 
     Returns
     -------
     numpy.ndarray
-        The book's power NPV in each scenario under the rule.
+        The book's power NPV in each scenario under the rule, net of the
+        line's financing cost when a fee or a rate is given.
 
     Notes
     -----
@@ -187,17 +207,112 @@ def funding_or_forfeit(A_power, op_year, capex, carry, member, reserve, line, pr
     out = np.empty(A_p.shape[0])
     budget = reserve + line
     for s in range(A_p.shape[0]):
-        total, spent = 0.0, 0.0
-        idx = np.where(built[s])[0]
-        for j in idx[np.argsort(-pri[idx], kind="stable")]:
-            if spent + cap[j] <= budget + 1e-6:
-                spent += cap[j]
-                total += A_p[s, j]
-            else:
-                total -= car[j]
-        total += A_p[s, ~built[s]].sum()
-        out[s] = total
+        funded = _funded(built[s], cap, pri, budget)
+        forfeited = built[s] & ~funded
+        out[s] = A_p[s, funded].sum() - car[forfeited].sum() + A_p[s, ~built[s]].sum()
+    if fee > 0 or rate > 0:
+        out = out - financing_cost(op_year, capex, member, reserve, line, priority, fee, rate, discount, build_years, years)
     return out
+
+
+def financing_cost(op_year, capex, member, reserve, line, priority, fee=config.LINE_FEE, rate=config.LINE_RATE,
+                   discount=config.LINE_DISCOUNT, build_years=config.CONSTRUCTION_YEARS, years=config.LINE_YEARS):
+    """What the liquidity line costs in each scenario: a commitment fee on what is not drawn, interest on what is.
+
+    Parameters
+    ----------
+    op_year, capex, member, reserve, line, priority
+        As in ``funding_or_forfeit``; the same funding rule decides which
+        requests draw.
+    fee : float
+        Commitment fee a year on the undrawn part of the line.
+    rate : float
+        Interest a year on the drawn part, from the construction draw until
+        the plant operates.
+    discount : float
+        The rate the yearly costs are discounted at (the committee grid's
+        hurdle).
+    build_years : int
+        Years between a plant's construction draw and its operation
+        (ASSUMED); the draw is ``build_years`` before ``op_year``, not before
+        year 1.
+    years : int
+        The commitment period, the years the fee is charged.
+
+    Returns
+    -------
+    numpy.ndarray
+        The present value of the line's cost in each scenario ($).
+
+    Notes
+    -----
+    Report v9 valued the line as free: "a $3.28B line restores $2.02B". A
+    line is a product a bank sells, so its value to the book is net of what
+    it costs. The reserve is spent first in time order, the line after it:
+    a funded plant whose cumulative draw passes the reserve draws the excess
+    on the line in its construction year and repays it at operation (the
+    plant is then financed on its own). The fee runs on the whole undrawn
+    line through the commitment period. The costs are per scenario, so they
+    enter the tail as they would be paid; an "unlimited" line has no fee
+    (``line`` is a benchmark there, not a product).
+    """
+    member = np.asarray(member, bool)
+    built = (np.asarray(op_year) > 0)[:, member]
+    t_op = np.asarray(op_year)[:, member]
+    cap = np.asarray(capex, float)[member]
+    pri = np.asarray(priority, float)[member]
+    disc = (1 + discount) ** -np.arange(1, years + 1)
+    out = np.zeros(built.shape[0])
+    if line <= 0 or not np.isfinite(line):
+        return out
+    for s in range(built.shape[0]):
+        funded = _funded(built[s], cap, pri, reserve + line)
+        idx = np.where(funded)[0]
+        draw_year = np.maximum(1, t_op[s, idx] - build_years)
+        order = np.lexsort((-pri[idx], draw_year))  # time order; the priority breaks ties within a year
+        outstanding = np.zeros(years)
+        cum = 0.0
+        for k in order:
+            on_line = max(0.0, cum + cap[idx[k]] - max(reserve, cum))  # the part of this draw beyond the reserve
+            cum += cap[idx[k]]
+            if on_line > 0:
+                d = int(draw_year[k])
+                outstanding[d - 1:min(years, d - 1 + build_years)] += on_line
+        yearly = rate * outstanding + fee * np.maximum(0.0, line - outstanding)
+        out[s] = float(yearly @ disc)
+    return out
+
+
+def breakeven_fee(value_at, target, hi=0.2, tol=1e-6):
+    """The commitment fee at which a line is worth no more than no line.
+
+    Parameters
+    ----------
+    value_at : callable
+        ``fee -> value`` of the book with the line, decreasing in the fee.
+    target : float
+        The book's value without the line.
+    hi : float
+        The largest fee searched.
+
+    Returns
+    -------
+    float
+        The fee where ``value_at(fee) == target``, by bisection; NaN when the
+        line is worth less than no line even at a zero fee, or still worth
+        more at ``hi``.
+    """
+    lo_v, hi_v = value_at(0.0), value_at(hi)
+    if lo_v <= target or hi_v > target:
+        return float("nan")
+    lo, high = 0.0, hi
+    while high - lo > tol:
+        mid = (lo + high) / 2
+        if value_at(mid) > target:
+            lo = mid
+        else:
+            high = mid
+    return (lo + high) / 2
 
 
 def tail_dependence(values, top=0.05):

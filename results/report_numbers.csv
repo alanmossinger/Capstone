@@ -2433,3 +2433,22 @@ v9_c31_without_largest,+$19M,18712312.058381,results/v9/c31_sensitivity.json,"ch
 v9_c31_without_largest_ci,"[+$0M, +$46M]",0.0|46233722.00848175,results/v9/c31_sensitivity.json,its case-bootstrap interval
 v9_c31_vs_optimizer_first,+$1M,1049135.518760936,results/v9/c31_sensitivity.json,"challenger edge, vs optimizer first"
 v9_c31_vs_optimizer_first_ci,"[−$50M, +$64M]",-49680165.87623404|64446245.35470056,results/v9/c31_sensitivity.json,its case-bootstrap interval
+v10_ledger_lines,78,78,results/v10/registration_ledger.csv,registered lines in the ledger
+v10_ledger_corrected,17,17,results/v10/registration_ledger.csv,lines with a correction
+v10_ledger_changed,3,3,results/v10/registration_ledger.csv,correction rows whose verdict differs from the registered one
+v10_tail_count,100,100,src/optimizer.py,"scenarios in the worst 5% of 2,000"
+v10_line_fee,0.5%,0.005,src/config.py,commitment fee a year on the undrawn line (ASSUMED)
+v10_line_rate,8%,0.08,src/config.py,interest a year on the drawn line (ASSUMED)
+v10_build_years,2,2,src/config.py,years of construction a draw is outstanding (ASSUMED)
+v10_noline_metric,$0.86B,862399290.481998,results/v10/credit_line_net.csv,book D's registered metric with no line
+v10_q95_metric_gross,$1.00B,995253278.9642133,results/v10/credit_line_net.csv,"with the 95th-percentile line, gross of financing"
+v10_q95_metric_fee,$0.83B,834633111.9056706,results/v10/credit_line_net.csv,net of the commitment fee
+v10_q95_metric_fee_rate,$0.66B,659217352.0965276,results/v10/credit_line_net.csv,net of the fee and interest
+v10_q95_mean_fee_rate,$1.86B,1862616409.4242148,results/v10/credit_line_net.csv,expected value net of the fee and interest
+v10_q95_financing,$155M,154695537.39598632,results/v10/credit_line_net.csv,mean financing cost of the 95th-percentile line
+v10_breakeven_fee,0.41%,0.004135513305664,results/v10/credit_line_net.csv,"the fee at which the line stops improving the metric, fee only"
+v10_half_metric_gross,$0.72B,718986393.9215274,results/v10/credit_line_net.csv,"$0.5B line, gross metric"
+v10_one_metric_gross,$0.76B,757785212.3758525,results/v10/credit_line_net.csv,"$1B line, gross metric"
+v10_two_metric_gross,$0.90B,897260512.4593726,results/v10/credit_line_net.csv,"$2B line, gross metric"
+v10_line_wins,1,1,results/v10/credit_line_sensitivity.csv,fee-rate settings in which the 95th-percentile line beats no line
+v10_line_settings,12,12,results/v10/credit_line_sensitivity.csv,fee-rate settings tried

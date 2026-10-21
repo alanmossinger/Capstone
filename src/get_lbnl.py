@@ -141,8 +141,22 @@ def download(dest_dir=paths.RAW_LBNL):
             f"{target.name} has SHA-256 {digest}, expected {config.LBNL_SHA256}. "
             "The frozen release was replaced; restore the original file (decision #2)."
         )
-    (dest_dir / "SHA256.txt").write_text(f"{digest}  {target.name}\n", encoding="utf-8")
+    record_hash(dest_dir / "SHA256.txt", target.name, digest)
     return target
+
+
+def record_hash(path, name, digest):
+    """Write ``digest  name`` into a hash file, replacing the line for ``name`` and keeping every other file's line.
+
+    Notes
+    -----
+    The file used to be rewritten with one line, so adding the 2026 edition
+    (decision #43) and the 2024 edition (decision #101) alongside the frozen
+    2025 file dropped the others' hashes each time one was downloaded.
+    """
+    lines = [l for l in path.read_text(encoding="utf-8").splitlines() if l.strip()] if path.exists() else []
+    kept = [l for l in lines if l.split()[-1] != name]
+    path.write_text("".join(l + "\n" for l in kept + [f"{digest}  {name}"]), encoding="utf-8")
 
 
 def _try_scripted_download(target):

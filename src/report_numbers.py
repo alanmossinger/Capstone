@@ -26,7 +26,7 @@ import re
 
 import pandas as pd
 
-from src import config, paths, track_b
+from src import config, optimizer as opt, paths, track_b
 
 ROWS = []
 
@@ -2016,6 +2016,37 @@ def v9_challenger():
             v9 + "c31_sensitivity.json", f"its case-bootstrap interval")
 
 
+def v10_report():
+    """Report v10: the registration ledger, the loss variable, and the liquidity line net of financing (notebook 12, decisions #100-#102)."""
+    v10 = "results/v10/"
+    ledger = read("v10/registration_ledger.csv").fillna("")
+    n_lines = int(ledger.groupby(["criterion", "line"]).ngroups)
+    corrected = ledger[ledger["correction"] != ""]
+    add("v10_ledger_lines", str(n_lines), n_lines, v10 + "registration_ledger.csv", "registered lines in the ledger")
+    add("v10_ledger_corrected", str(int(corrected.groupby(["criterion", "line"]).ngroups)), int(corrected.groupby(["criterion", "line"]).ngroups), v10 + "registration_ledger.csv", "lines with a correction")
+    add("v10_ledger_changed", str(int((corrected["registered_verdict"] != corrected["verdict_after"]).sum())), int((corrected["registered_verdict"] != corrected["verdict_after"]).sum()),
+        v10 + "registration_ledger.csv", "correction rows whose verdict differs from the registered one")
+    add("v10_tail_count", str(opt.tail_count(2000, 0.95)), opt.tail_count(2000, 0.95), "src/optimizer.py", "scenarios in the worst 5% of 2,000")
+    add("v10_line_fee", pct(config.LINE_FEE, 1), config.LINE_FEE, "src/config.py", "commitment fee a year on the undrawn line (ASSUMED)")
+    add("v10_line_rate", pct(config.LINE_RATE, 0), config.LINE_RATE, "src/config.py", "interest a year on the drawn line (ASSUMED)")
+    add("v10_build_years", str(config.CONSTRUCTION_YEARS), config.CONSTRUCTION_YEARS, "src/config.py", "years of construction a draw is outstanding (ASSUMED)")
+    cl = read("v10/credit_line_net.csv").set_index("liquidity")
+    q95, none = cl.loc["line at the 95th percentile of the excess"], cl.loc["no line"]
+    add("v10_noline_metric", dollars(none["metric_gross"]), none["metric_gross"], v10 + "credit_line_net.csv", "book D's registered metric with no line")
+    add("v10_q95_metric_gross", dollars(q95["metric_gross"]), q95["metric_gross"], v10 + "credit_line_net.csv", "with the 95th-percentile line, gross of financing")
+    add("v10_q95_metric_fee", dollars(q95["metric_fee"]), q95["metric_fee"], v10 + "credit_line_net.csv", "net of the commitment fee")
+    add("v10_q95_metric_fee_rate", dollars(q95["metric_fee_rate"]), q95["metric_fee_rate"], v10 + "credit_line_net.csv", "net of the fee and interest")
+    add("v10_q95_mean_fee_rate", dollars(q95["mean_fee_rate"]), q95["mean_fee_rate"], v10 + "credit_line_net.csv", "expected value net of the fee and interest")
+    add("v10_q95_financing", dollars(q95["financing_mean_fee_rate"], "M", 0), q95["financing_mean_fee_rate"], v10 + "credit_line_net.csv", "mean financing cost of the 95th-percentile line")
+    add("v10_breakeven_fee", pct(q95["breakeven_fee_only"], 2), q95["breakeven_fee_only"], v10 + "credit_line_net.csv", "the fee at which the line stops improving the metric, fee only")
+    for name, key in (("$0.5B line", "v10_half_metric_gross"), ("$1B line", "v10_one_metric_gross"), ("$2B line", "v10_two_metric_gross")):
+        add(key, dollars(cl.loc[name, "metric_gross"]), cl.loc[name, "metric_gross"], v10 + "credit_line_net.csv", f"{name}, gross metric")
+    sens = read("v10/credit_line_sensitivity.csv")
+    wins = int((sens["metric_minus_no_line"] > 0).sum())
+    add("v10_line_wins", str(wins), wins, v10 + "credit_line_sensitivity.csv", "fee-rate settings in which the 95th-percentile line beats no line")
+    add("v10_line_settings", str(len(sens)), len(sens), v10 + "credit_line_sensitivity.csv", "fee-rate settings tried")
+
+
 def build():
     """Collect every cited number and write ``results/report_numbers.csv``.
 
@@ -2034,7 +2065,7 @@ def build():
     for step in (design_constants, gathering_and_cleaning, eda, modelling, evaluation, explanation, posthoc,
                  v3_data, v3_fair_baseline, v3_level, v3_landmark, v3_value, v3_miso_spp, v3_portfolio,
                  v3_extras, v3_appendix, v4_managed_book, v5_drivers, v5_segments, v5_timing, v5_tournament, v5_npv,
-                 v5_review, v5_books, v5_archetypes, v5_extras, v6_data, v6_forecasts, v6_economics, v6_scenarios, v6_books, v6_advisor, v7_rounded, v7_posthoc, v7_questions, v8_bridged, v8_report, v9_challenger):
+                 v5_review, v5_books, v5_archetypes, v5_extras, v6_data, v6_forecasts, v6_economics, v6_scenarios, v6_books, v6_advisor, v7_rounded, v7_posthoc, v7_questions, v8_bridged, v8_report, v9_challenger, v10_report):
         step()
     table = pd.DataFrame(ROWS)
     table.to_csv(paths.RESULTS / "report_numbers.csv", index=False)

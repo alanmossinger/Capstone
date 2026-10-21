@@ -25,7 +25,7 @@ from pathlib import Path
 NOTEBOOKS = Path(__file__).resolve().parent / "notebooks"
 # The notebooks are numbered by the story (PLAN.md §14) and run in dependency order: 06, the evaluation
 # record, runs last because it reads every scored table (decision #63); 05, 08 and 10 join as they are built.
-PIPELINE = ["01", "02", "03", "04", "05", "07", "08", "09", "06", "10", "11"]  # 11, the decision system of v8, reads 07–09 (decision #91)
+PIPELINE = ["01", "02", "03", "04", "05", "07", "08", "09", "06", "10", "11", "12"]  # 11, the decision system of v8, reads 07–09 (decision #91); 12, the three questions of v10, reads 11
 KERNEL = "queue-survival"  # registered from .venv by `make setup`
 
 

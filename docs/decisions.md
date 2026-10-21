@@ -1502,3 +1502,51 @@ alternative rejected.
     pushed (Alan: "merge"); no tag.
     *Rejected:* keeping the frozen v7 table for the two derived documents
     (they would describe results the report no longer stands behind).
+100. **Report v10 after the critique review of 21 October: three questions,
+    one primary estimand each, the credit line priced, the as-of build
+    rebuilt** (Alan, 2026-10-21; plan at `docs/plan_v10.md` and the approved
+    execution plan). The report answers three questions — can predictive
+    models improve estimates of energy investment outcomes; can
+    optimization turn them into better capital-allocation decisions; can a
+    language model improve investment governance without taking authority
+    from decision-makers — with a four-arm attribution ladder (proposal,
+    tools, tools with the language model, the optimizer) on one scale.
+    Taken from the critique: one primary estimand per question (C33, the
+    paired D-vs-A difference by reference; C34, tools plus language model
+    minus tools only on all 48 cases); the contamination fix (numeric
+    flaws generated, the 24 qualitative and clean statements and their keys
+    written by Alan before any model sees them, scoring mechanical);
+    the line priced net of a commitment fee and interest; the loss variable
+    stated (CVaR95 of −NPV); a three-column registration ledger; the strict
+    as-of candidate build from the 2024 edition and ERCOT's monthly reports,
+    with the 2025 and 2026 editions as labels only; the realized 2025–26
+    data as a labelled partial forward test. *Rejected:* a second model
+    family as challenger (no key; the author-written keys remove the shared
+    generation); modelling investability (wording only); more price years
+    (none exist); the critique's abstract (the author's voice stays).
+101. **The 2024 LBNL edition and ERCOT's 2024 monthly GIS reports as a
+    second frozen record** (Alan, 2026-10-21). The 2025 edition that defined
+    the 1 January 2025 candidates was released in August 2025. The as-of view
+    is rebuilt from what was public that day: `decision_date.candidates_as_of`
+    reads liveness from the latest GIS report before the date and agreements
+    from the reports or the edition; `get_lbnl.record_hash` keeps one hash
+    line per file. The 2025 file stays the basis of every registered result
+    (decision #2). The downloads are Alan's: ercot.com and emp.lbl.gov refuse
+    this machine (an access-denied page and a bot check), so the files are
+    fetched by hand and hashed on arrival. If the monthly archive is
+    incomplete, the fallback is documented in the candidates table: the 2025
+    edition's exit dates used only to reproduce the live set.
+102. **The liquidity line priced** (2026-10-21; `robustness.financing_cost`,
+    `breakeven_fee`; `config.LINE_FEE` 0.5% a year on the undrawn line,
+    `LINE_RATE` 8% on draws over `CONSTRUCTION_YEARS` 2, discounted at the
+    committee grid's 8%, all ASSUMED with a 0.25–1% × 6–10% sensitivity).
+    The reserve is spent first in time order, the line after it; the costs
+    are per scenario so they enter the tail. Result: at the 95th-percentile
+    line book D's expected value is $1.86B net (from $1.40B with no line) but
+    the registered metric falls to $0.66B from $0.86B; the fee alone breaks
+    even at 0.41% a year, with interest no fee does. Because ATB capital
+    costs carry a construction-finance factor, the fee-only case is reported
+    as the lower bound of the cost and fee-with-interest as the upper bound.
+    *Rejected:* interest from year 1 regardless of the operation year (the
+    draw is at construction); a fee on the unlimited benchmark (it is a
+    benchmark, not a product).

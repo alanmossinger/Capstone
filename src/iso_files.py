@@ -17,6 +17,8 @@ Used by: notebook 04 (part I); ``tests/test_iso_files.py``.
 
 import xml.etree.ElementTree as ET
 
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 
@@ -74,13 +76,16 @@ def _ercot_sheet(path, sheet):
     return frame[frame["INR"].notna()]
 
 
-def read_ercot_gis(path):
+def read_ercot_gis(path, report_month=None):
     """One row per INR across the GIS report's project sheets, with the dated phases and the sheet it is listed on.
 
     Parameters
     ----------
     path : str or pathlib.Path
         ERCOT's monthly GIS report (``.xlsx``).
+    report_month : str or pandas.Timestamp, optional
+        The month the report describes; read from the file name (``..._2024-11.xlsx``
+        or ``..._November_2024.xlsx``) when not given. Needed to stack monthly reports.
 
     Returns
     -------
@@ -108,4 +113,19 @@ def read_ercot_gis(path):
         mw = next((c for c in frame.columns if c.startswith("Capacity") or c.startswith("MW")), None)
         part["mw"] = pd.to_numeric(frame[mw], errors="coerce").to_numpy() if mw else np.nan
         parts.append(part)
-    return pd.concat(parts, ignore_index=True).drop_duplicates("q_id")
+    out = pd.concat(parts, ignore_index=True).drop_duplicates("q_id")
+    out["report_month"] = pd.Timestamp(report_month) if report_month is not None else month_from_name(Path(path).name)
+    return out
+
+
+def month_from_name(name):
+    """The report month in a GIS file name: ``2024-11``, ``2024_11`` or ``November_2024``; NaT when none."""
+    import re
+
+    m = re.search(r"(20\d\d)[-_](\d\d)", name)
+    if m:
+        return pd.Timestamp(int(m.group(1)), int(m.group(2)), 1)
+    m = re.search(r"(January|February|March|April|May|June|July|August|September|October|November|December)[-_ ]?(20\d\d)", name, re.IGNORECASE)
+    if m:
+        return pd.Timestamp(f"{m.group(2)}-{pd.Timestamp(m.group(1) + ' 1 2000').month:02d}-01")
+    return pd.NaT

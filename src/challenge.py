@@ -124,6 +124,7 @@ class Setting:
         built = sel.op_year > 0  # primary scenarios: the choice may use them, the scoring may not
         self.calls = np.zeros_like(self.A)
         self.calls[:, self.power_idx] = built * self.capex_p - self.capex_p * self.p7  # construction capital called beyond each request's reserve
+        self.fee, self.rate = 0.0, 0.0  # the liquidity line's commitment fee and interest; zero (gross of financing) unless the caller sets them
 
     def vector(self, members):
         x = np.zeros(len(self.ids), int)
@@ -164,7 +165,7 @@ def totals(s, x, prefs):
     lease[s.power_idx] = False
     reserve = float((s.capex_p * s.p7)[x[s.power_idx] == 1].sum())
     return s.A_h[:, lease] @ x[lease] + rb.funding_or_forfeit(s.A_h[:, s.power_idx], s.held.op_year, s.capex_p, s.carry_p, x[s.power_idx], reserve,
-                                                               prefs.liquidity_line_musd * 1e6, s.priority)
+                                                               prefs.liquidity_line_musd * 1e6, s.priority, fee=getattr(s, "fee", 0.0), rate=getattr(s, "rate", 0.0))
 
 
 def rule_checks(s, x, prefs, A=None):

@@ -1882,6 +1882,16 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** The registered challenger experiments: flaws named by type, and the decision value on the committee's own objective.
 <!-- /fig:F46_challenger -->
 
+<!-- fig:F48_credit_line_net -->
+### F48_credit_line_net
+
+![F48_credit_line_net](../figures/F48_credit_line_net.png)
+
+*Notebook:* `notebooks/12_three_questions.ipynb` · *Files:* `figures/F48_credit_line_net.png`, `.svg`
+
+**Caption (stub).** Book D's registered metric by liquidity line, gross and net of the line's financing cost, with the break-even fee.
+<!-- /fig:F48_credit_line_net -->
+
 <!-- fig:F4_calibration_by_horizon -->
 ### F4_calibration_by_horizon
 

@@ -42,3 +42,29 @@ def test_tail_dependence_finds_value_concentrated_in_few_scenarios():
     v = np.r_[np.full(95, -1.0), np.full(5, 100.0)]
     d = rb.tail_dependence(v)
     assert d["p_loss"] == 0.95 and d["share_from_top"] > 1.0  # the best 5% earn more than the total: the rest lose
+
+
+def test_a_free_line_reproduces_the_gross_value_and_a_priced_line_costs_more_with_the_fee_and_the_line():
+    A = np.array([[10.0, 5.0], [-1.0, -2.0]])
+    op_year = np.array([[3, 4], [0, 0]])  # scenario 0: draws in years 1 and 2 (two years before operation); scenario 1: nothing built
+    capex, carry, pri = np.array([100.0, 100.0]), np.array([1.0, 2.0]), np.array([2.0, 1.0])
+    gross = rb.funding_or_forfeit(A, op_year, capex, carry, np.array([1, 1]), reserve=50.0, line=200.0, priority=pri)
+    free = rb.funding_or_forfeit(A, op_year, capex, carry, np.array([1, 1]), reserve=50.0, line=200.0, priority=pri, fee=0.0, rate=0.0)
+    assert np.allclose(gross, free)
+    cost = rb.financing_cost(op_year, capex, np.array([1, 1]), reserve=50.0, line=200.0, priority=pri, fee=0.01, rate=0.1, discount=0.0, build_years=2, years=7)
+    # scenario 0: the first draw (100) uses the reserve (50) and 50 of the line; the second draws 100 on the line.
+    # outstanding: year 1: 50, year 2: 150, year 3: 100; fee on 150, 50, 100 in those years and on 200 in years 4-7
+    expected = 0.1 * (50 + 150 + 100) + 0.01 * (150 + 50 + 100 + 4 * 200)
+    assert np.isclose(cost[0], expected) and cost[1] == 0.01 * 200 * 7  # nothing drawn: the fee on the whole line
+    dearer = rb.financing_cost(op_year, capex, np.array([1, 1]), reserve=50.0, line=200.0, priority=pri, fee=0.02, rate=0.1, discount=0.0)
+    bigger = rb.financing_cost(op_year, capex, np.array([1, 1]), reserve=50.0, line=400.0, priority=pri, fee=0.01, rate=0.1, discount=0.0)
+    assert (dearer >= cost).all() and (bigger >= cost).all() and dearer[0] > cost[0] and bigger[0] > cost[0]
+    net = rb.funding_or_forfeit(A, op_year, capex, carry, np.array([1, 1]), reserve=50.0, line=200.0, priority=pri, fee=0.01, rate=0.1, discount=0.0)
+    assert np.allclose(net, gross - cost)
+
+
+def test_the_break_even_fee_is_bracketed_and_nan_when_the_line_never_pays():
+    value_at = lambda fee: 100.0 - 1000.0 * fee  # a line worth 100 gross, costing 1,000 per unit of fee
+    assert np.isclose(rb.breakeven_fee(value_at, target=60.0), 0.04, atol=1e-5)
+    assert np.isnan(rb.breakeven_fee(value_at, target=120.0))  # worth less than no line even free
+    assert np.isnan(rb.breakeven_fee(value_at, target=-1000.0, hi=0.05))  # still worth more at the largest fee searched
