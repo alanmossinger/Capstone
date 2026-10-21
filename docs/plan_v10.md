@@ -42,6 +42,19 @@ every book; an AI challenger tests the committee's proposal against the committe
 committee reason before it signs; the outcome is measured on held-out scenarios, against the same tools without
 the language model.
 
+## 1a. The three research questions (Alan, 2026-10-21)
+
+Report v10 asks three questions, one per layer of the loop. RQ1–RQ4 and H1–H7 of v9 stay in Appendix A as the
+registered lines that answer them; nothing is re-scored.
+
+| | Question | What answers it | The answer v9 already supports |
+|---|---|---|---|
+| Q1 | Can predictive models improve estimates of energy investment outcomes? | C1–C20 (completion, timing, output, prices); the 2020 backtest; the lookup ablation (book F) | Partly: better ranking (AUC 0.731 vs 0.686 as of 2020; plant output beats the baselines), not a better level (ERCOT 0.380 predicted, 0.238 observed) and not better lease or price forecasts; the book chosen with the model is not demonstrably better than the lookup's (+$22M [−$168M, +$207M]) |
+| Q2 | Can mathematical optimization turn those estimates into better capital-allocation decisions? | C21–C24 as registered and on the corrected system; the frontier; re-selection; capital calls and the liquidity line | Yes, under equal constraints: +$320M [+$142M, +$511M] against NPV ranking on the registered metric, for $274M of expected value; holds in all 20 re-selections; incomplete without a contingent construction line ($1.40B without, $2.02B with $3.28B) |
+| Q3 | Can a language model improve the quality of investment governance without taking authority away from decision-makers? | C25–C32 (v9) and C33–C36 (v10, the reasoning round on argument-only cases); the checklist and questions-only controls; the ledger's acknowledgement rule | Yes, within the test: +$192M per flawed case and $240M of loss avoided, of which the tools alone give $145M and $257M; the model reads 40 of 40 rules and names 11 of 12 flaws of argument; it over-challenges 2 of 12 sound proposals; it never computes or decides. Open: whether its reasoning changes a decision when no computed rule is broken — the v10 experiment |
+
+The report's sections follow the three questions in order; the executive summary answers each in one sentence.
+
 ## 2. The loop (every notebook and figure serves it)
 
 | Step | What happens | Already built in |
