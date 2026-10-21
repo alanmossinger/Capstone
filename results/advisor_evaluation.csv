@@ -1,11 +1,11 @@
 metric,value
-calls this run (replayed / live / missing),16 / 19 / 0
-recorded answers in advisor_runs.jsonl,171
-mean number-grounding rate over recorded answers,0.942
-answers with every number grounded (share),0.585
+calls this run (replayed / live / missing),35 / 0 / 0
+recorded answers in advisor_runs.jsonl,195
+mean number-grounding rate over recorded answers,0.936
+answers with every number grounded (share),0.59
 scenario recommendations recorded (of 7 stresses + 6 horizons),13 of 13
-mean Jaccard of recommended members to book D (stresses),0.961
-share naming book D (stresses),0.571
+mean Jaccard of recommended members to book D (stresses),0.915
+share naming book D (stresses),0.429
 "gym: advisor minus instinct, mean $M (situations recorded)",+144.4 (16)
 "gym: optimizer minus instinct, mean $M",+148.9 (16)
 gym: advisor wins against instinct (situations),4

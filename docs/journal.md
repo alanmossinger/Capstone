@@ -1698,3 +1698,18 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 **Next**
 
 - Phase 5: the poster and the Petrobras edition brought to v9; a clean-environment run; tag on Alan's word.
+
+## Session 19, continued — 2026-10-20: phase 5, the derived documents and the push (decision #99)
+
+**Done**
+
+- Poster rewritten from report v9 (one A0 landscape page; F28, F42, F43, F38, F46, F45 as SVGs) and the Petrobras edition rewritten for v9 (19 pages); both number tests read the live table, and both pass.
+- `README.md` status line and `docs/v8_status.md` (a v9 table at its head) brought up to date.
+- Pipeline rerun from PowerShell: notebooks 01–10 end to end (06 resumed after a OneDrive lock on `report/figure_notes.md`); 11 was stopped at Alan's "just finish" — it last ran cleanly at about 20:50 the same day on the same inputs. No result moved beyond dates and run-time checks.
+- The rerun showed notebook 10's advisor evaluation counting the challenger's 136 calls (171 became 331 calls, grounding 87%); it now excludes the two challenger modes, which notebook 11 scores under their own checks: 195 calls, 94% grounded. Two uncited figures moved on replay (overlap with book D 0.96 → 0.92; book D named in 3 of 7 stresses, was 4). Appendix B updated.
+- `report.pdf`, `poster.pdf` and `Petrobras_Report.pdf` rebuilt; 250 tests pass.
+- `main` fast-forwarded to `v8-corrections`; both pushed to origin at Alan's word ("merge").
+
+**Next**
+
+- A tag on Alan's word; a clean-environment (Linux) run of v9; Alan's own decision cases; the decision page could expose the challenger; `docs/demo_video_script.md` still describes v6.

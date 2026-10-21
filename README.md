@@ -5,20 +5,21 @@
 SIADS 699 Capstone (Master of Applied Data Science, University of Michigan), Group 13.
 Author: Alan Mössinger.
 
-> **Status (2026-10-17, v6):** the report is reorganised around the step from
-> predictive to prescriptive AI (decision #83): a core of about 3,400 words —
-> abstract, Capital Allocation Memo, the four stages and four questions, how
-> the work is evaluated, method, results, limitations, conclusion — with the
-> full method and evidence as Appendices E (the queue side) and F (the energy
-> portfolio) and every finding in Appendix G. No result changed. Before that:
-> the project is an integrated U.S. energy
-> portfolio — twenty offshore Gulf of Mexico lease redevelopments (BSEE)
-> and twenty ERCOT power requests under one budget and 2,000 joint
-> scenarios — with the queue models of v1–v4 as the completion and timing
-> engine, a grounded and recorded LLM advisor scored in a decision gym, and
-> a Streamlit dashboard (`make app`). Ten notebooks run end to end
-> (`make all`); every registered criterion (C1–C24) is scored as registered;
-> the report opens with a Capital Allocation Memo and a Decision Board.
+> **Status (2026-10-20, v9, branch `v8-corrections`):** an executive report
+> (core of about 4,200 words) on one decision — twenty Gulf of Mexico lease
+> redevelopments and twenty ERCOT requests under one budget on 1 January
+> 2025, with only what was public that day. A risk-aware optimizer beats NPV
+> ranking under equal constraints, at the price of expected value and with a
+> capital plan that needs a contingent construction line; the machine-learning
+> queue forecasts do not demonstrably improve the decision. An AI *challenger*
+> (`src/challenge.py`) reads a committee's rules from its words, tests its
+> proposal with computed tools and recommends a computed alternative; in a
+> registered test on simulated committees (`results/v9/`, notebook 11
+> section 11) following it improves the committee's own objective and avoids
+> loss, mostly through its tools, while the language model's own part is
+> reading rules and arguments. Eleven notebooks run end to end (`make all`);
+> every registered criterion is scored as registered. The session log is
+> `docs/journal.md`; the reasons are in `docs/decisions.md` (#93–#99).
 
 ## About
 

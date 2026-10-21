@@ -2042,19 +2042,19 @@ v6_hz_power_20,−$1.29B,-1293879687.543469,results/horizon_view.csv,requests wi
 v6_hz_members_3,11,11,results/horizon_books.csv,members of the book at 3 years
 v6_hz_members_5,14,14,results/horizon_books.csv,members of the book at 5 years
 v6_hz_members_10,14,14,results/horizon_books.csv,members of the book at 10 years
-v6_adv_recorded,171,171,results/advisor_evaluation.csv,recorded answers
+v6_adv_recorded,195,195,results/advisor_evaluation.csv,recorded answers
 v6_adv_missing,0,0,results/advisor_evaluation.csv,calls with no record and no key
-adv_recorded,318,318,results/advisor_runs.jsonl,recorded answers
-adv_grounding,94%,0.942,results/advisor_evaluation.csv,mean share of the advisor's numbers found in its tables
-adv_fully_grounded,58%,0.585,results/advisor_evaluation.csv,answers with every number grounded
-adv_jaccard_d,0.96,0.961,results/advisor_evaluation.csv,overlap of the advisor's book with book D over the seven stresses
-adv_names_d,4 of 7,0.571,results/advisor_evaluation.csv,stresses in which the advisor names book D
+adv_recorded,331,331,results/advisor_runs.jsonl,recorded answers
+adv_grounding,94%,0.936,results/advisor_evaluation.csv,mean share of the advisor's numbers found in its tables
+adv_fully_grounded,59%,0.59,results/advisor_evaluation.csv,answers with every number grounded
+adv_jaccard_d,0.92,0.915,results/advisor_evaluation.csv,overlap of the advisor's book with book D over the seven stresses
+adv_names_d,3 of 7,0.429,results/advisor_evaluation.csv,stresses in which the advisor names book D
 adv_gym_vs_instinct,$144M,144.3979725116416,results/decision_gym_scores.csv,"advisor minus instinct, mean per situation"
 adv_gym_regret,$205M,204.97763335446857,results/decision_gym_scores.csv,advisor: mean regret against hindsight
 adv_gym_wins,4,4,results/decision_gym_scores.csv,situations in which the advisor beat instinct
 adv_gym_ties,11,11,results/decision_gym_scores.csv,situations in which the advisor matched instinct
 adv_gym_losses,1,1,results/decision_gym_scores.csv,situations in which the advisor did worse than instinct
-adv_challenge_converge,"the leases-only book of twenty leases (capex 1.35, expected NPV 8.66, CVaR95 -2.28)",0,results/advisor_transcripts/challenge_all_leases.md,"the opposing case's convergence line, all-leases statement"
+adv_challenge_converge,"Book D (14 leases, 4 contracted wind, 2 gas CC, 1 storage; $1.85B, expected NPV 7.67, CVaR95 loss -2.20) while the 40% cap stands",0,results/advisor_transcripts/challenge_all_leases.md,"the opposing case's convergence line, all-leases statement"
 v6_adv_scenarios,7,7,results/advisor_recommendations.csv,named scenarios the advisor recommends for
 v6_adv_horizons,6,6,results/advisor_recommendations.csv,horizons the advisor recommends for
 v6_adv_min_chars,20,20,src/advisor.py,characters required per answer at the override gate
@@ -2372,8 +2372,8 @@ v8_gym_ar_worse,12,12,results/decision_gym_summary_v8.csv,"advisor minus optimiz
 v8_gym_n,14,14,results/decision_gym_summary_v8.csv,effective situations
 v8_gym_queue,$0.6M,-0.646153846153847,results/decision_gym_rooms.csv,"rule minus instinct per queue room, magnitude"
 v8_capture_gas,136%,1.3558660067626662,results/candidate_capture_factors.csv,gas capture
-v8_adv_calls,171,171,results/advisor_evaluation.csv,recorded advisor calls
-v8_adv_grounding,94%,0.942,results/advisor_evaluation.csv,grounding rate
+v8_adv_calls,195,195,results/advisor_evaluation.csv,recorded advisor calls
+v8_adv_grounding,94%,0.936,results/advisor_evaluation.csv,grounding rate
 v8_tools_correct,6,6,results/v8/advisor_tools_eval.csv,questions read correctly
 v8_tools_checked,119,119,results/v8/advisor_tools_eval.csv,numbers checked in the explanations
 v8_tools_grounded,119,119,results/v8/advisor_tools_eval.csv,of them grounded

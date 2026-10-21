@@ -1,3 +1,15 @@
+# v9 additions (2026-10-20): what is implemented, tested, partial or proposed
+
+| Deliverable | Status | Where | What is missing |
+|---|---|---|---|
+| Decision on what was public on 1 January 2025 (credits in force, 2025-edition agreement dates, lease lag) | Implemented, tested | `src/decision_date.py`, `src/valuation.py`; decision #94 | — |
+| Robustness: in- vs out-of-sample, re-selection, capital calls with funding-or-forfeit, tail dependence | Implemented, tested | `src/robustness.py`; notebook 11 section 9; F45 | — |
+| The active challenger (reads rules, tools diagnose and repair, checked memo, checklist control) | Implemented, tested | `src/challenge.py`, `prompts/challenge_*.md`; decision #95 | not exposed in the decision page (`app/decide.py`) |
+| Registered challenger experiments X1–X3 (C25–C32, H4–H7) | Implemented, scored once | `src/challenge_experiments.py`, `results/v9/`; notebook 11 section 11; F46; decisions #96–#97 | real committees; Alan's own cases (reserved slot); cases where only the argument is wrong |
+| Executive report v9 | Implemented, tested | `report/report.md`; decision #98 | — |
+| Poster and Petrobras edition for v9 | Implemented, tested against the live numbers table | `report/poster.typ`, `report/petrobras_report.typ`; decision #99 | — |
+| Clean-environment run of v9 | Proposed | — | a Linux run as in decision #87 |
+
 # v8 deliverables: what is implemented, tested, partial or proposed
 
 Status as of 2026-10-17 (branch `v8-corrections`). *Implemented* means the code exists and runs in the
@@ -8,12 +20,12 @@ named; *proposed* means not built.
 |---|---|---|---|---|
 | 1 | Independent technical audit | Implemented | `docs/audit_2026-10-17.md` | — |
 | 2 | Prioritized implementation plan | Implemented | `docs/implementation_plan_v8.md`; decisions #88–#92 | — |
-| 3 | Prescriptive pipeline, corrected | Implemented, tested | notebooks 04 (part L), 07–09; `src/decision_date.py`, `src/valuation.py`, `src/decline.py`, `src/optimizer.py` | the narrative cells (titles aside) of notebooks 07–10 still describe v7 and are to be rewritten from their outputs |
+| 3 | Prescriptive pipeline, corrected | Implemented, tested | notebooks 04 (part L), 07–09; `src/decision_date.py`, `src/valuation.py`, `src/decline.py`, `src/optimizer.py` | — (reading cells rewritten from the v8 outputs in session 16) |
 | 4 | AI advisor with deterministic model execution | Implemented, tested | `src/advisor_tools.py`, `src/whatif.py`, `prompts/whatif_*.md` | live scoring depends on the `claude` command or an API key on the machine that runs notebook 11 |
 | 5 | Scenario and reoptimization interface | Implemented, tested headless | `app/decide.py` (`make decide-page`) | not tried by a committee member; the interactive lab re-solves on 500 scenarios |
 | 6 | Reproducible evaluation of decision processes | Implemented | notebook 11 §7; `results/v8/process_comparison.csv`, `value_added.csv` | the "AI-assisted" process has the optimizer's book, so its investment increment is zero by construction; a study with human committees is proposed, not run |
 | 7 | Improved figures and tables | Implemented | F38–F44 (notebook 11); F34 and F33 retitled from their results | F37 and the v6 figures of notebook 09 are no longer cited by the report |
-| 8 | Revised capstone report | Implemented, tested | `report/report.md` v8: eleven sections, core within 3,500 words, every number in `results/report_numbers.csv` | poster and the Petrobras edition still describe v7 (their number tests read the frozen v7 table) |
+| 8 | Revised capstone report | Implemented, tested | `report/report.md` v8: eleven sections, core within 3,500 words, every number in `results/report_numbers.csv` | — (v9: both rewritten; see above) |
 | 9 | Executive capital-allocation memorandum | Implemented | the memo at the head of `report/report.md` | — |
 | 10 | Reproducibility and limitations statement | Implemented | report section 10 and Appendix C | a clean-environment run of v8 not yet done |
 

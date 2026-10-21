@@ -36,20 +36,22 @@ file.
 - I chose to report the case-design limit as it is.
 - Report v9 (`report/report.md`) is the executive version: core 4,223 words, limit 4,500.
 
-## What to do this session (phase 5), in order
+## What to do this session, in order
 
-1. **Poster** (`report/poster.typ`): rewrite it from report v9. Lead with the decision, the trade-off, the capital
-   line and the challenger result. Embed the redrawn workflow figure (F43) instead of F0. Switch
-   `tests/test_report.py::test_every_number_on_the_poster_is_in_report_numbers` from the frozen v7 table to
-   `results/report_numbers.csv`. Build with `make poster` and look at the PDF before calling it done.
-2. **Petrobras edition** (`report/petrobras_report.typ`): do the same from report v9, with figures from
-   `figures/executive/`. Switch its number test the same way. Build with `make petrobras` and look at every page.
-3. **README and status docs:** update the status line of `README.md` to v9 and bring `docs/v8_status.md` up to date
-   (or replace it with a v9 status table). Update `docs/demo_video_script.md` if its numbers or figures are stale.
-4. **Reproducibility:** run `make all` from PowerShell in the background, then `pytest`, and confirm no cited
-   number moved. Note that a clean Linux environment run of v9 has not been done; propose it with exact steps.
-5. **Journal and decisions:** add a dated entry to `docs/journal.md` and a numbered decision for any choice. Commit
-   with no trailers. **ASK ALAN** before pushing, merging into `main` or tagging.
+Phase 5 is done (decision #99): the poster and the Petrobras edition describe v9 and are tested against the live
+numbers table, the README and `docs/v8_status.md` describe v9, and `main` was fast-forwarded to `v8-corrections` and
+pushed on 2026-10-21. What remains:
+
+1. **A clean-environment run of v9** (Linux, Python 3.11, `requirements.txt`, `make setup`, `make all`, `pytest`), as
+   decision #87 did for v6: report which cited numbers, if any, differ, and why. Notebook 11 replays every advisor call
+   from `results/advisor_runs.jsonl`, so it needs no API key.
+2. **`docs/demo_video_script.md`** still describes v6: rewrite it from report v9 (the decision, the trade-off, the
+   capital line, the challenger result and its limit), at most five minutes.
+3. **The decision page** (`app/decide.py`, `make decide-page`): ASK ALAN whether to expose the challenger (statement in,
+   rules read back, memo and alternatives out) before the final submission; if yes, build it on `src/challenge.py`
+   with replay, and test it headless.
+4. **Journal and decisions** for anything done; commit with no trailers; push the branch you worked on. ASK ALAN
+   before tagging.
 
 ## Rules that matter most here
 
@@ -74,6 +76,6 @@ file.
 
 ## Open questions to put to me (ASK ALAN)
 
-- Push `v8-corrections`, merge into `main`, and tag v2.0?
+- Tag the release (v2.0) once the clean-environment run passes?
 - When will I write my own decision cases for the reserved slot of the challenger's registration?
 - Should the decision page (`app/decide.py`) expose the challenger before the final submission?

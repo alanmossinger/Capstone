@@ -1487,3 +1487,18 @@ alternative rejected.
     *Rejected:* a second registered round of argument-only cases (Alan:
     report the limit); 600-dpi PNGs for every figure (the PDF is vector; the
     DOCX keeps 450 dpi).
+99. **The poster and the Petrobras edition brought to v9; their numbers checked
+    against the live table** (Alan, 2026-10-20: "move and finish, including
+    commit and push"). The poster now leads with the 1 January 2025
+    decision, the workflow, the trade-off, what each part adds, the capital
+    plan and the challenger, with a recommendation; it embeds the SVGs. The
+    Petrobras edition keeps its executive form (cover letter, stages,
+    management model, recommendations) with every stage rewritten from report
+    v9; the v6/v7 books, the decision gym and the old advisor tables are
+    gone. Both number tests now read `results/report_numbers.csv`, as the
+    report's does, instead of the frozen v7 table. Notebook 10's advisor
+    evaluation excludes the challenger's calls, which are scored in
+    notebook 11. `main` is fast-forwarded to `v8-corrections` and both are
+    pushed (Alan: "merge"); no tag.
+    *Rejected:* keeping the frozen v7 table for the two derived documents
+    (they would describe results the report no longer stands behind).
