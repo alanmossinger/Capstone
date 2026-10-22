@@ -98,6 +98,42 @@ def pool(edition, gis, as_of=config.DECISION_DATE):
     return pd.DataFrame(rows)
 
 
+def live_pool(as_of=config.DECISION_DATE):
+    """Every ERCOT request live on the date by the as-of rule, with its size and the agreement date public by then.
+
+    Returns
+    -------
+    pandas.DataFrame
+        ``q_id``, ``type_clean``, ``mw`` (from the last report before the date),
+        ``ia_asof`` (the earliest agreement date public on the date: the 2024
+        edition's, or the IA Signed date of a report before the date; NaT
+        when none), ``source``.
+
+    Notes
+    -----
+    Notebook 04 takes the live ERCOT requests, their sizes and their
+    agreement dates from here, so the curves of the decision date condition
+    on what a committee could read that day; notebook 07's rule (the five
+    largest per technology) then gives the as-of candidates.
+    """
+    as_of = pd.Timestamp(as_of)
+    edition, _ = edition_2024()
+    gis = gis_reports()
+    everyone = pool(edition, gis, as_of)
+    g = gis[gis["report_month"] < as_of].copy()
+    g["q_id"] = g["q_id"].astype(str).str.strip()
+    latest = g[g["report_month"] == g["report_month"].max()]
+    active = set(latest.loc[latest["listed_as"].str.startswith("active"), "q_id"])
+    dead = set(g.loc[g["listed_as"].isin(["inactive", "cancelled"]), "q_id"])
+    if "energization_approved" in g:
+        dead |= set(g.loc[g["energization_approved"] <= as_of, "q_id"])
+    live = everyone[everyone["q_id"].isin(active) & ~everyone["q_id"].isin(dead)].copy()
+    signed = g[g["ia_signed"] <= as_of].groupby("q_id")["ia_signed"].min() if "ia_signed" in g else pd.Series(dtype="datetime64[ns]")
+    edition_ia = live.set_index("q_id")["ia_date"].where(lambda d: d <= as_of)
+    live["ia_asof"] = pd.concat([edition_ia, signed[signed.index.isin(live["q_id"])]], axis=1).min(axis=1).reindex(live["q_id"]).to_numpy()
+    return live[["q_id", "type_clean", "mw", "ia_asof", "source"]].reset_index(drop=True)
+
+
 def build(as_of=config.DECISION_DATE, per_tech=5):
     """The as-of candidates beside the 2025-edition candidates, one row per request in either set."""
     edition, _ = edition_2024()

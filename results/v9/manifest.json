@@ -1,0 +1,21 @@
+{
+  "frozen_from_commit": "8797879",
+  "frozen_on": "2026-10-22",
+  "why": "the v9 challenger experiments, registered (decision #96) and scored once on the 2025-edition candidate set; v10 moves the decision to the as-of set and never re-scores them",
+  "hash": "sha256 of the file with CRLF normalised to LF",
+  "files": {
+    "c31_sensitivity.json": "1a50be08adde578f09e8d16530d46029f6f2a494b8dab04092a4458dd3c0eb29",
+    "case_check.csv": "196ace31c143d79c8fd808b10f7dfa001c4220629a3f50f8d29c7600475b9e42",
+    "cases.csv": "46f5c3e7a2be1ea6d56b5010322295dd475ad5836ab0ab1d5eeeab39ef2cecb7",
+    "statements.csv": "7503f3a8842907946e9917b0a574062c35a180ba6f64a1579a3807d4e5db5225",
+    "success_criteria_v9.csv": "07e28cdf25973d70a08e3b3f31444b3f22eace38680d06356e321404ddb342e5",
+    "success_criteria_v9_registered.json": "fef7d87543e5f44f52738abc1feae1007d11aad42a0df9e8678ca2b91895e438",
+    "success_criteria_v9_scored.csv": "ef8648e982de740e475722e67bdf9baf79157753a99feee21f66a35fd0e83110",
+    "x1_outputs.jsonl": "f09dd0433076c75506c05dc06dc9263b182eb7249ec30d3f51578221bc6abee5",
+    "x1_scores.csv": "da055e59b35ced38fe7e425743b073ab4d04882ad77fdfd623ed016d3ffacda4",
+    "x2_per_case.csv": "8253cd1effa7fd978d4fedb7572f0a5400ab69f144f7c7a36fc41b22ddd2c7a2",
+    "x2_scores.csv": "f731d3dd82191f60e0491c2767b6f7959c574d541b88d282b845b51485d3f551",
+    "x3_outputs.jsonl": "b48cdcc9c2601a6810edfa345322a69a45438f05ebefddc3bdd88205c87e39fb",
+    "x3_scores.csv": "91febd78060f691868dd9078a432771f1053f9969ed2dba6a1d8efe02bcd53d4"
+  }
+}
