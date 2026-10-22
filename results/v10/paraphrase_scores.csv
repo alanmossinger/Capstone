@@ -1,0 +1,41 @@
+id,in_scope,correct,valid,read,not_representable
+P01,True,True,True,"{""max_p_loss"": 0.1}",
+P02,True,True,True,"{""max_cvar_musd"": 750}",
+P03,True,True,True,"{""excluded_technologies"": [""Gas CC""]}",
+P04,True,True,True,"{""liquidity_line_musd"": 1500}",
+P05,True,True,True,"{""min_utilization"": 0.9}",
+P06,True,True,True,"{""max_p_loss"": 0.05}","The statement gives no belief about prices, costs or delays, so no what-if is requested. We read 'a five percent chance of a loss' as a cap on the probability of loss (max_p_loss = 0.05), not as the worst-5% average loss (CVaR), which is a different measure and has no dollar limit stated."
+P07,True,True,True,"{""max_cvar_musd"": 600, ""excluded_technologies"": [""Storage""]}",
+P08,True,True,True,"{""lam"": 2}",
+P09,True,True,True,"{""lam"": 0}",
+P10,True,True,True,"{""excluded_ids"": [""REQ|ERCOT|25INR0008""]}",
+P11,True,True,True,"{""excluded_technologies"": [""Solar"", ""Storage""]}","The statement gives no market or cost belief that a what-if parameter can test, so no what-ifs are requested. The stated reason for excluding solar and storage is not given, so we cannot say what it rests on."
+P12,True,True,True,"{""liquidity_line_musd"": 1000}",
+P13,True,True,True,"{""max_p_loss"": 0.08, ""min_utilization"": 0.8}",
+P14,True,True,True,"{""lam"": 0.5}",
+P15,True,True,True,"{""max_cvar_musd"": 1200}",
+P16,True,True,True,"{""excluded_technologies"": [""Wind""]}","The statement gives no belief about markets or costs, only a policy exclusion, so no what-if is requested."
+P17,True,True,True,"{""excluded_technologies"": [""Lease redevelopment""]}","The statement gives no reason for the exclusion, so there is no belief to test with a what-if. The proposed book also contradicts the statement, because it lists five leases (LEASE|G26253, LEASE|G09982, LEASE|G16942, LEASE|G17015, LEASE|G25814). I followed the statement and excluded the technology."
+P18,True,True,True,"{""liquidity_line_musd"": 500}",
+P19,True,True,True,"{""min_utilization"": 0.75}",
+P20,True,True,True,"{""max_p_loss"": 0.15}",
+P21,True,True,True,"{""excluded_ids"": [""REQ|ERCOT|26INR0113"", ""REQ|ERCOT|26INR0155""]}","The statement does not say why the two requests are left out, so there is no market or cost belief to test. The proposed book also lists REQ|ERCOT|26INR0113, which contradicts the statement; we follow the statement and exclude it."
+P22,True,True,True,"{""lam"": 4}",
+P23,True,True,True,"{""excluded_technologies"": [""Storage""], ""max_cvar_musd"": 900}",
+P24,True,True,True,"{""liquidity_line_musd"": 2000}",
+P25,True,True,True,"{""max_p_loss"": 0.06}",
+P26,True,True,True,"{""excluded_technologies"": [""Gas CC""], ""max_p_loss"": 0.12}",
+P27,True,True,True,"{""min_utilization"": 0.6}",
+P28,True,True,True,"{""max_cvar_musd"": 450}",
+P29,True,True,True,"{""lam"": 1}",
+P30,True,True,True,"{""excluded_technologies"": [""Solar""], ""liquidity_line_musd"": 800}",
+P31,True,True,True,"{""excluded_ids"": [""LEASE|G14658""]}",
+P32,True,True,True,"{""lam"": 0, ""excluded_technologies"": [""Storage""]}",
+P33,False,True,True,{},"The two-point rise in interest rates, which would change the discount rate and financing cost. No parameter holds a discount rate or financing cost, and the cost multipliers and delay_years would only be indirect proxies, so we ask for no what-if."
+P34,False,True,True,{},"The 80 dollars a tonne carbon charge cannot be held by any preference field or what-if parameter; the closest parameter, credits, only switches existing credits on or off and does not set a carbon price."
+P35,False,True,True,{},"The 12% internal rate of return hurdle cannot be held by any preference field or what-if parameter, because the model has no IRR threshold. The statement also gives no number for tail weight, loss probability, CVaR limit, exclusions, liquidity line or minimum utilization, so we left them out rather than guess."
+P36,False,True,True,{},"The ESG rating screen cannot be held by these fields. No field filters on ESG rating, and the tables give no ratings that would let us map the rule to specific excluded_ids or excluded_technologies without guessing. The statement also rests on no market or cost belief that a what-if parameter can test."
+P37,False,True,True,{},"A futures-market hedge, meaning a position in oil futures taken before commitment, cannot be held by these fields. The model can only show the book's results under a different oil price path."
+P38,False,True,True,{},"A year-by-year 5% escalation path cannot be entered; the two multipliers (1.16, about three years of 5% compounding) are our stand-in for it, and the statement gives no horizon. The fields also cannot say whether revenues inflate along with costs."
+P39,False,True,True,{},"Partner co-investment appeal is not a field here, and the tables hold no partner interest data. A preference for it cannot be turned into a tail weight, a risk limit, an exclusion or a what-if without guessing a number the statement does not give."
+P40,False,True,True,{},"Hydrogen is not a candidate technology (the list is Gas CC, Lease redevelopment, Solar, Storage, Wind) and no candidate id is a hydrogen project, so we cannot add or force in hydrogen. The proposed book holds only lease and ERCOT request ids, and the model cannot test a belief about hydrogen markets or costs."

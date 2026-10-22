@@ -1615,3 +1615,23 @@ alternative rejected.
     date); refitting the hazard models on the 2024 edition (it lacks the
     2024 exits the ISOs had published, and would discard a year of the
     test cohort for no gain in honesty).
+106. **The raw inputs travel as a manifest, a fetch command and a bundle,
+    not as committed files** (Alan, 2026-10-22: "fix it and get all data",
+    for a grader who runs the project end to end). `data/raw_manifest.csv`
+    lists the 111 raw files with source, size and SHA-256;
+    `python -m src.get_data check` compares the disk with it, `fetch`
+    downloads every file a script can get through the pipeline's own
+    fetchers (BSEE, EIA, NREL, EPA, the LBNL 2024 edition) and names the
+    route of each file it cannot (LBNL 2025 and 2026: browser download
+    behind a bot check; ERCOT: two GitHub workflows on a U.S. runner; the
+    ISO queue snapshots: dated), and `bundle` zips the verified folder
+    (137 MB) for a reader on request. A file whose hash differs is
+    reported, never used. `make setup` now builds `.venv` from Python 3.11
+    by name (`py -3.11` / `python3.11`): on this machine plain `python` is
+    3.13, and an editor re-pointed `.venv` at 3.12 on 22 October, which
+    broke every import until `pyvenv.cfg` was restored. Every notebook
+    names the `queue-survival` kernel, tested.
+    *Rejected:* committing `data/raw/` (the LBNL 2025 file carries no
+    redistribution grant, S1; 276 MB); Git LFS for the same reason;
+    re-downloading at run time as the only route (the dated snapshots and
+    EIA's revised workbooks would not reproduce the recorded hashes).

@@ -1,0 +1,40 @@
+{"id": "P01", "status": "read", "preferences": {"max_p_loss": 0.1}, "not_representable": ""}
+{"id": "P02", "status": "read", "preferences": {"max_cvar_musd": 750}, "not_representable": ""}
+{"id": "P03", "status": "read", "preferences": {"excluded_technologies": ["Gas CC"]}, "not_representable": ""}
+{"id": "P04", "status": "read", "preferences": {"liquidity_line_musd": 1500}, "not_representable": ""}
+{"id": "P05", "status": "read", "preferences": {"min_utilization": 0.9}, "not_representable": ""}
+{"id": "P06", "status": "read", "preferences": {"max_p_loss": 0.05}, "not_representable": "The statement gives no belief about prices, costs or delays, so no what-if is requested. We read 'a five percent chance of a loss' as a cap on the probability of loss (max_p_loss = 0.05), not as the worst-5% average loss (CVaR), which is a different measure and has no dollar limit stated."}
+{"id": "P07", "status": "read", "preferences": {"max_cvar_musd": 600, "excluded_technologies": ["Storage"]}, "not_representable": ""}
+{"id": "P08", "status": "read", "preferences": {"lam": 2}, "not_representable": ""}
+{"id": "P09", "status": "read", "preferences": {"lam": 0}, "not_representable": ""}
+{"id": "P10", "status": "read", "preferences": {"excluded_ids": ["REQ|ERCOT|25INR0008"]}, "not_representable": ""}
+{"id": "P11", "status": "read", "preferences": {"excluded_technologies": ["Solar", "Storage"]}, "not_representable": "The statement gives no market or cost belief that a what-if parameter can test, so no what-ifs are requested. The stated reason for excluding solar and storage is not given, so we cannot say what it rests on."}
+{"id": "P12", "status": "read", "preferences": {"liquidity_line_musd": 1000}, "not_representable": ""}
+{"id": "P13", "status": "read", "preferences": {"max_p_loss": 0.08, "min_utilization": 0.8}, "not_representable": ""}
+{"id": "P14", "status": "read", "preferences": {"lam": 0.5}, "not_representable": ""}
+{"id": "P15", "status": "read", "preferences": {"max_cvar_musd": 1200}, "not_representable": ""}
+{"id": "P16", "status": "read", "preferences": {"excluded_technologies": ["Wind"]}, "not_representable": "The statement gives no belief about markets or costs, only a policy exclusion, so no what-if is requested."}
+{"id": "P17", "status": "read", "preferences": {"excluded_technologies": ["Lease redevelopment"]}, "not_representable": "The statement gives no reason for the exclusion, so there is no belief to test with a what-if. The proposed book also contradicts the statement, because it lists five leases (LEASE|G26253, LEASE|G09982, LEASE|G16942, LEASE|G17015, LEASE|G25814). I followed the statement and excluded the technology."}
+{"id": "P18", "status": "read", "preferences": {"liquidity_line_musd": 500}, "not_representable": ""}
+{"id": "P19", "status": "read", "preferences": {"min_utilization": 0.75}, "not_representable": ""}
+{"id": "P20", "status": "read", "preferences": {"max_p_loss": 0.15}, "not_representable": ""}
+{"id": "P21", "status": "read", "preferences": {"excluded_ids": ["REQ|ERCOT|26INR0113", "REQ|ERCOT|26INR0155"]}, "not_representable": "The statement does not say why the two requests are left out, so there is no market or cost belief to test. The proposed book also lists REQ|ERCOT|26INR0113, which contradicts the statement; we follow the statement and exclude it."}
+{"id": "P22", "status": "read", "preferences": {"lam": 4}, "not_representable": ""}
+{"id": "P23", "status": "read", "preferences": {"excluded_technologies": ["Storage"], "max_cvar_musd": 900}, "not_representable": ""}
+{"id": "P24", "status": "read", "preferences": {"liquidity_line_musd": 2000}, "not_representable": ""}
+{"id": "P25", "status": "read", "preferences": {"max_p_loss": 0.06}, "not_representable": ""}
+{"id": "P26", "status": "read", "preferences": {"excluded_technologies": ["Gas CC"], "max_p_loss": 0.12}, "not_representable": ""}
+{"id": "P27", "status": "read", "preferences": {"min_utilization": 0.6}, "not_representable": ""}
+{"id": "P28", "status": "read", "preferences": {"max_cvar_musd": 450}, "not_representable": ""}
+{"id": "P29", "status": "read", "preferences": {"lam": 1}, "not_representable": ""}
+{"id": "P30", "status": "read", "preferences": {"excluded_technologies": ["Solar"], "liquidity_line_musd": 800}, "not_representable": ""}
+{"id": "P31", "status": "read", "preferences": {"excluded_ids": ["LEASE|G14658"]}, "not_representable": ""}
+{"id": "P32", "status": "read", "preferences": {"lam": 0, "excluded_technologies": ["Storage"]}, "not_representable": ""}
+{"id": "P33", "status": "read", "preferences": {}, "not_representable": "The two-point rise in interest rates, which would change the discount rate and financing cost. No parameter holds a discount rate or financing cost, and the cost multipliers and delay_years would only be indirect proxies, so we ask for no what-if."}
+{"id": "P34", "status": "read", "preferences": {}, "not_representable": "The 80 dollars a tonne carbon charge cannot be held by any preference field or what-if parameter; the closest parameter, credits, only switches existing credits on or off and does not set a carbon price."}
+{"id": "P35", "status": "read", "preferences": {}, "not_representable": "The 12% internal rate of return hurdle cannot be held by any preference field or what-if parameter, because the model has no IRR threshold. The statement also gives no number for tail weight, loss probability, CVaR limit, exclusions, liquidity line or minimum utilization, so we left them out rather than guess."}
+{"id": "P36", "status": "read", "preferences": {}, "not_representable": "The ESG rating screen cannot be held by these fields. No field filters on ESG rating, and the tables give no ratings that would let us map the rule to specific excluded_ids or excluded_technologies without guessing. The statement also rests on no market or cost belief that a what-if parameter can test."}
+{"id": "P37", "status": "read", "preferences": {}, "not_representable": "A futures-market hedge, meaning a position in oil futures taken before commitment, cannot be held by these fields. The model can only show the book's results under a different oil price path."}
+{"id": "P38", "status": "read", "preferences": {}, "not_representable": "A year-by-year 5% escalation path cannot be entered; the two multipliers (1.16, about three years of 5% compounding) are our stand-in for it, and the statement gives no horizon. The fields also cannot say whether revenues inflate along with costs."}
+{"id": "P39", "status": "read", "preferences": {}, "not_representable": "Partner co-investment appeal is not a field here, and the tables hold no partner interest data. A preference for it cannot be turned into a tail weight, a risk limit, an exclusion or a what-if without guessing a number the statement does not give."}
+{"id": "P40", "status": "read", "preferences": {}, "not_representable": "Hydrogen is not a candidate technology (the list is Gas CC, Lease redevelopment, Solar, Storage, Wind) and no candidate id is a hydrogen project, so we cannot add or force in hydrogen. The proposed book holds only lease and ERCOT request ids, and the model cannot test a belief about hydrogen markets or costs."}

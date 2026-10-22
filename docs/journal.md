@@ -1765,3 +1765,23 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 1. `results/v10/cases_v10.json`, `paraphrases.json`, `injections.json` (from the form and the drafts).
 2. The 2024 LBNL edition and the 2024 GIS reports: hash them into `config`, run `python -m src.asof_candidates` (to be written on the pattern of `decision_date.candidates_as_of`), and if the candidate set changes, rerun notebooks 07–12 before registering.
 3. `python -m src.challenge_v10 register`; commit; `python -m src.challenge_v10 run` in the background (about 48 × 2 + 40 + 20 × 2 = 176 calls); `python run_pipeline.py --only 12`; reading cells; keys; report.
+
+## Session 22 — 2026-10-22: the as-of switch, the registered v10 run, and the data for a grader (decisions #105, #106)
+
+**Done**
+
+- Decision #105 applied: notebooks 04–12 rerun on the candidates public on 1 January 2025 (16 of the 20 stand; book D is now 5 leases and 8 requests, $2.17B expected, $0.82B worst-5% loss; D over the NPV ranking +$219M [+13, +401]); the v9 record frozen with a hash manifest; the registration written and committed before any call (62b2100).
+- The live v10 run: 176 calls, none failed, every record present (`results/v10/*_outputs.jsonl`). Notebook 12 replayed and scored the nine lines (`results/v10/success_criteria_v10_scored.csv`): six of eight graded lines pass. C33 +$219M [+13, +401] PASS; C34 +$43M [+9, +86] PASS; C35 +$76M [+13, +140] PASS; C36 +$134M [+72, +211] reported; C37 38 of 48 FAIL (eight readings set the tail weight to 0 where the statement is silent and the key keeps 1; two invented an exclusion); C38 40 of 40 PASS; C39 15 of 20 held and 7 memos with an ungrounded number FAIL; C40 0 of 12 PASS; C41 12 of 12 PASS. H8 and H10 supported, H9 not. The model's arm sits behind the checklist in the ERCOT-25%-lower world (274 against 359 $M) and ahead in three of the other four. Nothing re-scored; the reading cell of section 6 says all of this.
+- Report keys `v10_c33`…`v10_c41`, `v10_pass` (`results/report_numbers.csv`, 2,539 numbers).
+- For the grader's end-to-end run (decision #106, b59de91): `data/raw_manifest.csv` lists the 111 raw files with source and SHA-256; `python -m src.get_data check | fetch | bundle` (`make check-data`, `get-data`, `bundle-data`); `data/README.md` S18 and S19; `make setup` builds `.venv` from Python 3.11 by name; every notebook names the `queue-survival` kernel (`tests/test_notebooks.py`). The bundle (137 MB) is in `dist/`, git-ignored, for a reader on request.
+- An editor re-pointed `.venv/pyvenv.cfg` at Python 3.12 at 13:28 and every import broke; restored to 3.11.9. 273 tests pass.
+
+**Next**
+
+1. The reading and takeaway cells of notebooks 04–11 still quote the pre-switch numbers; rewrite them from the rerun outputs.
+2. Report v10 (Q0–Q3; title kept) and the poster from the v10 keys; then `REPORT_V10_WRITTEN = True` in `tests/test_report.py` so the document tests read the live table.
+3. The clean Linux run (needs Alan's sudo for python3.11 and poppler).
+
+**Open questions for Alan**
+
+- C37 and C39 failed on a specific reading habit (silence read as zero tail weight; numbers not on the sheet). The report states the failures as registered. A follow-up test with a prompt that states the default explicitly would be post-registration and labelled as such — only if Alan wants it.
