@@ -80,12 +80,30 @@ PJM market monitor's report from its PDF; the parser uses `pdftotext -layout`, s
 make setup     # .venv, pinned packages, Jupyter kernel "queue-survival"
 ```
 
-1. Save `lbnl_ix_queue_data_file_thru2024_v2.xlsx` in `data/raw/lbnl/`.
+Every notebook runs on the `queue-survival` kernel, which `make setup` registers from the project's `.venv`
+(Python 3.11, the pinned packages of `requirements.txt`). `make all` and `run_pipeline.py` select it themselves; to run
+a notebook by hand in Jupyter or VS Code, pick "Python 3.11 (queue-survival)" and run it from the top.
+
+1. Get the raw files. `data/raw/` is not in the repository (the LBNL file carries no redistribution grant), and
+   `data/raw_manifest.csv` lists all 111 files it must hold, each with its source and SHA-256. With the author's bundle
+   (`raw_data_bundle.zip`, 137 MB, available on request), unzip it into the repository root and run
+
+   ```bash
+   make check-data
+   ```
+
+   which must end with "111 of 111 raw files present with the recorded hash". Without the bundle, `make get-data`
+   downloads every file a script can fetch (BSEE, EIA, NREL, EPA, the LBNL 2024 edition) and prints, for each file it
+   cannot, the route in [`data/README.md`](data/README.md): the LBNL 2025 and 2026 files are a browser download from
+   <https://emp.lbl.gov/queues> (S1, S6); the ERCOT files come from two GitHub workflows run in the United States (S16,
+   S18, S19); the ISO queue snapshots are dated, so a fresh download is a different file (S7). The results in this
+   repository were computed on the files the manifest records, and a file whose hash differs is reported, never used
+   silently.
 2. Copy `.env.example` to `.env` and add your EIA API key. For live advisor calls either add `ANTHROPIC_API_KEY` or sign in to the `claude` command line with a Claude subscription (`claude auth login`); with neither, the advisor replays its record. The replay is keyed on the exact prompt text, which includes the result tables, so it reproduces exactly on the machine that recorded it; on another platform, floating-point differences in the last decimals of a table can miss the record for a few calls, which then need a live backend. To challenge your own decision at the keyboard, run `python -m src.advisor`: state the book you prefer, answer the advisor's five questions, and read its verdict and the opposing case (the transcript goes to `results/advisor_transcripts/`).
 3. Run:
 
 ```bash
-make all       # notebooks 01 → 10 in dependency order (06, the record, runs last), stopping at the first error
+make all       # notebooks 01 → 12 in dependency order (06, the record, after 09), stopping at the first error
 make test      # pytest
 make report    # report/report.pdf and report/report.docx from report/report.md + references.md (needs pandoc and typst)
 make poster    # report/poster.pdf from report/poster.typ (needs typst)

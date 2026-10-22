@@ -2,16 +2,27 @@
 
 ifeq ($(OS),Windows_NT)
 PYTHON := .venv/Scripts/python.exe
+PY311 := py -3.11
 else
 PYTHON := .venv/bin/python
+PY311 := python3.11
 endif
 
-.PHONY: setup data eda features forecast energy economics scenarios portfolio record advisor decide figures numbers report poster petrobras app challenge decide-page test all
+.PHONY: setup get-data check-data bundle-data data eda features forecast energy economics scenarios portfolio record advisor decide figures numbers report poster petrobras app challenge decide-page test all
 
-setup:            ## create .venv, install pinned packages, register the notebook kernel
-	python -m venv .venv
+setup:            ## create .venv from Python 3.11 (the pinned wheels are 3.11 builds), install pinned packages, register the notebook kernel
+	$(PY311) -m venv .venv
 	$(PYTHON) -m pip install -r requirements.txt
 	$(PYTHON) -m ipykernel install --user --name queue-survival --display-name "Python 3.11 (queue-survival)"
+
+get-data:         ## download every raw file a script can fetch, then check all of data/raw/ against data/raw_manifest.csv
+	$(PYTHON) -m src.get_data fetch
+
+check-data:       ## check every raw file against data/raw_manifest.csv (what each missing file needs is printed)
+	$(PYTHON) -m src.get_data check
+
+bundle-data:      ## zip the verified data/raw/ into dist/raw_data_bundle.zip for a reader without the sources
+	$(PYTHON) -m src.get_data bundle
 
 data:             ## 01: sources, cleaning rules R1–R9, the 2026 edition, readiness gates
 	$(PYTHON) run_pipeline.py --only 01

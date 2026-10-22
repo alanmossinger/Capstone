@@ -1,0 +1,112 @@
+source,path,bytes,sha256,how,where
+S12,atb/ATBe_2024_v3.parquet,5023141,22e75dfcb93f8c61e94f9fa3390f04bf943d67ad224b1c6b428c71cfbea7350b,script,https://oedi-data-lake.s3.amazonaws.com/ATB/electricity/parquet/2024/v3.0.0/ATBe.parquet
+S19,bsee/forward/ogora2025delimit.zip,1318404,9b8ddc4bfbe501b83b43447e614dc127e03ee3c118c7064bb8cac41c80b8cf6b,script,https://www.data.bsee.gov/Production/Files/ogora2025delimit.zip
+S13,bsee/ogora2010delimit.zip,3713971,6c30b70eb5d466d129e1823a6034262f4a68be2aecf8c9587ccdb549cf85ffe2,script,https://www.data.bsee.gov/Production/Files/ogora{year}delimit.zip
+S13,bsee/ogora2011delimit.zip,3487552,43a428a1ba3ab3980d9b044ee0c17ef4ee63138b3d2768e48e75511f054de515,script,https://www.data.bsee.gov/Production/Files/ogora{year}delimit.zip
+S13,bsee/ogora2012delimit.zip,3248788,48e9c6605532cbaa460413ff6e4e7a20afbb44b1a5f37e1dd21b7aa5ec117169,script,https://www.data.bsee.gov/Production/Files/ogora{year}delimit.zip
+S13,bsee/ogora2013delimit.zip,3043357,817cfb86d5e322d949d3cf274c28bf1f54552bf11943f4cbc5163f03716ad861,script,https://www.data.bsee.gov/Production/Files/ogora{year}delimit.zip
+S13,bsee/ogora2014delimit.zip,2835377,b9e411e2f5140a58def54f1c768a2f45f3a47dfcceb61ae1d820a2aa88e0fde9,script,https://www.data.bsee.gov/Production/Files/ogora{year}delimit.zip
+S13,bsee/ogora2015delimit.zip,2686362,5f6ed6d9994b057f537bbe12ffda353758caf4ca76a12b3a4fafb142157da379,script,https://www.data.bsee.gov/Production/Files/ogora{year}delimit.zip
+S13,bsee/ogora2016delimit.zip,2548266,a3508009decd0c364c3c583b97129e46a29dc4367e7a17d533f6446900e0d2e8,script,https://www.data.bsee.gov/Production/Files/ogora{year}delimit.zip
+S13,bsee/ogora2017delimit.zip,2436065,42b49e5e6b42689d4b0e1c4b54065f997a1d41b90b3f90a32f67736755d53ef3,script,https://www.data.bsee.gov/Production/Files/ogora{year}delimit.zip
+S13,bsee/ogora2018delimit.zip,2366853,b67c78096ebdfd87117f2084198344a92fb52a9c20d728b6f05058438480eb4e,script,https://www.data.bsee.gov/Production/Files/ogora{year}delimit.zip
+S13,bsee/ogora2019delimit.zip,2287358,55ff6c3730217fef382db46e042602e7bebb48adb26aad2742c0e33f1976f4cd,script,https://www.data.bsee.gov/Production/Files/ogora{year}delimit.zip
+S13,bsee/ogora2020delimit.zip,2072910,8b6671d162386835bff314a37625a49b40496f66eade014c1ad3c9c908587a7f,script,https://www.data.bsee.gov/Production/Files/ogora{year}delimit.zip
+S13,bsee/ogora2021delimit.zip,1843905,4682ca4a46c1038f9adf5c13cf027b86fa90873fcb4b30253dbe119171ff572c,script,https://www.data.bsee.gov/Production/Files/ogora{year}delimit.zip
+S13,bsee/ogora2022delimit.zip,1689432,eecaadb013302dc556d8d671bac85e1a4a3038650d2eef2ef2172afc4a89d0ce,script,https://www.data.bsee.gov/Production/Files/ogora{year}delimit.zip
+S13,bsee/ogora2023delimit.zip,1636553,9eec15733dedfbc6e553bcda9992708c21c8d0a1701689b401ae039aa24bca53,script,https://www.data.bsee.gov/Production/Files/ogora{year}delimit.zip
+S13,bsee/ogora2024delimit.zip,1399826,24b0117516b717fcf2e026635bf94a27cdf0550b02c47c68ff4aa4e84293c54a,script,https://www.data.bsee.gov/Production/Files/ogora{year}delimit.zip
+S17,egrid/egrid2023_data_rev1.xlsx,21191399,e79bca56148facb7edd02ed4eac0af36e713f4d72d79c02954b5cc24b34e7846,script,https://www.epa.gov/system/files/documents/2025-01/egrid2023_data_rev1.xlsx
+S2,eia860m/api_2026-07_page0.json,3901784,1319beb2c33c6c49b5e70bc64473b87b6ad1f250da724e31fa5a7ddca4e07c3c,script,EIA API v2 with EIA_API_KEY in .env
+S2,eia860m/api_2026-07_page1.json,3920295,ec92e3a32ce56b2d5e85113bb43313b061c8e12b4e598410a9de229a08134755,script,EIA API v2 with EIA_API_KEY in .env
+S2,eia860m/api_2026-07_page2.json,3938501,b664fc0433ac871d5a30775b8610bd4b63d8b32d9edef0d004b67b2ef5e85c56,script,EIA API v2 with EIA_API_KEY in .env
+S2,eia860m/api_2026-07_page3.json,3885338,d571d8a857cf1869ced5ba43d1417c729603988d5d3e0210a37c1761d81e9ead,script,EIA API v2 with EIA_API_KEY in .env
+S2,eia860m/api_2026-07_page4.json,3885937,e6f60b74ade1acdcd2db50529bd6acb6c34e6762c8c1f6ee46c71bca96881d77,script,EIA API v2 with EIA_API_KEY in .env
+S2,eia860m/api_2026-07_page5.json,2568206,692d7392a325102811d281d6e8410084e9e44ee861487a8ec3002e6b0f10a426,script,EIA API v2 with EIA_API_KEY in .env
+S2,eia860m/eia860m_2026-07.parquet,1209042,90c124458c2a6aa88fc620a5fd8fb85f7aa408d068841b4e5fa9922f798fab54,script,EIA API v2 with EIA_API_KEY in .env
+S2,eia860m/eia860m_2026-07_pull_log.json,79,24a4ae8c7a05caeb4ce85172bb4c4ac5365e67b499830f4c0d22193d1fb9651b,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page0.json,2707579,cebb3af22dda13a6bb7b29c7d5b88276fa3598f06ba8d4a151a7d11d741176ce,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page1.json,2709687,25cbdeed7297d84b4ccc58308bb67ad7ef2a5f2624b493e014cb950ae7edd18b,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page10.json,2703494,41a597930d2e5672be9c400f4482d22b8e22990d4854a1078013e5569c7a6a80,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page11.json,2709098,31226895c70e23677f2b136d1ce3bd7542c9c1bff131c9aa46173da6f010a87b,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page12.json,2703229,d2e0e3dd3dc883d1b3e9d1564403d0d12fe1c5745e0249f90cbe11e677c2f63f,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page13.json,2695903,01fe44250dd32980915f87596da051d954ff51ab5b3de4d43c8ecd0fd1369de0,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page14.json,2696084,168bd3e2d07372610903de502e7415d181d9449f47d356da0b652abc4502b13e,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page15.json,2701102,6284b6f5a77b6e051bb63646a5dba2641833b4a1f01ca40252565ebf91e39e06,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page16.json,2692196,89d11989b40ff1528146f26c4513ad3720eb29060b4c80eb6922bc26564986d0,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page17.json,2686992,af7376422cb0ace66edd6302f70c452275a26823236b6bd165f861ba9bd5f388,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page18.json,2691894,39ee4898434752489fbf5f28082709757112e13c99c7c20bd02d3c3a3e579356,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page19.json,2691612,e51337c6c84120f721e945f27488d722184c50a20f2852c8118c0c711695ce68,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page2.json,2710765,7a8a915692386badf3880e0fdecae774da3afafea78b11c7f8b9fdfa0f10a41c,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page20.json,2693314,653df01bdfc04622ae54ef697ead0903ac3d88a8dc3884b2f790dec37c5bdf7d,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page21.json,2691671,c83b8a0bf142381c156bc35c9682d44c437fb74accf403e820aa3b757f2c1c1e,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page22.json,2689974,24d7b8a3618c45266d47579ff4150744f6319f09bf58cd01a2f70bae019a855c,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page23.json,2689358,681eacce93fe55b9ffb2d19f3e01cb0abb37ad9062161a8518622d04015a270f,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page24.json,2680132,c869d9023a9c157a29b6e05558563d70ff4c2f232e9b6751d4f589d966f69326,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page25.json,2679852,d2a10eac3816dfc9f56112c4ceb2039d3b3221d6a20377089e629e11bc2d1c17,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page26.json,2682532,3eaa01d7ce5b7daad75035e98937d738acf6d01fece9b663313c5a4ea97b7fbb,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page27.json,2686378,686c82dabb83392dcee722e097b36de06e03c58ff8ec961f7d62928dd3812e9f,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page28.json,2686927,727fcff0ec8d9f68a93d0f97d591097edc87f8b24721c74ec7a1da57b0dec4b1,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page29.json,2683051,a7413e4d3d3771b1a7e0a94ab89b14265b7487a93e04c7f5bec6ec3a94c171b3,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page3.json,2708259,4bc82d488ba8d42eecd607b604025a383c3d975d09ddde7b31705829a650c2f8,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page30.json,2682608,4ba4cfd3783f6c979dcafb8ae440bf4bf0fa60d68a3c80cf7363e53555e5ac1f,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page31.json,2674116,cb48d1547c09c9196173aeaa0a5571c70ebf5d073a9c1a079e24aa2c155c9a6d,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page32.json,2684253,8176a413973cedfb185488cebd34b8c0103b21ad13d4aa353d75b5c0f18c8ad2,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page33.json,2687264,87ecf1091ac28f304cbf472bf2171f4062816f7bd3ddeb459f29c256285c0470,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page34.json,2678720,324c188f02ba2ca53005fa0ff946e3f61bf8c3f761cd3f13c14b9b3863281eba,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page35.json,2682567,630862634ed52c43e1729668afbaafbdaebe77594f7b02a81cb346204b7a5ca4,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page36.json,2687348,5ce27b33790d60d0068a345604433d9bc1e09d83f4eac8c28b0f6edad7392439,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page37.json,930486,4c034fb60c2aa8c49b4bdb0b70966aad50626d41b0724a529ff60d6d0f7d1667,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page4.json,2706509,71038ba664f1d648cc99e9ee4f0219926cd6f9505e6175e12090462fba7ef210,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page5.json,2707120,00329958af45d2fce5fb7ce4552b6d5d2329eb2918028b8324b9a4b3b5854c89,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page6.json,2707063,e93adbe93db669112a022d8ea59f7006f5f55404c5ffa5ebcc9bbb46e0eb5c9e,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page7.json,2707900,4ee52070e7432e5c53ef8ee4ba46563ec28caa06019772e7616ecde7e7480e21,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page8.json,2705756,13e1b917e60de875631cf571a2f8ecb61ff7c55b3f90ed3359cdd146b3952b7c,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/api_TX_2018-2024_page9.json,2703299,5ad647fea34cae8373fa097cb95e6e09fe532fc02ef93df01f6b1d1abf524a11,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/eia923_TX_2018-2024.parquet,2830927,73d624d17ab56eed29ba1d5946fb2f9b1350ca0de8f5e00b67e5e42840115432,script,EIA API v2 with EIA_API_KEY in .env
+S14,eia923/eia923_TX_2018-2024_pull_log.json,120,d2a1791744e2ab5bb9e3c75103bc4fa6ea74fc7d5ad82497f509a311255b4677,script,EIA API v2 with EIA_API_KEY in .env
+S16,ercot/ercot_dam_mcpc_2024.parquet,91804,7c481f7b8a5d992294af66d5223f774ed7a04a27d1280512bcaa708bce2fdc45,workflow,gh workflow run ercot_history.yml -f first_year=2018 -f last_year=2023; the 2024 files as data/README.md S16
+S16,ercot/ercot_dam_spp_2018.parquet,534838,3c01950a105297ab924d7e28d740e17381942ab8736b406be8000958259d9e91,workflow,gh workflow run ercot_history.yml -f first_year=2018 -f last_year=2023; the 2024 files as data/README.md S16
+S16,ercot/ercot_dam_spp_2019.parquet,551724,248498491439c250a1b0823b56d5c5b6f5a96baa0fea8ca4d10d3bfc195c4cd7,workflow,gh workflow run ercot_history.yml -f first_year=2018 -f last_year=2023; the 2024 files as data/README.md S16
+S16,ercot/ercot_dam_spp_2020.parquet,547058,68caf44dbae2e6cb1d9f8892d448c1e0c0a53a5a2105312bdf5afa678a59055c,workflow,gh workflow run ercot_history.yml -f first_year=2018 -f last_year=2023; the 2024 files as data/README.md S16
+S16,ercot/ercot_dam_spp_2021.parquet,578056,bdcc3a4281af99bf684e42035577b739d3dd317e58c604dea12da2cefe7d8074,workflow,gh workflow run ercot_history.yml -f first_year=2018 -f last_year=2023; the 2024 files as data/README.md S16
+S16,ercot/ercot_dam_spp_2022.parquet,611873,27d161f1ab2647eb6e06f04da74b0095cdb0e64fee4441a4f29ad5f6bfc9a16c,workflow,gh workflow run ercot_history.yml -f first_year=2018 -f last_year=2023; the 2024 files as data/README.md S16
+S16,ercot/ercot_dam_spp_2023.parquet,594534,10e135cbf56914e0d566383baa152539305486e5885f7fa07b7f528d2d1328f1,workflow,gh workflow run ercot_history.yml -f first_year=2018 -f last_year=2023; the 2024 files as data/README.md S16
+S16,ercot/ercot_dam_spp_2024.parquet,581563,dc212cf26ea601e2bd09e48ac44ddbc9154305e044e77b2dc7edd88f2218c083,workflow,gh workflow run ercot_history.yml -f first_year=2018 -f last_year=2023; the 2024 files as data/README.md S16
+S16,ercot/ercot_native_load_2024.parquet,167056,9dad8c1a23ec12dea68b95264fb27146c279aecd0094da780ed1bdf6de64f1c4,workflow,gh workflow run ercot_history.yml -f first_year=2018 -f last_year=2023; the 2024 files as data/README.md S16
+S16,ercot/ercot_rtm_spp_2024.parquet,2948568,cacfffbb1158bf42a965ad3539bd310e2c79006d93be910ca594a763e7f9b385,workflow,gh workflow run ercot_history.yml -f first_year=2018 -f last_year=2023; the 2024 files as data/README.md S16
+S16,ercot/ercot_wind_solar_2024.parquet,242540,b08fab037aa3ef3a6d71fe0a100ab6b7e122dfcbddef2bee74f2bf9b4ade0397,workflow,gh workflow run ercot_history.yml -f first_year=2018 -f last_year=2023; the 2024 files as data/README.md S16
+S19,forward/ercot_dam_spp_2025.parquet,568596,e00819f0cc6dcf7b9fc1f26e045dd6d522695ecf544fb5d8c579ed1667e87a1c,workflow,gh workflow run ercot_history.yml -f first_year=2025 -f last_year=2025; save in data/raw/forward/
+S11,geo/cb_2020_us_county_20m.zip,893148,9394913edbd6f72791b06b84509e59ea2d275d10b73ae27ef87df3bdb061890c,hand,data/README.md S11
+S11,geo/cb_2020_us_state_20m.zip,188558,1d872779cbfa2c2bf828850664aa9593a35844205e2e4bed5aeb78affb8da050,hand,data/README.md S11
+S7,iso/caiso_queue_2026-10-06.parquet,159931,5faa0869e0e200942086255708b14e1e0800541761d7b81ca08d4ae039412378,hand,"dated snapshots of the CAISO, PJM and ERCOT queues (data/README.md S7); a new download is a different snapshot"
+S7,iso/ercot_gis_2026-10-07.xlsx,673369,016cddbb7082fd30e02ede6242e3f33adc79ca0f2e7fb49bc9079ebde2671d58,hand,"dated snapshots of the CAISO, PJM and ERCOT queues (data/README.md S7); a new download is a different snapshot"
+S18,iso/gis_2024/RPT.00015933.0000000000000000.20240501.161916854.GIS_Report_April_2024.xlsx,618721,439911ea4f399fb05b22b20a10b5710eb732bdcefed85662ce302c35c11bc721,workflow,gh workflow run ercot_gis.yml; save the artifact's eight files in data/raw/iso/gis_2024/
+S18,iso/gis_2024/RPT.00015933.0000000000000000.20240603.133844667.GIS_Report_May_2024.xlsx,618836,5d4f9681ac1c6329ba98926848a67eb400bdc4fa5fcb47a944216d42cfbe478d,workflow,gh workflow run ercot_gis.yml; save the artifact's eight files in data/raw/iso/gis_2024/
+S18,iso/gis_2024/RPT.00015933.0000000000000000.20240701.152910365.GIS_Report_June_2024.xlsx,631119,8496f89956dad072d05b0aae11979c04091104299bbb08935e6b71a8266e62a0,workflow,gh workflow run ercot_gis.yml; save the artifact's eight files in data/raw/iso/gis_2024/
+S18,iso/gis_2024/RPT.00015933.0000000000000000.20240801.160316902.GIS_Report_July_2024.xlsx,634981,5325eab4ee9ed4ca0b95729ab7dd9fd0f85334c981efd03368b51651ec147de2,workflow,gh workflow run ercot_gis.yml; save the artifact's eight files in data/raw/iso/gis_2024/
+S18,iso/gis_2024/RPT.00015933.0000000000000000.20240903.150331562.GIS_Report_August_2024.xlsx,641641,d9a4de1de7a42139b94ce272aa0f270f4fef56c7406c5e9e0fb8399b0e6c471c,workflow,gh workflow run ercot_gis.yml; save the artifact's eight files in data/raw/iso/gis_2024/
+S18,iso/gis_2024/RPT.00015933.0000000000000000.20241001.153955135.GIS_Report_September2024.xlsx,640868,cdcaf925b7cbce41c1e31ba2d08e1836e37f25e68466f4e037791e77d7287c4f,workflow,gh workflow run ercot_gis.yml; save the artifact's eight files in data/raw/iso/gis_2024/
+S18,iso/gis_2024/RPT.00015933.0000000000000000.20241101.143132516.GIS_Report_October2024.xlsx,643275,c197c0f10c117d767f1324f4e221b672f99b51a2ff2f4115427d6517810ea085,workflow,gh workflow run ercot_gis.yml; save the artifact's eight files in data/raw/iso/gis_2024/
+S18,iso/gis_2024/RPT.00015933.0000000000000000.20241202.111814411.GIS_Report_November2024.xlsx,650004,a5865940631872acd0ae9e037b2392f48501ab131ca75c22e32b0f76ca25699b,workflow,gh workflow run ercot_gis.yml; save the artifact's eight files in data/raw/iso/gis_2024/
+S7,iso/pjm_queue_2026-10-07.xml,23243451,4db663a5b823a5867ff82cf5207c6ec031c0f3a79ecf34f747f53fc841005486,hand,"dated snapshots of the CAISO, PJM and ERCOT queues (data/README.md S7); a new download is a different snapshot"
+S1,lbnl/lbnl_ix_queue_data_file_thru2024_v2.xlsx,14071996,d816467f629a13ef4013dee000129d61f8e4d7fcd8ba514c404a4e140dfec991,hand,download from https://emp.lbl.gov/queues (bot check on the page)
+S6,lbnl/LBNL_Ix_Queue_Data_File_thru2025.xlsx,15571236,794582d3281c6a305e9615fcfec3fae9dc85be2165216d33760b677e976a08b6,hand,download from https://emp.lbl.gov/queues (bot check on the page)
+S6,lbnl/Queued_Up_2026_Edition.pdf,18419346,3a1cd05c78af23a08908061195ed7d9a800d55af62997886e46415b75a8ea505,hand,download from https://emp.lbl.gov/queues (bot check on the page)
+S18,lbnl/queues_2023_clean_data_r1.xlsx,6037095,832f21cf62a3c333b1834455deecbcbc99b80cb65e43855b7a48355fec838a39,script,https://eta-publications.lbl.gov/sites/default/files/queues_2023_clean_data_r1.xlsx
+S8,lbnl_costs/pjm_costs_2022_clean_data.xlsx,1838850,50a363318b18e36418ac1af4f7afb923998c0863d990a73b59816d014c0af245,hand,data/README.md S8
+S15,prices/bls_CUUR0000SA0_2016-2024.json,17910,7803d3b6ce3c1510ef1a9b8d5e662fc7fe8234bc9da07cad11e3f41dc4c17a37,script,EIA spot-price workbooks and the BLS API
+S15,prices/RNGWHHDm.xls,49664,94ebffe36032c41505ea0b4ad393cf53f6d7e5d2ca6e199ff27ea2162a4cc411,script,EIA spot-price workbooks and the BLS API
+S15,prices/RWTCm.xls,55808,6387b6404192ba6a6e9d2d98ec6c2f0ed940fb54aeb6dbc3358ade03177497da,script,EIA spot-price workbooks and the BLS API
+S9/S10,value/2024-som-pjm-sec5.pdf,1964127,45b31316e4633e4b5db2ca9f1adb3e79e7ff645714cb7de10cc047ecb74225d1,hand,data/README.md S9/S10
+S9/S10,value/eia_generation_2024.json,91682,c0598957fe262547144e1468699f9439cec4aba0a5cb21ae3cbb521f9e24d0a0,hand,data/README.md S9/S10
+S9/S10,value/ice_electric-2017final.xlsx,113202,9641b453da622347d7effdd058b021422d4b8672af2b75829efc2c70f2de71ec,hand,data/README.md S9/S10
+S9/S10,value/ice_electric-2018final.xlsx,104984,68c185358336e45217bf7d87e5a1d87f8cab0a33b9294438de9ca733d16b5131,hand,data/README.md S9/S10
+S9/S10,value/ice_electric-2019final.xlsx,100563,fc758e316d44989fe31d8118f7fb9e06b5d11fd6b28a0e90e02fd5fc6c27081a,hand,data/README.md S9/S10
+S9/S10,value/ice_electric-2020final.xlsx,95222,f63904dadcdb06a730823475bd9cc0b384e0a7ab2b7b63695793e06d69366270,hand,data/README.md S9/S10
+S9/S10,value/ice_electric-2021final.xlsx,106191,04cd402c04df9fce9b24c35c0e8c7c9a4240130cabb051ad754f5e3ba1f7a1e5,hand,data/README.md S9/S10
+S9/S10,value/ice_electric-2022final.xlsx,102695,b8cdbd4651aff8c97433252e426c460dbae8bf91868c41cc01580dfb859d19d7,hand,data/README.md S9/S10
+S9/S10,value/ice_electric-2023final.xlsx,100680,268e79b344d04cb6cc46960f64c05e4bcdf82e5b82338e05512dc8b3776c27d6,hand,data/README.md S9/S10
+S9/S10,value/ice_electric-2024final.xlsx,90065,24c7106b9711f339e898141ce0f75f59fccd023ded50c7217fe1c60a37f806d5,hand,data/README.md S9/S10
+S9/S10,value/ice_electric-2025final.xlsx,92432,5890d90e227ddff14e2beadf231a7a5792c6328f697466f4e2383982a600780b,hand,data/README.md S9/S10
+S9/S10,value/irs_notice_2025-42.pdf,193875,131b5795bd7a082523ca7c5d6338e00d50321d3a7b104e3ff13710f211bfd993,hand,data/README.md S9/S10

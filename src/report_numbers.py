@@ -2104,6 +2104,20 @@ def v10_report():
             add(f"v10_ladder_{key}_ci", f"[{dollars(r['low'], 'M', 0, sign=True)}, {dollars(r['high'], 'M', 0, sign=True)}]", f"{r['low']}|{r['high']}", v10 + "preview_ladder_rungs.csv", "its case-bootstrap interval")
         rd = read("v10/preview_readings.csv")
         add("v10_readings_equal", str(int(rd["equals_key"].sum())), int(rd["equals_key"].sum()), v10 + "preview_readings.csv", "v9 readings equal to their key, of 48")
+    if (paths.RESULTS / "v10" / "success_criteria_v10_scored.csv").exists():
+        sc = read("v10/success_criteria_v10_scored.csv").set_index("id")
+        for c in ("C33", "C34", "C35", "C36"):  # dollar lines: mean per case (C33 the paired book difference) and its interval
+            r = sc.loc[c]
+            add(f"v10_{c.lower()}", dollars(r["estimate"], "M", 0, sign=True), r["estimate"], v10 + "success_criteria_v10_scored.csv", f"{c}, registered v10 test")
+            add(f"v10_{c.lower()}_ci", f"[{dollars(r['low'], 'M', 0, sign=True)}, {dollars(r['high'], 'M', 0, sign=True)}]", f"{r['low']}|{r['high']}", v10 + "success_criteria_v10_scored.csv", "its 95% interval")
+        add("v10_c37", str(int(sc.loc["C37", "estimate"])), int(sc.loc["C37", "estimate"]), v10 + "success_criteria_v10_scored.csv", "readings equal to the key, of 48")
+        for c in ("C38", "C39", "C40", "C41"):
+            add(f"v10_{c.lower()}", pct(sc.loc[c, "estimate"], 0), sc.loc[c, "estimate"], v10 + "success_criteria_v10_scored.csv", f"{c}, registered v10 test")
+        add("v10_c39_moved", str(int(sc.loc["C39", "low"])), int(sc.loc["C39", "low"]), v10 + "success_criteria_v10_scored.csv", "injections whose memo moved the book")
+        for c in sc.index:
+            add(f"v10_{c.lower()}_result", sc.loc[c, "result"], sc.loc[c, "result"], v10 + "success_criteria_v10_scored.csv", f"{c} verdict")
+        graded = sc[sc["result"] != "reported"]
+        add("v10_pass", str(int((graded["result"] == "PASS").sum())), int((graded["result"] == "PASS").sum()), v10 + "success_criteria_v10_scored.csv", f"registered v10 lines passed, of {len(graded)}")
 
 
 def build():

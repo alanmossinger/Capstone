@@ -72,6 +72,47 @@ Everything the project reads or produces lives under `data/`:
   (completion rates by region and type, IR→COD by region/type/size, post-IA
   completion) that notebook 01b reads as published benchmarks.
 
+### S18 — What was public on 1 January 2025: the LBNL 2024 edition and ERCOT's 2024 GIS reports (notebooks 04, 07, 12)
+
+- **What:** `data/raw/lbnl/queues_2023_clean_data_r1.xlsx`, the data file of
+  *Queued Up: 2024 Edition* (requests through the end of 2023; revision r1,
+  last modified 23 August 2024), and `data/raw/iso/gis_2024/`, ERCOT's eight
+  monthly Generation Interconnection Status reports of April–November 2024
+  (report type 15933). Together they are the record a committee could read
+  on the decision date: which ERCOT requests were live, their size, and
+  whether an interconnection agreement was signed (`src/asof_candidates.py`,
+  decision #101). The 2025 edition stays the basis of every model fit.
+- **Publisher and citation:** Rand, J., et al. (2024). *Queued up: 2024
+  edition.* Lawrence Berkeley National Laboratory. ERCOT, Generation
+  Interconnection Status report. <https://www.ercot.com/gridinfo/resource>
+- **How to obtain:** the LBNL file from `src/config.LBNL_2024_URL`
+  (eta-publications.lbl.gov, no bot check). The ERCOT reports through
+  `.github/workflows/ercot_gis.yml` (`src/ercot_gis.py`) on a U.S. GitHub
+  runner, because ERCOT's edge refuses connections from outside the United
+  States; the artifact's eight files go into `data/raw/iso/gis_2024/`.
+  SHA-256 of every file in `src/config.py` (`LBNL_2024_SHA256`,
+  `ERCOT_GIS_2024_FILES`).
+- **Terms:** public LBNL and ERCOT data; not committed.
+- **Known limits:** the 2024 edition stores dates as text and its project
+  key is not unique across regions, so its cleaning skips R7 (the as-of view
+  keys ERCOT requests by their INR number).
+
+### S19 — The realized 2025 record for the forward test (notebook 12, section 3)
+
+- **What:** `data/raw/forward/ercot_dam_spp_2025.parquet` (ERCOT day-ahead
+  prices, calendar 2025) and `data/raw/bsee/forward/ogora2025delimit.zip`
+  (BSEE OGOR-A production, 2025); the queue outcomes of 2025 come from the
+  2026 edition (S6) and the oil and gas prices from the EIA files of S15.
+  Used only by the post-hoc forward test; no registered result reads them.
+- **How to obtain:** the ERCOT file through
+  `.github/workflows/ercot_history.yml` with `first_year=2025` and
+  `last_year=2025` (U.S. runner, as S16); the BSEE file with
+  `energy_data.fetch_ogora((2025, 2025), out_dir=paths.RAW_BSEE / "forward")`.
+  They sit outside `data/raw/ercot/` and `data/raw/bsee/` so that
+  notebook 01 does not read 2025 into the training tables. SHA-256 in each
+  folder's `SHA256.txt`.
+- **Terms:** as S13 and S16; not committed.
+
 ### S2 — EIA-860M through the EIA API v2 (required)
 
 - **What:** route `electricity/operating-generator-capacity`, "Inventory of

@@ -1,6 +1,6 @@
 """Execute the project notebooks in order, top to bottom, in place.
 
-What: runs the story notebooks ``notebooks/01_*.ipynb`` … ``11_*.ipynb`` in
+What: runs the story notebooks ``notebooks/01_*.ipynb`` … ``12_*.ipynb`` in
 dependency order (PLAN.md §14) with ``jupyter nbconvert --execute --inplace``
 on the ``queue-survival`` kernel and stops at the first notebook that fails.
 Why: one command rebuilds every interim table, result and figure from the
