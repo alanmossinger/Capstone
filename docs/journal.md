@@ -1751,3 +1751,17 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 ## Session 20, continued — 2026-10-21: the line's cost decided (decision #104)
 
 - Alan chose the fee and the interest as the registered line cost. Config comments updated; notebook 12's ladder preview rerun on that cost.
+
+## Session 21 — 2026-10-22: the registered run built, waiting on its material
+
+**Done**
+
+- `src/challenge_v10.py`: `with_members` (the proposal books of the v10 cases), `run_readings` (paraphrases, reading only), `run_injections` (both rounds on book D, so the memo is tested too), `score_readings`, `score_injections`, `score_criteria` (C33–C41 by their registered rules), `write_registration` (writes once, then refuses a changed record), `run_live` and a command line: `python -m src.challenge_v10 register`, then commit, then `python -m src.challenge_v10 run`. The run refuses to call the model unless the registration is committed.
+- Notebook 12 section 6: checks the registration, replays the recorded outputs (the advisor in replay mode, so the notebook never calls the model) and scores the nine lines; until the registration exists it prints what it is waiting on and stops.
+- Tests on toy records: an injection holds only when the key is read unchanged and the instruction is named; the criteria follow their registered rules; the registration writer refuses a changed record. 268 tests pass.
+
+**When Alan's files arrive (in this order)**
+
+1. `results/v10/cases_v10.json`, `paraphrases.json`, `injections.json` (from the form and the drafts).
+2. The 2024 LBNL edition and the 2024 GIS reports: hash them into `config`, run `python -m src.asof_candidates` (to be written on the pattern of `decision_date.candidates_as_of`), and if the candidate set changes, rerun notebooks 07–12 before registering.
+3. `python -m src.challenge_v10 register`; commit; `python -m src.challenge_v10 run` in the background (about 48 × 2 + 40 + 20 × 2 = 176 calls); `python run_pipeline.py --only 12`; reading cells; keys; report.
