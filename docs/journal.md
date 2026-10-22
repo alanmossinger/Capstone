@@ -1800,3 +1800,16 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 1. `make report` and `make poster` once the notebook-12 rerun has written F50; look at both; commit and push.
 2. The reading and takeaway cells of notebooks 04–11 (pre-switch numbers).
 3. The clean Linux run.
+
+## Session 22, closed — 2026-10-22: the notebook cells on the as-of run
+
+**Done**
+
+- `make report` and `make poster` on F50; report.pdf, report.docx and poster.pdf rebuilt and looked at (2bbc8f2).
+- Notebooks 04 and 07–11: 33 reading and takeaway cells rewritten from the as-of outputs (f23e60e); notebooks 05 and 06 changed only in run times. Found on the way and corrected in the report: book D's gas request is the 697 MW one with an agreement ($437M, loses in 63%, worth $144.6M to the objective) and the 1,350 MW request stays outside (forcing it in costs $108.7M); redevelopment capital 30% higher no longer empties the lease side (two members leave, three enter, $0.91B of leases stay, 15% chance of a loss) — only oil at $45 does. Keys `v8_bookgas_*`, `v8_wi_*`.
+- 273 tests pass; every number in the report and the poster is in the live table; the body is under the ceiling.
+
+**Next**
+
+1. The clean Linux run (needs Alan's sudo for python3.11 and poppler); `make check-data` there with the bundle.
+2. A read of report v10 by Alan; the demo video script (`docs/demo_video_script.md`) still describes v9.
