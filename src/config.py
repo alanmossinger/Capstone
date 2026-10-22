@@ -20,7 +20,16 @@ LBNL_HEADER_ROW = 1  # row 0 is a title banner
 LBNL_2024_FILENAME = "queues_2023_clean_data_r1.xlsx"  # the 2024 edition, data through 2023: revision r1, last modified 23 August 2024, the latest LBNL record public on 1 January 2025 (decision #101)
 LBNL_2024_URL = "https://eta-publications.lbl.gov/sites/default/files/queues_2023_clean_data_r1.xlsx"  # the "Data File (XLSX)" of the 2024 edition's publication page
 LBNL_2024_SHA256 = "832f21cf62a3c333b1834455deecbcbc99b80cb65e43855b7a48355fec838a39"  # hash of the copy downloaded 2026-10-22
-ERCOT_GIS_2024_FILES = {}  # ERCOT's monthly GIS reports of 2024 (file -> sha256), the record of who was still in the queue on the decision date; filled as downloaded (decision #101)
+ERCOT_GIS_2024_FILES = {  # ERCOT's monthly GIS reports of April-November 2024 (report type 15933, fetched on a U.S. runner 2026-10-22), the record of who was still in the queue on the decision date (decision #101)
+    "RPT.00015933.0000000000000000.20240501.161916854.GIS_Report_April_2024.xlsx": "439911ea4f399fb05b22b20a10b5710eb732bdcefed85662ce302c35c11bc721",
+    "RPT.00015933.0000000000000000.20240603.133844667.GIS_Report_May_2024.xlsx": "5d4f9681ac1c6329ba98926848a67eb400bdc4fa5fcb47a944216d42cfbe478d",
+    "RPT.00015933.0000000000000000.20240701.152910365.GIS_Report_June_2024.xlsx": "8496f89956dad072d05b0aae11979c04091104299bbb08935e6b71a8266e62a0",
+    "RPT.00015933.0000000000000000.20240801.160316902.GIS_Report_July_2024.xlsx": "5325eab4ee9ed4ca0b95729ab7dd9fd0f85334c981efd03368b51651ec147de2",
+    "RPT.00015933.0000000000000000.20240903.150331562.GIS_Report_August_2024.xlsx": "d9a4de1de7a42139b94ce272aa0f270f4fef56c7406c5e9e0fb8399b0e6c471c",
+    "RPT.00015933.0000000000000000.20241001.153955135.GIS_Report_September2024.xlsx": "cdcaf925b7cbce41c1e31ba2d08e1836e37f25e68466f4e037791e77d7287c4f",
+    "RPT.00015933.0000000000000000.20241101.143132516.GIS_Report_October2024.xlsx": "c197c0f10c117d767f1324f4e221b672f99b51a2ff2f4115427d6517810ea085",
+    "RPT.00015933.0000000000000000.20241202.111814411.GIS_Report_November2024.xlsx": "a5865940631872acd0ae9e037b2392f48501ab131ca75c22e32b0f76ca25699b",
+}
 LBNL_2026_FILENAME = "LBNL_Ix_Queue_Data_File_thru2025.xlsx"  # data through 2025; updated May 2026
 LBNL_2026_SHA256 = "794582d3281c6a305e9615fcfec3fae9dc85be2165216d33760b677e976a08b6"  # hash of the copy downloaded 2026-10-06
 LBNL_2026_REPORT = "Queued_Up_2026_Edition.pdf"  # the slide report, June 2026; sha256 in data/raw/lbnl/SHA256.txt

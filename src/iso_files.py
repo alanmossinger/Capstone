@@ -110,6 +110,8 @@ def read_ercot_gis(path, report_month=None):
             if source in frame:
                 part[name] = pd.to_datetime(frame[source], errors="coerce").to_numpy()
         part["phase"] = frame["GIM Study Phase"].to_numpy() if "GIM Study Phase" in frame else np.nan
+        for source, name in (("Fuel", "fuel"), ("Technology", "technology")):  # what kind of plant: the 2024 entrants of the as-of view have no other source
+            part[name] = frame[source].astype(str).str.strip().to_numpy() if source in frame else np.nan
         mw = next((c for c in frame.columns if c.startswith("Capacity") or c.startswith("MW")), None)
         part["mw"] = pd.to_numeric(frame[mw], errors="coerce").to_numpy() if mw else np.nan
         parts.append(part)

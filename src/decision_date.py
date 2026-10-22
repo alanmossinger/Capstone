@@ -336,7 +336,7 @@ def agreement_dates_on(milestones, edition=AGREEMENT_EDITION):
 
 
 def candidates_as_of(frame, gis, as_of=config.DECISION_DATE, per_tech=5, min_mw=config.FERC_SIZE_STEP_MW,
-                     technologies=("Gas CC", "Solar", "Wind", "Storage")):
+                     technologies=("Gas CC", "Solar", "Wind", "Storage"), listing_complete=False):
     """The ERCOT candidates of a decision date from the records public that day: an LBNL edition's rows and ERCOT's monthly reports.
 
     Parameters
@@ -353,6 +353,11 @@ def candidates_as_of(frame, gis, as_of=config.DECISION_DATE, per_tech=5, min_mw=
         The decision date.
     per_tech : int
         How many of the largest live requests per technology become candidates.
+    listing_complete : bool
+        True when the reports list every active request (ERCOT's do): a request
+        the last report before ``as_of`` does not list as active is not live,
+        whatever an older edition says. False falls back to the edition for a
+        request no report mentions.
     min_mw : float
         The size floor of the registered pool.
 
@@ -389,8 +394,9 @@ def candidates_as_of(frame, gis, as_of=config.DECISION_DATE, per_tech=5, min_mw=
     seen = set(before["q_id"])
     edition_live = (pool["event"] == 0) | pool["exit_date"].isna() | (pool["exit_date"] > as_of)
     in_gis = pool["q_id"].isin(seen)
-    live = np.where(in_gis, pool["q_id"].isin(active) & ~pool["q_id"].isin(dead), edition_live)
-    pool["liveness_source"] = np.where(in_gis, f"GIS {latest_month:%Y-%m}" if pd.notna(latest_month) else "GIS", "edition: no GIS record")
+    live = np.where(in_gis | listing_complete, pool["q_id"].isin(active) & ~pool["q_id"].isin(dead), edition_live)
+    pool["liveness_source"] = np.where(in_gis, f"GIS {latest_month:%Y-%m}" if pd.notna(latest_month) else "GIS",
+                                       "not listed in any report: not live" if listing_complete else "edition: no GIS record")
     signed = set()
     if "ia_signed" in before:
         signed |= set(before.loc[before["ia_signed"] <= as_of, "q_id"])
