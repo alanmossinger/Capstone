@@ -1,0 +1,381 @@
+{
+  "_status": "approved by Alan Mössinger as drafted, 2026-10-22",
+  "paraphrases": [
+    {
+      "id": "P01",
+      "of": "S01",
+      "original": "We will not accept more than a ten percent chance of losing money on the book.",
+      "paraphrase": "A chance of losing money above one in ten is more than this committee will carry.",
+      "key": {
+        "max_p_loss": 0.1
+      }
+    },
+    {
+      "id": "P02",
+      "of": "S02",
+      "original": "Our lenders cap the average loss in the worst five percent of outcomes at 750 million dollars.",
+      "paraphrase": "The banks limit our average loss in the worst five percent of cases to 750 million dollars.",
+      "key": {
+        "max_cvar_musd": 750
+      }
+    },
+    {
+      "id": "P03",
+      "of": "S03",
+      "original": "No gas, full stop.",
+      "paraphrase": "Gas is out, without exception.",
+      "key": {
+        "excluded_technologies": [
+          "Gas CC"
+        ]
+      }
+    },
+    {
+      "id": "P04",
+      "of": "S04",
+      "original": "We can find 1.5 billion dollars beyond the reserve for construction.",
+      "paraphrase": "Beyond the reserve we can put 1.5 billion dollars into construction if it is called.",
+      "key": {
+        "liquidity_line_musd": 1500
+      }
+    },
+    {
+      "id": "P05",
+      "of": "S05",
+      "original": "Commit at least ninety percent of the budget.",
+      "paraphrase": "Ninety percent of the budget, at least, has to be committed.",
+      "key": {
+        "min_utilization": 0.9
+      }
+    },
+    {
+      "id": "P06",
+      "of": "S06",
+      "original": "A one-in-twenty chance of a loss is our ceiling.",
+      "paraphrase": "We draw the line at a five percent chance of a loss.",
+      "key": {
+        "max_p_loss": 0.05
+      }
+    },
+    {
+      "id": "P07",
+      "of": "S07",
+      "original": "Keep storage out of the book, and the worst-five-percent average loss under 600 million.",
+      "paraphrase": "No storage in the book, and keep the worst-five-percent average loss below 600 million.",
+      "key": {
+        "excluded_technologies": [
+          "Storage"
+        ],
+        "max_cvar_musd": 600
+      }
+    },
+    {
+      "id": "P08",
+      "of": "S08",
+      "original": "A dollar lost in the worst five percent of outcomes counts twice as much to us as a dollar of expected value.",
+      "paraphrase": "To us a dollar lost in the worst five percent weighs as much as two dollars of expected value.",
+      "key": {
+        "lam": 2.0
+      }
+    },
+    {
+      "id": "P09",
+      "of": "S09",
+      "original": "Only expected value matters to this committee; we are risk-neutral.",
+      "paraphrase": "Risk does not enter it: we want the highest expected value, nothing else.",
+      "key": {
+        "lam": 0.0
+      }
+    },
+    {
+      "id": "P10",
+      "of": "S10",
+      "original": "We will not fund the 1,350 MW gas request, REQ|ERCOT|25INR0008.",
+      "paraphrase": "The gas request REQ|ERCOT|25INR0008, the 1,350 MW one, is not to be funded.",
+      "key": {
+        "excluded_ids": [
+          "REQ|ERCOT|25INR0008"
+        ]
+      }
+    },
+    {
+      "id": "P11",
+      "of": "S11",
+      "original": "No solar and no storage.",
+      "paraphrase": "Neither solar nor storage.",
+      "key": {
+        "excluded_technologies": [
+          "Solar",
+          "Storage"
+        ]
+      }
+    },
+    {
+      "id": "P12",
+      "of": "S12",
+      "original": "Our credit line for construction beyond the reserve is one billion dollars.",
+      "paraphrase": "For construction beyond the reserve we hold a credit line of one billion dollars.",
+      "key": {
+        "liquidity_line_musd": 1000
+      }
+    },
+    {
+      "id": "P13",
+      "of": "S13",
+      "original": "We want at most an eight percent chance of losing money, and at least eighty percent of the budget committed.",
+      "paraphrase": "At most an eight percent chance of a loss, and no less than eighty percent of the budget put to work.",
+      "key": {
+        "max_p_loss": 0.08,
+        "min_utilization": 0.8
+      }
+    },
+    {
+      "id": "P14",
+      "of": "S14",
+      "original": "Treat a dollar of tail loss as half a dollar of value.",
+      "paraphrase": "A dollar of loss in the tail is worth half a dollar of value to us.",
+      "key": {
+        "lam": 0.5
+      }
+    },
+    {
+      "id": "P15",
+      "of": "S15",
+      "original": "The worst five percent of outcomes may not cost us more than 1.2 billion dollars on average.",
+      "paraphrase": "On average, the worst five percent of outcomes must cost us no more than 1.2 billion dollars.",
+      "key": {
+        "max_cvar_musd": 1200
+      }
+    },
+    {
+      "id": "P16",
+      "of": "S16",
+      "original": "We do not do wind.",
+      "paraphrase": "Wind is not something we invest in.",
+      "key": {
+        "excluded_technologies": [
+          "Wind"
+        ]
+      }
+    },
+    {
+      "id": "P17",
+      "of": "S17",
+      "original": "Leave out the Gulf leases altogether.",
+      "paraphrase": "The Gulf leases are out of the book entirely.",
+      "key": {
+        "excluded_technologies": [
+          "Lease redevelopment"
+        ]
+      }
+    },
+    {
+      "id": "P18",
+      "of": "S18",
+      "original": "We can raise 500 million dollars for construction calls beyond what we reserve now, no more.",
+      "paraphrase": "Five hundred million dollars is all we can raise for construction calls beyond the reserve.",
+      "key": {
+        "liquidity_line_musd": 500
+      }
+    },
+    {
+      "id": "P19",
+      "of": "S19",
+      "original": "Spend at least three quarters of the budget.",
+      "paraphrase": "Commit no less than seventy-five percent of the budget.",
+      "key": {
+        "min_utilization": 0.75
+      }
+    },
+    {
+      "id": "P20",
+      "of": "S20",
+      "original": "Our board accepts a chance of loss of up to fifteen percent.",
+      "paraphrase": "A fifteen percent chance of losing money is acceptable to the board, no more.",
+      "key": {
+        "max_p_loss": 0.15
+      }
+    },
+    {
+      "id": "P21",
+      "of": "S21",
+      "original": "Exclude the 836 MW wind request REQ|ERCOT|26INR0113 and the 1,026 MW solar request REQ|ERCOT|26INR0155.",
+      "paraphrase": "Leave out REQ|ERCOT|26INR0113 (the 836 MW wind request) and REQ|ERCOT|26INR0155 (the 1,026 MW solar request).",
+      "key": {
+        "excluded_ids": [
+          "REQ|ERCOT|26INR0113",
+          "REQ|ERCOT|26INR0155"
+        ]
+      }
+    },
+    {
+      "id": "P22",
+      "of": "S22",
+      "original": "We weigh losses in the worst five percent four times as heavily as expected value.",
+      "paraphrase": "A dollar of loss in the worst five percent counts four times a dollar of expected value.",
+      "key": {
+        "lam": 4.0
+      }
+    },
+    {
+      "id": "P23",
+      "of": "S23",
+      "original": "Batteries are out, and the average loss in the worst five percent must stay below 900 million.",
+      "paraphrase": "No batteries, and the worst-five-percent average loss under 900 million.",
+      "key": {
+        "excluded_technologies": [
+          "Storage"
+        ],
+        "max_cvar_musd": 900
+      }
+    },
+    {
+      "id": "P24",
+      "of": "S24",
+      "original": "Two billion dollars is available for construction beyond the reserve.",
+      "paraphrase": "We have two billion dollars for construction calls beyond the reserve.",
+      "key": {
+        "liquidity_line_musd": 2000
+      }
+    },
+    {
+      "id": "P25",
+      "of": "S25",
+      "original": "A chance of losing money above six percent is unacceptable.",
+      "paraphrase": "We will not accept a chance of loss above six percent.",
+      "key": {
+        "max_p_loss": 0.06
+      }
+    },
+    {
+      "id": "P26",
+      "of": "S26",
+      "original": "No new gas plants, and at most a twelve percent chance of a loss.",
+      "paraphrase": "No gas plants, and a chance of loss of twelve percent at most.",
+      "key": {
+        "excluded_technologies": [
+          "Gas CC"
+        ],
+        "max_p_loss": 0.12
+      }
+    },
+    {
+      "id": "P27",
+      "of": "S27",
+      "original": "Put at least sixty percent of the budget to work.",
+      "paraphrase": "At least sixty percent of the budget must be spent.",
+      "key": {
+        "min_utilization": 0.6
+      }
+    },
+    {
+      "id": "P28",
+      "of": "S28",
+      "original": "Our worst-five-percent average loss limit is 450 million dollars.",
+      "paraphrase": "Our ceiling on the worst-five-percent average loss is 450 million dollars.",
+      "key": {
+        "max_cvar_musd": 450
+      }
+    },
+    {
+      "id": "P29",
+      "of": "S29",
+      "original": "We count expected value and tail loss one for one.",
+      "paraphrase": "Expected value and tail loss count the same, dollar for dollar.",
+      "key": {
+        "lam": 1.0
+      }
+    },
+    {
+      "id": "P30",
+      "of": "S30",
+      "original": "No solar requests, and we can call 800 million dollars beyond the reserve for construction.",
+      "paraphrase": "No solar, and 800 million dollars available beyond the reserve for construction.",
+      "key": {
+        "excluded_technologies": [
+          "Solar"
+        ],
+        "liquidity_line_musd": 800
+      }
+    },
+    {
+      "id": "P31",
+      "of": "S31",
+      "original": "Exclude the lease G14658.",
+      "paraphrase": "The lease LEASE|G14658 is excluded.",
+      "key": {
+        "excluded_ids": [
+          "LEASE|G14658"
+        ]
+      }
+    },
+    {
+      "id": "P32",
+      "of": "S32",
+      "original": "Risk-neutral, and no storage.",
+      "paraphrase": "We are risk-neutral and we hold no storage.",
+      "key": {
+        "lam": 0.0,
+        "excluded_technologies": [
+          "Storage"
+        ]
+      }
+    },
+    {
+      "id": "P33",
+      "of": "S33",
+      "original": "Interest rates will rise two points; choose the book that survives that.",
+      "paraphrase": "Rates are going up by two points; pick what still stands after that.",
+      "key": null
+    },
+    {
+      "id": "P34",
+      "of": "S34",
+      "original": "Price carbon at 80 dollars a tonne in every project.",
+      "paraphrase": "Charge every project 80 dollars a tonne for its carbon.",
+      "key": null
+    },
+    {
+      "id": "P35",
+      "of": "S35",
+      "original": "Every project must clear an internal rate of return of twelve percent.",
+      "paraphrase": "Nothing below a twelve percent internal rate of return gets funded.",
+      "key": null
+    },
+    {
+      "id": "P36",
+      "of": "S36",
+      "original": "Only fund projects with an ESG rating of A or better.",
+      "paraphrase": "Fund only what carries an ESG rating of A or above.",
+      "key": null
+    },
+    {
+      "id": "P37",
+      "of": "S37",
+      "original": "Hedge the oil exposure with futures before committing.",
+      "paraphrase": "Before we commit, hedge the oil exposure in the futures market.",
+      "key": null
+    },
+    {
+      "id": "P38",
+      "of": "S38",
+      "original": "Assume inflation runs at five percent a year.",
+      "paraphrase": "Build in five percent inflation a year.",
+      "key": null
+    },
+    {
+      "id": "P39",
+      "of": "S39",
+      "original": "Prefer projects that a partner would co-invest in.",
+      "paraphrase": "Give preference to projects a partner would co-invest in.",
+      "key": null
+    },
+    {
+      "id": "P40",
+      "of": "S40",
+      "original": "Include hydrogen projects in the book.",
+      "paraphrase": "Put hydrogen projects into the book.",
+      "key": null
+    }
+  ]
+}
