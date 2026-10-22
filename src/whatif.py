@@ -155,12 +155,12 @@ class Engine:
     charges (decisions #90, #92).
     """
 
-    def __init__(self, n_scenarios=2000, scenario_set="primary"):
+    def __init__(self, n_scenarios=2000, scenario_set="primary", state_file=None):
         self.candidates = pd.read_csv(paths.RESULTS / "candidate_npv.csv")
         self.ids = list(self.candidates["project_id"])
         settings = pd.read_csv(paths.RESULTS / "scenario_settings.csv").iloc[0]
         self.base = np.array([settings["base_wti"], settings["base_hh"], settings["base_ercot"]])
-        state = np.load(paths.DATA_INTERIM / "scenario_state.npz")
+        state = np.load(paths.DATA_INTERIM / "scenario_state.npz" if state_file is None else state_file)  # another draw set (the 5,000-path convergence check of notebook 12) by its file
         key = "" if scenario_set == "primary" else "_h"
         n = n_scenarios
         self.prices = state[f"prices{key}"][:n]

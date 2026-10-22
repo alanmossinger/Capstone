@@ -213,3 +213,94 @@ def registration(model, author_path=V10 / "cases_v10.json", paraphrases_path=V10
                      "tools_llm": "adopt the book the challenger guides toward; otherwise keep the proposal", "optimizer": "the optimizer's book under the committee's true rules"},
             "reported_not_registered": ["results per world and per flaw", "the fee-only and fee-with-interest cases of the line", "the v9 cases rescored for comparison"],
             "status": "post-registration extension of report v9; scored once"}
+
+
+# --- the four-arm ladder ------------------------------------------------------------------------
+
+ARMS = ("proposal", "tools", "tools_llm", "optimizer")
+
+
+def final_books_v10(s, case, r):
+    """The book the committee ends with under each arm: its proposal; the checklist's guidance; the challenger's; the optimizer under its true rules.
+
+    Returns
+    -------
+    dict
+        ``arm -> 0/1 vector``, plus ``optimizer_source`` ("optimizer", "repair"
+        when no book meets the rules and the repair does, or "proposal").
+
+    Notes
+    -----
+    Rung 3 of the ladder asks how far the challenger's book is from the best
+    book under the committee's own rules. When no book meets them (a
+    chance-of-loss limit the optimizer cannot hold, decision #95) the repair
+    stands in and the source says so.
+    """
+    import numpy as np
+
+    from src import challenge as ch
+
+    books = cx.final_books(s, case, r)
+    out = {"proposal": books["proposal"], "tools": books["checklist"], "tools_llm": books["challenger"]}
+    x_opt = ch.model_book(s, ch.Preferences(**case["prefs"]))
+    source = "optimizer"
+    if x_opt is None:
+        alts = r.get("alternatives") or {}
+        if "repair" in alts:
+            x_opt, source = s.vector(alts["repair"]["members"]), "repair"
+        else:
+            x_opt, source = books["proposal"], "proposal"
+    out["optimizer"] = np.asarray(x_opt, int)
+    out["optimizer_source"] = source
+    return out
+
+
+def score_ladder(s, cases, results, world_set):
+    """One row per case, world and arm on the committee's own objective, funded within its line net of financing; all 48 cases."""
+    import numpy as np
+    import pandas as pd
+
+    from src import challenge as ch
+
+    rows = []
+    for c, r in zip(cases, results):
+        prefs = ch.Preferences(**c["prefs"])
+        fb = final_books_v10(s, c, r)
+        for wname, (A, oy) in world_set.items():
+            for arm in ARMS:
+                t = cx.world_totals(s, fb[arm], prefs, A, oy)
+                rows.append({"id": c["id"], "flaw": c["flaw"], "world": wname, "arm": arm, "optimizer_source": fb["optimizer_source"],
+                             "changed": bool(np.any(fb[arm] != fb["proposal"])), **ch.scores_of(t, prefs.lam)})
+    return pd.DataFrame(rows)
+
+
+def ladder_rungs(scores):
+    """The paired rung differences per case (mean over worlds) and their case-bootstrap intervals.
+
+    Returns
+    -------
+    (pandas.DataFrame, pandas.DataFrame)
+        Per-case differences (``tools_minus_proposal``, ``tools_llm_minus_tools``,
+        ``optimizer_minus_tools_llm``, ``tools_llm_minus_proposal``) and the
+        rung table (rung, mean, low, high, n).
+    """
+    import pandas as pd
+
+    per = scores.pivot_table(index=["id", "world"], columns="arm", values="metric").groupby(level="id").mean()
+    diffs = pd.DataFrame({"tools_minus_proposal": per["tools"] - per["proposal"], "tools_llm_minus_tools": per["tools_llm"] - per["tools"],
+                          "optimizer_minus_tools_llm": per["optimizer"] - per["tools_llm"], "tools_llm_minus_proposal": per["tools_llm"] - per["proposal"]})
+    rungs = pd.DataFrame([{"rung": col, **cx.case_bootstrap(diffs[col])} for col in diffs.columns])
+    return diffs, rungs
+
+
+def reading_equals_key(case, r):
+    """Whether the challenger's reading equals the case's keyed preferences, field by field (an altered or invented rule fails)."""
+    from dataclasses import asdict, fields
+
+    from src import challenge as ch
+
+    got = r.get("preferences")
+    if not got:
+        return False
+    expected = asdict(ch.Preferences(**case["prefs"]))
+    return all(cx._same(got.get(f.name), expected[f.name]) for f in fields(ch.Preferences))

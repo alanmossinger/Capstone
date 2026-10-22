@@ -1550,3 +1550,23 @@ alternative rejected.
     *Rejected:* interest from year 1 regardless of the operation year (the
     draw is at construction); a fee on the unlimited benchmark (it is a
     benchmark, not a product).
+103. **What ran before the v10 registration, and why it does not touch it**
+    (2026-10-21; notebook 12 sections 3–5, `src/forward.py`,
+    `challenge_v10.score_ladder`). With Alan's files not yet in hand I ran
+    what needs none of them: (1) the partial forward test on realized 2025
+    data (the 2026 LBNL edition, ERCOT 2025 prices from the GitHub workflow,
+    BSEE 2025 production, EIA prices), post-hoc and labelled; (2) the
+    robustness checks — 5,000 paths built as the registered 2,000 plus 3,000
+    new ones, each block priced on its own because the reverting prices
+    demean over the paths they are given; the dependence ablation; every
+    frontier book in three misspecified worlds; (3) the four-arm ladder on
+    the v9 cases and their recorded outputs, all 48 cases, fee-only line
+    cost, as a preview. The v10 criteria C33–C41 were written before the
+    preview; nothing in them is changed by it. The preview showed that 7 of
+    48 v9 readings differ from their key, mostly because the v9 statements
+    say "the highest-return book" while their key leaves the tail weight
+    at 1: evidence for the critique's point that model-written keys and
+    statements share blind spots, and the reason the v10 computable
+    statements state each rule explicitly.
+    *Rejected:* waiting for every file before running anything (two weeks
+    idle); moving C37's threshold after the preview (it was set before).

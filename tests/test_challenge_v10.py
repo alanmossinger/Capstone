@@ -46,3 +46,23 @@ def test_author_cases_are_checked_for_empty_statements_and_missing_keys(tmp_path
     assert len(cases) == 48 and [c["id"] for c in cases] == [c["id"] for c in cx.CASES]
     with pytest.raises(FileNotFoundError):
         c10.author_cases(tmp_path / "missing.json")
+
+
+def test_ladder_rungs_are_paired_differences_of_the_per_case_means():
+    import pandas as pd
+    rows = []
+    for cid, base in (("X01", 100.0), ("X02", 200.0)):
+        for w in ("w1", "w2"):
+            for arm, add in (("proposal", 0.0), ("tools", 10.0), ("tools_llm", 15.0), ("optimizer", 30.0)):
+                rows.append({"id": cid, "world": w, "arm": arm, "metric": base + add})
+    diffs, rungs = c10.ladder_rungs(pd.DataFrame(rows))
+    assert (diffs["tools_minus_proposal"] == 10.0).all() and (diffs["tools_llm_minus_tools"] == 5.0).all() and (diffs["optimizer_minus_tools_llm"] == 15.0).all()
+    assert set(rungs["rung"]) == set(diffs.columns) and (rungs["n"] == 2).all()
+
+
+def test_reading_equals_key_fails_on_an_invented_or_altered_rule():
+    case = {"prefs": {"liquidity_line_musd": 1000}}
+    assert c10.reading_equals_key(case, {"preferences": {"lam": 1.0, "max_p_loss": None, "max_cvar_musd": None, "excluded_technologies": [], "excluded_ids": [], "liquidity_line_musd": 1000, "min_utilization": None}})
+    assert not c10.reading_equals_key(case, {"preferences": {"lam": 1.0, "max_p_loss": 0.1, "max_cvar_musd": None, "excluded_technologies": [], "excluded_ids": [], "liquidity_line_musd": 1000, "min_utilization": None}})
+    assert not c10.reading_equals_key(case, {"preferences": {"lam": 1.0, "max_p_loss": None, "max_cvar_musd": None, "excluded_technologies": [], "excluded_ids": [], "liquidity_line_musd": 1500, "min_utilization": None}})
+    assert not c10.reading_equals_key(case, {"preferences": None})

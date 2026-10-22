@@ -1882,6 +1882,16 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** The registered challenger experiments: flaws named by type, and the decision value on the committee's own objective.
 <!-- /fig:F46_challenger -->
 
+<!-- fig:F47_ladder -->
+### F47_ladder
+
+![F47_ladder](../figures/F47_ladder.png)
+
+*Notebook:* `notebooks/12_three_questions.ipynb` · *Files:* `figures/F47_ladder.png`, `.svg`
+
+**Caption (stub).** The attribution ladder: what the tools, the language model and the optimizer each add to the committee's decision, paired per case.
+<!-- /fig:F47_ladder -->
+
 <!-- fig:F48_credit_line_net -->
 ### F48_credit_line_net
 
@@ -1891,6 +1901,16 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 
 **Caption (stub).** Book D's registered metric by liquidity line, gross and net of the line's financing cost, with the break-even fee.
 <!-- /fig:F48_credit_line_net -->
+
+<!-- fig:F49_forward_calibration -->
+### F49_forward_calibration
+
+![F49_forward_calibration](../figures/F49_forward_calibration.png)
+
+*Notebook:* `notebooks/12_three_questions.ipynb` · *Files:* `figures/F49_forward_calibration.png`, `.svg`
+
+**Caption (stub).** Realized 2025 queue outcomes against the one-year predictions of the decision date, and the twenty candidates one year on.
+<!-- /fig:F49_forward_calibration -->
 
 <!-- fig:F4_calibration_by_horizon -->
 ### F4_calibration_by_horizon

@@ -2045,6 +2045,65 @@ def v10_report():
     wins = int((sens["metric_minus_no_line"] > 0).sum())
     add("v10_line_wins", str(wins), wins, v10 + "credit_line_sensitivity.csv", "fee-rate settings in which the 95th-percentile line beats no line")
     add("v10_line_settings", str(len(sens)), len(sens), v10 + "credit_line_sensitivity.csv", "fee-rate settings tried")
+    fq = read("v10/forward_queue.csv")
+    counts = fq["outcome"].value_counts()
+    add("v10_fwd_live", f"{len(fq):,}", len(fq), v10 + "forward_queue.csv", "ERCOT requests live on 1 January 2025")
+    for k, name in (("operated", "v10_fwd_operated"), ("withdrawn", "v10_fwd_withdrawn"), ("active", "v10_fwd_active"), ("not in the 2026 file", "v10_fwd_missing")):
+        add(name, f"{int(counts.get(k, 0)):,}", int(counts.get(k, 0)), v10 + "forward_queue.csv", f"requests {k} by the end of 2025")
+    fs = read("v10/forward_queue_scores.csv").set_index("method")
+    add("v10_fwd_n", f"{int(fs.loc['p1', 'n']):,}", int(fs.loc["p1", "n"]), v10 + "forward_queue_scores.csv", "requests the 2026 edition resolves")
+    for m, key in (("p1", "model"), ("p1_level", "corrected"), ("p1_lookup", "lookup")):
+        add(f"v10_fwd_pred_{key}", f"{fs.loc[m, 'predicted_operations']:.0f}", fs.loc[m, "predicted_operations"], v10 + "forward_queue_scores.csv", f"operations the {key} predicted for 2025")
+        add(f"v10_fwd_brier_{key}", num(fs.loc[m, "brier"], 4), fs.loc[m, "brier"], v10 + "forward_queue_scores.csv", f"one-year Brier score, {key}")
+        add(f"v10_fwd_slope_{key}", num(fs.loc[m, "slope"], 2), fs.loc[m, "slope"], v10 + "forward_queue_scores.csv", f"one-year calibration slope, {key}")
+    fc = read("v10/forward_candidates.csv")
+    add("v10_fwd_cand_active", str(int((fc["outcome"] == "active").sum())), int((fc["outcome"] == "active").sum()), v10 + "forward_candidates.csv", "candidates still waiting at the end of 2025")
+    fp = read("v10/forward_prices.csv").set_index("series")
+    for sname, key, digits in (("WTI", "wti", 1), ("Henry Hub", "hh", 2), ("ERCOT", "ercot", 1)):
+        add(f"v10_fwd_{key}", num(fp.loc[sname, "realized"], digits), fp.loc[sname, "realized"], v10 + "forward_prices.csv", f"realized 2025 mean, {sname}")
+        add(f"v10_fwd_{key}_q05", num(fp.loc[sname, "q05"], digits), fp.loc[sname, "q05"], v10 + "forward_prices.csv", f"scenario 5th percentile 2025, {sname}")
+        add(f"v10_fwd_{key}_q95", num(fp.loc[sname, "q95"], digits), fp.loc[sname, "q95"], v10 + "forward_prices.csv", f"scenario 95th percentile 2025, {sname}")
+        add(f"v10_fwd_{key}_band", fp.loc[sname, "band"], fp.loc[sname, "band"], v10 + "forward_prices.csv", f"band of the realized 2025 mean, {sname}")
+    fl = read("v10/forward_leases.csv")
+    ratio = fl["realized_2025_boe"].sum() / fl["baseline_2025_boe"].sum()
+    add("v10_fwd_lease_ratio", num(ratio, 2), ratio, v10 + "forward_leases.csv", "2025 lease output over the no-redevelopment baseline, twenty leases")
+    add("v10_fwd_lease_median", num(fl["realized_over_baseline"].median(), 2), fl["realized_over_baseline"].median(), v10 + "forward_leases.csv", "median lease ratio")
+    add("v10_fwd_lease_min", num(fl["realized_over_baseline"].min(), 2), fl["realized_over_baseline"].min(), v10 + "forward_leases.csv", "lowest lease ratio")
+    add("v10_fwd_lease_realized", f"{fl['realized_2025_boe'].sum() / 1e6:.0f}", fl["realized_2025_boe"].sum() / 1e6, v10 + "forward_leases.csv", "realized 2025 output, million boe")
+    cv = read("v10/convergence_5000.csv").set_index(["book", "scenarios"])
+    for book_, key in (("A", "a"), ("B", "b"), ("C", "c"), ("D", "d")):
+        add(f"v10_conv5_{key}", dollars(cv.loc[(book_, "5,000 held-out"), "metric"]), cv.loc[(book_, "5,000 held-out"), "metric"], v10 + "convergence_5000.csv", f"book {book_}'s metric on 5,000 held-out paths")
+    d2, d5 = cv.loc[("D", "2,000 held-out")], cv.loc[("D", "5,000 held-out")]
+    add("v10_conv5_d_cvar", dollars(d5["cvar_loss"]), d5["cvar_loss"], v10 + "convergence_5000.csv", "book D's worst-5% loss on 5,000 held-out paths")
+    margin5 = d5["metric"] - cv.loc[("A", "5,000 held-out"), "metric"]
+    add("v10_conv5_margin", dollars(margin5, "M", 0), margin5, v10 + "convergence_5000.csv", "D minus A on 5,000 held-out paths")
+    rs = cv.loc[("D re-solved on 5,000 primary", "5,000 held-out")]
+    add("v10_conv5_resolved", dollars(rs["metric"], "B", 3), rs["metric"], v10 + "convergence_5000.csv", "book D re-solved on 5,000 primary paths")
+    add("v10_conv5_d3", dollars(d5["metric"], "B", 3), d5["metric"], v10 + "convergence_5000.csv", "book D on 5,000 held-out paths, three decimals")
+    add("v10_conv5_jaccard", num(rs["jaccard_to_D"], 2), rs["jaccard_to_D"], v10 + "convergence_5000.csv", "members kept when D is re-solved on 5,000 paths")
+    dep = read("v10/dependence_ablation.csv").set_index(["book", "scenarios"])
+    ind = dep.loc[("D", "independent (columns shuffled)")]
+    add("v10_dep_cvar", dollars(ind["cvar_loss"]), ind["cvar_loss"], v10 + "dependence_ablation.csv", "book D's worst-5% loss without co-movement")
+    add("v10_dep_ploss", pct(ind["p_loss"], 1), ind["p_loss"], v10 + "dependence_ablation.csv", "book D's chance of a loss without co-movement")
+    add("v10_dep_ploss_joint", pct(dep.loc[("D", "joint (as scored)"), "p_loss"], 1), dep.loc[("D", "joint (as scored)"), "p_loss"], v10 + "dependence_ablation.csv", "book D's chance of a loss as scored")
+    add("v10_dep_c_metric", dollars(dep.loc[("C", "independent (columns shuffled)"), "metric"]), dep.loc[("C", "independent (columns shuffled)"), "metric"], v10 + "dependence_ablation.csv", "the deterministic book's metric without co-movement")
+    add("v10_dep_d_metric", dollars(ind["metric"]), ind["metric"], v10 + "dependence_ablation.csv", "book D's metric without co-movement")
+    lr = read("v10/lambda_regime.csv")
+    best = lr.loc[lr.groupby("world")["metric"].idxmax()].set_index("world")["tail_weight"]
+    for world, key in (("base model", "base"), ("ERCOT prices 25% lower", "ercot"), ("every plant two years late", "delay"), ("lease capital 30% higher", "lease")):
+        add(f"v10_regime_best_{key}", f"{best[world]:g}", best[world], v10 + "lambda_regime.csv", f"the tail weight that scores best, {world}")
+    piv = lr.pivot(index="tail_weight", columns="world", values="metric")
+    add("v10_regime_base_l1", dollars(piv.loc[1.0, "base model"], "B", 3), piv.loc[1.0, "base model"], v10 + "lambda_regime.csv", "base world, tail weight 1")
+    add("v10_regime_base_l2", dollars(piv.loc[2.0, "base model"], "B", 3), piv.loc[2.0, "base model"], v10 + "lambda_regime.csv", "base world, tail weight 2")
+    add("v10_regime_ercot_l0", dollars(piv.loc[0.0, "ERCOT prices 25% lower"]), piv.loc[0.0, "ERCOT prices 25% lower"], v10 + "lambda_regime.csv", "ERCOT 25% lower, the deterministic book")
+    if (paths.RESULTS / "v10" / "preview_ladder_rungs.csv").exists():
+        lad = read("v10/preview_ladder_rungs.csv").set_index("rung")
+        for rung, key in (("tools_minus_proposal", "tools"), ("tools_llm_minus_tools", "llm"), ("optimizer_minus_tools_llm", "optimizer"), ("tools_llm_minus_proposal", "total")):
+            r = lad.loc[rung]
+            add(f"v10_ladder_{key}", dollars(r["mean"], "M", 0, sign=True), r["mean"], v10 + "preview_ladder_rungs.csv", f"ladder rung {rung}, mean per case (v9 cases)")
+            add(f"v10_ladder_{key}_ci", f"[{dollars(r['low'], 'M', 0, sign=True)}, {dollars(r['high'], 'M', 0, sign=True)}]", f"{r['low']}|{r['high']}", v10 + "preview_ladder_rungs.csv", "its case-bootstrap interval")
+        rd = read("v10/preview_readings.csv")
+        add("v10_readings_equal", str(int(rd["equals_key"].sum())), int(rd["equals_key"].sum()), v10 + "preview_readings.csv", "v9 readings equal to their key, of 48")
 
 
 def build():

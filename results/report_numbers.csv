@@ -2452,3 +2452,65 @@ v10_one_metric_gross,$0.76B,757785212.3758525,results/v10/credit_line_net.csv,"$
 v10_two_metric_gross,$0.90B,897260512.4593726,results/v10/credit_line_net.csv,"$2B line, gross metric"
 v10_line_wins,1,1,results/v10/credit_line_sensitivity.csv,fee-rate settings in which the 95th-percentile line beats no line
 v10_line_settings,12,12,results/v10/credit_line_sensitivity.csv,fee-rate settings tried
+v10_fwd_live,"1,649",1649,results/v10/forward_queue.csv,ERCOT requests live on 1 January 2025
+v10_fwd_operated,43,43,results/v10/forward_queue.csv,requests operated by the end of 2025
+v10_fwd_withdrawn,82,82,results/v10/forward_queue.csv,requests withdrawn by the end of 2025
+v10_fwd_active,"1,513",1513,results/v10/forward_queue.csv,requests active by the end of 2025
+v10_fwd_missing,11,11,results/v10/forward_queue.csv,requests not in the 2026 file by the end of 2025
+v10_fwd_n,"1,638",1638,results/v10/forward_queue_scores.csv,requests the 2026 edition resolves
+v10_fwd_pred_model,166,166.4394061238901,results/v10/forward_queue_scores.csv,operations the model predicted for 2025
+v10_fwd_brier_model,0.0457,0.0456595684519039,results/v10/forward_queue_scores.csv,"one-year Brier score, model"
+v10_fwd_slope_model,0.67,0.6678213917053613,results/v10/forward_queue_scores.csv,"one-year calibration slope, model"
+v10_fwd_pred_corrected,104,104.15312803303496,results/v10/forward_queue_scores.csv,operations the corrected predicted for 2025
+v10_fwd_brier_corrected,0.0302,0.0302118744276454,results/v10/forward_queue_scores.csv,"one-year Brier score, corrected"
+v10_fwd_slope_corrected,0.75,0.7460148236923871,results/v10/forward_queue_scores.csv,"one-year calibration slope, corrected"
+v10_fwd_pred_lookup,24,23.921130024709267,results/v10/forward_queue_scores.csv,operations the lookup predicted for 2025
+v10_fwd_brier_lookup,0.0256,0.0256471920821165,results/v10/forward_queue_scores.csv,"one-year Brier score, lookup"
+v10_fwd_slope_lookup,0.07,0.0675676010314306,results/v10/forward_queue_scores.csv,"one-year calibration slope, lookup"
+v10_fwd_cand_active,20,20,results/v10/forward_candidates.csv,candidates still waiting at the end of 2025
+v10_fwd_wti,65.5,65.46,results/v10/forward_prices.csv,"realized 2025 mean, WTI"
+v10_fwd_wti_q05,53.3,53.32046614497824,results/v10/forward_prices.csv,"scenario 5th percentile 2025, WTI"
+v10_fwd_wti_q95,100.9,100.90755244927573,results/v10/forward_prices.csv,"scenario 95th percentile 2025, WTI"
+v10_fwd_wti_band,q05–q25,q05–q25,results/v10/forward_prices.csv,"band of the realized 2025 mean, WTI"
+v10_fwd_hh,3.53,3.526666666666666,results/v10/forward_prices.csv,"realized 2025 mean, Henry Hub"
+v10_fwd_hh_q05,1.62,1.617355555933952,results/v10/forward_prices.csv,"scenario 5th percentile 2025, Henry Hub"
+v10_fwd_hh_q95,3.41,3.405351664468605,results/v10/forward_prices.csv,"scenario 95th percentile 2025, Henry Hub"
+v10_fwd_hh_band,above q95,above q95,results/v10/forward_prices.csv,"band of the realized 2025 mean, Henry Hub"
+v10_fwd_ercot,32.9,32.94201712328766,results/v10/forward_prices.csv,"realized 2025 mean, ERCOT"
+v10_fwd_ercot_q05,16.9,16.919255374008348,results/v10/forward_prices.csv,"scenario 5th percentile 2025, ERCOT"
+v10_fwd_ercot_q95,62.5,62.4629883634355,results/v10/forward_prices.csv,"scenario 95th percentile 2025, ERCOT"
+v10_fwd_ercot_band,q25–q50,q25–q50,results/v10/forward_prices.csv,"band of the realized 2025 mean, ERCOT"
+v10_fwd_lease_ratio,1.03,1.0267368765789981,results/v10/forward_leases.csv,"2025 lease output over the no-redevelopment baseline, twenty leases"
+v10_fwd_lease_median,1.00,1.0002770701397476,results/v10/forward_leases.csv,median lease ratio
+v10_fwd_lease_min,0.52,0.5217922439252227,results/v10/forward_leases.csv,lowest lease ratio
+v10_fwd_lease_realized,280,279.85496116666667,results/v10/forward_leases.csv,"realized 2025 output, million boe"
+v10_conv5_a,$0.87B,866221011.952616,results/v10/convergence_5000.csv,"book A's metric on 5,000 held-out paths"
+v10_conv5_b,$0.98B,979176858.1753469,results/v10/convergence_5000.csv,"book B's metric on 5,000 held-out paths"
+v10_conv5_c,$0.91B,910985925.0302747,results/v10/convergence_5000.csv,"book C's metric on 5,000 held-out paths"
+v10_conv5_d,$1.12B,1122576488.278752,results/v10/convergence_5000.csv,"book D's metric on 5,000 held-out paths"
+v10_conv5_d_cvar,$0.98B,980685056.724092,results/v10/convergence_5000.csv,"book D's worst-5% loss on 5,000 held-out paths"
+v10_conv5_margin,$256M,256355476.3261361,results/v10/convergence_5000.csv,"D minus A on 5,000 held-out paths"
+v10_conv5_resolved,$1.126B,1126289202.360631,results/v10/convergence_5000.csv,"book D re-solved on 5,000 primary paths"
+v10_conv5_d3,$1.123B,1122576488.278752,results/v10/convergence_5000.csv,"book D on 5,000 held-out paths, three decimals"
+v10_conv5_jaccard,0.75,0.75,results/v10/convergence_5000.csv,"members kept when D is re-solved on 5,000 paths"
+v10_dep_cvar,$0.30B,303987980.92094743,results/v10/dependence_ablation.csv,book D's worst-5% loss without co-movement
+v10_dep_ploss,3.0%,0.03,results/v10/dependence_ablation.csv,book D's chance of a loss without co-movement
+v10_dep_ploss_joint,10.3%,0.1035,results/v10/dependence_ablation.csv,book D's chance of a loss as scored
+v10_dep_c_metric,$1.84B,1841056029.843091,results/v10/dependence_ablation.csv,the deterministic book's metric without co-movement
+v10_dep_d_metric,$1.75B,1747635780.055778,results/v10/dependence_ablation.csv,book D's metric without co-movement
+v10_regime_best_base,1,1.0,results/v10/lambda_regime.csv,"the tail weight that scores best, base model"
+v10_regime_best_ercot,2,2.0,results/v10/lambda_regime.csv,"the tail weight that scores best, ERCOT prices 25% lower"
+v10_regime_best_delay,2,2.0,results/v10/lambda_regime.csv,"the tail weight that scores best, every plant two years late"
+v10_regime_best_lease,4,4.0,results/v10/lambda_regime.csv,"the tail weight that scores best, lease capital 30% higher"
+v10_regime_base_l1,$1.032B,1032193986.5488834,results/v10/lambda_regime.csv,"base world, tail weight 1"
+v10_regime_base_l2,$1.025B,1024559333.026198,results/v10/lambda_regime.csv,"base world, tail weight 2"
+v10_regime_ercot_l0,−$1.07B,-1066520451.3768134,results/v10/lambda_regime.csv,"ERCOT 25% lower, the deterministic book"
+v10_ladder_tools,+$109M,109031818.11187208,results/v10/preview_ladder_rungs.csv,"ladder rung tools_minus_proposal, mean per case (v9 cases)"
+v10_ladder_tools_ci,"[+$51M, +$174M]",50524509.07967164|173995407.99554917,results/v10/preview_ladder_rungs.csv,its case-bootstrap interval
+v10_ladder_llm,+$35M,34752046.84042414,results/v10/preview_ladder_rungs.csv,"ladder rung tools_llm_minus_tools, mean per case (v9 cases)"
+v10_ladder_llm_ci,"[+$2M, +$83M]",1946724.124097104|83404797.7196757,results/v10/preview_ladder_rungs.csv,its case-bootstrap interval
+v10_ladder_optimizer,+$103M,103145289.4689604,results/v10/preview_ladder_rungs.csv,"ladder rung optimizer_minus_tools_llm, mean per case (v9 cases)"
+v10_ladder_optimizer_ci,"[+$48M, +$168M]",47714505.68707549|168498302.3951575,results/v10/preview_ladder_rungs.csv,its case-bootstrap interval
+v10_ladder_total,+$144M,143783864.95229623,results/v10/preview_ladder_rungs.csv,"ladder rung tools_llm_minus_proposal, mean per case (v9 cases)"
+v10_ladder_total_ci,"[+$78M, +$222M]",77685766.41118385|222357999.90057945,results/v10/preview_ladder_rungs.csv,its case-bootstrap interval
+v10_readings_equal,41,41,results/v10/preview_readings.csv,"v9 readings equal to their key, of 48"
