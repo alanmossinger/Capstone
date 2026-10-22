@@ -17,8 +17,9 @@ LBNL_SHEET = "03. Complete Queue Data"  # project-level sheet; other sheets are 
 LBNL_HEADER_ROW = 1  # row 0 is a title banner
 
 # --- LBNL "Queued Up: 2026 Edition" data file (source S6; alongside, decision #43) ---
-LBNL_2024_FILENAME = None  # the 2024 edition (data through 2023, released April 2024): the latest LBNL record public on 1 January 2025; set when Alan downloads it (decision #101)
-LBNL_2024_SHA256 = None  # hash of that copy, recorded on download
+LBNL_2024_FILENAME = "queues_2023_clean_data_r1.xlsx"  # the 2024 edition, data through 2023: revision r1, last modified 23 August 2024, the latest LBNL record public on 1 January 2025 (decision #101)
+LBNL_2024_URL = "https://eta-publications.lbl.gov/sites/default/files/queues_2023_clean_data_r1.xlsx"  # the "Data File (XLSX)" of the 2024 edition's publication page
+LBNL_2024_SHA256 = "832f21cf62a3c333b1834455deecbcbc99b80cb65e43855b7a48355fec838a39"  # hash of the copy downloaded 2026-10-22
 ERCOT_GIS_2024_FILES = {}  # ERCOT's monthly GIS reports of 2024 (file -> sha256), the record of who was still in the queue on the decision date; filled as downloaded (decision #101)
 LBNL_2026_FILENAME = "LBNL_Ix_Queue_Data_File_thru2025.xlsx"  # data through 2025; updated May 2026
 LBNL_2026_SHA256 = "794582d3281c6a305e9615fcfec3fae9dc85be2165216d33760b677e976a08b6"  # hash of the copy downloaded 2026-10-06

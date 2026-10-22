@@ -1,0 +1,34 @@
+# ERCOT refuses connections from outside the United States (decision #53), so the monthly GIS reports of
+# the decision year are fetched on a U.S. runner and handed back as an artifact; nothing is committed (decision #101).
+# Start it from the Actions tab or with: gh workflow run ercot_gis.yml -f first=2024-04 -f last=2024-11
+name: ERCOT monthly GIS reports
+
+on:
+  workflow_dispatch:
+    inputs:
+      first:
+        description: first report month (YYYY-MM)
+        default: "2024-04"
+      last:
+        description: last report month (YYYY-MM)
+        default: "2024-11"
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install the fetcher's dependencies
+        run: pip install pandas==2.3.3 pyarrow==25.0.1 openpyxl==3.1.5 requests==2.34.2 numpy
+      - name: Download the monthly reports
+        run: python -m src.ercot_gis ${{ inputs.first }} ${{ inputs.last }} --out gis_out
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ercot-gis-${{ inputs.first }}-${{ inputs.last }}
+          path: gis_out
+          retention-days: 14
+          if-no-files-found: error
