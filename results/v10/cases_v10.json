@@ -1,5 +1,5 @@
 {
-  "_source": "statements written by Alan Mössinger (cases_v10_statements.json, 2026-10-22) before any model saw them; keys are the vulnerability type of each case's flaw",
+  "_source": "statements written by Alan Mössinger (cases_v10_statements.json, 2026-10-22) before any model saw them; keys are the vulnerability type of each case's flaw; at Alan's request (2026-10-22) the book's name in X27, X31 and X33 was changed from 'the high-return book' / 'the highest-return book' to 'this book', so the name states no tail weight; nothing else was changed",
   "cases": [
     {
       "id": "X25",
@@ -39,7 +39,7 @@
         "base": "C"
       },
       "prefs": {},
-      "statement": "This committee spent most of last year and a serious advisory budget building the case for the high-return book. We owe it to that effort to approve it rather than throw the work away and start over with the optimizer's version.",
+      "statement": "This committee spent most of last year and a serious advisory budget building the case for this book. We owe it to that effort to approve it rather than throw the work away and start over with the optimizer's version.",
       "key": {
         "types": [
           "sunk cost"
@@ -102,7 +102,7 @@
         "base": "C"
       },
       "prefs": {},
-      "statement": "Score the gas plants on upside, meaning expected value, because that's where they win. Score the renewables on tail risk, because that's where their trouble is. Do that and the highest-return book is the obvious pick.",
+      "statement": "Score the gas plants on upside, meaning expected value, because that's where they win. Score the renewables on tail risk, because that's where their trouble is. Do that and this book is the obvious pick.",
       "key": {
         "types": [
           "double standard"
@@ -132,7 +132,7 @@
         "base": "C"
       },
       "prefs": {},
-      "statement": "Rates are coming down by at least two hundred basis points next year, which takes most of the downside out of the high-return book. Approve it.",
+      "statement": "Rates are coming down by at least two hundred basis points next year, which takes most of the downside out of this book. Approve it.",
       "key": {
         "types": [
           "unsupported claim"
