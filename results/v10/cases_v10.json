@@ -1,0 +1,381 @@
+{
+  "_source": "statements written by Alan Mössinger (cases_v10_statements.json, 2026-10-22) before any model saw them; keys are the vulnerability type of each case's flaw",
+  "cases": [
+    {
+      "id": "X25",
+      "persona": "P5",
+      "flaw": "sunk",
+      "book": {
+        "base": "D"
+      },
+      "prefs": {},
+      "statement": "We've already paid the interconnection deposits and the lease bonuses on everything in the recommended book. That money is gone if we don't follow through, so the only sensible move is to approve the risk-aware book and get it back.",
+      "key": {
+        "types": [
+          "sunk cost"
+        ]
+      }
+    },
+    {
+      "id": "X26",
+      "persona": "P9",
+      "flaw": "sunk",
+      "book": {
+        "base": "D"
+      },
+      "prefs": {},
+      "statement": "We've spent two years and a lot of legal fees getting permits on exactly those seven power requests. If we don't fund the risk-aware book, all of that permitting work is wasted, and I'm not prepared to explain that to the board.",
+      "key": {
+        "types": [
+          "sunk cost"
+        ]
+      }
+    },
+    {
+      "id": "X27",
+      "persona": "P8",
+      "flaw": "sunk",
+      "book": {
+        "base": "C"
+      },
+      "prefs": {},
+      "statement": "This committee spent most of last year and a serious advisory budget building the case for the high-return book. We owe it to that effort to approve it rather than throw the work away and start over with the optimizer's version.",
+      "key": {
+        "types": [
+          "sunk cost"
+        ]
+      }
+    },
+    {
+      "id": "X28",
+      "persona": "P1",
+      "flaw": "sunk",
+      "book": {
+        "base": "D"
+      },
+      "prefs": {},
+      "statement": "We already have appraisal wells in the ground on several of those six leases. That capital is spent, and taking the risk-aware book is how we make it count instead of writing it off.",
+      "key": {
+        "types": [
+          "sunk cost"
+        ]
+      }
+    },
+    {
+      "id": "X29",
+      "persona": "P1",
+      "flaw": "double",
+      "book": {
+        "base": "L6",
+        "add": [
+          "REQ|ERCOT|26INR0113"
+        ]
+      },
+      "prefs": {},
+      "statement": "I judge the leases on expected value, and all six clear the bar on that. For the wind request I'm satisfied by the signed grid agreement; that's enough for me to add it, and the rest of the power queue doesn't make the cut.",
+      "key": {
+        "types": [
+          "double standard"
+        ]
+      }
+    },
+    {
+      "id": "X30",
+      "persona": "P2",
+      "flaw": "double",
+      "book": {
+        "base": "B"
+      },
+      "prefs": {},
+      "statement": "Hold the oil leases to the worst-5% loss test, where they look ugly, and judge the power projects on expected value, where they shine. Read the numbers that way and a fifty-fifty split is the fair answer.",
+      "key": {
+        "types": [
+          "double standard"
+        ]
+      }
+    },
+    {
+      "id": "X31",
+      "persona": "P5",
+      "flaw": "double",
+      "book": {
+        "base": "C"
+      },
+      "prefs": {},
+      "statement": "Score the gas plants on upside, meaning expected value, because that's where they win. Score the renewables on tail risk, because that's where their trouble is. Do that and the highest-return book is the obvious pick.",
+      "key": {
+        "types": [
+          "double standard"
+        ]
+      }
+    },
+    {
+      "id": "X32",
+      "persona": "P6",
+      "flaw": "double",
+      "book": {
+        "base": "L6"
+      },
+      "prefs": {},
+      "statement": "For the leases, base-case NPV is enough for me. For anything in the power queue I want to see the downside case cleared first, and none of them has done that. So fund the six leases and leave the power requests out.",
+      "key": {
+        "types": [
+          "double standard"
+        ]
+      }
+    },
+    {
+      "id": "X33",
+      "persona": "P3",
+      "flaw": "unsupported",
+      "book": {
+        "base": "C"
+      },
+      "prefs": {},
+      "statement": "Rates are coming down by at least two hundred basis points next year, which takes most of the downside out of the high-return book. Approve it.",
+      "key": {
+        "types": [
+          "unsupported claim"
+        ]
+      }
+    },
+    {
+      "id": "X34",
+      "persona": "P2",
+      "flaw": "unsupported",
+      "book": {
+        "base": "B"
+      },
+      "prefs": {},
+      "statement": "A federal carbon tax will be law by 2027; that's settled. Once it lands, the oil leases lose half their value, so an even split is already generous to the oil side.",
+      "key": {
+        "types": [
+          "unsupported claim"
+        ]
+      }
+    },
+    {
+      "id": "X35",
+      "persona": "P5",
+      "flaw": "unsupported",
+      "book": {
+        "base": "D"
+      },
+      "prefs": {},
+      "statement": "Grid demand is going to grow eight percent a year for the rest of the decade; everyone in the industry knows that. The seven power requests in the recommended book are underpriced on that basis, so let's take the risk-aware book.",
+      "key": {
+        "types": [
+          "unsupported claim"
+        ]
+      }
+    },
+    {
+      "id": "X36",
+      "persona": "P9",
+      "flaw": "unsupported",
+      "book": {
+        "base": "L6",
+        "add": [
+          "REQ|ERCOT|26INR0113"
+        ]
+      },
+      "prefs": {},
+      "statement": "Solar approvals are going to be frozen for at least three years under the new permitting rules, so every solar project in the queue is dead money. Take the six leases and the wind request, which already has its agreement, and leave the rest.",
+      "key": {
+        "types": [
+          "unsupported claim"
+        ]
+      }
+    },
+    {
+      "id": "X37",
+      "persona": "P8",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "lam": 1.0
+      },
+      "statement": "My rule is simple: a dollar of loss in the worst 5% of outcomes counts exactly the same as a dollar of expected value, one for one. Rank the books on that basis and I'll back the winner.",
+      "key": {
+        "types": null
+      }
+    },
+    {
+      "id": "X38",
+      "persona": "P3",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "lam": 0.0
+      },
+      "statement": "Only expected value matters to me. Ignore the downside entirely and pick the book with the highest expected value.",
+      "key": {
+        "types": null
+      }
+    },
+    {
+      "id": "X39",
+      "persona": "P6",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "lam": 2.0
+      },
+      "statement": "A dollar of loss in the worst 5% of outcomes should count twice as much as a dollar of expected value. Score the books that way and bring me the result.",
+      "key": {
+        "types": null
+      }
+    },
+    {
+      "id": "X40",
+      "persona": "P4",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "max_cvar_musd": 1300
+      },
+      "statement": "Hard condition from me: the average loss in the worst 5% of outcomes must stay under $1.3 billion. Any book that breaches that is off the table.",
+      "key": {
+        "types": null
+      }
+    },
+    {
+      "id": "X41",
+      "persona": "P10",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "max_cvar_musd": 1100
+      },
+      "statement": "I'll go tighter than the treasurer. The average loss in the worst 5% of outcomes must stay under $1.1 billion, or I vote no.",
+      "key": {
+        "types": null
+      }
+    },
+    {
+      "id": "X42",
+      "persona": "P2",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "excluded_technologies": [
+          "Gas CC"
+        ]
+      },
+      "statement": "No gas plants in this book. Build it from everything else and I'm open on the rest of the mix.",
+      "key": {
+        "types": null
+      }
+    },
+    {
+      "id": "X43",
+      "persona": "P9",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "excluded_technologies": [
+          "Solar"
+        ]
+      },
+      "statement": "Leave solar out entirely. Otherwise I have no objection to how the book is put together.",
+      "key": {
+        "types": null
+      }
+    },
+    {
+      "id": "X44",
+      "persona": "P7",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "excluded_technologies": [
+          "Storage"
+        ]
+      },
+      "statement": "No storage projects this round. Beyond that, I'll take whatever mix the optimizer recommends.",
+      "key": {
+        "types": null
+      }
+    },
+    {
+      "id": "X45",
+      "persona": "P4",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "liquidity_line_musd": 2000
+      },
+      "statement": "We can commit at most $2 billion beyond the reserve for construction. Within that limit, go with what the model recommends.",
+      "key": {
+        "types": null
+      }
+    },
+    {
+      "id": "X46",
+      "persona": "P6",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "liquidity_line_musd": 3000,
+        "max_cvar_musd": 1300
+      },
+      "statement": "Two conditions from me. Construction commitments beyond the reserve stay at or under $3 billion, and the average loss in the worst 5% of outcomes stays under $1.3 billion.",
+      "key": {
+        "types": null
+      }
+    },
+    {
+      "id": "X47",
+      "persona": "P1",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "lam": 0.5
+      },
+      "statement": "I'd weight the tail lightly: a dollar of loss in the worst 5% of outcomes counts as half a dollar of expected value. Rank the books on that.",
+      "key": {
+        "types": null
+      }
+    },
+    {
+      "id": "X48",
+      "persona": "P5",
+      "flaw": "none",
+      "book": {
+        "base": "model"
+      },
+      "prefs": {
+        "excluded_technologies": [
+          "Storage"
+        ],
+        "lam": 0.0
+      },
+      "statement": "Drop storage from the candidate list, and then just maximize expected value. I don't want tail risk in the objective at all.",
+      "key": {
+        "types": null
+      }
+    }
+  ]
+}
