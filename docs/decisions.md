@@ -1570,3 +1570,15 @@ alternative rejected.
     statements state each rule explicitly.
     *Rejected:* waiting for every file before running anything (two weeks
     idle); moving C37's threshold after the preview (it was set before).
+104. **The line's registered cost: the fee and the interest** (Alan,
+    2026-10-21: "fee + interest"). The v10 registration prices every stated
+    liquidity line at a 0.5% a year commitment fee on the undrawn part and
+    8% a year interest on draws over two years of construction, discounted
+    at 8% (`config.LINE_FEE`, `LINE_RATE`, `CONSTRUCTION_YEARS`,
+    `LINE_DISCOUNT`; all ASSUMED). The fee-only case stays in the report as
+    the lower bound, because the ATB capital costs carry a
+    construction-finance factor and the interest may count part of it
+    twice. The ladder preview of notebook 12 now uses the same cost, so the
+    preview and the registered run are on one footing.
+    *Rejected:* registering the fee alone (the lower bound would flatter
+    every stated line).

@@ -2505,12 +2505,12 @@ v10_regime_best_lease,4,4.0,results/v10/lambda_regime.csv,"the tail weight that 
 v10_regime_base_l1,$1.032B,1032193986.5488834,results/v10/lambda_regime.csv,"base world, tail weight 1"
 v10_regime_base_l2,$1.025B,1024559333.026198,results/v10/lambda_regime.csv,"base world, tail weight 2"
 v10_regime_ercot_l0,−$1.07B,-1066520451.3768134,results/v10/lambda_regime.csv,"ERCOT 25% lower, the deterministic book"
-v10_ladder_tools,+$109M,109031818.11187208,results/v10/preview_ladder_rungs.csv,"ladder rung tools_minus_proposal, mean per case (v9 cases)"
-v10_ladder_tools_ci,"[+$51M, +$174M]",50524509.07967164|173995407.99554917,results/v10/preview_ladder_rungs.csv,its case-bootstrap interval
+v10_ladder_tools,+$110M,110176959.03176184,results/v10/preview_ladder_rungs.csv,"ladder rung tools_minus_proposal, mean per case (v9 cases)"
+v10_ladder_tools_ci,"[+$53M, +$175M]",52518731.77701969|174679951.37762913,results/v10/preview_ladder_rungs.csv,its case-bootstrap interval
 v10_ladder_llm,+$35M,34752046.84042414,results/v10/preview_ladder_rungs.csv,"ladder rung tools_llm_minus_tools, mean per case (v9 cases)"
 v10_ladder_llm_ci,"[+$2M, +$83M]",1946724.124097104|83404797.7196757,results/v10/preview_ladder_rungs.csv,its case-bootstrap interval
-v10_ladder_optimizer,+$103M,103145289.4689604,results/v10/preview_ladder_rungs.csv,"ladder rung optimizer_minus_tools_llm, mean per case (v9 cases)"
-v10_ladder_optimizer_ci,"[+$48M, +$168M]",47714505.68707549|168498302.3951575,results/v10/preview_ladder_rungs.csv,its case-bootstrap interval
-v10_ladder_total,+$144M,143783864.95229623,results/v10/preview_ladder_rungs.csv,"ladder rung tools_llm_minus_proposal, mean per case (v9 cases)"
-v10_ladder_total_ci,"[+$78M, +$222M]",77685766.41118385|222357999.90057945,results/v10/preview_ladder_rungs.csv,its case-bootstrap interval
+v10_ladder_optimizer,+$103M,103286105.58014894,results/v10/preview_ladder_rungs.csv,"ladder rung optimizer_minus_tools_llm, mean per case (v9 cases)"
+v10_ladder_optimizer_ci,"[+$48M, +$169M]",47714505.68707549|168639118.50634605,results/v10/preview_ladder_rungs.csv,its case-bootstrap interval
+v10_ladder_total,+$145M,144929005.87218598,results/v10/preview_ladder_rungs.csv,"ladder rung tools_llm_minus_proposal, mean per case (v9 cases)"
+v10_ladder_total_ci,"[+$79M, +$223M]",78910072.86855075|223315696.4040339,results/v10/preview_ladder_rungs.csv,its case-bootstrap interval
 v10_readings_equal,41,41,results/v10/preview_readings.csv,"v9 readings equal to their key, of 48"

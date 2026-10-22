@@ -1741,9 +1741,13 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 - Realized 2025 data pulled: ERCOT 2025 day-ahead prices (workflow run 39693715189 into `data/raw/forward/`), BSEE 2025 OGOR-A (`data/raw/bsee/forward/`); EIA prices were on disk.
 - `src/forward.py` and notebook 12 section 3: 43 of 1,649 live ERCOT requests operated in 2025, where the level-corrected model expected 104 and the lookup 24; slopes 0.75 against 0.07; oil and ERCOT prices inside the scenario bands, Henry Hub above; the twenty leases at 1.03 times their baseline; F49.
 - Section 4: on 5,000 paths the books keep their order, D's margin over NPV ranking $256M (against $320M); without the candidates' co-movement D's worst-5% loss falls from $1.02B to $0.30B; a tail weight of 2 or 4 beats 1 in three of four misspecified worlds.
-- Section 5: the ladder on the v9 cases (preview): tools +$109M, the language model +$35M over the tools, the optimizer +$103M over the challenger; 41 of 48 readings equal their key; F47.
+- Section 5: the ladder on the v9 cases (preview, rerun on the registered line cost): tools +$110M, the language model +$35M over the tools, the optimizer +$103M over the challenger; 41 of 48 readings equal their key; F47.
 - `src/whatif.Engine(state_file=)`; report keys for sections 3–5.
 
 **Next**
 
 - Alan's files (cases, approvals, the 2024 edition, the GIS reports); then the as-of build, the v10 registration, the live run.
+
+## Session 20, continued — 2026-10-21: the line's cost decided (decision #104)
+
+- Alan chose the fee and the interest as the registered line cost. Config comments updated; notebook 12's ladder preview rerun on that cost.

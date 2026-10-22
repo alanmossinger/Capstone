@@ -240,8 +240,8 @@ RELEASE_LAGS = {  # months after the observation month a source is public (PLAN.
     "BLS CPI-U": 1,  # the index is released mid-month for the previous month
 }
 DECISION_DATE = "2025-01-01"  # one decision date for both sectors (decision #90): leases valued and requests still active on CENSOR_DATE
-LINE_FEE = 0.005  # commitment fee a year on the undrawn part of the liquidity line (ASSUMED, decision #102; range 0.0025–0.01)
-LINE_RATE = 0.08  # interest a year on the drawn part, from the construction draw to operation (ASSUMED, decision #102; range 0.06–0.10)
+LINE_FEE = 0.005  # commitment fee a year on the undrawn part of the liquidity line (ASSUMED, decisions #102, #104: registered with the interest; range 0.0025–0.01)
+LINE_RATE = 0.08  # interest a year on the drawn part, from the construction draw to operation (ASSUMED, decisions #102, #104: registered; range 0.06–0.10)
 LINE_DISCOUNT = 0.08  # the rate the line's costs are discounted at: the committee grid's real hurdle (economics.COMMITTEE_GRID)
 CONSTRUCTION_YEARS = 2  # years a plant's capital is drawn before it operates (ASSUMED, decision #102)
 LINE_YEARS = 7  # the commitment period: the seven-year window in which a request can operate (HORIZON_YEARS)
