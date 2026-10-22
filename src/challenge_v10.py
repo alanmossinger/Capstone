@@ -29,7 +29,7 @@ BOOK_NAMES = {  # one plain name per base book, the same for every persona
     "C": "the deterministic book, the one with the highest expected value under the budget and the cap",
     "A": "the ranking by expected NPV, funded from the top",
     "B": "equal capital by sector",
-    "L6": "the six leases of the risk-aware book",
+    "L6": "the leases of the risk-aware book",
     "model": "the optimizer's book under the rules below",
 }
 
@@ -100,9 +100,19 @@ def statement_of(case):
     return " ".join(parts)
 
 
+# Two fragile cases rested on members the as-of book D no longer holds (decision #105): each now rests on a member of the as-of
+# book D that the tools flag as fragile. The v9 specs (challenge_experiments.CASES) stay as registered.
+SPEC_CHANGES = {"X21": {"relies_on": ["REQ|ERCOT|26INR0046"]}, "X22": {"relies_on": ["REQ|ERCOT|27INR0061"]}}
+
+
 def templated_cases():
-    """The 24 computable-flaw cases with their statements replaced by the templates."""
-    return [{**c, "statement": statement_of(c)} for c in cx.CASES if c["flaw"] in cx.COMPUTABLE]
+    """The 24 computable-flaw cases with their statements replaced by the templates (and the v10 spec changes applied)."""
+    out = []
+    for c in cx.CASES:
+        if c["flaw"] in cx.COMPUTABLE:
+            c = {**c, **SPEC_CHANGES.get(c["id"], {})}
+            out.append({**c, "statement": statement_of(c)})
+    return out
 
 
 def author_cases(path=V10 / "cases_v10.json"):
@@ -203,7 +213,7 @@ def registration(model, author_path=V10 / "cases_v10.json", paraphrases_path=V10
             raise FileNotFoundError(f"{p} is missing: the registration needs the approved material, not a draft")
     cases = cases_v10(author_path)
     prompts = {n: sha_file(paths.REPO / "prompts" / f"{n}.md") for n in ("advisor_system", "challenge_read", "challenge_memo")}
-    return {"decided": "2026-10-28", "decision": 100, "criteria": CRITERIA, "primary": PRIMARY, "thesis_rule": THESIS, "model": model,
+    return {"decided": "2026-10-22", "decision": 100, "criteria": CRITERIA, "primary": PRIMARY, "thesis_rule": THESIS, "model": model,
             "cases_sha256": sha(cases), "paraphrases_sha256": sha_file(paraphrases_path), "injections_sha256": sha_file(injections_path),
             "prompts_sha256": prompts, "value_added_sha256": sha_file(paths.RESULTS / "v8" / "value_added.csv"),
             "line_cost": {"fee": config.LINE_FEE, "rate": config.LINE_RATE, "discount": config.LINE_DISCOUNT, "build_years": config.CONSTRUCTION_YEARS, "years": config.LINE_YEARS},

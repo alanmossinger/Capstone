@@ -6,139 +6,139 @@ I want to drop oil and gas and fund the contracted wind and solar requests only.
 
 ## The advisor's questions
 
-1. Your book is the contracted wind and solar requests only, and you say the PPA makes wind safe. Which number carries the loss if that is wrong: the chance that a request is ever built, the PPA price, or the wind capacity factor in a weak year? And how large is the worst case you have in mind for the whole budget, in dollars, if the book earns nothing or loses its deposits?
+1. Your book is wind and solar requests only, with the leases dropped. Which number in your statement carries the loss if you are wrong: the ten-year stranding of the leases, the PPA price that makes wind "safe", or the chance that a request is ever built? How large is the worst case you have in mind, in dollars, for the whole book?
 
-2. Four parties see this book differently. What does the committee that sets the budget want from it: the highest expected NPV, a shield against a bad tail, or a signal about direction? What does the lender who sees the tail want to see, and has the lender stated a test, such as a loss limit at the worst 5%? What would the operator who runs the leases do if we dropped them, and what would that cost us? And what does the grid operator's queue process decide for the requests you would fund, and when?
+2. What does each party want from this book? Who sits on the committee that sets the budget, and what do they say about the 40% cap per technology? What does the lender who sees the tail ask to see beyond "renewables"? What does the operator who runs the leases lose or gain if we drop them? What does the grid operator's queue process decide about when, or whether, your wind and solar requests are built?
 
-3. Where is your own stake in this choice? Have we already paid deposits on any of the wind or solar requests, or do we already hold any of the leases, so that dropping or keeping them feels like admitting a mistake? Have you defended the transition view in an earlier decision? And do you like renewables, or dislike oil and gas, enough that it shapes which numbers you look at?
+3. Where is your own stake in this choice? Have we already paid deposits on any of the wind or solar requests, or do we already hold any of the twenty leases? Have you argued for this position before, and would dropping it cost you something? Do you like renewables, or dislike oil and gas, in a way that colors how you read the numbers?
 
-4. Which table or figure did you lean on for "the leases will be stranded within ten years", and for "the PPA makes wind safe"? Did you look at the flat price path or at the stress scenarios? Did you compare the mean to the median? Did you use the registered cost grid or the committee's own grid for the leases? And did you look at the chance that each wind and solar request ever reaches operation, and at what the book earns if it does not?
+4. Which table or figure did you lean on to say the PPA makes wind safe, and which did you pass over? Did you look at the flat-price path or the stress scenarios? The mean or the median? The registered queue or the committee's own list of requests? The chance that each wind and solar request reaches operation within seven years, or only its value if built?
 
-5. What alternatives did you leave off the table? Did you consider a mixed book of leases and requests under the 40% cap per technology, a smaller book that spends less than the full budget, a leases-only book, waiting for the queue to clear before committing, or funding nothing? If you did consider them, what made you reject each one?
+5. Which alternatives did you leave off the table? You said "only" renewables, so did you test a book that keeps some leases, a smaller book that leaves part of the budget unspent, waiting for the queue to clear, or funding nothing? And how would you fill the whole budget with wind and solar alone, given the 40% cap per technology?
 
 ## The human's answers
 
-Q1. Your book is the contracted wind and solar requests only, and you say the PPA makes wind safe. Which number carries the loss if that is wrong: the chance that a request is ever built, the PPA price, or the wind capacity factor in a weak year? And how large is the worst case you have in mind for the whole budget, in dollars, if the book earns nothing or loses its deposits?
+Q1. Your book is wind and solar requests only, with the leases dropped. Which number in your statement carries the loss if you are wrong: the ten-year stranding of the leases, the PPA price that makes wind "safe", or the chance that a request is ever built? How large is the worst case you have in mind, in dollars, for the whole book?
 A1. If the renewables book is wrong the loss is the deposits and study costs on requests that never operate, plus the lease value we gave up; the worst case is a queue in which none of the requests is built.
 
-Q2. Four parties see this book differently. What does the committee that sets the budget want from it: the highest expected NPV, a shield against a bad tail, or a signal about direction? What does the lender who sees the tail want to see, and has the lender stated a test, such as a loss limit at the worst 5%? What would the operator who runs the leases do if we dropped them, and what would that cost us? And what does the grid operator's queue process decide for the requests you would fund, and when?
+Q2. What does each party want from this book? Who sits on the committee that sets the budget, and what do they say about the 40% cap per technology? What does the lender who sees the tail ask to see beyond "renewables"? What does the operator who runs the leases lose or gain if we drop them? What does the grid operator's queue process decide about when, or whether, your wind and solar requests are built?
 A2. The committee wants a book that holds its value; the lender wants the PPA and a thin tail; the operator has no renewables experience; the grid operator decides whether any request is built at all.
 
-Q3. Where is your own stake in this choice? Have we already paid deposits on any of the wind or solar requests, or do we already hold any of the leases, so that dropping or keeping them feels like admitting a mistake? Have you defended the transition view in an earlier decision? And do you like renewables, or dislike oil and gas, enough that it shapes which numbers you look at?
+Q3. Where is your own stake in this choice? Have we already paid deposits on any of the wind or solar requests, or do we already hold any of the twenty leases? Have you argued for this position before, and would dropping it cost you something? Do you like renewables, or dislike oil and gas, in a way that colors how you read the numbers?
 A3. I want the company to be seen as part of the transition and I have argued that position in public; that is a past position I am defending.
 
-Q4. Which table or figure did you lean on for "the leases will be stranded within ten years", and for "the PPA makes wind safe"? Did you look at the flat price path or at the stress scenarios? Did you compare the mean to the median? Did you use the registered cost grid or the committee's own grid for the leases? And did you look at the chance that each wind and solar request ever reaches operation, and at what the book earns if it does not?
+Q4. Which table or figure did you lean on to say the PPA makes wind safe, and which did you pass over? Did you look at the flat-price path or the stress scenarios? The mean or the median? The registered queue or the committee's own list of requests? The chance that each wind and solar request reaches operation within seven years, or only its value if built?
 A4. I leaned on the contracted wind NPVs and on the PPA making wind safe; I passed over the chance of operating within seven years, the solar requests that are negative even under contract, and the leases' expected NPV.
 
-Q5. What alternatives did you leave off the table? Did you consider a mixed book of leases and requests under the 40% cap per technology, a smaller book that spends less than the full budget, a leases-only book, waiting for the queue to clear before committing, or funding nothing? If you did consider them, what made you reject each one?
+Q5. Which alternatives did you leave off the table? You said "only" renewables, so did you test a book that keeps some leases, a smaller book that leaves part of the budget unspent, waiting for the queue to clear, or funding nothing? And how would you fill the whole budget with wind and solar alone, given the 40% cap per technology?
 A5. I left off the table a mixed book in which the leases carry the budget and the contracted wind rides alongside, and a smaller renewables position inside book D.
 
 ## The motivated-reasoning check
 
-**What the tables hold, so the rest is checkable**
+# Motivated-reasoning check: the wind-and-solar-only book
 
-- Your book matches the "power only (D rule)" row. It has 4 wind requests, no solar, and $0.76B of the $1.91B budget. Its expected NPV is 0.56 ($B, out of sample), its 5% tail is a loss of 0.06, and the chance of a loss is 0.60.
-- Book D has 7.67, a tail of -2.20 (a profit) and a chance of a loss of 0.00, on 1.85 of capital. It holds the same wind capital, 0.76, plus 0.76 of leases.
-- Leases only has 8.66, a tail of -2.28 and a chance of a loss of 0.00, on 1.35.
-- The weakest label behind your case is ASSUMED: the PPA, the credits and the flat 2024 prices. The timing of operation is FORECAST, and all book scores are FORECAST.
+**Proxy.** No table scores a book of wind and solar only. The closest is "power only (D rule)". It holds five wind requests, no solar, and $0.81B of the $2.31B budget. Solar gets $0.00B in all six books. I use that book as your book, and I use leases only (D rule) and book D as the books you rejected.
 
-## 1 and 2. Patterns, and what the tables show
+## Steps 1 and 2: patterns and what the tables show
 
-**Working backward from the conclusion.**
-- Your evidence: "I want to drop oil and gas and fund the contracted wind and solar requests only." The preference comes first and the reasons follow. A3 confirms it: "a past position I am defending."
-- The tables: your book scores 0.56 against 7.67 for D. The only table figure that favors your book is the contracted wind NPV.
+**1. Working backward from the conclusion, and a criterion that shifts**
+- Your sentences: "I want to drop oil and gas and fund the contracted wind and solar requests only." Then, in A3: "I want the company to be seen as part of the transition." In the statement, the lender wants "a book of renewables". In A2, the lender wants "the PPA and a thin tail".
+- The answer came first, and the test moved from a label to a tail. On the tail test your book fails.
+- Power only: expected NPV $0.59B, CVaR95 loss 0.03 (a loss, not a profit), p_negative 0.58, capital $0.81B.
+- Leases only: expected NPV $8.66B, CVaR95 loss -2.28, p_negative 0.00, capital $1.35B.
+- Book D: expected NPV $8.48B, CVaR95 loss -2.36, p_negative 0.00, capital $2.27B.
+- A thin tail means a profit in the worst 5%. Your book has a 0.58 chance of a loss. The rejected books have 0.00.
 
-**Moving the goalposts.**
-- Your evidence: "a book of renewables is what our lenders want to see" and "the company to be seen as part of the transition."
-- The criterion has moved from value and tail to appearance. A2 says the lender wants "a thin tail", but your book has a 5% tail that is a loss of 0.06 and a 0.60 chance of a loss. A2 also names no lender loss limit, which Q2 asked for.
-- Under the tail test, D (-2.20) and leases only (-2.28) are the books that look thin to a lender.
+**2. Cherry-picking the revenue case**
+- Your sentence: "the PPA makes wind safe."
+- You used the contracted column. The merchant column is negative for all five wind requests: -63.5, -11.5, -10.9, -5.63 and -7.95.
+- Contracted, they are 346.0, 55.0, 53.5, 26.9 and 38.3. One request, 26INR0113, carries 346.0.
+- The figure rests on "ASSUMED PPA and credits". That is the weakest label in your case. No stress in the tables tests the PPA.
 
-**Cherry-picking the revenue case.**
-- Your evidence: "the PPA makes wind safe", and A4: "I leaned on the contracted wind NPVs."
-- The tables: contracted NPV is positive for wind: 346.0 (26INR0113), 55.0, 53.5 and 38.3 ($M). The merchant NPV of those same four is negative: -63.5, -11.5, -10.9 and -7.95. The contracted case is the best case, and the PPA is ASSUMED, not observed.
-- 26INR0113 supplies 346.0 of the 492.8 $M contracted total for the four.
+**3. A double standard: stranding risk for the leases, no queue risk for the requests**
+- Your sentences: "The energy transition will strand the leases within ten years." In A4 you passed over the chance of operating within seven years.
+- Leases show p_operation_7y of 1.00. The five wind requests show 0.36, 0.03, 0.04, 0.03 and 0.03.
+- Stranding is a forecast with no table behind it. The tables hold no stranding case. The nearest tests are:
+  - Oil collapse (2020 path): lease NPV $8.21B against $8.19B at base.
+  - Simultaneous downside: lease NPV $7.11B.
+- Lease breakevens run from 30.6 to 50.6 flat WTI $/bbl.
+- This cuts both ways. Lease costs are ASSUMED and production is FORECAST. Stranding past the horizon is untested, so we cannot rule it out. But you applied that doubt to one sector only.
 
-**Ignoring the chance of operation.**
-- Your evidence: A4 admits you "passed over the chance of operating within seven years."
-- The tables: p_operation_7y is 0.36 for 26INR0113 and 0.03, 0.04 and 0.03 for the other three. The leases are at 1.00. A1 says the worst case is "a queue in which none of the requests is built", but gives no dollar figure.
-- The tables show a stage-one charge of 0.76 for the book and do not split deposits from the construction reserve. They show no median either, so Q4's mean-versus-median question cannot be answered from them.
+**4. Treating ASSUMED and FORECAST figures as observed, and misreading the table**
+- Your sentence in A4: "the solar requests that are negative even under contract."
+- The tables say otherwise. Solar contracted NPVs are positive: 50.4, 9.95, 34.4, 8.91 and 6.62. Solar is negative only merchant, from -292.0 to -43.9.
+- The requests negative under contract are the gas combined-cycle plants: -246.3, -281.8, -52.2, -44.1 and -32.7.
+- So the table was not read closely. Solar's contracted NPVs are small against stage-one charges, for example 50.4 against 758.5 for 24INR0075. Solar still gets $0.00B in every book.
 
-**Misreading the solar data.**
-- Your evidence: A4 says solar requests "are negative even under contract."
-- The tables: contracted NPV for solar is positive: 17.2, 9.95, 34.4, 8.91 and 6.62 ($M). Merchant is negative. Solar capital is 0.00 in every scored book, so we have no scored book that includes solar.
+**5. Defending a past position**
+- Your sentence: "that is a past position I am defending."
+- This is commitment, not evidence. The tables hold no deposits paid and no leases held, and you did not say whether we have either.
+- In Q1 you gave no dollar worst case. The tables hold none for "no request is built". The closest figures are the $0.81B stage-one charge, which mixes deposits and construction reserve, and the CVaR95 loss of 0.03.
 
-**Double standard.**
-- Your evidence: "The energy transition will strand the leases within ten years."
-- The leases are judged on a story the tables do not hold, with no ten-year decline path in any table. The wind is judged on its best case.
-- The tables test the leases only against the 2020 oil path (lease book NPV 8.21 against 8.19 at base) and the simultaneous downside (7.11, a drop of 1.08). The lease breakeven runs from 30.6 to 50.6 flat WTI $/bbl.
-- A fair reading cuts both ways. The lease figures rest on ASSUMED costs, FORECAST production, and flat 2024 prices that are themselves ASSUMED. Your stranding claim is untested, not refuted.
+**6. Alternatives left untested**
+- Your sentence in A5: you "left off the table" a mixed book and a smaller renewables position.
+- The tables test both.
+  - Book D holds $0.76B of wind inside a $2.27B book at expected NPV $8.48B.
+  - Leases only does better on expected NPV ($8.66B) with $1.35B of capital.
+- Wind and solar alone cannot fill the budget. Two technologies at a 40% cap each reach at most 80% of $2.31B. Your proxy uses $0.81B.
 
-**Dropping options without a reason.**
-- Your evidence: A5 names the mixed book and a smaller renewables position inside D as "left off the table" and gives no reason for rejecting either.
-- The tables: D carries the same 0.76 of wind as your book, with 7.67 and a 0.00 chance of a loss. The lease sacrifice is 8.66 minus 0.56, which is 8.10 ($B), if you compare leases only with your book.
-- Leases only holds 1.35 in one technology, above 40% of the 1.91 budget. That is 0.76 (the 40% cap), which D's lease capital sits at. So leases only is not an admissible book under the cap, and D is the right comparison.
-- Your book leaves 1.15 of the budget unspent. Wind at 0.76 sits at the cap, and no scored book adds solar.
+## Step 3: top three risks of your book
 
-**Sunk cost and stake.**
-- Your evidence: A3 speaks of a public position, and does not answer whether we have paid deposits or hold leases.
-- The tables carry no field for deposits already paid, so we cannot test that. The public position is a sunk commitment of its own.
-- The Q4 questions on the flat path versus the stress scenarios and on the registered cost grid versus the committee's grid also went unanswered. Only the registered upstream grid appears in the tables.
+1. **The request never reaches operation.**
+   - Four of the five wind requests have p_operation_7y of 0.03 or 0.04. The best has 0.36.
+   - Mitigation: a later gate. Commit beyond the stage-one charge only after a queue milestone. Full capital runs from 1,348 to 2,770 against stage-one charges of 42.5 to 535.3.
+2. **The PPA is an assumption, and without it wind is negative.**
+   - Merchant NPVs are all negative. p_negative is 0.58.
+   - Mitigation: an executed contract before capital is committed, not an assumed one.
+3. **The value is concentrated in one request, and we give up the leases' value.**
+   - 26INR0113 carries 346.0 of the contracted wind value. Your book's expected NPV is $0.59B against $8.66B for leases only.
+   - Mitigation: a smaller wind position inside a book where the leases carry the budget, as in book D.
 
-**Where your view has support.** All five gas CC requests are negative under both revenue cases (-281.8, -44.1, -62.1, -32.7 and -37.0 $M). Dropping gas requests is backed by the tables. Dropping the leases is not.
+## Step 4
 
-## 3. Top three risks of your book
-
-1. **The requests are never built.**
-   - The numbers: the chance of a loss is 0.60. Three of the four wind requests have a 0.03 to 0.04 chance of operating.
-   - Mitigation: a later gate, committing the stage-one charge only after the queue clears. The charges are 535.3, 83.5, 86.7 and 58.0 ($M), and 26INR0113 alone is the one with a 0.36 chance.
-2. **The PPA is ASSUMED, and merchant wind loses.**
-   - The numbers: all four merchant NPVs are negative (-63.5, -11.5, -10.9, -7.95 $M).
-   - Mitigation: a signed contract. That would turn an ASSUMED figure into an OBSERVED one.
-3. **Concentration and stress.**
-   - The numbers: the 5% tail is a loss of 0.06. One request is 535.3 of the 0.76B. In the default book of forty, the power side moves from -1.09 at base to -1.20 in a weak wind year and -1.42 in the simultaneous downside.
-   - Mitigation: a smaller position. For example, hold the wind inside book D, where the tail is -2.20.
-
-## 4. Verdict
-
-The decision does not survive the check. The change that would make it survive is to hold the 0.76 of wind inside a mixed book such as D, instead of dropping the leases whose stranding is not shown in any table.
+Your decision does not survive the check. It would survive only with a tested stranding case that pushes lease value below the wind book's $0.59B, because the worst stress in our tables leaves the lease half of the forty at $7.11B.
 
 ## The opposing case
 
-# The case for Book D, argued by its advocate
+## The case for Book D, argued by its advocate
 
-**A correction first.** Book D does not hold all twenty leases. It holds 14 of them, plus 7 requests: four wind, two gas combined cycle (CC) and one storage. The twenty-lease book is the separate "leases only (D rule)" row. I argue for D as the tables show it.
+**Strongest point: the PPA prices the electricity, not the queue.**
+You say the PPA makes wind safe. The tables do not show that.
 
-## The case
+- The chance each wind request operates within seven years is 0.36 for 26INR0113, then 0.03 for 27INR0061, 0.04 for 28INR0033, 0.03 for 28INR0113 and 0.03 for 30INR0004. The grid operator's queue decides those numbers, and no contract changes them.
+- The book built on your logic is "power only (D rule)": five wind requests, $0.81B of stage-one charge. Out of sample it earns an expected NPV of $0.59B. Its 5% tail is a loss of $0.03B, and its p_negative is 0.58.
+- Book D has an expected NPV of $8.48B. Its 5% tail is a profit of $2.36B (CVaR95 loss -2.36), and its p_negative is 0.00.
+- A lender who asks for a thin tail beyond the word "renewables" gets a positive tail loss and a 0.58 chance of a negative result from the renewables book. Book D is the one that shows a tail profit.
 
-**1. Your book has the thinnest tail protection and the lowest return, and the tables show both.**
-The nearest scored match to your book is "power only (D rule)". It holds four wind requests, spends $0.76B and has:
-- an expected NPV of $0.56B
-- a CVaR95 loss of 0.06 (a loss, not a profit)
-- a p_negative of 0.60
+**Second point: the leases carry the value.**
+Our lease sleeve in D is 14 leases, $0.89B of capital. Every lease has a documented breakeven between $30.6 and $39.5 flat WTI per barrel. G14658 alone has an expected NPV of $1,318M on $96.0M of stage-one charge. The leases-only book earns $8.66B on $1.35B of capital. Dropping the leases gives up that value for $0.59B.
 
-Book D has an expected NPV of $7.67B, a CVaR95 loss of -2.20 (the worst 5% is still a profit) and a p_negative of 0.00. The gap is $7.11B of expected NPV. A lender who asks for a thin tail gets a 60% chance of a negative result from your book and none from D.
+**Third point: your book cannot fill the budget.**
+- Wind alone absorbs $0.81B of the $2.31B.
+- Solar appears in none of the six scored books ($0.00B in each).
+- Forty percent of $2.31B is $0.924B per technology (my arithmetic, not a table figure). Two technologies therefore cap at $1.848B, below the budget.
+- You would leave capital unspent or break the cap.
 
-**2. The PPA fixes the price, not the build.**
-Your answer to Q1 named the real risk: a queue in which nothing is built. The FORECAST chance of operating within seven years is 0.36 for 26INR0113 and 0.03, 0.04 and 0.03 for the other three wind requests. For the contracted solar requests the figures run from 0.06 to 0.33. Contracted NPV is timing-weighted by those figures, so a safe price does not make the project safe. You said you passed over this number. It is the one that carries the loss.
+**Your best objection: "the leases strand within ten years."**
+I take it seriously, and I answer it with the tables.
+- The tables hold no stranding scenario. They hold stresses.
+- In the simultaneous downside (WTI path, HH 1.50, wind CF 0.85, solar 0.90, delay 2.00, cost 1.20), the forty-candidate book's lease NPV falls from $8.19B to $7.11B. It stays positive.
+- The forty-candidate book's power sleeve is negative in every stress shown. It runs from -1.36 to -1.93 (base -1.49, simultaneous downside -1.92).
+- The "oil collapse (2020 path)" row moves the lease book by only +0.02. I do not lean on it. Its wti_path cell reads "2,020", which looks like a label, not a price path.
+- The breakevens are the cleaner test. A lease fails at a flat WTI below its breakeven, and D's leases range from $30.6 to $39.5.
 
-**3. Solar adds almost nothing under contract.**
-The five solar requests have contracted expected NPVs of 17.2, 9.95, 34.4, 8.91 and 6.62 $M, which sum to 77.08 $M. Their merchant NPVs are negative, from -43.9 to -201.1 $M. No scored book holds solar, and the tables do not hold a book of wind and solar together. I cannot score your exact book, only its wind half.
+**Where I concede.**
+- Contracted revenue does turn wind positive. 26INR0113 moves from -63.5 merchant to 346.0 contracted. That is why D holds wind too, at $0.76B.
+- Your A4 says solar is negative even under contract. The table shows the opposite: contracted solar NPVs are 50.4, 9.95, 34.4, 8.91 and 6.62, and only the merchant case is negative. Solar is still small against its stage-one charges, and 24INR0075 is 0.45 likely to operate.
 
-**4. The 40% cap limits how much wind can carry.**
-Wind is $0.76B in both D and power only, against a $1.91B budget. Wind alone cannot absorb the budget. Something else has to carry the other $1.15B, and the tables show leases doing that at positive NPV.
-
-**5. Your best objection is stranding within ten years. Here is how the tables answer it.**
-The tables hold no transition price path, so I cannot refute stranding directly. They do say:
-- Under the oil collapse (2020 path), the lease NPV of the forty-candidate book is $8.21B, against $8.19B at base.
-- Under the simultaneous downside, which adds a 1.20 cost multiplier and a two-year delay, it is $7.11B. That is still positive and still above the power sleeve's loss of -1.42.
-- The 14 leases in D break even between 30.6 and 39.9 flat WTI $/bbl.
-
-## The assumption D rests on, and where it fails
-
-D rests on the ASSUMED lease costs, with FORECAST production on top. That is the weakest label behind the recommendation. Each lease turns negative below its breakeven, which runs from 30.6 (G16783) to 39.9 (G21447) flat WTI $/bbl. The tables do not state the base WTI, so I cannot say how far that is from base. They also do not give a cost multiplier that zeroes the leases. If the committee's cost grid differs from the registered one, the case weakens, and I cannot size by how much.
+**The assumption that carries my case.**
+- The weakest label under D is ASSUMED lease costs, on top of FORECAST production and a data_completeness of 0.80.
+- The queue chances are FORECAST. The PPA behind your wind is also ASSUMED.
+- My case fails if actual lease costs push a lease's breakeven above the WTI we expect. It fails for D's lease sleeve as a whole if the sleeve loses roughly $7.89B (8.48 less 0.59). That is the gap that would put D level with the power-only book.
+- The tables do not give a cost-multiplier level at which that happens. The only cost stress shown, 1.20, was combined with other shocks.
 
 ## In my own voice
 
-D is clearly stronger than the renewables-only book: $7.67B against $0.56B of expected NPV, and a -2.20 tail against a 0.06 loss. Even so, the leases-only book scores better on the tables ($8.66B, tail -2.28, p_negative 0.00), so D's gas CC and storage members and its wind sleeve cost about $0.99B of expected NPV against that book. Evidence that would settle this is a price path that models stranding, and a lease cost run on the committee's own grid.
+On the tables, Book D is stronger than the renewables-only book: $8.48B against $0.59B expected NPV, and a tail profit of $2.36B against a tail loss of $0.03B. D is not the best lease-heavy book either, since leases only has a higher expected NPV ($8.66B) on less capital, and D's gas leg (23INR0029, -246.3 under both cases) is its weakest member. Evidence that would settle the open point is a lease-stranding scenario run through the same out-of-sample books, plus audited lease costs to replace the ASSUMED grid.
 
-CONVERGE: Book D (14 leases, four wind requests, wind capped at $0.76B) | DISAGREE: whether the wind sleeve is worth the $0.99B of expected NPV that leases-only scores above D, and whether leases strand within ten years, which the tables do not test
+CONVERGE: lease core plus contracted wind, Book D without the 23INR0029 gas member | DISAGREE: whether the leases strand within ten years, which the tables cannot test

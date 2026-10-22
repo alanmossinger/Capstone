@@ -48,7 +48,7 @@ def numbers_in(text):
 
 
 def test_every_number_in_the_report_is_in_report_numbers():
-    table = report_numbers.build()
+    table = report_numbers.build() if REPORT_V10_WRITTEN else pd.read_csv(V9_NUMBERS)
     cited = set()
     for text in table["text"].astype(str):
         cited |= numbers_in(text)
@@ -69,13 +69,16 @@ def test_report_is_under_the_word_limit():
     assert len(words) <= WORD_LIMIT, f"{len(words)} words"
 
 
-# The poster and the Petrobras edition describe report v9, so they are checked against the live numbers table, as
-# the report is (decision #99; until then they were checked against the frozen v7 table).
+# Report v9, the poster and the Petrobras edition were written before the decision moved to the as-of candidates (decision
+# #105): until report v10 replaces the report and the poster, all three are checked against the numbers table they were
+# written from, frozen in results/report_v9/. The Petrobras edition is out of scope for v10 and stays on it.
+V9_NUMBERS = paths.RESULTS / "report_v9" / "report_numbers.csv"
+REPORT_V10_WRITTEN = False  # set to True when report.md and poster.typ are rewritten from the v10 results
 
 
 def test_every_number_on_the_poster_is_in_report_numbers():
     """The poster cites the report's numbers only; layout sizes (mm, pt, %) and colours are not quantities."""
-    table = report_numbers.build()
+    table = report_numbers.build() if REPORT_V10_WRITTEN else pd.read_csv(V9_NUMBERS)
     cited = set()
     for text in table["text"].astype(str):
         cited |= numbers_in(text)
@@ -88,8 +91,8 @@ def test_every_number_on_the_poster_is_in_report_numbers():
 
 
 def test_every_number_in_the_petrobras_report_is_in_report_numbers():
-    """The executive edition cites the report's numbers only; typst sizes, colours and file names are not quantities."""
-    table = report_numbers.build()
+    """The executive edition cites report v9's numbers; typst sizes, colours and file names are not quantities."""
+    table = pd.read_csv(V9_NUMBERS)
     cited = set()
     for text in table["text"].astype(str):
         cited |= numbers_in(text)

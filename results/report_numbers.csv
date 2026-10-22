@@ -1921,7 +1921,7 @@ gas_price,3.50,3.5,results/value_assumptions.csv,"gas price assumption, $/MMBtu"
 book_m_all_exp_int,104,103.83366470808669,results/recommended_books.csv,"model's own expectation for the floor book, operations"
 arch_silhouette,0.20,0.20323617718549083,results/state_archetypes.csv,silhouette of the chosen clustering
 v6_pool_leases,506,506,results/investment_candidates.csv,producing leases in the pool
-v6_pool_requests,"1,649",1649,results/investment_candidates.csv,queue requests in the pool
+v6_pool_requests,"1,441",1441,results/investment_candidates.csv,queue requests in the pool
 v6_book_leases,20,20,results/investment_candidates.csv,leases in the default book
 v6_book_per_tech,5,5,results/investment_candidates.csv,requests per technology in the default book
 v6_book_total,40,40,results/investment_candidates.csv,candidates in the default book
@@ -1952,10 +1952,10 @@ v6_arps_window,36,36,src/economics.py,months of history behind the Arps baseline
 v6_half_life_median_months,twelve,12,notebook 02 part C,months for the median lease to halve its peak oil
 v6_lease_npv_base,$8.2B,8186621514.391418,results/candidate_npv.csv,"incremental NPV of the twenty leases, base grid"
 v6_breakeven_median,$35,35.048828125,results/candidate_npv.csv,"median break-even WTI of the twenty leases, $/bbl"
-v6_power_merchant,−$1.09B,-1092554978.268333,results/candidate_npv.csv,"expected NPV of the twenty requests, merchant"
-v6_power_contracted,−$−0.07B,70164936.36131082,results/candidate_npv.csv,"expected NPV of the twenty requests, contracted"
+v6_power_merchant,−$1.49B,-1492132209.7175434,results/candidate_npv.csv,"expected NPV of the twenty requests, merchant"
+v6_power_contracted,−$0.11B,-107677670.67541672,results/candidate_npv.csv,"expected NPV of the twenty requests, contracted"
 v6_p_op_low,1%,0.0148925915332491,results/candidate_npv.csv,lowest P(operation within 7 y) among the requests
-v6_p_op_high,36%,0.3557179301516212,results/candidate_npv.csv,highest P(operation within 7 y) among the requests
+v6_p_op_high,56%,0.5619731629366084,results/candidate_npv.csv,highest P(operation within 7 y) among the requests
 v6_capture_solar,92%,0.9158921272832692,results/candidate_capture_factors.csv,Solar capture factor on the 2024 North hub
 v6_capture_wind,83%,0.8295043656983557,results/candidate_capture_factors.csv,Wind capture factor on the 2024 North hub
 v6_capture_gas,136%,1.3558660067626662,results/candidate_capture_factors.csv,Gas CC capture factor on the 2024 North hub
@@ -1965,12 +1965,12 @@ v6_uplift_base,20%,0.2,results/upstream_cost_grid.csv,"uplift share, base"
 v6_lead_years,two-year,2,results/upstream_cost_grid.csv,lead time of the redevelopment
 v6_uplift_low,10%,0.1,results/cost_sensitivity.csv,"uplift share, low"
 v6_uplift_high,30%,0.3,results/cost_sensitivity.csv,"uplift share, high"
-v6_book_at_uplift_low,$2.3B,2324755778.927381,results/cost_sensitivity.csv,book NPV at the low uplift
-v6_book_at_uplift_high,$11.9B,11863377293.318798,results/cost_sensitivity.csv,book NPV at the high uplift
+v6_book_at_uplift_low,$1.9B,1925178547.478171,results/cost_sensitivity.csv,book NPV at the low uplift
+v6_book_at_uplift_high,$11.5B,11463800061.869589,results/cost_sensitivity.csv,book NPV at the high uplift
 v6_opex_low,$12,12.0,results/cost_sensitivity.csv,"operating cost, low, $/boe"
 v6_opex_high,$28,28.0,results/cost_sensitivity.csv,"operating cost, high, $/boe"
-v6_book_at_opex_low,$8.7B,8722241422.310223,results/cost_sensitivity.csv,book NPV at the low operating cost
-v6_book_at_opex_high,$4.4B,4380441725.811186,results/cost_sensitivity.csv,book NPV at the high operating cost
+v6_book_at_opex_low,$8.3B,8322664190.861012,results/cost_sensitivity.csv,book NPV at the low operating cost
+v6_book_at_opex_high,$4.0B,3980864494.361975,results/cost_sensitivity.csv,book NPV at the high operating cost
 v6_power_basis_swing,$0.5B,500000000.0,results/cost_sensitivity.csv,the power price basis moves the book by under this
 v6_ppa_wind,$62,62,results/value_assumptions.csv,"wind PPA, $/MWh (decision #61)"
 v6_wti_2024,$77,76.56244358480818,results/scenario_settings.csv,"2024 real WTI, $/bbl"
@@ -1982,40 +1982,40 @@ v6_walk_low,$13,13,docs/decisions.md #69,"WTI ten years out under the rejected r
 v6_walk_high,$800,800,docs/decisions.md #69,"WTI ten years out under the rejected random walk, high"
 v6_cost_mult_low,0.75,0.75,src/scenarios.py,"cost multiplier, low"
 v6_cost_mult_high,1.5,1.5,src/scenarios.py,"cost multiplier, high"
-v6_never_operate,90%,0.90285,results/scenario_draws.csv,share of the twenty requests never operating within 7 y
+v6_never_operate,86%,0.857425,results/scenario_draws.csv,share of the twenty requests never operating within 7 y
 v6_wti_2034_q05,$44,44.42655999248411,results/scenario_price_bands.csv,"WTI 2034, 5th percentile"
 v6_wti_2034_q95,$138,137.80306169196106,results/scenario_price_bands.csv,"WTI 2034, 95th percentile"
 v6_band_low,5,5,results/scenario_price_bands.csv,lower percentile of the band
 v6_band_high,95%,0.95,results/scenario_price_bands.csv,upper percentile of the band
-v6_book_mean,$9.8B,9795825380.49402,results/scenario_summary.csv,"default book, mean NPV, merchant, primary scenarios"
-v6_book_p_neg,0.8%,0.0075,results/scenario_summary.csv,"default book, P(NPV < 0)"
-v6_book_cvar_profit,$−1.3B,-1299299338.7582529,results/scenario_summary.csv,"default book, CVaR95 as a profit"
-v6_stress_base,$7.09B,7094066536.123086,results/stress_tests.csv,"default book on the flat path, base"
-v6_stress_2020,$7.11B,7114550628.425144,results/stress_tests.csv,default book under the 2020 oil path
-v6_stress_worst,$5.69B,5692777399.306498,results/stress_tests.csv,default book under the simultaneous downside
-v6_ablation_cvar,$0.1B,69588182.6984632,results/correlation_ablation.csv,CVaR change when the correlations are removed
-v6_budget,$1.91B,1910931111.7015505,results/decision_ledger.csv,registered budget
+v6_book_mean,$10.2B,10176986197.029106,results/scenario_summary.csv,"default book, mean NPV, merchant, primary scenarios"
+v6_book_p_neg,0.9%,0.009,results/scenario_summary.csv,"default book, P(NPV < 0)"
+v6_book_cvar_profit,$−0.8B,-808185331.1283803,results/scenario_summary.csv,"default book, CVaR95 as a profit"
+v6_stress_base,$6.69B,6694489304.673876,results/stress_tests.csv,"default book on the flat path, base"
+v6_stress_2020,$6.71B,6714973396.975934,results/stress_tests.csv,default book under the 2020 oil path
+v6_stress_worst,$5.19B,5188767169.112233,results/stress_tests.csv,default book under the simultaneous downside
+v6_ablation_cvar,$0.2B,189931954.35565257,results/correlation_ablation.csv,CVaR change when the correlations are removed
+v6_budget,$2.31B,2310734743.850512,results/decision_ledger.csv,registered budget
 v6_budget_share,40%,0.4,results/success_criteria_v7_registered.json,budget as a share of the default book's capital
 v6_cap,40%,0.4,results/decision_ledger.csv,technology cap
-v6_d_members,21,21,results/decision_ledger.csv,members of book D
-v6_d_capex,$1.8B,1847807136.372556,results/decision_ledger.csv,capital of book D
-v6_d_npv_oos,$7.67B,7670933977.676496,results/portfolio_scores.csv,"book D, expected NPV out of sample"
-v6_a_npv_oos,$6.90B,6904295974.665937,results/portfolio_scores.csv,"book A, expected NPV out of sample"
+v6_d_members,19,19,results/decision_ledger.csv,members of book D
+v6_d_capex,$2.3B,2271560171.6885366,results/decision_ledger.csv,capital of book D
+v6_d_npv_oos,$8.48B,8476760464.884672,results/portfolio_scores.csv,"book D, expected NPV out of sample"
+v6_a_npv_oos,$8.29B,8294666208.709297,results/portfolio_scores.csv,"book A, expected NPV out of sample"
 v6_d_p_neg_oos,0.1%,0.0005,results/portfolio_scores.csv,"book D, P(NPV < 0) out of sample"
-v6_c21_diff,"+$1,332M",1331874487.3693466,results/success_criteria_v7_scored.csv,C21 difference
-v6_c21_low,"+$1,131M",1131427730.2402637,results/success_criteria_v7_scored.csv,"C21 interval, low"
-v6_c21_high,"+$1,528M",1527662556.5746503,results/success_criteria_v7_scored.csv,"C21 interval, high"
-v6_c22_diff,+$24M,24329004.080633163,results/success_criteria_v7_scored.csv,C22 difference
-v6_c22_low,−$73M,-72977761.68798776,results/success_criteria_v7_scored.csv,"C22 interval, low"
-v6_c22_high,+$122M,121686188.29383306,results/success_criteria_v7_scored.csv,"C22 interval, high"
-v6_c24_diff,+$51M,51243756.0079608,results/success_criteria_v7_scored.csv,C24 difference
-v6_c24_low,−$90M,-89534760.71170168,results/success_criteria_v7_scored.csv,"C24 interval, low"
-v6_c24_high,+$194M,194389155.491868,results/success_criteria_v7_scored.csv,"C24 interval, high"
-v6_c23_d,0.91,0.9098550724637681,results/portfolio_stability.csv,C23: mean Jaccard of D under the stresses
+v6_c21_diff,+$468M,468276349.579401,results/success_criteria_v7_scored.csv,C21 difference
+v6_c21_low,+$300M,299928224.4615672,results/success_criteria_v7_scored.csv,"C21 interval, low"
+v6_c21_high,+$643M,643021118.5617732,results/success_criteria_v7_scored.csv,"C21 interval, high"
+v6_c22_diff,+$95M,95414361.54934502,results/success_criteria_v7_scored.csv,C22 difference
+v6_c22_low,−$21M,-20588592.816449355,results/success_criteria_v7_scored.csv,"C22 interval, low"
+v6_c22_high,+$215M,215467880.5528744,results/success_criteria_v7_scored.csv,"C22 interval, high"
+v6_c24_diff,+$77M,76668983.87270546,results/success_criteria_v7_scored.csv,C24 difference
+v6_c24_low,−$53M,-52587171.11686797,results/success_criteria_v7_scored.csv,"C24 interval, low"
+v6_c24_high,+$207M,206612925.34002212,results/success_criteria_v7_scored.csv,"C24 interval, high"
+v6_c23_d,0.93,0.9345238095238096,results/portfolio_stability.csv,C23: mean Jaccard of D under the stresses
 v6_c23_c,1.00,1.0,results/portfolio_stability.csv,C23: mean Jaccard of C under the stresses
 v6_n_stresses,six,6,results/portfolio_stability.csv,named stresses
-v6_sens_low,0.64,0.64,results/portfolio_sensitivity.csv,sensitivity: lowest Jaccard to D
-v6_sens_high,0.83,0.8260869565217391,results/portfolio_sensitivity.csv,sensitivity: highest Jaccard to D
+v6_sens_low,0.50,0.5,results/portfolio_sensitivity.csv,sensitivity: lowest Jaccard to D
+v6_sens_high,1.00,1.0,results/portfolio_sensitivity.csv,sensitivity: highest Jaccard to D
 v6_sens_budget_cut,20%,0.2,results/portfolio_sensitivity.csv,sensitivity: budget cut
 v6_sens_carbon,$50,50,results/portfolio_sensitivity.csv,"sensitivity: carbon price, $/t"
 v6_sens_cap,25%,0.25,results/portfolio_sensitivity.csv,sensitivity: tighter cap
@@ -2038,23 +2038,23 @@ v6_hz_lease_3,$0.0B,40145347.58350385,results/horizon_view.csv,lease book within
 v6_hz_lease_5,$2.3B,2277782491.0900683,results/horizon_view.csv,lease book within 5 years
 v6_hz_lease_10,$5.7B,5698016280.266426,results/horizon_view.csv,lease book within 10 years
 v6_hz_lease_20,$8.2B,8186621514.391418,results/horizon_view.csv,lease book within 20 years
-v6_hz_power_20,−$1.29B,-1293879687.543469,results/horizon_view.csv,requests within 20 years
+v6_hz_power_20,−$1.72B,-1721284421.2940512,results/horizon_view.csv,requests within 20 years
 v6_hz_members_3,11,11,results/horizon_books.csv,members of the book at 3 years
 v6_hz_members_5,14,14,results/horizon_books.csv,members of the book at 5 years
 v6_hz_members_10,14,14,results/horizon_books.csv,members of the book at 10 years
-v6_adv_recorded,195,195,results/advisor_evaluation.csv,recorded answers
+v6_adv_recorded,214,214,results/advisor_evaluation.csv,recorded answers
 v6_adv_missing,0,0,results/advisor_evaluation.csv,calls with no record and no key
-adv_recorded,331,331,results/advisor_runs.jsonl,recorded answers
-adv_grounding,94%,0.936,results/advisor_evaluation.csv,mean share of the advisor's numbers found in its tables
-adv_fully_grounded,59%,0.59,results/advisor_evaluation.csv,answers with every number grounded
-adv_jaccard_d,0.92,0.915,results/advisor_evaluation.csv,overlap of the advisor's book with book D over the seven stresses
-adv_names_d,3 of 7,0.429,results/advisor_evaluation.csv,stresses in which the advisor names book D
+adv_recorded,361,361,results/advisor_runs.jsonl,recorded answers
+adv_grounding,94%,0.938,results/advisor_evaluation.csv,mean share of the advisor's numbers found in its tables
+adv_fully_grounded,59%,0.589,results/advisor_evaluation.csv,answers with every number grounded
+adv_jaccard_d,0.94,0.935,results/advisor_evaluation.csv,overlap of the advisor's book with book D over the seven stresses
+adv_names_d,5 of 7,0.714,results/advisor_evaluation.csv,stresses in which the advisor names book D
 adv_gym_vs_instinct,$144M,144.3979725116416,results/decision_gym_scores.csv,"advisor minus instinct, mean per situation"
 adv_gym_regret,$205M,204.97763335446857,results/decision_gym_scores.csv,advisor: mean regret against hindsight
 adv_gym_wins,4,4,results/decision_gym_scores.csv,situations in which the advisor beat instinct
 adv_gym_ties,11,11,results/decision_gym_scores.csv,situations in which the advisor matched instinct
 adv_gym_losses,1,1,results/decision_gym_scores.csv,situations in which the advisor did worse than instinct
-adv_challenge_converge,"Book D (14 leases, 4 contracted wind, 2 gas CC, 1 storage; $1.85B, expected NPV 7.67, CVaR95 loss -2.20) while the 40% cap stands",0,results/advisor_transcripts/challenge_all_leases.md,"the opposing case's convergence line, all-leases statement"
+adv_challenge_converge,"Book D, with gas request 23INR0029 re-scored before any commitment",0,results/advisor_transcripts/challenge_all_leases.md,"the opposing case's convergence line, all-leases statement"
 v6_adv_scenarios,7,7,results/advisor_recommendations.csv,named scenarios the advisor recommends for
 v6_adv_horizons,6,6,results/advisor_recommendations.csv,horizons the advisor recommends for
 v6_adv_min_chars,20,20,src/advisor.py,characters required per answer at the override gate
@@ -2088,18 +2088,18 @@ ph_lease_npv_registered,8.2,8186621514.391418,results/posthoc_lease_values.csv,n
 ph_lease_positive,19,19,results/posthoc_lease_values.csv,"leases positive at base, committee grid"
 ph_reg_low,5.7,5690542053.061575,results/candidate_npv.csv,"registered grid, expected_npv_low_cost"
 ph_reg_high,5.1,5100708377.722095,results/candidate_npv.csv,"registered grid, expected_npv_high_cost"
-ph_default_mean_reg,10.1,10142429580.613483,results/posthoc_book_distribution.csv,"default book mean, registered"
-ph_default_median_reg,9.4,9400904355.133965,results/posthoc_book_distribution.csv,"default book median, registered"
-ph_default_q05_reg,3.4,3414739496.189624,results/posthoc_book_distribution.csv,"default book 5th percentile, registered"
-ph_default_pneg_reg,0.1%,0.0015,results/posthoc_book_distribution.csv,"default book P(loss), registered"
-ph_default_pneg0_reg,0%,0.0015,results/posthoc_book_distribution.csv,"default book P(loss), rounded, registered"
-ph_default_cvar_reg,-2.3,-2327016281.504585,results/posthoc_book_distribution.csv,"default book CVaR95 loss, registered"
-ph_default_mean_com,4.3,4295208766.967413,results/posthoc_book_distribution.csv,"default book mean, committee"
-ph_default_median_com,3.6,3624335889.1192102,results/posthoc_book_distribution.csv,"default book median, committee"
-ph_default_q05_com,-2.1,-2069841935.2901144,results/posthoc_book_distribution.csv,"default book 5th percentile, committee"
-ph_default_pneg_com,16.9%,0.1685,results/posthoc_book_distribution.csv,"default book P(loss), committee"
-ph_default_pneg0_com,17%,0.1685,results/posthoc_book_distribution.csv,"default book P(loss), rounded, committee"
-ph_default_cvar_com,3.2,3180637349.67239,results/posthoc_book_distribution.csv,"default book CVaR95 loss, committee"
+ph_default_mean_reg,10.6,10560900704.821156,results/posthoc_book_distribution.csv,"default book mean, registered"
+ph_default_median_reg,9.8,9793837038.582092,results/posthoc_book_distribution.csv,"default book median, registered"
+ph_default_q05_reg,3.0,3041618689.473297,results/posthoc_book_distribution.csv,"default book 5th percentile, registered"
+ph_default_pneg_reg,0.2%,0.0025,results/posthoc_book_distribution.csv,"default book P(loss), registered"
+ph_default_pneg0_reg,0%,0.0025,results/posthoc_book_distribution.csv,"default book P(loss), rounded, registered"
+ph_default_cvar_reg,-2.2,-2174913665.63126,results/posthoc_book_distribution.csv,"default book CVaR95 loss, registered"
+ph_default_mean_com,4.7,4713679891.175085,results/posthoc_book_distribution.csv,"default book mean, committee"
+ph_default_median_com,4.0,3996173421.459775,results/posthoc_book_distribution.csv,"default book median, committee"
+ph_default_q05_com,-2.1,-2147737710.046272,results/posthoc_book_distribution.csv,"default book 5th percentile, committee"
+ph_default_pneg_com,15.8%,0.1575,results/posthoc_book_distribution.csv,"default book P(loss), committee"
+ph_default_pneg0_com,16%,0.1575,results/posthoc_book_distribution.csv,"default book P(loss), rounded, committee"
+ph_default_cvar_com,3.3,3337308607.11499,results/posthoc_book_distribution.csv,"default book CVaR95 loss, committee"
 ph_oil_flat_reg,8.2,8186621514.3914175,results/posthoc_oil_stress.csv,"lease book, flat 2024 base, registered"
 ph_oil_flat_com,2.73,2727370464.2573237,results/posthoc_oil_stress.csv,"lease book, flat 2024 base, committee"
 ph_oil_2020_reg,8.2,8207105606.693478,results/posthoc_oil_stress.csv,"lease book, 2020 shape from month one, registered"
@@ -2107,37 +2107,37 @@ ph_oil_2020_com,2.75,2746769254.415885,results/posthoc_oil_stress.csv,"lease boo
 ph_oil_sustained_reg,5.6,5580124300.029847,results/posthoc_oil_stress.csv,"lease book, sustained $42 for five years, registered"
 ph_oil_sustained_com,0.35,347261453.22904813,results/posthoc_oil_stress.csv,"lease book, sustained $42 for five years, committee"
 ph_oil_price,$42,42.0,notebook 09 part E,"sustained WTI, real 2024 $/bbl (ASSUMED)"
-ph_flat_book,7.1,7094066536.123086,results/stress_tests.csv,default book on the flat 2024 path
-ph_book_a_n,16,16,results/posthoc_books_committee.csv,A top-N NPV: members
-ph_book_a_mean,2.3,2325538893.1054068,results/posthoc_books_committee.csv,A top-N NPV: mean
-ph_book_a_median,1.6,1619674162.8338046,results/posthoc_books_committee.csv,A top-N NPV: median
-ph_book_a_cvar95_loss,1.6,1613443739.1802206,results/posthoc_books_committee.csv,A top-N NPV: cvar95_loss
-ph_book_a_capex,3.4,3400917271.3924003,results/posthoc_books_committee.csv,A top-N NPV: capex
-ph_book_a_pneg,13%,0.134,results/posthoc_books_committee.csv,A top-N NPV: P(loss)
-ph_book_b_n,16,16,results/posthoc_books_committee.csv,B equal capital: members
-ph_book_b_mean,2.1,2084350758.627273,results/posthoc_books_committee.csv,B equal capital: mean
-ph_book_b_median,1.5,1536580551.2179089,results/posthoc_books_committee.csv,B equal capital: median
-ph_book_b_cvar95_loss,1.3,1264836587.4583943,results/posthoc_books_committee.csv,B equal capital: cvar95_loss
-ph_book_b_capex,3.0,3033786110.248405,results/posthoc_books_committee.csv,B equal capital: capex
-ph_book_b_pneg,12%,0.12,results/posthoc_books_committee.csv,B equal capital: P(loss)
+ph_flat_book,6.7,6694489304.673876,results/stress_tests.csv,default book on the flat 2024 path
+ph_book_a_n,15,15,results/posthoc_books_committee.csv,A top-N NPV: members
+ph_book_a_mean,2.7,2678376191.82532,results/posthoc_books_committee.csv,A top-N NPV: mean
+ph_book_a_median,2.0,2011521932.4040935,results/posthoc_books_committee.csv,A top-N NPV: median
+ph_book_a_cvar95_loss,1.5,1549675944.745122,results/posthoc_books_committee.csv,A top-N NPV: cvar95_loss
+ph_book_a_capex,3.8,3812177322.321636,results/posthoc_books_committee.csv,A top-N NPV: capex
+ph_book_a_pneg,12%,0.1215,results/posthoc_books_committee.csv,A top-N NPV: P(loss)
+ph_book_b_n,18,18,results/posthoc_books_committee.csv,B equal capital: members
+ph_book_b_mean,2.4,2437678670.295146,results/posthoc_books_committee.csv,B equal capital: mean
+ph_book_b_median,1.8,1819180143.792931,results/posthoc_books_committee.csv,B equal capital: median
+ph_book_b_cvar95_loss,1.3,1328603583.0517712,results/posthoc_books_committee.csv,B equal capital: cvar95_loss
+ph_book_b_capex,3.4,3420573964.804609,results/posthoc_books_committee.csv,B equal capital: capex
+ph_book_b_pneg,11%,0.114,results/posthoc_books_committee.csv,B equal capital: P(loss)
 ph_book_c_n,17,17,results/posthoc_books_committee.csv,C deterministic MILP: members
-ph_book_c_mean,2.4,2356866857.2923274,results/posthoc_books_committee.csv,C deterministic MILP: mean
-ph_book_c_median,1.7,1656247714.220335,results/posthoc_books_committee.csv,C deterministic MILP: median
-ph_book_c_cvar95_loss,1.6,1599518593.3330834,results/posthoc_books_committee.csv,C deterministic MILP: cvar95_loss
-ph_book_c_capex,3.4,3416350433.2840333,results/posthoc_books_committee.csv,C deterministic MILP: capex
-ph_book_c_pneg,13%,0.1285,results/posthoc_books_committee.csv,C deterministic MILP: P(loss)
+ph_book_c_mean,2.7,2730604107.9059434,results/posthoc_books_committee.csv,C deterministic MILP: mean
+ph_book_c_median,2.1,2060058564.653791,results/posthoc_books_committee.csv,C deterministic MILP: median
+ph_book_c_cvar95_loss,1.5,1518418433.750316,results/posthoc_books_committee.csv,C deterministic MILP: cvar95_loss
+ph_book_c_capex,3.8,3811390348.291252,results/posthoc_books_committee.csv,C deterministic MILP: capex
+ph_book_c_pneg,11%,0.1135,results/posthoc_books_committee.csv,C deterministic MILP: P(loss)
 ph_book_d_n,13,13,results/posthoc_books_committee.csv,D risk-aware MILP: members
-ph_book_d_mean,2.1,2051623760.9767256,results/posthoc_books_committee.csv,D risk-aware MILP: mean
-ph_book_d_median,1.5,1532991585.7676573,results/posthoc_books_committee.csv,D risk-aware MILP: median
-ph_book_d_cvar95_loss,1.0,1019429774.427842,results/posthoc_books_committee.csv,D risk-aware MILP: cvar95_loss
-ph_book_d_capex,3.3,3298748879.3310723,results/posthoc_books_committee.csv,D risk-aware MILP: capex
-ph_book_d_pneg,10%,0.1035,results/posthoc_books_committee.csv,D risk-aware MILP: P(loss)
-ph_gap_a_d,0.3,273915132.1286812,results/posthoc_books_committee.csv,"A minus D, expected NPV"
-ph_dva,320,320098832.6236973,results/posthoc_d_vs_a_committee.csv,"D minus A on the metric, committee grid"
-ph_budget,15.65,15651511101.455927,results/posthoc_lease_values.csv; results/candidate_npv.csv,committee-grid budget: 40% of the forty's capital
-ph_gas_scen_mean,$819M,818958156.204729,data/processed/candidate_npv_scenarios.parquet,"the five gas requests, mean across primary scenarios"
-ph_reg_a_mean,6.9,6904295974.665937,results/portfolio_scores.csv,"registered A top-N NPV, held-out mean"
-ph_reg_d_mean,7.7,7670933977.676496,results/portfolio_scores.csv,"registered D risk-aware MILP, held-out mean"
+ph_book_d_mean,2.2,2170334090.783821,results/posthoc_books_committee.csv,D risk-aware MILP: mean
+ph_book_d_median,1.8,1823682274.3906395,results/posthoc_books_committee.csv,D risk-aware MILP: median
+ph_book_d_cvar95_loss,0.8,822438008.3922412,results/posthoc_books_committee.csv,D risk-aware MILP: cvar95_loss
+ph_book_d_capex,3.8,3778326876.675812,results/posthoc_books_committee.csv,D risk-aware MILP: capex
+ph_book_d_pneg,9%,0.0855,results/posthoc_books_committee.csv,D risk-aware MILP: P(loss)
+ph_gap_a_d,0.5,508042101.04149866,results/posthoc_books_committee.csv,"A minus D, expected NPV"
+ph_dva,219,219195835.3113816,results/posthoc_d_vs_a_committee.csv,"D minus A on the metric, committee grid"
+ph_budget,14.94,14938414157.591566,results/posthoc_lease_values.csv; results/candidate_npv.csv,committee-grid budget: 40% of the forty's capital
+ph_gas_scen_mean,$1175M,1175351683.2635806,data/processed/candidate_npv_scenarios.parquet,"the five gas requests, mean across primary scenarios"
+ph_reg_a_mean,8.3,8294666208.709297,results/portfolio_scores.csv,"registered A top-N NPV, held-out mean"
+ph_reg_d_mean,8.5,8476760464.884672,results/portfolio_scores.csv,"registered D risk-aware MILP, held-out mean"
 ph_record_lines,70,70,results/success_criteria*_scored.csv,"registered lines, all criteria"
 ph_record_pass,27,27,results/success_criteria*_scored.csv,registered lines passed
 q_lease_zero,25.3%,25.3%,results/eda_energy_quality.csv,lease-months with no oil or gas
@@ -2145,15 +2145,15 @@ q_lease_months,"203,963",203963,results/eda_energy_quality.csv,lease-months in t
 q_corr_wti_hh,0.06,0.0602979662764974,results/eda_cross_sector_correlation.csv,"monthly correlation, WTI and Henry Hub"
 q_corr_hh_ercot,0.63,0.6261777153356815,results/eda_cross_sector_correlation.csv,"monthly correlation, Henry Hub and ERCOT"
 q_corr_wind_gas,−0.55,-0.5461598172822985,results/eda_cross_sector_correlation.csv,"monthly correlation, Wind CF and Gas CC CF"
-q_budget_jaccard,0.73,0.7272727272727273,results/portfolio_sensitivity.csv,overlap with book D after a budget cut of a fifth
-q_carbon_jaccard,0.83,0.8260869565217391,results/portfolio_sensitivity.csv,overlap with book D under a carbon price on the gas plants' emissions (proposal §10)
-q_lambda_jaccard,0.83,0.8260869565217391,results/portfolio_sensitivity.csv,overlap with book D under the weight on the tail doubled (proposal §10)
+q_budget_jaccard,0.65,0.6521739130434783,results/portfolio_sensitivity.csv,overlap with book D after a budget cut of a fifth
+q_carbon_jaccard,0.86,0.8571428571428571,results/portfolio_sensitivity.csv,overlap with book D under a carbon price on the gas plants' emissions (proposal §10)
+q_lambda_jaccard,1.00,1.0,results/portfolio_sensitivity.csv,overlap with book D under the weight on the tail doubled (proposal §10)
 q_stab_oil,1.00,1.0,results/portfolio_stability.csv,overlap of book D with itself under oil collapse (2020 path)
-q_stab_gas,0.83,0.8260869565217391,results/portfolio_stability.csv,"overlap of book D with itself under high gas, low spark spread"
-q_power_only_pneg,60%,0.6035,results/portfolio_ablations.csv,power-only book: chance of a loss
+q_stab_gas,0.75,0.75,results/portfolio_stability.csv,"overlap of book D with itself under high gas, low spark spread"
+q_power_only_pneg,58%,0.5825,results/portfolio_ablations.csv,power-only book: chance of a loss
 q_leases_neg_high,20,20,results/posthoc_lease_values.csv,leases negative at the committee grid's high case
 q_leases_pos_high,0,0,results/posthoc_lease_values.csv,leases positive at the committee grid's high case
-q_ablation_n,21,21,results/posthoc_ablation_naive_forecasts.csv,book D re-solved with naive output errors: members
+q_ablation_n,20,20,results/posthoc_ablation_naive_forecasts.csv,book D re-solved with naive output errors: members
 q_gym_rule_vs_instinct,$149M,148.86930742550362,results/decision_gym_scores.csv,"rule minus instinct, mean per situation"
 q_gym_regret_rule,$201M,200.50629844060654,results/decision_gym_scores.csv,rule: mean regret against hindsight
 q_gym_regret_instinct,$349M,349.37560586611016,results/decision_gym_scores.csv,instinct: mean regret against hindsight
@@ -2210,7 +2210,7 @@ room_pjm_2019_entry_instinct,$-3M,-3.4,results/decision_gym_rooms.csv,PJM 2019 e
 room_pjm_2019_entry_rule,$0M,0.0,results/decision_gym_rooms.csv,PJM 2019 entry: the rule's realized value
 room_pjm_2019_entry_diff,$3.4M,3.4,results/decision_gym_rooms.csv,PJM 2019 entry: rule minus instinct
 q_gym_empty,6,6,results/decision_gym_situations.csv,queue rooms where no drawn request operated
-q_ablation_jaccard,1.00,1.0,results/posthoc_ablation_naive_forecasts.csv,overlap with the registered book D
+q_ablation_jaccard,0.86,0.8571428571428571,results/posthoc_ablation_naive_forecasts.csv,overlap with the registered book D
 rb_c20_pass,3,3,results/registered_bridged/success_criteria_v6_scored.csv,"C20 lines passed, bridged prices"
 rb_c21_24_pass,0,0,results/registered_bridged/success_criteria_v7_scored.csv,"C21–C24 lines passed, bridged prices"
 rb_c21_diff,−$420M,-419664795.0649109,results/registered_bridged/success_criteria_v7_scored.csv,"C21 difference, bridged prices"
@@ -2244,89 +2244,89 @@ v8_bt_ercot_pred,0.380,0.380316242701606,results/decision_date_backtest.csv,ERCO
 v8_bt_ercot_obs,0.238,0.2379912663755458,results/decision_date_backtest.csv,ERCOT five-year share observed
 v8_bt_auc_model,0.731,0.731374432216221,results/decision_date_backtest.csv,"AUC as of 2020, model"
 v8_bt_auc_lookup,0.686,0.6861720639081603,results/decision_date_backtest.csv,"AUC as of 2020, lookup"
-v8_live_gw,359,358.8856400000001,results/decision_date_live_requests.csv,GW of live ERCOT requests
-v8_live_n,"1,649",1649,results/decision_date_live_requests.csv,live ERCOT requests
-v8_budget,$3.42B,3417032266.512198,results/v8/base_books.csv,committee budget
-v8_reg_mean,$7.67B,7670933977.676496,results/v8/base_books.csv,registered grid book D mean
-v8_D_leases,6,6,results/v8/base_books.csv,leases in book D
-v8_D_requests,7,7,results/v8/base_books.csv,requests in book D
+v8_live_gw,310,310.26236,results/decision_date_live_requests.csv,GW of live ERCOT requests
+v8_live_n,"1,441",1441,results/decision_date_live_requests.csv,live ERCOT requests
+v8_budget,$3.82B,3816835898.661159,results/v8/base_books.csv,committee budget
+v8_reg_mean,$8.48B,8476760464.884672,results/v8/base_books.csv,registered grid book D mean
+v8_D_leases,5,5,results/v8/base_books.csv,leases in book D
+v8_D_requests,8,8,results/v8/base_books.csv,requests in book D
 v8_reg_leases,14,14,results/v8/base_books.csv,leases in registered book D
-v8_lam0_mean,$2.36B,2356866857.2923274,results/v8/frontier.csv,lambda 0: mean
-v8_lam0_cvar,$1.60B,1599518593.3330834,results/v8/frontier.csv,lambda 0: CVaR loss
-v8_lam1_mean,$2.05B,2051623760.9767256,results/v8/frontier.csv,lambda 1: mean
-v8_lam1_cvar,$1.02B,1019429774.427842,results/v8/frontier.csv,lambda 1: CVaR loss
-v8_lam2_mean,$1.55B,1548511687.2091572,results/v8/frontier.csv,lambda 2: mean
-v8_lam2_cvar,$0.52B,523952354.1829592,results/v8/frontier.csv,lambda 2: CVaR loss
-v8_pA_n,16,16,results/v8/process_comparison.csv,process A: candidates
-v8_pA_mean,2.33,2325538893.1054068,results/v8/process_comparison.csv,process A: mean $B
-v8_pA_cvar,1.61,1613443739.1802206,results/v8/process_comparison.csv,process A: CVaR $B
-v8_pA_ploss,13%,0.134,results/v8/process_comparison.csv,process A: chance of a loss
-v8_pA_regret,0.60,599895241.9276128,results/v8/process_comparison.csv,process A: regret $B
-v8_pB_n,16,16,results/v8/process_comparison.csv,process B: candidates
-v8_pB_mean,2.08,2084350758.627273,results/v8/process_comparison.csv,process B: mean $B
-v8_pB_cvar,1.26,1264836587.4583943,results/v8/process_comparison.csv,process B: CVaR $B
-v8_pB_ploss,12%,0.12,results/v8/process_comparison.csv,process B: chance of a loss
-v8_pB_regret,0.84,841083376.4057462,results/v8/process_comparison.csv,process B: regret $B
+v8_lam0_mean,$2.73B,2730604107.9059434,results/v8/frontier.csv,lambda 0: mean
+v8_lam0_cvar,$1.52B,1518418433.750316,results/v8/frontier.csv,lambda 0: CVaR loss
+v8_lam1_mean,$2.17B,2170334090.783821,results/v8/frontier.csv,lambda 1: mean
+v8_lam1_cvar,$0.82B,822438008.3922412,results/v8/frontier.csv,lambda 1: CVaR loss
+v8_lam2_mean,$2.07B,2072150585.911584,results/v8/frontier.csv,lambda 2: mean
+v8_lam2_cvar,$0.74B,744778862.0465361,results/v8/frontier.csv,lambda 2: CVaR loss
+v8_pA_n,15,15,results/v8/process_comparison.csv,process A: candidates
+v8_pA_mean,2.68,2678376191.82532,results/v8/process_comparison.csv,process A: mean $B
+v8_pA_cvar,1.55,1549675944.745122,results/v8/process_comparison.csv,process A: CVaR $B
+v8_pA_ploss,12%,0.1215,results/v8/process_comparison.csv,process A: chance of a loss
+v8_pA_regret,0.87,868008264.1729941,results/v8/process_comparison.csv,process A: regret $B
+v8_pB_n,18,18,results/v8/process_comparison.csv,process B: candidates
+v8_pB_mean,2.44,2437678670.295146,results/v8/process_comparison.csv,process B: mean $B
+v8_pB_cvar,1.33,1328603583.0517712,results/v8/process_comparison.csv,process B: CVaR $B
+v8_pB_ploss,11%,0.114,results/v8/process_comparison.csv,process B: chance of a loss
+v8_pB_regret,1.11,1108705785.7031684,results/v8/process_comparison.csv,process B: regret $B
 v8_pC_n,17,17,results/v8/process_comparison.csv,process C: candidates
-v8_pC_mean,2.36,2356866857.2923274,results/v8/process_comparison.csv,process C: mean $B
-v8_pC_cvar,1.60,1599518593.3330834,results/v8/process_comparison.csv,process C: CVaR $B
-v8_pC_ploss,13%,0.1285,results/v8/process_comparison.csv,process C: chance of a loss
-v8_pC_regret,0.57,568567277.7406921,results/v8/process_comparison.csv,process C: regret $B
+v8_pC_mean,2.73,2730604107.9059434,results/v8/process_comparison.csv,process C: mean $B
+v8_pC_cvar,1.52,1518418433.750316,results/v8/process_comparison.csv,process C: CVaR $B
+v8_pC_ploss,11%,0.1135,results/v8/process_comparison.csv,process C: chance of a loss
+v8_pC_regret,0.82,815780348.092371,results/v8/process_comparison.csv,process C: regret $B
 v8_pD_n,13,13,results/v8/process_comparison.csv,process D: candidates
-v8_pD_mean,2.05,2051623760.9767256,results/v8/process_comparison.csv,process D: mean $B
-v8_pD_cvar,1.02,1019429774.427842,results/v8/process_comparison.csv,process D: CVaR $B
-v8_pD_ploss,10%,0.1035,results/v8/process_comparison.csv,process D: chance of a loss
-v8_pD_regret,0.87,873810374.056294,results/v8/process_comparison.csv,process D: regret $B
+v8_pD_mean,2.17,2170334090.783821,results/v8/process_comparison.csv,process D: mean $B
+v8_pD_cvar,0.82,822438008.3922412,results/v8/process_comparison.csv,process D: CVaR $B
+v8_pD_ploss,9%,0.0855,results/v8/process_comparison.csv,process D: chance of a loss
+v8_pD_regret,1.38,1376050365.2144933,results/v8/process_comparison.csv,process D: regret $B
 v8_pE_n,13,13,results/v8/process_comparison.csv,process E: candidates
-v8_pE_mean,2.05,2051623760.9767256,results/v8/process_comparison.csv,process E: mean $B
-v8_pE_cvar,1.02,1019429774.427842,results/v8/process_comparison.csv,process E: CVaR $B
-v8_pE_ploss,10%,0.1035,results/v8/process_comparison.csv,process E: chance of a loss
-v8_pE_regret,0.87,873810374.056294,results/v8/process_comparison.csv,process E: regret $B
-v8_pF_n,18,18,results/v8/process_comparison.csv,process F: candidates
-v8_pF_mean,1.84,1842674419.75414,results/v8/process_comparison.csv,process F: mean $B
-v8_pF_cvar,0.83,832307727.3862616,results/v8/process_comparison.csv,process F: CVaR $B
-v8_pF_ploss,9%,0.0925,results/v8/process_comparison.csv,process F: chance of a loss
-v8_pF_regret,1.08,1082759715.2788794,results/v8/process_comparison.csv,process F: regret $B
-v8_DA_metric_diff,+$320M,320098832.6236973,results/v8/value_added.csv,D risk-aware MILP vs A NPV ranking: metric_diff
-v8_DA_metric_low,+$142M,142163855.4478325,results/v8/value_added.csv,D risk-aware MILP vs A NPV ranking: metric_low
-v8_DA_metric_high,+$511M,511171561.3314791,results/v8/value_added.csv,D risk-aware MILP vs A NPV ranking: metric_high
-v8_DA_mean_diff,$274M,-273915132.12868094,results/v8/value_added.csv,"D risk-aware MILP vs A NPV ranking: expected NPV difference, magnitude"
-v8_DB_metric_diff,+$213M,212679815.38000464,results/v8/value_added.csv,D risk-aware MILP vs B equal capital by sector: metric_diff
-v8_DB_metric_low,+$120M,119853135.80380224,results/v8/value_added.csv,D risk-aware MILP vs B equal capital by sector: metric_low
-v8_DB_metric_high,+$315M,315364245.59398144,results/v8/value_added.csv,D risk-aware MILP vs B equal capital by sector: metric_high
-v8_DB_mean_diff,$33M,-32726997.65054803,results/v8/value_added.csv,"D risk-aware MILP vs B equal capital by sector: expected NPV difference, magnitude"
-v8_DC_metric_diff,+$275M,274845722.5896394,results/v8/value_added.csv,D risk-aware MILP vs C deterministic MILP: metric_diff
-v8_DC_metric_low,+$100M,99828256.69185016,results/v8/value_added.csv,D risk-aware MILP vs C deterministic MILP: metric_low
-v8_DC_metric_high,+$461M,460760388.4541578,results/v8/value_added.csv,D risk-aware MILP vs C deterministic MILP: metric_high
-v8_DC_mean_diff,$305M,-305243096.3156021,results/v8/value_added.csv,"D risk-aware MILP vs C deterministic MILP: expected NPV difference, magnitude"
-v8_ML_metric_diff,+$22M,21827294.18100488,results/v8/value_added.csv,"D risk-aware MILP vs F (the ML increment), model's scenarios: metric_diff"
-v8_ML_metric_low,−$168M,-168429826.12741214,results/v8/value_added.csv,"D risk-aware MILP vs F (the ML increment), model's scenarios: metric_low"
-v8_ML_metric_high,+$207M,206614070.37502524,results/v8/value_added.csv,"D risk-aware MILP vs F (the ML increment), model's scenarios: metric_high"
-v8_ML_mean_diff,$209M,208949341.22258544,results/v8/value_added.csv,"D risk-aware MILP vs F (the ML increment), model's scenarios: expected NPV difference, magnitude"
-v8_MLL_metric_diff,−$143M,-143040249.84388828,results/v8/value_added.csv,"D risk-aware MILP vs F (the ML increment), lookup's scenarios: metric_diff"
-v8_MLL_metric_low,−$375M,-374572164.3910107,results/v8/value_added.csv,"D risk-aware MILP vs F (the ML increment), lookup's scenarios: metric_low"
-v8_MLL_metric_high,+$87M,87317743.06783853,results/v8/value_added.csv,"D risk-aware MILP vs F (the ML increment), lookup's scenarios: metric_high"
-v8_MLL_mean_diff,$526M,-526395673.94202894,results/v8/value_added.csv,"D risk-aware MILP vs F (the ML increment), lookup's scenarios: expected NPV difference, magnitude"
-v8_flex_mean_diff,−$9M,-9250064.575701457,results/v8/value_added.csv,value of flexibility: mean_diff
-v8_flex_mean_low,−$16M,-16378139.28589026,results/v8/value_added.csv,value of flexibility: mean_low
-v8_flex_mean_high,−$3M,-3484882.1052433765,results/v8/value_added.csv,value of flexibility: mean_high
-v8_reserve_over,44%,0.4445,results/v8/dynamic.csv,scenarios where construction exceeds the reserve
-v8_evpi,$571M,571151824.709959,results/v8/value_of_information.csv,EVPI
-v8_pevpi_ercot,$52M,52473316.107872486,results/v8/value_of_information.csv,"partial EVPI, ERCOT price level 2025–2029"
-v8_pevpi_oil,$32M,32015126.59489584,results/v8/value_of_information.csv,"partial EVPI, oil price level 2025–2029"
-v8_pevpi_cost,$30M,29715939.15536356,results/v8/value_of_information.csv,"partial EVPI, lease cost draw"
-v8_evsi_min,$0.5M,534210.0522761345,results/v8/value_of_information.csv,smallest EVSI of an agreement signal
-v8_evsi_max,$11.5M,11461950.452616217,results/v8/value_of_information.csv,largest EVSI of an agreement signal
+v8_pE_mean,2.17,2170334090.783821,results/v8/process_comparison.csv,process E: mean $B
+v8_pE_cvar,0.82,822438008.3922412,results/v8/process_comparison.csv,process E: CVaR $B
+v8_pE_ploss,9%,0.0855,results/v8/process_comparison.csv,process E: chance of a loss
+v8_pE_regret,1.38,1376050365.2144933,results/v8/process_comparison.csv,process E: regret $B
+v8_pF_n,20,20,results/v8/process_comparison.csv,process F: candidates
+v8_pF_mean,2.40,2400013920.354532,results/v8/process_comparison.csv,process F: mean $B
+v8_pF_cvar,1.09,1089442011.7406592,results/v8/process_comparison.csv,process F: CVaR $B
+v8_pF_ploss,10%,0.0995,results/v8/process_comparison.csv,process F: chance of a loss
+v8_pF_regret,1.15,1146370535.643783,results/v8/process_comparison.csv,process F: regret $B
+v8_DA_metric_diff,+$219M,219195835.3113816,results/v8/value_added.csv,D risk-aware MILP vs A NPV ranking: metric_diff
+v8_DA_metric_low,+$13M,12641986.376838893,results/v8/value_added.csv,D risk-aware MILP vs A NPV ranking: metric_low
+v8_DA_metric_high,+$401M,400867009.76154906,results/v8/value_added.csv,D risk-aware MILP vs A NPV ranking: metric_high
+v8_DA_mean_diff,$508M,-508042101.0414992,results/v8/value_added.csv,"D risk-aware MILP vs A NPV ranking: expected NPV difference, magnitude"
+v8_DB_metric_diff,+$239M,238820995.14820504,results/v8/value_added.csv,D risk-aware MILP vs B equal capital by sector: metric_diff
+v8_DB_metric_low,+$37M,37039909.13600584,results/v8/value_added.csv,D risk-aware MILP vs B equal capital by sector: metric_low
+v8_DB_metric_high,+$437M,436920405.784433,results/v8/value_added.csv,D risk-aware MILP vs B equal capital by sector: metric_high
+v8_DB_mean_diff,$267M,-267344579.5113247,results/v8/value_added.csv,"D risk-aware MILP vs B equal capital by sector: expected NPV difference, magnitude"
+v8_DC_metric_diff,+$136M,135710408.23595238,results/v8/value_added.csv,D risk-aware MILP vs C deterministic MILP: metric_diff
+v8_DC_metric_low,−$63M,-62536516.8591405,results/v8/value_added.csv,D risk-aware MILP vs C deterministic MILP: metric_low
+v8_DC_metric_high,+$323M,323323989.3723408,results/v8/value_added.csv,D risk-aware MILP vs C deterministic MILP: metric_high
+v8_DC_mean_diff,$560M,-560270017.1221218,results/v8/value_added.csv,"D risk-aware MILP vs C deterministic MILP: expected NPV difference, magnitude"
+v8_ML_metric_diff,+$37M,37324173.777707815,results/v8/value_added.csv,"D risk-aware MILP vs F (the ML increment), model's scenarios: metric_diff"
+v8_ML_metric_low,−$76M,-75711609.44580056,results/v8/value_added.csv,"D risk-aware MILP vs F (the ML increment), model's scenarios: metric_low"
+v8_ML_metric_high,+$151M,150684715.87100464,results/v8/value_added.csv,"D risk-aware MILP vs F (the ML increment), model's scenarios: metric_high"
+v8_ML_mean_diff,$230M,-229679829.57071,results/v8/value_added.csv,"D risk-aware MILP vs F (the ML increment), model's scenarios: expected NPV difference, magnitude"
+v8_MLL_metric_diff,+$59M,59132036.17556524,results/v8/value_added.csv,"D risk-aware MILP vs F (the ML increment), lookup's scenarios: metric_diff"
+v8_MLL_metric_low,−$197M,-196973111.0681941,results/v8/value_added.csv,"D risk-aware MILP vs F (the ML increment), lookup's scenarios: metric_low"
+v8_MLL_metric_high,+$311M,310701093.7939248,results/v8/value_added.csv,"D risk-aware MILP vs F (the ML increment), lookup's scenarios: metric_high"
+v8_MLL_mean_diff,$832M,-831865085.7390035,results/v8/value_added.csv,"D risk-aware MILP vs F (the ML increment), lookup's scenarios: expected NPV difference, magnitude"
+v8_flex_mean_diff,−$11M,-10803805.924705813,results/v8/value_added.csv,value of flexibility: mean_diff
+v8_flex_mean_low,−$18M,-18161906.904941358,results/v8/value_added.csv,value of flexibility: mean_low
+v8_flex_mean_high,−$5M,-4589596.705753677,results/v8/value_added.csv,value of flexibility: mean_high
+v8_reserve_over,50%,0.503,results/v8/dynamic.csv,scenarios where construction exceeds the reserve
+v8_evpi,$825M,825491596.1433024,results/v8/value_of_information.csv,EVPI
+v8_pevpi_ercot,$47M,46808980.71471119,results/v8/value_of_information.csv,"partial EVPI, ERCOT price level 2025–2029"
+v8_pevpi_oil,$33M,33490607.0711956,results/v8/value_of_information.csv,"partial EVPI, oil price level 2025–2029"
+v8_pevpi_cost,$35M,34911298.216504574,results/v8/value_of_information.csv,"partial EVPI, lease cost draw"
+v8_evsi_min,$0.4M,384464.61959695816,results/v8/value_of_information.csv,smallest EVSI of an agreement signal
+v8_evsi_max,$59.4M,59441740.626573086,results/v8/value_of_information.csv,largest EVSI of an agreement signal
 v8_status_invest_now,8,8,results/v8/statuses.csv,candidates with status invest now
 v8_status_invest_in_stages,5,5,results/v8/statuses.csv,candidates with status invest in stages
-v8_status_defer_pending_information,13,13,results/v8/statuses.csv,candidates with status defer pending information
-v8_status_monitor,13,13,results/v8/statuses.csv,candidates with status monitor
+v8_status_defer_pending_information,12,12,results/v8/statuses.csv,candidates with status defer pending information
+v8_status_monitor,14,14,results/v8/statuses.csv,candidates with status monitor
 v8_status_reject,1,1,results/v8/statuses.csv,candidates with status reject
 v8_wind_mw,836,836.5,results/candidate_npv.csv,"the agreement-backed wind request, MW"
-v8_wind_cost,$549M,548.8623009312885,results/v8/explanations.csv,its opportunity cost
+v8_wind_cost,$539M,539.0991602141039,results/v8/explanations.csv,its opportunity cost
 v8_gas_mw,"1,350",1350.0,results/candidate_npv.csv,"the largest gas request, MW"
-v8_gas_mean,$512M,512.2800390632913,results/v8/explanations.csv,its expected NPV
-v8_gas_pneg,77%,0.771,results/v8/explanations.csv,its chance of a loss
+v8_gas_mean,$514M,514.3667100500927,results/v8/explanations.csv,its expected NPV
+v8_gas_pneg,77%,0.772,results/v8/explanations.csv,its chance of a loss
 v8_lease_reg,$8.19B,8186621514.391418,results/candidate_npv.csv,"lease book, registered grid"
 v8_lease_reg_low,$5.69B,5690542053.061575,results/candidate_npv.csv,"lease book, registered low case"
 v8_lease_reg_high,$5.10B,5100708377.722095,results/candidate_npv.csv,"lease book, registered high case"
@@ -2338,23 +2338,23 @@ v8_lease_com_high_pos,0,0,results/posthoc_lease_values.csv,leases positive at th
 rv7_c21_diff,−$61M,-61354728.83766937,results/registered_v7/success_criteria_v7_scored.csv,"C21 diff, as registered and scored"
 rv7_c21_low,−$136M,-136227948.63944197,results/registered_v7/success_criteria_v7_scored.csv,"C21 low, as registered and scored"
 rv7_c21_high,+$0M,408104.88940302486,results/registered_v7/success_criteria_v7_scored.csv,"C21 high, as registered and scored"
-v8_c21_diff,"+$1,332M",1331874487.3693466,results/success_criteria_v7_scored.csv,"C21 diff, on the corrected system"
-v8_c21_low,"+$1,131M",1131427730.2402637,results/success_criteria_v7_scored.csv,"C21 low, on the corrected system"
-v8_c21_high,"+$1,528M",1527662556.5746503,results/success_criteria_v7_scored.csv,"C21 high, on the corrected system"
+v8_c21_diff,+$468M,468276349.579401,results/success_criteria_v7_scored.csv,"C21 diff, on the corrected system"
+v8_c21_low,+$300M,299928224.4615672,results/success_criteria_v7_scored.csv,"C21 low, on the corrected system"
+v8_c21_high,+$643M,643021118.5617732,results/success_criteria_v7_scored.csv,"C21 high, on the corrected system"
 rv7_c22_diff,+$22M,22054493.14853668,results/registered_v7/success_criteria_v7_scored.csv,"C22 diff, as registered and scored"
 rv7_c22_low,−$49M,-48874881.78113918,results/registered_v7/success_criteria_v7_scored.csv,"C22 low, as registered and scored"
 rv7_c22_high,+$89M,88798566.23804216,results/registered_v7/success_criteria_v7_scored.csv,"C22 high, as registered and scored"
-v8_c22_diff,+$24M,24329004.080633163,results/success_criteria_v7_scored.csv,"C22 diff, on the corrected system"
-v8_c22_low,−$73M,-72977761.68798776,results/success_criteria_v7_scored.csv,"C22 low, on the corrected system"
-v8_c22_high,+$122M,121686188.29383306,results/success_criteria_v7_scored.csv,"C22 high, on the corrected system"
+v8_c22_diff,+$95M,95414361.54934502,results/success_criteria_v7_scored.csv,"C22 diff, on the corrected system"
+v8_c22_low,−$21M,-20588592.816449355,results/success_criteria_v7_scored.csv,"C22 low, on the corrected system"
+v8_c22_high,+$215M,215467880.5528744,results/success_criteria_v7_scored.csv,"C22 high, on the corrected system"
 rv7_c24_diff,+$159M,158549733.55302238,results/registered_v7/success_criteria_v7_scored.csv,"C24 diff, as registered and scored"
 rv7_c24_low,+$76M,76107548.42244394,results/registered_v7/success_criteria_v7_scored.csv,"C24 low, as registered and scored"
 rv7_c24_high,+$247M,247307795.7778454,results/registered_v7/success_criteria_v7_scored.csv,"C24 high, as registered and scored"
-v8_c24_diff,+$51M,51243756.0079608,results/success_criteria_v7_scored.csv,"C24 diff, on the corrected system"
-v8_c24_low,−$90M,-89534760.71170168,results/success_criteria_v7_scored.csv,"C24 low, on the corrected system"
-v8_c24_high,+$194M,194389155.491868,results/success_criteria_v7_scored.csv,"C24 high, on the corrected system"
+v8_c24_diff,+$77M,76668983.87270546,results/success_criteria_v7_scored.csv,"C24 diff, on the corrected system"
+v8_c24_low,−$53M,-52587171.11686797,results/success_criteria_v7_scored.csv,"C24 low, on the corrected system"
+v8_c24_high,+$207M,206612925.34002212,results/success_criteria_v7_scored.csv,"C24 high, on the corrected system"
 v7_lease_reg,$14.6B,14582355988.282959,results/registered_v7/candidate_npv.csv,lease book as scored in v7
-v8_hz20,$6.56B,6.558246634139855,results/horizon_books.csv,best book within 20 years
+v8_hz20,$7.09B,7.088644443875739,results/horizon_books.csv,best book within 20 years
 v8_hz3_leases,11,11,results/horizon_books.csv,leases at three years
 v8_hz5_leases,14,14,results/horizon_books.csv,leases from five years
 v8_gym_ri,$56M,56.31277707372211,results/decision_gym_summary_v8.csv,"optimizer minus instinct, magnitude"
@@ -2372,28 +2372,28 @@ v8_gym_ar_worse,12,12,results/decision_gym_summary_v8.csv,"advisor minus optimiz
 v8_gym_n,14,14,results/decision_gym_summary_v8.csv,effective situations
 v8_gym_queue,$0.6M,-0.646153846153847,results/decision_gym_rooms.csv,"rule minus instinct per queue room, magnitude"
 v8_capture_gas,136%,1.3558660067626662,results/candidate_capture_factors.csv,gas capture
-v8_adv_calls,195,195,results/advisor_evaluation.csv,recorded advisor calls
-v8_adv_grounding,94%,0.936,results/advisor_evaluation.csv,grounding rate
+v8_adv_calls,214,214,results/advisor_evaluation.csv,recorded advisor calls
+v8_adv_grounding,94%,0.938,results/advisor_evaluation.csv,grounding rate
 v8_tools_correct,6,6,results/v8/advisor_tools_eval.csv,questions read correctly
-v8_tools_checked,119,119,results/v8/advisor_tools_eval.csv,numbers checked in the explanations
+v8_tools_checked,121,121,results/v8/advisor_tools_eval.csv,numbers checked in the explanations
 v8_tools_grounded,119,119,results/v8/advisor_tools_eval.csv,of them grounded
 v8_lease_pool,506,506,results/investment_candidates.csv,leases in the pool
 v8_lease_reg_capex,$1.35B,1352000000.0,results/posthoc_lease_values.csv,"lease capital, registered grid"
-v8_power_contracted,+$70M,70164936.36131082,results/candidate_npv.csv,"the twenty requests, contracted, credits in force"
-v8_power_contracted_no_credit,−$615M,-614821015.5686029,results/candidate_npv.csv,"the twenty requests, contracted, no credits"
-v8_power_contracted_2025_law,−$284M,-283853821.12183595,results/candidate_npv.csv,"the twenty requests, contracted, the 2025-law credit stress"
-v8_power_base,"−$1,093M",-1092554978.268333,results/candidate_npv.csv,"the twenty requests, merchant"
+v8_power_contracted,−$108M,-107677670.67541672,results/candidate_npv.csv,"the twenty requests, contracted, credits in force"
+v8_power_contracted_no_credit,−$933M,-933192448.5761212,results/candidate_npv.csv,"the twenty requests, contracted, no credits"
+v8_power_contracted_2025_law,−$478M,-478361719.75970393,results/candidate_npv.csv,"the twenty requests, contracted, the 2025-law credit stress"
+v8_power_base,"−$1,492M",-1492132209.7175434,results/candidate_npv.csv,"the twenty requests, merchant"
 v8_power_contracted_pos,10,10,results/candidate_npv.csv,requests positive under contract
-v8_pF_util,91%,0.9132138792199616,results/v8/process_comparison.csv,book F's use of the budget
+v8_pF_util,98%,0.9819169805274476,results/v8/process_comparison.csv,book F's use of the budget
 v8_resel_n,20,20,results/v8/robustness_reselection.csv,re-selections
-v8_resel_min,$116M,116258801.80896544,results/v8/robustness_reselection.csv,"D minus A across re-selections, lowest"
-v8_resel_max,$352M,351865610.05850625,results/v8/robustness_reselection.csv,"D minus A across re-selections, highest"
+v8_resel_min,$76M,76165969.2261324,results/v8/robustness_reselection.csv,"D minus A across re-selections, lowest"
+v8_resel_max,$235M,235299787.2382984,results/v8/robustness_reselection.csv,"D minus A across re-selections, highest"
 v8_core,11,11,results/v8/robustness_selection_share.csv,core members of book D
-v8_noline_mean,$1.40B,1401692225.5167158,results/v8/robustness_capital_calls.csv,book D with no liquidity line
-v8_q95_line,$3.28B,3281438181.389892,results/v8/robustness_capital_calls.csv,liquidity line at the 95th percentile of the excess
-v8_q95_mean,$2.02B,2017311946.8202007,results/v8/robustness_capital_calls.csv,book D with that line
-v8_reserve_over_1,44.5%,0.4445,results/v8/dynamic.csv,"scenarios where construction exceeds the reserve, one decimal"
-v8_gas_cost,$7.7M,7.655861474888325,results/v8/explanations.csv,the gas request's opportunity cost
+v8_noline_mean,$1.71B,1707246374.691272,results/v8/robustness_capital_calls.csv,book D with no liquidity line
+v8_q95_line,$2.53B,2529263482.095257,results/v8/robustness_capital_calls.csv,liquidity line at the 95th percentile of the excess
+v8_q95_mean,$2.11B,2108533822.153227,results/v8/robustness_capital_calls.csv,book D with that line
+v8_reserve_over_1,50.3%,0.503,results/v8/dynamic.csv,"scenarios where construction exceeds the reserve, one decimal"
+v8_gas_cost,$108.7M,108.66397043581796,results/v8/explanations.csv,the gas request's opportunity cost
 v8_lease_reg_high_pos,19,19,results/candidate_npv.csv,leases positive at the registered high case
 v9_cases,48,48,results/v9/success_criteria_v9_registered.json,committee cases in X1
 v9_clean,12,12,results/v9/success_criteria_v9_registered.json,clean cases in X1
@@ -2440,34 +2440,34 @@ v10_tail_count,100,100,src/optimizer.py,"scenarios in the worst 5% of 2,000"
 v10_line_fee,0.5%,0.005,src/config.py,commitment fee a year on the undrawn line (ASSUMED)
 v10_line_rate,8%,0.08,src/config.py,interest a year on the drawn line (ASSUMED)
 v10_build_years,2,2,src/config.py,years of construction a draw is outstanding (ASSUMED)
-v10_noline_metric,$0.86B,862399290.481998,results/v10/credit_line_net.csv,book D's registered metric with no line
-v10_q95_metric_gross,$1.00B,995253278.9642133,results/v10/credit_line_net.csv,"with the 95th-percentile line, gross of financing"
-v10_q95_metric_fee,$0.83B,834633111.9056706,results/v10/credit_line_net.csv,net of the commitment fee
-v10_q95_metric_fee_rate,$0.66B,659217352.0965276,results/v10/credit_line_net.csv,net of the fee and interest
-v10_q95_mean_fee_rate,$1.86B,1862616409.4242148,results/v10/credit_line_net.csv,expected value net of the fee and interest
-v10_q95_financing,$155M,154695537.39598632,results/v10/credit_line_net.csv,mean financing cost of the 95th-percentile line
-v10_breakeven_fee,0.41%,0.004135513305664,results/v10/credit_line_net.csv,"the fee at which the line stops improving the metric, fee only"
-v10_half_metric_gross,$0.72B,718986393.9215274,results/v10/credit_line_net.csv,"$0.5B line, gross metric"
-v10_one_metric_gross,$0.76B,757785212.3758525,results/v10/credit_line_net.csv,"$1B line, gross metric"
-v10_two_metric_gross,$0.90B,897260512.4593726,results/v10/credit_line_net.csv,"$2B line, gross metric"
-v10_line_wins,1,1,results/v10/credit_line_sensitivity.csv,fee-rate settings in which the 95th-percentile line beats no line
+v10_noline_metric,$0.76B,756902257.5023683,results/v10/credit_line_net.csv,book D's registered metric with no line
+v10_q95_metric_gross,$1.27B,1267535021.3133168,results/v10/credit_line_net.csv,"with the 95th-percentile line, gross of financing"
+v10_q95_metric_fee,$1.14B,1142575532.180388,results/v10/credit_line_net.csv,net of the commitment fee
+v10_q95_metric_fee_rate,$1.03B,1033867502.7471124,results/v10/credit_line_net.csv,net of the fee and interest
+v10_q95_mean_fee_rate,$1.98B,1982290338.397127,results/v10/credit_line_net.csv,expected value net of the fee and interest
+v10_q95_financing,$126M,126243483.75610018,results/v10/credit_line_net.csv,mean financing cost of the 95th-percentile line
+v10_breakeven_fee,2.04%,0.0204105377197265,results/v10/credit_line_net.csv,"the fee at which the line stops improving the metric, fee only"
+v10_half_metric_gross,$1.13B,1134004347.938233,results/v10/credit_line_net.csv,"$0.5B line, gross metric"
+v10_one_metric_gross,$1.17B,1174639091.0614364,results/v10/credit_line_net.csv,"$1B line, gross metric"
+v10_two_metric_gross,$1.24B,1235007001.6383235,results/v10/credit_line_net.csv,"$2B line, gross metric"
+v10_line_wins,12,12,results/v10/credit_line_sensitivity.csv,fee-rate settings in which the 95th-percentile line beats no line
 v10_line_settings,12,12,results/v10/credit_line_sensitivity.csv,fee-rate settings tried
-v10_fwd_live,"1,649",1649,results/v10/forward_queue.csv,ERCOT requests live on 1 January 2025
-v10_fwd_operated,43,43,results/v10/forward_queue.csv,requests operated by the end of 2025
-v10_fwd_withdrawn,82,82,results/v10/forward_queue.csv,requests withdrawn by the end of 2025
-v10_fwd_active,"1,513",1513,results/v10/forward_queue.csv,requests active by the end of 2025
+v10_fwd_live,"1,441",1441,results/v10/forward_queue.csv,ERCOT requests live on 1 January 2025
+v10_fwd_operated,30,30,results/v10/forward_queue.csv,requests operated by the end of 2025
+v10_fwd_withdrawn,77,77,results/v10/forward_queue.csv,requests withdrawn by the end of 2025
+v10_fwd_active,"1,323",1323,results/v10/forward_queue.csv,requests active by the end of 2025
 v10_fwd_missing,11,11,results/v10/forward_queue.csv,requests not in the 2026 file by the end of 2025
-v10_fwd_n,"1,638",1638,results/v10/forward_queue_scores.csv,requests the 2026 edition resolves
-v10_fwd_pred_model,166,166.4394061238901,results/v10/forward_queue_scores.csv,operations the model predicted for 2025
-v10_fwd_brier_model,0.0457,0.0456595684519039,results/v10/forward_queue_scores.csv,"one-year Brier score, model"
-v10_fwd_slope_model,0.67,0.6678213917053613,results/v10/forward_queue_scores.csv,"one-year calibration slope, model"
-v10_fwd_pred_corrected,104,104.15312803303496,results/v10/forward_queue_scores.csv,operations the corrected predicted for 2025
-v10_fwd_brier_corrected,0.0302,0.0302118744276454,results/v10/forward_queue_scores.csv,"one-year Brier score, corrected"
-v10_fwd_slope_corrected,0.75,0.7460148236923871,results/v10/forward_queue_scores.csv,"one-year calibration slope, corrected"
-v10_fwd_pred_lookup,24,23.921130024709267,results/v10/forward_queue_scores.csv,operations the lookup predicted for 2025
-v10_fwd_brier_lookup,0.0256,0.0256471920821165,results/v10/forward_queue_scores.csv,"one-year Brier score, lookup"
-v10_fwd_slope_lookup,0.07,0.0675676010314306,results/v10/forward_queue_scores.csv,"one-year calibration slope, lookup"
-v10_fwd_cand_active,20,20,results/v10/forward_candidates.csv,candidates still waiting at the end of 2025
+v10_fwd_n,"1,430",1430,results/v10/forward_queue_scores.csv,requests the 2026 edition resolves
+v10_fwd_pred_model,125,125.39511461529248,results/v10/forward_queue_scores.csv,operations the model predicted for 2025
+v10_fwd_brier_model,0.0390,0.0390025321811341,results/v10/forward_queue_scores.csv,"one-year Brier score, model"
+v10_fwd_slope_model,0.58,0.5849966334989599,results/v10/forward_queue_scores.csv,"one-year calibration slope, model"
+v10_fwd_pred_corrected,78,78.46875551497219,results/v10/forward_queue_scores.csv,operations the corrected predicted for 2025
+v10_fwd_brier_corrected,0.0258,0.0258478828781073,results/v10/forward_queue_scores.csv,"one-year Brier score, corrected"
+v10_fwd_slope_corrected,0.66,0.6560406154665155,results/v10/forward_queue_scores.csv,"one-year calibration slope, corrected"
+v10_fwd_pred_lookup,17,17.310079323004352,results/v10/forward_queue_scores.csv,operations the lookup predicted for 2025
+v10_fwd_brier_lookup,0.0209,0.0208774594352483,results/v10/forward_queue_scores.csv,"one-year Brier score, lookup"
+v10_fwd_slope_lookup,0.01,0.0052987260762064,results/v10/forward_queue_scores.csv,"one-year calibration slope, lookup"
+v10_fwd_cand_active,19,19,results/v10/forward_candidates.csv,candidates still waiting at the end of 2025
 v10_fwd_wti,65.5,65.46,results/v10/forward_prices.csv,"realized 2025 mean, WTI"
 v10_fwd_wti_q05,53.3,53.32046614497824,results/v10/forward_prices.csv,"scenario 5th percentile 2025, WTI"
 v10_fwd_wti_q95,100.9,100.90755244927573,results/v10/forward_prices.csv,"scenario 95th percentile 2025, WTI"
@@ -2484,27 +2484,27 @@ v10_fwd_lease_ratio,1.03,1.0267368765789981,results/v10/forward_leases.csv,"2025
 v10_fwd_lease_median,1.00,1.0002770701397476,results/v10/forward_leases.csv,median lease ratio
 v10_fwd_lease_min,0.52,0.5217922439252227,results/v10/forward_leases.csv,lowest lease ratio
 v10_fwd_lease_realized,280,279.85496116666667,results/v10/forward_leases.csv,"realized 2025 output, million boe"
-v10_conv5_a,$0.87B,866221011.952616,results/v10/convergence_5000.csv,"book A's metric on 5,000 held-out paths"
-v10_conv5_b,$0.98B,979176858.1753469,results/v10/convergence_5000.csv,"book B's metric on 5,000 held-out paths"
-v10_conv5_c,$0.91B,910985925.0302747,results/v10/convergence_5000.csv,"book C's metric on 5,000 held-out paths"
-v10_conv5_d,$1.12B,1122576488.278752,results/v10/convergence_5000.csv,"book D's metric on 5,000 held-out paths"
-v10_conv5_d_cvar,$0.98B,980685056.724092,results/v10/convergence_5000.csv,"book D's worst-5% loss on 5,000 held-out paths"
-v10_conv5_margin,$256M,256355476.3261361,results/v10/convergence_5000.csv,"D minus A on 5,000 held-out paths"
-v10_conv5_resolved,$1.126B,1126289202.360631,results/v10/convergence_5000.csv,"book D re-solved on 5,000 primary paths"
-v10_conv5_d3,$1.123B,1122576488.278752,results/v10/convergence_5000.csv,"book D on 5,000 held-out paths, three decimals"
-v10_conv5_jaccard,0.75,0.75,results/v10/convergence_5000.csv,"members kept when D is re-solved on 5,000 paths"
-v10_dep_cvar,$0.30B,303987980.92094743,results/v10/dependence_ablation.csv,book D's worst-5% loss without co-movement
-v10_dep_ploss,3.0%,0.03,results/v10/dependence_ablation.csv,book D's chance of a loss without co-movement
-v10_dep_ploss_joint,10.3%,0.1035,results/v10/dependence_ablation.csv,book D's chance of a loss as scored
-v10_dep_c_metric,$1.84B,1841056029.843091,results/v10/dependence_ablation.csv,the deterministic book's metric without co-movement
-v10_dep_d_metric,$1.75B,1747635780.055778,results/v10/dependence_ablation.csv,book D's metric without co-movement
+v10_conv5_a,$1.14B,1138297225.5647686,results/v10/convergence_5000.csv,"book A's metric on 5,000 held-out paths"
+v10_conv5_b,$1.12B,1124545379.6946125,results/v10/convergence_5000.csv,"book B's metric on 5,000 held-out paths"
+v10_conv5_c,$1.21B,1213461460.517982,results/v10/convergence_5000.csv,"book C's metric on 5,000 held-out paths"
+v10_conv5_d,$1.36B,1363216105.5701213,results/v10/convergence_5000.csv,"book D's metric on 5,000 held-out paths"
+v10_conv5_d_cvar,$0.84B,838709633.005462,results/v10/convergence_5000.csv,"book D's worst-5% loss on 5,000 held-out paths"
+v10_conv5_margin,$225M,224918880.00535274,results/v10/convergence_5000.csv,"D minus A on 5,000 held-out paths"
+v10_conv5_resolved,$1.382B,1382079834.330756,results/v10/convergence_5000.csv,"book D re-solved on 5,000 primary paths"
+v10_conv5_d3,$1.363B,1363216105.5701213,results/v10/convergence_5000.csv,"book D on 5,000 held-out paths, three decimals"
+v10_conv5_jaccard,0.65,0.6470588235294118,results/v10/convergence_5000.csv,"members kept when D is re-solved on 5,000 paths"
+v10_dep_cvar,$0.02B,22662599.4470844,results/v10/dependence_ablation.csv,book D's worst-5% loss without co-movement
+v10_dep_ploss,1.8%,0.018,results/v10/dependence_ablation.csv,book D's chance of a loss without co-movement
+v10_dep_ploss_joint,8.6%,0.0855,results/v10/dependence_ablation.csv,book D's chance of a loss as scored
+v10_dep_c_metric,$2.50B,2502731308.4818435,results/v10/dependence_ablation.csv,the deterministic book's metric without co-movement
+v10_dep_d_metric,$2.15B,2147671491.3367367,results/v10/dependence_ablation.csv,book D's metric without co-movement
 v10_regime_best_base,1,1.0,results/v10/lambda_regime.csv,"the tail weight that scores best, base model"
-v10_regime_best_ercot,2,2.0,results/v10/lambda_regime.csv,"the tail weight that scores best, ERCOT prices 25% lower"
-v10_regime_best_delay,2,2.0,results/v10/lambda_regime.csv,"the tail weight that scores best, every plant two years late"
+v10_regime_best_ercot,1,1.0,results/v10/lambda_regime.csv,"the tail weight that scores best, ERCOT prices 25% lower"
+v10_regime_best_delay,1,1.0,results/v10/lambda_regime.csv,"the tail weight that scores best, every plant two years late"
 v10_regime_best_lease,4,4.0,results/v10/lambda_regime.csv,"the tail weight that scores best, lease capital 30% higher"
-v10_regime_base_l1,$1.032B,1032193986.5488834,results/v10/lambda_regime.csv,"base world, tail weight 1"
-v10_regime_base_l2,$1.025B,1024559333.026198,results/v10/lambda_regime.csv,"base world, tail weight 2"
-v10_regime_ercot_l0,−$1.07B,-1066520451.3768134,results/v10/lambda_regime.csv,"ERCOT 25% lower, the deterministic book"
+v10_regime_base_l1,$1.348B,1347896082.39158,results/v10/lambda_regime.csv,"base world, tail weight 1"
+v10_regime_base_l2,$1.327B,1327371723.865048,results/v10/lambda_regime.csv,"base world, tail weight 2"
+v10_regime_ercot_l0,−$0.75B,-748841169.7832315,results/v10/lambda_regime.csv,"ERCOT 25% lower, the deterministic book"
 v10_ladder_tools,+$110M,110176959.03176184,results/v10/preview_ladder_rungs.csv,"ladder rung tools_minus_proposal, mean per case (v9 cases)"
 v10_ladder_tools_ci,"[+$53M, +$175M]",52518731.77701969|174679951.37762913,results/v10/preview_ladder_rungs.csv,its case-bootstrap interval
 v10_ladder_llm,+$35M,34752046.84042414,results/v10/preview_ladder_rungs.csv,"ladder rung tools_llm_minus_tools, mean per case (v9 cases)"

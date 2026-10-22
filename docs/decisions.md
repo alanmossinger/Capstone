@@ -1582,3 +1582,36 @@ alternative rejected.
     preview and the registered run are on one footing.
     *Rejected:* registering the fee alone (the lower bound would flatter
     every stated line).
+105. **The decision moves to the candidates public on 1 January 2025**
+    (Alan, 2026-10-22: "switch the decision to the as-of candidate set and
+    rerun notebooks 04-12; keep the v9 registered results frozen as
+    scored"). The LBNL 2024 edition (`queues_2023_clean_data_r1.xlsx`,
+    last modified 23 August 2024, from the edition's publication page) and
+    ERCOT's eight monthly GIS reports of April–November 2024 (report type
+    15933, fetched on a U.S. runner because ERCOT refuses other
+    connections) define what a committee could read that day:
+    `asof_candidates.live_pool` gives ERCOT's live requests (listed as
+    active in the last report before the date — the reports list every
+    active request, so one the reports never list is not live), their
+    sizes (from that report) and their agreement dates (the edition's, or
+    a report's IA Signed date before the date). Notebook 04's decision-date
+    view conditions on that record; notebook 07's rule (the five largest
+    per technology) then gives the as-of candidates: 16 of the 20 stand;
+    26INR0465, 27INR0071, 27INR0320 and 27INR0365 (not public on the date)
+    give way to 23INR0029, 26INR0085, 26INR0375 and 28INR0097; 24INR0075's
+    agreement, signed in January 2024, is now known. The hazard fits still
+    learn from the 2025 edition censored at the date: its 2024 exits were
+    in the ISOs' own queue reports during 2024, which LBNL compiled later;
+    that remaining vintage gap is stated, not removed. The 2024 edition
+    runs through the registered cleaning rules except R7, whose key is not
+    unique across that edition's regions (the as-of view keys ERCOT
+    requests by their INR). The v9 challenger record (`results/v9/`) was
+    registered and scored on the earlier set: it is frozen with a hash test
+    and notebook 11 reads it; notebook 12's ladder preview reads its saved
+    tables. Notebooks 04–12 rerun on the as-of set; every post-registration
+    number of v8 moves with it, and the report says so.
+    *Rejected:* keeping the 2025-edition set with the as-of build as a
+    check (the comparison books held requests no one could see on the
+    date); refitting the hazard models on the 2024 edition (it lacks the
+    2024 exits the ISOs had published, and would discard a year of the
+    test cohort for no gain in honesty).
