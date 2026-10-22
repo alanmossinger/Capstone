@@ -1964,6 +1964,22 @@ def v8_report():
     add("v8_q95_mean", dollars(q95["mean"]), q95["mean"], v8 + "robustness_capital_calls.csv", "book D with that line")
     add("v8_reserve_over_1", pct(dyn.loc[0, "construction_over_reserve_share"], 1), dyn.loc[0, "construction_over_reserve_share"], v8 + "dynamic.csv", "scenarios where construction exceeds the reserve, one decimal")
     add("v8_gas_cost", dollars(ex.loc[g, "objective_cost_$M"] * 1e6, "M", 1), ex.loc[g, "objective_cost_$M"], v8 + "explanations.csv", "the gas request's opportunity cost")
+    add("v8_gas_in_book", "in" if bool(ex.loc[g, "in_book"]) else "outside", bool(ex.loc[g, "in_book"]), v8 + "explanations.csv", "whether the largest gas request is in book D")
+    bg = ex[(ex["technology"] == "Gas CC") & ex["in_book"].astype(bool)]
+    if len(bg):  # the gas request book D holds, when it holds one (on the as-of set the 697 MW request with a signed agreement)
+        bg = bg.sort_values("expected_npv_$M", ascending=False).iloc[0]
+        add("v8_bookgas_mw", f"{cand.loc[bg.name, 'mw']:,.0f}", cand.loc[bg.name, "mw"], "results/candidate_npv.csv", "the gas request in book D, MW")
+        add("v8_bookgas_mean", dollars(bg["expected_npv_$M"] * 1e6, "M", 0), bg["expected_npv_$M"], v8 + "explanations.csv", "its expected NPV")
+        add("v8_bookgas_pneg", pct(bg["p_negative"], 0), bg["p_negative"], v8 + "explanations.csv", "its chance of a loss")
+        add("v8_bookgas_cost", dollars(bg["objective_cost_$M"] * 1e6, "M", 1), bg["objective_cost_$M"], v8 + "explanations.csv", "its opportunity cost: what forcing it out costs the objective")
+    wq = read("v8/whatifs.csv").set_index("question")
+    for q, key in (("WTI at $45 a barrel for five years", "oil45"), ("offshore redevelopment capital up 30%", "capex30")):
+        r = wq.loc[q]
+        add(f"v8_wi_{key}_left", str(int(r["n_left"])), int(r["n_left"]), v8 + "whatifs.csv", f"members book D drops under '{q}'")
+        add(f"v8_wi_{key}_entered", str(int(r["n_entered"])), int(r["n_entered"]), v8 + "whatifs.csv", f"members that enter under '{q}'")
+        add(f"v8_wi_{key}_leases", dollars(r["charge_Lease redevelopment_new"], "B", 2), r["charge_Lease redevelopment_new"], v8 + "whatifs.csv", f"lease capital kept under '{q}'")
+        add(f"v8_wi_{key}_ploss", pct(r["p_loss_new"], 0), r["p_loss_new"], v8 + "whatifs.csv", f"chance of a loss of the re-solved book under '{q}'")
+        add(f"v8_wi_{key}_mean", dollars(r["mean_new"]), r["mean_new"], v8 + "whatifs.csv", f"expected value of the re-solved book under '{q}'")
     add("v8_lease_reg_high_pos", str(int((leases["expected_npv_high_cost"] > 0).sum())), int((leases["expected_npv_high_cost"] > 0).sum()), "results/candidate_npv.csv", "leases positive at the registered high case")
 
 

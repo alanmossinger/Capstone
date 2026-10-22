@@ -2394,6 +2394,21 @@ v8_q95_line,$2.53B,2529263482.095257,results/v8/robustness_capital_calls.csv,liq
 v8_q95_mean,$2.11B,2108533822.153227,results/v8/robustness_capital_calls.csv,book D with that line
 v8_reserve_over_1,50.3%,0.503,results/v8/dynamic.csv,"scenarios where construction exceeds the reserve, one decimal"
 v8_gas_cost,$108.7M,108.66397043581796,results/v8/explanations.csv,the gas request's opportunity cost
+v8_gas_in_book,outside,False,results/v8/explanations.csv,whether the largest gas request is in book D
+v8_bookgas_mw,697,697.0,results/candidate_npv.csv,"the gas request in book D, MW"
+v8_bookgas_mean,$437M,437.0046352537858,results/v8/explanations.csv,its expected NPV
+v8_bookgas_pneg,63%,0.6285,results/v8/explanations.csv,its chance of a loss
+v8_bookgas_cost,$144.6M,144.57468156829833,results/v8/explanations.csv,its opportunity cost: what forcing it out costs the objective
+v8_wi_oil45_left,8,8,results/v8/whatifs.csv,members book D drops under 'WTI at $45 a barrel for five years'
+v8_wi_oil45_entered,0,0,results/v8/whatifs.csv,members that enter under 'WTI at $45 a barrel for five years'
+v8_wi_oil45_leases,$0.00B,0.0,results/v8/whatifs.csv,lease capital kept under 'WTI at $45 a barrel for five years'
+v8_wi_oil45_ploss,58%,0.5825,results/v8/whatifs.csv,chance of a loss of the re-solved book under 'WTI at $45 a barrel for five years'
+v8_wi_oil45_mean,$0.59B,594635388.0556377,results/v8/whatifs.csv,expected value of the re-solved book under 'WTI at $45 a barrel for five years'
+v8_wi_capex30_left,2,2,results/v8/whatifs.csv,members book D drops under 'offshore redevelopment capital up 30%'
+v8_wi_capex30_entered,3,3,results/v8/whatifs.csv,members that enter under 'offshore redevelopment capital up 30%'
+v8_wi_capex30_leases,$0.91B,905131118.0885077,results/v8/whatifs.csv,lease capital kept under 'offshore redevelopment capital up 30%'
+v8_wi_capex30_ploss,15%,0.1485,results/v8/whatifs.csv,chance of a loss of the re-solved book under 'offshore redevelopment capital up 30%'
+v8_wi_capex30_mean,$1.46B,1457562511.553914,results/v8/whatifs.csv,expected value of the re-solved book under 'offshore redevelopment capital up 30%'
 v8_lease_reg_high_pos,19,19,results/candidate_npv.csv,leases positive at the registered high case
 v9_cases,48,48,results/v9/success_criteria_v9_registered.json,committee cases in X1
 v9_clean,12,12,results/v9/success_criteria_v9_registered.json,clean cases in X1
