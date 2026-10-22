@@ -5,21 +5,23 @@
 SIADS 699 Capstone (Master of Applied Data Science, University of Michigan), Group 13.
 Author: Alan Mössinger.
 
-> **Status (2026-10-20, v9, branch `v8-corrections`):** an executive report
-> (core of about 4,200 words) on one decision — twenty Gulf of Mexico lease
+> **Status (2026-10-22, v10, branch `v8-corrections`):** a report that
+> answers three questions of one decision — twenty Gulf of Mexico lease
 > redevelopments and twenty ERCOT requests under one budget on 1 January
-> 2025, with only what was public that day. A risk-aware optimizer beats NPV
-> ranking under equal constraints, at the price of expected value and with a
-> capital plan that needs a contingent construction line; the machine-learning
-> queue forecasts do not demonstrably improve the decision. An AI *challenger*
-> (`src/challenge.py`) reads a committee's rules from its words, tests its
-> proposal with computed tools and recommends a computed alternative; in a
-> registered test on simulated committees (`results/v9/`, notebook 11
-> section 11) following it improves the committee's own objective and avoids
-> loss, mostly through its tools, while the language model's own part is
-> reading rules and arguments. Eleven notebooks run end to end (`make all`);
-> every registered criterion is scored as registered. The session log is
-> `docs/journal.md`; the reasons are in `docs/decisions.md` (#93–#99).
+> 2025, built only from what was public that day (the LBNL 2024 edition and
+> ERCOT's 2024 monthly reports). *Q1* A queue model ranks requests better than
+> a lookup and overstates the level, as the first year after the decision
+> confirmed. *Q2* Held to the same constraints, a risk-aware optimizer beats
+> NPV ranking on the registered metric by $219M [+$13M, +$401M], and the
+> contingent construction line it needs still pays once priced. *Q3* In a
+> registered test on 48 simulated committee proposals (`results/v10/`,
+> notebook 12), tools alone improve the committee's own objective by $76M per
+> case and a language-model challenger adds $43M [+$9M, +$86M] more while
+> holding no authority; it fails two of nine registered lines (silence read
+> as a zero tail weight; numbers not on its sheet), reported as they fell.
+> Twelve notebooks run end to end (`make all`); every registered line is
+> scored once. The session log is `docs/journal.md`; the reasons are in
+> `docs/decisions.md` (#99–#107).
 
 ## About
 

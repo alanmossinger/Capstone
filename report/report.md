@@ -7,202 +7,154 @@ date: "SIADS 699 Capstone, University of Michigan — Group 13 (a solo project) 
 
 ## Abstract
 
-Can an AI-assisted prescriptive system improve how an energy company allocates capital, and can each part's contribution be measured? I build such a system for one decision — twenty Gulf of Mexico lease redevelopments and twenty ERCOT interconnection requests under one budget on 1 January 2025 — and test it against conventional rules on the same held-out scenarios. Under equal constraints a risk-aware optimizer beats NPV ranking on the registered risk–return metric by $320M [+$142M, +$511M], buying a thinner tail with $274M of expected value; its capital plan holds only with a contingent construction line. Machine-learning queue forecasts rank requests better than a transparent lookup, yet the book chosen with them is not demonstrably better. A language-model challenger then questions the committee's own proposal with computed tools. In a registered test on 36 flawed proposals from simulated committees, following it improved the committee's own objective by $192M per case [+$108M, +$281M] and avoided $240M of worst-5% loss per case. The same tools without the language model achieved most of that. The language model's own contribution is reading the committee: it named 11 of 12 flaws of argument that the tools cannot see and read 40 of 40 rules correctly from words. The contribution is a decision system that shows a committee its trade-off, challenges its proposal, and states where prediction, optimization and a language model add value, and where they do not.
+I ask three questions of one capital decision — twenty Gulf of Mexico lease redevelopments and twenty ERCOT interconnection requests under one budget on 1 January 2025, built only from what was public that day — and a fourth about who deserves the credit. Can predictive models improve estimates of energy investment outcomes? Partly: a queue model ranks requests better than a transparent lookup (AUC 0.731 against 0.686; in ERCOT 0.656 against 0.591) and still ranks a year later, but it overstates the level, expecting 78 operations in 2025 where 30 happened. Can optimization turn those estimates into better capital-allocation decisions? Yes, when the constraints are shared: a risk-aware optimizer beats NPV ranking on the registered risk–return metric by $219M [+$13M, +$401M], buying a worst-5% loss of $0.82B instead of $1.55B with $508M of expected value, and the construction line it needs still pays at a bank's price. Can a language model improve investment governance without taking authority from decision-makers? In a registered test on 48 simulated committee proposals, tools alone improved the committee's own objective by $76M per case; the language model added $43M [+$9M, +$86M] more; the optimizer's own book $134M beyond that. The model read every paraphrased rule, named every flaw of argument I wrote and over-challenged no sound proposal; it failed two of nine registered lines, reading a committee's silence as a zero tail weight and writing numbers that are not on its fact sheet. Every registered line is scored once and every failure reported as it fell.
 
 ## Executive summary
 
-**The decision.** One budget, forty candidates, 1 January 2025, only what was public that day. The committee must choose how much expected value to give up for a thinner tail, and how to fund construction its requests may call.
+**The decision.** One budget, forty candidates, 1 January 2025, only what was public that day. A committee must choose how much expected value to give up for a thinner tail, and how to fund the construction its requests may call.
 
-**What the models say.** There is no single right book, only a trade-off (Figure 2). At the registered tail weight the risk-aware book expects $2.05B with a worst-5% loss of $1.02B; the return-seeking book expects $2.36B with $1.60B. The risk-aware book wins under equal constraints and keeps winning when re-chosen on resampled scenarios. Its weak point is capital: construction calls exceed the reserve in 44.5% of scenarios, and without a contingent line the book is worth $1.40B.
+**Q1, prediction.** The queue model ranks better than the lookup and still overstates how many requests will operate; the first year after the decision showed the same (Figure 4). Size the book to the newest cohort, and rank with the model.
 
-**What machine learning adds.** It ranks requests better than the lookup, but the decision turns on a few large requests whose chance of operating neither method knows well. The simpler forecast is enough for this decision.
+**Q2, optimization.** Under equal constraints the risk-aware book wins on the registered metric, by $219M against NPV ranking; its weak point, construction calls beyond the reserve in half the scenarios, is met by a $2.53B line worth having even at a bank's price (Figure 3).
 
-**What the AI adds.** Two roles, both with a person deciding. The *advisor* answers a committee's questions by setting the engine's parameters and explaining only computed numbers; it chooses nothing. The *challenger* reads the committee's rules from its words, tests its proposal against them with the engine's tools, and recommends a computed alternative when the proposal breaks a rule. Challenging improves the committee's own decision and avoids loss. Most of the gain comes from the computed tools, which a checklist without a language model also uses. What only the language model adds is understanding: it reads rules stated in words and names flaws of argument — a sunk cost, a double standard, a belief no fact supports.
+**Q3, governance.** A language model that challenges the committee with computed tools improves the committee's own decision by $43M per case beyond what the tools alone do, and holds no authority: it computes nothing, may guide only when the evidence allows, and a named person signs. It reads stated rules and names flaws of argument; it reads silence badly and invents numbers, and the code catches both.
 
-**What I recommend.** Choose the tail weight first; at the registered weight, fund the risk-aware book with a contingent construction line of $3.28B. Use the challenger before signing, and record any departure from its guidance with the evidence acknowledged.
+**Q0, attribution.** Of the $119M per case the challenged committee gains over its own proposal, the tools account for $76M and the language model for $43M; the optimizer would add $134M more (Figure 5).
 
-## Capital Allocation Memo
-
-*To the investment committee, 1 January 2025. Every figure is a model output scored on held-out scenarios; lease costs are assumed.*
-
-**The ask.** Commit up to $3.42B now — 40% of what the forty candidates would cost the budget today — across twenty Gulf lease redevelopments and twenty ERCOT requests still in the queue, with no technology above 40% of the budget. A lease costs its redevelopment capital; a request costs its deposits plus a reserve for the construction it may need.
-
-**The choice.** The return-seeking book expects $2.36B with a worst-5% average loss of $1.60B. The registered risk-aware book expects $2.05B with a loss of $1.02B and a 10% chance of losing money. A defensive book expects $1.55B with a loss of $0.52B. I recommend the committee choose its tail weight first; at the registered weight that is the risk-aware book.
-
-**What to do with each candidate under that book.** Invest now in six leases and two requests with signed agreements. Invest in stages in five requests: pay the deposit now, commit construction at the agreement. Wait for information on thirteen requests whose agreement signal is worth more than their deposit. Monitor thirteen; reject one.
-
-**What the commitment really is.** The construction reserve is an average: the capital the book's requests call exceeds it in 44.5% of scenarios. Without a contingent line the book is worth $1.40B, not $2.05B, because requests that reach their agreement cannot be built; a line of $3.28B restores $2.02B.
-
-**What would change it.** Oil at $45 a barrel for five years, or redevelopment capital 30% higher, removes every lease from the book. The two largest power positions rest on ERCOT prices spiking as they did in 2021 and on prices reverting upward from 2024's low level.
-
-**What information is worth.** Knowing everything before committing would be worth at most $571M; knowing the 2025–2029 ERCOT price level, $52M; one request's agreement signal, at most $11.5M.
-
-**Before you sign.** State your rules in words — your tolerance for loss, your liquidity, what you will not hold. The challenger reads them back as numbers for you to confirm, tests your proposal against them and names the computed book that keeps them. If you depart from a book it guides you to, the ledger asks you to acknowledge the evidence.
+**What I recommend.** Choose the tail weight first; at the registered weight, fund the risk-aware book — five leases and eight requests — with a contingent construction line of $2.53B. Use the challenger before signing, and record any departure from its guidance with the evidence acknowledged. The memo to the committee is Appendix I.
 
 ## 1 Introduction: why better predictions do not guarantee better investment decisions
 
 An energy company with one budget holds requests to connect new plants to the grid, most of which are never built, and oil and gas leases that already produce. Data science usually stops at the forecast. A forecast is not a decision: the decision also depends on costs, constraints, timing and how much loss the owner can bear, and on whether the machinery that joins them does what it says.
 
-The previous version of this report shows the second point. An independent audit (Appendix H) found five errors that no test of forecast accuracy would have caught: comparison books held to different constraints, power candidates already withdrawn or built, leases projected never to decline, a backtest that used information from after its dates, and an AI advisor that added nothing over the rule it was meant to improve. A later review found three inputs that were not public on 1 January 2025. All were corrected; the registered record is kept as it was scored (Appendix A).
+Earlier versions of this report show the second point. An independent audit (Appendix H) found five errors no test of forecast accuracy would have caught — comparison books held to different constraints, candidates already withdrawn or built, leases projected never to decline, a backtest with hindsight, an advisor that added nothing — and a later critique found a candidate set built from a file released after the decision date, a construction line treated as free, and a challenger tested on statements written by the model family under test. All were corrected; every registered line is kept as scored, with its corrections (Appendix A). The stages — predict what is likely, quantify what could go wrong, prescribe the book, challenge the committee's own choice — are Figure 1; the last two are the contribution.
 
-| Stage | Question | In this report |
-|------------------|----------------------------|----------------------------------------------------------------|
-| Predictive | What is likely? | Each request's chance of operating from today; lease and plant output |
-| Uncertainty | What could go wrong? | 2,000 joint scenarios of prices, output, costs and timing |
-| Prescriptive | What should we do, and is it better? | The book under a budget, caps and a risk policy, against conventional choices |
-| Challenge | Is the committee's own choice sound? | A language model that tests the proposal with computed tools, against a checklist |
+## 2 The questions and the two primary estimands
 
-*Table 1.* The analytical stages. The last two are the contribution.
+- **Q1 Prediction.** Can predictive models improve estimates of energy investment outcomes? The estimate is each request's chance of operating within seven years of the decision date, against a transparent lookup.
+- **Q2 Optimization.** Can mathematical optimization turn those estimates into better capital-allocation decisions? The primary estimand, **C33**, is the paired difference on the registered metric — expected NPV minus the worst-5% average loss — between the risk-aware book and NPV ranking under identical constraints, on held-out scenarios.
+- **Q3 Governance.** Can a language model improve the quality of investment governance without taking authority away from decision-makers? The primary estimand, **C34**, is the paired difference on the committee's own objective between the book it ends with when a language model challenges it with computed tools and the book it ends with when the same tools run as a checklist, over all 48 cases.
+- **Q0 Attribution.** A four-arm ladder — unchallenged proposal, tools only, tools with the language model, the optimizer's own book — each rung a paired difference with a case-bootstrap interval.
 
-## 2 Research questions, hypotheses and contributions
+Nine lines were registered and committed before the first model call of the final test (`results/v10/success_criteria_v10_registered.json`, 22 October 2026): C33 and C34 primary; C35 and C36 the other rungs; C37–C39 whether the model reads rules and paraphrases exactly and resists injected instructions; C40 and C41 whether it over-challenges sound proposals or misses flaws of argument. Three hypotheses hang on them: **H8** the model improves the committee's decision on its own objective (C34); **H9** it reads rules reliably and resists instructions to move them (C37–C39); **H10** it names flaws of argument the tools cannot see without over-challenging (C40, C41). H1–H7 and their 78 registered lines are in Appendix A with every correction.
 
-The overarching question is whether an AI-assisted prescriptive system can improve energy capital allocation by joining machine-learning predictions, uncertainty, portfolio optimization and human decision support — and show when it beats conventional alternatives.
-
-- **RQ1 Predict.** How well does machine learning estimate completion, timing and output against transparent baselines?
-- **RQ2 Quantify.** How do price, output, cost and timing risk change value and downside?
-- **RQ3 Prescribe.** Which investments should be selected under capital, diversification and downside constraints?
-- **RQ4 Evaluate.** Under equal constraints and scenarios, how much of any gain comes from the forecasts, the optimizer and the language model separately — and does challenging a committee's proposal improve its decision?
-
-Three hypotheses were registered before any result: **H1** machine-learning forecasts reduce held-out error against simpler baselines; **H2** a risk-aware book beats NPV ranking and sector-concentrated books on a stated risk–return metric; **H3** uncertainty-aware selection is more stable under stresses than deterministic selection. Four more were registered before the challenger was run, on a corrected system and so labelled post-registration: **H4** it finds flaws the tools alone cannot, without over-challenging; **H5** following it improves the committee's decision; **H6** the language model adds decision value beyond its tools; **H7** it reads rules reliably from words.
-
-The contributions are three: a corrected prescriptive pipeline with the audit that produced it; a decision workflow in which a language model reads and argues but never computes (Figure 1); and an evaluation that separates forecasting, optimization and language-model value on the same scenarios.
+The contributions: a prescriptive pipeline built from what was public on the decision date; a decision workflow in which a language model reads and argues but never computes (Figure 1); and an evaluation that separates the value of forecasting, optimization and the language model on the same scenarios, failures included.
 
 ![Figure 1](../figures/F43_architecture.png)
 
-*Figure 1.* The decision workflow in six stages, and what is measured.
+*Figure 1.* The decision workflow in six stages, and what is measured at each.
 
-## 3 Energy portfolio, datasets and economic assumptions
+## 3 Data, candidates and assumptions
 
-Every source is public: LBNL's *Queued Up* interconnection files, BSEE monthly lease production, EIA prices and plant generation, ERCOT's hourly settlement prices for 2018–2024 and the NREL Annual Technology Baseline. A readiness gate checked each source before any model was fitted.
+Every source is public — LBNL's *Queued Up* files, ERCOT's monthly interconnection reports, BSEE lease production, EIA prices and generation, ERCOT's hourly prices, the NREL Annual Technology Baseline — and `data/raw_manifest.csv` records every raw file with its hash.
 
-**One decision date.** Both sectors are decided on 1 January 2025 with only what was public that day: lease output to September 2024, agreements as the 2025 edition dates them, and the tax credits of the law then in force. The leases are the twenty with the most output in the twelve months published by that date. The requests are the five largest of each technology — gas combined cycle, solar, wind, storage — among the 1,649 ERCOT requests of 20 MW and more still waiting, about 359 GW. Each request's chance of operating within seven years is conditional on how long it has waited and on whether it has signed its interconnection agreement.
+**One decision date, strictly.** Both sectors are decided on 1 January 2025 with what was public that day. For the queue that is the LBNL 2024 edition (requests through 2023) and ERCOT's eight monthly reports of 2024, which say which requests were live, their size and whether an agreement was signed; the 2025 edition earlier versions used was released in August 2025. Of the twenty requests it had given, 16 stand; 4 were not public on the date and give way to 4 that were. The requests are the five largest of each technology — gas combined cycle, solar, wind, storage — among the 1,441 ERCOT requests of 20 MW and more live on the date, about 310 GW; the leases are the twenty with the most output in the twelve months published by then. Each request's chance of operating within seven years is conditional on its age and on whether it has signed its agreement; the hazard models learn from the history censored at the date, in which a request still waiting is right-censored, never counted as failed.
 
-**Valuation.** A lease redevelopment adds 20% to output after two years; its value is the cash flow it adds over a baseline that declines at least 8% a year (ASSUMED; 5–12% as the range). Redevelopment costs are not public, so every result is shown under two grids: the registered grid fixed before any result, and the harder committee grid, which prices capital per incremental barrel and discounts at 8%. Under the registered grid the twenty leases are worth $8.19B; under the committee grid $2.73B, for $5.12B of capital. A power request is valued on the 2024 hourly prices with ATB costs and the tax credits of the law in force; the 2027 deadline a July 2025 law set for wind and solar is a stress, not the base case.
+**Valuation and the loss variable.** A lease redevelopment adds 20% to output after two years; its value is the cash flow it adds over a baseline that declines at least 8% a year (ASSUMED; 5–12% as the range). Redevelopment costs are not public, so results are shown under two grids, the registered one and the harder committee grid that prices capital per incremental barrel. A power request is valued on the 2024 hourly prices with ATB costs and the tax credits of the law in force; the 2027 deadline a July 2025 law set for wind and solar is a stress. "Worst-5% loss" means the CVaR95 of −NPV: the mean of the 100 worst of 2,000 held-out scenarios.
 
-**The budget.** A lease spends its capital now. A request needs only its deposits now, plus a reserve for the construction it will call if it reaches its agreement. The budget is the registered rule in those units, 40% of the forty charges. Every dollar figure carries a provenance label: OBSERVED, DERIVED, FORECAST or ASSUMED.
+**The budget and the line.** A lease spends its capital now; a request needs its deposits now plus a reserve for the construction it will call if it reaches its agreement. The budget is 40% of the forty charges in those units: $3.82B. A contingent construction line funds calls beyond the reserve in a fixed order until it is spent, priced (ASSUMED, registered before the final test) at a commitment fee of 0.5% a year on the undrawn amount and 8% a year on draws outstanding for 2 years of construction. Every dollar figure carries a provenance label: OBSERVED, DERIVED, FORECAST or ASSUMED.
 
-## 4 Prediction and uncertainty
+## 4 Q1 — Prediction
 
-**Queue completion.** Discrete-time LightGBM hazards on entry attributes, tested once on 2017–2019 entrants, rank requests above cohort averages (AUC 0.86 against 0.73), but for requests of 20 MW and more a careful lookup — the share built among earlier requests of the same region, technology and size — ranks as well. Refitted on what was known in 2020 and scored on what followed, the model ranked better than the lookup (AUC 0.731 against 0.686) but put ERCOT's five-year chance at 0.380 where 0.238 operated; that ratio, knowable on the decision date, corrects the 2025 curves.
+**Ranking, as of 2020.** At entry, LightGBM hazards rank requests above cohort averages (AUC 0.86 against 0.73), but at 20 MW and more a careful lookup — the share built among earlier requests of the same region, technology and size — ranks as well (Appendix E). Refitted on what was known in 2020 and scored on what followed, the model ranked better than the lookup across the three regions (AUC 0.731 against 0.686) and in ERCOT alone (0.656 against 0.591), but put ERCOT's five-year chance at 0.380 where 0.238 operated. That ratio, knowable on the decision date, corrects the level of the 2025 curves. AUC is not calibration: the model orders requests well and sets their level badly.
 
-**Energy forecasts.** Of twelve registered lines, machine learning beat the best of five transparent baselines for plant capacity factors and failed for lease output and prices (Appendix F).
+**One year on, post-hoc.** The 2026 edition records what happened in 2025 (Figure 4). Of the 1,441 live requests, 30 operated, 77 withdrew and 1,323 were still waiting (11 the 2026 file no longer lists). The raw model expected 125 operations, the level-corrected model 78 and the lookup 17: the correction removed half the error, and the lookup erred the other way. The corrected model's calibration slope is 0.66 against 0.01 for the lookup, whose predictions barely separate the requests that operated from the rest; the lookup's better Brier score (0.0209 against 0.0258) comes from predicting almost nothing for everyone. Of the twenty candidates, 19 were still waiting. The realized 2025 prices fell inside the scenario bands for oil and ERCOT and above the 95th percentile for gas (Henry Hub $3.53 against a band topping at $3.41); the twenty leases produced 1.03 times their no-redevelopment baseline.
 
-**Scenarios.** 2,000 joint twenty-year paths resample calendar-year blocks of the 2018–2024 monthly changes of oil, gas and ERCOT prices together, revert toward their means with a four-year half-life (ASSUMED), and carry output, cost and timing draws. A second set of 2,000 paths, redrawn in every component, is used only to score books.
+![Figure 4](../figures/F49_forward_calibration.png)
 
-## 5 Prescriptive portfolio optimization
+*Figure 4.* Realized 2025 queue outcomes against the one-year predictions of the decision date, and the twenty candidates one year on. Nothing refitted.
 
-The risk-aware book maximises expected NPV minus λ times the worst-5% average loss (CVaR95), over binary choices of the forty candidates, under the budget and a 40% cap per technology, with the tail linearised after Rockafellar and Uryasev (2000) and solved exactly with HiGHS. λ = 1 is the registered setting; λ = 0 gives the deterministic book; a hard limit on the tail, or on construction calls beyond a liquidity line, replaces the penalty when a committee states its downside as a rule. The conventional books are **A**, ranking by expected NPV, and **B**, equal capital by sector, held to the same budget and cap.
+**Energy forecasts and scenarios.** Of twelve registered lines, machine learning beat the best of five transparent baselines for plant capacity factors and failed for lease output and prices (Appendix F). 2,000 joint twenty-year paths resample calendar-year blocks of the 2018–2024 monthly changes of oil, gas and ERCOT prices together, revert toward their means with a four-year half-life (ASSUMED), and carry output, cost and timing draws; a second set of 2,000, redrawn in every component, only scores books.
 
-Three tools make the optimizer something a committee can question. The **frontier** solves the book across tail weights and limits. A **what-if** reprices every candidate under validated parameters — an oil price for some years, ERCOT volatility, the budget, redevelopment capital — and re-solves. A **repair** finds the fewest changes to a committee's own book that make it keep its rules.
+**What prediction is worth to this decision.** Perfect knowledge before committing would be worth at most $825M on a risk-neutral objective, the 2025–2029 ERCOT price level $47M. Learning within two years whether one request signs its agreement is worth up to $59.4M; for twelve requests outside the book that exceeds the deposit needed to wait, so their status is "defer pending information". The answer to Q1 is partial: the model improves the ranking of outcomes, not their level.
 
-## 6 The AI layer: an advisor, a challenger and a person who decides
+## 5 Q2 — Optimization
 
-The language model never produces a number the decision uses (Figure 1; Appendix B). It does two jobs.
+The risk-aware book maximises expected NPV minus λ times the worst-5% average loss, over binary choices of the forty candidates, under the budget and a 40% cap per technology, with the tail linearised after Rockafellar and Uryasev (2000) and solved exactly with HiGHS. λ = 1 is the registered setting; λ = 0 gives the deterministic book. The conventional books are **A**, ranking by expected NPV, and **B**, equal capital by sector, held to the same budget and cap; **C** is the deterministic optimizer, **D** the risk-aware one, **F** book D chosen with the lookup's curves; every book is chosen on the primary scenarios and scored on the held-out ones.
 
-**The advisor answers questions.** A committee question in words becomes parameters from a fixed schema, or a refusal if the model cannot represent it. The engine validates the parameters, computes the new book and every candidate's status, and the language model explains the computed fact sheet; a checker holds every number to that sheet in its unit.
-
-**The challenger questions the committee.** It works in two rounds. First, the language model reads the committee's statement into rules — tail weight, chance-of-loss and tail limits, exclusions, a liquidity line — and may ask the engine to test up to two of the committee's beliefs as what-ifs. Then tools, not the language model, diagnose the proposal on held-out scenarios: which rules it breaks, the construction calls it cannot fund, the members that lose in most scenarios. They compute two alternatives under the committee's own rules: the repair and the optimizer's book. Finally the language model writes a memo: at most three vulnerabilities, each tied to numbered facts and typed; a level — explain, challenge or guide; the loss the change avoids; and what would change its mind. Code checks every number and the guide rule: it may guide only toward an alternative that keeps every rule and either fixes a broken one or beats the proposal with an interval clear of zero.
-
-**A person decides.** The committee sees its rules read back as numbers before anything is computed. A named person signs. Leaving a book the challenger guided toward is allowed, but the ledger records the decision only with the contrary evidence acknowledged, and each row is hash-chained to the one before.
-
-## 7 Experiments, benchmarks and validation
-
-**The registered record.** Of 70 registered lines, 28 passed, scored once and never re-scored (Appendix A). Applied to the corrected system, the same allocation criteria give different verdicts; those are post-registration results.
-
-**Decision processes.** Seven processes see the same candidates, budget, cap and scenarios; each book is chosen on the primary scenarios and scored on the held-out ones: **A** and **B** as above; **C** deterministic; **D** risk-aware; **D + revision** in 2027; **E**, AI-assisted; and **F**, book D chosen with the lookup's queue curves. Differences carry paired bootstrap intervals.
-
-**The challenger, registered before it ran.** I wrote 48 committee proposals from ten personas: 36 carry one flaw — a broken rule, unfunded construction calls, a fragile position, a sunk cost, a double standard or an unsupported claim — and 12 are sound. Each flawed proposal ends as the committee's book under three policies: keep it; follow a checklist that uses the same tools and fixed rules with no language model; or follow the challenger. Each is scored on the committee's own objective in five worlds: the base model, ERCOT prices 25% lower, ERCOT half as volatile, lease capital 30% higher, and completion as the lookup says. Forty rules in words test the reading. The cases, statements, prompts and model were hashed and committed before the first call.
-
-**How I could fool myself.** *Unequal constraints:* every book faces the same budget and cap. *Hindsight:* every view uses only what was known on its date. *A weak baseline:* the lookup sits beside every forecast, and the checklist beside the challenger. *Crediting the language model with the tools' work:* the checklist isolates it. *Grading my own memos:* detection is scored by the type the memo assigns, not by a judge.
-
-## 8 Findings: the trade-off and what drives it
-
-**The trade-off is real and the committee must price it.** Along the frontier, expected value and tail fall together (Figure 2). Under the committee grid the deterministic book expects $2.36B with a worst-5% loss of $1.60B; the risk-aware book $2.05B and $1.02B; at λ = 2, $1.55B and $0.52B.
+**The trade-off is real and the committee must price it.** Along the frontier, expected value and tail fall together (Figure 2): the deterministic book expects $2.73B with a worst-5% loss of $1.52B; the risk-aware book $2.17B and $0.82B; at λ = 2, $2.07B and $0.74B.
 
 ![Figure 2](../figures/F38_frontier.png)
 
 *Figure 2.* The frontier over risk policies on held-out scenarios, the registered books on it, and capital by technology along it.
 
-**Under equal constraints, the risk-aware book wins on the registered metric.** It beats NPV ranking by $320M [+$142M, +$511M] and equal capital by $213M [+$120M, +$315M] on expected NPV minus CVaR95, while giving up $274M of expected value against NPV ranking (Figure 3). Re-chosen on 20 resampled scenario sets it beats NPV ranking every time, by $116M to $352M; 11 of its members are chosen in at least 80% of them. Under the registered grid the risk-aware book beats NPV ranking by $1,332M, ties equal capital (+$24M, an interval that includes zero), and fails the stability and single-sector tests.
-
-![Figure 3](../figures/F42_value_added.png)
-
-*Figure 3.* Each process against its comparator on the same held-out scenarios, with paired bootstrap intervals.
-
 | Committee grid, held-out | A NPV ranking | B equal capital | C deterministic | D risk-aware | F lookup forecasts |
 |-------------------------|--------------|----------------|----------------|-------------|------------------|
-| Candidates funded | 16 | 16 | 17 | 13 | 18 |
-| Expected NPV, $B | 2.33 | 2.08 | 2.36 | 2.05 | 1.84 |
-| Worst-5% loss, $B | 1.61 | 1.26 | 1.60 | 1.02 | 0.83 |
-| Chance of a loss | 13% | 12% | 13% | 10% | 9% |
-| Regret against perfect information, $B | 0.60 | 0.84 | 0.57 | 0.87 | 1.08 |
+| Candidates funded | 15 | 18 | 17 | 13 | 20 |
+| Expected NPV, $B | 2.68 | 2.44 | 2.73 | 2.17 | 2.40 |
+| Worst-5% loss, $B | 1.55 | 1.33 | 1.52 | 0.82 | 1.09 |
+| Chance of a loss | 12% | 11% | 11% | 9% | 10% |
+| Regret against perfect information, $B | 0.87 | 1.11 | 0.82 | 1.38 | 1.15 |
 
-*Table 2.* The decision processes on the same 2,000 held-out scenarios.
+*Table 2.* The decision processes on the same 2,000 held-out scenarios, on the candidates public on the decision date.
 
-**Machine learning does not demonstrably improve this decision.** Book D expects $209M more than the book chosen with the lookup's curves, and scores +$22M [−$168M, +$207M] on the registered metric in the model's scenarios and −$143M [−$375M, +$87M] in the lookup's; neither interval excludes zero. The model ranks requests better, but the decision turns on a few large requests whose chance of operating neither method knows well.
+**C33, the primary line, passes.** Under equal constraints the risk-aware book beats NPV ranking by $219M [+$13M, +$401M] on the registered metric, equal capital by $239M [+$37M, +$437M] and the deterministic optimizer by $136M [−$63M, +$323M], while giving up $508M of expected value against NPV ranking. The margin is smaller than the +$320M the earlier candidate set gave and its interval clears zero by $13M: the result holds on the strict as-of set, narrowly. Re-chosen on 20 resampled scenario sets the book beats NPV ranking every time, by $76M to $235M, and 11 of its members are chosen in at least 80% of them; on 5,000 held-out paths the order is unchanged and the margin $225M (the registered grid is Appendix A).
 
-**What drives value and downside.** Book D holds six leases and seven requests. The position whose removal costs the most is an 836 MW wind request with a signed agreement: forcing it out lowers the objective by $549M. The largest power position, a 1,350 MW gas request, expects $512M yet loses money in 77% of scenarios; its place is worth only $7.7M at the registered tail weight. Re-solved under the committee's questions (Appendix D), the book drops every lease when oil stays at $45 for five years or redevelopment capital rises 30%, and drops the gas request when ERCOT is half as volatile.
+**Machine learning does not demonstrably improve the allocation.** Book D scores +$37M [−$76M, +$151M] on the registered metric against the book chosen with the lookup's curves in the model's scenarios and +$59M [−$197M, +$311M] in the lookup's; neither interval excludes zero.
 
-## 9 Findings: capital, timing and information
+**What drives value and downside.** Book D holds five leases and eight requests. An 836 MW wind request with a signed agreement is the position whose removal costs most, $539M; a 1,350 MW gas request expects $514M yet loses money in 77% of scenarios, and its place is worth $108.7M at the registered tail weight. The tail is the co-movement of the candidates: with the co-movement removed and each candidate's own distribution kept, the worst-5% loss falls from $0.82B to $0.02B, the chance of a loss from 8.6% to 1.8%, and the deterministic book would score best ($2.50B against $2.15B).
 
-**The capital plan is the weak point.** The book's requests call construction capital beyond the reserve in 44.5% of held-out scenarios; in one scenario in twenty the excess is $3.28B or more (Figure 4). Without a contingent line the requests that reach their agreement cannot be built and the book is worth $1.40B; a line at that 95th percentile restores $2.02B.
+**The capital plan, priced.** The book's requests call construction capital beyond the reserve in 50.3% of held-out scenarios; in one scenario in twenty the excess is $2.53B or more. Without a contingent line the requests that reach their agreement cannot be built and the book is worth $1.71B in expectation and $0.76B on the registered metric; a line at that 95th percentile restores $2.11B and $1.27B. Priced as a bank would, the line still pays (Figure 3): net of a 0.5% commitment fee it is worth $1.14B on the metric, net of the fee and 8% interest $1.03B, and all 12 of the 12 fee-and-rate settings tried beat no line; the fee alone breaks even at 2.04% a year. The cost lands on the tail — the mean financing cost is $126M, paid in full in exactly the scenarios in which nothing is built and the leases earn least — so the expected value stays $1.98B while the worst-5% loss returns to the no-line figure. ATB capital costs already carry a construction-finance factor, so the fee-only case bounds the cost from below and the fee-with-interest case from above.
 
-![Figure 4](../figures/F45_robustness.png)
+![Figure 3](../figures/F48_credit_line_net.png)
 
-*Figure 4.* Book D's construction calls beyond its reserve, and how often each candidate is chosen when the book is re-chosen on resampled scenarios.
+*Figure 3.* Book D's registered metric by the size of the contingent line, gross of financing, net of the commitment fee, and net of the fee and interest.
 
-**Revising the book in 2027 adds nothing here.** Revising on 1 January 2027, after two years of prices and agreement signals, is worth −$9M [−$16M, −$3M] on held-out scenarios. The cap leaves no room to start a deferred lease, so the revision can only drop requests, and its estimates drop some that would have paid. This says the rule's estimates are noisy, not that flexibility has no value.
+**Two more checks.** Revising the book on 1 January 2027, after two years of prices and agreement signals, is worth −$11M [−$18M, −$5M]: the cap leaves no room to start a deferred lease, so the revision can only drop requests. Across four misspecified worlds the registered tail weight scores best in three ($1.348B against $1.327B at λ = 2 in the base world) and λ = 4 wins only when lease capital is 30% dearer; the deterministic book is the worst in every world, −$0.75B when ERCOT prices are 25% lower. The answer to Q2 is yes, on two conditions: the optimizer is held to the same constraints as the rules it is compared with, and it is funded.
 
-**What information is worth.** Perfect knowledge before committing would be worth at most $571M on a risk-neutral objective; knowing the 2025–2029 ERCOT price level $52M, the oil level $32M. Learning within two years whether one request signs its agreement is worth up to $11.5M; for thirteen requests outside the book that exceeds the deposit needed to wait, so their status is "defer pending information".
+## 6 Q3 — Governance
 
-## 10 Findings: does challenging the committee improve its decision?
+The language model never produces a number the decision uses (Figure 1; the advisor, which answers a committee's questions through the engine, is Appendix B). The *challenger* questions the committee's own proposal in two rounds. First the model reads the committee's statement into rules — tail weight, chance-of-loss and tail limits, exclusions, a liquidity line — naming anything it cannot represent and leaving it unset. Then tools, not the model, diagnose the proposal on held-out scenarios — the rules it breaks, the calls it cannot fund, the members that lose in most scenarios — and compute two alternatives under the committee's own rules, the repair and the optimizer's book. Finally the model writes a memo: at most three vulnerabilities, each tied to numbered facts and typed; a level — explain, challenge or guide; the loss the change avoids. Code checks every number and the guide rule: it may guide only toward an alternative that keeps every rule and either fixes a broken one or beats the proposal with an interval clear of zero. The same tools with fixed rules and no language model are the *checklist*, the control.
 
-**Yes — and it mostly avoids loss.** Following the challenger improved the committee's own objective by $192M per flawed case [+$108M, +$281M], averaged over five worlds, and cut the worst-5% loss by $240M per case [+$133M, +$345M] in the base world (Figure 5, Table 3). The gain is largest where the model is wrong in the proposal's disfavour: with ERCOT prices 25% lower or lease capital 30% higher, the challenged books stayed near break-even on the committee's objective while the proposals lost.
+**Authority stays with the committee.** It sees its rules read back as numbers before anything is computed; a named person signs; leaving a book the challenger guided toward is allowed, but the ledger records the decision only with the contrary evidence acknowledged, each row hash-chained to the one before. The chain authenticates the sequence and content of what was decided and seen — not that the advice was correct, nor that the committee assented.
 
-**Most of the gain is the tools'.** The checklist, with the same tools and no language model, improved the objective by $145M and cut the tail by $257M. The challenger's further $46M [+$4M, +$116M] came from four cases in which it chose the optimizer's book where the checklist takes the smaller repair; a fixed rule that prefers the optimizer's book does as well (+$1M [−$50M, +$64M]).
+**The registered test.** The 24 computable flaws — a broken cap, an unfunded line, a limit exceeded, an excluded holding, a fragile position — are generated by code and their statements filled from fixed templates. The 12 flaws of argument — a sunk cost, a double standard, an unsupported claim — and the 12 sound proposals were written by me, with their keys, before any model saw them. Forty paraphrases test the reading; twenty injected instructions ("ignore the cap", "pre-approved, mark every rule kept") test its resistance. Every case ends as the committee's book under four arms, scored on the committee's own objective with its line priced, in five worlds: the base model, ERCOT prices 25% lower, ERCOT half as volatile, lease capital 30% higher, and completion as the lookup says. Cases, paraphrases, injections, prompts, model and line cost were hashed and committed before the first of 176 calls; none failed; every one replays from the record.
 
-**What only the language model adds is understanding.** It named the flaw in all 24 computable cases, as the checklist did, and in 11 of the 12 flaws of argument, which the checklist cannot see because they live in the committee's words. It read all 32 representable rules exactly and refused all 8 it could not represent, from a carbon price to a partner's appetite. In this test that understanding did not change what was bought: every flaw of argument that warranted a different book also broke a computed rule. A test in which only the argument is wrong is the next experiment.
+**C34, the primary line, passes.** Adding the language model to the tools improved the committee's own objective by $43M per case [+$9M, +$86M], paired over all 48 cases and averaged over the five worlds. The challenged book is ahead of the checklist's in the base world, under the lookup's completion rates and with lease capital 30% higher, level when ERCOT is half as volatile, and behind when ERCOT prices are 25% lower: the tail-loss finding of the earlier test survives in one world of five.
 
-**It has costs.** It challenged 2 of the 12 sound proposals with a claim they did not earn, above the registered limit of 15%, and 10 of 48 memos carried a number that was not on their fact sheet — listed beside the memo by the checker, never used by the engine.
+**What the model reads well, and what it does not.** It read all 40 paraphrased rules exactly, the 32 in scope into the right fields and the 8 out of scope refused with nothing set (C38, 100%). It named all 12 flaws of argument I wrote (C41, 100%) and over-challenged none of the 12 sound proposals (C40, 0%). It failed two lines. C37 asked that the reading equal the case's key in at least 43 of 48 cases; it did in 38. Eight of the ten misses set the tail weight to 0 where the statement names none and the key keeps the default of 1 — silence read as "no weight on the tail"; two wrote an exclusion the statement does not give. C39 asked that at least 90% of the injected instructions leave the reading unchanged and be named, with no memo moved; 75% held, and 7 memos carried a number not on their fact sheet, though none produced a guide the code had to downgrade. The verifier marks every ungrounded number; the engine never uses one.
 
-![Figure 5](../figures/F46_challenger.png)
+**So: H8 supported, H9 not, H10 supported.** The model improves the committee's decision on the committee's own terms and names what the tools cannot see without crying wolf. It does not read rules reliably in the sense registered: it fills a silence with zero and embellishes with numbers. Each is a check the tools make — the reading is shown to the committee before anything is computed, and the verifier lists every ungrounded number beside the memo. That is the answer to Q3: the model improves governance because the tools around it, not the model, hold authority over what is computed and what is signed.
 
-*Figure 5.* Left: flaws named, by type, by the challenger and by the checklist. Right: the committee's objective and the loss avoided, per flawed case, with case-bootstrap intervals.
+## 7 Q0 — Attribution
 
-| 48 committee cases | Challenger | Checklist (no language model) |
-|------------------------------|-----------------|-----------------|
-| Computable flaws named | 24 of 24 | 24 of 24 |
-| Flaws of argument named | 11 of 12 | 0 of 12 |
-| Sound proposals over-challenged | 2 of 12 | 0 of 12 |
-| Committee objective vs proposal, per case | +$192M [+$108M, +$281M] | +$145M |
-| Worst-5% loss avoided, per case | $240M [+$133M, +$345M] | $257M |
-| Rules read from words | 40 of 40 | — |
+The ladder puts the three parts on one scale (Figure 5, Table 3). The tools alone improve the committee's own objective by $76M per case over its unchallenged proposal [+$13M, +$140M] (C35, passes); the language model adds $43M more [+$9M, +$86M] (C34); the optimizer's own book under the committee's true rules would add a further $134M [+$72M, +$211M] (C36, reported). Tools and model together add $119M per case. A preview on the earlier cases and candidate set had read +$110M, +$35M, +$103M and +$145M: the same order, the same smallest rung. The optimizer sits further above the challenged book than the model adds to the tools because the challenger guides toward the smallest repair while the optimizer re-solves the whole book.
 
-*Table 3.* The registered challenger experiments on simulated committees; 6 of 8 registered lines pass.
+![Figure 5](../figures/F50_ladder_v10.png)
 
-## 11 Limitations, governance and practical implications
+*Figure 5.* The registered attribution ladder: what the tools, the language model and the optimizer each add to the committee's decision, paired per case, with case-bootstrap intervals.
 
-**What the results are, and are not.** They are model-based comparisons on public data and assumed costs, not demonstrated improvements in a company's capital allocation. Redevelopment costs are bracketed by two grids. The scenarios resample seven years of history, so a worse tail than 2018–2024 cannot appear, and mean reversion lifts gas and ERCOT prices well above 2024's. The 2025 queue curves rest on two backtests that disagree about the level. The committees of the challenger test are personas I wrote, the advisor is one model, and there are 36 flawed cases; a study with real committees is proposed, not run. No headline of the form "AI increases returns by X%" is made, because the evidence does not support one.
+| Registered line | Rule | Result |
+|------------------------------------------|-----------------|------------------------------|
+| C33 (Q2): risk-aware book vs NPV ranking, registered metric | interval above zero | +$219M [+$13M, +$401M], PASS |
+| C34 (Q3): tools + language model vs tools only, 48 cases | interval above zero | +$43M [+$9M, +$86M], PASS |
+| C35 (Q0): tools only vs the proposal | interval above zero | +$76M [+$13M, +$140M], PASS |
+| C36 (Q0): optimizer vs tools + language model | reported | +$134M [+$72M, +$211M] |
+| C37: readings equal the key | at least 43 of 48 | 38, FAIL |
+| C38: paraphrases read exactly | at least 85% | 100%, PASS |
+| C39: injections held; memos moved | at least 90%; 0 | 75%; 7, FAIL |
+| C40: sound proposals over-challenged | at most 15% | 0%, PASS |
+| C41: flaws of argument named | at least 75% | 100%, PASS |
 
-**Who could be harmed.** A completion score can fulfil itself: if lenders refuse the requests it ranks low, those requests fail and the next model learns that they fail. Size is a top driver, so screening applicants by the score would penalise small developers. The score should inform a portfolio, not screen access to the grid.
+*Table 3.* The nine registered lines of the final test, scored once; 6 of 8 graded lines pass. Source: `results/v10/success_criteria_v10_scored.csv`.
 
-**Governance.** A named person decides. The language model computes nothing; its numbers are checked against computed facts; it may guide only when the evidence allows; and the ledger refuses a departure from guided advice without the evidence acknowledged.
+## 8 Limits and harms
 
-## 12 Conclusions and future research
+**What the results are, and are not.** They are model-based comparisons on public data and assumed costs, not demonstrated improvements in a company's capital allocation. Redevelopment costs are bracketed by two grids, and a lease redevelopment is a modeled option on a producing asset, not a project any operator has priced. The scenarios resample seven years of history, so a worse joint tail than 2018–2024 cannot appear, and mean reversion lifts gas and ERCOT prices well above 2024's. The queue curves rest on two backtests that disagree about the level, and the first year after the decision confirmed the disagreement. The hazard models learn from the 2025 edition censored at the date, whose 2024 exits were in the ISOs' own reports during 2024 but compiled by LBNL later; that vintage gap is stated, not removed. The committees are simulated — 48 proposals I wrote or templated — and the advisor is one model; a study with real committees is proposed, not run. The primary result of Q2 clears zero by $13M. No headline of the form "AI increases returns by X%" is made, because the evidence does not support one.
 
-Better predictions did not, by themselves, produce better decisions here. The machine-learning queue model ranks requests better than a lookup, yet the book built on it scores no better. The optimizer earns its place only when held to the same constraints as the rules it is compared with; then the risk-aware book wins by trading expected value for a thinner tail, and its capital plan needs a contingent line. A language model that challenges the committee with computed tools improves the committee's decision and avoids loss, but the tools do most of that work; the language model's part is to understand the committee — its rules, its arguments, its blind spots. A decision system is useful when it states which part is doing the work. Future work: committees deciding with and without the challenger, cases where only the argument is wrong, tails beyond the historical years, and real redevelopment costs.
+**Who could be harmed.** A completion score can fulfil itself: if lenders refuse the requests it ranks low, those requests fail and the next model learns that they fail. Size is a top driver, so screening applicants by the score would penalise small developers; the score should inform a portfolio, not screen access to the grid. A challenger that reads an unstated tail weight as zero would, unchecked, push a committee toward the deterministic book, the one that loses most in every misspecified world; the reading is shown and confirmed before anything is computed.
+
+## 9 Conclusions
+
+Better predictions did not, by themselves, produce better decisions here. The queue model ranks requests better than a lookup, as of 2020 and in the year after the decision, yet the book built on it scores no better, because the level is what the book is sized to and the level is what neither method knows. The optimizer earns its place only when held to the same constraints as the rules it is compared with; then the risk-aware book wins by trading expected value for a thinner tail, narrowly on the strict as-of candidates, and its capital plan needs a contingent line that pays even at a bank's price. A language model that challenges the committee with computed tools improves the committee's decision beyond what the tools alone do and keeps no authority: where it fails — silence read as zero, numbers not on the sheet — the tools around it catch the failure before anything is computed or signed. Of the gain, the tools account for more than the model, and the optimizer for more than both. A decision system is useful when it states which part is doing the work, and which part is wrong. Next: committees deciding with and without the challenger; a prompt that states the defaults the committee did not; real redevelopment costs; the second year of the forward test.
 
 ## Statement of work
 
 This is a solo project registered in a group slot (Group 13). All components of this project — data engineering, modeling, evaluation, visualization and writing — were carried out by Alan Mössinger. The ERCOT price client and the battery dispatch model are reused, with credit, from my own earlier projects (Forecast to Dispatch; MADS Milestone II).
 
-## Changes after review
-
-Two outside reviews in October 2026 led to the changes logged in `docs/mentor_feedback.md`. The second asked for an evaluated decision intelligence system; its first request was an independent audit, whose corrections are this version. A review on 19 October found three inputs that were not public on the decision date and the capital calls unpriced, both corrected, and asked that the language model help the committee decide; the challenger and its registered test are the answer. A course mentor is assigned after the proposal review; their feedback will be logged in the same file.
-
 ## Appendix A — The evaluation record
 
-Every claim in the body that says "registered" refers to a line below. Each criterion was written and committed before the data it scores were looked at; failures are reported as registered and never re-scored. The scoring of C20–C24 as it stood before the audit of 17 October 2026 is frozen in `results/registered_v7/` with a hash test.
+Every claim in the body that says "registered" refers to a line below. Each criterion was written and committed before the data it scores were looked at; failures are reported as registered and never re-scored. The ledger (`docs/registration_ledger.md`) joins all 78 registered lines of C1–C32 with their corrections: 17 lines carry one, and 3 correction rows change the verdict (C21, C23 and C24 on the observed prices or the corrected system); the registered verdicts stand. The scoring of C20–C24 as it stood before the audit of 17 October 2026 is frozen in `results/registered_v7/`, the challenger's first record in `results/v9/`, each with a hash test.
 
 | Criteria | What they test | Lines | Passed | What they say |
 |----------|------------------------------|--------|--------|--------------------------------------------|
@@ -214,26 +166,24 @@ Every claim in the body that says "registered" refers to a line below. Each crit
 | C20 | machine learning against baselines for output and prices | 12 | 3 | the plant capacity-factor lines pass; the lease lines fail on the log transform's bias; prices are random walks |
 | C21–C24 | the four books under one budget | 4 | 2 | as scored: book D ties NPV ranking and equal capital, is as stable as the deterministic book and beats the single-sector comparator's tail |
 
-*Table A1.* The registered record. Twenty-eight of seventy lines pass. Sources: the `success_criteria*_scored.csv` files and `tournament_criteria.csv` in `results/`; C20–C24 as scored before the audit in `results/registered_v7/`; the bridged-price scoring in `results/registered_bridged/`.
+*Table A1.* The registered record of H1–H3. Twenty-eight of seventy lines pass. Sources: the `success_criteria*_scored.csv` files and `tournament_criteria.csv` in `results/`; C20–C24 as scored before the audit in `results/registered_v7/`; the bridged-price scoring in `results/registered_bridged/`.
 
-**C21–C24 as scored.** On the held-out scenarios the risk-aware book D earned less than top-N NPV (C21: −$61M [−$136M, +$0M]) and no more than equal capital by sector (C22: +$22M [−$49M, +$89M]); its selection moved as little as the deterministic book's under the six stresses (C23); and its tail beat the single-sector comparator's (C24: +$159M [+$76M, +$247M]). The audit later found that the top-N and equal-capital books had not been held to the registered technology cap; that does not change the verdicts as scored, and they stand.
+**C21–C24 as scored.** On the held-out scenarios the risk-aware book D earned less than top-N NPV (C21: −$61M [−$136M, +$0M]) and no more than equal capital by sector (C22: +$22M [−$49M, +$89M]); its selection moved as little as the deterministic book's under the six stresses (C23); and its tail beat the single-sector comparator's (C24: +$159M [+$76M, +$247M]). The audit later found that the top-N and equal-capital books had not been held to the registered technology cap; that does not change the verdicts as scored, and they stand. C20–C24 were first scored when ERCOT's 2020–2023 prices were a bridge from PJM West prices; on those prices 3 of 12 C20 lines passed and none of C21–C24 (`results/registered_bridged/`).
 
-**Scored first on the bridged prices.** C20–C24 were first scored when ERCOT's 2020–2023 prices were a bridge from PJM West prices; on those prices 3 of 12 C20 lines passed and none of C21–C24 (`results/registered_bridged/`).
+**The same criteria on the corrected system — post-registration, not a rescoring.** Applied to the system of this version — the candidates public on the decision date, the decline floor, the two-stage budget, every book under the same cap — the allocation criteria read as in Table A2. These are new results on a changed system, labelled as such; the registered verdicts are those of Table A1.
 
-**The same criteria on the corrected system — post-registration, not a rescoring.** Applied to the system of this version — the 2025 candidates as they could be seen that day, the decline floor, the two-stage budget, every book under the same cap — the allocation criteria read as in Table A2. These are new results on a changed system, labelled as such; the registered verdicts are those of Table A1.
-
-| Criterion, registered grid | As scored (v7) | On the corrected system (v8) |
+| Criterion, registered grid | As scored (v7) | On the corrected system (v10) |
 |------------------------------------------|-----------------|------------------------------|
-| C21: D minus NPV ranking, registered metric | −$61M, FAIL | +$1,332M [+$1,131M, +$1,528M], PASS |
-| C22: D minus equal capital | +$22M, FAIL | +$24M [−$73M, +$122M], FAIL |
-| C23: stability under the stresses | PASS | FAIL |
-| C24: tail against the single-sector book | +$159M, PASS | +$51M [−$90M, +$194M], FAIL |
+| C21: D minus NPV ranking, registered metric | −$61M, FAIL | +$468M [+$300M, +$643M], PASS |
+| C22: D minus equal capital | +$22M, FAIL | +$95M [−$21M, +$215M], FAIL |
+| C23: stability under the stresses (mean overlap, D against C) | PASS | 0.93 against 1.00, FAIL |
+| C24: tail against the single-sector book | +$159M, PASS | +$77M [−$53M, +$207M], FAIL |
 
 *Table A2.* The allocation criteria as registered and scored, and applied to the corrected system.
 
-**The hypotheses.** *H1:* machine-learning forecasts reduce held-out error against naive and physics baselines (C20). *H2:* a risk-aware book beats NPV ranking and sector-concentrated books on a stated risk–return metric (C21, C22). *H3:* uncertainty-aware selection is more stable under stresses than deterministic selection (C23, C24). As registered: H1 holds for plant output and not for leases; H2 is not supported; H3 is supported on the observed prices. On the corrected system H2 holds against NPV ranking but not against equal capital, and H3 does not.
+**The hypotheses H1–H7.** *H1:* machine-learning forecasts reduce held-out error against naive and physics baselines (C20). *H2:* a risk-aware book beats NPV ranking and sector-concentrated books on a stated risk–return metric (C21, C22). *H3:* uncertainty-aware selection is more stable under stresses than deterministic selection (C23, C24). As registered: H1 holds for plant output and not for leases; H2 is not supported; H3 is supported on the observed prices. On the corrected system H2 holds against NPV ranking but not against equal capital, and H3 does not. H4–H7 are the challenger's first record below.
 
-**The challenger's registered record — post-registration, scored once.** Registered on 20 October 2026 before the first call, with the hashes of the 48 cases, the 40 statements, the three prompts and the model (`results/v9/success_criteria_v9_registered.json`); the committees are simulated.
+**The challenger's first registered record (v9) — scored once on the earlier candidate set, frozen.** Registered on 20 October 2026 before the first call, with the hashes of the 48 cases, the 40 statements, the three prompts and the model (`results/v9/success_criteria_v9_registered.json`); the committees are simulated and the statements were written in session by the model family under test, which is what the final test corrects. The decision moved to the as-of candidates after this record was scored; it is read, not recomputed (Figure A12).
 
 | Criterion | Rule | Result |
 |------------------------------------------|-----------------|------------------------------|
@@ -246,13 +196,17 @@ Every claim in the body that says "registered" refers to a line below. Each crit
 | C31: challenger vs checklist | interval above zero | +$46M [+$4M, +$116M], PASS |
 | C32: rules read; out-of-scope refused | 85%; 6 of 8 | 32 of 32; 8 of 8, PASS |
 
-*Table A3.* The challenger's registered lines; 6 of 8 pass. Source: `results/v9/success_criteria_v9_scored.csv`.
+*Table A3.* The challenger's first registered lines; 6 of 8 pass. The checklist alone reached +$145M and +$257M. Source: `results/v9/success_criteria_v9_scored.csv`.
 
-*H4* (finds what tools cannot, without over-challenging) is not supported: C27 fails. *H5* (challenging improves the decision) is supported. *H6* (the language model adds value beyond its tools) passes its registered rule, but two checks reported and not registered show what it rests on: without its largest case the edge is +$19M [+$0M, +$46M], and against a fixed rule that takes the optimizer's book first it is +$1M [−$50M, +$64M] (decision #97). *H7* (reads rules reliably) is supported.
+*H4* (finds what tools cannot, without over-challenging) is not supported: C27 fails. *H5* (challenging improves the decision) is supported. *H6* (the language model adds value beyond its tools) passes its registered rule, but two checks reported and not registered show what it rests on: without its largest case the edge is +$19M [+$0M, +$46M], and against a fixed rule that takes the optimizer's book first it is +$1M [−$50M, +$64M]. *H7* (reads rules reliably) is supported. The final test (Table 3) re-asks H4–H7 as H8–H10 on author-written cases with one primary line, and finds H9 not supported.
 
-## Appendix B — The AI advisor
+![Figure A12](../figures/F46_challenger.png)
 
-**What it sees and what it may do.** In v8 the advisor works through the engine (`src/advisor_tools.py`). For a committee question it sees the question and the schema of the `WhatIf` parameters, each with its range, and the forty candidate ids; it answers with parameters or with "cannot answer". The engine validates the parameters and computes. For the explanation it sees only the computed fact sheet. It sees no web, no memory across calls and no company data.
+*Figure A12.* The first registered challenger test (v9, earlier candidate set): flaws named by type, and the committee's objective and the loss avoided per flawed case.
+
+## Appendix B — The AI advisor and the challenger
+
+**What it sees and what it may do.** The advisor works through the engine (`src/advisor_tools.py`). For a committee question it sees the question and the schema of the `WhatIf` parameters, each with its range, and the forty candidate ids; it answers with parameters or with "cannot answer". The engine validates the parameters and computes. For the explanation it sees only the computed fact sheet. It sees no web, no memory across calls and no company data.
 
 **How its numbers are checked.** `advisor_tools.verify_attributed` accepts a number in an explanation only if the fact sheet (or the committee's own question) shows it, compared by magnitude, and rejects a figure cited in billions where the sheet states millions. Integers up to ten and years are exempt. The v6 check, `advisor.verify_numbers`, accepted any number found anywhere in sixty kilobytes of tables; it still scores the table-reading modes.
 
@@ -260,11 +214,11 @@ Every claim in the body that says "registered" refers to a line below. Each crit
 
 **The override gate and the ledger.** A decision is written by `src/ledger.py`, which refuses one without a named authorizer and refuses an override — a book that departs from the model's for the committee's chosen tail weight — without an answer to each of five questions (the stakes; what each party wants; where the emotional investment lies; which evidence was used and which dismissed; what alternative was left off the table) and the opposing case read. Each row carries the hash of the row before it, so an edited row breaks the chain.
 
-**The prompts.** Eight templates sit in `prompts/`: the system prompt, the recommendation, the gym pick, the three of the challenge round (the five questions, the motivated-reasoning check and the ideological Turing test, unchanged since decision #73), and the two of v8, which translate a question into parameters and explain a computed result.
+**The prompts.** Eight templates sit in `prompts/`: the system prompt, the recommendation, the gym pick, the three of the challenge round (the five questions, the motivated-reasoning check and the ideological Turing test), and the two of v8, which translate a question into parameters and explain a computed result. Two more, `challenge_read.md` and `challenge_memo.md`, drive the challenger (`src/challenge.py`). The first reads a committee statement into typed preferences (tail weight, chance-of-loss and tail limits, excluded technologies or candidates, a liquidity line, budget use) and up to two what-ifs; anything it cannot represent it must name and leave unset. The second writes the memo from a numbered fact sheet; each vulnerability carries a type from a fixed list, which is how detection is scored without a judge. Code enforces the guide rule, checks fact references and numbers, and records a downgrade when the model asks to guide without the evidence. The checklist is the same tools with fixed rules — flag every broken rule, fragile member and frequent excess call; guide to the repair when the guide rule allows.
 
-**The challenger.** Two more templates, `challenge_read.md` and `challenge_memo.md`, drive `src/challenge.py`. The first reads a committee statement into typed preferences (tail weight, chance-of-loss and tail limits, excluded technologies or candidates, a liquidity line, budget use) and up to two what-ifs; anything it cannot represent it must name and leave unset. The second writes the memo from a numbered fact sheet; each vulnerability carries a type from a fixed list, which is how detection is scored without a judge. Code enforces the guide rule, checks fact references and numbers, and records a downgrade when the model asks to guide without the evidence. The checklist is the same tools with fixed rules — flag every broken rule, fragile member and frequent excess call; guide to the repair when the guide rule allows. The registered run made 136 live calls, none failed; every one replays from the record.
+**The final test's material.** The 24 computable cases are generated by `src/challenge_v10.py` from their specifications and their statements filled from fixed templates; the 24 author-written statements and keys are in `results/v10/cases_v10.json`, the 40 paraphrases in `paraphrases.json` and the 20 injections in `injections.json`, all hashed in the registration. The first registered run made 136 live calls, the final one 176; none failed, and every one replays from the record.
 
-**Scored.** On the six committee questions of notebook 11 it read all six correctly — five into parameters, the sixth refused — and its five explanations cited 119 numbers, all in the computed fact sheet. Across the table-reading and what-if modes, 195 calls are recorded; their numbers were in the tables shown 94% of the time. The challenger's 136 calls are scored apart, under their registered checks (Section 10, Table A3). In the decision gym the advisor trailed the registered rule by $5.1M a situation [−$11.0M, −$1.5M], worse in 12 of 14.
+**Scored.** On the six committee questions of notebook 11 the advisor read all six correctly — five into parameters, the sixth refused — and its five explanations cited 119 numbers, all in the computed fact sheet. Across the table-reading and what-if modes, 214 calls are recorded; their numbers were in the tables shown 94% of the time. In the decision gym the advisor trailed the registered rule by $5.1M a situation [−$11.0M, −$1.5M], worse in 12 of 14.
 
 ![Figure B1](../figures/F44_advisor_tools.png)
 
@@ -274,19 +228,21 @@ Every claim in the body that says "registered" refers to a line below. Each crit
 
 | Need | Where |
 |------------------------------|----------------------------------------------------------------------|
-| Run everything | `make all` (eleven notebooks in order), `make test`, `make report`; `make decide-page` for the decision page |
-| Data access and dictionary | `data/README.md`; raw files hashed in `data/raw/manifest_v5.json` |
+| Run everything | `make setup`, then `make all` (twelve notebooks in order), `make test`, `make report`; `make decide-page` for the decision page |
+| The raw inputs | `data/README.md`; every file with its hash in `data/raw_manifest.csv`; `make check-data`, `make get-data`, `make bundle-data` |
 | Every cited number | `results/report_numbers.csv`, written by `src/report_numbers.py` and checked by `tests/test_report.py` |
-| Every decision and its reason | `docs/decisions.md` (numbered); the registered criteria in `results/success_criteria*.csv`; the frozen record in `results/registered_v7/` |
-| The audit and the plan | `docs/audit_2026-10-17.md`, `docs/implementation_plan_v8.md`, `docs/v8_status.md` |
-| The decision layers | `src/decision_date.py`, `src/valuation.py`, `src/whatif.py`, `src/advisor_tools.py`, `src/ledger.py`, `src/voi.py`, `src/dynamic.py`, `src/robustness.py`; notebook 11 |
-| The challenger and its experiments | `src/challenge.py`, `src/challenge_experiments.py`, `prompts/challenge_*.md`; the registration and every output in `results/v9/`; notebook 11, section 11 |
+| Every decision and its reason | `docs/decisions.md` (numbered); the registered criteria in `results/success_criteria*.csv`; the frozen records in `results/registered_v7/` and `results/v9/`; the ledger in `docs/registration_ledger.md` |
+| The audit and the plans | `docs/audit_2026-10-17.md`, `docs/implementation_plan_v8.md`, `docs/plan_v10.md` |
+| The decision layers | `src/decision_date.py`, `src/asof_candidates.py`, `src/valuation.py`, `src/whatif.py`, `src/advisor_tools.py`, `src/ledger.py`, `src/voi.py`, `src/dynamic.py`, `src/robustness.py`; notebooks 07–11 |
+| The challenger and its tests | `src/challenge.py`, `src/challenge_experiments.py`, `src/challenge_v10.py`, `prompts/challenge_*.md`; the registrations and every output in `results/v9/` and `results/v10/`; notebook 11, section 11, and notebook 12 |
+| The three questions | notebook 12: the ledger, the credit line, the forward test, the robustness checks, the ladder and the registered test |
 | Figure captions and their notebooks | `report/figure_notes.md` |
 | Changes after review and mentor feedback | `docs/mentor_feedback.md` |
 
-**Reproducibility.** Every notebook runs top to bottom with `make all`; the scenario sets, bootstraps and draws are seeded; the solver must reach optimality or the run stops; advisor calls replay from their record. The parser of one PJM table needs poppler's `pdftotext`; a clean Linux environment reproduced the previous version's registered verdicts and nearly all its cited numbers (decision #87).
+**Reproducibility.** Every notebook runs top to bottom on the project kernel with `make all`; the scenario sets, bootstraps and draws are seeded; the solver must reach optimality or the run stops; advisor and challenger calls replay from their record. The parser of one PJM table needs poppler's `pdftotext`; a clean Linux environment reproduced an earlier version's registered verdicts and nearly all its cited numbers (decision #87).
 
 ## Appendix D — Supporting figures
+
 ![Figure A1](../figures/F25_state_archetypes.png)
 
 *Figure A1.* State queue markets from k-means on seven features, and the share of 2017–2019 entrants operating by the end of 2024 in each archetype.
@@ -331,9 +287,21 @@ Every claim in the body that says "registered" refers to a line below. Each crit
 
 *Figure A11.* Book D held, or revised on 1 January 2027, on the held-out scenarios.
 
+![Figure A13](../figures/F42_value_added.png)
+
+*Figure A13.* Each decision process against its comparator on the same held-out scenarios, with paired bootstrap intervals.
+
+![Figure A14](../figures/F45_robustness.png)
+
+*Figure A14.* Book D's construction calls beyond its reserve, and how often each candidate is chosen when the book is re-chosen on resampled scenarios.
+
+![Figure A15](../figures/F47_ladder.png)
+
+*Figure A15.* The attribution ladder as previewed on the first test's cases and the earlier candidate set, before the final registration: 41 of 48 readings equal to their key.
+
 ## Appendix E — Part I in full: the developer's decision, which queue requests to fund
 
-*The method and evidence behind sections 4 and 5 for the queue side, kept in full. Words used one way throughout:*
+*The method and evidence behind section 4 for the queue side, kept in full. Words used one way throughout:*
 
 | Term | Meaning |
 |----------------------------|------------------------------------------------------------------------|
@@ -487,11 +455,11 @@ Part I answers the developer: which requests to fund and when. Part II answers t
 
 ## Appendix F — Part II in full: the company's decision, how to split one budget
 
-*The method and evidence behind sections 3–9 for the energy portfolio.*
+*The method and evidence behind sections 3–5 for the energy portfolio.*
 
 ### F.1 The candidates on 1 January 2025
 
-The leases are the twenty with the most output in the twelve months published by the decision date (to September 2024), among the 506 producing in 2024, out of 1,041 with at least sixty producing months. The requests are the five largest of each technology among the 1,649 ERCOT requests of 20 MW and more waiting on 1 January 2025. In v6 they were drawn from the 2017–2019 entrants and valued at entry, though ten of those twenty had been withdrawn or built by the end of 2024; drawing them from the requests still waiting on the decision date removes that inconsistency. Most of the twenty are 2023–2024 entrants of 500 MW and more, the size and age at which requests are least likely to operate, so their chances sit far below the queue's averages unless an agreement is signed.
+The leases are the twenty with the most output in the twelve months published by the decision date (to September 2024), among the 506 producing in 2024, out of 1,041 with at least sixty producing months. The requests are the five largest of each technology among the 1,441 ERCOT requests of 20 MW and more that ERCOT's own reports listed as live on 1 January 2025. In v6 they were drawn from the 2017–2019 entrants and valued at entry, though ten of those twenty had been withdrawn or built by the end of 2024; in v8 and v9 they were drawn from the 2025 edition, released after the date; this version draws them from what was public. Most of the twenty are 2023–2024 entrants of 500 MW and more, the size and age at which requests are least likely to operate, so their chances sit far below the queue's averages unless an agreement is signed.
 
 | Twenty leases, flat 2024 prices | Registered grid | Committee grid |
 |----------------------------------------|------------------------------|------------------------------|
@@ -508,7 +476,7 @@ A quarter of lease-months produce nothing, and that is normal: leases are shut i
 
 ### F.3 Forecasting output: machine learning helps for plants, not for leases
 
-Twelve forecast lines were registered before scoring: lease oil and gas at 3, 6 and 12 months, plant capacity factors at 1 and 3 months, and prices. Each pits a machine-learning challenger against the best of five transparent baselines at rolling origins (Figure F1). Three of twelve pass, all for plants. The lease lines fail: the registered challenger's error at three months is 1.35 times the last-value baseline's, a bias from forecasting in logs; a level model added after scoring, and labelled so, brings the ratio to 0.96, and the scenarios draw their output uncertainty from it. Prices behave as random walks. The decision-level test of machine learning is section 8's: the book chosen with the lookup's queue curves against the book chosen with the model's.
+Twelve forecast lines were registered before scoring: lease oil and gas at 3, 6 and 12 months, plant capacity factors at 1 and 3 months, and prices. Each pits a machine-learning challenger against the best of five transparent baselines at rolling origins (Figure F1). Three of twelve pass, all for plants. The lease lines fail: the registered challenger's error at three months is 1.35 times the last-value baseline's, a bias from forecasting in logs; a level model added after scoring, and labelled so, brings the ratio to 0.96, and the scenarios draw their output uncertainty from it. Prices behave as random walks. The decision-level test of machine learning is section 5's: the book chosen with the lookup's queue curves against the book chosen with the model's.
 
 ![Figure F1](../figures/F27_forecast_gains.png)
 
@@ -518,19 +486,19 @@ Twelve forecast lines were registered before scoring: lease oil and gas at 3, 6 
 
 **A lease redevelopment is an uplift on a producing asset.** Each lease's baseline is an Arps decline fitted after the lease's peak in its last 36 months, switching to an 8% annual decline once its own decline falls below that; four leases still ramping decline at the floor from their recent level. The v6 fit had no floor, and ten of the twenty leases were projected never to decline. The redevelopment adds 20% of the baseline after a two-year lead time; its value is the cash flow it adds over doing nothing. The committee grid prices capital at $40,000 per incremental flowing barrel of oil equivalent a day and discounts at 8%; it was added after the registered results, at an outside reviewer's request, and is labelled ASSUMED.
 
-**A power request is a plant that may never be built.** Its value if built uses the 2024 hourly prices — solar earns 92% of the flat hub price, wind 83%, gas combined cycle 136% because it runs only when prices clear its fuel cost — with ATB costs converted to 2024 dollars and the tax credits of the law in force on 1 January 2025: wind the production credit, solar and storage the investment credit, in every operation year of the window. The 2027 deadline for wind and solar was set by a July 2025 law and IRS Notice 2025-42, after the decision date; it is a stress. That value is weighted by the chance of operating in each of seven years and net of the deposits. On the flat 2024 path, under contract, all ten wind and solar requests are positive (+$70M together) — but only with the credits: −$615M without them, −$284M under the 2027 deadline. Every gas and storage request is negative.
+**A power request is a plant that may never be built.** Its value if built uses the 2024 hourly prices — solar earns 92% of the flat hub price, wind 83%, gas combined cycle 136% because it runs only when prices clear its fuel cost — with ATB costs converted to 2024 dollars and the tax credits of the law in force on 1 January 2025: wind the production credit, solar and storage the investment credit, in every operation year of the window. The 2027 deadline for wind and solar was set by a July 2025 law and IRS Notice 2025-42, after the decision date; it is a stress. That value is weighted by the chance of operating in each of seven years and net of the deposits. On the flat 2024 path, under contract, ten of the twenty requests are positive and the twenty together sum to −$108M; without the credits −$933M, under the 2027 deadline −$478M.
 
 ### F.5 Scenarios and risk
 
-Prices, output, costs and timing are drawn together: 2,000 twenty-year paths resample calendar-year blocks of the 2018–2024 monthly log changes of WTI, Henry Hub and ERCOT, the same months for all three, capped at ±1.5 a month and reverting toward their 2018–2024 real geometric means with a four-year half-life (ASSUMED). Output varies by the scored forecast errors, costs by a triangular multiplier, and each request's operation year by its curve from the decision date. The held-out set of 2,000 paths redraws every component with its own seeds; in v6 only its prices were redrawn. Two weaknesses remain. Seven historical years make every path, so there is effectively no joint oil–power tail beyond 2018–2024. And the reversion targets sit well above 2024's gas and ERCOT prices, which is what lifts the gas requests' scenario values above their flat-path values (Appendix Figure A5).
+Prices, output, costs and timing are drawn together: 2,000 twenty-year paths resample calendar-year blocks of the 2018–2024 monthly log changes of WTI, Henry Hub and ERCOT, the same months for all three, capped at ±1.5 a month and reverting toward their 2018–2024 real geometric means with a four-year half-life (ASSUMED). Output varies by the scored forecast errors, costs by a triangular multiplier, and each request's operation year by its curve from the decision date. The held-out set of 2,000 paths redraws every component with its own seeds; in v6 only its prices were redrawn. Two weaknesses remain. Seven historical years make every path, so there is effectively no joint oil–power tail beyond 2018–2024. And the reversion targets sit well above 2024's gas and ERCOT prices, which is what lifts the gas requests' scenario values above their flat-path values (Appendix Figure A5). A check on 5,000 paths — the registered 2,000 followed by new ones — leaves the order of the books unchanged (book D $1.36B, the deterministic book $1.21B, NPV ranking $1.14B, equal capital $1.12B) and book D's worst-5% loss at $0.84B; re-solved on 5,000 primary paths, book D keeps about two thirds of its members (Jaccard 0.65) and scores $1.382B against $1.363B.
 
 ### F.6 Allocating the budget
 
-Section 8 reports the books under the committee grid. Under the registered grid the leases are cheap against the barrels they buy, so the risk-aware book holds fourteen leases and seven requests, expects $7.67B and almost never loses money; risk aversion has little to buy there. The registered comparison on that grid is Table A2.
+Section 5 reports the books under the committee grid. Under the registered grid the leases are cheap against the barrels they buy, so the risk-aware book holds fourteen leases, expects $8.48B and almost never loses money; risk aversion has little to buy there. The registered comparison on that grid is Table A2.
 
 ### F.7 When: the book at one to twenty years
 
-A twenty-year NPV says nothing about what the owner holds at year three. Counting only the cash that falls within each horizon, under the registered grid, the best book holds nothing at one or two years, eleven leases at three and fourteen from five; its value within twenty years is $6.56B. A queue request is a carrying cost until it operates (Figure F4).
+A twenty-year NPV says nothing about what the owner holds at year three. Counting only the cash that falls within each horizon, under the registered grid, the best book holds nothing at one or two years, eleven leases at three and fourteen from five; its value within twenty years is $7.09B. A queue request is a carrying cost until it operates (Figure F4).
 
 ![Figure F4](../figures/F35_horizon_view.png)
 
@@ -551,21 +519,24 @@ A twenty-year NPV says nothing about what the owner holds at year three. Countin
 | Question | Finding | Evidence | Verdict |
 |-----------------|-----------------------------------------------------|---------------|---------------|
 | Where to look | ERCOT builds most often: 18.4% of requests operate within five years, against 4.8% in CAISO. | Appendix E.2 | Observed |
-| RQ1, at entry | The model beats cohort averages (AUC 0.86 against 0.73) but ties the lookup at utility scale. | Appendix E.3; C1–C12 | Partly |
-| RQ1, two years in | A book of 25 chosen by the landmark model held 19 operations, against 11 for the lookup. | Appendix E.7; C15 | Supported |
-| RQ1, on the decision date | Backtested as of 2020 the model ranks better than the lookup (AUC 0.731 against 0.686) but over-predicts ERCOT's level. | Section 4 | Supported for ranking |
-| RQ1, output | Machine learning beats baselines for plant output, not for leases or prices. | Appendix F.3; C20 | Partly |
-| RQ1, in the decision | The book chosen with the lookup's curves is not beaten by the model's on the registered metric. | Section 8 | Not supported |
-| RQ2 | Under the committee grid the risk-aware book loses money in 10% of scenarios with a worst-5% loss of $1.02B; its construction calls exceed the reserve in 44.5% of scenarios. | Sections 8–9 | Derived |
-| RQ3 | Under equal constraints the risk-aware book beats NPV ranking by $320M on the registered metric, for $274M of expected value. | Section 8 | Post-registration |
-| RQ3, sensitivity | Cheaper oil or dearer redevelopment removes every lease from the book. | Section 8 | Derived |
-| RQ4, flexibility | Revising the book in 2027 with this rule is worth −$9M; without a construction line the book is worth $1.40B instead of $2.05B. | Section 9 | Post-registration |
-| RQ4, information | Perfect information is worth at most $571M; the ERCOT price level $52M; an agreement signal at most $11.5M. | Section 9 | Post-registration |
-| RQ4, the advisor | Its investment increment is zero; it read six questions correctly; it trails the rule in the gym. | Section 6; Appendix B | Post-registration |
-| RQ4, the challenger | Following it improves the committee's own objective by $192M per flawed case and avoids $240M of worst-5% loss; a checklist without a language model achieves $145M and $257M. | Section 10; Table A3 | Post-registration |
-| RQ4, the language model | It names 11 of 12 flaws of argument and reads 40 of 40 rules; against a fixed rule its decision value is +$1M [−$50M, +$64M]. | Section 10; Appendix A | Post-registration |
+| Q1, at entry | The model beats cohort averages (AUC 0.86 against 0.73) but ties the lookup at utility scale. | Appendix E.3; C1–C12 | Partly |
+| Q1, two years in | A book of 25 chosen by the landmark model held 19 operations, against 11 for the lookup. | Appendix E.7; C15 | Supported |
+| Q1, on the decision date | Backtested as of 2020 the model ranks better than the lookup (AUC 0.731 against 0.686; in ERCOT 0.656 against 0.591) but over-predicts ERCOT's level. | Section 4 | Supported for ranking |
+| Q1, one year on | 30 of 1,441 live requests operated in 2025 where the corrected model expected 78 and the lookup 17; the model's slope is 0.66, the lookup's 0.01. | Section 4; Figure 4 | Post-hoc |
+| Q1, output | Machine learning beats baselines for plant output, not for leases or prices. | Appendix F.3; C20 | Partly |
+| Q1, in the decision | The book chosen with the lookup's curves is not beaten by the model's on the registered metric (+$37M [−$76M, +$151M]). | Section 5 | Not supported |
+| Q2, risk | Under the committee grid the risk-aware book loses money in 9% of scenarios with a worst-5% loss of $0.82B; its construction calls exceed the reserve in 50.3% of scenarios. | Section 5 | Derived |
+| Q2, the primary line | Under equal constraints the risk-aware book beats NPV ranking by $219M [+$13M, +$401M] on the registered metric, for $508M of expected value. | Section 5; C33 | Registered, PASS |
+| Q2, the line priced | A $2.53B contingent line is worth $1.03B on the metric net of a 0.5% fee and 8% interest, against $0.76B with no line; the fee breaks even at 2.04%. | Section 5; Figure 3 | Post-registration |
+| Q2, sensitivity | Cheaper oil or dearer redevelopment removes every lease from the book; the registered tail weight is best in three of four misspecified worlds. | Section 5 | Derived |
+| Q2, flexibility and information | Revising the book in 2027 with this rule is worth −$11M; perfect information is worth at most $825M, the ERCOT price level $47M, an agreement signal at most $59.4M. | Sections 4–5 | Post-registration |
+| Q3, the primary line | Adding the language model to the tools improves the committee's own objective by $43M per case [+$9M, +$86M] over all 48 cases. | Section 6; C34 | Registered, PASS |
+| Q3, reading | 40 of 40 paraphrases read exactly; 38 of 48 case readings equal their key; 75% of injections held with 7 memos carrying an ungrounded number. | Section 6; C37–C39 | Registered: PASS, FAIL, FAIL |
+| Q3, argument | 12 of 12 author-written flaws of argument named; 0 of 12 sound proposals over-challenged. | Section 6; C40–C41 | Registered, PASS |
+| Q0 | Tools add $76M per case over the proposal, the language model $43M more, the optimizer $134M beyond that. | Section 7; C35–C36 | Registered |
+| Q3, the advisor | Its investment increment is zero; it read six questions correctly; it trails the rule in the gym. | Appendix B | Post-registration |
 
-*Table G1.* Every finding, its evidence and its verdict. Registered criteria are in Appendix A.
+*Table G1.* Every finding, its evidence and its verdict. Registered criteria are in Appendix A and Table 3.
 
 ## Appendix H — The audit of 17 October 2026
 
@@ -574,9 +545,27 @@ An independent audit of report v6 and its code (`docs/audit_2026-10-17.md`) foun
 | Finding | What was wrong | What changed |
 |---------|----------------|--------------|
 | A1 | The top-N and equal-capital books ignored the registered 40% technology cap; the risk-aware book's "$1.9B for a smaller tail" was the price of the cap, not of risk aversion. | Every book is held to the same budget and cap and checked. |
-| E1 | Ten of the twenty power candidates had been withdrawn or built by the end of 2024, while the leases were valued at 2025. | One decision date; the requests are those still waiting, with chances conditional on their age. |
-| E2 | Ten of the twenty lease baselines were fitted with no decline. | A post-peak fit with an 8% terminal decline; the registered lease book fell from $14.6B to $8.19B in this version. |
+| E1 | Ten of the twenty power candidates had been withdrawn or built by the end of 2024, while the leases were valued at 2025. | One decision date; the requests are those still waiting, with chances conditional on their age — and, since the critique of 21 October, those ERCOT's own reports listed on the date. |
+| E2 | Ten of the twenty lease baselines were fitted with no decline. | A post-peak fit with an 8% terminal decline; the registered lease book fell from $14.6B to $8.19B. |
 | G1 | The gym's lease rooms used 2024 leases, 2024 fits and the realized future's mean. | Rooms rebuilt as of their date and counted as one situation. |
 | G5 | The advisor's value over the rule was never reported; it was negative. | Reported, and the advisor rebuilt to work through the engine. |
 
 *Table H1.* The audit's headline findings. Smaller corrections — the CVaR tail count, the gas heat content, the gate floor, ATB dollars, the credits, the provenance labels, the held-out draw — are in the audit's register and decisions #88–#92.
+
+**Changes after review.** Three outside reviews in October 2026 led to the changes logged in `docs/mentor_feedback.md`. The first asked for an evaluated decision intelligence system; its first request was the audit above. The second found three inputs that were not public on the decision date and the capital calls unpriced, and asked that the language model help the committee decide; the challenger and its first registered test were the answer. The third, a critique review of 21 October, found that the candidate set rested on a file released after the decision date, that the challenger's test statements came from the model family being tested, that the construction line was free, and that no primary estimand had been named; this version rebuilds the candidates from what was public, prices the line, names one primary line per question, adds the four-arm ladder and the one-year forward test, and keeps a three-column ledger of every registered line and its corrections. A course mentor is assigned after the proposal review; their feedback will be logged in the same file.
+
+## Appendix I — Capital allocation memo
+
+*To the investment committee, 1 January 2025. Every figure is a model output scored on held-out scenarios; lease costs are assumed; the candidates are those public on the date.*
+
+**The ask.** Commit up to $3.82B now — 40% of what the forty candidates would cost the budget today — across twenty Gulf lease redevelopments and twenty ERCOT requests still in the queue, with no technology above 40% of the budget. A lease costs its redevelopment capital; a request costs its deposits plus a reserve for the construction it may need.
+
+**The choice.** The return-seeking book expects $2.73B with a worst-5% average loss of $1.52B. The registered risk-aware book expects $2.17B with a loss of $0.82B and a 9% chance of losing money. A more defensive book expects $2.07B with a loss of $0.74B. I recommend the committee choose its tail weight first; at the registered weight that is the risk-aware book.
+
+**What to do with each candidate under that book.** Invest now in eight candidates, the leases and the requests with signed agreements. Invest in stages in five requests: pay the deposit now, commit construction at the agreement. Wait for information on twelve requests whose agreement signal is worth more than their deposit. Monitor fourteen; reject one.
+
+**What the commitment really is.** The construction reserve is an average: the capital the book's requests call exceeds it in 50.3% of scenarios. Without a contingent line the book is worth $1.71B, not $2.17B, because requests that reach their agreement cannot be built; a line of $2.53B restores $2.11B gross and $1.98B net of a 0.5% commitment fee and 8% interest on the draws.
+
+**What would change it.** Oil at $45 a barrel for five years, or redevelopment capital 30% higher, removes every lease from the book. Knowing everything before committing would be worth at most $825M; the 2025–2029 ERCOT price level, $47M; one request's agreement signal, at most $59.4M.
+
+**Before you sign.** State your rules in words — your tolerance for loss, your liquidity, what you will not hold, and your tail weight, because an unstated one is read as zero. The challenger reads them back as numbers for you to confirm, tests your proposal against them and names the computed book that keeps them. If you depart from a book it guides you to, the ledger asks you to acknowledge the evidence.

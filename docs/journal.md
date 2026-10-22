@@ -1785,3 +1785,18 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 **Open questions for Alan**
 
 - C37 and C39 failed on a specific reading habit (silence read as zero tail weight; numbers not on the sheet). The report states the failures as registered. A follow-up test with a prompt that states the default explicitly would be post-registration and labelled as such — only if Alan wants it.
+
+## Session 22, continued — 2026-10-22: report v10 and the poster
+
+**Done**
+
+- `report/report.md` rewritten from the v10 keys (decision #107): abstract, executive summary and one section per question (Q1 prediction, Q2 optimization, Q3 governance, Q0 attribution), limits, conclusions; the memo as Appendix I; Appendices A–H carried over with the as-of numbers (Table A2 on the corrected system now +$468M / +$95M / 0.93 against 1.00 / +$77M; Table A4 is Table 3 of the body). Body under the 4,500-word ceiling; every number in the live table (`tests/test_report.py`, `REPORT_V10_WRITTEN = True`).
+- `report/poster.typ` rewritten: the four questions with F49, F43, F38, F50 and F48.
+- Notebook 12: F50 (the registered ladder) drawn in section 6; F49's legend names the candidate the 2026 file does not list; the forward-test reading cell and Takeaways corrected to the as-of run (1,441 live, 30 operated, 78 / 17 expected, slopes 0.66 / 0.01).
+- Keys added: `v10_c33`…`v10_c41`, `v10_pass`, `v10_calls`, `v10_asof_*`, `v10_bt_ercot_auc_*`, `v10_prior_c33`.
+
+**Next**
+
+1. `make report` and `make poster` once the notebook-12 rerun has written F50; look at both; commit and push.
+2. The reading and takeaway cells of notebooks 04–11 (pre-switch numbers).
+3. The clean Linux run.

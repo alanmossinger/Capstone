@@ -1922,6 +1922,16 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** Calibration of P(operation by 3, 5 and 7 years) by predicted decile: baseline, discrete-time logit and LightGBM, test cohort.
 <!-- /fig:F4_calibration_by_horizon -->
 
+<!-- fig:F50_ladder_v10 -->
+### F50_ladder_v10
+
+![F50_ladder_v10](../figures/F50_ladder_v10.png)
+
+*Notebook:* `notebooks/12_three_questions.ipynb` · *Files:* `figures/F50_ladder_v10.png`, `.svg`
+
+**Caption (stub).** The registered attribution ladder of v10: what the tools, the language model and the optimizer each add to the committee's decision, paired per case.
+<!-- /fig:F50_ladder_v10 -->
+
 <!-- fig:F5_auc_brier_by_horizon -->
 ### F5_auc_brier_by_horizon
 

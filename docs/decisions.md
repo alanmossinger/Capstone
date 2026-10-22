@@ -1635,3 +1635,31 @@ alternative rejected.
     redistribution grant, S1; 276 MB); Git LFS for the same reason;
     re-downloading at run time as the only route (the dated snapshots and
     EIA's revised workbooks would not reproduce the recorded hashes).
+107. **Report v10 is structured by the questions, and the body stays under
+    the ceiling** (Alan, 2026-10-22: "Write report v10 (Q0-Q3, title kept)
+    and the poster from the v10 keys"). The title and subtitle are kept;
+    the body runs abstract, executive summary (one paragraph per question),
+    introduction, the questions and the two primary estimands, data and
+    assumptions (the as-of build, the loss variable, the censoring rule, the
+    priced line), then one section per question — Q1 prediction with the
+    one-year forward test, Q2 optimization with C33 and the line net of
+    financing, Q3 governance with C34 and the reading, paraphrase and
+    injection lines, Q0 attribution with the registered ladder — limits and
+    harms, conclusions. Five figures in the body (F43, F49, F38, F48, F50);
+    F50 is the registered v10 ladder, drawn in notebook 12 section 6, so
+    the body's attribution figure is the scored test and not the preview
+    (F47, now Appendix D). F46, the first challenger record, moves to
+    Appendix A beside Table A3. The capital allocation memo moves to a new
+    Appendix I and "Changes after review" into Appendix H, so the counted
+    body (4,500 words, decision #94) holds the argument and the memo stays
+    whole. The earlier set's C33 (+$320M) is cited from the frozen v9 table
+    through a key (`v10_prior_c33`), so the comparison traces like every
+    other number. The poster follows the same four questions with the same
+    five figures. `REPORT_V10_WRITTEN = True`: the report and poster tests
+    read the live numbers table; the Petrobras edition keeps the frozen v9
+    table (out of scope, Alan 21 October).
+    *Rejected:* keeping the memo in the body (the body ran to 5,800 words
+    with it; cutting the questions' sections instead would have removed the
+    failures and the conditions the answers carry); showing the preview
+    ladder as the body's figure (it was computed before registration on a
+    candidate set the decision no longer uses).

@@ -1,4 +1,4 @@
-// Poster — Beyond Prediction (report v9). Built by `make poster` (typst). Every number is one the report prints (results/report_numbers.csv).
+// Poster — Beyond Prediction (report v10). Built by `make poster` (typst). Every number is one the report prints (results/report_numbers.csv).
 #set page(width: 841mm, height: 594mm, margin: (x: 20mm, y: 14mm), fill: white)
 #set text(font: "Calibri", size: 17pt, fill: rgb("#222222"))
 #set par(justify: false, leading: 0.55em)
@@ -17,7 +17,7 @@
 // header
 #grid(columns: (1fr, auto), align: (left, right),
   [#text(size: 44pt, weight: "bold")[Beyond Prediction: Prescriptive AI for Energy Portfolio Optimization] \
-   #text(size: 30pt, fill: muted)[An AI-assisted decision system for risk-aware capital allocation across oil, gas, power, renewables and storage]],
+   #text(size: 30pt, fill: muted)[An AI-assisted decision intelligence framework for risk-aware capital allocation across oil, gas, power, renewables and storage]],
   [#text(size: 22pt)[Alan Mössinger · SIADS 699 Capstone, University of Michigan · Group 13 (a solo project) · 2026]]
 )
 #v(5mm)
@@ -25,50 +25,45 @@
 #v(5mm)
 
 #grid(columns: (1fr, 1.2fr, 1fr), gutter: 12mm,
-  // column 1: the decision and what prediction adds
+  // column 1: the decision and Q1
   [
-    #box("The decision", color: blue)[
-      One budget, forty candidates, 1 January 2025, and only what was public that day: twenty Gulf of Mexico lease redevelopments and twenty ERCOT interconnection requests still waiting in the queue. A committee must choose how much expected value to give up for a thinner tail, and how to fund the construction its requests may call. Four questions: can machine learning *predict* better than transparent baselines, how does risk change value, which book should be *prescribed*, and how much does each part — the forecasts, the optimizer, the language model — add?
+    #box("The decision, and three questions", color: blue)[
+      One budget, forty candidates, 1 January 2025, and only what was public that day: twenty Gulf of Mexico lease redevelopments and twenty ERCOT interconnection requests that ERCOT's own reports listed as live. A committee must choose how much expected value to give up for a thinner tail, and how to fund the construction its requests may call. *Q1* Can predictive models improve estimates of energy investment outcomes? *Q2* Can mathematical optimization turn those estimates into better capital-allocation decisions? *Q3* Can a language model improve the quality of investment governance without taking authority away from decision-makers? And *Q0*: which part deserves the credit?
     ]
     #v(7mm)
-    #box("Prediction is not the decision", color: blue)[
-      #align(center)[#image("../figures/F28_candidates.svg", width: 86%)]
-      #note[Every lease adds value at the base cost; wind and solar requests pay only under contract. Backtested as of 2020, the queue model ranked requests better than a lookup (AUC 0.731 against 0.686) — yet the book chosen with its curves scores +\$22M [−\$168M, +\$207M] against the book chosen with the lookup's: not demonstrably better. The decision turns on a few large requests whose chance of operating neither method knows well.]
-    ]
-    #v(7mm)
-    #box("What each part adds, on the same scenarios", color: blue)[
-      #align(center)[#image("../figures/F42_value_added.svg", width: 86%)]
-      #note[The optimizer adds value only when held to the same constraints as the rules it is compared with. Revising the book in 2027 is worth −\$9M; knowing everything in advance would be worth at most \$571M.]
+    #box("Q1 — Prediction ranks; it does not set the level", color: blue)[
+      #align(center)[#image("../figures/F49_forward_calibration.svg", width: 90%)]
+      #note[Backtested as of 2020, the queue model ranked requests better than a transparent lookup (AUC 0.731 against 0.686; in ERCOT alone 0.656 against 0.591) but put ERCOT's five-year chance at 0.380 where 0.238 operated. One year after the decision, 30 of the 1,441 live requests had operated where the level-corrected model expected 78 and the lookup 17. The book chosen with the model's curves scores +\$37M [−\$76M, +\$151M] against the book chosen with the lookup's: not demonstrably better. Partly yes.]
     ]
   ],
-  // column 2: the system and the trade-off
+  // column 2: the system and Q2
   [
     #box("The system in one picture", color: rgb("#BBBBBB"))[
       #align(center)[#image("../figures/F43_architecture.svg", width: 92%)]
-      #note[The language model works in one stage only: it reads and argues; it never computes a value or decides. A named person signs, and the ledger records every decision with what it saw.]
+      #note[The language model works in one stage only: it reads and argues; it never computes a value or decides. The reading is shown to the committee before anything is computed, a named person signs, and the ledger records every decision with what it saw.]
     ]
     #v(7mm)
-    #box("The trade-off the committee must price", color: orange)[
+    #box("Q2 — Optimization wins under one cap, narrowly, and must be funded", color: orange)[
       #align(center)[#image("../figures/F38_frontier.svg", width: 92%)]
-      #note[On 2,000 held-out scenarios the risk-aware book expects \$2.05B with a worst-5% loss of \$1.02B; the return-seeking book \$2.36B with \$1.60B. Under equal constraints the risk-aware book beats NPV ranking by \$320M [+\$142M, +\$511M] on expected NPV minus the tail, and does so in all 20 re-selections.]
+      #note[On 2,000 held-out scenarios the risk-aware book expects \$2.17B with a worst-5% loss of \$0.82B; the return-seeking book \$2.73B with \$1.52B. Held to the same budget and cap, the risk-aware book beats NPV ranking by \$219M [+\$13M, +\$401M] on expected NPV minus the tail (C33, registered, passes), in all 20 re-selections, for \$508M of expected value. Its construction calls exceed the reserve in 50.3% of scenarios; a \$2.53B contingent line is worth \$1.03B on the metric net of a 0.5% fee and 8% interest, against \$0.76B with no line. Yes, if the constraints are shared and the line exists.]
     ]
   ],
-  // column 3: the challenger and the recommendation
+  // column 3: Q3, Q0 and the recommendation
   [
-    #box("Does an AI challenger improve the committee's decision?", color: green)[
-      #align(center)[#image("../figures/F46_challenger.svg", width: 90%)]
-      #note[Registered before it ran, on 48 proposals from simulated committees. Following the challenger improved the committee's own objective by \$192M per flawed case [+\$108M, +\$281M] and avoided \$240M of worst-5% loss. A checklist with the same tools and no language model achieved \$145M and \$257M: most of the gain is the tools'. What only the language model adds is understanding — 11 of 12 flaws of argument named (the checklist 0), 40 of 40 rules read from words. It over-challenged 2 of 12 sound proposals; 6 of 8 registered lines pass.]
+    #box("Q3 and Q0 — What the language model adds, and what it does not", color: green)[
+      #align(center)[#image("../figures/F50_ladder_v10.svg", width: 90%)]
+      #note[Registered before it ran: 48 proposals from simulated committees, 24 written by me with their keys, 176 calls, scored once. Tools alone improve the committee's own objective by \$76M per case over its proposal; adding the language model adds \$43M [+\$9M, +\$86M] more (C34, passes); the optimizer's own book would add \$134M beyond that. The model read 40 of 40 paraphrased rules, named 12 of 12 flaws of argument and over-challenged 0 of 12 sound proposals. It failed two lines: 38 of 48 readings equal their key — it reads an unstated tail weight as zero — and 7 injected memos carried a number not on the sheet. 6 of 8 graded lines pass. Yes, because the tools, not the model, hold authority.]
     ]
     #v(7mm)
-    #box("The capital plan is the weak point", color: orange)[
-      #align(center)[#image("../figures/F45_robustness.svg", width: 82%)]
-      #note[Construction calls exceed the reserve in 44.5% of scenarios; without a contingent line the requests that reach their agreement cannot be built and the book is worth \$1.40B.]
+    #box("The capital plan, priced as a bank would", color: orange)[
+      #align(center)[#image("../figures/F48_credit_line_net.svg", width: 82%)]
+      #note[Without a line the book is worth \$1.71B in expectation; the \$2.53B line restores \$1.98B net of fee and interest, and the cost lands on the tail. The fee alone breaks even at 2.04% a year.]
     ]
     #v(7mm)
     #box("Recommendation", color: orange)[
-      *Choose the tail weight first.* At the registered weight, fund the risk-aware book — six leases, five wind, one solar and one gas request — with a contingent construction line of \$3.28B, which restores \$2.02B of value. Defer the requests whose agreement signal is worth more than their deposit. *Use the challenger before signing*, and record any departure from its guidance with the evidence acknowledged.
+      *Choose the tail weight first.* At the registered weight, fund the risk-aware book — five leases and eight requests — with a contingent construction line of \$2.53B. Defer the twelve requests whose agreement signal is worth more than their deposit. *State every rule, including the tail weight*, and *use the challenger before signing*; record any departure from its guidance with the evidence acknowledged.
       #v(2mm)
-      #note[Prediction is necessary and not sufficient: the decision is made by the constraints, the capital plan and the tail — and a committee is helped most by tools that test its own rules. Model-based results on public data and assumed lease costs; simulated committees. Data: LBNL Queued Up 2025 (Rand et al., 2025); BSEE OGOR-A; EIA; ERCOT settlement-point prices; NREL ATB. Author's analysis.]
+      #note[Prediction is necessary and not sufficient: the decision is made by the constraints, the capital plan and the tail, and a committee is helped most by tools that test its own rules. Model-based results on public data and assumed lease costs; simulated committees; failures reported as registered. Data: LBNL Queued Up (Rand et al.), ERCOT, BSEE, EIA, NREL ATB; author's analysis.]
     ]
   ]
 )

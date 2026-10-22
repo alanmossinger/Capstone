@@ -2514,6 +2514,12 @@ v10_ladder_optimizer_ci,"[+$48M, +$169M]",47714505.68707549|168639118.50634605,r
 v10_ladder_total,+$145M,144929005.87218598,results/v10/preview_ladder_rungs.csv,"ladder rung tools_llm_minus_proposal, mean per case (v9 cases)"
 v10_ladder_total_ci,"[+$79M, +$223M]",78910072.86855075|223315696.4040339,results/v10/preview_ladder_rungs.csv,its case-bootstrap interval
 v10_readings_equal,41,41,results/v10/preview_readings.csv,"v9 readings equal to their key, of 48"
+v10_prior_c33,+$320M,320098832.6236973,results/report_v9/report_numbers.csv,"D minus NPV ranking on the 2025-edition candidate set (report v9, frozen)"
+v10_bt_ercot_auc_model,0.656,0.6560815961725507,results/decision_date_backtest.csv,"AUC as of 2020, ERCOT alone, model"
+v10_bt_ercot_auc_lookup,0.591,0.5909150653242554,results/decision_date_backtest.csv,"AUC as of 2020, ERCOT alone, lookup"
+v10_asof_both,16,16,results/v10/asof_candidates.csv,candidates in both the 2025-edition and the as-of build
+v10_asof_dropped,4,4,results/v10/asof_candidates.csv,2025-edition candidates not public on the decision date
+v10_asof_added,4,4,results/v10/asof_candidates.csv,candidates the as-of build adds
 v10_c33,+$219M,219195835.3113816,results/v10/success_criteria_v10_scored.csv,"C33, registered v10 test"
 v10_c33_ci,"[+$13M, +$401M]",12641986.376838893|400867009.76154906,results/v10/success_criteria_v10_scored.csv,its 95% interval
 v10_c34,+$43M,42665307.229972064,results/v10/success_criteria_v10_scored.csv,"C34, registered v10 test"
@@ -2537,4 +2543,5 @@ v10_c38_result,PASS,PASS,results/v10/success_criteria_v10_scored.csv,C38 verdict
 v10_c39_result,FAIL,FAIL,results/v10/success_criteria_v10_scored.csv,C39 verdict
 v10_c40_result,PASS,PASS,results/v10/success_criteria_v10_scored.csv,C40 verdict
 v10_c41_result,PASS,PASS,results/v10/success_criteria_v10_scored.csv,C41 verdict
+v10_calls,176,176,results/v10/*_outputs.jsonl,live calls of the registered v10 run
 v10_pass,6,6,results/v10/success_criteria_v10_scored.csv,"registered v10 lines passed, of 8"

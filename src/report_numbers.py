@@ -2104,6 +2104,19 @@ def v10_report():
             add(f"v10_ladder_{key}_ci", f"[{dollars(r['low'], 'M', 0, sign=True)}, {dollars(r['high'], 'M', 0, sign=True)}]", f"{r['low']}|{r['high']}", v10 + "preview_ladder_rungs.csv", "its case-bootstrap interval")
         rd = read("v10/preview_readings.csv")
         add("v10_readings_equal", str(int(rd["equals_key"].sum())), int(rd["equals_key"].sum()), v10 + "preview_readings.csv", "v9 readings equal to their key, of 48")
+    prior = pd.read_csv(paths.RESULTS / "report_v9" / "report_numbers.csv").set_index("key")  # the frozen pre-switch table, for the comparison the report draws
+    add("v10_prior_c33", prior.loc["v8_DA_metric_diff", "text"], prior.loc["v8_DA_metric_diff", "value"], "results/report_v9/report_numbers.csv", "D minus NPV ranking on the 2025-edition candidate set (report v9, frozen)")
+    bt = read("decision_date_backtest.csv")
+    bt = bt[(bt["decision_date"] == "2020-01-01") & (bt["region"] == "ERCOT")].set_index("method")
+    add("v10_bt_ercot_auc_model", f"{bt.loc['model', 'auc']:.3f}", bt.loc["model", "auc"], "results/decision_date_backtest.csv", "AUC as of 2020, ERCOT alone, model")
+    add("v10_bt_ercot_auc_lookup", f"{bt.loc['lookup', 'auc']:.3f}", bt.loc["lookup", "auc"], "results/decision_date_backtest.csv", "AUC as of 2020, ERCOT alone, lookup")
+    asof = read("v10/asof_candidates.csv")
+    both = int((asof["in_asof_build"] & asof["in_2025_edition_build"]).sum())
+    add("v10_asof_both", str(both), both, v10 + "asof_candidates.csv", "candidates in both the 2025-edition and the as-of build")
+    add("v10_asof_dropped", str(int((asof["in_2025_edition_build"] & ~asof["in_asof_build"]).sum())), int((asof["in_2025_edition_build"] & ~asof["in_asof_build"]).sum()),
+        v10 + "asof_candidates.csv", "2025-edition candidates not public on the decision date")
+    add("v10_asof_added", str(int((asof["in_asof_build"] & ~asof["in_2025_edition_build"]).sum())), int((asof["in_asof_build"] & ~asof["in_2025_edition_build"]).sum()),
+        v10 + "asof_candidates.csv", "candidates the as-of build adds")
     if (paths.RESULTS / "v10" / "success_criteria_v10_scored.csv").exists():
         sc = read("v10/success_criteria_v10_scored.csv").set_index("id")
         for c in ("C33", "C34", "C35", "C36"):  # dollar lines: mean per case (C33 the paired book difference) and its interval
@@ -2116,6 +2129,9 @@ def v10_report():
         add("v10_c39_moved", str(int(sc.loc["C39", "low"])), int(sc.loc["C39", "low"]), v10 + "success_criteria_v10_scored.csv", "injections whose memo moved the book")
         for c in sc.index:
             add(f"v10_{c.lower()}_result", sc.loc[c, "result"], sc.loc[c, "result"], v10 + "success_criteria_v10_scored.csv", f"{c} verdict")
+        calls = sum(2 * len((paths.RESULTS / "v10" / f).read_text(encoding="utf-8").splitlines()) if two else len((paths.RESULTS / "v10" / f).read_text(encoding="utf-8").splitlines())
+                    for f, two in (("x1_outputs.jsonl", True), ("paraphrase_outputs.jsonl", False), ("injection_outputs.jsonl", True)))  # two rounds per case and per injection
+        add("v10_calls", str(calls), calls, v10 + "*_outputs.jsonl", "live calls of the registered v10 run")
         graded = sc[sc["result"] != "reported"]
         add("v10_pass", str(int((graded["result"] == "PASS").sum())), int((graded["result"] == "PASS").sum()), v10 + "success_criteria_v10_scored.csv", f"registered v10 lines passed, of {len(graded)}")
 

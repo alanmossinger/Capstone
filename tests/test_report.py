@@ -73,7 +73,7 @@ def test_report_is_under_the_word_limit():
 # #105): until report v10 replaces the report and the poster, all three are checked against the numbers table they were
 # written from, frozen in results/report_v9/. The Petrobras edition is out of scope for v10 and stays on it.
 V9_NUMBERS = paths.RESULTS / "report_v9" / "report_numbers.csv"
-REPORT_V10_WRITTEN = False  # set to True when report.md and poster.typ are rewritten from the v10 results
+REPORT_V10_WRITTEN = True  # report.md and poster.typ were rewritten from the v10 results on 22 October 2026
 
 
 def test_every_number_on_the_poster_is_in_report_numbers():
