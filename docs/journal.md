@@ -1897,3 +1897,7 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 
 1. `make report` on the rerun figures; look at every page; the poster is unchanged (it cites the v10 numbers, which stand); full `pytest`; commit and push on Alan's word.
 2. Alan's read of V2; the demo video script's figure numbers may need moving to V2's.
+
+## Session 26, continued — 2026-10-24: the executive summary
+
+- Alan drafted an executive summary (problem, challenges, method, application, results, implications, readiness, conclusion) and asked for it to be reviewed and added. Reviewed against the numbers table: every figure in the draft matched; "Monte Carlo" became "joint scenario simulation from 2018–2024 market history with mean reversion" (what notebook 08 does), "predefined criteria" became "pre-registered", and the voice moved to the first person. Inserted as the report's first section, before the decision brief, on its own pages; `WORD_LIMIT = 12500` (body about 11,500 words); PDF 68 pages; 274 tests pass.
