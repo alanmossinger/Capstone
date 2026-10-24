@@ -1676,8 +1676,12 @@ alternative rejected.
     takes `required=False` in notebook 01, and the pulls ask for the key
     only when a pinned file is missing; with a key the cell still prints
     the months the API serves that day. The readiness line is renamed "S2
-    EIA-860M pull complete" (same rule, same PASS). Notebook 01 rerun: no
-    other output changed; 273 tests pass.
+    EIA-860M pull complete" (same rule, same PASS). The second clean run
+    found the same requirement in part D's secrets line, which now checks
+    the saved pages only when a key exists, and showed that LightGBM needs
+    the OpenMP runtime on Linux (`libgomp1`, absent from a slim Python
+    image; README names it). Notebook 01 rerun: no other output changed;
+    273 tests pass.
     *Rejected:* keeping the key mandatory (a grader with the bundle could
     not run `make all` without registering with EIA); keeping "latest
     month" (a rerun would not reproduce the committed tables).

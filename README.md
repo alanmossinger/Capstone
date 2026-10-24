@@ -77,6 +77,9 @@ The full data access statement, terms and data dictionary are in
 
 Requires Python 3.11, GNU make and poppler's `pdftotext` on the PATH (notebook 07 reads two tables of the
 PJM market monitor's report from its PDF; the parser uses `pdftotext -layout`, so any poppler version works).
+On Linux LightGBM also needs the OpenMP runtime (`libgomp1` on Debian and Ubuntu; a slim Python image lacks it).
+No API key is needed when the raw files are in place (`make check-data`); the EIA key in `.env` is only for
+pulling a missing EIA file again (decision #108).
 
 ```bash
 make setup     # .venv, pinned packages, Jupyter kernel "queue-survival"
