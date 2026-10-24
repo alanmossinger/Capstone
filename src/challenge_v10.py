@@ -190,6 +190,36 @@ THESIS = {"H8": "adding the language model to the tools improves the committee's
           "H10": "the language model names flaws of argument the tools cannot see, without over-challenging sound proposals: C40 and C41 pass"}
 
 
+def sha_file(path):
+    """SHA-256 of a text file as read (line endings normalised by ``read_text``), the hash the registration records."""
+    import hashlib
+
+    return hashlib.sha256(path.read_text(encoding="utf-8").encode("utf-8")).hexdigest()
+
+
+def replayable(path=V10 / "success_criteria_v10_registered.json"):
+    """Whether the recorded calls of the registered run can replay on this machine.
+
+    Returns
+    -------
+    bool
+        True when ``results/v8/value_added.csv`` is the table the registration
+        hashed.
+
+    Notes
+    -----
+    The replay finds a recorded call by the hash of its exact prompt, and the
+    memo prompts carry the fact sheets' numbers. On a machine whose floating
+    point differs from the author's (another platform: the clean Linux run
+    moved the value-added table in the fifth significant figure), the fact
+    sheets differ, the memos cannot be found, and the registration check
+    refuses the drifted table. Section 6 of notebook 12 then keeps the
+    committed scored record instead of failing (decision #111).
+    """
+    registered = json.loads(path.read_text(encoding="utf-8"))
+    return registered["value_added_sha256"] == sha_file(paths.RESULTS / "v8" / "value_added.csv")
+
+
 def registration(model, author_path=V10 / "cases_v10.json", paraphrases_path=V10 / "paraphrases.json", injections_path=V10 / "injections.json"):
     """The registered record of v10: criteria, thesis rule, the two primary estimands, and the hashes of everything the outcome depends on.
 
@@ -203,9 +233,6 @@ def registration(model, author_path=V10 / "cases_v10.json", paraphrases_path=V10
 
     def sha(obj):
         return hashlib.sha256(json.dumps(obj, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()
-
-    def sha_file(path):
-        return hashlib.sha256(path.read_text(encoding="utf-8").encode("utf-8")).hexdigest()
 
     from src import config
     for p in (author_path, paraphrases_path, injections_path):

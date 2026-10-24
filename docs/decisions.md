@@ -1711,3 +1711,49 @@ alternative rejected.
     the BSEE, eGRID, price and LBNL records, so `check` would fail after a
     run); dropping the assertion in notebook 04 (it is what proves the
     snapshot on disk is the one recorded).
+111. **The registered challenger run replays only on the tables it was
+    recorded on, and says so elsewhere** (2026-10-24, found by the fifth
+    clean Linux run). The replay finds a recorded call by the hash of its
+    exact prompt, and the memo prompts carry the fact sheets' numbers. On
+    Linux the optimizer's tables agree with mine only to about the fifth
+    significant figure (C33's difference is $219,173,642 there against
+    $219,195,835 here; both print +$219M [+$13M, +$401M]), so the hash of
+    `results/v8/value_added.csv` in the v10 registration no longer
+    matched and notebook 12 stopped at the registration guard; had the
+    guard passed, the memos would not have been found. `challenge_v10.
+    replayable()` now tells the two cases apart before the guard: when the
+    value-added table is not the registered one, section 6 prints why,
+    keeps the committed scored record in `results/v10/` and draws nothing.
+    The guard itself, the registered record and the scoring are unchanged;
+    on this machine the section replays and scores exactly as before (6 of
+    8 lines pass; run times only). `report_numbers` writes "no record" for
+    an advisor statistic the replay could not recover instead of stopping,
+    so the report test names the number that did not reproduce.
+    *Rejected:* a guard that accepts a drifted table (the registration
+    would no longer prove that C33's table is the one registered);
+    matching recorded calls on rounded prompts (it would change how every
+    recorded call is found, after registration); calling the model live on
+    the other machine (a new run, not the registered one).
+112. **Reproduction record for v10** (2026-10-24). In a clean Python 3.11
+    container (Debian bookworm, poppler 22.12, `libgomp1`) built from the
+    committed repository and the raw-data bundle, with no `.env`:
+    `make check-data` passed (111 of 111); `make all` ran notebooks 01 → 11
+    end to end in 3 hours 3 minutes (notebook 04 took 2 hours 7 minutes),
+    and notebook 12 then stopped at the registration guard, which decision
+    #111 turned into a stated stop (rerun: 228 s, all 12 checks PASS). Of
+    407 result files, 86 were identical, 199 equal within 1e-6 and 122
+    differed (checks tables with run times, the advisor's replay tables,
+    and floating-point drift of 1e-5 to 1e-4 relative in the optimizer's
+    tables). Every registered verdict was identical (v1–v7, the
+    tournament, v9; the v10 record is the committed one); of 35 checks
+    tables, one line changed, a run-time limit. Of the 2,561 numbers the
+    report cites, 2,548 were identical as printed; two moved in the last
+    digit ($6.71B → $6.72B, the 2020 stress; $108.7M → $108.6M, forcing
+    the large gas request in) and eleven are advisor statistics that moved
+    because 14 recorded calls could not be found on the drifted tables;
+    273 of 274 tests passed (the report-number test fails on those
+    thirteen). The run found four portability faults, fixed before this
+    record (decisions #108–#110: the EIA key and the unpinned EIA month,
+    notebook 02 reading 03's table, the hash records missing from the
+    bundle) and the replay stop (#111). The committed results stay as my
+    machine produced them.

@@ -1587,16 +1587,17 @@ def v6_advisor():
     # the advisor scored (session 12, decision #76): the live run through the author's Claude subscription
     n_rec = sum(1 for line in (paths.RESULTS / "advisor_runs.jsonl").read_text(encoding="utf-8").splitlines() if line.strip())
     add("adv_recorded", str(n_rec), n_rec, "results/advisor_runs.jsonl", "recorded answers")
-    g = float(ev.loc["mean number-grounding rate over recorded answers", "value"])
-    add("adv_grounding", f"{100 * g:.0f}%", g, "results/advisor_evaluation.csv", "mean share of the advisor's numbers found in its tables")
-    f = float(ev.loc["answers with every number grounded (share)", "value"])
-    add("adv_fully_grounded", f"{100 * f:.0f}%", f, "results/advisor_evaluation.csv", "answers with every number grounded")
-    j = float(ev.loc["mean Jaccard of recommended members to book D (stresses)", "value"])
-    add("adv_jaccard_d", f"{j:.2f}", j, "results/advisor_evaluation.csv", "overlap of the advisor's book with book D over the seven stresses")
-    nm = float(ev.loc["share naming book D (stresses)", "value"])
     rec = read("advisor_recommendations.csv")
     stress_rows = rec[~rec["scenario"].str.startswith("forward")]
-    add("adv_names_d", f"{int(round(nm * len(stress_rows)))} of {len(stress_rows)}", nm, "results/advisor_evaluation.csv", "stresses in which the advisor names book D")
+    # a metric is "no record" when the replay missed calls (another machine's floating point builds other prompts,
+    # decision #111): the key is kept with that text, so the report test points at it instead of this step failing
+    for key, metric, fmt, note in [
+            ("adv_grounding", "mean number-grounding rate over recorded answers", lambda v: f"{100 * v:.0f}%", "mean share of the advisor's numbers found in its tables"),
+            ("adv_fully_grounded", "answers with every number grounded (share)", lambda v: f"{100 * v:.0f}%", "answers with every number grounded"),
+            ("adv_jaccard_d", "mean Jaccard of recommended members to book D (stresses)", lambda v: f"{v:.2f}", "overlap of the advisor's book with book D over the seven stresses"),
+            ("adv_names_d", "share naming book D (stresses)", lambda v: f"{int(round(v * len(stress_rows)))} of {len(stress_rows)}", "stresses in which the advisor names book D")]:
+        v = pd.to_numeric(ev.loc[metric, "value"], errors="coerce")
+        add(key, "no record" if pd.isna(v) else fmt(float(v)), float(v), "results/advisor_evaluation.csv", note)
     gs = read("decision_gym_scores.csv")
     advr = gs[gs["actor"] == "advisor"]
     add("adv_gym_vs_instinct", "$" + money_m(advr["vs_instinct_$M"].mean() * 1e6), advr["vs_instinct_$M"].mean(), "results/decision_gym_scores.csv", "advisor minus instinct, mean per situation")
