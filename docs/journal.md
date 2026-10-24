@@ -1863,3 +1863,23 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 - Push now, and tag a release once he has read the report?
 - Docker Desktop's old `run` folder is at `%LOCALAPPDATA%\Docker\run_stale` (it holds the socket file Windows would
   not delete); it can go once Docker has been restarted cleanly.
+
+## Session 25 — 2026-10-24: the clean Linux run on a second environment
+
+**Done**
+
+- Alan has no sudo password for WSL, so Python 3.11.9 and poppler 26.09 came from conda-forge through micromamba in
+  his WSL home (`~/mamba/envs/qs`); a clone of the repository in the Linux file system (`~/qs_clean`), the rebuilt
+  bundle, `make setup`, `make check-data` (111 of 111), `make all`.
+- Notebooks 01 → 11 in 90 minutes; 12 stopped at the registration guard and ran in 172 s with decision #111's source.
+  All 2,561 cited numbers identical to the container's, the same thirteen moved against this machine; 273 of 274 tests
+  pass. Poppler 26.09 reads the PJM tables as 22.12 and 25.07 do. Recorded under decision #112.
+- The first attempt overlapped the container's run on WSL's four cores and timed out in notebook 04's LightGBM
+  cross-validation at the one-hour cell limit; rerun alone it passed. A grader on four cores should run nothing else
+  alongside `make all`.
+
+**Next**
+
+1. Alan's read of report v10; recording the demo video from `report/report.pdf`.
+2. The WSL environment (`~/mamba`, `~/.local/bin/micromamba`, `~/qs_clean`, `~/qs_out`) can be removed when no
+   further run is wanted.

@@ -1757,3 +1757,19 @@ alternative rejected.
     notebook 02 reading 03's table, the hash records missing from the
     bundle) and the replay stop (#111). The committed results stay as my
     machine produced them.
+    *Second environment* (2026-10-24): WSL Ubuntu 24.04 with Python 3.11.9
+    and poppler 26.09 from conda-forge (micromamba, no root), a clone of
+    50a1934 and the rebuilt bundle. `make check-data` passed (111 of 111);
+    notebooks 01 → 11 ran end to end in 90 minutes (notebook 04 47
+    minutes), notebook 12 stopped at the registration guard and, with
+    #111's source (cbe1bdc), ran in 172 s. All 2,561 cited numbers are
+    identical as printed to the container's, so the thirteen that move
+    against my machine move the same way on both Linux builds, and 273 of
+    274 tests pass. The PJM tables `pdftotext` reads are unchanged on
+    poppler 22.12 and 26.09. One value moves by more than 0.1% between
+    platforms: the low-cost NPV of lease G12136, outside the twenty
+    candidates, −$63.7M here against −$71.5M on both Linux builds; nothing
+    the report cites reads it. A first attempt on this machine, run at the
+    same time as the container, timed out in notebook 04's LightGBM
+    cross-validation at the one-hour cell limit: on four shared cores the
+    limit is reached; alone it is not.
