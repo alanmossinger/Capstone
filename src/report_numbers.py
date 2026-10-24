@@ -2153,6 +2153,103 @@ def v10_report():
         add("v10_pass", str(int((graded["result"] == "PASS").sum())), int((graded["result"] == "PASS").sum()), v10 + "success_criteria_v10_scored.csv", f"registered v10 lines passed, of {len(graded)}")
 
 
+def v2_report():
+    """Report V2: every book under one funding rule, the dependence dial and the seven worlds, the optimizer-first arm, the allocation table (notebook 13)."""
+    v2 = "results/v2/"
+    if not (paths.RESULTS / "v2" / "books_financed.csv").exists():
+        return  # notebook 13 has not run yet; the V2 keys are read once it has
+    fin = read("v2/books_financed.csv").set_index(["book", "basis"])
+    bases = {"static": "static (unlimited capital)", "noline": "no line (calls beyond the reserve forfeit)", "own": "own line, net of fee and interest",
+             "owngross": "own line, gross", "common": "common $2.53B line, net of fee and interest"}
+    for book in ("A", "B", "C", "D", "F"):
+        for key, basis in bases.items():
+            r = fin.loc[(book, basis)]
+            add(f"v2_{book}_{key}_metric", dollars(r["metric"]), r["metric"], v2 + "books_financed.csv", f"book {book}, {basis}: registered metric")
+            add(f"v2_{book}_{key}_mean", dollars(r["mean"]), r["mean"], v2 + "books_financed.csv", f"book {book}, {basis}: expected NPV")
+            add(f"v2_{book}_{key}_cvar", dollars(r["cvar_loss"]), r["cvar_loss"], v2 + "books_financed.csv", f"book {book}, {basis}: worst-5% loss")
+            add(f"v2_{book}_{key}_ploss", pct(r["p_loss"], 0), r["p_loss"], v2 + "books_financed.csv", f"book {book}, {basis}: chance of a loss")
+        r = fin.loc[(book, bases["own"])]
+        add(f"v2_{book}_committed", dollars(r["capital_committed"]), r["capital_committed"], v2 + "books_financed.csv", f"book {book}: capital charged to the budget now")
+        add(f"v2_{book}_lease_capital", dollars(r["lease_capital"]), r["lease_capital"], v2 + "books_financed.csv", f"book {book}: lease capital")
+        add(f"v2_{book}_deposits", dollars(r["deposits"], "M", 0), r["deposits"], v2 + "books_financed.csv", f"book {book}: request deposits")
+        add(f"v2_{book}_reserve", dollars(r["reserve"]), r["reserve"], v2 + "books_financed.csv", f"book {book}: construction reserve")
+        add(f"v2_{book}_facility", dollars(r["facility_own_q95"]), r["facility_own_q95"], v2 + "books_financed.csv", f"book {book}: its own 95th-percentile facility")
+        add(f"v2_{book}_p_over", pct(r["p_calls_over_reserve"], 0), r["p_calls_over_reserve"], v2 + "books_financed.csv", f"book {book}: share of scenarios with calls beyond the reserve")
+        add(f"v2_{book}_financing", dollars(r["financing_cost_mean_own_line"], "M", 0), r["financing_cost_mean_own_line"], v2 + "books_financed.csv", f"book {book}: expected financing cost of its own line")
+        add(f"v2_{book}_members", str(int(r["members"])), int(r["members"]), v2 + "books_financed.csv", f"book {book}: members")
+    for key, basis in (("own", bases["own"]), ("common", bases["common"]), ("static", bases["static"])):
+        r = fin.loc[("D_L", basis)]
+        add(f"v2_DL_{key}_metric", dollars(r["metric"]), r["metric"], v2 + "books_financed.csv", f"D re-solved with the line, {basis}: metric")
+    r = fin.loc[("D_L", bases["own"])]
+    add("v2_DL_members", str(int(r["members"])), int(r["members"]), v2 + "books_financed.csv", "D re-solved with the line: members")
+    add("v2_DL_facility", dollars(r["facility_own_q95"]), r["facility_own_q95"], v2 + "books_financed.csv", "D re-solved with the line: its own facility")
+    pairs = read("v2/books_financed_pairs.csv").set_index(["basis", "book", "against"])
+    for key, basis in (("static", bases["static"]), ("own", bases["own"]), ("common", bases["common"])):
+        for other in ("A", "B", "C", "F"):
+            r = pairs.loc[(basis, "D", other)]
+            add(f"v2_pair_{key}_D_{other}", dollars(r["diff"], "M", 0, sign=True), r["diff"], v2 + "books_financed_pairs.csv", f"D minus {other}, {basis}")
+            add(f"v2_pair_{key}_D_{other}_ci", f"[{dollars(r['low'], 'M', 0, sign=True)}, {dollars(r['high'], 'M', 0, sign=True)}]", r["low"], v2 + "books_financed_pairs.csv", "its interval")
+        r = pairs.loc[(basis, "D_L", "D")]
+        add(f"v2_pair_{key}_DL_D", dollars(r["diff"], "M", 0, sign=True), r["diff"], v2 + "books_financed_pairs.csv", f"D re-solved with the line minus D, {basis}")
+        add(f"v2_pair_{key}_DL_D_ci", f"[{dollars(r['low'], 'M', 0, sign=True)}, {dollars(r['high'], 'M', 0, sign=True)}]", r["low"], v2 + "books_financed_pairs.csv", "its interval")
+    dial = read("v2/dependence_dial.csv").set_index(["dependence", "book"])
+    for dep, key in (("omega 0", "ind"), ("omega 0.25", "q25"), ("omega 0.5", "half"), ("omega 0.75", "q75"), ("omega 1", "joint"), ("comonotonic bound", "como")):
+        for book in ("A", "C", "D"):
+            r = dial.loc[(dep, book)]
+            add(f"v2_dial_{key}_{book}_cvar", dollars(r["cvar_loss"]), r["cvar_loss"], v2 + "dependence_dial.csv", f"book {book}, {dep}: worst-5% loss")
+            add(f"v2_dial_{key}_{book}_metric", dollars(r["metric"]), r["metric"], v2 + "dependence_dial.csv", f"book {book}, {dep}: metric")
+    worlds = read("v2/books_worlds.csv")
+    piv = worlds.pivot(index="world", columns="book", values="metric")
+    best = worlds.loc[worlds.groupby("world")["metric"].idxmax()].set_index("world")["book"]
+    wkeys = {"base model": "base", "ERCOT prices 25% lower": "ercot_low", "ERCOT half as volatile": "ercot_calm", "lease capital 30% higher": "lease_cost", "every plant two years late": "late",
+             "completion as the lookup says": "lookup", "WTI at $45 for five years": "oil45"}
+    for world, key in wkeys.items():
+        add(f"v2_world_{key}_best", best[world], best[world], v2 + "books_worlds.csv", f"the book that scores best: {world}")
+        for book in ("A", "B", "C", "D", "F"):
+            add(f"v2_world_{key}_{book}", dollars(piv.loc[world, book]), piv.loc[world, book], v2 + "books_worlds.csv", f"book {book}, {world}: metric")
+    n_best_D = int((best == "D").sum())
+    add("v2_worlds_D_best", str(n_best_D), n_best_D, v2 + "books_worlds.csv", "worlds of seven in which D scores best")
+    rungs = read("v2/ladder_five_rungs.csv").set_index("rung")
+    for key in rungs.index:
+        r = rungs.loc[key]
+        add(f"v2_rung_{key}", dollars(r["mean"], "M", 0, sign=True), r["mean"], v2 + "ladder_five_rungs.csv", f"ladder rung {key}")
+        add(f"v2_rung_{key}_ci", f"[{dollars(r['low'], 'M', 0, sign=True)}, {dollars(r['high'], 'M', 0, sign=True)}]", r["low"], v2 + "ladder_five_rungs.csv", "its interval")
+    arms = read("v2/ladder_five_arms.csv")
+    means = arms.groupby("arm")["metric"].mean()
+    for arm in ("proposal", "tools", "optimizer_first", "tools_llm", "optimizer"):
+        add(f"v2_arm_{arm}", dollars(means[arm], "M", 0), means[arm], v2 + "ladder_five_arms.csv", f"mean objective under the {arm} arm")
+    changed = arms[arms["world"] == "base model"].groupby("arm")["changed"].sum()
+    for arm in ("tools", "optimizer_first", "tools_llm"):
+        add(f"v2_arm_{arm}_changed", str(int(changed[arm])), int(changed[arm]), v2 + "ladder_five_arms.csv", f"cases in which the {arm} arm changes the book")
+    members = read("v2/book_D_members.csv")
+    in_book = members[members["in_book"]]
+    add("v2_D_committed_members", dollars(in_book["charge_$M"].sum() * 1e6), in_book["charge_$M"].sum() * 1e6, v2 + "book_D_members.csv", "book D: capital charged, sum of members")
+    add("v2_D_npv_members", dollars(in_book["expected_npv_$M"].sum() * 1e6), in_book["expected_npv_$M"].sum() * 1e6, v2 + "book_D_members.csv", "book D: expected NPV, sum of members")
+    for _, r in in_book.iterrows():
+        k = r["project_id"].split("|")[-1].lower()
+        add(f"v2_m_{k}_charge", dollars(r["charge_$M"] * 1e6, "M", 0), r["charge_$M"], v2 + "book_D_members.csv", f"{r['project_id']}: budget charge")
+        add(f"v2_m_{k}_npv", dollars(r["expected_npv_$M"] * 1e6, "M", 0), r["expected_npv_$M"], v2 + "book_D_members.csv", f"{r['project_id']}: expected NPV")
+        add(f"v2_m_{k}_pneg", pct(r["p_negative"], 0), r["p_negative"], v2 + "book_D_members.csv", f"{r['project_id']}: chance of a loss")
+        add(f"v2_m_{k}_cost", dollars(r["objective_cost_$M"] * 1e6, "M", 0), r["objective_cost_$M"], v2 + "book_D_members.csv", f"{r['project_id']}: cost of removal")
+        if "mw" in r and pd.notna(r["mw"]):
+            add(f"v2_m_{k}_mw", f"{r['mw']:,.0f}", r["mw"], v2 + "book_D_members.csv", f"{r['project_id']}: MW")
+    counts = members["status"].value_counts()
+    for status, key in (("invest now", "now"), ("invest in stages", "stages"), ("defer pending information", "defer"), ("monitor", "monitor"), ("reject", "reject")):
+        add(f"v2_status_{key}", str(int(counts.get(status, 0))), int(counts.get(status, 0)), v2 + "book_D_members.csv", f"candidates with status {status}")
+    matrix = read("v2/readiness_matrix.csv")
+    add("v2_controls", str(len(matrix)), len(matrix), v2 + "readiness_matrix.csv", "controls in the readiness matrix")
+    add("v2_controls_yes", str(int((matrix["implemented"] == "yes").sum())), int((matrix["implemented"] == "yes").sum()), v2 + "readiness_matrix.csv", "controls in place")
+    add("v2_controls_partly", str(int((matrix["implemented"] == "partly").sum())), int((matrix["implemented"] == "partly").sum()), v2 + "readiness_matrix.csv", "controls partly in place")
+    # the committee example of the report (section 9): registered case X25, the sunk-cost statement on book D, and its recorded memo
+    records = {json.loads(line)["id"]: json.loads(line) for line in (paths.RESULTS / "v10" / "x1_outputs.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()}
+    ex = records["X25"]
+    add("v2_ex_vulns", str(len(ex["memo"]["vulnerabilities"])), len(ex["memo"]["vulnerabilities"]), "results/v10/x1_outputs.jsonl", "X25: vulnerabilities in the memo")
+    add("v2_ex_fragile", str(sum(f.startswith("fragile member") for f in ex["checklist"]["flags"])), sum(f.startswith("fragile member") for f in ex["checklist"]["flags"]), "results/v10/x1_outputs.jsonl", "X25: members the checklist flags as fragile")
+    add("v2_ex_numbers", str(ex["verification"]["n_numbers"]), ex["verification"]["n_numbers"], "results/v10/x1_outputs.jsonl", "X25: numbers in the memo")
+    add("v2_ex_grounded", str(ex["verification"]["n_grounded"]), ex["verification"]["n_grounded"], "results/v10/x1_outputs.jsonl", "X25: numbers found on the fact sheet")
+    add("v2_ex_level", ex["level"], ex["level"], "results/v10/x1_outputs.jsonl", "X25: the level the challenger took")
+
+
 def build():
     """Collect every cited number and write ``results/report_numbers.csv``.
 
@@ -2171,7 +2268,7 @@ def build():
     for step in (design_constants, gathering_and_cleaning, eda, modelling, evaluation, explanation, posthoc,
                  v3_data, v3_fair_baseline, v3_level, v3_landmark, v3_value, v3_miso_spp, v3_portfolio,
                  v3_extras, v3_appendix, v4_managed_book, v5_drivers, v5_segments, v5_timing, v5_tournament, v5_npv,
-                 v5_review, v5_books, v5_archetypes, v5_extras, v6_data, v6_forecasts, v6_economics, v6_scenarios, v6_books, v6_advisor, v7_rounded, v7_posthoc, v7_questions, v8_bridged, v8_report, v9_challenger, v10_report):
+                 v5_review, v5_books, v5_archetypes, v5_extras, v6_data, v6_forecasts, v6_economics, v6_scenarios, v6_books, v6_advisor, v7_rounded, v7_posthoc, v7_questions, v8_bridged, v8_report, v9_challenger, v10_report, v2_report):
         step()
     table = pd.DataFrame(ROWS)
     table.to_csv(paths.RESULTS / "report_numbers.csv", index=False)

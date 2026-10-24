@@ -8,7 +8,7 @@ PYTHON := .venv/bin/python
 PY311 := python3.11
 endif
 
-.PHONY: setup get-data check-data bundle-data data eda features forecast energy economics scenarios portfolio record advisor decide figures numbers report poster petrobras app challenge decide-page test all
+.PHONY: setup get-data check-data bundle-data data eda features forecast energy economics scenarios portfolio record advisor decide questions corrections figures numbers report poster petrobras app challenge decide-page test all
 
 setup:            ## create .venv from Python 3.11 (the pinned wheels are 3.11 builds), install pinned packages, register the notebook kernel
 	$(PY311) -m venv .venv
@@ -90,5 +90,8 @@ test:
 questions:        ## 12: the three questions of v10 — the registration ledger, the credit line net of financing, the challenger ladder
 	$(PYTHON) run_pipeline.py --only 12
 
-all:              ## notebooks 01 → 12 in dependency order (03 before 02, 06 after 09), stop at the first error
+corrections:      ## 13: the executive corrections of V2 — every book under one funding rule, the dependence dial, the optimizer-first arm
+	$(PYTHON) run_pipeline.py --only 13
+
+all:              ## notebooks 01 → 13 in dependency order (03 before 02, 06 after 09), stop at the first error
 	$(PYTHON) run_pipeline.py

@@ -7,7 +7,7 @@ import pandas as pd
 from src import paths, report_numbers
 
 REPORT = paths.REPORT / "report.md"
-WORD_LIMIT = 4500  # the course suggests 3,000 excluding references and appendices; the executive report may run to about 4,500 (decision #94, superseding #84)
+WORD_LIMIT = 11000  # the course suggests 3,000 excluding references and appendices; the executive report V2 runs to about 10,000 (decision #113, superseding #94)
 NUMBER = re.compile(r"\d[\d,]*(?:\.\d+)?%?")
 
 # Labels and names that contain digits but are not cited quantities.
@@ -18,6 +18,8 @@ NOT_QUANTITIES = [
     r"\b(?:Figure|Appendix|decisions?|notebooks?)\s+[\d–, and#]+",
     r"#\d+",                               # decision numbers
     r"\bsections?\s+\d+(?:\.\d+)?",       # section references
+    r"\b\d{2}INR\d{4}\b",                  # ERCOT request ids (24INR0075)
+    r"\bG\d{5}\b",                         # BSEE lease ids (G26253)
     r"\b(?:RQ|[CRKDSH])\d+\b",             # criteria C1–C5, rules R1–R9, post-hoc K, decisions D0–D7, sources S13, hypotheses H2, questions RQ1
     r"§\s?\d+(?:[–-]§?\d+)?",             # section marks in the Decision Board
     r"\bTables?\s+\d+",                    # table numbers

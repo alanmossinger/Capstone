@@ -1932,6 +1932,66 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** The registered attribution ladder of v10: what the tools, the language model and the optimizer each add to the committee's decision, paired per case.
 <!-- /fig:F50_ladder_v10 -->
 
+<!-- fig:F51_true_economics -->
+### F51_true_economics
+
+![F51_true_economics](../figures/F51_true_economics.png)
+
+*Notebook:* `notebooks/13_executive_corrections.ipynb` · *Files:* `figures/F51_true_economics.png`, `.svg`
+
+**Caption (stub).** The true economics of capital allocation: every decision process on the same funding basis, before and after the construction line is priced, with the capital each commits, reserves and may call.
+<!-- /fig:F51_true_economics -->
+
+<!-- fig:F52_what_can_go_wrong -->
+### F52_what_can_go_wrong
+
+![F52_what_can_go_wrong](../figures/F52_what_can_go_wrong.png)
+
+*Notebook:* `notebooks/13_executive_corrections.ipynb` · *Files:* `figures/F52_what_can_go_wrong.png`, `.svg`
+
+**Caption (stub).** What can go wrong: the books' tails as the candidates' co-movement is dialled from independent to perfect, and their value in seven modelled worlds.
+<!-- /fig:F52_what_can_go_wrong -->
+
+<!-- fig:F53_ladder_five_arms -->
+### F53_ladder_five_arms
+
+![F53_ladder_five_arms](../figures/F53_ladder_five_arms.png)
+
+*Notebook:* `notebooks/13_executive_corrections.ipynb` · *Files:* `figures/F53_ladder_five_arms.png`, `.svg`
+
+**Caption (stub).** The attribution ladder with a stronger baseline: the optimizer-first rule as a fifth arm beside the registered four, paired per case.
+<!-- /fig:F53_ladder_five_arms -->
+
+<!-- fig:F54_allocation -->
+### F54_allocation
+
+![F54_allocation](../figures/F54_allocation.png)
+
+*Notebook:* `notebooks/13_executive_corrections.ipynb` · *Files:* `figures/F54_allocation.png`, `.svg`
+
+**Caption (stub).** The recommended capital allocation: the risk-aware book's members, their budget charge, expected NPV, chance of a loss and the cost of removing each.
+<!-- /fig:F54_allocation -->
+
+<!-- fig:F55_committee_workflow -->
+### F55_committee_workflow
+
+![F55_committee_workflow](../figures/F55_committee_workflow.png)
+
+*Notebook:* `notebooks/13_executive_corrections.ipynb` · *Files:* `figures/F55_committee_workflow.png`, `.svg`
+
+**Caption (stub).** The investment-committee operational workflow: proposal, reading, confirmation, verified analysis, challenge, alternatives, decision, authorization, ledger; and the challenger's five levels.
+<!-- /fig:F55_committee_workflow -->
+
+<!-- fig:F56_readiness_matrix -->
+### F56_readiness_matrix
+
+![F56_readiness_matrix](../figures/F56_readiness_matrix.png)
+
+*Notebook:* `notebooks/13_executive_corrections.ipynb` · *Files:* `figures/F56_readiness_matrix.png`, `.svg`
+
+**Caption (stub).** The readiness and control matrix: implemented capabilities, safeguards, known limitations and the validation required before actual financial commitments.
+<!-- /fig:F56_readiness_matrix -->
+
 <!-- fig:F5_auc_brier_by_horizon -->
 ### F5_auc_brier_by_horizon
 

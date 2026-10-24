@@ -26,7 +26,7 @@ NOTEBOOKS = Path(__file__).resolve().parent / "notebooks"
 # The notebooks are numbered by the story (PLAN.md §14) and run in dependency order: 06, the evaluation
 # record, runs last because it reads every scored table (decision #63); 03 runs before 02 because the asset map of 02 reads
 # 03's Track A table (decision #109); 05, 08 and 10 join as they are built.
-PIPELINE = ["01", "03", "02", "04", "05", "07", "08", "09", "06", "10", "11", "12"]  # 11, the decision system of v8, reads 07–09 (decision #91); 12, the three questions of v10, reads 11
+PIPELINE = ["01", "03", "02", "04", "05", "07", "08", "09", "06", "10", "11", "12", "13"]  # 11, the decision system of v8, reads 07–09 (decision #91); 12, the three questions of v10, reads 11; 13, the executive corrections of V2, reads 11 and 12
 KERNEL = "queue-survival"  # registered from .venv by `make setup`
 
 

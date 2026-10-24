@@ -1883,3 +1883,17 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 1. Alan's read of report v10; recording the demo video from `report/report.pdf`.
 2. The WSL environment (`~/mamba`, `~/.local/bin/micromamba`, `~/qs_clean`, `~/qs_out`) can be removed when no
    further run is wanted.
+
+## Session 26 — 2026-10-24: report V2 from the executive review (decision #113)
+
+**Done**
+
+- `docs/v2_review.md`: the review and correction register — what stands, seven corrections ranked by materiality, the scenario assessment, the governance controls, what needed computation.
+- Notebook 13 (`13_executive_corrections.ipynb`, `make corrections`, in the pipeline after 12): every process on the same funding bases (D $1.03B against C $0.82B and A $0.72B net of fee and interest; D over A +$312M [+$110M, +$506M]; with no line B leads at $0.87B), D re-solved with the line as a constraint (9 members, −$49M [−$127M, +$23M]), the dependence dial (D's tail −$0.03B → $0.82B as ω goes 0 → 1; comonotonic bound $2.19B), seven worlds (D best in 7 of 7), the optimizer-first arm on the registered v10 cases (the model's edge −$14M [−$36M, +$2M]; the rule +$56M over the checklist; registered rungs reproduced), book D's member table, the workflow and the control matrix (10 of 12 controls in place). Figures F51–F56; `results/v2/`; keys `v2_*` in `src/report_numbers.py`.
+- `report/report.md` rewritten as V2: the decision brief, fourteen sections by the committee's questions, eleven figures and four tables in the body, the registered example X25 as the committee conversation; the v10 appendices kept with cross-references moved and F48, F50 as Figures A16–A17. Every number in the live table (the 5 report tests pass); the body about 10,000 words (`WORD_LIMIT = 11000`).
+- The first notebook-13 run took 30 minutes (the ladder's funding loops); a second run with the figure layouts fixed (F51's labels, F53's arm labels, F55's long captions that squeezed the axes, F56's cell heights).
+
+**Next**
+
+1. `make report` on the rerun figures; look at every page; the poster is unchanged (it cites the v10 numbers, which stand); full `pytest`; commit and push on Alan's word.
+2. Alan's read of V2; the demo video script's figure numbers may need moving to V2's.

@@ -5,23 +5,24 @@
 SIADS 699 Capstone (Master of Applied Data Science, University of Michigan), Group 13.
 Author: Alan Mössinger.
 
-> **Status (2026-10-22, v10, branch `v8-corrections`):** a report that
-> answers three questions of one decision — twenty Gulf of Mexico lease
-> redevelopments and twenty ERCOT requests under one budget on 1 January
-> 2025, built only from what was public that day (the LBNL 2024 edition and
-> ERCOT's 2024 monthly reports). *Q1* A queue model ranks requests better than
-> a lookup and overstates the level, as the first year after the decision
-> confirmed. *Q2* Held to the same constraints, a risk-aware optimizer beats
-> NPV ranking on the registered metric by $219M [+$13M, +$401M], and the
-> contingent construction line it needs still pays once priced. *Q3* In a
-> registered test on 48 simulated committee proposals (`results/v10/`,
-> notebook 12), tools alone improve the committee's own objective by $76M per
-> case and a language-model challenger adds $43M [+$9M, +$86M] more while
-> holding no authority; it fails two of nine registered lines (silence read
-> as a zero tail weight; numbers not on its sheet), reported as they fell.
-> Twelve notebooks run end to end (`make all`); every registered line is
-> scored once. The session log is `docs/journal.md`; the reasons are in
-> `docs/decisions.md` (#99–#107).
+> **Status (2026-10-24, V2, branch `v8-corrections`):** an executive
+> report for an investment committee that decides one budget of $3.82B
+> across twenty Gulf of Mexico lease redevelopments and twenty ERCOT
+> interconnection requests on 1 January 2025, built only from what was
+> public that day. It recommends the risk-aware book — five leases and
+> eight requests, $3.78B committed — with a $2.53B contingent construction
+> facility. Under equal constraints that book beats NPV ranking on the
+> registered metric by $219M [+$13M, +$401M] (pre-registered), by $312M
+> [+$110M, +$506M] once every process is funded the same way (notebook 13),
+> and it scores best in 7 of 7 modelled worlds. In a registered test on 48
+> simulated committee proposals, tools improve the committee's own decision
+> by $76M per case and a language-model challenger adds $43M [+$9M, +$86M]
+> more while holding no authority; against a fixed optimizer-first rule the
+> model's edge disappears (−$14M [−$36M, +$2M]), so its value is in naming
+> flaws of argument (12 of 12), not in choosing the book. Two of nine
+> registered lines fail and are reported as they fell. Thirteen notebooks
+> run end to end (`make all`); the review register is `docs/v2_review.md`;
+> the reasons are in `docs/decisions.md` (#99–#113).
 
 ## About
 

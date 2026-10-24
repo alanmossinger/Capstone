@@ -1773,3 +1773,43 @@ alternative rejected.
     same time as the container, timed out in notebook 04's LightGBM
     cross-validation at the one-hour cell limit: on four shared cores the
     limit is reached; alone it is not.
+113. **Report V2: the executive edition, every process financed the same
+    way, and a stronger baseline for the language model** (Alan,
+    2026-10-23/24: "first review the critique. Then create a new version
+    V2"; `docs/v2_review.md`; notebook 13). The executive review of 23
+    October asked for a decision-first report for an investment committee
+    and for four methodological checks. *Done by computation (notebook 13,
+    post-registration, labelled):* every decision process scored on the
+    same funding bases — static, no line, its own 95th-percentile line net
+    of the registered fee and interest, a common $2.53B line — with capital
+    committed, reserved and contingent separated and paired intervals on
+    the financed basis; the risk-aware book re-solved with the line as a
+    constraint; the co-movement dialled from independent to joint and to
+    the comonotonic bound; every book in seven worlds on one table; the
+    optimizer-first rule of decision #97 as a fifth arm on the registered
+    v10 cases and their recorded outputs; the member table of book D; the
+    committee workflow and the control matrix drawn from code. *Done by
+    rewriting:* the report opens with a two-page decision brief and runs
+    fourteen sections by the committee's questions, the methods after the
+    findings, criteria codes in the tables; the title is the review's
+    proposal; the committee example quotes a registered case (X25) and its
+    recorded memo; the appendices of v10 are kept whole with their
+    cross-references moved. *Kept as registered:* every registered line
+    and verdict; C34 stays scored as PASS, the optimizer-first arm is
+    reported beside it. *Findings:* on the financed basis the risk-aware
+    book leads by more, not less (+$312M over NPV ranking, +$213M over the
+    deterministic book, both clear of zero); with no line equal capital
+    would lead, so the recommendation is the book and its facility; the
+    tail grows monotonically with the co-movement and D scores best in 7
+    of 7 worlds; against the optimizer-first rule the language model's
+    edge is −$14M [−$36M, +$2M] — its distinct value is naming flaws of
+    argument, not choosing the book. The body runs to about 10,000 words
+    (`WORD_LIMIT = 11000`, superseding #94) at Alan's word that the page
+    count may grow; candidate ids are excluded from the number test as
+    labels. Pipeline: notebook 13 runs after 12 (`make corrections`).
+    *Rejected:* re-registering C34 against the stronger rule (chosen after
+    the result was seen; reported instead); replacing the scenario engine
+    (the dial shows the tail is a concentration, not an artefact; the
+    regime-switching and extreme-event scenarios are proposed, to be
+    registered before use); dropping the appendices to shorten the report
+    (the academic record stays whole).

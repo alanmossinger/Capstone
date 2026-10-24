@@ -2560,3 +2560,352 @@ v10_c40_result,PASS,PASS,results/v10/success_criteria_v10_scored.csv,C40 verdict
 v10_c41_result,PASS,PASS,results/v10/success_criteria_v10_scored.csv,C41 verdict
 v10_calls,176,176,results/v10/*_outputs.jsonl,live calls of the registered v10 run
 v10_pass,6,6,results/v10/success_criteria_v10_scored.csv,"registered v10 lines passed, of 8"
+v2_A_static_metric,$1.13B,1128700247.0801988,results/v2/books_financed.csv,"book A, static (unlimited capital): registered metric"
+v2_A_static_mean,$2.68B,2678376191.8253207,results/v2/books_financed.csv,"book A, static (unlimited capital): expected NPV"
+v2_A_static_cvar,$1.55B,1549675944.745122,results/v2/books_financed.csv,"book A, static (unlimited capital): worst-5% loss"
+v2_A_static_ploss,12%,0.1215,results/v2/books_financed.csv,"book A, static (unlimited capital): chance of a loss"
+v2_A_noline_metric,$0.68B,679539910.2547996,results/v2/books_financed.csv,"book A, no line (calls beyond the reserve forfeit): registered metric"
+v2_A_noline_mean,$1.89B,1887393323.9279888,results/v2/books_financed.csv,"book A, no line (calls beyond the reserve forfeit): expected NPV"
+v2_A_noline_cvar,$1.21B,1207853413.6731892,results/v2/books_financed.csv,"book A, no line (calls beyond the reserve forfeit): worst-5% loss"
+v2_A_noline_ploss,14%,0.1405,results/v2/books_financed.csv,"book A, no line (calls beyond the reserve forfeit): chance of a loss"
+v2_A_own_metric,$0.72B,721551242.2634451,results/v2/books_financed.csv,"book A, own line, net of fee and interest: registered metric"
+v2_A_own_mean,$2.47B,2472836962.046364,results/v2/books_financed.csv,"book A, own line, net of fee and interest: expected NPV"
+v2_A_own_cvar,$1.75B,1751285719.7829187,results/v2/books_financed.csv,"book A, own line, net of fee and interest: worst-5% loss"
+v2_A_own_ploss,14%,0.1375,results/v2/books_financed.csv,"book A, own line, net of fee and interest: chance of a loss"
+v2_A_owngross_metric,$1.02B,1015787659.8926032,results/v2/books_financed.csv,"book A, own line, gross: registered metric"
+v2_A_owngross_mean,$2.60B,2603367709.205868,results/v2/books_financed.csv,"book A, own line, gross: expected NPV"
+v2_A_owngross_cvar,$1.59B,1587580049.313264,results/v2/books_financed.csv,"book A, own line, gross: worst-5% loss"
+v2_A_owngross_ploss,13%,0.127,results/v2/books_financed.csv,"book A, own line, gross: chance of a loss"
+v2_A_common_metric,$0.72B,720377093.4028707,results/v2/books_financed.csv,"book A, common $2.53B line, net of fee and interest: registered metric"
+v2_A_common_mean,$2.47B,2472249887.6160765,results/v2/books_financed.csv,"book A, common $2.53B line, net of fee and interest: expected NPV"
+v2_A_common_cvar,$1.75B,1751872794.2132058,results/v2/books_financed.csv,"book A, common $2.53B line, net of fee and interest: worst-5% loss"
+v2_A_common_ploss,14%,0.1375,results/v2/books_financed.csv,"book A, common $2.53B line, net of fee and interest: chance of a loss"
+v2_A_committed,$3.81B,3812177322.3216352,results/v2/books_financed.csv,book A: capital charged to the budget now
+v2_A_lease_capital,$1.45B,1452909601.19193,results/v2/books_financed.csv,book A: lease capital
+v2_A_deposits,$8M,8237652.958458102,results/v2/books_financed.csv,book A: request deposits
+v2_A_reserve,$2.35B,2351030068.1712456,results/v2/books_financed.csv,book A: construction reserve
+v2_A_facility,$2.51B,2506711322.966772,results/v2/books_financed.csv,book A: its own 95th-percentile facility
+v2_A_p_over,46%,0.46,results/v2/books_financed.csv,book A: share of scenarios with calls beyond the reserve
+v2_A_financing,$131M,130530747.15950346,results/v2/books_financed.csv,book A: expected financing cost of its own line
+v2_A_members,15,15,results/v2/books_financed.csv,book A: members
+v2_B_static_metric,$1.11B,1109075087.243375,results/v2/books_financed.csv,"book B, static (unlimited capital): registered metric"
+v2_B_static_mean,$2.44B,2437678670.295146,results/v2/books_financed.csv,"book B, static (unlimited capital): expected NPV"
+v2_B_static_cvar,$1.33B,1328603583.051771,results/v2/books_financed.csv,"book B, static (unlimited capital): worst-5% loss"
+v2_B_static_ploss,11%,0.114,results/v2/books_financed.csv,"book B, static (unlimited capital): chance of a loss"
+v2_B_noline_metric,$0.87B,867057666.653129,results/v2/books_financed.csv,"book B, no line (calls beyond the reserve forfeit): registered metric"
+v2_B_noline_mean,$1.63B,1634049985.7322989,results/v2/books_financed.csv,"book B, no line (calls beyond the reserve forfeit): expected NPV"
+v2_B_noline_cvar,$0.77B,766992319.0791699,results/v2/books_financed.csv,"book B, no line (calls beyond the reserve forfeit): worst-5% loss"
+v2_B_noline_ploss,10%,0.0985,results/v2/books_financed.csv,"book B, no line (calls beyond the reserve forfeit): chance of a loss"
+v2_B_own_metric,$0.71B,710781894.801496,results/v2/books_financed.csv,"book B, own line, net of fee and interest: registered metric"
+v2_B_own_mean,$2.21B,2208744650.665123,results/v2/books_financed.csv,"book B, own line, net of fee and interest: expected NPV"
+v2_B_own_cvar,$1.50B,1497962755.863627,results/v2/books_financed.csv,"book B, own line, net of fee and interest: worst-5% loss"
+v2_B_own_ploss,13%,0.1325,results/v2/books_financed.csv,"book B, own line, net of fee and interest: chance of a loss"
+v2_B_owngross_metric,$1.01B,1014546291.4578626,results/v2/books_financed.csv,"book B, own line, gross: registered metric"
+v2_B_owngross_mean,$2.35B,2351433052.072438,results/v2/books_financed.csv,"book B, own line, gross: expected NPV"
+v2_B_owngross_cvar,$1.34B,1336886760.6145751,results/v2/books_financed.csv,"book B, own line, gross: worst-5% loss"
+v2_B_owngross_ploss,12%,0.116,results/v2/books_financed.csv,"book B, own line, gross: chance of a loss"
+v2_B_common_metric,$0.79B,787730061.1589348,results/v2/books_financed.csv,"book B, common $2.53B line, net of fee and interest: registered metric"
+v2_B_common_mean,$2.20B,2201521413.9100075,results/v2/books_financed.csv,"book B, common $2.53B line, net of fee and interest: expected NPV"
+v2_B_common_cvar,$1.41B,1413791352.7510726,results/v2/books_financed.csv,"book B, common $2.53B line, net of fee and interest: worst-5% loss"
+v2_B_common_ploss,13%,0.1295,results/v2/books_financed.csv,"book B, common $2.53B line, net of fee and interest: chance of a loss"
+v2_B_committed,$3.42B,3420573964.804609,results/v2/books_financed.csv,book B: capital charged to the budget now
+v2_B_lease_capital,$1.52B,1519605894.8022814,results/v2/books_financed.csv,book B: lease capital
+v2_B_deposits,$9M,8925952.638478635,results/v2/books_financed.csv,book B: request deposits
+v2_B_reserve,$1.89B,1892042117.3638484,results/v2/books_financed.csv,book B: construction reserve
+v2_B_facility,$2.91B,2910980373.7622213,results/v2/books_financed.csv,book B: its own 95th-percentile facility
+v2_B_p_over,45%,0.4495,results/v2/books_financed.csv,book B: share of scenarios with calls beyond the reserve
+v2_B_financing,$143M,142688401.40731478,results/v2/books_financed.csv,book B: expected financing cost of its own line
+v2_B_members,18,18,results/v2/books_financed.csv,book B: members
+v2_C_static_metric,$1.21B,1212185674.1556275,results/v2/books_financed.csv,"book C, static (unlimited capital): registered metric"
+v2_C_static_mean,$2.73B,2730604107.9059434,results/v2/books_financed.csv,"book C, static (unlimited capital): expected NPV"
+v2_C_static_cvar,$1.52B,1518418433.750316,results/v2/books_financed.csv,"book C, static (unlimited capital): worst-5% loss"
+v2_C_static_ploss,11%,0.1135,results/v2/books_financed.csv,"book C, static (unlimited capital): chance of a loss"
+v2_C_noline_metric,$0.76B,762537013.4975574,results/v2/books_financed.csv,"book C, no line (calls beyond the reserve forfeit): registered metric"
+v2_C_noline_mean,$1.94B,1939512501.979906,results/v2/books_financed.csv,"book C, no line (calls beyond the reserve forfeit): expected NPV"
+v2_C_noline_cvar,$1.18B,1176975488.482349,results/v2/books_financed.csv,"book C, no line (calls beyond the reserve forfeit): worst-5% loss"
+v2_C_noline_ploss,13%,0.1325,results/v2/books_financed.csv,"book C, no line (calls beyond the reserve forfeit): chance of a loss"
+v2_C_own_metric,$0.82B,820449840.7917979,results/v2/books_financed.csv,"book C, own line, net of fee and interest: registered metric"
+v2_C_own_mean,$2.52B,2522528691.027304,results/v2/books_financed.csv,"book C, own line, net of fee and interest: expected NPV"
+v2_C_own_cvar,$1.70B,1702078850.2355063,results/v2/books_financed.csv,"book C, own line, net of fee and interest: worst-5% loss"
+v2_C_own_ploss,13%,0.132,results/v2/books_financed.csv,"book C, own line, net of fee and interest: chance of a loss"
+v2_C_owngross_metric,$1.11B,1111147972.0227542,results/v2/books_financed.csv,"book C, own line, gross: registered metric"
+v2_C_owngross_mean,$2.65B,2651674379.86388,results/v2/books_financed.csv,"book C, own line, gross: expected NPV"
+v2_C_owngross_cvar,$1.54B,1540526407.8411255,results/v2/books_financed.csv,"book C, own line, gross: worst-5% loss"
+v2_C_owngross_ploss,12%,0.118,results/v2/books_financed.csv,"book C, own line, gross: chance of a loss"
+v2_C_common_metric,$0.80B,797167495.6394253,results/v2/books_financed.csv,"book C, common $2.53B line, net of fee and interest: registered metric"
+v2_C_common_mean,$2.52B,2524195283.520928,results/v2/books_financed.csv,"book C, common $2.53B line, net of fee and interest: expected NPV"
+v2_C_common_cvar,$1.73B,1727027787.8815026,results/v2/books_financed.csv,"book C, common $2.53B line, net of fee and interest: worst-5% loss"
+v2_C_common_ploss,13%,0.132,results/v2/books_financed.csv,"book C, common $2.53B line, net of fee and interest: chance of a loss"
+v2_C_committed,$3.81B,3811390348.291252,results/v2/books_financed.csv,book C: capital charged to the budget now
+v2_C_lease_capital,$1.52B,1519605894.8022814,results/v2/books_financed.csv,book C: lease capital
+v2_C_deposits,$7M,7357703.642573358,results/v2/books_financed.csv,book C: request deposits
+v2_C_reserve,$2.28B,2284426749.8463964,results/v2/books_financed.csv,book C: construction reserve
+v2_C_facility,$2.46B,2455374252.6078854,results/v2/books_financed.csv,book C: its own 95th-percentile facility
+v2_C_p_over,45%,0.4505,results/v2/books_financed.csv,book C: share of scenarios with calls beyond the reserve
+v2_C_financing,$129M,129145688.83657552,results/v2/books_financed.csv,book C: expected financing cost of its own line
+v2_C_members,17,17,results/v2/books_financed.csv,book C: members
+v2_D_static_metric,$1.35B,1347896082.3915796,results/v2/books_financed.csv,"book D, static (unlimited capital): registered metric"
+v2_D_static_mean,$2.17B,2170334090.783821,results/v2/books_financed.csv,"book D, static (unlimited capital): expected NPV"
+v2_D_static_cvar,$0.82B,822438008.3922414,results/v2/books_financed.csv,"book D, static (unlimited capital): worst-5% loss"
+v2_D_static_ploss,9%,0.0855,results/v2/books_financed.csv,"book D, static (unlimited capital): chance of a loss"
+v2_D_noline_metric,$0.76B,756902257.5023683,results/v2/books_financed.csv,"book D, no line (calls beyond the reserve forfeit): registered metric"
+v2_D_noline_mean,$1.71B,1707246374.691272,results/v2/books_financed.csv,"book D, no line (calls beyond the reserve forfeit): expected NPV"
+v2_D_noline_cvar,$0.95B,950344117.1889036,results/v2/books_financed.csv,"book D, no line (calls beyond the reserve forfeit): worst-5% loss"
+v2_D_noline_ploss,12%,0.121,results/v2/books_financed.csv,"book D, no line (calls beyond the reserve forfeit): chance of a loss"
+v2_D_own_metric,$1.03B,1033867502.7471124,results/v2/books_financed.csv,"book D, own line, net of fee and interest: registered metric"
+v2_D_own_mean,$1.98B,1982290338.397127,results/v2/books_financed.csv,"book D, own line, net of fee and interest: expected NPV"
+v2_D_own_cvar,$0.95B,948422835.6500144,results/v2/books_financed.csv,"book D, own line, net of fee and interest: worst-5% loss"
+v2_D_own_ploss,10%,0.1015,results/v2/books_financed.csv,"book D, own line, net of fee and interest: chance of a loss"
+v2_D_owngross_metric,$1.27B,1267535021.3133168,results/v2/books_financed.csv,"book D, own line, gross: registered metric"
+v2_D_owngross_mean,$2.11B,2108533822.153227,results/v2/books_financed.csv,"book D, own line, gross: expected NPV"
+v2_D_owngross_cvar,$0.84B,840998800.8399101,results/v2/books_financed.csv,"book D, own line, gross: worst-5% loss"
+v2_D_owngross_ploss,9%,0.089,results/v2/books_financed.csv,"book D, own line, gross: chance of a loss"
+v2_D_common_metric,$1.03B,1033867502.7471124,results/v2/books_financed.csv,"book D, common $2.53B line, net of fee and interest: registered metric"
+v2_D_common_mean,$1.98B,1982290338.397127,results/v2/books_financed.csv,"book D, common $2.53B line, net of fee and interest: expected NPV"
+v2_D_common_cvar,$0.95B,948422835.6500144,results/v2/books_financed.csv,"book D, common $2.53B line, net of fee and interest: worst-5% loss"
+v2_D_common_ploss,10%,0.1015,results/v2/books_financed.csv,"book D, common $2.53B line, net of fee and interest: chance of a loss"
+v2_D_committed,$3.78B,3778326876.675812,results/v2/books_financed.csv,book D: capital charged to the budget now
+v2_D_lease_capital,$1.42B,1417457466.0607357,results/v2/books_financed.csv,book D: lease capital
+v2_D_deposits,$7M,6805084.971769887,results/v2/books_financed.csv,book D: request deposits
+v2_D_reserve,$2.35B,2354064325.6433067,results/v2/books_financed.csv,book D: construction reserve
+v2_D_facility,$2.53B,2529263482.095257,results/v2/books_financed.csv,book D: its own 95th-percentile facility
+v2_D_p_over,50%,0.503,results/v2/books_financed.csv,book D: share of scenarios with calls beyond the reserve
+v2_D_financing,$126M,126243483.75610018,results/v2/books_financed.csv,book D: expected financing cost of its own line
+v2_D_members,13,13,results/v2/books_financed.csv,book D: members
+v2_F_static_metric,$1.31B,1310571908.613872,results/v2/books_financed.csv,"book F, static (unlimited capital): registered metric"
+v2_F_static_mean,$2.40B,2400013920.354532,results/v2/books_financed.csv,"book F, static (unlimited capital): expected NPV"
+v2_F_static_cvar,$1.09B,1089442011.7406592,results/v2/books_financed.csv,"book F, static (unlimited capital): worst-5% loss"
+v2_F_static_ploss,10%,0.0995,results/v2/books_financed.csv,"book F, static (unlimited capital): chance of a loss"
+v2_F_noline_metric,$0.77B,771426955.0276408,results/v2/books_financed.csv,"book F, no line (calls beyond the reserve forfeit): registered metric"
+v2_F_noline_mean,$1.79B,1788386396.8703978,results/v2/books_financed.csv,"book F, no line (calls beyond the reserve forfeit): expected NPV"
+v2_F_noline_cvar,$1.02B,1016959441.842757,results/v2/books_financed.csv,"book F, no line (calls beyond the reserve forfeit): worst-5% loss"
+v2_F_noline_ploss,12%,0.1225,results/v2/books_financed.csv,"book F, no line (calls beyond the reserve forfeit): chance of a loss"
+v2_F_own_metric,$0.96B,964071532.9390496,results/v2/books_financed.csv,"book F, own line, net of fee and interest: registered metric"
+v2_F_own_mean,$2.21B,2208318850.5086308,results/v2/books_financed.csv,"book F, own line, net of fee and interest: expected NPV"
+v2_F_own_cvar,$1.24B,1244247317.569581,results/v2/books_financed.csv,"book F, own line, net of fee and interest: worst-5% loss"
+v2_F_own_ploss,12%,0.115,results/v2/books_financed.csv,"book F, own line, net of fee and interest: chance of a loss"
+v2_F_owngross_metric,$1.25B,1254991021.3258684,results/v2/books_financed.csv,"book F, own line, gross: registered metric"
+v2_F_owngross_mean,$2.36B,2355497642.8402195,results/v2/books_financed.csv,"book F, own line, gross: expected NPV"
+v2_F_owngross_cvar,$1.10B,1100506621.5143511,results/v2/books_financed.csv,"book F, own line, gross: worst-5% loss"
+v2_F_owngross_ploss,10%,0.101,results/v2/books_financed.csv,"book F, own line, gross: chance of a loss"
+v2_F_common_metric,$0.97B,974942060.8738394,results/v2/books_financed.csv,"book F, common $2.53B line, net of fee and interest: registered metric"
+v2_F_common_mean,$2.20B,2201825013.775091,results/v2/books_financed.csv,"book F, common $2.53B line, net of fee and interest: expected NPV"
+v2_F_common_cvar,$1.23B,1226882952.9012518,results/v2/books_financed.csv,"book F, common $2.53B line, net of fee and interest: worst-5% loss"
+v2_F_common_ploss,11%,0.1145,results/v2/books_financed.csv,"book F, common $2.53B line, net of fee and interest: chance of a loss"
+v2_F_committed,$3.75B,3747815980.782132,results/v2/books_financed.csv,book F: capital charged to the budget now
+v2_F_lease_capital,$1.52B,1519605894.8022814,results/v2/books_financed.csv,book F: lease capital
+v2_F_deposits,$11M,10501513.23037856,results/v2/books_financed.csv,book F: request deposits
+v2_F_reserve,$2.22B,2217708572.7494726,results/v2/books_financed.csv,book F: construction reserve
+v2_F_facility,$3.15B,3152349889.3335924,results/v2/books_financed.csv,book F: its own 95th-percentile facility
+v2_F_p_over,48%,0.4815,results/v2/books_financed.csv,book F: share of scenarios with calls beyond the reserve
+v2_F_financing,$147M,147178792.33158875,results/v2/books_financed.csv,book F: expected financing cost of its own line
+v2_F_members,20,20,results/v2/books_financed.csv,book F: members
+v2_DL_own_metric,$0.98B,984702387.636501,results/v2/books_financed.csv,"D re-solved with the line, own line, net of fee and interest: metric"
+v2_DL_common_metric,$0.99B,985288099.6811236,results/v2/books_financed.csv,"D re-solved with the line, common $2.53B line, net of fee and interest: metric"
+v2_DL_static_metric,$1.18B,1184714285.934059,results/v2/books_financed.csv,"D re-solved with the line, static (unlimited capital): metric"
+v2_DL_members,9,9,results/v2/books_financed.csv,D re-solved with the line: members
+v2_DL_facility,$1.31B,1308120552.7278898,results/v2/books_financed.csv,D re-solved with the line: its own facility
+v2_pair_static_D_A,+$219M,219195835.3113809,results/v2/books_financed_pairs.csv,"D minus A, static (unlimited capital)"
+v2_pair_static_D_A_ci,"[+$18M, +$400M]",18347990.97579932,results/v2/books_financed_pairs.csv,its interval
+v2_pair_static_D_B,+$239M,238820995.14820457,results/v2/books_financed_pairs.csv,"D minus B, static (unlimited capital)"
+v2_pair_static_D_B_ci,"[+$47M, +$437M]",47297923.58074882,results/v2/books_financed_pairs.csv,its interval
+v2_pair_static_D_C,+$136M,135710408.23595214,results/v2/books_financed_pairs.csv,"D minus C, static (unlimited capital)"
+v2_pair_static_D_C_ci,"[−$59M, +$322M]",-58772534.820337854,results/v2/books_financed_pairs.csv,its interval
+v2_pair_static_D_F,+$37M,37324173.77770758,results/v2/books_financed_pairs.csv,"D minus F, static (unlimited capital)"
+v2_pair_static_D_F_ci,"[−$73M, +$154M]",-73075198.97673516,results/v2/books_financed_pairs.csv,its interval
+v2_pair_static_DL_D,−$163M,-163181796.45752072,results/v2/books_financed_pairs.csv,"D re-solved with the line minus D, static (unlimited capital)"
+v2_pair_static_DL_D_ci,"[−$229M, −$91M]",-228732102.27362603,results/v2/books_financed_pairs.csv,its interval
+v2_pair_own_D_A,+$312M,312316260.48366725,results/v2/books_financed_pairs.csv,"D minus A, own line, net of fee and interest"
+v2_pair_own_D_A_ci,"[+$110M, +$506M]",110231140.85740344,results/v2/books_financed_pairs.csv,its interval
+v2_pair_own_D_B,+$323M,323085607.9456164,results/v2/books_financed_pairs.csv,"D minus B, own line, net of fee and interest"
+v2_pair_own_D_B_ci,"[+$127M, +$532M]",127343197.73640376,results/v2/books_financed_pairs.csv,its interval
+v2_pair_own_D_C,+$213M,213417661.9553145,results/v2/books_financed_pairs.csv,"D minus C, own line, net of fee and interest"
+v2_pair_own_D_C_ci,"[+$17M, +$412M]",16793027.874394193,results/v2/books_financed_pairs.csv,its interval
+v2_pair_own_D_F,+$70M,69795969.80806267,results/v2/books_financed_pairs.csv,"D minus F, own line, net of fee and interest"
+v2_pair_own_D_F_ci,"[−$51M, +$201M]",-51424814.04638704,results/v2/books_financed_pairs.csv,its interval
+v2_pair_own_DL_D,−$49M,-49165115.11061144,results/v2/books_financed_pairs.csv,"D re-solved with the line minus D, own line, net of fee and interest"
+v2_pair_own_DL_D_ci,"[−$127M, +$23M]",-126507908.66900223,results/v2/books_financed_pairs.csv,its interval
+v2_pair_common_D_A,+$313M,313490409.34424174,results/v2/books_financed_pairs.csv,"D minus A, common $2.53B line, net of fee and interest"
+v2_pair_common_D_A_ci,"[+$111M, +$507M]",111405289.71797624,results/v2/books_financed_pairs.csv,its interval
+v2_pair_common_D_B,+$246M,246137441.5881776,results/v2/books_financed_pairs.csv,"D minus B, common $2.53B line, net of fee and interest"
+v2_pair_common_D_B_ci,"[+$75M, +$427M]",74815173.27605495,results/v2/books_financed_pairs.csv,its interval
+v2_pair_common_D_C,+$237M,236700007.10768712,results/v2/books_financed_pairs.csv,"D minus C, common $2.53B line, net of fee and interest"
+v2_pair_common_D_C_ci,"[+$40M, +$441M]",40154520.14987072,results/v2/books_financed_pairs.csv,its interval
+v2_pair_common_D_F,+$59M,58925441.873273015,results/v2/books_financed_pairs.csv,"D minus F, common $2.53B line, net of fee and interest"
+v2_pair_common_D_F_ci,"[−$65M, +$188M]",-64760831.90452397,results/v2/books_financed_pairs.csv,its interval
+v2_pair_common_DL_D,−$49M,-48579403.06598878,results/v2/books_financed_pairs.csv,"D re-solved with the line minus D, common $2.53B line, net of fee and interest"
+v2_pair_common_DL_D_ci,"[−$113M, +$24M]",-112697243.12742716,results/v2/books_financed_pairs.csv,its interval
+v2_dial_ind_A_cvar,$0.47B,466529135.95783335,results/v2/dependence_dial.csv,"book A, omega 0: worst-5% loss"
+v2_dial_ind_A_metric,$2.21B,2211847055.867487,results/v2/dependence_dial.csv,"book A, omega 0: metric"
+v2_dial_ind_C_cvar,$0.21B,213258993.23310173,results/v2/dependence_dial.csv,"book C, omega 0: worst-5% loss"
+v2_dial_ind_C_metric,$2.52B,2517345114.672841,results/v2/dependence_dial.csv,"book C, omega 0: metric"
+v2_dial_ind_D_cvar,−$0.03B,-26693385.237497903,results/v2/dependence_dial.csv,"book D, omega 0: worst-5% loss"
+v2_dial_ind_D_metric,$2.20B,2197027476.021319,results/v2/dependence_dial.csv,"book D, omega 0: metric"
+v2_dial_q25_A_cvar,$0.84B,837999265.7541221,results/v2/dependence_dial.csv,"book A, omega 0.25: worst-5% loss"
+v2_dial_q25_A_metric,$1.84B,1840376926.071198,results/v2/dependence_dial.csv,"book A, omega 0.25: metric"
+v2_dial_q25_C_cvar,$0.72B,724599671.1638765,results/v2/dependence_dial.csv,"book C, omega 0.25: worst-5% loss"
+v2_dial_q25_C_metric,$2.01B,2006004436.7420669,results/v2/dependence_dial.csv,"book C, omega 0.25: metric"
+v2_dial_q25_D_cvar,$0.20B,202311061.1393775,results/v2/dependence_dial.csv,"book D, omega 0.25: worst-5% loss"
+v2_dial_q25_D_metric,$1.97B,1968023029.6444435,results/v2/dependence_dial.csv,"book D, omega 0.25: metric"
+v2_dial_half_A_cvar,$1.16B,1163618790.5187616,results/v2/dependence_dial.csv,"book A, omega 0.5: worst-5% loss"
+v2_dial_half_A_metric,$1.51B,1514757401.3065586,results/v2/dependence_dial.csv,"book A, omega 0.5: metric"
+v2_dial_half_C_cvar,$1.05B,1054175681.3596292,results/v2/dependence_dial.csv,"book C, omega 0.5: worst-5% loss"
+v2_dial_half_C_metric,$1.68B,1676428426.5463142,results/v2/dependence_dial.csv,"book C, omega 0.5: metric"
+v2_dial_half_D_cvar,$0.53B,533526147.8496928,results/v2/dependence_dial.csv,"book D, omega 0.5: worst-5% loss"
+v2_dial_half_D_metric,$1.64B,1636807942.9341283,results/v2/dependence_dial.csv,"book D, omega 0.5: metric"
+v2_dial_q75_A_cvar,$1.42B,1423595746.7926288,results/v2/dependence_dial.csv,"book A, omega 0.75: worst-5% loss"
+v2_dial_q75_A_metric,$1.25B,1254780445.0326917,results/v2/dependence_dial.csv,"book A, omega 0.75: metric"
+v2_dial_q75_C_cvar,$1.38B,1384418993.218238,results/v2/dependence_dial.csv,"book C, omega 0.75: worst-5% loss"
+v2_dial_q75_C_metric,$1.35B,1346185114.6877053,results/v2/dependence_dial.csv,"book C, omega 0.75: metric"
+v2_dial_q75_D_cvar,$0.69B,690047883.939585,results/v2/dependence_dial.csv,"book D, omega 0.75: worst-5% loss"
+v2_dial_q75_D_metric,$1.48B,1480286206.8442366,results/v2/dependence_dial.csv,"book D, omega 0.75: metric"
+v2_dial_joint_A_cvar,$1.55B,1549675944.745122,results/v2/dependence_dial.csv,"book A, omega 1: worst-5% loss"
+v2_dial_joint_A_metric,$1.13B,1128700247.0801983,results/v2/dependence_dial.csv,"book A, omega 1: metric"
+v2_dial_joint_C_cvar,$1.52B,1518418433.750316,results/v2/dependence_dial.csv,"book C, omega 1: worst-5% loss"
+v2_dial_joint_C_metric,$1.21B,1212185674.1556275,results/v2/dependence_dial.csv,"book C, omega 1: metric"
+v2_dial_joint_D_cvar,$0.82B,822438008.3922412,results/v2/dependence_dial.csv,"book D, omega 1: worst-5% loss"
+v2_dial_joint_D_metric,$1.35B,1347896082.39158,results/v2/dependence_dial.csv,"book D, omega 1: metric"
+v2_dial_como_A_cvar,$3.66B,3657603262.176769,results/v2/dependence_dial.csv,"book A, comonotonic bound: worst-5% loss"
+v2_dial_como_A_metric,−$0.98B,-979227070.3514484,results/v2/dependence_dial.csv,"book A, comonotonic bound: metric"
+v2_dial_como_C_cvar,$3.43B,3425454546.233119,results/v2/dependence_dial.csv,"book C, comonotonic bound: worst-5% loss"
+v2_dial_como_C_metric,−$0.69B,-694850438.3271756,results/v2/dependence_dial.csv,"book C, comonotonic bound: metric"
+v2_dial_como_D_cvar,$2.19B,2186417291.2342787,results/v2/dependence_dial.csv,"book D, comonotonic bound: worst-5% loss"
+v2_dial_como_D_metric,−$0.02B,-16083200.450457096,results/v2/dependence_dial.csv,"book D, comonotonic bound: metric"
+v2_world_base_best,D,D,results/v2/books_worlds.csv,the book that scores best: base model
+v2_world_base_A,$1.13B,1128700247.0801983,results/v2/books_worlds.csv,"book A, base model: metric"
+v2_world_base_B,$1.11B,1109075087.2433748,results/v2/books_worlds.csv,"book B, base model: metric"
+v2_world_base_C,$1.21B,1212185674.1556275,results/v2/books_worlds.csv,"book C, base model: metric"
+v2_world_base_D,$1.35B,1347896082.39158,results/v2/books_worlds.csv,"book D, base model: metric"
+v2_world_base_F,$1.31B,1310571908.613872,results/v2/books_worlds.csv,"book F, base model: metric"
+v2_world_ercot_low_best,D,D,results/v2/books_worlds.csv,the book that scores best: ERCOT prices 25% lower
+v2_world_ercot_low_A,−$0.84B,-839786994.9936202,results/v2/books_worlds.csv,"book A, ERCOT prices 25% lower: metric"
+v2_world_ercot_low_B,−$0.42B,-424690733.3857629,results/v2/books_worlds.csv,"book B, ERCOT prices 25% lower: metric"
+v2_world_ercot_low_C,−$0.75B,-748841169.7832315,results/v2/books_worlds.csv,"book C, ERCOT prices 25% lower: metric"
+v2_world_ercot_low_D,$0.54B,543904529.9286711,results/v2/books_worlds.csv,"book D, ERCOT prices 25% lower: metric"
+v2_world_ercot_low_F,$0.02B,18715017.00154066,results/v2/books_worlds.csv,"book F, ERCOT prices 25% lower: metric"
+v2_world_ercot_calm_best,D,D,results/v2/books_worlds.csv,the book that scores best: ERCOT half as volatile
+v2_world_ercot_calm_A,$0.31B,314170335.7868118,results/v2/books_worlds.csv,"book A, ERCOT half as volatile: metric"
+v2_world_ercot_calm_B,$0.55B,548494085.887485,results/v2/books_worlds.csv,"book B, ERCOT half as volatile: metric"
+v2_world_ercot_calm_C,$0.40B,403140650.1381464,results/v2/books_worlds.csv,"book C, ERCOT half as volatile: metric"
+v2_world_ercot_calm_D,$0.90B,895663588.1151443,results/v2/books_worlds.csv,"book D, ERCOT half as volatile: metric"
+v2_world_ercot_calm_F,$0.71B,714561179.5256779,results/v2/books_worlds.csv,"book F, ERCOT half as volatile: metric"
+v2_world_lease_cost_best,D,D,results/v2/books_worlds.csv,the book that scores best: lease capital 30% higher
+v2_world_lease_cost_A,$0.14B,138366959.98474884,results/v2/books_worlds.csv,"book A, lease capital 30% higher: metric"
+v2_world_lease_cost_B,$0.07B,74554027.29607034,results/v2/books_worlds.csv,"book B, lease capital 30% higher: metric"
+v2_world_lease_cost_C,$0.19B,187499384.91646028,results/v2/books_worlds.csv,"book C, lease capital 30% higher: metric"
+v2_world_lease_cost_D,$0.36B,360427145.1340196,results/v2/books_worlds.csv,"book D, lease capital 30% higher: metric"
+v2_world_lease_cost_F,$0.27B,266781442.83729744,results/v2/books_worlds.csv,"book F, lease capital 30% higher: metric"
+v2_world_late_best,D,D,results/v2/books_worlds.csv,the book that scores best: every plant two years late
+v2_world_late_A,$0.97B,966431959.9481308,results/v2/books_worlds.csv,"book A, every plant two years late: metric"
+v2_world_late_B,$0.96B,959494844.449655,results/v2/books_worlds.csv,"book B, every plant two years late: metric"
+v2_world_late_C,$1.03B,1032806077.2389292,results/v2/books_worlds.csv,"book C, every plant two years late: metric"
+v2_world_late_D,$1.20B,1199858692.4072318,results/v2/books_worlds.csv,"book D, every plant two years late: metric"
+v2_world_late_F,$1.15B,1152932735.7442982,results/v2/books_worlds.csv,"book F, every plant two years late: metric"
+v2_world_lookup_best,D,D,results/v2/books_worlds.csv,the book that scores best: completion as the lookup says
+v2_world_lookup_A,$2.33B,2330233149.397788,results/v2/books_worlds.csv,"book A, completion as the lookup says: metric"
+v2_world_lookup_B,$2.41B,2411880523.632236,results/v2/books_worlds.csv,"book B, completion as the lookup says: metric"
+v2_world_lookup_C,$2.67B,2673802354.1144047,results/v2/books_worlds.csv,"book C, completion as the lookup says: metric"
+v2_world_lookup_D,$2.74B,2741182166.535709,results/v2/books_worlds.csv,"book D, completion as the lookup says: metric"
+v2_world_lookup_F,$2.68B,2682050130.360144,results/v2/books_worlds.csv,"book F, completion as the lookup says: metric"
+v2_world_oil45_best,D,D,results/v2/books_worlds.csv,the book that scores best: WTI at $45 for five years
+v2_world_oil45_A,−$0.06B,-61185135.988764286,results/v2/books_worlds.csv,"book A, WTI at $45 for five years: metric"
+v2_world_oil45_B,−$0.14B,-141560531.72718024,results/v2/books_worlds.csv,"book B, WTI at $45 for five years: metric"
+v2_world_oil45_C,−$0.03B,-25656211.5748713,results/v2/books_worlds.csv,"book C, WTI at $45 for five years: metric"
+v2_world_oil45_D,$0.22B,223369413.45793128,results/v2/books_worlds.csv,"book D, WTI at $45 for five years: metric"
+v2_world_oil45_F,$0.10B,102932500.19705844,results/v2/books_worlds.csv,"book F, WTI at $45 for five years: metric"
+v2_worlds_D_best,7,7,results/v2/books_worlds.csv,worlds of seven in which D scores best
+v2_rung_tools_minus_proposal,+$76M,75942461.34993868,results/v2/ladder_five_rungs.csv,ladder rung tools_minus_proposal
+v2_rung_tools_minus_proposal_ci,"[+$13M, +$140M]",13078694.116417084,results/v2/ladder_five_rungs.csv,its interval
+v2_rung_optimizer_first_minus_tools,+$56M,56333307.91949447,results/v2/ladder_five_rungs.csv,ladder rung optimizer_first_minus_tools
+v2_rung_optimizer_first_minus_tools_ci,"[+$19M, +$100M]",19012032.768306307,results/v2/ladder_five_rungs.csv,its interval
+v2_rung_tools_llm_minus_optimizer_first,−$14M,-13668000.689522397,results/v2/ladder_five_rungs.csv,ladder rung tools_llm_minus_optimizer_first
+v2_rung_tools_llm_minus_optimizer_first_ci,"[−$36M, +$2M]",-35513606.891958214,results/v2/ladder_five_rungs.csv,its interval
+v2_rung_tools_llm_minus_tools,+$43M,42665307.229972064,results/v2/ladder_five_rungs.csv,ladder rung tools_llm_minus_tools
+v2_rung_tools_llm_minus_tools_ci,"[+$9M, +$86M]",9222938.84109913,results/v2/ladder_five_rungs.csv,its interval
+v2_rung_optimizer_minus_tools_llm,+$134M,134494259.1219419,results/v2/ladder_five_rungs.csv,ladder rung optimizer_minus_tools_llm
+v2_rung_optimizer_minus_tools_llm_ci,"[+$72M, +$211M]",71848588.21901797,results/v2/ladder_five_rungs.csv,its interval
+v2_rung_optimizer_minus_optimizer_first,+$121M,120826258.4324195,results/v2/ladder_five_rungs.csv,ladder rung optimizer_minus_optimizer_first
+v2_rung_optimizer_minus_optimizer_first_ci,"[+$59M, +$195M]",58629437.17384613,results/v2/ladder_five_rungs.csv,its interval
+v2_arm_proposal,$863M,862623495.1231619,results/v2/ladder_five_arms.csv,mean objective under the proposal arm
+v2_arm_tools,$939M,938565956.4731007,results/v2/ladder_five_arms.csv,mean objective under the tools arm
+v2_arm_optimizer_first,$995M,994899264.3925952,results/v2/ladder_five_arms.csv,mean objective under the optimizer_first arm
+v2_arm_tools_llm,$981M,981231263.7030728,results/v2/ladder_five_arms.csv,mean objective under the tools_llm arm
+v2_arm_optimizer,"$1,116M",1115725522.8250146,results/v2/ladder_five_arms.csv,mean objective under the optimizer arm
+v2_arm_tools_changed,23,23,results/v2/ladder_five_arms.csv,cases in which the tools arm changes the book
+v2_arm_optimizer_first_changed,23,23,results/v2/ladder_five_arms.csv,cases in which the optimizer_first arm changes the book
+v2_arm_tools_llm_changed,23,23,results/v2/ladder_five_arms.csv,cases in which the tools_llm arm changes the book
+v2_D_committed_members,$3.78B,3778326876.675811,results/v2/book_D_members.csv,"book D: capital charged, sum of members"
+v2_D_npv_members,$2.22B,2219857076.742457,results/v2/book_D_members.csv,"book D: expected NPV, sum of members"
+v2_m_24inr0075_charge,$759M,758.5358875253272,results/v2/book_D_members.csv,REQ|ERCOT|24INR0075: budget charge
+v2_m_24inr0075_npv,$86M,85.73384788350124,results/v2/book_D_members.csv,REQ|ERCOT|24INR0075: expected NPV
+v2_m_24inr0075_pneg,62%,0.6155,results/v2/book_D_members.csv,REQ|ERCOT|24INR0075: chance of a loss
+v2_m_24inr0075_cost,$20M,19.76940040775061,results/v2/book_D_members.csv,REQ|ERCOT|24INR0075: cost of removal
+v2_m_24inr0075_mw,"1,004",1004.0,results/v2/book_D_members.csv,REQ|ERCOT|24INR0075: MW
+v2_m_23inr0029_charge,$620M,619.9851322156015,results/v2/book_D_members.csv,REQ|ERCOT|23INR0029: budget charge
+v2_m_23inr0029_npv,$437M,437.0046352537858,results/v2/book_D_members.csv,REQ|ERCOT|23INR0029: expected NPV
+v2_m_23inr0029_pneg,63%,0.6285,results/v2/book_D_members.csv,REQ|ERCOT|23INR0029: chance of a loss
+v2_m_23inr0029_cost,$145M,144.57468156829833,results/v2/book_D_members.csv,REQ|ERCOT|23INR0029: cost of removal
+v2_m_23inr0029_mw,697,697.0,results/v2/book_D_members.csv,REQ|ERCOT|23INR0029: MW
+v2_m_26inr0113_charge,$535M,535.2848414171997,results/v2/book_D_members.csv,REQ|ERCOT|26INR0113: budget charge
+v2_m_26inr0113_npv,$411M,410.6802261501965,results/v2/book_D_members.csv,REQ|ERCOT|26INR0113: expected NPV
+v2_m_26inr0113_pneg,64%,0.64,results/v2/book_D_members.csv,REQ|ERCOT|26INR0113: chance of a loss
+v2_m_26inr0113_cost,$539M,539.0991602141039,results/v2/book_D_members.csv,REQ|ERCOT|26INR0113: cost of removal
+v2_m_26inr0113_mw,836,836.5,results/v2/book_D_members.csv,REQ|ERCOT|26INR0113: MW
+v2_m_g26253_charge,$448M,447.7201960905141,results/v2/book_D_members.csv,LEASE|G26253: budget charge
+v2_m_g26253_npv,$293M,293.4406490642758,results/v2/book_D_members.csv,LEASE|G26253: expected NPV
+v2_m_g26253_pneg,18%,0.18,results/v2/book_D_members.csv,LEASE|G26253: chance of a loss
+v2_m_g26253_cost,$3M,3.198010695091724,results/v2/book_D_members.csv,LEASE|G26253: cost of removal
+v2_m_g09982_charge,$395M,395.42466605537606,results/v2/book_D_members.csv,LEASE|G09982: budget charge
+v2_m_g09982_npv,$306M,306.03154683536786,results/v2/book_D_members.csv,LEASE|G09982: expected NPV
+v2_m_g09982_pneg,14%,0.137,results/v2/book_D_members.csv,LEASE|G09982: chance of a loss
+v2_m_g09982_cost,$64M,64.19493935495568,results/v2/book_D_members.csv,LEASE|G09982: cost of removal
+v2_m_g16942_charge,$220M,220.24136021450343,results/v2/book_D_members.csv,LEASE|G16942: budget charge
+v2_m_g16942_npv,$169M,169.2574534046449,results/v2/book_D_members.csv,LEASE|G16942: expected NPV
+v2_m_g16942_pneg,14%,0.1375,results/v2/book_D_members.csv,LEASE|G16942: chance of a loss
+v2_m_g16942_cost,$6M,6.267795398373842,results/v2/book_D_members.csv,LEASE|G16942: cost of removal
+v2_m_g17015_charge,$219M,219.3304054524756,results/v2/book_D_members.csv,LEASE|G17015: budget charge
+v2_m_g17015_npv,$168M,168.37019488105562,results/v2/book_D_members.csv,LEASE|G17015: expected NPV
+v2_m_g17015_pneg,14%,0.1385,results/v2/book_D_members.csv,LEASE|G17015: chance of a loss
+v2_m_g17015_cost,$8M,7.959016566537381,results/v2/book_D_members.csv,LEASE|G17015: cost of removal
+v2_m_26inr0046_charge,$176M,176.2680914749333,results/v2/book_D_members.csv,REQ|ERCOT|26INR0046: budget charge
+v2_m_26inr0046_npv,$13M,13.238676365543652,results/v2/book_D_members.csv,REQ|ERCOT|26INR0046: expected NPV
+v2_m_26inr0046_pneg,91%,0.913,results/v2/book_D_members.csv,REQ|ERCOT|26INR0046: chance of a loss
+v2_m_26inr0046_cost,$4M,4.0159704408273695,results/v2/book_D_members.csv,REQ|ERCOT|26INR0046: cost of removal
+v2_m_26inr0046_mw,"1,029",1029.06,results/v2/book_D_members.csv,REQ|ERCOT|26INR0046: MW
+v2_m_g25814_charge,$135M,134.74083824786632,results/v2/book_D_members.csv,LEASE|G25814: budget charge
+v2_m_g25814_npv,$105M,104.67308421706844,results/v2/book_D_members.csv,LEASE|G25814: expected NPV
+v2_m_g25814_pneg,13%,0.134,results/v2/book_D_members.csv,LEASE|G25814: chance of a loss
+v2_m_g25814_cost,$12M,12.347142233318568,results/v2/book_D_members.csv,LEASE|G25814: cost of removal
+v2_m_28inr0033_charge,$87M,86.73899702279022,results/v2/book_D_members.csv,REQ|ERCOT|28INR0033: budget charge
+v2_m_28inr0033_npv,$71M,70.71697401081846,results/v2/book_D_members.csv,REQ|ERCOT|28INR0033: expected NPV
+v2_m_28inr0033_pneg,96%,0.9605,results/v2/book_D_members.csv,REQ|ERCOT|28INR0033: chance of a loss
+v2_m_28inr0033_cost,$72M,72.00377353791332,results/v2/book_D_members.csv,REQ|ERCOT|28INR0033: cost of removal
+v2_m_28inr0033_mw,"1,200",1200.0,results/v2/book_D_members.csv,REQ|ERCOT|28INR0033: MW
+v2_m_27inr0061_charge,$84M,83.50633892316284,results/v2/book_D_members.csv,REQ|ERCOT|27INR0061: budget charge
+v2_m_27inr0061_npv,$80M,80.0679059331149,results/v2/book_D_members.csv,REQ|ERCOT|27INR0061: expected NPV
+v2_m_27inr0061_pneg,96%,0.965,results/v2/book_D_members.csv,REQ|ERCOT|27INR0061: chance of a loss
+v2_m_27inr0061_cost,$95M,95.15456366528488,results/v2/book_D_members.csv,REQ|ERCOT|27INR0061: cost of removal
+v2_m_27inr0061_mw,"1,542",1542.0,results/v2/book_D_members.csv,REQ|ERCOT|27INR0061: MW
+v2_m_30inr0004_charge,$58M,58.04486210978224,results/v2/book_D_members.csv,REQ|ERCOT|30INR0004: budget charge
+v2_m_30inr0004_npv,$46M,45.99798275745456,results/v2/book_D_members.csv,REQ|ERCOT|30INR0004: expected NPV
+v2_m_30inr0004_pneg,97%,0.97,results/v2/book_D_members.csv,REQ|ERCOT|30INR0004: chance of a loss
+v2_m_30inr0004_cost,$49M,48.55050525913668,results/v2/book_D_members.csv,REQ|ERCOT|30INR0004: cost of removal
+v2_m_30inr0004_mw,"1,029",1029.39,results/v2/book_D_members.csv,REQ|ERCOT|30INR0004: MW
+v2_m_28inr0113_charge,$43M,42.5052599262794,results/v2/book_D_members.csv,REQ|ERCOT|28INR0113: budget charge
+v2_m_28inr0113_npv,$35M,34.64389998562864,results/v2/book_D_members.csv,REQ|ERCOT|28INR0113: expected NPV
+v2_m_28inr0113_pneg,97%,0.9685,results/v2/book_D_members.csv,REQ|ERCOT|28INR0113: chance of a loss
+v2_m_28inr0113_cost,$44M,43.51644038461876,results/v2/book_D_members.csv,REQ|ERCOT|28INR0113: cost of removal
+v2_m_28inr0113_mw,750,750.05,results/v2/book_D_members.csv,REQ|ERCOT|28INR0113: MW
+v2_status_now,8,8,results/v2/book_D_members.csv,candidates with status invest now
+v2_status_stages,5,5,results/v2/book_D_members.csv,candidates with status invest in stages
+v2_status_defer,12,12,results/v2/book_D_members.csv,candidates with status defer pending information
+v2_status_monitor,14,14,results/v2/book_D_members.csv,candidates with status monitor
+v2_status_reject,1,1,results/v2/book_D_members.csv,candidates with status reject
+v2_controls,12,12,results/v2/readiness_matrix.csv,controls in the readiness matrix
+v2_controls_yes,10,10,results/v2/readiness_matrix.csv,controls in place
+v2_controls_partly,2,2,results/v2/readiness_matrix.csv,controls partly in place
+v2_ex_vulns,3,3,results/v10/x1_outputs.jsonl,X25: vulnerabilities in the memo
+v2_ex_fragile,5,5,results/v10/x1_outputs.jsonl,X25: members the checklist flags as fragile
+v2_ex_numbers,35,35,results/v10/x1_outputs.jsonl,X25: numbers in the memo
+v2_ex_grounded,34,34,results/v10/x1_outputs.jsonl,X25: numbers found on the fact sheet
+v2_ex_level,challenge,challenge,results/v10/x1_outputs.jsonl,X25: the level the challenger took
