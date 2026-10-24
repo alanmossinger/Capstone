@@ -38,3 +38,20 @@ def test_check_reports_ok_missing_and_differs(tmp_path, monkeypatch):
     status = get_data.check().set_index("path")["status"]
     assert status.to_dict() == {"a/same.txt": "ok", "a/changed.txt": "differs", "a/gone.txt": "missing"}
     assert get_data.report(get_data.check()) is False
+
+
+def test_bundle_carries_the_hash_records(tmp_path, monkeypatch):
+    import zipfile
+
+    raw = tmp_path / "raw"
+    (raw / "iso").mkdir(parents=True)
+    (raw / "iso" / "snapshot.parquet").write_bytes(b"data")
+    (raw / "iso" / "SHA256.txt").write_text("abc  snapshot.parquet\n", encoding="utf-8")
+    manifest = tmp_path / "manifest.csv"
+    pd.DataFrame({"source": ["S7"], "path": ["iso/snapshot.parquet"], "sha256": [get_data.sha256(raw / "iso" / "snapshot.parquet")],
+                  "how": ["hand"], "where": ["x"]}).to_csv(manifest, index=False)
+    monkeypatch.setattr(get_data.paths, "DATA_RAW", raw)
+    monkeypatch.setattr(get_data, "MANIFEST", manifest)
+    monkeypatch.setattr(get_data, "BUNDLE", tmp_path / "dist" / "bundle.zip")
+    names = set(zipfile.ZipFile(get_data.bundle()).namelist())
+    assert names == {"data/raw_manifest.csv", "data/raw/iso/snapshot.parquet", "data/raw/iso/SHA256.txt"}

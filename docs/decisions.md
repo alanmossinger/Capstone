@@ -1699,3 +1699,15 @@ alternative rejected.
     in notebook 02 (a second definition of the Track A sample, and the
     figure's subtitle would change); moving the map to notebook 03 (the map
     belongs to the exploration).
+110. **The raw-data bundle carries the per-folder hash records** (2026-10-24,
+    found by the fourth clean Linux run). `get_data` leaves `SHA256.txt` and
+    `manifest_v5.json` out of the manifest, because notebook 01 rewrites
+    some of them, and the bundle copied only manifest files; notebook 04
+    asserts the CAISO and ERCOT snapshots against `data/raw/iso/SHA256.txt`
+    before reading them, so the clean run stopped there after 79 minutes.
+    `bundle()` now adds every hash record under `data/raw/` (13 files; 125
+    entries in all), still not hashed by `check`. Tested on a toy folder.
+    *Rejected:* listing the records in the manifest (notebook 01 rewrites
+    the BSEE, eGRID, price and LBNL records, so `check` would fail after a
+    run); dropping the assertion in notebook 04 (it is what proves the
+    snapshot on disk is the one recorded).

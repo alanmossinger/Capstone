@@ -58,7 +58,7 @@ SOURCES = {
     "ercot/": ("S16", "workflow", "gh workflow run ercot_history.yml -f first_year=2018 -f last_year=2023; the 2024 files as data/README.md S16"),
     "egrid/": ("S17", "script", config.EGRID_URL),
 }
-SKIP = {"SHA256.txt", "manifest_v5.json"}  # hash records themselves, not inputs
+SKIP = {"SHA256.txt", "manifest_v5.json"}  # hash records, not inputs: not hashed in the manifest (notebook 01 rewrites some), but bundled because notebooks check files against them
 
 
 def sha256(path):
@@ -163,12 +163,15 @@ def fetch():
 
 
 def bundle():
-    """Zip every manifest file, with the manifest, into ``dist/raw_data_bundle.zip`` (unzip into the repository root).
+    """Zip every manifest file, the hash records and the manifest into ``dist/raw_data_bundle.zip`` (unzip into the repository root).
 
     Notes
     -----
     The bundle is for a reader who needs the exact inputs (a grader); it is
     not published, because the LBNL 2025 file carries no redistribution grant.
+    The per-folder hash records (``SKIP``) travel with the files: notebook 04
+    asserts the ISO snapshots against ``iso/SHA256.txt`` before reading them,
+    and a clean run without the records stopped there (decision #110).
     """
     status = check()
     bad = status[status["status"] != "ok"]
@@ -179,6 +182,8 @@ def bundle():
         z.write(MANIFEST, "data/raw_manifest.csv")
         for rel in status["path"]:
             z.write(paths.DATA_RAW / rel, f"data/raw/{rel}")
+        for record_file in sorted(r for r in paths.DATA_RAW.rglob("*") if r.is_file() and r.name in SKIP):
+            z.write(record_file, f"data/raw/{record_file.relative_to(paths.DATA_RAW).as_posix()}")
     return BUNDLE
 
 
