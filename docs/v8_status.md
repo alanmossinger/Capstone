@@ -8,7 +8,7 @@
 | Registered challenger experiments X1–X3 (C25–C32, H4–H7) | Implemented, scored once | `src/challenge_experiments.py`, `results/v9/`; notebook 11 section 11; F46; decisions #96–#97 | real committees; Alan's own cases (reserved slot); cases where only the argument is wrong |
 | Executive report v9 | Implemented, tested | `report/report.md`; decision #98 | — |
 | Poster and Petrobras edition for v9 | Implemented, tested against the live numbers table | `report/poster.typ`, `report/petrobras_report.typ`; decision #99 | — |
-| Clean-environment run of v9 | Proposed | — | a Linux run as in decision #87 |
+| Clean-environment run (done on v10, 2026-10-24) | Implemented | decisions #108–#112 | — (2,548 of 2,561 cited numbers and every registered verdict reproduce; the registered v10 replay is bound to the recording machine) |
 
 # v8 deliverables: what is implemented, tested, partial or proposed
 
@@ -27,7 +27,7 @@ named; *proposed* means not built.
 | 7 | Improved figures and tables | Implemented | F38–F44 (notebook 11); F34 and F33 retitled from their results | F37 and the v6 figures of notebook 09 are no longer cited by the report |
 | 8 | Revised capstone report | Implemented, tested | `report/report.md` v8: eleven sections, core within 3,500 words, every number in `results/report_numbers.csv` | — (v9: both rewritten; see above) |
 | 9 | Executive capital-allocation memorandum | Implemented | the memo at the head of `report/report.md` | — |
-| 10 | Reproducibility and limitations statement | Implemented | report section 10 and Appendix C | a clean-environment run of v8 not yet done |
+| 10 | Reproducibility and limitations statement | Implemented | report section 10 and Appendix C | — (clean-environment run done on v10, decision #112) |
 
 ## Tests added for the brief's list
 

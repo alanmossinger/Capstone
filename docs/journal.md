@@ -1825,3 +1825,41 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 
 1. The clean Linux run (needs Alan's sudo for python3.11 and poppler); `make check-data` there with the bundle.
 2. Alan's read of report v10; recording the video from `report/report.pdf` when he is ready.
+
+## Session 24 — 2026-10-23/24: the clean Linux run (decisions #108–#112)
+
+**Done**
+
+- The clean-environment run, without Alan's sudo: Docker Desktop on this machine (it had crashed on a stale
+  analytics socket; its `run` folder was moved aside), a `python:3.11-slim-bookworm` container with poppler 22.12,
+  the committed repository (`git archive`) and the raw-data bundle, no `.env`. Five runs; each stop was a fault a
+  grader would have met, fixed and committed before the next:
+  1. Notebook 01 required `EIA_API_KEY` with every EIA file on disk, and asked the API for its latest EIA-860M month,
+     now 2026-08, so a rerun with a key would have pulled a newer inventory: month pinned (`config.EIA860M_PERIOD`),
+     key optional (#108, 5e376de, 60dc248). `libgomp1` named in the README for LightGBM on Linux.
+  2. Notebook 02's asset map read 03's `trackA.parquet` before 03 had run: the pipeline runs 03 before 02 (#109,
+     0269e42); a static check finds no other interim file read before its writer.
+  3. The bundle left out the per-folder `SHA256.txt` records, and notebook 04 asserts the ISO snapshots against one:
+     `bundle()` now carries all 13 (#110, 50a1934); `dist/raw_data_bundle.zip` rebuilt (125 entries).
+  4. Notebook 12 stopped at the v10 registration guard: on Linux `results/v8/value_added.csv` drifts in the fifth
+     significant figure (C33 $219,173,642 against $219,195,835), so its registered hash fails, and the memo replays
+     could not be found anyway. Section 6 now checks `challenge_v10.replayable()` first and, elsewhere, says why and
+     keeps the committed scored record; `report_numbers` writes "no record" for an unrecoverable advisor statistic
+     (#111, cbe1bdc). Here the section replays and scores exactly as before (run times only).
+- The reproduction record (#112): 01 → 11 end to end in 3 h 3 min (notebook 04 2 h 7 min), 12 in 228 s after #111;
+  of 407 result files 86 identical, 199 within 1e-6, 122 different (run times, replay tables, 1e-5 to 1e-4 drift);
+  every registered verdict identical; one checks line changed (a run-time limit); of 2,561 cited numbers 2,548
+  identical as printed, two moved in the last digit ($6.71B → $6.72B; $108.7M → $108.6M) and eleven advisor
+  statistics moved because 14 calls could not be found; 273 of 274 tests pass there (the report-number test).
+- `HANDOFF.md` and `docs/next_session_prompt.md` brought from v9 to v10. 274 tests pass here.
+
+**Next**
+
+1. Alan's read of report v10; recording the demo video from `report/report.pdf`.
+2. A push of `v8-corrections` (and `main`) on Alan's word: the commits since a7de233 are local only.
+
+**Open questions for Alan**
+
+- Push now, and tag a release once he has read the report?
+- Docker Desktop's old `run` folder is at `%LOCALAPPDATA%\Docker\run_stale` (it holds the socket file Windows would
+  not delete); it can go once Docker has been restarted cleanly.
