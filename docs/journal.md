@@ -1813,3 +1813,15 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 
 1. The clean Linux run (needs Alan's sudo for python3.11 and poppler); `make check-data` there with the bundle.
 2. A read of report v10 by Alan; the demo video script (`docs/demo_video_script.md`) still describes v9.
+
+## Session 23 — 2026-10-23: the demo video script on report v10
+
+**Done**
+
+- `docs/demo_video_script.md` rewritten for report v10: the opening asks the three questions and the fourth; Q1 on F49 (AUC 0.731 against 0.686; 30 of 1,441 operated, 78 and 17 expected); Q2 on F38 and F48 (C33 +$219M [+13, +401], $508M of expected value for a worst-5% loss of $0.82B instead of $1.55B, the $2.53B line worth $1.03B net of fee and interest); Q3 and Q0 on F50 and Table 3 (tools +$76M, the model +$43M [+9, +86], the optimizer +$134M; C37 and C39 stated as failed). Every number checked against the report body; 608 spoken words, section times reset to 140 words a minute.
+- `docs/next_session_prompt.md` says the script describes v10. 273 tests pass.
+
+**Next**
+
+1. The clean Linux run (needs Alan's sudo for python3.11 and poppler); `make check-data` there with the bundle.
+2. Alan's read of report v10; recording the video from `report/report.pdf` when he is ready.

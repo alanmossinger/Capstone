@@ -48,7 +48,7 @@ pushed on 2026-10-21. What remains:
    poppler, and `sudo` needs my password: ASK ALAN to run
    `sudo apt install -y python3.11 python3.11-venv poppler-utils` (via the deadsnakes PPA if 3.11 is not in the
    release), then clone the repository inside the Linux file system, copy `data/raw/` and `.env` across, and run there.
-2. **`docs/demo_video_script.md`** was rewritten for v9 (about 4½ minutes): record from `report/report.pdf` when
+2. **`docs/demo_video_script.md`** was rewritten for v10 on 2026-10-23 (about 4½ minutes): record from `report/report.pdf` when
    Alan is ready; nothing to do unless a number changes.
 3. **The decision page** (`app/decide.py`, `make decide-page`): ASK ALAN whether to expose the challenger (statement in,
    rules read back, memo and alternatives out) before the final submission; if yes, build it on `src/challenge.py`
