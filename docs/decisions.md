@@ -1685,3 +1685,17 @@ alternative rejected.
     *Rejected:* keeping the key mandatory (a grader with the bundle could
     not run `make all` without registering with EIA); keeping "latest
     month" (a rerun would not reproduce the committed tables).
+109. **Notebook 03 runs before 02** (2026-10-23, found by the third clean
+    Linux run). In a clean checkout `data/interim/` is empty, and notebook
+    02's asset map (part C, added in v5) reads `trackA.parquet`, which
+    notebook 03 writes; on the author's machine the file was always there
+    from an earlier run, so the dependency never showed. Notebook 03 reads
+    nothing notebook 02 writes, so `run_pipeline.PIPELINE` now runs 01, 03,
+    02, then 04 onward; README, Makefile and notebook 02's execution-order
+    note say so. A static check of every `data/interim` read against the
+    notebooks that write it finds no other file read before its writer
+    runs. No output changes.
+    *Rejected:* rebuilding the map's anchor count from `queue_clean.parquet`
+    in notebook 02 (a second definition of the Track A sample, and the
+    figure's subtitle would change); moving the map to notebook 03 (the map
+    belongs to the exploration).

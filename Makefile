@@ -90,5 +90,5 @@ test:
 questions:        ## 12: the three questions of v10 — the registration ledger, the credit line net of financing, the challenger ladder
 	$(PYTHON) run_pipeline.py --only 12
 
-all:              ## notebooks 01 → 12 in dependency order (06 after 09), stop at the first error
+all:              ## notebooks 01 → 12 in dependency order (03 before 02, 06 after 09), stop at the first error
 	$(PYTHON) run_pipeline.py

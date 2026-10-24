@@ -108,7 +108,7 @@ a notebook by hand in Jupyter or VS Code, pick "Python 3.11 (queue-survival)" an
 3. Run:
 
 ```bash
-make all       # notebooks 01 → 12 in dependency order (06, the record, after 09), stopping at the first error
+make all       # notebooks 01 → 12 in dependency order (03 before 02; 06, the record, after 09), stopping at the first error
 make test      # pytest
 make report    # report/report.pdf and report/report.docx from report/report.md + references.md (needs pandoc and typst)
 make poster    # report/poster.pdf from report/poster.typ (needs typst)
