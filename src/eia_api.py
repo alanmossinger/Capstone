@@ -1,7 +1,8 @@
 """Pull the EIA-860M inventory of operable generators through the EIA API v2.
 
-What: reads the route metadata (latest month available) and downloads one
-month of the route ``electricity/operating-generator-capacity`` page by page.
+What: downloads one month of the route
+``electricity/operating-generator-capacity`` page by page (the month is pinned
+in ``config.EIA860M_PERIOD``) and reads the route metadata on request.
 Why: EIA-860M carries generator operating dates, county and coordinates for
 every region, which the public LBNL file lacks outside CAISO/ERCOT/PJM
 (PLAN.md §5.1, source S2).
@@ -56,27 +57,36 @@ FIELD_DESCRIPTIONS = {
 }
 
 
-def load_api_key():
+def load_api_key(required=True):
     """Return the EIA API key from ``.env`` without revealing it.
+
+    Parameters
+    ----------
+    required : bool
+        Stop with instructions when the key is missing (the default); with
+        ``False`` return an empty string instead.
 
     Returns
     -------
     str
-        The key.
+        The key, or ``""`` when it is missing and not required.
 
     Raises
     ------
     RuntimeError
-        If ``EIA_API_KEY`` is missing or empty.
+        If ``EIA_API_KEY`` is missing or empty and ``required`` is true.
 
     Notes
     -----
     ``load_dotenv`` does not override a variable already set in the shell,
-    so a key exported in the environment also works.
+    so a key exported in the environment also works. Notebook 01 asks with
+    ``required=False``: every EIA file it reads is pinned and travels in the
+    raw-data bundle, so a reader without a key can rerun it, and the pulls
+    ask for the key themselves only when a pinned file is missing.
     """
     load_dotenv(paths.ENV_FILE)
     key = os.environ.get("EIA_API_KEY", "").strip()
-    if not key:
+    if not key and required:
         raise RuntimeError(
             "EIA_API_KEY is not set. Create .env in the repository root with the "
             "line EIA_API_KEY=<your key from https://www.eia.gov/opendata/register.php>."

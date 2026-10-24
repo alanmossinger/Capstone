@@ -95,6 +95,7 @@ TRACK_A_RANGE = (13500, 14500)  # expected size of the Track A candidate sample
 TEST_MIN_PROJECTS = 2000  # was 2,500, unreachable (2,313 Track A rows entered 2017–2019); decision #15
 TEST_MIN_COMPLETIONS = 150  # completions by CENSOR_DATE among those entrants
 EIA_MIN_PERIOD = "2026-06"  # the API must serve at least this month
+EIA860M_PERIOD = "2026-07"  # the EIA-860M month every result is built on; pinned so a rerun reads the bundled pull, not a newer month (decision #108)
 EIA_MIN_FIELD_SHARE = {"operating-year-month": 0.95, "stateid": 0.99, "technology": 0.99,
                        "county": 0.95, "latitude": 0.95, "longitude": 0.95}
 

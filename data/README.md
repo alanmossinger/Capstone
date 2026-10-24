@@ -126,7 +126,10 @@ Everything the project reads or produces lives under `data/`:
   calls `src/eia_api.py`, which pages through the API 5,000 rows at a time and
   saves each page as returned (`data/raw/eia860m/api_<period>_page<N>.json`)
   plus the combined table (`eia860m_<period>.parquet`). A second run uses
-  these files instead of calling the API again.
+  these files instead of calling the API again. The month is pinned
+  (`config.EIA860M_PERIOD = "2026-07"`), so a rerun reads the same inventory;
+  with the raw-data bundle in place notebook 01 runs without a key
+  (decision #108).
 - **Terms:** EIA data are U.S. Government works in the public domain; EIA
   asks users to cite it as the source. The key is personal: it lives only in
   `.env`, which git ignores, and it is never printed or written to any other

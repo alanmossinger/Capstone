@@ -1663,3 +1663,21 @@ alternative rejected.
     failures and the conditions the answers carry); showing the preview
     ladder as the body's figure (it was computed before registration on a
     candidate set the decision no longer uses).
+108. **The EIA-860M month is pinned, and notebook 01 runs without a key
+    when the raw files are in place** (2026-10-23, found by the clean Linux
+    run). In a fresh Python 3.11 container built from the committed
+    repository and the raw-data bundle, `make check-data` passed (111 of
+    111 files with their recorded hash) and `make all` stopped in notebook
+    01's second cell: it required `EIA_API_KEY` although every EIA file it
+    reads was on disk. Worse, the EIA-860M cell asked the API for its
+    latest month, which is now 2026-08, so any rerun with a key would have
+    pulled a newer inventory than the one every result is built on.
+    `config.EIA860M_PERIOD = "2026-07"` pins the month; `load_api_key`
+    takes `required=False` in notebook 01, and the pulls ask for the key
+    only when a pinned file is missing; with a key the cell still prints
+    the months the API serves that day. The readiness line is renamed "S2
+    EIA-860M pull complete" (same rule, same PASS). Notebook 01 rerun: no
+    other output changed; 273 tests pass.
+    *Rejected:* keeping the key mandatory (a grader with the bundle could
+    not run `make all` without registering with EIA); keeping "latest
+    month" (a rerun would not reproduce the committed tables).

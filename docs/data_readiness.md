@@ -1,6 +1,6 @@
 # Data readiness report (Phase 0 gate)
 
-*Written by `notebooks/01_problem_and_data.ipynb` on 2026-10-20. Every number below was computed by that notebook; thresholds are in `src/config.py`.*
+*Written by `notebooks/01_problem_and_data.ipynb` on 2026-10-23. Every number below was computed by that notebook; thresholds are in `src/config.py`.*
 
 ## Sources
 
@@ -21,7 +21,7 @@
 | S1 event-date coverage: withdrawal dates | ≥ 82% of withdrawn rows have wd_date in each Track A region | ERCOT 100.0%, PJM 96.9%, CAISO 82.6% | PASS |
 | S1 Track A candidate sample | 13,500–14,500 projects | 13,733 (with a valid request date: 13,438) | PASS |
 | S1 enough events for a held-out test | 2017–2019 Track A entrants ≥ 2,000 with ≥ 150 completions by end-2024 | 2,292 projects; 304 completions; 1,358 withdrawals | PASS |
-| S2 API works with the key | metadata returns; latest period ≥ 2026-06; rows = response.total | latest 2026-07; 28,324 rows of 28,324 in 6 pages | PASS |
+| S2 EIA-860M pull complete | pinned period ≥ 2026-06; rows = response.total | period 2026-07; 28,324 rows of 28,324 in 6 pages | PASS |
 | S2 fields usable | operating month ≥ 95% of OP rows; state, technology ≥ 99%; county, lat/long ≥ 95% | operating-year-month 100.0%, stateid 100.0%, technology 100.0%, county 100.0%, latitude 100.0%, longitude 100.0% | PASS |
 | Crosswalk complete | every EIA technology maps to one type, or to Other with a note | 27 technologies; complete = True | PASS |
 | Linkage test | match rate reported; notebook 10 viable if ≥ 40% matched and ≥ 80% of matches agree ±6 months | 31.1% matched, 74.9% agree → notebook 10 not viable, dropped | PASS |
@@ -52,7 +52,7 @@
 
 - Linkage: 31.1% of ERCOT/PJM operational projects matched an EIA plant and 74.9% of matches agree on the operation month within six months.
 
-**Outcome (2026-10-20): GO**
+**Outcome (2026-10-23): GO**
 
 ## v3 sources — S6, the LBNL 2026 data file (notebook 01, part C)
 
@@ -71,7 +71,7 @@ Event-date coverage by region in both editions: `results/lbnl_2026_date_coverage
 
 ## v5 sources — the energy panel (notebook 01, parts D and E)
 
-*Written by `notebooks/01_problem_and_data.ipynb` on 2026-10-20. Every number below was computed by that notebook; thresholds are in `src/config.py` (PLAN.md §14.1).*
+*Written by `notebooks/01_problem_and_data.ipynb` on 2026-10-23. Every number below was computed by that notebook; thresholds are in `src/config.py` (PLAN.md §14.1).*
 
 | Check | Pass condition | Observed | Result |
 |---|---|---|---|
@@ -91,4 +91,4 @@ Event-date coverage by region in both editions: `results/lbnl_2026_date_coverage
 
 Non-blocking lines are reported for the record; with the 2018–2023 hourly files on disk (decision #78) no ERCOT month is assumed, and without them the bridge of decision #64 fills 2020–2023.
 
-**Outcome (2026-10-20): GO**
+**Outcome (2026-10-23): GO**
