@@ -112,8 +112,10 @@ a notebook by hand in Jupyter or VS Code, pick "Python 3.11 (queue-survival)" an
 make all       # notebooks 01 → 12 in dependency order (03 before 02; 06, the record, after 09), stopping at the first error
 make test      # pytest
 make report    # report/report.pdf and report/report.docx from report/report.md + references.md (needs pandoc and typst)
+make report-course  # the course-length edition (about 3,000 words): report/report_course.pdf and .docx
 make poster    # report/poster.pdf from report/poster.typ (needs typst)
-make app       # the dashboard at http://localhost:8501 (reads results/ only)
+make executive # the executive dashboard for presenting the decision, at http://localhost:8501 (reads results/ only)
+make app       # the analysis dashboard (reads results/ only)
 ```
 
 Each notebook also has its own target (`make data`, `make eda`, `make features`,

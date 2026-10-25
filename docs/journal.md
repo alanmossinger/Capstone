@@ -1901,3 +1901,19 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 ## Session 26, continued — 2026-10-24: the executive summary
 
 - Alan drafted an executive summary (problem, challenges, method, application, results, implications, readiness, conclusion) and asked for it to be reviewed and added. Reviewed against the numbers table: every figure in the draft matched; "Monte Carlo" became "joint scenario simulation from 2018–2024 market history with mean reversion" (what notebook 08 does), "predefined criteria" became "pre-registered", and the voice moved to the first person. Inserted as the report's first section, before the decision brief, on its own pages; `WORD_LIMIT = 12500` (body about 11,500 words); PDF 68 pages; 274 tests pass.
+
+## Session 26, continued — 2026-10-24: the capstone's deliverables brought to V2 (decision #114)
+
+**Done**
+
+- Checked V2 against the proposal of 19 October and the grading checklist (`PLAN.md §10`): met on every item but three — the course's 3,000-word guidance, the promised emissions cap, and a poster still on v10's layout; the demo video is still to record.
+- `src/report_course.py` and `make report-course`: the course-length edition (about 2,900 words: the executive summary, the brief, the conclusions, four figures, the statement of work), with two tests (under 3,000 words; every number in the table). 11 pages.
+- Notebook 13 section 6: the emissions cap. Book D emits 1.27 Mt a year, all from its gas request; any cap swaps it for the 1,026 MW solar request with an agreement; the zero-emission book scores $1.15B static and $0.86B financed against $1.35B and $1.03B — $201M, $158 per tonne-year. Section 7 and Section 13 of the report; keys `v2_co2_*`.
+- `report/poster.typ` redrawn: header band, one headline, four numbers, five executive figures, the recommendation; one A1 page; the poster number test passes.
+- `app/executive.py` (`make executive`): the decision on one screen, six tabs, Altair charts from `results/` only, the registered case X25 as the committee conversation; every tab opened in the browser and looked at. `.claude/launch.json` entry `executive` (port 8503).
+- README run instructions; Appendix C; 276 tests pass; report, course edition and poster rebuilt.
+
+**Next**
+
+1. Alan's read of V2, the course edition, the poster and the dashboard; push on his word.
+2. The demo video: the script's figure numbers to V2's, then record from `report/report.pdf` and the executive dashboard.

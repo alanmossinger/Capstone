@@ -105,3 +105,27 @@ def test_every_number_in_the_petrobras_report_is_in_report_numbers():
     typ = re.sub(r'"[^"]*\.svg"', " ", typ)  # figure file names
     missing = sorted(numbers_in(typ) - cited)
     assert not missing, f"numbers in the Petrobras report not in results/report_numbers.csv: {missing}"
+
+
+# The course-length edition (src/report_course.py) is the executive summary, the brief and the conclusions of report.md:
+# the same numbers, under the course's suggested length.
+COURSE = paths.REPORT / "report_course.md"
+COURSE_WORD_LIMIT = 3000
+
+
+def test_course_edition_numbers_are_in_report_numbers():
+    from src import report_course
+    report_course.build()
+    table = pd.read_csv(paths.RESULTS / "report_numbers.csv", dtype=str)
+    cited = set()
+    for text in table["text"].astype(str):
+        cited |= numbers_in(text)
+    missing = sorted(numbers_in(COURSE.read_text(encoding="utf-8")) - cited)
+    assert not missing, f"numbers in report_course.md not in results/report_numbers.csv: {missing}"
+
+
+def test_course_edition_is_under_the_course_word_limit():
+    text = re.sub(r"!\[[^\]]*\]\([^)]*\)", " ", COURSE.read_text(encoding="utf-8"))
+    text = re.sub(r"^\|[-| ]+\|$", " ", text, flags=re.MULTILINE)
+    words = [w for w in re.split(r"\s+", text) if re.search(r"\w", w)]
+    assert len(words) <= COURSE_WORD_LIMIT, f"{len(words)} words"

@@ -1813,3 +1813,36 @@ alternative rejected.
     regime-switching and extreme-event scenarios are proposed, to be
     registered before use); dropping the appendices to shorten the report
     (the academic record stays whole).
+114. **The capstone's deliverables brought to V2: a course-length edition,
+    the emissions cap, an executive poster and an executive dashboard**
+    (Alan, 2026-10-24: "All. And your poster is too simple… The same with
+    the dashboard"). *Course-length edition:* the course suggests about
+    3,000 words excluding references and appendices and V2's body runs to
+    about 11,500 at Alan's word; `src/report_course.py` writes
+    `report/report_course.md` from `report.md` — the executive summary, the
+    decision brief, the conclusions, four figures and the statement of
+    work, the same text and numbers — and `make report-course` builds its
+    PDF and DOCX; two tests hold it under 3,000 words and to the numbers
+    table. *Emissions cap:* the proposal promised the book with and without
+    an eGRID-based cap; notebook 13 section 6 re-solves the risk-aware
+    program at three quarters, half, a quarter and zero of book D's 1.27 Mt
+    a year — every cap gives the same book, the gas request out and the
+    1,026 MW solar request with an agreement in, $201M on the metric and
+    $158 per tonne-year; the leases' combustion emissions are not
+    modelled, stated as a limit. *Poster:* `report/poster.typ` redrawn for
+    reading at three metres — a header band, one headline sentence, four
+    numbers, five executive figures (F54, F51, F52, F53, F55) and the
+    recommendation; every number from the table (the poster test).
+    *Dashboard:* `app/executive.py` (`make executive`, port 8503 in
+    `.claude/launch.json`) presents the decision on one screen in six tabs
+    — the recommendation, risk against return with a tail-weight slider,
+    financing, what can go wrong, the AI challenger with the registered
+    case X25 as recorded, controls and readiness — reading `results/` only
+    through Altair (a Streamlit dependency, no new package); the analysis
+    dashboard `app/app.py` stays for working the decision. Every tab was
+    opened and looked at. *Rejected:* cutting the executive edition to
+    3,000 words (the committee's report and the course's are different
+    readers; one source, two builds); a carbon price instead of a cap (the
+    proposal promised a cap; a carbon-price what-if already exists in
+    notebook 09); plotly for the dashboard (a new dependency for nothing
+    Altair cannot draw).

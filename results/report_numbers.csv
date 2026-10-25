@@ -2904,6 +2904,55 @@ v2_status_reject,1,1,results/v2/book_D_members.csv,candidates with status reject
 v2_controls,12,12,results/v2/readiness_matrix.csv,controls in the readiness matrix
 v2_controls_yes,10,10,results/v2/readiness_matrix.csv,controls in place
 v2_controls_partly,2,2,results/v2/readiness_matrix.csv,controls partly in place
+v2_co2_D_mt,1.27,1272300.8223977182,results/v2/emissions_cap.csv,"book D's annual CO2, Mt"
+v2_co2_75_members,13,13,results/v2/emissions_cap.csv,members with emissions capped at 75% of D's
+v2_co2_75_gas,0,0,results/v2/emissions_cap.csv,gas requests kept at a 75% cap
+v2_co2_75_mt,0.00,0.0,results/v2/emissions_cap.csv,"annual CO2 at a 75% cap, Mt"
+v2_co2_75_static,$1.15B,1146911793.6155655,results/v2/emissions_cap.csv,static metric at a 75% cap
+v2_co2_75_financed,$0.86B,859683283.5755408,results/v2/emissions_cap.csv,financed metric at a 75% cap
+v2_co2_75_cost,$201M,200984288.7760141,results/v2/emissions_cap.csv,metric given up against D at a 75% cap
+v2_co2_75_per_t,$158,157.96915732338252,results/v2/emissions_cap.csv,metric given up per tonne-year removed at a 75% cap
+v2_co2_75_jaccard,0.86,0.8571428571428571,results/v2/emissions_cap.csv,overlap with D at a 75% cap
+v2_co2_75_mean,$1.80B,1803923890.958401,results/v2/emissions_cap.csv,expected NPV at a 75% cap
+v2_co2_75_cvar,$0.66B,657012097.3428354,results/v2/emissions_cap.csv,worst-5% loss at a 75% cap
+v2_co2_75_facility,$2.76B,2760466999.390352,results/v2/emissions_cap.csv,own facility at a 75% cap
+v2_co2_50_members,13,13,results/v2/emissions_cap.csv,members with emissions capped at 50% of D's
+v2_co2_50_gas,0,0,results/v2/emissions_cap.csv,gas requests kept at a 50% cap
+v2_co2_50_mt,0.00,0.0,results/v2/emissions_cap.csv,"annual CO2 at a 50% cap, Mt"
+v2_co2_50_static,$1.15B,1146911793.6155655,results/v2/emissions_cap.csv,static metric at a 50% cap
+v2_co2_50_financed,$0.86B,859683283.5755408,results/v2/emissions_cap.csv,financed metric at a 50% cap
+v2_co2_50_cost,$201M,200984288.7760141,results/v2/emissions_cap.csv,metric given up against D at a 50% cap
+v2_co2_50_per_t,$158,157.96915732338252,results/v2/emissions_cap.csv,metric given up per tonne-year removed at a 50% cap
+v2_co2_50_jaccard,0.86,0.8571428571428571,results/v2/emissions_cap.csv,overlap with D at a 50% cap
+v2_co2_50_mean,$1.80B,1803923890.958401,results/v2/emissions_cap.csv,expected NPV at a 50% cap
+v2_co2_50_cvar,$0.66B,657012097.3428354,results/v2/emissions_cap.csv,worst-5% loss at a 50% cap
+v2_co2_50_facility,$2.76B,2760466999.390352,results/v2/emissions_cap.csv,own facility at a 50% cap
+v2_co2_25_members,13,13,results/v2/emissions_cap.csv,members with emissions capped at 25% of D's
+v2_co2_25_gas,0,0,results/v2/emissions_cap.csv,gas requests kept at a 25% cap
+v2_co2_25_mt,0.00,0.0,results/v2/emissions_cap.csv,"annual CO2 at a 25% cap, Mt"
+v2_co2_25_static,$1.15B,1146911793.6155655,results/v2/emissions_cap.csv,static metric at a 25% cap
+v2_co2_25_financed,$0.86B,859683283.5755408,results/v2/emissions_cap.csv,financed metric at a 25% cap
+v2_co2_25_cost,$201M,200984288.7760141,results/v2/emissions_cap.csv,metric given up against D at a 25% cap
+v2_co2_25_per_t,$158,157.96915732338252,results/v2/emissions_cap.csv,metric given up per tonne-year removed at a 25% cap
+v2_co2_25_jaccard,0.86,0.8571428571428571,results/v2/emissions_cap.csv,overlap with D at a 25% cap
+v2_co2_25_mean,$1.80B,1803923890.958401,results/v2/emissions_cap.csv,expected NPV at a 25% cap
+v2_co2_25_cvar,$0.66B,657012097.3428354,results/v2/emissions_cap.csv,worst-5% loss at a 25% cap
+v2_co2_25_facility,$2.76B,2760466999.390352,results/v2/emissions_cap.csv,own facility at a 25% cap
+v2_co2_0_members,13,13,results/v2/emissions_cap.csv,members with emissions capped at 0% of D's
+v2_co2_0_gas,0,0,results/v2/emissions_cap.csv,gas requests kept at a 0% cap
+v2_co2_0_mt,0.00,0.0,results/v2/emissions_cap.csv,"annual CO2 at a 0% cap, Mt"
+v2_co2_0_static,$1.15B,1146911793.6155655,results/v2/emissions_cap.csv,static metric at a 0% cap
+v2_co2_0_financed,$0.86B,859683283.5755408,results/v2/emissions_cap.csv,financed metric at a 0% cap
+v2_co2_0_cost,$201M,200984288.7760141,results/v2/emissions_cap.csv,metric given up against D at a 0% cap
+v2_co2_0_per_t,$158,157.96915732338252,results/v2/emissions_cap.csv,metric given up per tonne-year removed at a 0% cap
+v2_co2_0_jaccard,0.86,0.8571428571428571,results/v2/emissions_cap.csv,overlap with D at a 0% cap
+v2_co2_0_mean,$1.80B,1803923890.958401,results/v2/emissions_cap.csv,expected NPV at a 0% cap
+v2_co2_0_cvar,$0.66B,657012097.3428354,results/v2/emissions_cap.csv,worst-5% loss at a 0% cap
+v2_co2_0_facility,$2.76B,2760466999.390352,results/v2/emissions_cap.csv,own facility at a 0% cap
+v2_co2_in_n,1,1,results/v2/emissions_cap.csv,members in at a zero cap
+v2_co2_in_0_mw,"1,026",1025.57,results/candidate_npv.csv,REQ|ERCOT|26INR0155: MW (in at a zero cap)
+v2_co2_out_n,1,1,results/v2/emissions_cap.csv,members out at a zero cap
+v2_co2_out_0_mw,697,697.0,results/candidate_npv.csv,REQ|ERCOT|23INR0029: MW (out at a zero cap)
 v2_ex_vulns,3,3,results/v10/x1_outputs.jsonl,X25: vulnerabilities in the memo
 v2_ex_fragile,5,5,results/v10/x1_outputs.jsonl,X25: members the checklist flags as fragile
 v2_ex_numbers,35,35,results/v10/x1_outputs.jsonl,X25: numbers in the memo

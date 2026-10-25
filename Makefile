@@ -8,7 +8,7 @@ PYTHON := .venv/bin/python
 PY311 := python3.11
 endif
 
-.PHONY: setup get-data check-data bundle-data data eda features forecast energy economics scenarios portfolio record advisor decide questions corrections figures numbers report poster petrobras app challenge decide-page test all
+.PHONY: setup get-data check-data bundle-data data eda features forecast energy economics scenarios portfolio record advisor decide questions corrections figures numbers report report-course poster petrobras app executive challenge decide-page test all
 
 setup:            ## create .venv from Python 3.11 (the pinned wheels are 3.11 builds), install pinned packages, register the notebook kernel
 	$(PY311) -m venv .venv
@@ -69,11 +69,21 @@ report: numbers   ## report.md + references.md → report/report.pdf and report/
 	rm report/report_vector.md
 	pandoc report/report.md report/references.md -f markdown-implicit_figures --resource-path=report -o report/report.docx
 
+report-course: numbers   ## the course-length edition (about 3,000 words): report/report_course.pdf and .docx from the executive summary, the brief and the conclusions
+	$(PYTHON) -m src.report_course
+	sed 's/\.png)/.svg)/' report/report_course.md > report/report_course_vector.md
+	pandoc report/report_course_vector.md report/references.md -f markdown-implicit_figures --resource-path=report --include-in-header=report/typst_header.typ --pdf-engine=typst -o report/report_course.pdf
+	rm report/report_course_vector.md
+	pandoc report/report_course.md report/references.md -f markdown-implicit_figures --resource-path=report -o report/report_course.docx
+
 poster:           ## report/poster.pdf from report/poster.typ (needs typst)
 	typst compile --root . report/poster.typ report/poster.pdf
 
 petrobras:        ## report/Petrobras_Report.pdf, the executive edition, from report/petrobras_report.typ (needs typst)
 	typst compile --root . report/petrobras_report.typ report/Petrobras_Report.pdf
+
+executive:        ## the executive dashboard for presenting the decision (app/executive.py; reads results/ only)
+	$(PYTHON) -m streamlit run app/executive.py
 
 app:              ## the Streamlit dashboard (reads results/ only)
 	$(PYTHON) -m streamlit run app/app.py

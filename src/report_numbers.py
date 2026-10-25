@@ -2240,6 +2240,32 @@ def v2_report():
     add("v2_controls", str(len(matrix)), len(matrix), v2 + "readiness_matrix.csv", "controls in the readiness matrix")
     add("v2_controls_yes", str(int((matrix["implemented"] == "yes").sum())), int((matrix["implemented"] == "yes").sum()), v2 + "readiness_matrix.csv", "controls in place")
     add("v2_controls_partly", str(int((matrix["implemented"] == "partly").sum())), int((matrix["implemented"] == "partly").sum()), v2 + "readiness_matrix.csv", "controls partly in place")
+    if (paths.RESULTS / "v2" / "emissions_cap.csv").exists():
+        em = read("v2/emissions_cap.csv").set_index("cap_share_of_D")
+        add("v2_co2_D_mt", num(em.loc[1.0, "co2_t_year"] / 1e6, 2), em.loc[1.0, "co2_t_year"], v2 + "emissions_cap.csv", "book D's annual CO2, Mt")
+        for share, key in ((0.75, "75"), (0.5, "50"), (0.25, "25"), (0.0, "0")):
+            if share not in em.index:
+                continue
+            r = em.loc[share]
+            add(f"v2_co2_{key}_members", str(int(r["members"])), int(r["members"]), v2 + "emissions_cap.csv", f"members with emissions capped at {share:.0%} of D's")
+            add(f"v2_co2_{key}_gas", str(int(r["gas_requests"])), int(r["gas_requests"]), v2 + "emissions_cap.csv", f"gas requests kept at a {share:.0%} cap")
+            add(f"v2_co2_{key}_mt", num(r["co2_t_year"] / 1e6, 2), r["co2_t_year"], v2 + "emissions_cap.csv", f"annual CO2 at a {share:.0%} cap, Mt")
+            add(f"v2_co2_{key}_static", dollars(r["static_metric"]), r["static_metric"], v2 + "emissions_cap.csv", f"static metric at a {share:.0%} cap")
+            add(f"v2_co2_{key}_financed", dollars(r["financed_metric"]), r["financed_metric"], v2 + "emissions_cap.csv", f"financed metric at a {share:.0%} cap")
+            add(f"v2_co2_{key}_cost", dollars(r["metric_cost_vs_D"], "M", 0), r["metric_cost_vs_D"], v2 + "emissions_cap.csv", f"metric given up against D at a {share:.0%} cap")
+            if pd.notna(r["cost_per_tonne_year"]):
+                add(f"v2_co2_{key}_per_t", f"${r['cost_per_tonne_year']:,.0f}", r["cost_per_tonne_year"], v2 + "emissions_cap.csv", f"metric given up per tonne-year removed at a {share:.0%} cap")
+            add(f"v2_co2_{key}_jaccard", num(r["jaccard_to_D"], 2), r["jaccard_to_D"], v2 + "emissions_cap.csv", f"overlap with D at a {share:.0%} cap")
+            add(f"v2_co2_{key}_mean", dollars(r["static_mean"]), r["static_mean"], v2 + "emissions_cap.csv", f"expected NPV at a {share:.0%} cap")
+            add(f"v2_co2_{key}_cvar", dollars(r["static_cvar"]), r["static_cvar"], v2 + "emissions_cap.csv", f"worst-5% loss at a {share:.0%} cap")
+            add(f"v2_co2_{key}_facility", dollars(r["facility_own_q95"]), r["facility_own_q95"], v2 + "emissions_cap.csv", f"own facility at a {share:.0%} cap")
+        if 0.0 in em.index:
+            d_members, z_members = set(em.loc[1.0, "members_list"].split(";")), set(em.loc[0.0, "members_list"].split(";"))
+            cand = read("candidate_npv.csv").set_index("project_id")
+            for label, ids in (("in", sorted(z_members - d_members)), ("out", sorted(d_members - z_members))):
+                add(f"v2_co2_{label}_n", str(len(ids)), len(ids), v2 + "emissions_cap.csv", f"members {label} at a zero cap")
+                for i, pid in enumerate(ids):
+                    add(f"v2_co2_{label}_{i}_mw", f"{cand.loc[pid, 'mw']:,.0f}", cand.loc[pid, "mw"], "results/candidate_npv.csv", f"{pid}: MW ({label} at a zero cap)")
     # the committee example of the report (section 9): registered case X25, the sunk-cost statement on book D, and its recorded memo
     records = {json.loads(line)["id"]: json.loads(line) for line in (paths.RESULTS / "v10" / "x1_outputs.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()}
     ex = records["X25"]
