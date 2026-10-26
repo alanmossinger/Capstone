@@ -1930,3 +1930,17 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 
 1. Alan's read of the poster at print scale.
 2. Unchanged from session 26: the demo video script's figure numbers to V2's, then record.
+
+## Session 27, continued — 2026-10-26: F43 redrawn; both Word reports given the new figures (decision #116)
+
+**Done**
+
+- `Beyond_Prediction_Capstone_Report_Final.docx`: Figure 9 replaced by the new F55 (picture and its height only; everything else byte-identical); page 13 looked at in a Word export.
+- F43 (the six-stage architecture) redrawn in notebook 11 the same way as F55: a 3×2 grid of stages, three short lines each, "What is measured" beside it. Notebook 11 executed top to bottom (18 min): only the four F43 files changed, F44 and every result identical.
+- `CONFIDENTIAL_Petrobras_Executive_Briefing_Beyond_Prediction.docx`: Exhibit 1 replaced by the new F43 the same way; page 6 looked at in a Word export; the caption still matches.
+- `make report report-course petrobras` rebuilt; F43 looked at in `Petrobras_Report.pdf` (page 4). The originals of both Word files are kept outside the repository.
+
+**Next**
+
+1. Alan's read of the two Word reports and the poster.
+2. Unchanged: the demo video script's figure numbers to V2's, then record.

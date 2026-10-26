@@ -1867,3 +1867,27 @@ alternative rejected.
     one workflow drift apart); keeping one row of nine boxes with larger
     type (a 9.7-inch poster column holds about fifteen characters per box
     at a readable size).
+
+116. **F43, the decision-system architecture, redrawn the same way as F55;
+    both figures swapped into Alan's two Word reports** (Alan, 2026-10-26:
+    "correct the same image in this both reports. However do not change the
+    report and content"; then "Redraw F43 for readability the same way as
+    F55 and swap it into the briefing's Exhibit 1, changing nothing else").
+    F43 had six boxes of seven or eight 9-pt lines and a four-line note
+    box beneath. Notebook 11 section 0 now draws the six stages as a 3×2
+    grid, each a bold name and three short lines, with a colour key above
+    (forecasts, optimizer, model argues, person decides) and "What is
+    measured" as five boxes beside it; the sentence that the language model
+    works in stage 4 only moved into the subtitle. `F43_architecture` joins
+    `plots.EXECUTIVE_KEEP_WIDTH`. F44, drawn in the same cell, is
+    unchanged; re-running notebook 11 rewrote only the four F43 files.
+    *The Word reports:* `report/Beyond_Prediction_Capstone_Report_Final.docx`
+    carried the old F55 (Figure 9) and
+    `report/CONFIDENTIAL_Petrobras_Executive_Briefing_Beyond_Prediction.docx`
+    the old F43 (Exhibit 1). In each, only that one picture and the
+    drawing's height (so the new aspect is not stretched) changed; every
+    other part of the file is byte-identical and the document XML matches
+    the original once the height is set back. Both were exported through
+    Word and the pages looked at. *Rejected:* putting F55 into the
+    briefing's Exhibit 1 (its caption describes the six-stage workflow);
+    editing the reports in Word by hand (it re-saves every part).
