@@ -1846,3 +1846,24 @@ alternative rejected.
     proposal promised a cap; a carbon-price what-if already exists in
     notebook 09); plotly for the dashboard (a new dependency for nothing
     Altair cannot draw).
+
+115. **F55, the committee workflow, redrawn for the poster** (Alan,
+    2026-10-26: the poster's workflow figure "is not readable"). The
+    figure set nine stages in one row with five lines of 8-pt text in each
+    box, and the executive copy squeezed the 11-inch diagram to 9 inches,
+    so the text ran out of its boxes; on the A1 poster it printed at about
+    9 pt. Notebook 13 section 5 now draws the nine stages as a 3×3 grid,
+    left to right in three rows, each box a bold name (15 pt) and two
+    short lines (13 pt); the colour key sits above it; the five levels of
+    the challenger stand in a column beside it, the three ways to act
+    apart from the two ways to hand back. The detail the boxes dropped is
+    in the subtitle, the report's text (sections on the challenger and on
+    use) and the control matrix (F56). `F55_committee_workflow` joins
+    `plots.EXECUTIVE_KEEP_WIDTH`, so the executive copy keeps the width its
+    boxes are laid out for. Stage numbers and the five levels are
+    unchanged, so the report's references to "Figure 9, stages 2–6" still
+    hold. No result changed: re-running notebook 13 rewrote only the four
+    F55 files. *Rejected:* a separate poster-only drawing (two drawings of
+    one workflow drift apart); keeping one row of nine boxes with larger
+    type (a 9.7-inch poster column holds about fifteen characters per box
+    at a readable size).

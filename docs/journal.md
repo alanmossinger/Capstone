@@ -1917,3 +1917,16 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 
 1. Alan's read of V2, the course edition, the poster and the dashboard; push on his word.
 2. The demo video: the script's figure numbers to V2's, then record from `report/report.pdf` and the executive dashboard.
+
+## Session 27 — 2026-10-26: the poster's workflow figure made readable (decision #115)
+
+**Done**
+
+- Alan flagged the poster's "How a committee uses it" figure (F55) as unreadable: nine boxes in one row, 8-pt text overflowing the boxes, and the executive copy squeezed from 11 to 9 inches.
+- Notebook 13 section 5 redraws F55 as a 3×3 grid of stages (name plus two short lines each) with the challenger's five levels in a column beside it; `F55_committee_workflow` added to `plots.EXECUTIVE_KEEP_WIDTH`. Notebook 13 executed top to bottom (12 min): only the four F55 files changed.
+- Poster (`make poster`) and report (`make report`) rebuilt; the figure looked at in both, on the poster at 100 dpi and on report page 23 (Figure 9). The report's stage references still match. Notebook 12's kernel restored to `queue-survival` (an editor had switched it); 276 tests pass.
+
+**Next**
+
+1. Alan's read of the poster at print scale.
+2. Unchanged from session 26: the demo video script's figure numbers to V2's, then record.

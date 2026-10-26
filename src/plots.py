@@ -270,7 +270,7 @@ def save_fig(fig, name, caption, notebook, folder=None):
 
 EXECUTIVE_WIDTH = 9.0  # inches; placed at a 6.5-inch text width the 13-pt base type reads at about 9.5 pt, the size of an executive report's figures
 EXECUTIVE_DIR = paths.FIGURES / "executive"
-EXECUTIVE_KEEP_WIDTH = {"F0_overview", "F36_ai_workflow"}  # diagrams drawn in figure coordinates: their boxes and labels are placed for the 11-inch width
+EXECUTIVE_KEEP_WIDTH = {"F0_overview", "F36_ai_workflow", "F55_committee_workflow"}  # diagrams drawn in figure coordinates: their boxes and labels are placed for the 11-inch width
 
 
 def _shorten(text, limit):
