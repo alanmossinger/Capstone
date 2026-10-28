@@ -118,8 +118,7 @@ make test      # pytest
 make report    # report/report.pdf and report/report.docx from report/report.md + references.md (needs pandoc and typst)
 make report-course  # the course-length edition (about 3,000 words): report/report_course.pdf and .docx
 make poster    # report/poster.pdf from report/poster.typ (needs typst)
-make executive # the executive dashboard for presenting the decision, at http://localhost:8501 (reads results/ only)
-make app       # the analysis dashboard (reads results/ only)
+make app       # the dashboard, at http://localhost:8501: the report's decision in seven tabs, the last one the committee's own call (reads results/ only)
 ```
 
 Each notebook also has its own target (`make data`, `make eda`, `make features`,
@@ -145,8 +144,8 @@ notebooks/   01_problem_and_data (queue sources and cleaning; the v5 sources BSE
              Each notebook is made of lettered parts; a part header says which old notebook it was.
 src/         small helper package used by the notebooks (paths, config, data access, plots, models, economics,
              scenarios, optimizer, advisor, gym, horizons)
-app/         app.py — the Streamlit dashboard: decide forward (re-solved book, grid and impact, forward view,
-             advisor, override gate), learn from history (the gym), scenarios, candidates, the ledger
+app/         executive.py — the dashboard (`make app`): what to fund, risk against return, financing, what can go wrong,
+             the AI challenger, the controls, and the committee's call; reads results/ only, writes nothing
 prompts/     the advisor's system prompt, the recommend and gym templates, the two reasoning prompts
 data/        raw/ (not committed) · interim/ (not committed) · processed/ (small final tables)
 results/     every number the report cites, written by the notebooks; advisor_runs.jsonl is the replay record

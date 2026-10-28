@@ -22,7 +22,7 @@ number the tables do not hold is worthless, so the check is mechanical.
 Reads: ``.env`` (``ANTHROPIC_API_KEY`` if present, never printed), the
 ``claude`` command's own sign-in, ``prompts/*.md``, ``results/advisor_runs.jsonl``.
 Writes: ``results/advisor_runs.jsonl``, ``results/decision_ledger.csv`` (append).
-Used by: notebook 10, the dashboard (``app/app.py``); ``tests/test_advisor.py``.
+Used by: notebook 10, the command-line challenge (``python -m src.advisor``); ``tests/test_advisor.py``.
 """
 
 import hashlib

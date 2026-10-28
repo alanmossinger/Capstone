@@ -1,14 +1,18 @@
-"""The executive dashboard: report V2's decision on one screen, for presenting to a committee.
+"""The dashboard: the report's decision on one screen, for presenting it and for making the committee's two calls.
 
-What: a Streamlit app (``make executive``) with six tabs — the recommendation,
-risk against return, financing, what can go wrong, the AI challenger, the
-controls — each a chart or a table with one sentence under it. Every number
-is read from ``results/`` (the tables notebooks 11–13 wrote); nothing is
-recomputed, no model is called, and the numbers are the report's.
-Why: a committee meeting needs the decision, its price, its risk and its
-controls in a form that can be shown and explained in ten minutes; the
-analysis dashboard (``app/app.py``) is for working the decision, this one
-is for presenting it.
+What: a Streamlit app (``make app``) that opens with what is being decided
+and how to read the page, then seven tabs — the recommendation, risk
+against return, financing, what can go wrong, the AI challenger, the
+controls, and the committee's own call (how much the bad years weigh,
+whether a construction facility can be arranged) — each a chart or a table
+with one sentence under it. Every number is read from ``results/`` (the
+tables notebooks 11–13 wrote); nothing is recomputed, no model is called,
+nothing is written, and the numbers are the report's.
+Why: the earlier dashboards (the analysis desk of v5, the challenge page,
+the v8 decision page) read tables the report no longer cites and did not
+say what to do (decision #118); one page that a committee member can read
+left to right, ending in the two choices only the committee can make,
+replaces them.
 Reads: ``results/v2/*.csv``, ``results/v8/frontier.csv``,
 ``results/v8/process_comparison.csv``, ``results/v10/*`` (the ladder, the
 registered lines, case X25 and its recorded memo), ``figures/executive/``.
@@ -48,6 +52,7 @@ h3 {font-size: 1.15rem !important;}
 .reading {color: #5F6368; font-size: 0.95rem; margin-top: -0.4rem; margin-bottom: 0.8rem;}
 .rec {background: #13294B; color: white; padding: 1.1rem 1.4rem; border-radius: 10px; font-size: 1.02rem; line-height: 1.5;}
 .rec b {color: #FFFFFF;}
+.howto {background: #F4F5F7; border-left: 4px solid #13294B; padding: 0.8rem 1.1rem; border-radius: 6px; font-size: 0.98rem; line-height: 1.5; margin: 0.4rem 0 1rem 0;}
 .quote {background: #F4F5F7; border-left: 4px solid #0072B2; padding: 0.8rem 1rem; border-radius: 6px; font-size: 0.98rem;}
 </style>
 """, unsafe_allow_html=True)
@@ -76,6 +81,11 @@ def money(x, unit="B", digits=2):
     return ("−" if v < 0 else "") + f"${abs(v):,.{digits}f}{unit}"
 
 
+def md(text):
+    """Escape dollar signs: Streamlit reads a pair of them in one string as a LaTeX formula."""
+    return text.replace("$", r"\$")
+
+
 def reading(text):
     st.markdown(f'<div class="reading">{text}</div>', unsafe_allow_html=True)
 
@@ -96,13 +106,21 @@ static = fin[fin["basis"] == "static (unlimited capital)"].set_index("book")
 pairs = T["books_financed_pairs"].set_index(["basis", "book", "against"])
 rungs = T["ladder_five_rungs"].set_index("rung")
 
-k1, k2, k3, k4 = st.columns(4)
-k1.metric("Committed of the budget", N["v2_D_committed"], f"{N['v2_D_members']} candidates: 5 leases, 8 requests", delta_color="off")
-k2.metric("Risk-aware book vs NPV ranking, financed", N["v2_pair_own_D_A"], f"pre-registered static margin {N['v10_c33']} {N['v10_c33_ci']}", delta_color="off")
-k3.metric("Contingent construction facility", N["v2_D_facility"], f"calls beyond the reserve in {N['v2_D_p_over']} of scenarios", delta_color="off")
-k4.metric("Language model, per case over the tools", N["v10_c34"], f"against an optimizer-first rule {N['v2_rung_tools_llm_minus_optimizer_first']}", delta_color="off")
+st.markdown(f"""<div class="howto"><b>What is being decided.</b> Which of forty candidates — twenty Gulf of Mexico leases to redevelop
+and twenty ERCOT interconnection requests — to fund from one budget of {N['v8_budget']}, and how to pay for the construction
+calls that come later. <b>How to read this page.</b> The four numbers below are the answer. The tabs explain it in the order a
+committee asks: 1 what to fund, 2 why not simply the highest return, 3 how it is paid for, 4 what can go wrong, 5 what the
+language model adds, 6 which controls are in place. <b>Tab 7 is yours:</b> set the two things only the committee can decide
+and see which book follows.</div>""", unsafe_allow_html=True)
 
-tabs = st.tabs(["1 · The recommendation", "2 · Risk against return", "3 · Financing", "4 · What can go wrong", "5 · The AI challenger", "6 · Controls and readiness"])
+k1, k2, k3, k4 = st.columns(4)
+k1.metric("Capital committed now", N["v2_D_committed"], md(f"{N['v2_D_members']} candidates: 5 leases, 8 requests"), delta_color="off")
+k2.metric("Gain over ranking by NPV, risk-adjusted", N["v2_pair_own_D_A"], md(f"before financing, pre-registered: {N['v10_c33']} {N['v10_c33_ci']}"), delta_color="off")
+k3.metric("Construction facility to arrange", N["v2_D_facility"], md(f"drawn beyond the reserve in {N['v2_D_p_over']} of scenarios"), delta_color="off")
+k4.metric("Language-model challenger, per case", N["v10_c34"], md(f"{N['v2_rung_tools_llm_minus_optimizer_first']} against a fixed rule that reads no words"), delta_color="off")
+reading("Risk-adjusted = expected NPV minus the average loss in the worst 5% of scenarios, the report's registered metric. All figures are modelled on public data and assumed lease costs, not realized returns.")
+
+tabs = st.tabs(["1 · What to fund", "2 · Risk against return", "3 · Financing", "4 · What can go wrong", "5 · The AI challenger", "6 · Controls", "7 · Your call"])
 
 # --- 1 the recommendation ---------------------------------------------------------------------------
 with tabs[0]:
@@ -153,7 +171,7 @@ with tabs[1]:
     comp["name"] = comp["book"].map(BOOK_NAME)
     left, right = st.columns([1.3, 1])
     with left:
-        lam = st.select_slider("The committee's tail weight λ (a dollar of average loss in the bad years counts as λ dollars of expected value)", options=sorted(pen["tail weight"].unique()), value=1.0)
+        lam = st.select_slider("How much the bad years weigh, λ: a dollar of average loss in the worst 5% of scenarios counts as λ dollars of expected value", options=sorted(pen["tail weight"].unique()), value=1.0)
         chosen = pen[pen["tail weight"] == lam].iloc[0]
         base = alt.Chart(pen).encode(x=alt.X("cvar_loss:Q", title="Worst-5% average loss, held-out ($ billion)", axis=alt.Axis(format="$.1s")), y=alt.Y("mean:Q", title="Expected NPV, held-out ($ billion)", axis=alt.Axis(format="$.2s"), scale=alt.Scale(zero=False)))
         line = base.mark_line(color=INK, strokeWidth=2).encode(order="tail weight:Q")
@@ -286,3 +304,45 @@ with tabs[5]:
     st.dataframe(m.style.map(shade, subset=["In place"]), hide_index=True, use_container_width=True, height=520)
     reading("Every number is computed by tools; the committee confirms the model's reading before anything is computed; a guide is allowed only toward a book that keeps every rule; every number in the memo is verified; a named person signs; the ledger is hash-chained. The two controls partly in place — injection resistance and scenario realism — have named remedies. Nothing here is a demonstrated improvement in a company's returns: simulated committees, assumed costs, public data.")
     figure("F55_committee_workflow", "How a committee uses it: nine stages in three hands — the committee decides, tools compute, the model argues — and the five levels at which the challenger may act or must stand back.")
+
+# --- 7 your call ------------------------------------------------------------------------------------
+# The two inputs the recommendation leaves to the committee (tab 1, steps 1 and 2): the tail weight, and whether a
+# construction facility can be arranged. Each answer is a row the notebooks already scored; nothing is re-solved.
+with tabs[6]:
+    st.subheader("Two choices only the committee can make — and the book that follows from them")
+    left, right = st.columns([1, 1.3])
+    weights = {0.0: "0 — ignore the bad years", 0.25: "0.25", 0.5: "0.5", 1.0: "1 — the registered setting", 2.0: "2", 4.0: "4 — avoid losses above all"}
+    with left:
+        st.markdown("**1. How much do the bad years weigh?**")
+        lam7 = st.radio("A dollar of average loss in the worst 5% of scenarios counts as this many dollars of expected value", list(weights), index=3, format_func=weights.get)
+        st.markdown("**2. Can the company arrange a contingent construction facility?**")
+        line = st.radio(md(f"A standby credit line of about {N['v2_D_facility']} for construction calls beyond the reserve, at a 0.5% commitment fee and 8% interest on draws"),
+                        ["yes", "no"], format_func={"yes": "Yes, a facility can be arranged", "no": "No, every call must be met from the budget"}.get)
+    with right:
+        if line == "yes":
+            row = pen[pen["tail weight"] == lam7].iloc[0]
+            st.markdown(f"**Fund the risk-aware book for λ = {lam7:g}: {int(row['leases'])} leases and {int(row['requests'])} requests**")
+            c1, c2, c3 = st.columns(3)
+            c1.metric("Expected NPV", money(row["mean"]))
+            c2.metric("Worst-5% average loss", money(row["cvar_loss"]))
+            c3.metric("Chance of a loss", f"{row['p_loss']:.0%}")
+            if lam7 == 1.0:
+                reading(f"This is the report's recommendation (book D). Financed through the facility it scores {N['v2_D_own_metric']} on the registered metric, {N['v2_pair_own_D_A']} {N['v2_pair_own_D_A_ci']} above ranking by NPV.")
+            else:
+                reading("Scored before financing, as in tab 2. Only the registered setting, λ = 1, was also scored through the facility; a different weight is a different decision, so the committee should state it before the book is chosen.")
+            members = [p.split("|")[-1] for p in str(row["members"]).split(";")]
+            st.markdown("**Members:** " + ", ".join(members))
+        else:
+            noline = fin[fin["basis"] == "no line (calls beyond the reserve forfeit)"].set_index("book").loc[list(BOOK_COLOR)].reset_index()
+            best = noline.loc[noline["metric"].idxmax()]
+            st.markdown(f"**Without a facility, fund {BOOK_NAME[best['book']].split('  ')[1]}: {int(best['leases'])} leases and {int(best['requests'])} requests**")
+            c1, c2, c3 = st.columns(3)
+            c1.metric("Expected NPV", money(best["mean"]))
+            c2.metric("Worst-5% average loss", money(best["cvar_loss"]))
+            c3.metric("Chance of a loss", f"{best['p_loss']:.0%}")
+            noline["name"] = noline["book"].map(BOOK_NAME)
+            st.altair_chart(alt.Chart(noline).mark_bar().encode(
+                y=alt.Y("name:N", sort="-x", title=None, axis=alt.Axis(labelLimit=300)), x=alt.X("metric:Q", title="Registered metric with no facility ($ billion)", axis=alt.Axis(format="$.2s")),
+                color=alt.Color("book:N", scale=alt.Scale(domain=list(BOOK_COLOR), range=list(BOOK_COLOR.values())), legend=None),
+                tooltip=["name", alt.Tooltip("metric:Q", format="$,.0f"), alt.Tooltip("mean:Q", format="$,.0f", title="expected NPV"), alt.Tooltip("cvar_loss:Q", format="$,.0f", title="worst-5% loss")]).properties(height=220), use_container_width=True)
+            reading("With no facility a construction call beyond the reserve is forfeited, and the request with it. Scored at the registered setting, λ = 1, whatever the weight chosen on the left: equal capital by sector then leads, so the recommendation is the risk-aware book and its facility together.")

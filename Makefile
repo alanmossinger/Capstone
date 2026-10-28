@@ -8,7 +8,7 @@ PYTHON := .venv/bin/python
 PY311 := python3.11
 endif
 
-.PHONY: setup get-data check-data bundle-data data eda features forecast energy economics scenarios portfolio record advisor decide questions corrections figures numbers report report-course poster petrobras app executive challenge decide-page test all
+.PHONY: setup get-data check-data bundle-data data eda features forecast energy economics scenarios portfolio record advisor decide questions corrections figures numbers report report-course poster petrobras app test all
 
 setup:            ## create .venv from Python 3.11 (the pinned wheels are 3.11 builds), install pinned packages, register the notebook kernel
 	$(PY311) -m venv .venv
@@ -82,17 +82,8 @@ poster:           ## report/poster.pdf from report/poster.typ (needs typst)
 petrobras:        ## report/Petrobras_Report.pdf, the executive edition, from report/petrobras_report.typ (needs typst)
 	typst compile --root . report/petrobras_report.typ report/Petrobras_Report.pdf
 
-executive:        ## the executive dashboard for presenting the decision (app/executive.py; reads results/ only)
+app:              ## the dashboard: the report's decision on one page and the committee's two calls (app/executive.py; reads results/ only)
 	$(PYTHON) -m streamlit run app/executive.py
-
-app:              ## the Streamlit dashboard (reads results/ only)
-	$(PYTHON) -m streamlit run app/app.py
-
-challenge:        ## the challenge round as one page: state the book, answer the five questions, read the verdict (app/challenge.py)
-	$(PYTHON) -m streamlit run app/challenge.py
-
-decide-page:      ## the v8 decision page: alternatives, your book, the models' answers, a decision through the gated ledger (app/decide.py)
-	$(PYTHON) -m streamlit run app/decide.py
 
 test:
 	$(PYTHON) -m pytest

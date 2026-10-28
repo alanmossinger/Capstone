@@ -18,7 +18,7 @@ Reads: `results/candidate_npv.csv`, `results/scenario_settings.csv`,
 `data/interim/scenario_state.npz` (notebook 08), `data/interim/upstream_monthly.parquet`,
 the ERCOT 2024 files and the ATB table (the same basis as notebooks 07–08).
 Writes: nothing.
-Used by: notebook 11, the decision page (`app/decide.py`), `src/advisor.py`; `tests/test_whatif.py`.
+Used by: notebook 11, `src/advisor.py`; `tests/test_whatif.py`.
 """
 
 from dataclasses import asdict, dataclass, field, fields

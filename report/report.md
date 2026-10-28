@@ -405,7 +405,7 @@ Every claim in the body that says "registered" refers to a line below. Each crit
 
 | Need | Where |
 |------------------------------|----------------------------------------------------------------------|
-| Run everything | `make setup`, then `make all` (thirteen notebooks in order), `make test`, `make report`; `make decide-page` for the decision page |
+| Run everything | `make setup`, then `make all` (thirteen notebooks in order), `make test`, `make report`; `make app` for the dashboard |
 | The raw inputs | `data/README.md`; every file with its hash in `data/raw_manifest.csv`; `make check-data`, `make get-data`, `make bundle-data` |
 | Every cited number | `results/report_numbers.csv`, written by `src/report_numbers.py` and checked by `tests/test_report.py` |
 | Every decision and its reason | `docs/decisions.md` (numbered); the registered criteria in `results/success_criteria*.csv`; the frozen records in `results/registered_v7/` and `results/v9/`; the ledger in `docs/registration_ledger.md` |

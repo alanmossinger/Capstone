@@ -1969,3 +1969,17 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 1. The Word report runs to about 10,300 words before the appendices against the course's suggested 3,000; the course-length edition (`report/report_course.pdf`) is the short version if the course asks for one — Alan to decide which is uploaded, or both.
 2. A PDF export of the Word report for submission, from Word.
 3. Unchanged: the demo video; the per-criterion table for Appendix A promised in the mentor reply now goes into the Word report.
+
+## Session 29, continued — 2026-10-28: one dashboard (decision #118)
+
+**Done**
+
+- Reviewed the dashboard Alan opened (`app/app.py`): superseded numbers ($2.31B budget, twelve leases, a worst 5% "still a profit") against the official report, no starting point, the advisor's book differing from the one on screen, jargon labels, and clicks that write to `results/`. Four pages existed; only `app/executive.py` reads the report's numbers.
+- `app/executive.py` made the only dashboard (`make app`, port 8501): a "What is being decided / How to read this page" opening, plain labels on the four headline numbers, the garbled pre-registered margin fixed (dollar signs escaped), and tab 7 "Your call" (tail weight × facility → the book already scored for that choice). Every tab looked at in the browser; tab 7 checked at λ = 1 with and without a facility and at λ = 4.
+- `app/app.py`, `app/decide.py`, `app/challenge.py`, their three tests and three Makefile targets removed; `tests/test_app.py` rewritten for the dashboard (4 tests); README, `report/report.md` Appendix C run line, `src/advisor.py` and `src/whatif.py` docstrings updated. 275 tests pass; the one failure is notebook 12's kernel, switched again by an open editor.
+
+**Next**
+
+1. Close notebook 12 in the editor and set its kernel back to `queue-survival`.
+2. `make report` to carry the Appendix C run line into `report.pdf` (the official Word report does not mention the dashboard).
+3. The demo video can now be recorded from `make app`.

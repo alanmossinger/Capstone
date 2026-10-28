@@ -1911,3 +1911,33 @@ alternative rejected.
     pandoc (it would discard Alan's layout and wording); leaving it
     untracked (the test and a fresh clone need it). The executive briefing
     for Petrobras stays outside git.
+
+118. **One dashboard: the executive page, with a how-to opening and the
+    committee's call** (Alan, 2026-10-28: "the dashboard is confusing. Not
+    clear what to do"; then "Yes, make it one"). The review found four
+    Streamlit pages from four stages of the project. `app/app.py` (`make
+    app`, v5) opened on a $2.31B budget and a twelve-lease book whose
+    worst 5% was "still a profit", against the official report's $3.82B,
+    five leases and eight requests and a $0.82B worst-5% loss; it never
+    said what to do, showed the advisor's recommendation for a different
+    book than the one on screen, listed per-technology caps while
+    applying the tightest to all, and wrote to `results/decision_ledger.csv`
+    on a click. `app/challenge.py` and `app/decide.py` read the same
+    superseded tables. `app/executive.py` reads `results/report_numbers.csv`
+    and the V2 tables. It is now the only dashboard, under `make app`:
+    an opening box says what is decided and how to read the tabs; the four
+    headline numbers carry plain labels, and their deltas escape the
+    dollar sign (two in one delta rendered as a LaTeX formula, garbling the
+    pre-registered margin); a seventh tab, "Your call", takes the two
+    inputs the recommendation leaves to the committee — the tail weight
+    and whether a facility can be arranged — and shows the book already
+    scored for them (the frontier row for that weight; with no facility,
+    the best book on the no-line basis, equal capital by sector). Nothing
+    is re-solved and nothing is written. The three old pages, their tests
+    and the `executive`, `challenge` and `decide-page` targets are removed;
+    no function in `src/` loses its last caller. `tests/test_app.py` now
+    runs the page headless (the opening, the seven tabs, the escaped
+    deltas, both answers of the facility question). *Rejected:* rebuilding
+    `app/app.py` on the V2 tables (two dashboards to keep in step with the
+    report); keeping the old pages under other targets (the confusion was
+    the choice among them).
