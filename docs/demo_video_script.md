@@ -1,12 +1,13 @@
 # Demo video script — Beyond Prediction: Prescriptive AI for Energy Portfolio Optimization (about 4½ minutes)
 
 Spoken text in plain type; what is on screen in *italics*. About 600 spoken words at roughly 140 words a
-minute. Every number below is one report v10 prints from `results/` (keyed in `results/report_numbers.csv`); if a
-rerun changes a number, change it here from the report, never from memory.
+minute. Figure and table numbers are those of the official report
+(`report/Beyond_Prediction_Capstone_Report_Final.docx`); every number below is one it prints from `results/`
+(keyed in `results/report_numbers.csv`); if a rerun changes a number, change it here from the report, never from memory.
 
 ## 0:00–0:45 — The decision
 
-*Report title page, then Figure 1 (F43, the decision workflow).*
+*Report title page, then Figure 1 (F43, the decision workflow in six stages).*
 
 An energy company has one budget on the first of January 2025, and forty places to put it: twenty oil and gas
 leases in the Gulf of Mexico that already produce, and twenty requests to connect new power plants to the Texas
@@ -17,7 +18,7 @@ the credit?
 
 ## 0:45–1:15 — Q1: prediction ranks, but misjudges the level
 
-*Figure 4 (F49, the one-year forward test).*
+*Figure 3 (F49, the one-year forward test).*
 
 My queue model, tested as of 2020, ranks requests better than a careful lookup — an AUC of 0.731 against 0.686.
 But it overstates how many get built. One year after the decision, 30 of the 1,441 live requests operated; the
@@ -26,7 +27,7 @@ and the book is sized to the level. Built on the lookup's curves instead, the bo
 
 ## 1:15–2:15 — Q2: the trade-off, and what it costs to fund
 
-*Figure 2 (F38, the frontier), then Figure 3 (F48, the line net of financing).*
+*Figure 5 (F38, the frontier over tail weights), then Figure 7 (F51, the true economics before and after financing).*
 
 There is no single right book, only a trade-off. Held to the same budget and cap, the risk-aware book — five leases
 and eight requests — beats ranking by expected value by 219 million dollars on the registered risk-return metric,
@@ -39,7 +40,7 @@ bank would, with the fee and the interest, it is still worth 1.03 billion, and e
 
 ## 2:15–3:40 — Q3 and Q0: does an AI challenger help the committee?
 
-*Figure 1 again, pointing at the challenge stage; then Figure 5 (F50, the ladder), then Table 3.*
+*Figure 9 (F55, the committee workflow), pointing at the challenge stage; then Figure 10 (F53, the ladder), then Table 4 (the nine registered lines).*
 
 The language model never computes a number. It reads the committee's rules from its words, tools test the
 committee's own proposal against them, and the model writes a memo whose every number is checked. A named person
@@ -70,6 +71,7 @@ the capital plan and the tail — and a committee is helped most by tools that t
 
 ## Recording notes
 
-- Record the screen at 1920 × 1080 from `report/report.pdf` (the figures are vector; zoom to one figure at a time).
+- Record the screen at 1920 × 1080 from the official report exported to PDF from Word (zoom to one figure at a time).
 - Say "simulated committees" once, as scripted: the challenger was not tested with real committees.
-- Do not show the dashboard or the decision page; neither is part of the evaluated result.
+- The dashboard is not part of the evaluated result; if time allows after 4:30, show the *A worked example* page of
+  `make app` for ten seconds as "how a committee would use it", and say so.

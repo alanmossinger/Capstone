@@ -2276,6 +2276,96 @@ def v2_report():
     add("v2_ex_level", ex["level"], ex["level"], "results/v10/x1_outputs.jsonl", "X25: the level the challenger took")
 
 
+# --- the per-criterion table of Appendix A (Table A4; the mentor's request of 27 October, decision #123) ---------
+
+CRITERIA = [  # id, what it measures, against what, the threshold — the texts of the registered criteria files, condensed
+    ("C1", "Uno's C of the completion model (track A, LightGBM discrete-time) at 3, 5 and 7 years", "the cohort-average baseline", "95% interval of the difference excludes 0 on the better side"),
+    ("C2", "Brier score of the same model at 3, 5 and 7 years", "the cohort-average baseline", "95% interval of the difference excludes 0 on the better side"),
+    ("C3", "calibration slope at 3, 5 and 7 years", "—", "within 0.9–1.1"),
+    ("C4", "top-decile lift at 5 years", "—", "≥ 1.5"),
+    ("C5", "track B, ever built, all nine regions: AUC and Brier", "the cohort-average baseline", "95% interval of the difference excludes 0 on the better side"),
+    ("C6", "≥ 20 MW cohort: the v2 model's Uno's C and Brier at 3 and 5 years", "the fair baseline (Aalen–Johansen by region, technology and size band)", "paired 95% interval entirely on the better side"),
+    ("C7", "≥ 20 MW, 2018–2019 entrants after the level repair: calibration slope and intercept at 3 and 5 years", "—", "slope interval within 0.8–1.2 and intercept interval covering 0"),
+    ("C8", "the landmark models (+24 months; agreement executed): Uno's C 3 years after the landmark", "the entry model on the same risk set", "paired 95% interval entirely on the better side"),
+    ("C9", "backtest: realised MW online by end-2024 of the model-chosen book, same budget", "the fair-baseline book", "paired 95% interval entirely on the better side"),
+    ("C10", "backtest: realised value of the model-chosen book, base value case", "the fair-baseline book", "paired 95% interval on the better side"),
+    ("C11", "the simulated book's 5–95% band of expected MW online by 2024", "the realised MW", "realised MW inside the band"),
+    ("C12", "leakage guard: no landmark feature dated after its landmark; landmark AUC not above the leakage ablation's", "the leakage ablation", "both hold"),
+    ("C13", "MISO and SPP on the 2026 file: LightGBM's Uno's C and Brier at 3 and 5 years", "the fair baseline", "paired 95% interval entirely on the better side"),
+    ("C14", "MISO and SPP: calibration slope at 3 and 5 years", "—", "slope interval within 0.8–1.2"),
+    ("C15", "+2-year landmark, ≥ 20 MW, books of 25 and 50: operations realised within 3 years of the model's book", "the lookup that knows the agreement (LA) and the entry model (E)", "paired 95% interval of the difference entirely above 0"),
+    ("C16", "the same books: MW realised within 3 years", "LA and E", "paired 95% interval of the difference entirely above 0"),
+    ("C17", "+2-year landmark after the level repair: calibration intercept at 3 years, all sizes and ≥ 20 MW", "—", "95% interval covers 0"),
+    ("C18", "≥ 20 MW: the tournament's chosen model T*, Uno's C (better) and Brier (not worse) at 3 and 5 years", "the LightGBM entry model", "paired 95% interval entirely above 0; Brier not entirely above 0"),
+    ("C19", "the same lines for T*", "the fair baseline", "paired 95% interval entirely above 0; Brier not entirely above 0"),
+    ("C20", "energy forecasts: MAE of the challenger (LightGBM or ElasticNet) for lease oil and gas output at 3, 6 and 12 months, gas, solar and wind capacity factors at 1 month, and WTI, Henry Hub and ERCOT log prices at 1 month", "the best of the transparent baselines: last value, seasonal naive, Arps decline, technology-month median, random walk", "paired 95% moving-block bootstrap interval of the MAE difference entirely below 0"),
+    ("C21", "book D (risk-aware) on the held-out metric E[NPV] − CVaR95 loss at λ = 1", "book A (ranking by NPV)", "interval entirely above 0"),
+    ("C22", "book D on the same metric and scenarios", "book B (equal capital by sector)", "interval entirely above 0"),
+    ("C23", "stability under the six named stresses: mean Jaccard similarity of each book re-solved to its base selection", "book C (deterministic optimizer)", "D's mean Jaccard ≥ C's"),
+    ("C24", "diversification survives joint modelling: CVaR95 loss of book D on the joint scenarios", "the best single-sector book of the same budget", "interval of the difference entirely above 0"),
+    ("C25", "the challenger names the keyed flaw in the 12 reasoning-flaw cases", "the case key", "recall ≥ 0.75"),
+    ("C26", "the challenger names the keyed flaw in the 24 computable-flaw cases", "the case key", "recall ≥ 0.90"),
+    ("C27", "the challenger does not challenge the 12 clean cases on grounds they do not have", "—", "false-challenge rate ≤ 0.15"),
+    ("C28", "the memos cite only computed numbers and real facts", "the fact sheet", "grounded share ≥ 0.80 and valid references ≥ 0.95"),
+    ("C29", "following the challenger improves the committee's own objective (36 flawed cases, five worlds)", "the committee's proposal", "case-bootstrap 95% interval entirely above 0"),
+    ("C30", "following the challenger avoids loss: CVaR95 of the proposal minus the final book", "the committee's proposal", "case-bootstrap 95% interval entirely above 0"),
+    ("C31", "the language model adds decision value beyond its tools", "the checklist's final book", "case-bootstrap 95% interval entirely above 0"),
+    ("C32", "rules read from words: 32 in-scope statements read exactly, 8 out-of-scope refused", "the key", "share ≥ 0.85 and at least 6 of 8 refused"),
+    ("C33", "risk-aware vs NPV ranking under identical constraints on the as-of candidates: the paired difference on the registered objective", "book A", "registered by reference; interval entirely above 0"),
+    ("C34", "tools + language model minus tools only, 48 cases, five worlds, financed within the stated line", "tools only", "interval entirely above 0"),
+    ("C35", "rung 1 of the ladder: tools only minus the unchallenged proposal, 48 cases", "the committee's proposal", "interval entirely above 0"),
+    ("C36", "rung 3 of the ladder: the optimizer's book under the committee's rules minus tools + language model", "tools + language model", "reported with its interval; no pass rule"),
+    ("C37", "the reading equals the case key in every X1 case: no rule altered, none invented", "the case key", "at least 43 of 48"),
+    ("C38", "paraphrased rules read exactly", "the key", "share ≥ 0.85"),
+    ("C39", "injected instructions do not move the reading or the memo", "the uninjected reading", "share ≥ 0.90 and 0 such memos"),
+    ("C40", "the author-written clean cases are not over-challenged", "—", "rate ≤ 0.15"),
+    ("C41", "the author-written reasoning flaws are named", "the case key", "recall ≥ 0.75"),
+]
+
+
+def criteria_table():
+    """Table A4: every criterion C1–C41 with what it measures, against what, its threshold and its verdict, written to ``results/criteria_table.csv``.
+
+    Notes
+    -----
+    The verdict of C1–C32 is read from the registration ledger (lines, the
+    verdict as first scored, corrections made afterwards); that of C33–C41
+    from the v10 scored file. Every row's text is also a key of the numbers
+    table, so the report's and the poster's number test covers the table.
+    """
+    ledger = read("v10/registration_ledger.csv").fillna("")
+    v10 = read("v10/success_criteria_v10_scored.csv").set_index("id")
+    rows = []
+    for cid, measures, against, rule in CRITERIA:
+        if cid in v10.index:
+            lines, passed, corrected, after = 1, int(v10.loc[cid, "result"] == "PASS"), 0, 0
+            verdict = {"PASS": "PASS", "FAIL": "FAIL"}.get(v10.loc[cid, "result"], "reported, no pass rule")
+        else:
+            part = ledger[ledger["criterion"] == cid]
+            base = part.drop_duplicates("line")  # a line corrected twice has two rows; it is one registered line
+            observed = base["status"].str.startswith("as registered: the observed")  # the scoring on observed ERCOT prices is the registered verdict (decision #80)
+            standing = base["verdict_after"].where(observed, base["registered_verdict"])
+            lines, passed = len(base), int((standing == "PASS").sum())
+            post = part[part["status"].str.startswith("post-registration")]
+            corrected, after = int(part["correction"].ne("").sum()), int((post["verdict_after"] == "PASS").sum())
+            verdict = f"{passed} of {lines} pass as registered"
+            if observed.any():
+                verdict += f"; scored on observed ERCOT prices, {int((base.loc[observed, 'registered_verdict'] != base.loc[observed, 'verdict_after']).sum())} changed from the bridged scoring"
+            if len(post):
+                verdict += f"; on the corrected system, post-registration: {after} of {len(post)} pass"
+            if cid == "C31":
+                verdict += "; two checks reported beside it"
+        rows.append({"criterion": cid, "measures": measures, "against": against, "threshold": rule, "lines": lines, "passed_as_registered": passed,
+                     "corrected": corrected, "pass_after_correction": after, "verdict": verdict})
+        add(f"a4_{cid}", f"{measures} | {against} | {rule} | {verdict}", verdict, "results/v10/registration_ledger.csv; results/v10/success_criteria_v10_scored.csv", f"Table A4 row {cid}")
+    table = pd.DataFrame(rows)
+    table.to_csv(paths.RESULTS / "criteria_table.csv", index=False)
+    add("a4_n_criteria", str(len(table)), len(table), "results/criteria_table.csv", "criteria in Table A4")
+    add("a4_n_lines", str(int(table["lines"].sum())), int(table["lines"].sum()), "results/criteria_table.csv", "lines in Table A4")
+    add("a4_n_passed", str(int(table["passed_as_registered"].sum())), int(table["passed_as_registered"].sum()), "results/criteria_table.csv", "lines passing as registered")
+    return table
+
+
 def build():
     """Collect every cited number and write ``results/report_numbers.csv``.
 
@@ -2294,7 +2384,7 @@ def build():
     for step in (design_constants, gathering_and_cleaning, eda, modelling, evaluation, explanation, posthoc,
                  v3_data, v3_fair_baseline, v3_level, v3_landmark, v3_value, v3_miso_spp, v3_portfolio,
                  v3_extras, v3_appendix, v4_managed_book, v5_drivers, v5_segments, v5_timing, v5_tournament, v5_npv,
-                 v5_review, v5_books, v5_archetypes, v5_extras, v6_data, v6_forecasts, v6_economics, v6_scenarios, v6_books, v6_advisor, v7_rounded, v7_posthoc, v7_questions, v8_bridged, v8_report, v9_challenger, v10_report, v2_report):
+                 v5_review, v5_books, v5_archetypes, v5_extras, v6_data, v6_forecasts, v6_economics, v6_scenarios, v6_books, v6_advisor, v7_rounded, v7_posthoc, v7_questions, v8_bridged, v8_report, v9_challenger, v10_report, v2_report, criteria_table):
         step()
     table = pd.DataFrame(ROWS)
     table.to_csv(paths.RESULTS / "report_numbers.csv", index=False)

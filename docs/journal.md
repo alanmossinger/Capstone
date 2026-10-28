@@ -2021,3 +2021,16 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 **Next**
 
 1. `make report` to carry the Appendix C run line into `report.pdf`; the demo video from `make app`.
+
+## Session 29, continued — 2026-10-28: Table A4, the Word report corrected, the end-to-end run (decision #123)
+
+**Done**
+
+- `report_numbers.criteria_table`: Table A4, every criterion C1–C41 on one line (what it measures, against what, the threshold, the verdict from the ledger and the v10 scored file); `results/criteria_table.csv`; the totals reproduce the report's 28 of 70 and 78 lines. Inserted in `report/report.md` and, by XML edit in the styles of Table A3, in the official Word report; the Word report's Appendix C run line now names `make app` and the three pages. Every XML part parses, pandoc reads the table back, the number tests pass on both reports. `make report` rebuilt the Markdown edition; the poster rebuilt from source is text-identical to the committed PDF.
+- `docs/demo_video_script.md` on the official report's figure and table numbers; the mentor reply says Table A4 is in place.
+- The end-to-end run from a fresh clone (decision #123 (e)): all thirteen notebooks, 283 tests in the clone, 2,944 of 2,949 cited numbers exact, every verdict and every advisor replay identical. Notebook 07 needs poppler's `pdftotext`, not Git for Windows'; said in the code and the README.
+- Not done here: the Word report's PDF export (needs Word) and the video recording.
+
+**Next**
+
+1. Alan: export the Word report to PDF; decide which edition the course receives; record the video from `docs/demo_video_script.md`.

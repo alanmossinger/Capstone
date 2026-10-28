@@ -88,7 +88,9 @@ The full data access statement, terms and data dictionary are in [`data/README.m
 ## How to run
 
 Requires Python 3.11, GNU make and poppler's `pdftotext` on the PATH (notebook 07 reads two tables of the
-PJM market monitor's report from its PDF). On Linux LightGBM also needs the OpenMP runtime (`libgomp1`).
+PJM market monitor's report from its PDF; `pdftotext -v` must report a poppler version — the `pdftotext` that Git for
+Windows ships is xpdf's and lays the table out differently, so put poppler's directory first on the PATH). On Linux
+LightGBM also needs the OpenMP runtime (`libgomp1`).
 
 ```bash
 make setup     # .venv, pinned packages, Jupyter kernel "queue-survival"

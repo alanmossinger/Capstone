@@ -2083,3 +2083,50 @@ alternative rejected.
     the reviews into a subfolder (the report and the Word file cite their
     paths); rewriting history to drop working commits (the journal and
     the decisions are the record, and the commits are theirs).
+
+123. **Table A4, the per-criterion table, written by code into both
+    reports; the Word report's run line corrected; the video script on
+    the official report's figures** (Alan, 2026-10-28: "change it all and
+    make sure it runs end to end"). (a) The mentor's request of 27 October
+    is met by `report_numbers.criteria_table`: one row per criterion C1–C41
+    — what it measures, against what, the threshold, the verdict — with
+    the verdicts read from the registration ledger (the standing verdict of
+    a line rescored on observed ERCOT prices is the rescored one, as the
+    ledger's status says; a line corrected twice is one line; corrections
+    on the corrected system are post-registration and noted) and from the
+    v10 scored file; written to `results/criteria_table.csv`, and every
+    row's text is a key of `results/report_numbers.csv`, so the number
+    tests of the Markdown and the Word report cover the table. The totals
+    reproduce the report's: 70 lines and 28 passing for C1–C24, 78 lines
+    for C1–C32, 87 with the nine of the final test. The table is inserted
+    as Table A4 at the end of Appendix A in `report/report.md` and, by
+    editing the document XML with the styles of Table A3, in
+    `report/Beyond_Prediction_Capstone_Report_Final.docx`; every XML part
+    of the file parses, pandoc reads the table back, and the number test
+    passes on it. (b) In the same file, Appendix C's run line named
+    `make executive` and `app/executive.py`, removed by decision #118; it
+    now names `make app` and the three pages, and the row label says "the
+    dashboard". No other run of text in the file changed. (c)
+    `docs/demo_video_script.md` cites the official report's figure and
+    table numbers (Figures 1, 3, 5, 7, 9, 10; Table 4) and records from
+    its PDF; the worked example may be shown for ten seconds after the
+    scripted end, named as not part of the evaluated result. (d) The Word
+    report's PDF export needs Word, which is not on this machine; it stays
+    Alan's step. *Rejected:* typing the table by hand into Word (the
+    report's rule is that every number is written by code); python-docx
+    or LibreOffice for the edit (new dependencies for one table).
+    (e) *The end-to-end run.* A fresh `git clone` of the pushed commit, the
+    raw bundle restored (111 of 111 files with the recorded hash), ran
+    `run_pipeline.py` through all thirteen notebooks on this machine with
+    no key: every advisor call replayed (35 of 35), every registered
+    verdict identical, all 283 tests pass inside the clone, and 2,944 of
+    the 2,949 cited numbers come out exactly as printed; the five that
+    differ are statistics of the advisor's record (214 → 225 recorded
+    answers, 94% → 93% grounding, 59% → 60% fully grounded), which moved
+    because the record grew after notebook 10 was last run. The other
+    differences are run-time seconds, dates and last-digit float noise.
+    One finding: notebook 07 fails when the `pdftotext` on the PATH is
+    the xpdf-style one that Git for Windows ships rather than poppler's
+    (it lays PJM's table out differently); the assertion in
+    `value.pjm_capacity_revenue` now says so and the README says to put
+    poppler first.

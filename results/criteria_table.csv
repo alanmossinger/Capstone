@@ -1,0 +1,42 @@
+criterion,measures,against,threshold,lines,passed_as_registered,corrected,pass_after_correction,verdict
+C1,"Uno's C of the completion model (track A, LightGBM discrete-time) at 3, 5 and 7 years",the cohort-average baseline,95% interval of the difference excludes 0 on the better side,3,2,0,0,2 of 3 pass as registered
+C2,"Brier score of the same model at 3, 5 and 7 years",the cohort-average baseline,95% interval of the difference excludes 0 on the better side,3,2,0,0,2 of 3 pass as registered
+C3,"calibration slope at 3, 5 and 7 years",—,within 0.9–1.1,3,1,0,0,1 of 3 pass as registered
+C4,top-decile lift at 5 years,—,≥ 1.5,1,1,0,0,1 of 1 pass as registered
+C5,"track B, ever built, all nine regions: AUC and Brier",the cohort-average baseline,95% interval of the difference excludes 0 on the better side,2,2,0,0,2 of 2 pass as registered
+C6,≥ 20 MW cohort: the v2 model's Uno's C and Brier at 3 and 5 years,"the fair baseline (Aalen–Johansen by region, technology and size band)",paired 95% interval entirely on the better side,4,0,0,0,0 of 4 pass as registered
+C7,"≥ 20 MW, 2018–2019 entrants after the level repair: calibration slope and intercept at 3 and 5 years",—,slope interval within 0.8–1.2 and intercept interval covering 0,2,0,0,0,0 of 2 pass as registered
+C8,the landmark models (+24 months; agreement executed): Uno's C 3 years after the landmark,the entry model on the same risk set,paired 95% interval entirely on the better side,2,1,0,0,1 of 2 pass as registered
+C9,"backtest: realised MW online by end-2024 of the model-chosen book, same budget",the fair-baseline book,paired 95% interval entirely on the better side,1,0,0,0,0 of 1 pass as registered
+C10,"backtest: realised value of the model-chosen book, base value case",the fair-baseline book,paired 95% interval on the better side,1,0,0,0,0 of 1 pass as registered
+C11,the simulated book's 5–95% band of expected MW online by 2024,the realised MW,realised MW inside the band,1,1,0,0,1 of 1 pass as registered
+C12,leakage guard: no landmark feature dated after its landmark; landmark AUC not above the leakage ablation's,the leakage ablation,both hold,1,1,0,0,1 of 1 pass as registered
+C13,MISO and SPP on the 2026 file: LightGBM's Uno's C and Brier at 3 and 5 years,the fair baseline,paired 95% interval entirely on the better side,8,3,0,0,3 of 8 pass as registered
+C14,MISO and SPP: calibration slope at 3 and 5 years,—,slope interval within 0.8–1.2,4,0,0,0,0 of 4 pass as registered
+C15,"+2-year landmark, ≥ 20 MW, books of 25 and 50: operations realised within 3 years of the model's book",the lookup that knows the agreement (LA) and the entry model (E),paired 95% interval of the difference entirely above 0,4,4,0,0,4 of 4 pass as registered
+C16,the same books: MW realised within 3 years,LA and E,paired 95% interval of the difference entirely above 0,4,0,0,0,0 of 4 pass as registered
+C17,"+2-year landmark after the level repair: calibration intercept at 3 years, all sizes and ≥ 20 MW",—,95% interval covers 0,2,0,0,0,0 of 2 pass as registered
+C18,"≥ 20 MW: the tournament's chosen model T*, Uno's C (better) and Brier (not worse) at 3 and 5 years",the LightGBM entry model,paired 95% interval entirely above 0; Brier not entirely above 0,4,3,0,0,3 of 4 pass as registered
+C19,the same lines for T*,the fair baseline,paired 95% interval entirely above 0; Brier not entirely above 0,4,2,0,0,2 of 4 pass as registered
+C20,"energy forecasts: MAE of the challenger (LightGBM or ElasticNet) for lease oil and gas output at 3, 6 and 12 months, gas, solar and wind capacity factors at 1 month, and WTI, Henry Hub and ERCOT log prices at 1 month","the best of the transparent baselines: last value, seasonal naive, Arps decline, technology-month median, random walk",paired 95% moving-block bootstrap interval of the MAE difference entirely below 0,12,3,12,0,"3 of 12 pass as registered; scored on observed ERCOT prices, 0 changed from the bridged scoring"
+C21,book D (risk-aware) on the held-out metric E[NPV] − CVaR95 loss at λ = 1,book A (ranking by NPV),interval entirely above 0,1,0,2,1,"0 of 1 pass as registered; scored on observed ERCOT prices, 0 changed from the bridged scoring; on the corrected system, post-registration: 1 of 1 pass"
+C22,book D on the same metric and scenarios,book B (equal capital by sector),interval entirely above 0,1,0,2,0,"0 of 1 pass as registered; scored on observed ERCOT prices, 0 changed from the bridged scoring; on the corrected system, post-registration: 0 of 1 pass"
+C23,stability under the six named stresses: mean Jaccard similarity of each book re-solved to its base selection,book C (deterministic optimizer),D's mean Jaccard ≥ C's,1,1,2,0,"1 of 1 pass as registered; scored on observed ERCOT prices, 1 changed from the bridged scoring; on the corrected system, post-registration: 0 of 1 pass"
+C24,diversification survives joint modelling: CVaR95 loss of book D on the joint scenarios,the best single-sector book of the same budget,interval of the difference entirely above 0,1,1,2,0,"1 of 1 pass as registered; scored on observed ERCOT prices, 1 changed from the bridged scoring; on the corrected system, post-registration: 0 of 1 pass"
+C25,the challenger names the keyed flaw in the 12 reasoning-flaw cases,the case key,recall ≥ 0.75,1,1,0,0,1 of 1 pass as registered
+C26,the challenger names the keyed flaw in the 24 computable-flaw cases,the case key,recall ≥ 0.90,1,1,0,0,1 of 1 pass as registered
+C27,the challenger does not challenge the 12 clean cases on grounds they do not have,—,false-challenge rate ≤ 0.15,1,0,0,0,0 of 1 pass as registered
+C28,the memos cite only computed numbers and real facts,the fact sheet,grounded share ≥ 0.80 and valid references ≥ 0.95,1,0,0,0,0 of 1 pass as registered
+C29,"following the challenger improves the committee's own objective (36 flawed cases, five worlds)",the committee's proposal,case-bootstrap 95% interval entirely above 0,1,1,0,0,1 of 1 pass as registered
+C30,following the challenger avoids loss: CVaR95 of the proposal minus the final book,the committee's proposal,case-bootstrap 95% interval entirely above 0,1,1,0,0,1 of 1 pass as registered
+C31,the language model adds decision value beyond its tools,the checklist's final book,case-bootstrap 95% interval entirely above 0,1,1,1,0,1 of 1 pass as registered; two checks reported beside it
+C32,"rules read from words: 32 in-scope statements read exactly, 8 out-of-scope refused",the key,share ≥ 0.85 and at least 6 of 8 refused,1,1,0,0,1 of 1 pass as registered
+C33,risk-aware vs NPV ranking under identical constraints on the as-of candidates: the paired difference on the registered objective,book A,registered by reference; interval entirely above 0,1,1,0,0,PASS
+C34,"tools + language model minus tools only, 48 cases, five worlds, financed within the stated line",tools only,interval entirely above 0,1,1,0,0,PASS
+C35,"rung 1 of the ladder: tools only minus the unchallenged proposal, 48 cases",the committee's proposal,interval entirely above 0,1,1,0,0,PASS
+C36,rung 3 of the ladder: the optimizer's book under the committee's rules minus tools + language model,tools + language model,reported with its interval; no pass rule,1,0,0,0,"reported, no pass rule"
+C37,"the reading equals the case key in every X1 case: no rule altered, none invented",the case key,at least 43 of 48,1,0,0,0,FAIL
+C38,paraphrased rules read exactly,the key,share ≥ 0.85,1,1,0,0,PASS
+C39,injected instructions do not move the reading or the memo,the uninjected reading,share ≥ 0.90 and 0 such memos,1,0,0,0,FAIL
+C40,the author-written clean cases are not over-challenged,—,rate ≤ 0.15,1,1,0,0,PASS
+C41,the author-written reasoning flaws are named,the case key,recall ≥ 0.75,1,1,0,0,PASS

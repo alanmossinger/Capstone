@@ -94,7 +94,8 @@ def pjm_capacity_revenue(pdf=RAW_VALUE / "2024-som-pjm-sec5.pdf"):
         found.setdefault(int(year), float(price))  # the first match per year is the row of this table
         if len(found) == 20:
             break
-    assert sorted(found) == list(range(2007, 2027)), f"unexpected table shape: years {sorted(found)}"
+    assert sorted(found) == list(range(2007, 2027)), (f"unexpected table shape: years {sorted(found)}; poppler's pdftotext is required "
+                                                       "(xpdf's, as shipped with Git for Windows, lays the table out differently) — check `pdftotext -v`")
     years = sorted(found)
     return pd.Series([found[y] for y in years], index=pd.Index(years, name="year"), name="usd_per_mw_day")
 
