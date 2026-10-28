@@ -1944,3 +1944,14 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 
 1. Alan's read of the two Word reports and the poster.
 2. Unchanged: the demo video script's figure numbers to V2's, then record.
+
+## Session 28 — 2026-10-27: the mentor's questions on the proposal answered
+
+**Done**
+
+- The course mentor's feedback on the proposal of 19 October (five questions: the C-criteria, scope and ranking, the data sources and cleaning, the predictive work since Milestone II, the boundary of what Claude does) drafted as a reply in `docs/mentor_reply_2026-10-27.md`, every number taken from the report and the results tables (28 of 70 registered lines, the C1–C24 groups, the lookup and level findings, the forward test, the ladder +$76M / +$43M / +$134M, the −$14M optimizer-first check, 35 memo numbers with one flagged). Two draft claims corrected against the record before it was left for Alan: what the thirteen non-matching numbers of the Linux run were (decision #112), and that the report does not mention the unbuilt stretch items. The paragraph on the writing is left for Alan to word. Item 12 in `docs/mentor_feedback.md`.
+
+**Next**
+
+1. Alan reads and sends the reply.
+2. Appendix A of the report to gain a per-criterion table (what it measures, against what, the threshold, the verdict) for C1–C41, as promised in the reply.
