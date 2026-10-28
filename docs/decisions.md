@@ -2055,3 +2055,31 @@ alternative rejected.
     any provider, and which backend this machine would use. *Rejected:*
     recording the example with a live model later (Alan wants it as it
     stands); the `openai` package (a new dependency for one POST).
+
+122. **The repository organized as the capstone's submission; `main` brought
+    up to the work and pushed** (Alan, 2026-10-28: "the code must be
+    organized as a capstone code, easy to explain and with the results and
+    explanations, plus what is required by the capstone; then push to git
+    just this right information, including my answer to my mentor and the
+    proposal in documentation"). `README.md` is rewritten as the front page
+    a grader reads first: the deliverables table (the official report, the
+    course edition, the poster, the dashboard, the code, the proposal and
+    its update, the evaluation plan, the mentor feedback and my reply, the
+    video script, the record), the question and the six stages, the
+    decision and the answer with the report's own numbers (every one a key
+    of `results/report_numbers.csv`), the thirteen notebooks one line each,
+    the `src/` modules grouped, the dashboard, the tests, the data table,
+    how to run, the map, the statement of work as the report states it,
+    references. The earlier README listed ten notebooks, ran `make all` to
+    12 and carried a results section from an earlier version that
+    contradicted the official report. `docs/README.md` indexes the twenty
+    files of `docs/` in four groups: course submissions, the record of the
+    work, the reviews and audits the report cites, and build plans kept as
+    history. `docs/next_session_prompt.md` — a prompt for a Claude session,
+    not project material — is removed; nothing else is deleted, because
+    the report cites the reviews and audits by path. `main` is
+    fast-forwarded to `v8-corrections` (no divergence) and both are pushed,
+    so the default branch on GitHub is the submission. *Rejected:* moving
+    the reviews into a subfolder (the report and the Word file cite their
+    paths); rewriting history to drop working commits (the journal and
+    the decisions are the record, and the commits are theirs).

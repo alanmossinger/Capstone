@@ -2010,3 +2010,14 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 **Next**
 
 1. Unchanged: notebook 12's kernel; `make report`; the demo video.
+
+## Session 29, continued — 2026-10-28: the repository as the capstone's submission (decision #122)
+
+**Done**
+
+- `README.md` rewritten as the front page: deliverables, the question, the decision and the answer in the report's numbers, the thirteen notebooks, `src/` grouped, the dashboard, tests, data, how to run, the map, the statement of work, references. `docs/README.md` indexes `docs/` (course submissions, the record, the reviews the report cites, plans kept as history). `docs/next_session_prompt.md` removed. 283 tests pass.
+- `main` fast-forwarded to `v8-corrections`; both pushed to `origin` (github.com/alanmossinger/Capstone).
+
+**Next**
+
+1. `make report` to carry the Appendix C run line into `report.pdf`; the demo video from `make app`.
