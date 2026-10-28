@@ -40,7 +40,7 @@ import pandas as pd
 import streamlit as st
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
-from src import advisor as adv, challenge as ch, config, paths, whatif as wi  # noqa: E402
+from src import advisor as adv, challenge as ch, config, paths, whatif as wi, worked_example as we  # noqa: E402
 
 V2, V8, V10 = paths.RESULTS / "v2", paths.RESULTS / "v8", paths.RESULTS / "v10"
 SETTING = paths.DATA_INTERIM / "challenge_setting.pkl"
@@ -89,22 +89,6 @@ def md(text):
     return text.replace("$", r"\$")
 
 
-def rules_text(prefs):
-    """The committee's rules as the advisor read them, in plain words."""
-    out = [f"tail weight λ = {prefs.lam:g} (a dollar of average loss in the worst 5% of scenarios counts as {prefs.lam:g} dollars of expected value)"]
-    if prefs.max_p_loss is not None:
-        out.append(f"chance of a loss at most {prefs.max_p_loss:.0%}")
-    if prefs.max_cvar_musd is not None:
-        out.append(f"worst-5% average loss at most ${prefs.max_cvar_musd:,.0f}M")
-    if prefs.excluded_technologies or prefs.excluded_ids:
-        out.append("will not fund " + ", ".join(prefs.excluded_technologies + prefs.excluded_ids))
-    if prefs.liquidity_line_musd is not None:
-        out.append(f"a construction line of ${prefs.liquidity_line_musd:,.0f}M beyond the reserve")
-    if prefs.min_utilization is not None:
-        out.append(f"at least {prefs.min_utilization:.0%} of the budget committed")
-    return "; ".join(out)
-
-
 def scored(s, x, prefs):
     return ch.scores_of(ch.totals(s, x, prefs), prefs.lam)
 
@@ -123,7 +107,7 @@ st.title("Decide: your book, the advisor's challenge, your result")
 st.markdown("""<div class="howto"><b>What this page does.</b> You see the options, pick a book and say why. The advisor reads your reasons
 into rules, scores your book on 2,000 held-out scenarios, computes the closest book that keeps your rules and the optimizer's book,
 and challenges your thinking. You then decide — it may change your mind or not — and see what your decision gives against what the
-advisor's solution would have given. Every number is computed by the report's own tools; the model only reads and argues.</div>""",
+advisor's solution would have given. Every number is computed by the report's own tools; the model only reads and argues. New here? Read <b>A worked example</b> in the sidebar first: one executive's round from pick to result.</div>""",
             unsafe_allow_html=True)
 
 cand, books, example = load()
@@ -131,8 +115,7 @@ with st.spinner("building the challenger's setting — about two minutes the fir
     s = setting()
 ids = s.ids
 charge = pd.Series(s.charge, index=ids)
-LABEL = {r.project_id: f"{r.project_id.split('|')[-1]} · {r.technology}" + (f" {r.mw:.0f} MW" if pd.notna(r.mw) and r.technology != "Lease redevelopment" else "")
-         for r in cand.itertuples()}
+LABEL = we.labels()
 D_MEMBERS = [ids[i] for i in np.where(np.asarray(s.x_model) == 1)[0]]
 STARTS = {BOOK_NAME["D risk-aware MILP"]: D_MEMBERS, **{BOOK_NAME[p]: books.loc[p, "members"].split(";") for p in ("A NPV ranking", "B equal capital by sector", "C deterministic MILP")},
           "an empty book": []}
@@ -209,11 +192,11 @@ if "round" in st.session_state:
     if set(members0) != set(chosen) or rnd["statement"] != st.session_state["statement"]:
         st.warning("Your book or your reasons changed since this challenge; run it again to challenge the new ones.")
     if res["status"] == "no record":
-        st.error("No recorded answer for these words, and no live backend. Untick 'recorded answers only' with a key in .env (or the claude command signed in), or use the registered example.")
+        st.error("No recorded answer for these words, and no live backend. Put a language-model key in .env (any provider: see the note at the top) and untick 'recorded answers only', or use the registered example.")
         st.stop()
     prefs = ch.Preferences(**res["preferences"])
     st.markdown(f"**How the advisor read your reasons:** {res['reading']}")
-    st.markdown(md(f"**Your rules, as it read them:** {rules_text(prefs)}."))
+    st.markdown(md(f"**Your rules, as it read them:** {we.rules_text(prefs)}."))
     if res["not_representable"]:
         st.markdown(f"**What it cannot represent:** {res['not_representable']}")
     alts = res["alternatives"]
@@ -300,6 +283,6 @@ if "decision" in st.session_state and "round" in st.session_state:
         x=alt.X("value:Q", title="$ billion", axis=alt.Axis(format="$.2f")), y=alt.Y("measure:N", title=None), yOffset=alt.YOffset("book:N", sort=[r[0] for r in rows]),
         color=alt.Color("book:N", sort=[r[0] for r in rows], scale=alt.Scale(range=["#0072B2", "#009E73", "#999999"]), legend=alt.Legend(title=None, orient="bottom")),
         tooltip=["book", "measure", alt.Tooltip("value:Q", format="$,.3f", title="$B")]).properties(height=160), width="stretch")
-    st.caption(md(f"Scored on 2,000 held-out scenarios under your rules as the advisor read them ({rules_text(prefs)}); "
+    st.caption(md(f"Scored on 2,000 held-out scenarios under your rules as the advisor read them ({we.rules_text(prefs)}); "
                   + ("every construction call funded. " if prefs.liquidity_line_musd is None else "financed within the line you stated, net of its fee and interest. ")
                   + "Model-based results on public data and assumed lease costs, not realized returns."))

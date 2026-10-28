@@ -1,0 +1,155 @@
+{
+ "statement": "I want the leases and nothing else: the biggest ones first, until the budget is spent. The leases produce today and every one of them is positive at base; the power requests lose money at 2024 prices and most of them never reach operation. Oil has always paid for this company and I do not see why we should learn a new business now.",
+ "first_pick": [
+  "LEASE|G14658",
+  "LEASE|G15607",
+  "LEASE|G26253",
+  "LEASE|G09982",
+  "LEASE|G21245",
+  "LEASE|G07957",
+  "LEASE|G17565",
+  "LEASE|G16942",
+  "LEASE|G17015",
+  "LEASE|G17561",
+  "LEASE|G16783",
+  "LEASE|G25814",
+  "LEASE|G20351"
+ ],
+ "first_pick_charge": 3787613833.214589,
+ "budget": 3816835898.661159,
+ "status": "tools only (no language model)",
+ "reading": "no model read the words: the registered default rules were used (tail weight 1, the budget and the 40% technology cap)",
+ "not_representable": null,
+ "preferences": {
+  "lam": 1.0,
+  "max_p_loss": null,
+  "max_cvar_musd": null,
+  "excluded_technologies": [],
+  "excluded_ids": [],
+  "liquidity_line_musd": null,
+  "min_utilization": null
+ },
+ "level": "guide",
+ "level_requested": "guide",
+ "vulnerabilities": [],
+ "why": "",
+ "loss_avoided": "",
+ "what_would_change_it": "",
+ "question_for_the_committee": "",
+ "verification": null,
+ "checklist_flags": [
+  "rule broken: technology cap, Lease redevelopment (share of budget)"
+ ],
+ "sheet": "[F1] The proposal on 2,000 held-out scenarios, every construction call funded: expected NPV 2,449 $M; median 2,085 $M; chance of a loss 0.171; worst-5% average loss 2,156 $M (negative = still a profit); metric at tail weight 1: 293 $M.\n[F2] Rules (the registered budget and 40% technology cap, and the committee's own): budget ($M): 3,787.614 against 3,816.836; technology cap, Gas CC (share of budget): 0.000 against 0.400; technology cap, Lease redevelopment (share of budget): 0.992 against 0.400 — BROKEN; technology cap, Solar (share of budget): 0.000 against 0.400; technology cap, Storage (share of budget): 0.000 against 0.400; technology cap, Wind (share of budget): 0.000 against 0.400.\n[F3] Construction calls: reserve 0 $M; exceeded in a share 0.000 of scenarios; excess at the 95th percentile 0 $M. With no liquidity line (no capital beyond the reserve), requests beyond it forfeit their deposits and the proposal's expected NPV is 2,449 $M (chance of a loss 0.171).\n### [F4] Each member of the proposal (FORECAST on ASSUMED costs; computed by src/challenge.py)\ndrop_change_*: the proposal without this member minus the proposal; fragile: chance of loss ≥ 0.7 and at least half its value in its best 5% of scenarios.\n| candidate | technology | charge_$M | expected_npv_$M | chance_of_loss | share_of_value_in_best_5% | npv_in_book_worst_5%_$M | drop_change_expected_npv_$M | drop_change_tail_loss_$M | drop_change_metric_$M | fragile |\n|---|---|---|---|---|---|---|---|---|---|---|\n| LEASE|G14658 | Lease redevelopment | 702.5 | 469.7 | 0.17 | 0.21 | -406.6 | -469.7 | -404.1 | -65.6 | False |\n| LEASE|G15607 | Lease redevelopment | 477.9 | 300.0 | 0.18 | 0.21 | -287.9 | -300.0 | -287.0 | -13.0 | False |\n| LEASE|G26253 | Lease redevelopment | 447.7 | 299.7 | 0.17 | 0.20 | -247.4 | -299.7 | -246.6 | -53.1 | False |\n| LEASE|G09982 | Lease redevelopment | 395.4 | 311.2 | 0.13 | 0.19 | -188.1 | -311.2 | -187.9 | -123.3 | False |\n| LEASE|G21245 | Lease redevelopment | 266.1 | 110.0 | 0.27 | 0.27 | -170.5 | -110.0 | -169.9 | 59.9 | False |\n| LEASE|G07957 | Lease redevelopment | 251.9 | 117.9 | 0.24 | 0.25 | -153.7 | -117.9 | -153.2 | 35.3 | False |\n| LEASE|G17565 | Lease redevelopment | 215.2 | 115.8 | 0.21 | 0.23 | -143.7 | -115.8 | -143.4 | 27.6 | False |\n| LEASE|G16942 | Lease redevelopment | 220.2 | 172.1 | 0.13 | 0.18 | -108.9 | -172.1 | -108.5 | -63.6 | False |\n| LEASE|G17015 | Lease redevelopment | 219.3 | 172.7 | 0.13 | 0.19 | -105.6 | -172.7 | -105.1 | -67.6 | False |\n| LEASE|G17561 | Lease redevelopment | 195.6 | 84.9 | 0.27 | 0.27 | -144.6 | -84.9 | -143.7 | 58.8 | False |\n| LEASE|G16783 | Lease redevelopment | 121.9 | 94.2 | 0.13 | 0.20 | -60.3 | -94.2 | -60.3 | -33.9 | False |\n| LEASE|G25814 | Lease redevelopment | 134.7 | 106.3 | 0.13 | 0.19 | -65.4 | -106.3 | -65.4 | -40.9 | False |\n| LEASE|G20351 | Lease redevelopment | 139.1 | 94.7 | 0.15 | 0.20 | -73.2 | -94.7 | -73.2 | -21.5 | False |\n\n[F5] The repair (fewest changes to the proposal that keep the committee's rules): 5 changes; adds nothing; drops LEASE|G14658, LEASE|G15607, LEASE|G26253, LEASE|G09982, LEASE|G21245. Expected NPV 958 $M; chance of a loss 0.173; worst-5% average loss 860 $M. Against the proposal: metric -194 $M [-352, -43], interval clear of zero: no; expected NPV -1,491 $M; rules it breaks: none.\n[F6] The optimizer's book under the committee's stated preferences: 16 changes; adds REQ|ERCOT|23INR0029, REQ|ERCOT|24INR0075, REQ|ERCOT|26INR0046, REQ|ERCOT|26INR0113, REQ|ERCOT|27INR0061, REQ|ERCOT|28INR0033, REQ|ERCOT|28INR0113, REQ|ERCOT|30INR0004; drops LEASE|G14658, LEASE|G15607, LEASE|G21245, LEASE|G07957, LEASE|G17565, LEASE|G17561, LEASE|G16783, LEASE|G20351. Expected NPV 2,170 $M; chance of a loss 0.086; worst-5% average loss 822 $M. Against the proposal: metric +1,055 $M [+841, +1,255], interval clear of zero: yes; expected NPV -279 $M; rules it breaks: none.",
+ "solution": "repair",
+ "solution_text": "the repair: the fewest changes to the book that keep the rules",
+ "solution_members": [
+  "LEASE|G07957",
+  "LEASE|G17565",
+  "LEASE|G16942",
+  "LEASE|G17015",
+  "LEASE|G17561",
+  "LEASE|G16783",
+  "LEASE|G25814",
+  "LEASE|G20351"
+ ],
+ "solution_changes": {
+  "changes": 5,
+  "added": [],
+  "dropped": [
+   "LEASE|G14658",
+   "LEASE|G15607",
+   "LEASE|G26253",
+   "LEASE|G09982",
+   "LEASE|G21245"
+  ]
+ },
+ "answers": {
+  "context_and_stakes": "If the leases are wrong the loss is the redevelopment capital spent now under an assumed cost grid; the worst case I have in mind is five years of $42 oil.",
+  "parties": "The committee wants the budget on what already produces; the lender wants a thin tail; the operator wants workovers it knows how to run; the grid operator decides nothing on the lease side, which is part of why I like it.",
+  "emotional_investment": "The company has run offshore oil for thirty years and I have defended the Gulf position in every budget round; the queue deposits already paid are small and I do not count them.",
+  "evidence": "I leaned on the flat-path lease NPVs and on every lease being positive at base; I passed over the scenario median, the high-cost case and the contracted wind requests that are positive.",
+  "framing": "I did not put a mixed book on the table, nor a smaller lease book that leaves room for the contracted wind requests."
+ },
+ "gate_allowed": true,
+ "gate_missing": [],
+ "decision": "repair",
+ "decision_text": "the repair: the fewest changes to the book that keep the rules",
+ "decision_members": [
+  "LEASE|G07957",
+  "LEASE|G17565",
+  "LEASE|G16942",
+  "LEASE|G17015",
+  "LEASE|G17561",
+  "LEASE|G16783",
+  "LEASE|G25814",
+  "LEASE|G20351"
+ ],
+ "accepted_in_full": true,
+ "scores": {
+  "first_pick": {
+   "mean": 2449070779.050869,
+   "median": 2084773126.8586311,
+   "p_loss": 0.1705,
+   "cvar": 2155873033.986223,
+   "metric": 293197745.06464577
+  },
+  "decision": {
+   "mean": 958472047.8742455,
+   "median": 815983311.158279,
+   "p_loss": 0.173,
+   "cvar": 859607880.0771859,
+   "metric": 98864167.79705966
+  },
+  "solution": {
+   "mean": 958472047.8742455,
+   "median": 815983311.158279,
+   "p_loss": 0.173,
+   "cvar": 859607880.0771859,
+   "metric": 98864167.79705966
+  },
+  "optimizer": {
+   "mean": 2170334090.783821,
+   "median": 1823682274.3906393,
+   "p_loss": 0.0855,
+   "cvar": 822438008.3922412,
+   "metric": 1347896082.3915799
+  }
+ },
+ "optimizer_members": [
+  "LEASE|G26253",
+  "LEASE|G09982",
+  "LEASE|G16942",
+  "LEASE|G17015",
+  "LEASE|G25814",
+  "REQ|ERCOT|23INR0029",
+  "REQ|ERCOT|24INR0075",
+  "REQ|ERCOT|26INR0046",
+  "REQ|ERCOT|26INR0113",
+  "REQ|ERCOT|27INR0061",
+  "REQ|ERCOT|28INR0033",
+  "REQ|ERCOT|28INR0113",
+  "REQ|ERCOT|30INR0004"
+ ],
+ "optimizer_vs_decision": {
+  "metric_diff": 1249031914.59452,
+  "metric_low": 1109840005.4863358,
+  "metric_high": 1381507216.6258783,
+  "clear_of_zero": true,
+  "mean_diff": 1211862042.9095757,
+  "mean_low": 1143829487.2343936,
+  "mean_high": 1280213203.5744233
+ },
+ "solution_vs_decision": null,
+ "rules_broken": {
+  "first_pick": [
+   "technology cap, Lease redevelopment (share of budget)"
+  ],
+  "decision": []
+ },
+ "calls": {
+  "replayed": 0,
+  "live": 0,
+  "missing": 1
+ }
+}

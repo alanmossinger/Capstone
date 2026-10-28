@@ -1991,3 +1991,67 @@ alternative rejected.
     file; the command-line session `python -m src.advisor` remains the
     recorded route); a single-page app without the report's decision (the
     presentation page of decision #118 stays as the second page).
+
+120. **A worked example for a new executive: one recorded round through
+    the decision page** (Alan, 2026-10-28: "give my examples to the
+    dashboard as an idea how it works with one real executive. Show my
+    portfolio, my answers and my results as an example inside the notebook
+    and a new executive could have a look"). The executive is the one of
+    the challenge round recorded in notebook 10
+    (`results/advisor_transcripts/challenge_all_leases.md`): the leases and
+    nothing else, in the author's words, with the author's own five
+    answers from that round, brought to the $3.82B decision — the twenty
+    leases cost $5.12B, so the pick is the biggest leases until the budget
+    is spent (thirteen, $3.79B, 99% of the budget in one technology, which
+    breaks the registered cap). `src/worked_example.py` puts it through the
+    registered challenger exactly as the dashboard does, records the
+    answers, applies the override gate, takes the decision the answers
+    point to (the repair: the smallest change that keeps the rules) and
+    scores the first pick, the decision and the advisor's solution on the
+    executive's rules with the paired interval between the last two.
+    Notebook 13 section 7 runs it and writes `results/v2/worked_example.json`;
+    the dashboard's third page, *A worked example* (`app/example.py`),
+    shows the round in the four steps of the decision page and can load
+    the same pick and reasons into *Decide*. The round replays from
+    `results/advisor_runs.jsonl` once recorded; recording it needs a
+    backend, and on 28 October none was available (`.env` holds no
+    `ANTHROPIC_API_KEY`; the `claude` command is not signed in), so the
+    page says so until notebook 13 runs with one. *Rejected:* inventing an
+    executive's decision (the decision is the one the recorded answers
+    imply, stated in the module's notes); a registered v10 case as the
+    example (none carries the five answers); a figure (the page draws the
+    three books from the JSON).
+
+121. **The example recorded with the tools alone; any provider's key for
+    a live round; the need for a key said at the top** (Alan, 2026-10-28:
+    "keep it recorded with no key, just as an example of how it works and
+    my achievements as an executive, even with a summary of the results.
+    If someone would like to use the dashboard they will need an LLM key.
+    It must be said in the beginning. However any LLM key and not
+    Anthropic only"). (a) `worked_example.run` falls back to
+    `worked_example.tools_only` when the advisor has no record and no
+    backend: the registered default rules (tail weight 1, the budget, the
+    40% cap) stand in for the model's reading and the checklist — the
+    registered *tools only* arm of the ladder — for its memo; the level,
+    the solution and every score come from the same tools, so the example
+    needs no key and `make all` reproduces it offline. The recorded round:
+    the thirteen-lease pick breaks the cap; the checklist guides to the
+    repair, eight leases inside the cap, which the executive takes in full;
+    on the executive's own rules the pick scores $0.29B (expected NPV
+    $2.45B, worst-5% loss $2.16B), the decision $0.10B ($0.96B, $0.86B),
+    and the best book the rules allow — the optimizer's, five leases and
+    eight requests — $1.35B, +$1.25B [+$1.11B, +$1.38B] over the decision.
+    The page shows that fourth column and says the tools do not push the
+    executive there. (b) `advisor.Advisor` gains an OpenAI-compatible
+    backend (`advisor.ask_openai`, through `requests`, already a
+    dependency): `LLM_API_KEY` with `LLM_BASE_URL` (OpenAI's by default)
+    and `LLM_MODEL` in `.env` serve any provider — OpenAI, Gemini,
+    Mistral, a local server; the record carries the provider's model id,
+    and a round recorded under the registered model replays for an
+    advisor on any other, so the registered rounds never need a call.
+    Order of preference: the Anthropic key, the generic key, the `claude`
+    command. (c) `app/app.py` says before any page that the recorded rounds
+    replay with no key, that challenging one's own book needs a key from
+    any provider, and which backend this machine would use. *Rejected:*
+    recording the example with a live model later (Alan wants it as it
+    stands); the `openai` package (a new dependency for one POST).

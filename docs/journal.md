@@ -1997,3 +1997,16 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 1. Alan tries the page with his own book and reasons (a live call, with the key in `.env`), and says whether the four steps read right.
 2. Close notebook 12 in the editor and set its kernel back to `queue-survival`; `make report` for the Appendix C run line.
 3. The demo video, from `make app`.
+
+## Session 29, continued — 2026-10-28: the worked example (decisions #120, #121)
+
+**Done**
+
+- `src/worked_example.py`: the lease-only executive of notebook 10's recorded round, brought to the $3.82B decision (thirteen leases, $3.79B, the technology cap broken), with the author's five answers; the decision is the repair; the first pick, the decision, the advisor's solution and the best book the rules allow are scored on the executive's rules. Notebook 13 section 7 runs it; `app/example.py` is the dashboard's third page; `we.labels` and `we.rules_text` serve both pages.
+- No backend was available (`.env` holds no key; `claude -p` not signed in). Alan: keep it recorded with no key. The round is recorded with the tools alone (`worked_example.tools_only`, the registered *tools only* arm): the checklist guides to the repair (8 leases inside the cap), taken in full; $0.29B → $0.10B on the executive's rules, the best book the rules allow $1.35B, +$1.25B [+$1.11B, +$1.38B] over the decision. `results/v2/worked_example.json`.
+- Alan: anyone using the dashboard needs an LLM key, said at the top, and any provider's. `advisor.ask_openai` (OpenAI-compatible; `LLM_API_KEY`, `LLM_BASE_URL`, `LLM_MODEL`); registered rounds replay under any model; `app/app.py` says it before any page; README and `.env.example`.
+- Tests: `tests/test_worked_example.py`, the example page in `tests/test_app.py`, two backend tests in `tests/test_advisor.py`. Notebook 13 executed top to bottom (13 min): section 7's table matches its *Reading this*; only `checks.csv` (one new row, PASS) and `worked_example.json` changed; 282 tests pass, the one failure notebook 12's kernel.
+
+**Next**
+
+1. Unchanged: notebook 12's kernel; `make report`; the demo video.

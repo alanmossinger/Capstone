@@ -1,11 +1,14 @@
 """The LLM advisor: grounded in result tables, recorded on every call, replayable offline, number-checked.
 
-What: a thin client of Claude with three disciplines (PLAN.md §14.10). It
-reaches the model through one of two backends: the Anthropic Messages API
-when ``ANTHROPIC_API_KEY`` is in ``.env``, or otherwise the Claude Code
-command line (``claude -p``) signed in to the author's Claude subscription,
-run with no tools, no project files and no memory, so it sees exactly the
-same system prompt and user message as the API would (decision #76). *Grounding* — the model sees only the result tables of
+What: a thin client of a language model with three disciplines (PLAN.md
+§14.10). It reaches the model through one of three backends: the Anthropic
+Messages API when ``ANTHROPIC_API_KEY`` is in ``.env``; any OpenAI-compatible
+chat service when ``LLM_API_KEY``, ``LLM_BASE_URL`` and ``LLM_MODEL`` are
+(decision #121: OpenAI, Gemini, Mistral, a local server — any provider's
+key); or otherwise the Claude Code command line (``claude -p``) signed in to
+the author's Claude subscription, run with no tools, no project files and
+no memory, so it sees exactly the same system prompt and user message as
+the API would (decision #76). *Grounding* — the model sees only the result tables of
 ``results/`` pasted into the user message, and ``verify_numbers`` checks
 that every number in an answer appears in that context. *Recording* —
 every call is appended to ``results/advisor_runs.jsonl`` (prompts, model,
@@ -19,7 +22,7 @@ gate and the decision-ledger append.
 Why: the course asks for an AI component whose outputs are evaluated, and
 the report must reproduce without a key; a recommendation that cites a
 number the tables do not hold is worthless, so the check is mechanical.
-Reads: ``.env`` (``ANTHROPIC_API_KEY`` if present, never printed), the
+Reads: ``.env`` (``ANTHROPIC_API_KEY`` or ``LLM_API_KEY`` if present, never printed), the
 ``claude`` command's own sign-in, ``prompts/*.md``, ``results/advisor_runs.jsonl``.
 Writes: ``results/advisor_runs.jsonl``, ``results/decision_ledger.csv`` (append).
 Used by: notebook 10, the command-line challenge (``python -m src.advisor``); ``tests/test_advisor.py``.
@@ -68,6 +71,72 @@ def api_key():
     load_dotenv(paths.ENV_FILE)
     key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
     return key or None
+
+
+def llm_key():
+    """Any other provider's key from ``.env`` or the environment (``LLM_API_KEY``), or None; never logged."""
+    load_dotenv(paths.ENV_FILE)
+    key = os.environ.get("LLM_API_KEY", "").strip()
+    return key or None
+
+
+def llm_settings():
+    """The OpenAI-compatible service behind ``LLM_API_KEY``: its base URL (OpenAI's by default) and the model id, which must be named."""
+    load_dotenv(paths.ENV_FILE)
+    base = os.environ.get("LLM_BASE_URL", "").strip().rstrip("/") or "https://api.openai.com/v1"
+    model = os.environ.get("LLM_MODEL", "").strip()
+    if not model:
+        raise RuntimeError("LLM_API_KEY is set but LLM_MODEL is not: name your provider's model id in .env (for example LLM_MODEL=gpt-4o)")
+    return base, model
+
+
+def ask_openai(system, user, model, base_url, key, temperature=TEMPERATURE, timeout=CLI_TIMEOUT_S):
+    """One answer from an OpenAI-compatible chat endpoint: the same system prompt and user message as the other backends.
+
+    Returns
+    -------
+    dict
+        ``text``, ``model`` (the id the service reports), ``input_tokens``, ``output_tokens``.
+
+    Raises
+    ------
+    RuntimeError
+        On a reply other than 200, with the service's own message (no key in it).
+
+    Notes
+    -----
+    Only the fields every compatible service accepts are sent: the model, the
+    two messages, and the sampling temperature when one is set. The token
+    limit is left to the service, because the field's name differs between
+    providers and the memo must not be cut.
+    """
+    import requests
+
+    body = {"model": model, "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}
+    if temperature is not None:
+        body["temperature"] = temperature
+    reply = requests.post(f"{base_url}/chat/completions", json=body, headers={"Authorization": f"Bearer {key}"}, timeout=timeout)
+    if reply.status_code != 200:
+        raise RuntimeError(f"the service at {base_url} answered {reply.status_code}: {reply.text[:300]}")
+    out = reply.json()
+    usage = out.get("usage", {}) or {}
+    return {"text": out["choices"][0]["message"]["content"] or "", "model": out.get("model", model),
+            "input_tokens": usage.get("prompt_tokens", 0), "output_tokens": usage.get("completion_tokens", 0)}
+
+
+def backend_name():
+    """Which backend a live call would use, in words for the dashboard, or None when there is none."""
+    if api_key():
+        return "the Anthropic API"
+    if llm_key():
+        try:
+            base, model = llm_settings()
+            return f"an OpenAI-compatible API at {base}, model {model}"
+        except RuntimeError as err:
+            return str(err)
+    if cli_path():
+        return "the claude command (if signed in)"
+    return None
 
 
 def cli_path():
@@ -264,25 +333,31 @@ class Advisor:
         Model id recorded with the call.
     runs_path : pathlib.Path
         The JSONL record.
-    backend : {"auto", "api", "cli"}
-        ``api`` is the Messages API with ``ANTHROPIC_API_KEY``; ``cli`` is
-        ``claude -p`` on the Claude subscription; ``auto`` takes the API when
-        the key is present and the command line otherwise.
+    backend : {"auto", "api", "openai", "cli"}
+        ``api`` is the Messages API with ``ANTHROPIC_API_KEY``; ``openai`` any
+        OpenAI-compatible service with ``LLM_API_KEY`` (its model id becomes
+        ``model``); ``cli`` is ``claude -p`` on the Claude subscription;
+        ``auto`` takes them in that order, whichever is present.
 
     Notes
     -----
-    A record is keyed by (model, system, user) only, so a call recorded
-    through either backend replays identically; the backend is stored with
-    the record for the reader.
+    A record is keyed by (model, system, user), so a call recorded through
+    any backend replays identically; a recorded answer under the registered
+    model also replays for an advisor on another provider's model, so the
+    registered rounds never need a call. The backend is stored with the
+    record for the reader.
     """
 
     def __init__(self, mode="auto", model=MODEL, runs_path=RUNS, max_tokens=MAX_TOKENS, temperature=TEMPERATURE, backend="auto"):
-        key = api_key()
+        key, generic = api_key(), llm_key()
         if backend == "auto":
-            backend = "api" if key is not None else ("cli" if cli_path() else None)
-        available = backend == "cli" and cli_path() is not None or backend == "api" and key is not None
+            backend = "api" if key is not None else ("openai" if generic is not None else ("cli" if cli_path() else None))
+        available = backend == "cli" and cli_path() is not None or backend == "api" and key is not None or backend == "openai" and generic is not None
         if mode == "live" and not available:
-            raise RuntimeError("no backend for live mode: put ANTHROPIC_API_KEY in .env or sign in to the claude command; use mode='replay' to run offline")
+            raise RuntimeError("no backend for live mode: put ANTHROPIC_API_KEY or LLM_API_KEY (with LLM_BASE_URL and LLM_MODEL) in .env, or sign in to the claude command; use mode='replay' to run offline")
+        self.base_url = None
+        if backend == "openai" and available:
+            self.base_url, model = llm_settings()  # the provider's own model id is what the record carries
         self.backend = backend if available else None
         self.live = mode == "live" or (mode == "auto" and available)
         self.strict = mode == "live"  # in auto mode a failed call falls back to "not recorded" so the pipeline still runs offline
@@ -304,15 +379,16 @@ class Advisor:
                     records[rec["key"]] = rec
         return records
 
-    def _key(self, system, user):
-        return hashlib.sha256(json.dumps({"model": self.model, "system": system, "user": user}, ensure_ascii=False).encode("utf-8")).hexdigest()
+    def _key(self, system, user, model=None):
+        return hashlib.sha256(json.dumps({"model": model or self.model, "system": system, "user": user}, ensure_ascii=False).encode("utf-8")).hexdigest()
 
     def ask(self, system, user, mode_name="", tag=""):
         """The recorded or fresh response to (system, user), with its verification; None when offline with no record."""
         key = self._key(system, user)
-        if key in self.records:
-            self.calls["replayed"] += 1
-            return {**self.records[key], "replayed": True}
+        for k in (key, self._key(system, user, MODEL)):  # the record under this model, else under the registered one
+            if k in self.records:
+                self.calls["replayed"] += 1
+                return {**self.records[k], "replayed": True}
         if not self.live:
             self.calls["missing"] += 1
             return None
@@ -326,6 +402,16 @@ class Advisor:
                 self.calls["missing"] += 1
                 return None
             text, used, usage = answer["text"], answer["model"], {"input_tokens": answer["input_tokens"], "output_tokens": answer["output_tokens"]}
+        elif self.backend == "openai":
+            try:
+                answer = ask_openai(system, user, self.model, self.base_url, llm_key(), self.temperature)
+            except (RuntimeError, OSError, ValueError, KeyError) as error:
+                if self.strict:
+                    raise
+                self.live, self.last_error = False, str(error)
+                self.calls["missing"] += 1
+                return None
+            text, used, usage = answer["text"], answer["model"], {"input_tokens": answer["input_tokens"], "output_tokens": answer["output_tokens"]}
         else:
             if self._client is None:
                 import anthropic  # imported here so the module loads without the package in replay-only environments
@@ -336,7 +422,7 @@ class Advisor:
             text = "".join(block.text for block in response.content if getattr(block, "type", "") == "text")
             used, usage = response.model, {"input_tokens": response.usage.input_tokens, "output_tokens": response.usage.output_tokens}
         record = {"key": key, "time": datetime.now(timezone.utc).isoformat(timespec="seconds"), "mode": mode_name, "tag": tag, "model": used,
-                  "backend": "claude -p (Claude subscription)" if self.backend == "cli" else "Messages API",
+                  "backend": {"cli": "claude -p (Claude subscription)", "openai": f"OpenAI-compatible API ({self.base_url})"}.get(self.backend, "Messages API"),
                   "temperature": "model default" if self.temperature is None else self.temperature,
                   "max_tokens": self.max_tokens if self.backend == "api" else "not set (command line)",
                   "system": system, "user": user, "response": text, "usage": usage,

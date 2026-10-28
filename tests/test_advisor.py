@@ -3,6 +3,7 @@
 import json
 
 import pandas as pd
+import pytest
 
 from src import advisor as adv
 
@@ -130,3 +131,28 @@ def test_challenge_without_answers_still_returns_a_verdict():
     fake = FakeAdvisor()
     out = adv.challenge(fake, "I want the leases only.", "Book D", "DATA tables")
     assert out["check"] is not None and "no answers were given" in fake.asked[1][1]
+
+
+def test_any_providers_key_selects_the_openai_backend_and_registered_records_still_replay(monkeypatch, tmp_path):
+    """LLM_API_KEY with LLM_MODEL makes the advisor live on that provider's model, and a round recorded under the registered model replays for it."""
+    monkeypatch.setattr(adv, "api_key", lambda: None)
+    monkeypatch.setattr(adv, "cli_path", lambda: None)
+    monkeypatch.setattr(adv, "llm_key", lambda: "placeholder")
+    monkeypatch.setenv("LLM_MODEL", "some-model")
+    monkeypatch.setenv("LLM_BASE_URL", "https://example.invalid/v1/")
+    runs = tmp_path / "runs.jsonl"
+    recorded = adv.Advisor(mode="replay", runs_path=runs, model=adv.MODEL)
+    key = recorded._key("sys", "usr")
+    runs.write_text(json.dumps({"key": key, "system": "sys", "user": "usr", "response": "42", "model": adv.MODEL}) + "\n", encoding="utf-8")
+    a = adv.Advisor(mode="auto", runs_path=runs)
+    assert a.backend == "openai" and a.live and a.model == "some-model" and a.base_url == "https://example.invalid/v1"
+    assert a.ask("sys", "usr")["replayed"] and a.calls == {"replayed": 1, "live": 0, "missing": 0}
+
+
+def test_the_openai_backend_without_a_model_id_says_so(monkeypatch):
+    monkeypatch.setattr(adv, "api_key", lambda: None)
+    monkeypatch.setattr(adv, "cli_path", lambda: None)
+    monkeypatch.setattr(adv, "llm_key", lambda: "placeholder")
+    monkeypatch.delenv("LLM_MODEL", raising=False)
+    with pytest.raises(RuntimeError, match="LLM_MODEL"):
+        adv.Advisor(mode="auto")

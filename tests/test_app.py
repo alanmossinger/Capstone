@@ -70,3 +70,15 @@ def test_your_call_without_a_facility_turns_to_equal_capital(report):
     no_line.set_value("no").run()
     assert not report.exception, [str(e) for e in report.exception]
     assert any("Without a facility, fund equal capital by sector" in m.value for m in report.markdown)
+
+
+def test_the_worked_example_page_opens_or_says_the_round_is_not_recorded():
+    from src import worked_example as we
+    at = st_testing.AppTest.from_file(str(APP / "example.py"), default_timeout=120).run()
+    assert not at.exception, [str(e) for e in at.exception]
+    if we.PATH.exists():
+        text = "\n".join(m.value for m in at.markdown)
+        assert "The advisor's solution" in text and "The decision:" in text
+        assert len(at.metric) in (12, 16)  # three books (four when the best book the rules allow differs from the solution), four scores each
+    else:
+        assert any("not been recorded" in i.value for i in at.info)

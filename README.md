@@ -109,7 +109,7 @@ a notebook by hand in Jupyter or VS Code, pick "Python 3.11 (queue-survival)" an
    S18, S19); the ISO queue snapshots are dated, so a fresh download is a different file (S7). The results in this
    repository were computed on the files the manifest records, and a file whose hash differs is reported, never used
    silently.
-2. Copy `.env.example` to `.env`. The EIA API key is needed only to pull a missing EIA file again. For live advisor calls either add `ANTHROPIC_API_KEY` or sign in to the `claude` command line with a Claude subscription (`claude auth login`); with neither, the advisor replays its record. The replay is keyed on the exact prompt text, which includes the result tables, so it reproduces exactly on the machine that recorded it; on another platform, floating-point differences in the last decimals of a table can miss the record for a few calls, which then need a live backend. The registered challenger run of notebook 12 (section 6) replays only on the tables it was recorded on; elsewhere the section says so and keeps the committed scored record in `results/v10/` (decision #111). A clean Linux run from the bundle reproduced 2,548 of the 2,561 numbers the report cites exactly as printed and every registered verdict (decision #112). To challenge your own decision at the keyboard, run `python -m src.advisor`: state the book you prefer, answer the advisor's five questions, and read its verdict and the opposing case (the transcript goes to `results/advisor_transcripts/`).
+2. Copy `.env.example` to `.env`. The EIA API key is needed only to pull a missing EIA file again. For live advisor calls add a language-model key from any provider — `ANTHROPIC_API_KEY`, or `LLM_API_KEY` with `LLM_BASE_URL` and `LLM_MODEL` for any OpenAI-compatible service (OpenAI, Gemini, Mistral, a local server) — or sign in to the `claude` command line with a Claude subscription (`claude auth login`); with none, the advisor replays its record, and the dashboard says so at the top. The replay is keyed on the exact prompt text, which includes the result tables, so it reproduces exactly on the machine that recorded it; on another platform, floating-point differences in the last decimals of a table can miss the record for a few calls, which then need a live backend. The registered challenger run of notebook 12 (section 6) replays only on the tables it was recorded on; elsewhere the section says so and keeps the committed scored record in `results/v10/` (decision #111). A clean Linux run from the bundle reproduced 2,548 of the 2,561 numbers the report cites exactly as printed and every registered verdict (decision #112). To challenge your own decision at the keyboard, run `python -m src.advisor`: state the book you prefer, answer the advisor's five questions, and read its verdict and the opposing case (the transcript goes to `results/advisor_transcripts/`).
 3. Run:
 
 ```bash
@@ -144,9 +144,10 @@ notebooks/   01_problem_and_data (queue sources and cleaning; the v5 sources BSE
              Each notebook is made of lettered parts; a part header says which old notebook it was.
 src/         small helper package used by the notebooks (paths, config, data access, plots, models, economics,
              scenarios, optimizer, advisor, gym, horizons)
-app/         app.py — the dashboard (`make app`), two pages: decide.py (the options, your book and your reasons, the advisor's
+app/         app.py — the dashboard (`make app`), three pages: decide.py (the options, your book and your reasons, the advisor's
              challenge with its five reasoning questions, your result against the advisor's solution; the registered example
-             replays with no call) and executive.py (the report's decision in seven tabs, the last one the committee's own call)
+             replays with no call), example.py (one executive's recorded round through those steps, from notebook 13 section 7)
+             and executive.py (the report's decision in seven tabs, the last one the committee's own call)
 prompts/     the advisor's system prompt, the recommend and gym templates, the two reasoning prompts
 data/        raw/ (not committed) · interim/ (not committed) · processed/ (small final tables)
 results/     every number the report cites, written by the notebooks; advisor_runs.jsonl is the replay record

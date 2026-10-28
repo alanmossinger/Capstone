@@ -1,9 +1,11 @@
 """The dashboard (``make app``): the decision page first, the report's decision beside it.
 
-What: a Streamlit app of two pages. *Decide* (``app/decide.py``) — the
+What: a Streamlit app of three pages. *Decide* (``app/decide.py``) — the
 options, your book and your reasons, the advisor's challenge, your result
-against the advisor's. *The report's decision* (``app/executive.py``) — the
-recommendation of the report on one screen, for presenting it.
+against the advisor's. *A worked example* (``app/example.py``) — one
+executive's recorded round through those steps. *The report's decision*
+(``app/executive.py``) — the recommendation of the report on one screen,
+for presenting it.
 Why: one command opens one dashboard (decision #118); the decision page
 comes first because deciding, not reading, is what the dashboard is for
 (decision #119).
@@ -12,7 +14,13 @@ Writes: nothing itself.
 Used by: ``streamlit run app/app.py``; ``tests/test_app.py``.
 """
 
+import sys
+from pathlib import Path
+
 import streamlit as st
+
+sys.path.append(str(Path(__file__).resolve().parents[1]))
+from src import advisor as adv  # noqa: E402
 
 st.set_page_config(page_title="Beyond Prediction — the dashboard", layout="wide")
 st.markdown("""
@@ -30,4 +38,11 @@ h3 {font-size: 1.15rem !important;}
 .quote {background: #F4F5F7; border-left: 4px solid #0072B2; padding: 0.8rem 1rem; border-radius: 6px; font-size: 0.98rem;}
 </style>
 """, unsafe_allow_html=True)
-st.navigation([st.Page("decide.py", title="Decide", default=True), st.Page("executive.py", title="The report's decision")]).run()
+backend = adv.backend_name()
+st.markdown(f"""<div class="howto"><b>Before you start.</b> Every number on these pages is read from the report's result tables, and the
+recorded rounds replay with no key. To have the advisor challenge <i>your own</i> book you need a key for a language model — any
+provider's: put <code>ANTHROPIC_API_KEY</code> in <code>.env</code>, or <code>LLM_API_KEY</code> with <code>LLM_BASE_URL</code> and
+<code>LLM_MODEL</code> for any OpenAI-compatible service (OpenAI, Gemini, Mistral, a local server), or sign in to the <code>claude</code>
+command. {"A live call would use " + backend + "." if backend else "No key is set on this machine, so the pages replay the recorded rounds only."}</div>""",
+            unsafe_allow_html=True)
+st.navigation([st.Page("decide.py", title="Decide", default=True), st.Page("example.py", title="A worked example"), st.Page("executive.py", title="The report's decision")]).run()
