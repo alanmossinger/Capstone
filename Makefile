@@ -82,8 +82,8 @@ poster:           ## report/poster.pdf from report/poster.typ (needs typst)
 petrobras:        ## report/Petrobras_Report.pdf, the executive edition, from report/petrobras_report.typ (needs typst)
 	typst compile --root . report/petrobras_report.typ report/Petrobras_Report.pdf
 
-app:              ## the dashboard: the report's decision on one page and the committee's two calls (app/executive.py; reads results/ only)
-	$(PYTHON) -m streamlit run app/executive.py
+app:              ## the dashboard (app/app.py): decide — the options, your book, the advisor's challenge, your result — and the report's decision
+	$(PYTHON) -m streamlit run app/app.py
 
 test:
 	$(PYTHON) -m pytest

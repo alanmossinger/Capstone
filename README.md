@@ -118,7 +118,7 @@ make test      # pytest
 make report    # report/report.pdf and report/report.docx from report/report.md + references.md (needs pandoc and typst)
 make report-course  # the course-length edition (about 3,000 words): report/report_course.pdf and .docx
 make poster    # report/poster.pdf from report/poster.typ (needs typst)
-make app       # the dashboard, at http://localhost:8501: the report's decision in seven tabs, the last one the committee's own call (reads results/ only)
+make app       # the dashboard, at http://localhost:8501: decide (the options, your book, the advisor's challenge, your result) and the report's decision
 ```
 
 Each notebook also has its own target (`make data`, `make eda`, `make features`,
@@ -144,8 +144,9 @@ notebooks/   01_problem_and_data (queue sources and cleaning; the v5 sources BSE
              Each notebook is made of lettered parts; a part header says which old notebook it was.
 src/         small helper package used by the notebooks (paths, config, data access, plots, models, economics,
              scenarios, optimizer, advisor, gym, horizons)
-app/         executive.py — the dashboard (`make app`): what to fund, risk against return, financing, what can go wrong,
-             the AI challenger, the controls, and the committee's call; reads results/ only, writes nothing
+app/         app.py — the dashboard (`make app`), two pages: decide.py (the options, your book and your reasons, the advisor's
+             challenge with its five reasoning questions, your result against the advisor's solution; the registered example
+             replays with no call) and executive.py (the report's decision in seven tabs, the last one the committee's own call)
 prompts/     the advisor's system prompt, the recommend and gym templates, the two reasoning prompts
 data/        raw/ (not committed) · interim/ (not committed) · processed/ (small final tables)
 results/     every number the report cites, written by the notebooks; advisor_runs.jsonl is the replay record

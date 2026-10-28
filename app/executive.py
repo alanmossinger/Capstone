@@ -1,23 +1,22 @@
-"""The dashboard: the report's decision on one screen, for presenting it and for making the committee's two calls.
+"""The report's decision on one screen: the second page of the dashboard, for presenting the recommendation.
 
-What: a Streamlit app (``make app``) that opens with what is being decided
-and how to read the page, then seven tabs — the recommendation, risk
-against return, financing, what can go wrong, the AI challenger, the
-controls, and the committee's own call (how much the bad years weigh,
-whether a construction facility can be arranged) — each a chart or a table
-with one sentence under it. Every number is read from ``results/`` (the
-tables notebooks 11–13 wrote); nothing is recomputed, no model is called,
-nothing is written, and the numbers are the report's.
-Why: the earlier dashboards (the analysis desk of v5, the challenge page,
-the v8 decision page) read tables the report no longer cites and did not
-say what to do (decision #118); one page that a committee member can read
-left to right, ending in the two choices only the committee can make,
-replaces them.
+What: a page of the dashboard (``app/app.py``, ``make app``) that opens with
+what is being decided and how to read it, then seven tabs — the
+recommendation, risk against return, financing, what can go wrong, the AI
+challenger, the controls, and the committee's own call (how much the bad
+years weigh, whether a construction facility can be arranged) — each a chart
+or a table with one sentence under it. Every number is read from
+``results/`` (the tables notebooks 11–13 wrote); nothing is recomputed, no
+model is called, nothing is written, and the numbers are the report's.
+Why: a committee meeting needs the decision, its price, its risk and its
+controls in a form that can be shown in ten minutes (decision #118); the
+page where the investor decides and is challenged is ``app/decide.py``
+(decision #119).
 Reads: ``results/v2/*.csv``, ``results/v8/frontier.csv``,
 ``results/v8/process_comparison.csv``, ``results/v10/*`` (the ladder, the
 registered lines, case X25 and its recorded memo), ``figures/executive/``.
 Writes: nothing.
-Used by: ``streamlit run app/executive.py``.
+Used by: ``app/app.py``; ``tests/test_app.py``.
 """
 
 import json
@@ -32,7 +31,6 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))
 from src import paths  # noqa: E402
 
 R, V2, V8, V10, FIG = paths.RESULTS, paths.RESULTS / "v2", paths.RESULTS / "v8", paths.RESULTS / "v10", paths.FIGURES / "executive"
-st.set_page_config(page_title="Beyond Prediction — the committee's decision", layout="wide", initial_sidebar_state="collapsed")
 
 INK, MUTED = "#222222", "#5F6368"
 BOOK_COLOR = {"A": "#999999", "B": "#CC79A7", "C": "#56B4E9", "D": "#0072B2", "F": "#009E73"}
@@ -40,22 +38,6 @@ BOOK_NAME = {"A": "A  NPV ranking", "B": "B  equal capital by sector", "C": "C  
 TECH_COLOR = {"Lease redevelopment": "#D55E00", "Gas CC": "#555555", "Solar": "#E69F00", "Wind": "#56B4E9", "Storage": "#CC79A7"}
 ARM_LABEL = {"proposal": "committee's own proposal", "tools": "tools only (checklist)", "optimizer_first": "optimizer-first rule (no LLM)", "tools_llm": "tools + language model", "optimizer": "optimizer under the true rules"}
 ARM_COLOR = {"proposal": "#BBBBBB", "tools": "#555555", "optimizer_first": "#E69F00", "tools_llm": "#0072B2", "optimizer": "#009E73"}
-
-st.markdown("""
-<style>
-.block-container {padding-top: 1.2rem; padding-bottom: 2rem; max-width: 1400px;}
-h1 {font-size: 2.0rem !important; margin-bottom: 0.2rem;}
-h2 {font-size: 1.4rem !important; margin-top: 0.6rem;}
-h3 {font-size: 1.15rem !important;}
-[data-testid="stMetricValue"] {font-size: 2.0rem;}
-[data-testid="stMetricLabel"] {font-size: 0.95rem; color: #5F6368;}
-.reading {color: #5F6368; font-size: 0.95rem; margin-top: -0.4rem; margin-bottom: 0.8rem;}
-.rec {background: #13294B; color: white; padding: 1.1rem 1.4rem; border-radius: 10px; font-size: 1.02rem; line-height: 1.5;}
-.rec b {color: #FFFFFF;}
-.howto {background: #F4F5F7; border-left: 4px solid #13294B; padding: 0.8rem 1.1rem; border-radius: 6px; font-size: 0.98rem; line-height: 1.5; margin: 0.4rem 0 1rem 0;}
-.quote {background: #F4F5F7; border-left: 4px solid #0072B2; padding: 0.8rem 1rem; border-radius: 6px; font-size: 0.98rem;}
-</style>
-""", unsafe_allow_html=True)
 
 
 # --- cached loads --------------------------------------------------------------------------------
@@ -91,7 +73,7 @@ def reading(text):
 
 
 def figure(name, caption):
-    st.image(str(FIG / f"{name}.png"), use_container_width=True)
+    st.image(str(FIG / f"{name}.png"), width="stretch")
     reading(caption)
 
 
@@ -154,11 +136,11 @@ with tabs[0]:
             opacity=alt.condition(alt.datum.measure == "expected NPV", alt.value(0.45), alt.value(1.0)),
             tooltip=["label", "status", "measure", alt.Tooltip("value:Q", format=",.0f", title="$M"), alt.Tooltip("p_negative:Q", format=".0%", title="chance of a loss")],
         ).properties(height=430, title="Capital charged now (solid) and expected NPV (light), $M"))
-        st.altair_chart(chart, use_container_width=True)
+        st.altair_chart(chart, width="stretch")
         reading("Three requests with signed agreements carry most of the construction reserve and lose in 62–64% of scenarios; the five waiting wind and solar requests cost only their deposits and pay in exactly the scenarios in which the leases do not. Hover for each member's chance of a loss.")
     with st.expander("Every candidate and its status"):
         show = m[["project_id", "technology", "status", "charge_$M", "expected_npv_$M", "p_negative", "objective_cost_$M"]].rename(columns={"charge_$M": "charge ($M)", "expected_npv_$M": "expected NPV ($M)", "p_negative": "chance of a loss", "objective_cost_$M": "removal costs the objective ($M)"})
-        st.dataframe(show.style.format({"charge ($M)": "{:,.0f}", "expected NPV ($M)": "{:,.0f}", "chance of a loss": "{:.0%}", "removal costs the objective ($M)": "{:,.0f}"}), use_container_width=True, height=420, hide_index=True)
+        st.dataframe(show.style.format({"charge ($M)": "{:,.0f}", "expected NPV ($M)": "{:,.0f}", "chance of a loss": "{:.0%}", "removal costs the objective ($M)": "{:,.0f}"}), width="stretch", height=420, hide_index=True)
 
 # --- 2 risk against return --------------------------------------------------------------------------
 with tabs[1]:
@@ -181,7 +163,7 @@ with tabs[1]:
             x="cvar_loss:Q", y="mean:Q", shape=alt.Shape("name:N", legend=alt.Legend(title=None, orient="bottom", columns=2)),
             color=alt.Color("book:N", scale=alt.Scale(domain=list(BOOK_COLOR), range=list(BOOK_COLOR.values())), legend=None),
             tooltip=["name", alt.Tooltip("mean:Q", format="$,.0f"), alt.Tooltip("cvar_loss:Q", format="$,.0f")])
-        st.altair_chart((line + pts + sel + comps).properties(height=420, title="The frontier over tail weights, and where the conventional books sit"), use_container_width=True)
+        st.altair_chart((line + pts + sel + comps).properties(height=420, title="The frontier over tail weights, and where the conventional books sit"), width="stretch")
         reading("Each point on the line is the best book for one tail weight; the blue circle is the weight you chose. The conventional books (symbols) sit below the frontier: they take more tail for the same expected value. λ = 1 is the registered setting.")
     with right:
         st.markdown(f"**At λ = {lam:g}: {int(chosen['n'])} members**")
@@ -193,7 +175,7 @@ with tabs[1]:
         tdf = pd.DataFrame({"technology": [c.replace("charge_", "") for c in techs], "capital": [chosen[c] for c in techs]})
         tdf = tdf[tdf["capital"] > 0]
         st.altair_chart(alt.Chart(tdf).mark_bar().encode(x=alt.X("capital:Q", title="$ billion", axis=alt.Axis(format="$.2s")), y=alt.Y("technology:N", title=None, sort="-x"),
-                        color=alt.Color("technology:N", scale=alt.Scale(domain=list(TECH_COLOR), range=list(TECH_COLOR.values())), legend=None), tooltip=["technology", alt.Tooltip("capital:Q", format="$,.0f")]).properties(height=200), use_container_width=True)
+                        color=alt.Color("technology:N", scale=alt.Scale(domain=list(TECH_COLOR), range=list(TECH_COLOR.values())), legend=None), tooltip=["technology", alt.Tooltip("capital:Q", format="$,.0f")]).properties(height=200), width="stretch")
         reading("Move the slider: a heavier weight on the tail drops the large gas and solar requests first and, at λ = 4, keeps only the wind requests.")
 
 # --- 3 financing ------------------------------------------------------------------------------------
@@ -212,7 +194,7 @@ with tabs[2]:
             color=alt.Color("book:N", scale=alt.Scale(domain=list(BOOK_COLOR), range=list(BOOK_COLOR.values())), legend=alt.Legend(title=None, orient="bottom", labelLimit=320), sort=list(BOOK_COLOR)),
             tooltip=["name", "basis", alt.Tooltip("metric:Q", format="$,.0f"), alt.Tooltip("mean:Q", format="$,.0f", title="expected NPV"), alt.Tooltip("cvar_loss:Q", format="$,.0f", title="worst-5% loss")],
         ).properties(height=400, title="Five decision processes on four funding bases")
-        st.altair_chart(chart, use_container_width=True)
+        st.altair_chart(chart, width="stretch")
         reading(f"On the financed basis the risk-aware book (D) scores {N['v2_D_own_metric']} against {N['v2_C_own_metric']} for the deterministic optimizer and {N['v2_A_own_metric']} for NPV ranking: {N['v2_pair_own_D_A']} {N['v2_pair_own_D_A_ci']} over NPV ranking, {N['v2_pair_own_D_C']} {N['v2_pair_own_D_C_ci']} over the deterministic book. With no line at all, equal capital by sector (B) would lead — the recommendation is the book and its facility together.")
     with right:
         cap = own.loc[list(BOOK_COLOR), ["lease_capital", "deposits", "reserve", "facility_own_q95", "financing_cost_mean_own_line", "capital_committed"]].reset_index()
@@ -223,9 +205,9 @@ with tabs[2]:
             x=alt.X("book:N", title=None, axis=alt.Axis(labelAngle=0)), y=alt.Y("capital:Q", title="$ billion", axis=alt.Axis(format="$.2s"), stack="zero"),
             color=alt.Color("part:N", sort=order, scale=alt.Scale(domain=order, range=["#D55E00", "#E69F00", "#56B4E9", "#DDDDDD"]), legend=alt.Legend(title=None, orient="bottom", columns=1, labelLimit=320)),
             order=alt.Order("part_order:Q"), tooltip=["book", "part", alt.Tooltip("capital:Q", format="$,.0f")],
-        ).transform_calculate(part_order="indexof(" + json.dumps(order) + ", datum.part)").properties(height=330, title="What each process commits, reserves and may call"), use_container_width=True)
+        ).transform_calculate(part_order="indexof(" + json.dumps(order) + ", datum.part)").properties(height=330, title="What each process commits, reserves and may call"), width="stretch")
         tbl = cap.assign(**{"committed now": cap["capital_committed"].map(money), "facility": cap["facility_own_q95"].map(money), "expected financing cost": cap["financing_cost_mean_own_line"].map(lambda x: money(x, "M", 0))})[["book", "committed now", "facility", "expected financing cost"]]
-        st.dataframe(tbl, hide_index=True, use_container_width=True)
+        st.dataframe(tbl, hide_index=True, width="stretch")
         reading("Every process needs a facility of $2.5–3.2B and pays $126–147M for it in expected present value; the risk-aware book's is neither the largest nor the dearest.")
 
 # --- 4 what can go wrong ----------------------------------------------------------------------------
@@ -240,7 +222,7 @@ with tabs[3]:
             x=alt.X("omega:Q", title="Share of scenarios keeping the co-movement (0 = independent, 1 = as scored)"),
             y=alt.Y("cvar_loss:Q", title="Worst-5% average loss ($ billion)", axis=alt.Axis(format="$.1s")),
             color=alt.Color("book:N", scale=alt.Scale(domain=list(BOOK_COLOR), range=list(BOOK_COLOR.values())), legend=alt.Legend(title=None, orient="bottom")),
-            tooltip=["name", "omega", alt.Tooltip("cvar_loss:Q", format="$,.0f")]).properties(height=380, title="The tail grows with the co-movement"), use_container_width=True)
+            tooltip=["name", "omega", alt.Tooltip("cvar_loss:Q", format="$,.0f")]).properties(height=380, title="The tail grows with the co-movement"), width="stretch")
         como = d[d["dependence"] == "comonotonic bound"].set_index("book")["cvar_loss"]
         reading(f"Five leases on one oil price, eight requests on one power price. If every candidate had its worst day on the same day (the comonotonic bound) the risk-aware book's loss would be {money(como['D'])}, NPV ranking's {money(como['A'])}. The risk-aware book keeps the smallest tail at every setting.")
     with right:
@@ -251,7 +233,7 @@ with tabs[3]:
             y=alt.Y("world:N", sort=worlds, title=None, axis=alt.Axis(labelLimit=260)), x=alt.X("metric:Q", title="Registered metric ($ billion)", axis=alt.Axis(format="$.2s")),
             yOffset=alt.YOffset("book:N", sort=list(BOOK_COLOR)),
             color=alt.Color("book:N", scale=alt.Scale(domain=list(BOOK_COLOR), range=list(BOOK_COLOR.values())), legend=alt.Legend(title=None, orient="bottom")),
-            tooltip=["name", "world", alt.Tooltip("metric:Q", format="$,.0f"), alt.Tooltip("mean:Q", format="$,.0f", title="expected NPV"), alt.Tooltip("cvar_loss:Q", format="$,.0f", title="worst-5% loss")]).properties(height=380, title="The books in seven worlds"), use_container_width=True)
+            tooltip=["name", "world", alt.Tooltip("metric:Q", format="$,.0f"), alt.Tooltip("mean:Q", format="$,.0f", title="expected NPV"), alt.Tooltip("cvar_loss:Q", format="$,.0f", title="worst-5% loss")]).properties(height=380, title="The books in seven worlds"), width="stretch")
         reading(f"The risk-aware book scores best in {N['v2_worlds_D_best']} of 7 worlds and is the only one whose metric stays positive when ERCOT prices are 25% lower ({N['v2_world_ercot_low_D']} against {N['v2_world_ercot_low_A']} for NPV ranking) or oil sits at $45 for five years ({N['v2_world_oil45_D']}).")
 
 # --- 5 the AI challenger ----------------------------------------------------------------------------
@@ -265,7 +247,7 @@ with tabs[4]:
             x=alt.X("label:N", sort=list(ARM_LABEL.values()), title=None, axis=alt.Axis(labelAngle=0, labelLimit=140)),
             y=alt.Y("metric:Q", title="Committee's own objective, mean per case ($ million)", axis=alt.Axis(format="$.3s")),
             color=alt.Color("arm:N", scale=alt.Scale(domain=list(ARM_COLOR), range=list(ARM_COLOR.values())), legend=None),
-            tooltip=["label", alt.Tooltip("metric:Q", format="$,.0f")]).properties(height=330, title="Where each process leaves the committee (48 registered cases × 5 worlds)"), use_container_width=True)
+            tooltip=["label", alt.Tooltip("metric:Q", format="$,.0f")]).properties(height=330, title="Where each process leaves the committee (48 registered cases × 5 worlds)"), width="stretch")
         rr = rungs.reset_index()
         rr["label"] = rr["rung"].map({"tools_minus_proposal": "tools only vs the proposal (registered)", "tools_llm_minus_tools": "tools + LLM vs tools only (registered, C34)", "optimizer_first_minus_tools": "optimizer-first rule vs tools only (post-registration)",
                                       "tools_llm_minus_optimizer_first": "tools + LLM vs optimizer-first rule (post-registration)", "optimizer_minus_tools_llm": "optimizer vs tools + LLM (registered, C36)", "optimizer_minus_optimizer_first": "optimizer vs optimizer-first rule (post-registration)"})
@@ -275,7 +257,7 @@ with tabs[4]:
         bars = base.mark_rule(strokeWidth=2, color=INK).encode(x=alt.X("low:Q", title="Paired difference per case, $ million (95% interval)", axis=alt.Axis(format="$.2s")), x2="high:Q")
         dots = base.mark_circle(size=140, color="#0072B2").encode(x="mean:Q", tooltip=["label", alt.Tooltip("mean:Q", format="$,.0f"), alt.Tooltip("low:Q", format="$,.0f"), alt.Tooltip("high:Q", format="$,.0f")])
         zero = alt.Chart(pd.DataFrame({"x": [0]})).mark_rule(color=INK).encode(x="x:Q")
-        st.altair_chart((bars + dots + zero).properties(height=260, title="The rungs: what each part adds"), use_container_width=True)
+        st.altair_chart((bars + dots + zero).properties(height=260, title="The rungs: what each part adds"), width="stretch")
         reading(f"Tools {N['v2_rung_tools_minus_proposal']}, the language model {N['v2_rung_tools_llm_minus_tools']} more, the optimizer {N['v2_rung_optimizer_minus_tools_llm']} beyond — registered and scored once. Against a fixed optimizer-first rule the model's edge is {N['v2_rung_tools_llm_minus_optimizer_first']} {N['v2_rung_tools_llm_minus_optimizer_first_ci']}: a rule that reads no words chooses the book as well. The model's value is the argument it makes, not the book it picks.")
     with right:
         st.markdown("**One registered case, as recorded (X25: a sunk-cost argument on the recommended book)**")
@@ -291,7 +273,7 @@ with tabs[4]:
     st.markdown("**The nine registered lines, scored once**")
     lines = T["lines"]
     cols = [c for c in ("id", "question", "line", "rule", "estimate", "result") if c in lines.columns]
-    st.dataframe(lines[cols], hide_index=True, use_container_width=True, height=360)
+    st.dataframe(lines[cols], hide_index=True, width="stretch", height=360)
 
 # --- 6 controls ---------------------------------------------------------------------------------------
 with tabs[5]:
@@ -301,7 +283,7 @@ with tabs[5]:
     def shade(v):
         return {"yes": "background-color: #D5F0E3", "partly": "background-color: #F5D9C8"}.get(v, "")
 
-    st.dataframe(m.style.map(shade, subset=["In place"]), hide_index=True, use_container_width=True, height=520)
+    st.dataframe(m.style.map(shade, subset=["In place"]), hide_index=True, width="stretch", height=520)
     reading("Every number is computed by tools; the committee confirms the model's reading before anything is computed; a guide is allowed only toward a book that keeps every rule; every number in the memo is verified; a named person signs; the ledger is hash-chained. The two controls partly in place — injection resistance and scenario realism — have named remedies. Nothing here is a demonstrated improvement in a company's returns: simulated committees, assumed costs, public data.")
     figure("F55_committee_workflow", "How a committee uses it: nine stages in three hands — the committee decides, tools compute, the model argues — and the five levels at which the challenger may act or must stand back.")
 
@@ -344,5 +326,5 @@ with tabs[6]:
             st.altair_chart(alt.Chart(noline).mark_bar().encode(
                 y=alt.Y("name:N", sort="-x", title=None, axis=alt.Axis(labelLimit=300)), x=alt.X("metric:Q", title="Registered metric with no facility ($ billion)", axis=alt.Axis(format="$.2s")),
                 color=alt.Color("book:N", scale=alt.Scale(domain=list(BOOK_COLOR), range=list(BOOK_COLOR.values())), legend=None),
-                tooltip=["name", alt.Tooltip("metric:Q", format="$,.0f"), alt.Tooltip("mean:Q", format="$,.0f", title="expected NPV"), alt.Tooltip("cvar_loss:Q", format="$,.0f", title="worst-5% loss")]).properties(height=220), use_container_width=True)
+                tooltip=["name", alt.Tooltip("metric:Q", format="$,.0f"), alt.Tooltip("mean:Q", format="$,.0f", title="expected NPV"), alt.Tooltip("cvar_loss:Q", format="$,.0f", title="worst-5% loss")]).properties(height=220), width="stretch")
             reading("With no facility a construction call beyond the reserve is forfeited, and the request with it. Scored at the registered setting, λ = 1, whatever the weight chosen on the left: equal capital by sector then leads, so the recommendation is the risk-aware book and its facility together.")

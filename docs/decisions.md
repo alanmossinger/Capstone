@@ -1941,3 +1941,53 @@ alternative rejected.
     `app/app.py` on the V2 tables (two dashboards to keep in step with the
     report); keeping the old pages under other targets (the confusion was
     the choice among them).
+
+119. **The dashboard's first page is the decision: options, your book, the
+    advisor's challenge, your result against the advisor's** (Alan,
+    2026-10-28: "the dashboard must be simple and show the options, book,
+    answer the AI advisor … the advisor must challenge the investor with
+    reasoning my thinking, it can change the investor mind or not. Then
+    after picking the book, the investor sees the results and how much
+    should be the results with the advisor solutions, in case the investor
+    accepted 100% of the advisor solutions"). `app/app.py` (`make app`) is
+    now a two-page app: *Decide* (`app/decide.py`, the default) and *The
+    report's decision* (`app/executive.py`, decision #118). The decision
+    page runs in four steps that open one after the other: (1) the budget,
+    the four books of the report and the forty candidates with the
+    report's verdict on each; (2) a starting book, the members kept or
+    added, the capital charged against the budget, and the investor's
+    reasons in words; (3) the registered challenger of notebook 12
+    (`src.challenge.challenge`, the same code and prompts as the scored
+    cases) reads the reasons into rules, tools score the book on the 2,000
+    held-out scenarios and compute the repair and the optimizer's book,
+    the model writes its memo (weaknesses with their type and the facts
+    they rest on, level, loss avoided, what would change it, its question),
+    code checks every number against the fact sheet, and the page names
+    the advisor's solution; the investor answers the five questions of the
+    motivated-reasoning check and keeps the book, takes the solution in
+    full or changes members — a departure from the solution needs the five
+    answers (`advisor.override_allowed`, the registered gate); (4) the
+    decision and the advisor's solution scored side by side on the
+    investor's own rules as read (expected NPV, worst-5% average loss,
+    chance of a loss, the metric), the first pick beside them when the
+    challenge changed it, and the paired difference with its bootstrap
+    interval (`challenge.compare`): what accepting the solution in full
+    would have given. The challenger's setting (`challenge.Setting`, about
+    two minutes to build) is pickled to `data/interim/challenge_setting.pkl`
+    and rebuilt when `results/v8/frontier.csv` is newer. A stated
+    construction line is priced at the registered fee and rate. The
+    registered case X25 is one click away and replays from
+    `results/advisor_runs.jsonl` with no call; a live call needs the key or
+    the signed-in command and, as every call of the advisor, is appended
+    to that record; a checkbox keeps the page on recorded answers. The page
+    writes nothing else — no ledger row on a click. `tests/test_app.py`
+    runs the page through X25 headless (the options, the memo naming the
+    sunk cost, the result, the gate refusing a departure without the five
+    answers) and the report page as before. *Rejected:* the v5 two-round
+    "reason my thinking" challenger of `advisor.challenge` (the report's
+    AI component is the v10 challenger, so the dashboard runs that one and
+    keeps the five questions as the investor's own gate); recording the
+    decision to the ledger (a click on a demo should not change a results
+    file; the command-line session `python -m src.advisor` remains the
+    recorded route); a single-page app without the report's decision (the
+    presentation page of decision #118 stays as the second page).

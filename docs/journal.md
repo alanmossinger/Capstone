@@ -1983,3 +1983,17 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 1. Close notebook 12 in the editor and set its kernel back to `queue-survival`.
 2. `make report` to carry the Appendix C run line into `report.pdf` (the official Word report does not mention the dashboard).
 3. The demo video can now be recorded from `make app`.
+
+## Session 29, continued — 2026-10-28: the decision page (decision #119)
+
+**Done**
+
+- Alan: the dashboard must be simple — the options, the book, the advisor challenging the investor's thinking (which may or may not change their mind), then the investor's result against what the advisor's solution would have given. Built as `app/decide.py`, the first page of `app/app.py` (`make app`); `app/executive.py` is the second page and loses its own page config and CSS (the entry sets them).
+- The four steps use the registered challenger (`src.challenge`) unchanged; the setting is pickled to `data/interim/` after a two-minute first build. The registered example X25 replays with no call: in the browser, the memo named the sunk cost, the unfunded construction calls and the five fragile members, 34 of 35 numbers checked, level *challenge*, the advisor's solution the book as it is; taking it in full scored $2.17B expected NPV, $0.82B worst-5% loss, 9% chance of a loss, $1.35B on the rules — the report's numbers. `results/advisor_runs.jsonl` unchanged at 537 lines.
+- `tests/test_app.py`: three tests on the decision page (headless, recorded answers only) and three on the report page; README, Makefile, `.claude/launch.json`.
+
+**Next**
+
+1. Alan tries the page with his own book and reasons (a live call, with the key in `.env`), and says whether the four steps read right.
+2. Close notebook 12 in the editor and set its kernel back to `queue-survival`; `make report` for the Appendix C run line.
+3. The demo video, from `make app`.
