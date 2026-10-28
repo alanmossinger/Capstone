@@ -1955,3 +1955,17 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 
 1. Alan reads and sends the reply.
 2. Appendix A of the report to gain a per-criterion table (what it measures, against what, the threshold, the verdict) for C1–C41, as promised in the reply.
+
+## Session 29 — 2026-10-28: the Word edition made the official report (decision #117)
+
+**Done**
+
+- Seven tracked files found deleted in the working tree (`README.md`, `Makefile`, `.gitignore`, `.env.example`, `app/app.py`, both workflow files) restored from HEAD; a stale `.git/index.lock` from 26 October removed first. With `.gitignore` back, `.env`, `.venv/` and `data/raw/` are ignored again.
+- Session 28 committed (`075d095`).
+- `report/Beyond_Prediction_Capstone_Report_Final.docx` declared the official capstone report. Every number from its abstract to its references (451 distinct) is in `results/report_numbers.csv`; a test now checks it on every `pytest` run. README points to it.
+
+**Next**
+
+1. The Word report runs to about 10,300 words before the appendices against the course's suggested 3,000; the course-length edition (`report/report_course.pdf`) is the short version if the course asks for one — Alan to decide which is uploaded, or both.
+2. A PDF export of the Word report for submission, from Word.
+3. Unchanged: the demo video; the per-criterion table for Appendix A promised in the mentor reply now goes into the Word report.

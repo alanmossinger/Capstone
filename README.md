@@ -23,6 +23,10 @@ Author: Alan Mössinger.
 > registered lines fail and are reported as they fell. Thirteen notebooks
 > run end to end (`make all`); the review register is `docs/v2_review.md`;
 > the reasons are in `docs/decisions.md` (#99–#113).
+>
+> **The official capstone report** is
+> [`report/Beyond_Prediction_Capstone_Report_Final.docx`](report/Beyond_Prediction_Capstone_Report_Final.docx)
+> (decision #117); every number in it is checked against `results/report_numbers.csv` by `tests/test_report.py`.
 
 ## About
 
@@ -147,7 +151,8 @@ prompts/     the advisor's system prompt, the recommend and gym templates, the t
 data/        raw/ (not committed) · interim/ (not committed) · processed/ (small final tables)
 results/     every number the report cites, written by the notebooks; advisor_runs.jsonl is the replay record
 figures/     every figure, PNG + SVG; figures/<notebook>/ holds each notebook's exploratory figures
-report/      report.md, references.md, playbooks.md, figure_notes.md (caption stubs from the notebooks), poster.typ;
+report/      Beyond_Prediction_Capstone_Report_Final.docx (the official report, edited in Word);
+             report.md, references.md, playbooks.md, figure_notes.md (caption stubs from the notebooks), poster.typ;
              `make report` builds report.pdf and report.docx (needs pandoc and typst)
 docs/        journal.md (work log), decisions.md, data_readiness.md, mentor_feedback.md, ai_use.md,
              proposal_update_2026-10-19.md

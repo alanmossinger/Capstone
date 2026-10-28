@@ -1891,3 +1891,23 @@ alternative rejected.
     Word and the pages looked at. *Rejected:* putting F55 into the
     briefing's Exhibit 1 (its caption describes the six-stage workflow);
     editing the reports in Word by hand (it re-saves every part).
+
+117. **The Word edition is the official capstone report** (Alan,
+    2026-10-28: "this will become our official Capstone report").
+    `report/Beyond_Prediction_Capstone_Report_Final.docx` — *Beyond
+    Prediction: Prescriptive AI for Strategic Energy Capital Allocation*,
+    an abstract, nine sections, the statement of work and Appendices A–I,
+    about 10,300 words from the abstract to the statement of work — is the
+    report submitted for SIADS 699. It is edited in Word and committed as
+    it stands; `report/report.md` and `make report` stay as the source of
+    the numbers table, the poster, the course-length edition and the
+    figures the Word file carries. A test
+    (`test_every_number_in_the_official_report_is_in_report_numbers`)
+    reads the document XML from the abstract up to the references and
+    finds every one of its 451 distinct numbers in
+    `results/report_numbers.csv`; only heading numbers, section
+    cross-references, file names and the appendices' section map are set
+    aside. *Rejected:* rebuilding the Word file from `report.md` with
+    pandoc (it would discard Alan's layout and wording); leaving it
+    untracked (the test and a fresh clone need it). The executive briefing
+    for Petrobras stays outside git.

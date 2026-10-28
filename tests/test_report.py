@@ -129,3 +129,31 @@ def test_course_edition_is_under_the_course_word_limit():
     text = re.sub(r"^\|[-| ]+\|$", " ", text, flags=re.MULTILINE)
     words = [w for w in re.split(r"\s+", text) if re.search(r"\w", w)]
     assert len(words) <= COURSE_WORD_LIMIT, f"{len(words)} words"
+
+
+# The official capstone report is Alan's Word edition (decision #117). It is edited in Word, not built from report.md,
+# so its text is read straight from the document XML: the abstract through the appendices, without the references.
+OFFICIAL = paths.REPORT / "Beyond_Prediction_Capstone_Report_Final.docx"
+
+
+def official_text():
+    """The paragraphs of the official report from Abstract up to References, with cross-references removed."""
+    import zipfile
+    xml = zipfile.ZipFile(OFFICIAL).read("word/document.xml").decode("utf-8")
+    paras = ["".join(re.findall(r"<w:t(?:\s[^>]*)?>([^<]*)</w:t>", p)) for p in re.findall(r"<w:p[ >].*?</w:p>", xml, flags=re.S)]
+    start = max(i for i, p in enumerate(paras) if p.strip() == "Abstract")  # the last one; the first is the contents list
+    end = max(i for i, p in enumerate(paras) if p.strip() == "References")
+    text = "\n".join(paras[start:end])
+    text = re.sub(r"^\d+(?:\.\d+)* [A-Z].*$", " ", text, flags=re.MULTILINE)  # numbered headings
+    text = re.sub(r"\bSections?\s+\d+(?:\.\d+)?", " ", text)
+    text = re.sub(r"maps onto this report as follows:.*?\.\s", " ", text, flags=re.S)  # the appendices' section map
+    return re.sub(r"[\w/.-]+\.(?:md|csv|py|json|jsonl|ipynb|png|svg|typ|pdf)\b", " ", text)  # file names
+
+
+def test_every_number_in_the_official_report_is_in_report_numbers():
+    table = pd.read_csv(paths.RESULTS / "report_numbers.csv", dtype=str)
+    cited = set()
+    for text in table["text"].astype(str):
+        cited |= numbers_in(text)
+    missing = sorted(numbers_in(official_text()) - cited)
+    assert not missing, f"numbers in the official report not in results/report_numbers.csv: {missing}"
