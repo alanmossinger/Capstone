@@ -2,7 +2,7 @@
 
 Spoken text in plain type; what is on screen in *italics*. About 600 spoken words at roughly 140 words a
 minute. Figure and table numbers are those of the official report's body
-(`report/Beyond_Prediction_Capstone_Report_Final.docx`, decision #124); every number below is one it prints from `results/`
+(`report/Beyond_Prediction_Capstone_Report_V1.docx`, decision #124); every number below is one it prints from `results/`
 (keyed in `results/report_numbers.csv`); if a rerun changes a number, change it here from the report, never from memory.
 
 ## 0:00–0:45 — The decision

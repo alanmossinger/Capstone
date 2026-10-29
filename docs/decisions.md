@@ -2163,3 +2163,32 @@ alternative rejected.
     (the record stays whole, as decision #113); leaving the figures in
     their old numbers (1, 3, 5, 7, 9, 10 out of order in a six-figure
     body).
+125. **V1 of the official report: my earlier projects and essays cited**
+    (Alan, 2026-10-28: "you are missing my own work to mention on
+    github, i have several, including on medium. Adjust the report
+    accordingly and call it V1"). The official report is now
+    `report/Beyond_Prediction_Capstone_Report_V1.docx` ("Version 1 ·
+    October 2026" on the title page). Related work ends with a sentence
+    placing the project after my own earlier work, and the references
+    carry ten entries for it in APA form: four GitHub repositories —
+    Forecast-to-Dispatch (the ERCOT price client and battery dispatch
+    the statement of work already credited), AI-Enablement-Proof (a
+    governed autonomous agent for grid reliability), the C-MAPSS
+    remaining-useful-life project with governance by design, and the
+    SIADS 696 Milestone II net-load project, credited to its three
+    authors — and six Medium essays on scenario planning with generative
+    AI, the CAIO playbooks for the grid and for boards, AI and the
+    energy transition, sovereign AI as a capital-allocation discipline,
+    and exploration. The statement of work points to the references and
+    to github.com/alanmossinger and medium.com/@alanmossinger. Dates and
+    titles were read from the Medium feed and the repositories' own
+    READMEs, not from memory. Six cuts elsewhere in the body (the
+    organization sentence, the status list, a sentence each in data,
+    financing, the ladder and ethics, all still in Appendix K) keep it at
+    2,991 words. The glossary was already Appendix J (decision #124); the
+    contents table is a Word field, so `settings.xml` now sets
+    `updateFields`, and Word asks to refresh it on opening. The test's
+    year pattern accepts citation years such as 2026c. *Rejected:*
+    listing the repositories only in the statement of work (a reviewer
+    reads related work for what the project builds on); citing the
+    older coursework repositories (not related to the question).

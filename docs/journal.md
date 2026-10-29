@@ -2048,3 +2048,15 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 **Next**
 
 1. Alan: open the Word file, update the table of contents (right-click → Update field → entire table), read the condensed body once, export to PDF; record the video.
+
+## Session 29, continued — 2026-10-28: V1 of the official report (decision #125)
+
+**Done**
+
+- The official report renamed `report/Beyond_Prediction_Capstone_Report_V1.docx`, "Version 1 · October 2026" on the title page; README, the video script and the test follow the name.
+- My earlier work cited: a closing sentence in related work and ten APA entries in the references (four GitHub repositories, six Medium essays; dates from the Medium feed, descriptions from the READMEs); the statement of work points to GitHub and Medium. Six small cuts keep the body at 2,991 words; the number test accepts citation years (2026c). `settings.xml` sets `updateFields` so Word refreshes the contents table on opening. 284 tests pass.
+- The glossary is Appendix J, as decision #124 left it; the stale contents table in Word showed it in its old place until the field is updated.
+
+**Next**
+
+1. Alan: open the V1 file, accept Word's prompt to update fields, read the body, export to PDF; record the video.

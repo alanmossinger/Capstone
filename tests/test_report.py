@@ -33,7 +33,7 @@ NOT_QUANTITIES = [
     r"\bSHA-256\b",
     r"\bSIADS \d+",
     r"\bv\d+\b",
-    r"\b(?:19|20)\d\d\b",                  # calendar years
+    r"\b(?:19|20)\d\d[a-z]?\b",            # calendar years, and citation years such as 2026c
 ]
 
 
@@ -133,7 +133,7 @@ def test_course_edition_is_under_the_course_word_limit():
 
 # The official capstone report is Alan's Word edition (decision #117). It is edited in Word, not built from report.md,
 # so its text is read straight from the document XML: the abstract through the appendices, without the references.
-OFFICIAL = paths.REPORT / "Beyond_Prediction_Capstone_Report_Final.docx"
+OFFICIAL = paths.REPORT / "Beyond_Prediction_Capstone_Report_V1.docx"
 
 
 def official_text():
