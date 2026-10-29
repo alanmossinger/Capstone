@@ -2034,3 +2034,17 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 **Next**
 
 1. Alan: export the Word report to PDF; decide which edition the course receives; record the video from `docs/demo_video_script.md`.
+
+## Session 29, continued — 2026-10-28: the official report within the course's length (decision #124)
+
+**Done**
+
+- The repository is private on GitHub (checked: `alanmossinger/Capstone`, visibility PRIVATE); nothing to change.
+- The official Word report's body measured section by section: about 9,800 words from the abstract to the statement of work, 67 pages in all. Rebuilt at the XML level: a condensed body of the same nine sections (2,991 words with headings, captions and the table of the nine registered lines), six figures and one table in reading order; the glossary as Appendix J; sections 1–9 in full as Appendix K with the other five figures and three tables as K1–K5 and K1–K3; every cross-reference in Appendices A–I renumbered; the appendices' note maps the full report's sections onto K. Every XML part parses and pandoc reads the file back.
+- `tests/test_report.py`: a test holds the official body at or under 3,000 words; the number test passes on the new file (every sentence reuses the full text's numbers); appendix patterns extended to K. 9 report tests pass.
+- README and `docs/demo_video_script.md` on the new figure and table numbers.
+- Not done here: the PDF export (Word) and the table-of-contents field update, which Word does on opening.
+
+**Next**
+
+1. Alan: open the Word file, update the table of contents (right-click → Update field → entire table), read the condensed body once, export to PDF; record the video.

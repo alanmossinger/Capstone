@@ -23,8 +23,8 @@ NOT_QUANTITIES = [
     r"\b(?:RQ|[CRKDSH])\d+\b",             # criteria C1–C5, rules R1–R9, post-hoc K, decisions D0–D7, sources S13, hypotheses H2, questions RQ1
     r"§\s?\d+(?:[–-]§?\d+)?",             # section marks in the Decision Board
     r"\bTables?\s+\d+",                    # table numbers
-    r"\b(?:Figure|Table)\s+[A-G]\d+",      # appendix figures and tables (Figure E4, Table G1)
-    r"\b[A-G]\.\d+\b",                     # appendix section references (E.3, F.6)
+    r"\b(?:Figure|Table)\s+[A-K]\d+",      # appendix figures and tables (Figure E4, Table G1, Figure K3)
+    r"\b[A-K]\.\d+(?:\.\d+)?\b",           # appendix section references (E.3, F.6, K.4.2)
     r"\bPart I{1,2}\b",
     r"\bOrder No\. \d+",
     r"\bEIA-860M\b",
@@ -148,6 +148,24 @@ def official_text():
     text = re.sub(r"\bSections?\s+\d+(?:\.\d+)?", " ", text)
     text = re.sub(r"maps onto this report as follows:.*?\.\s", " ", text, flags=re.S)  # the appendices' section map
     return re.sub(r"[\w/.-]+\.(?:md|csv|py|json|jsonl|ipynb|png|svg|typ|pdf)\b", " ", text)  # file names
+
+
+OFFICIAL_WORD_LIMIT = 3000  # the course's length, excluding references and appendices (decision #124)
+
+
+def official_body_words():
+    """Words of the official report from the Abstract heading to the Appendices heading: headings, captions and tables included."""
+    import zipfile
+    xml = zipfile.ZipFile(OFFICIAL).read("word/document.xml").decode("utf-8")
+    blocks = re.findall(r"<w:p[ >].*?</w:p>|<w:tbl>.*?</w:tbl>", xml, flags=re.S)
+    texts = ["".join(re.findall(r"<w:t(?:\s[^>]*)?>([^<]*)</w:t>", b)) for b in blocks]
+    start = max(i for i, t in enumerate(texts) if t.strip() == "Abstract")
+    end = max(i for i, t in enumerate(texts) if t.strip() == "Appendices")
+    return sum(len(t.split()) for t in texts[start:end])
+
+
+def test_the_official_report_body_is_within_the_course_length():
+    assert official_body_words() <= OFFICIAL_WORD_LIMIT
 
 
 def test_every_number_in_the_official_report_is_in_report_numbers():

@@ -2130,3 +2130,36 @@ alternative rejected.
     (it lays PJM's table out differently); the assertion in
     `value.pjm_capacity_revenue` now says so and the README says to put
     poppler first.
+124. **The official report's body brought to the course's 3,000 words; the
+    full text moved to Appendix K** (Alan, 2026-10-28: the submission "must
+    match the course requirements … we may move information to appendix
+    to respect the number of words and pages"). The body of
+    `report/Beyond_Prediction_Capstone_Report_Final.docx` ran to about
+    9,800 words from the abstract to the statement of work against the
+    course's suggested 3,000 excluding references and appendices. Nothing
+    was deleted: the nine sections as written moved whole into Appendix K
+    (K.1–K.9, subsections K.n.m, Heading 3 and 4), the glossary became
+    Appendix J, and the body was rewritten as a condensed account of the
+    same nine sections — abstract, introduction with the four research
+    questions as registered, related work, data, methods, evaluation
+    design, results, discussion with the limitations, ethics, conclusion,
+    statement of work — 2,991 words with its headings, captions and one
+    table counted (`test_the_official_report_body_is_within_the_course_length`,
+    limit 3,000). Every sentence of the condensed body reuses the full
+    text's wording and numbers, so the number test on the Word file passes
+    unchanged. The body keeps six figures and one table, renumbered in
+    reading order (the workflow, the committee workflow, the forward test,
+    the frontier, the financing bases, the ladder; the nine registered
+    lines), and the five figures and three tables whose discussion moved
+    are Figures K1–K5 and Tables K1–K3; every reference in Appendices A–I
+    was renumbered with them, and the note at the head of the appendices
+    maps the full report's section numbers onto K. The edit was made at
+    the XML level in the styles of the original paragraphs (`condense.py`,
+    kept out of the repository as a one-off); the table of contents is a
+    Word field and is updated on opening (right-click → Update field). The
+    video script and the README follow the new numbers. *Rejected:*
+    submitting the Markdown course edition instead (it is an executive
+    summary, not the report's academic structure); cutting the full text
+    (the record stays whole, as decision #113); leaving the figures in
+    their old numbers (1, 3, 5, 7, 9, 10 out of order in a six-figure
+    body).

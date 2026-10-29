@@ -9,7 +9,7 @@ Author: **Alan Mössinger**. Mentor: Laura Danielle Stagnaro. October 2026.
 
 | Deliverable | Where |
 |---|---|
-| **The capstone report** (official) | [`report/Beyond_Prediction_Capstone_Report_Final.docx`](report/Beyond_Prediction_Capstone_Report_Final.docx) — abstract, nine sections, statement of work, appendices A–I; every number in it is checked against `results/report_numbers.csv` by `tests/test_report.py` |
+| **The capstone report** (official) | [`report/Beyond_Prediction_Capstone_Report_Final.docx`](report/Beyond_Prediction_Capstone_Report_Final.docx) — abstract, nine sections within the course's 3,000 words, statement of work, appendices A–K (K is the nine sections at full length); every number in it is checked against `results/report_numbers.csv` by `tests/test_report.py`, and the body's length too |
 | The report's Markdown source and the course-length edition | [`report/report.md`](report/report.md) (`make report`), [`report/report_course.md`](report/report_course.md) (`make report-course`, about 2,900 words) |
 | The poster (A1, one page) | [`report/poster.pdf`](report/poster.pdf) from [`report/poster.typ`](report/poster.typ) (`make poster`) |
 | The dashboard | `make app` — three pages: *Decide*, *A worked example*, *The report's decision* (see below) |

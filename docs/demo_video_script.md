@@ -1,8 +1,8 @@
 # Demo video script — Beyond Prediction: Prescriptive AI for Energy Portfolio Optimization (about 4½ minutes)
 
 Spoken text in plain type; what is on screen in *italics*. About 600 spoken words at roughly 140 words a
-minute. Figure and table numbers are those of the official report
-(`report/Beyond_Prediction_Capstone_Report_Final.docx`); every number below is one it prints from `results/`
+minute. Figure and table numbers are those of the official report's body
+(`report/Beyond_Prediction_Capstone_Report_Final.docx`, decision #124); every number below is one it prints from `results/`
 (keyed in `results/report_numbers.csv`); if a rerun changes a number, change it here from the report, never from memory.
 
 ## 0:00–0:45 — The decision
@@ -27,7 +27,7 @@ and the book is sized to the level. Built on the lookup's curves instead, the bo
 
 ## 1:15–2:15 — Q2: the trade-off, and what it costs to fund
 
-*Figure 5 (F38, the frontier over tail weights), then Figure 7 (F51, the true economics before and after financing).*
+*Figure 4 (F38, the frontier over tail weights), then Figure 5 (F51, the true economics before and after financing).*
 
 There is no single right book, only a trade-off. Held to the same budget and cap, the risk-aware book — five leases
 and eight requests — beats ranking by expected value by 219 million dollars on the registered risk-return metric,
@@ -40,7 +40,7 @@ bank would, with the fee and the interest, it is still worth 1.03 billion, and e
 
 ## 2:15–3:40 — Q3 and Q0: does an AI challenger help the committee?
 
-*Figure 9 (F55, the committee workflow), pointing at the challenge stage; then Figure 10 (F53, the ladder), then Table 4 (the nine registered lines).*
+*Figure 2 (F55, the committee workflow), pointing at the challenge stage; then Figure 6 (F53, the ladder), then Table 1 (the nine registered lines).*
 
 The language model never computes a number. It reads the committee's rules from its words, tools test the
 committee's own proposal against them, and the model writes a memo whose every number is checked. A named person
