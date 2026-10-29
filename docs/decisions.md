@@ -2200,3 +2200,20 @@ alternative rejected.
     fourteen entries in all. Medium's older pages are behind a bot check
     and its feed carries only the latest ten, so three earlier essays
     without a verifiable date were not cited.
+    *Second addendum (2026-10-28, Alan: cite my work "when it is
+    properly needed; in general avoid it"; the four repositories and the
+    digital-transformation essay are what matter):* the ten dated essays
+    are out of the citation and the reference list; related work now
+    says what each earlier project contributed — Forecast-to-Dispatch
+    (2026b) decided on forecasts and settled at realized prices, and its
+    ERCOT price client and battery dispatch are reused; AI-Enablement-Proof
+    (2026a) put every action of a grid agent through a coded gate on an
+    autonomy ladder with an audit trail, the ancestor of the challenger's
+    levels and ledger; the C-MAPSS project (2026c) built governance in
+    from the first commit, which the control matrix continues; the
+    Milestone II net-load forecasts (Mössinger, Londo & Abeysekera, 2026)
+    kept a chronological holdout, origin-only features and a checked
+    results ledger, as this repository does — and the essay *What does
+    digital transformation really mean?* (n.d.; its date is behind
+    Medium's bot check) for the stance that transformation changes how
+    people decide, not the tools. Five entries; the body at 2,997 words.

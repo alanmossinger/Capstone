@@ -2061,3 +2061,4 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 
 1. Alan: open the V1 file, accept Word's prompt to update fields, read the body, export to PDF; record the video.
 - Addendum: the four remaining dated Medium essays added to the references and the related-work citation (fourteen entries); the older undated essays and the coursework repositories left out at Alan's choice.
+- Second addendum: at Alan's instruction to cite his work only where needed, the ten dated essays are out; related work says what each of the four repositories contributed and cites the digital-transformation essay once; five entries for my own work; body 2,997 words; 284 tests pass.
