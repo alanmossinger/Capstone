@@ -2214,6 +2214,6 @@ alternative rejected.
     Milestone II net-load forecasts (Mössinger, Londo & Abeysekera, 2026)
     kept a chronological holdout, origin-only features and a checked
     results ledger, as this repository does — and the essay *What does
-    digital transformation really mean?* (n.d.; its date is behind
-    Medium's bot check) for the stance that transformation changes how
+    digital transformation really mean?* (2025, the year Alan gave;
+    Medium's page is behind a bot check) for the stance that transformation changes how
     people decide, not the tools. Five entries; the body at 2,997 words.
