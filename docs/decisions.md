@@ -2192,3 +2192,11 @@ alternative rejected.
     listing the repositories only in the statement of work (a reviewer
     reads related work for what the project builds on); citing the
     older coursework repositories (not related to the question).
+    *Addendum (2026-10-28, Alan: "Yes" — the four remaining essays, not
+    the coursework repositories):* four more Medium entries — the
+    Chief AI Officer essay (2026g), Superagency (2026f), the CEO-to-CTO
+    essay (2025d) and the AI-revolution essay (2025f) — with the letters
+    re-ordered by title as APA requires (Megawatts to Models is 2025e);
+    fourteen entries in all. Medium's older pages are behind a bot check
+    and its feed carries only the latest ten, so three earlier essays
+    without a verifiable date were not cited.

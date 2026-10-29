@@ -2060,3 +2060,4 @@ Alan's answers: correct and keep the ledger row; F0 shows every technology; redr
 **Next**
 
 1. Alan: open the V1 file, accept Word's prompt to update fields, read the body, export to PDF; record the video.
+- Addendum: the four remaining dated Medium essays added to the references and the related-work citation (fourteen entries); the older undated essays and the coursework repositories left out at Alan's choice.
