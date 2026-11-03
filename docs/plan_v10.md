@@ -25,7 +25,7 @@ repository: if the official rubric says more, Alan checks the rest.
 | Broader impacts, ≥ 1 ethical question | "Who could be harmed" (the self-fulfilling score, small developers) kept; v10 adds automation bias — a committee that defers to a challenger that is right 11 times in 12 | the new experiment shows the challenger over-challenging sound proposals (2 of 12); that must be in the harms section, not only the results | §6 adds the automation-bias paragraph |
 | Technical writing | Core of about 3,500 words, nearer the course's 3,000 than v9's 4,223; APA; one name per object; no codes in the body | none | §6 sets 3,500 as the target, 4,500 the limit |
 | Statement of work | Unchanged | none | — |
-| Feedback | `docs/mentor_feedback.md` continues; v10 is Alan's own direction and is logged as decision #100 | the Nov 2 evaluation plan already submitted describes the gym | §8 week 1: a two-line note to the mentor that the core evidence for RQ4 changes, if Alan wants to send one (ASK ALAN) |
+| Feedback | `docs/mentor_feedback.md` continues; v10 is Alan's own direction and is logged as decision #100 | the Nov 2 evaluation plan already submitted describes the gym | §8 week 1: a two-line note to the mentor that the core evidence for RQ4 changes, if the author sends one |
 | Actual prompts in an appendix | `prompts/` cited in Appendix B; the scripted persona answers of step 4 join them | none | §5 adds them to the appendix list |
 | Evaluation of AI outputs | `results/advisor_evaluation.csv` (grounding, agreement, gym), `results/v9/` (C25–C32), `results/v10/` (C33–C36) | none | — |
 | MVP deliverables of the proposal | Repository with `make all`, report, poster, dashboard, memo and decision board; the registered record; the advisor scored; every exported figure with a provenance label | renumbering notebooks could break `make all`, the dashboard (`make app`) and the decision page (`make decide-page`), which read result tables | §5 adds: the dashboard and the decision page run headless after the reorder, as a test |
@@ -155,7 +155,7 @@ registered verdict C1–C32. Nothing is re-scored.
 If week 1 slips, the fallback is the story-only simplification (reorder, rewrite, no new experiment): the
 reasoning round is then governance, required before a signature and recorded, with no outcome claim.
 
-## 9. Decisions Alan has to make (ASK ALAN)
+## 9. Decisions for the author
 
 1. Approve the loop as the project's story, with the gym and the queue modelling in the appendix.
 2. Approve the new experiment (C33–C36) with scripted persona answers, or choose the fallback.

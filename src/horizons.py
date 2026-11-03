@@ -6,7 +6,7 @@ baseline, truncated; requests: the cost to carry, the capital at the
 operation year and the operating margin up to the horizon, weighted by
 the queue models' probability of operating by each year), and the
 deterministic book that maximises it under the budget and the cap.
-Why: PLAN.md §14's addendum asks the advisor to propose the most likely
+Why: docs/plan.md §14's addendum asks the advisor to propose the most likely
 book at 1, 2, 3, 5, 10 and 20 years; a twenty-year NPV says nothing about
 what the owner holds at year 3.
 Reads / writes: nothing; notebook 10 passes the tables in and writes

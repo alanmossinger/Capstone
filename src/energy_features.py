@@ -9,7 +9,7 @@ protocol (development, validation, holdout origins) and the truncation
 check that proves no feature changes when post-origin rows are removed.
 Why: the proposal's non-negotiable rule — lag every feature relative to
 the origin, fit scalers inside each training fold — and criterion C20,
-which is scored at matched origins (PLAN.md §14.5–14.6).
+which is scored at matched origins (docs/plan.md §14.5–14.6).
 Reads: the interim panel tables of notebook 01 (parts D–E).
 Writes: nothing; notebook 03 writes the feature tables.
 Used by: notebooks 03 and 05; ``tests/test_energy_features.py``.

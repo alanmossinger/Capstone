@@ -6,7 +6,7 @@ key. Reports used: NP4-190-CD (day-ahead settlement point prices, hourly),
 NP6-905-CD (real-time settlement point prices, 15-minute) and NP4-188-CD
 (day-ahead ancillary-service clearing prices).
 Why: hourly ERCOT prices for 2018–2023 are the market basis of the power
-candidates (PLAN.md §14.1, source S7). ercot.com's report servlet refuses
+candidates (docs/plan.md §14.1, source S7). ercot.com's report servlet refuses
 this machine (decision #53); api.ercot.com is a different host, so the first
 call is a test of whether the pull can run here at all.
 Reads: ``ERCOT_SUBSCRIPTION_KEY``, ``ERCOT_USERNAME``, ``ERCOT_PASSWORD``

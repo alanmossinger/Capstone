@@ -44,8 +44,8 @@ CENSOR_DATE = "2024-12-31"  # end of LBNL data collection; every open project is
 EARLIEST_VALID_DATE = "1950-01-01"  # event dates before this are typing errors (rule R3)
 MW_FLAG_THRESHOLD = 5000  # requests above this many MW are flagged for review, not dropped (rule R6)
 ERCOT_BULK_WD_DATE = "2018-08-29"  # 441 ERCOT withdrawals share this recorded date (notebook 02 (part A), decision #21)
-TRACK_B_MAX_YEAR = 2017  # Track B uses entrants up to this year, resolved ones only (PLAN.md §6)
-RARE_TYPE_MIN = 100  # technology levels with fewer requests are pooled into "Other" (PLAN.md §6, notebook 03)
+TRACK_B_MAX_YEAR = 2017  # Track B uses entrants up to this year, resolved ones only (docs/plan.md §6)
+RARE_TYPE_MIN = 100  # technology levels with fewer requests are pooled into "Other" (docs/plan.md §6, notebook 03)
 
 # --- NREL Annual Technology Baseline 2024, v3 (source S12; capital and O&M per kW for the NPV of notebook 07) ---
 ATB_URL = "https://oedi-data-lake.s3.amazonaws.com/ATB/electricity/parquet/2024/v3.0.0/ATBe.parquet"  # OEDI data lake, public
@@ -84,7 +84,7 @@ AUDIT_EXPECTED = {
     "negative_mw_rows": 17,
 }
 
-# --- Readiness thresholds (PLAN.md §5.3) -------------------------------------
+# --- Readiness thresholds (docs/plan.md §5.3) -------------------------------------
 HEADLINE_OPERATIONAL_SHARE = 0.13  # LBNL: ≈13 % of 2000–2019 capacity reached operation
 HEADLINE_WITHDRAWN_SHARE = 0.77  # LBNL: ≈77 % was withdrawn
 HEADLINE_TOLERANCE = 0.01  # "≈" read as ±1 percentage point
@@ -154,9 +154,9 @@ EIA_TECHNOLOGY_MAP = {
     "All Other": ("Other", "EIA residual category"),
 }
 CROSSWALK_TYPES = ["Solar", "Wind", "Offshore Wind", "Battery", "Gas", "Hydro",
-                   "Nuclear", "Coal", "Geothermal", "Other"]  # PLAN.md §5.2 item 5
+                   "Nuclear", "Coal", "Geothermal", "Other"]  # docs/plan.md §5.2 item 5
 
-# --- Quick linkage test (PLAN.md §5.2 item 6) --------------------------------
+# --- Quick linkage test (docs/plan.md §5.2 item 6) --------------------------------
 LINK_REGIONS = ["ERCOT", "PJM"]  # regions where LBNL already has COD dates to compare against
 LINK_MW_TOLERANCE = 0.15  # nameplate must agree within ±15 %
 LINK_MONTHS_TOLERANCE = 6  # COD agreement window in months
@@ -193,7 +193,7 @@ SOURCE_LBNL = FIGURE_AUTHOR + " Data: LBNL Queued Up: 2025 Edition (Rand et al.,
 SOURCE_LBNL_2026 = "LBNL Queued Up: 2026 Edition (Rand et al., 2026)."  # the file added alongside (decision #43)
 SOURCE_EIA = "EIA-860M Inventory of Operable Generators via EIA API v2."
 
-# --- v5 energy sources (PLAN.md §14.1; decision #64) --------------------------
+# --- v5 energy sources (docs/plan.md §14.1; decision #64) --------------------------
 BSEE_URL = "https://www.data.bsee.gov/Production/Files/ogora{year}delimit.zip"  # OGOR-A delimited, one zip per year
 BSEE_YEARS = (2010, 2024)  # first and last production year pulled (inclusive)
 BSEE_LAYOUT_URL = "https://www.data.bsee.gov/Main/HtmlPage.aspx?page=ogora"  # field definitions (accessed 2026-10-12)
@@ -242,7 +242,7 @@ CPI_YEARS = (2016, 2024)  # window pulled; real dollars are stated in REAL_DOLLA
 REAL_DOLLAR_YEAR = 2024  # every v5 cash flow is in 2024 dollars (the ATB file is in 2022 dollars; converted the same way)
 ERCOT_BRIDGE_RATIO = 0.77  # ERCOT price 2020–2023 = PJM West × this (ratio of the 2017–2019 means; results/value_assumptions.csv)
 ICE_HUB_ERCOT, ICE_HUB_PJM_WEST = "ERCOT North 345KV Peak", "PJM WH Real Time Peak"  # hub names in EIA's ICE files
-RELEASE_LAGS = {  # months after the observation month a source is public (PLAN.md §14.2; from each publisher's schedule)
+RELEASE_LAGS = {  # months after the observation month a source is public (docs/plan.md §14.2; from each publisher's schedule)
     "BSEE OGOR-A": 3,  # operators file within 45 days, BSEE posts and revises for about three months
     "EIA-923 monthly": 2,  # the monthly file appears about two months after the data month
     "EIA-860M": 2,  # the monthly generator inventory lags about two months

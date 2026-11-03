@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Dashboard",
+      "detail": "Start the Beyond Prediction dashboard (Streamlit) from the project .venv; opens at http://localhost:8501",
+      "type": "shell",
+      "windows": { "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe -m streamlit run app/app.py" },
+      "linux":   { "command": "${workspaceFolder}/.venv/bin/python -m streamlit run app/app.py" },
+      "osx":     { "command": "${workspaceFolder}/.venv/bin/python -m streamlit run app/app.py" },
+      "options": { "cwd": "${workspaceFolder}" },
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated", "focus": false },
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
+      "label": "Tests",
+      "detail": "pytest",
+      "type": "shell",
+      "windows": { "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe -m pytest -q" },
+      "linux":   { "command": "${workspaceFolder}/.venv/bin/python -m pytest -q" },
+      "osx":     { "command": "${workspaceFolder}/.venv/bin/python -m pytest -q" },
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": [],
+      "group": "test"
+    }
+  ]
+}

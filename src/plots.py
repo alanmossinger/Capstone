@@ -163,7 +163,7 @@ def finish(fig, title, subtitle, cohort, eia=False, lbnl=True, lbnl_2026=False, 
     provenance : str, optional
         One of ``config.PROVENANCE`` (OBSERVED, DERIVED, FORECAST, ASSUMED):
         the audit label printed at the end of the source note on every v5
-        figure (PLAN.md §14.0). A label outside the set raises.
+        figure (docs/plan.md §14.0). A label outside the set raises.
 
     Notes
     -----
@@ -295,7 +295,7 @@ def save_executive(fig, name, out_dir=EXECUTIVE_DIR):
 
     Notes
     -----
-    The executive report (``report/petrobras_report.typ``) places figures at
+    The executive copy of a figure places it at
     full text width with the source and provenance in the caption, as an
     executive report does, so the copy drops the source footer and keeps a
     subtitle of at most two lines; the finding stays in the image. The

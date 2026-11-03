@@ -15,7 +15,7 @@ risk-aware MILP for leases), the *advisor* (the LLM, from the same table)
 and the *human* (the dashboard's ledger). Each book is scored by the
 realized value and its regret against the hindsight-best book.
 Why: "the AI defies the human instinct" is a claim the gym measures;
-PLAN.md §14.10 mode 3 and the "learn from history" addendum.
+docs/plan.md §14.10 mode 3 and the "learn from history" addendum.
 Reads: nothing on import; the notebook passes the tables in.
 Writes: nothing; notebook 10 writes ``decision_gym_scores.csv``.
 Used by: notebook 10, the dashboard's gym page; ``tests/test_gym.py``.

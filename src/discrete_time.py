@@ -226,7 +226,7 @@ def encode_state(train_rows, other_rows=(), n_folds=5, seed=0, prior_rows=STATE_
     rows get state rates computed without any of its own years, so the model
     cannot learn "this state's rate" from the outcome it is predicting.
     States never seen in training get the overall rate. This runs inside each
-    cross-validation fold (PLAN.md §7: state is target-encoded inside folds).
+    cross-validation fold (docs/plan.md §7: state is target-encoded inside folds).
     """
     train = train_rows.copy()
     for column in ["state_operation", "state_withdrawal"]:

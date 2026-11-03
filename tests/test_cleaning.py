@@ -161,7 +161,7 @@ def test_capacity_positive_and_key_unique(clean):
 
 
 def test_clean_log_counts():
-    """Pin the rows each rule touched (the rule table of PLAN.md §7, as observed)."""
+    """Pin the rows each rule touched (the rule table of notebook 01, Part B, as observed)."""
     log = _load_or_skip(LOG_FILE, pd.read_csv, "02")
     rows = dict(zip(log["item"], log["rows"]))
     assert rows["q_date placeholder set to missing"] == 204

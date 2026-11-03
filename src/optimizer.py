@@ -8,7 +8,7 @@ an optional emissions cap and mutually exclusive sets; solved with
 comparators of the proposal: A top-N by expected NPV, B equal capital by
 sector, C the deterministic MILP (λ = 0). The out-of-sample score of any
 book on a held-out scenario set, and the Jaccard similarity between books.
-Why: criteria C21–C24 (PLAN.md §14.9, decision #70) compare the four books
+Why: criteria C21–C24 (docs/plan.md §14.9, decision #70) compare the four books
 under the same budget and the same scenarios; the book the dashboard
 re-solves on cached scenarios is this one.
 Reads / writes: nothing.

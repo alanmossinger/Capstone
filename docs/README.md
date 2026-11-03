@@ -9,17 +9,15 @@
 | `SIADS699_Evaluation_Plan_Group13.pdf`, `evaluation_plan.md` | the evaluation plan due 2 November: what is measured, against what, the thresholds; the Markdown is section 3 of the report |
 | `mentor_feedback.md` | every feedback item received, what changed because of it, and where (a grading spec) |
 | `mentor_reply_2026-10-27.md` | my reply to the mentor's five questions on the proposal: the C-criteria, scope and ranking, the data sources and cleaning, the predictive work since Milestone II, what the language model does and does not do |
-| `demo_video_script.md` | the script of the demo video (about 4½ minutes) |
 
 **The record of the work**
 
 | File | What |
 |---|---|
 | `decisions.md` | 121 numbered decisions: the choice, the reason, the alternative rejected |
-| `journal.md` | the dated work log, one entry per session: done, next, open questions |
 | `registration_ledger.md` | every pre-registered line (C1–C32), its verdict as first scored, every correction made afterwards with its date, its status now; no registered verdict is ever re-scored |
 | `data_readiness.md` | the Phase 0 go/no-go report, written by notebook 01 |
-| `ai_use.md` | the AI inside the decision: what the advisor sees, what it may say, how every call is recorded, checked and scored |
+| `advisor_design.md` | the AI inside the decision: what the advisor sees, what it may say, how every call is recorded, checked and scored |
 
 **Reviews and audits the report cites** (each led to a numbered decision; the report's "changes after review" and Appendix H rest on them)
 
@@ -34,6 +32,6 @@
 
 | File | What |
 |---|---|
+| `plan.md` | the build plan the notebooks were built from (v3–v5, October 2026); the section numbers that `src/` docstrings cite |
 | `implementation_plan_v8.md` | the plan built from the audit of 17 October |
 | `plan_v10.md` | the plan for the simulated decision loop of notebook 12 |
-| `v8_status.md` | what was implemented, tested, partial or proposed as of 20 October |

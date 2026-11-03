@@ -8,7 +8,7 @@ expected value of a request from its P(operation by year) curve.
 Why: a portfolio needs more than a probability — expected MW online and a
 value behind each request — and every number in that value must trace to
 a file on disk or to an assumption stated in `results/value_assumptions.csv`
-with its range (PLAN.md, notebook 07).
+with its range (docs/plan.md, notebook 07).
 Reads: ``data/raw/value/ice_electric-<year>final.xlsx`` (EIA, public
 domain), ``data/raw/atb/ATBe_2024_v3.parquet`` (NREL Annual Technology
 Baseline 2024, v3; CAPEX and O&M per kW), ``data/raw/value/2024-som-pjm-sec5.pdf`` (Monitoring Analytics,

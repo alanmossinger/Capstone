@@ -1,6 +1,6 @@
 """The LLM advisor: grounded in result tables, recorded on every call, replayable offline, number-checked.
 
-What: a thin client of a language model with three disciplines (PLAN.md
+What: a thin client of a language model with three disciplines (docs/plan.md
 §14.10). It reaches the model through one of three backends: the Anthropic
 Messages API when ``ANTHROPIC_API_KEY`` is in ``.env``; any OpenAI-compatible
 chat service when ``LLM_API_KEY``, ``LLM_BASE_URL`` and ``LLM_MODEL`` are

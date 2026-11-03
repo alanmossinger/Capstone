@@ -476,7 +476,7 @@ alternative rejected.
     now carry event dates for most operations and withdrawals, so a timing
     model for them is possible on the 2026 file — not under the registered
     v1 verdict, which stays on the 2025 file, but as a separately
-    registered v3 extension (**ASK ALAN**: extend Track A to MISO and SPP
+    registered v3 extension (open decision: extend Track A to MISO and SPP
     on the 2026 file, with its own criteria, or keep them as Track B); (b)
     ERCOT's withdrawal dates are far less complete in the 2026 file (49%
     against 100%), so the 2026 file cannot simply replace the 2025 file for
@@ -501,9 +501,9 @@ alternative rejected.
     anonymous "author's analysis" (Alan found it read as if the figures
     came from elsewhere).
 51. **Build order: the full v3 pipeline first, then the calendar** (Alan,
-    2026-10-06). Notebooks 11–19 and 01b are built in sequence in
-    continuous sessions, each executed and checked before the next, with
-    stops only at the ASK ALAN items; the week-by-week calendar in
+    2026-10-06). Notebooks 11–19 and 01b are built in sequence,
+    each executed and checked before the next, with
+    stops only at the open decisions; the week-by-week calendar in
     `PLAN.md §2` becomes the order of work, not the pace.
 52. **Pre-registered v2 success criteria C6–C12** (Alan, 2026-10-06; written
     by the first cell of notebook 11 before any test metric of v2 existed).
@@ -985,10 +985,9 @@ alternative rejected.
     deterministic book per horizon under the registered budget and cap.
     *Rejected:* a deterministic fallback that writes advisor rows without a
     model (would fake AI output); scoring the gym on expected rather than
-    realized values; a greedy hindsight (an actor could beat it); the
-    `claude-api` skill named in the prompt, which this environment does not
-    list — the SDK's documented Messages call is used and the model id is
-    a constant in one place.
+    realized values; a greedy hindsight (an actor could beat it). The SDK's
+    documented Messages call is used and the model id is a constant in one
+    place.
 73. **The two reasoning prompts are final as they stand** (Alan, 2026-10-13:
     "finish it"). The templates in `prompts/motivated_reasoning_check.md`
     and `prompts/ideological_turing_test.md` — drafted from PLAN.md §14.10
@@ -1019,8 +1018,7 @@ alternative rejected.
     scored. *Not done, and why:* ERCOT 2020–2023 prices stay bridged
     because EIA's ICE files stop quoting ERCOT North after 2019 and
     ercot.com refuses this machine (decision #53); the advisor stays
-    unscored until `ANTHROPIC_API_KEY` is in `.env` (cloud-session credits
-    do not pay for the project's own API calls). *Rejected:* replacing the
+    unscored until `ANTHROPIC_API_KEY` is in `.env`. *Rejected:* replacing the
     registered grid and re-scoring C21–C24 (moves a registered verdict
     after seeing it).
 75. **Report v5: structure, title and figure standard** (Alan, 2026-10-14).
@@ -1833,8 +1831,7 @@ alternative rejected.
     reading at three metres — a header band, one headline sentence, four
     numbers, five executive figures (F54, F51, F52, F53, F55) and the
     recommendation; every number from the table (the poster test).
-    *Dashboard:* `app/executive.py` (`make executive`, port 8503 in
-    `.claude/launch.json`) presents the decision on one screen in six tabs
+    *Dashboard:* `app/executive.py` (`make executive`, port 8503) presents the decision on one screen in six tabs
     — the recommendation, risk against return with a tail-weight slider,
     financing, what can go wrong, the AI challenger with the registered
     case X25 as recorded, controls and readiness — reading `results/` only
@@ -2075,8 +2072,7 @@ alternative rejected.
     contradicted the official report. `docs/README.md` indexes the twenty
     files of `docs/` in four groups: course submissions, the record of the
     work, the reviews and audits the report cites, and build plans kept as
-    history. `docs/next_session_prompt.md` — a prompt for a Claude session,
-    not project material — is removed; nothing else is deleted, because
+    history. Nothing is deleted, because
     the report cites the reviews and audits by path. `main` is
     fast-forwarded to `v8-corrections` (no divergence) and both are pushed,
     so the default branch on GitHub is the submission. *Rejected:* moving

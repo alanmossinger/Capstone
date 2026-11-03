@@ -1,10 +1,10 @@
 """Execute the project notebooks in order, top to bottom, in place.
 
 What: runs the story notebooks ``notebooks/01_*.ipynb`` … ``12_*.ipynb`` in
-dependency order (PLAN.md §14) with ``jupyter nbconvert --execute --inplace``
+dependency order (docs/plan.md §14) with ``jupyter nbconvert --execute --inplace``
 on the ``queue-survival`` kernel and stops at the first notebook that fails.
 Why: one command rebuilds every interim table, result and figure from the
-raw files (PLAN.md §4), and each notebook's saved outputs always match the
+raw files (docs/plan.md §4), and each notebook's saved outputs always match the
 code that produced them.
 Reads / writes: whatever the notebooks read and write.
 Used by: ``make all`` and the per-step ``make`` targets.
@@ -23,7 +23,7 @@ import time
 from pathlib import Path
 
 NOTEBOOKS = Path(__file__).resolve().parent / "notebooks"
-# The notebooks are numbered by the story (PLAN.md §14) and run in dependency order: 06, the evaluation
+# The notebooks are numbered by the story (docs/plan.md §14) and run in dependency order: 06, the evaluation
 # record, runs last because it reads every scored table (decision #63); 03 runs before 02 because the asset map of 02 reads
 # 03's Track A table (decision #109); 05, 08 and 10 join as they are built.
 PIPELINE = ["01", "03", "02", "04", "05", "07", "08", "09", "06", "10", "11", "12", "13"]  # 11, the decision system of v8, reads 07–09 (decision #91); 12, the three questions of v10, reads 11; 13, the executive corrections of V2, reads 11 and 12

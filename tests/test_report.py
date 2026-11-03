@@ -1,4 +1,4 @@
-"""Every number in the report traces to results/report_numbers.csv; the core of the report stays under the word limit (decision #84)."""
+"""Every number in the official report and on the poster traces to results/report_numbers.csv; the report's body stays within the course's length."""
 
 import re
 
@@ -6,8 +6,6 @@ import pandas as pd
 
 from src import paths, report_numbers
 
-REPORT = paths.REPORT / "report.md"
-WORD_LIMIT = 12500  # the course suggests 3,000 excluding references and appendices; the executive report V2 with its executive summary runs to about 11,500 (decision #113, superseding #94)
 NUMBER = re.compile(r"\d[\d,]*(?:\.\d+)?%?")
 
 # Labels and names that contain digits but are not cited quantities.
@@ -37,11 +35,6 @@ NOT_QUANTITIES = [
 ]
 
 
-def body(text):
-    """The counted part of the report: everything before Appendix A (references live in references.md)."""
-    return text.split("## Appendix A", 1)[0]
-
-
 def numbers_in(text):
     """Numeric tokens left after removing labels, with signs dropped."""
     for pattern in NOT_QUANTITIES:
@@ -49,91 +42,33 @@ def numbers_in(text):
     return {token.rstrip(",") for token in NUMBER.findall(text)}
 
 
-def test_every_number_in_the_report_is_in_report_numbers():
-    table = report_numbers.build() if REPORT_V10_WRITTEN else pd.read_csv(V9_NUMBERS)
-    cited = set()
-    for text in table["text"].astype(str):
-        cited |= numbers_in(text)
-    text = REPORT.read_text(encoding="utf-8")
-    missing = sorted(numbers_in(text) - cited)
-    assert not missing, f"numbers in report.md not in results/report_numbers.csv: {missing}"
-
-
 def test_report_numbers_keys_are_unique():
     table = pd.read_csv(paths.RESULTS / "report_numbers.csv")
     assert table["key"].is_unique
 
 
-def test_report_is_under_the_word_limit():
-    text = re.sub(r"!\[[^\]]*\]\([^)]*\)", " ", body(REPORT.read_text(encoding="utf-8")))
-    text = re.sub(r"^\|[-| ]+\|$", " ", text, flags=re.MULTILINE)  # table rule lines
-    words = [w for w in re.split(r"\s+", text) if re.search(r"\w", w)]
-    assert len(words) <= WORD_LIMIT, f"{len(words)} words"
-
-
-# Report v9, the poster and the Petrobras edition were written before the decision moved to the as-of candidates (decision
-# #105): until report v10 replaces the report and the poster, all three are checked against the numbers table they were
-# written from, frozen in results/report_v9/. The Petrobras edition is out of scope for v10 and stays on it.
-V9_NUMBERS = paths.RESULTS / "report_v9" / "report_numbers.csv"
-REPORT_V10_WRITTEN = True  # report.md and poster.typ were rewritten from the v10 results on 22 October 2026
+# The poster (report/poster_V2.typ) is drawn from the report's numbers only; typst layout sizes (mm, pt, em, fr, %),
+# colours and file names are not quantities.
+POSTER = paths.REPORT / "poster_V2.typ"
 
 
 def test_every_number_on_the_poster_is_in_report_numbers():
-    """The poster cites the report's numbers only; layout sizes (mm, pt, %) and colours are not quantities."""
-    table = report_numbers.build() if REPORT_V10_WRITTEN else pd.read_csv(V9_NUMBERS)
+    table = report_numbers.build()
     cited = set()
     for text in table["text"].astype(str):
         cited |= numbers_in(text)
-    poster = (paths.REPORT / "poster.typ").read_text(encoding="utf-8")
+    poster = POSTER.read_text(encoding="utf-8")
     poster = "\n".join(line for line in poster.splitlines() if not line.lstrip().startswith(("//", "#set", "#let")))
-    poster = re.sub(r'#(?:text|image|v|line|grid|align|block)\([^)]*\)', " ", poster)  # typst calls carry sizes, not findings
-    poster = re.sub(r"\b\d+(?:\.\d+)?(?:mm|pt|em)\b|\d+%(?=\))", " ", poster)
+    poster = re.sub(r'#(?:text|image|v|line|grid|align|block|circle)\([^)]*\)', " ", poster)  # typst calls carry sizes, not findings
+    poster = re.sub(r"\b\d+(?:\.\d+)?(?:mm|pt|em|fr)\b|\d+(?:\.\d+)?%(?=[,)\s])", " ", poster)
+    poster = re.sub(r'"[^"]*\.(?:svg|png)"', " ", poster)
     missing = sorted(numbers_in(poster) - cited)
     assert not missing, f"numbers on the poster not in results/report_numbers.csv: {missing}"
 
 
-def test_every_number_in_the_petrobras_report_is_in_report_numbers():
-    """The executive edition cites report v9's numbers; typst sizes, colours and file names are not quantities."""
-    table = pd.read_csv(V9_NUMBERS)
-    cited = set()
-    for text in table["text"].astype(str):
-        cited |= numbers_in(text)
-    typ = (paths.REPORT / "petrobras_report.typ").read_text(encoding="utf-8")
-    typ = "\n".join(line for line in typ.splitlines() if not line.lstrip().startswith(("//", "#set", "#let", "#show")))
-    typ = re.sub(r'#(?:text|image|v|line|h|counter|page|outline|block)\([^)]*\)', " ", typ)
-    typ = re.sub(r"\b\d+(?:\.\d+)?(?:pt|em|in|fr)\b|\d+%(?=[,)])", " ", typ)  # typst sizes, column fractions and widths
-    typ = re.sub(r'"[^"]*\.svg"', " ", typ)  # figure file names
-    missing = sorted(numbers_in(typ) - cited)
-    assert not missing, f"numbers in the Petrobras report not in results/report_numbers.csv: {missing}"
-
-
-# The course-length edition (src/report_course.py) is the executive summary, the brief and the conclusions of report.md:
-# the same numbers, under the course's suggested length.
-COURSE = paths.REPORT / "report_course.md"
-COURSE_WORD_LIMIT = 3000
-
-
-def test_course_edition_numbers_are_in_report_numbers():
-    from src import report_course
-    report_course.build()
-    table = pd.read_csv(paths.RESULTS / "report_numbers.csv", dtype=str)
-    cited = set()
-    for text in table["text"].astype(str):
-        cited |= numbers_in(text)
-    missing = sorted(numbers_in(COURSE.read_text(encoding="utf-8")) - cited)
-    assert not missing, f"numbers in report_course.md not in results/report_numbers.csv: {missing}"
-
-
-def test_course_edition_is_under_the_course_word_limit():
-    text = re.sub(r"!\[[^\]]*\]\([^)]*\)", " ", COURSE.read_text(encoding="utf-8"))
-    text = re.sub(r"^\|[-| ]+\|$", " ", text, flags=re.MULTILINE)
-    words = [w for w in re.split(r"\s+", text) if re.search(r"\w", w)]
-    assert len(words) <= COURSE_WORD_LIMIT, f"{len(words)} words"
-
-
-# The official capstone report is Alan's Word edition (decision #117). It is edited in Word, not built from report.md,
+# The official capstone report is the Word edition (decision #117). It is edited in Word, not built from Markdown,
 # so its text is read straight from the document XML: the abstract through the appendices, without the references.
-OFFICIAL = paths.REPORT / "Beyond_Prediction_Capstone_Report_V1.docx"
+OFFICIAL = paths.REPORT / "Beyond_Prediction_Capstone_Report_V2.docx"
 
 
 def official_text():

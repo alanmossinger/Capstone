@@ -51,6 +51,44 @@ LEVEL_TEXT = {"explain": "explain — nothing material is wrong with your book",
               "guide": "guide — an alternative keeps every rule and is clearly better on your own terms, so the advisor recommends it"}
 SOLUTION = {"proposal": "your book as it is", "repair": "the repair — the fewest changes to your book that keep your rules", "optimizer": "the optimizer's book under your rules"}
 CHOICES = ("Keep my book", "Take the advisor's solution in full", "Change some members")
+OWN_ANSWER = "Write my own answer"
+EXAMPLE_ANSWERS = {  # five example answers per reasoning question, specific to this decision: (short label, the answer); the executive picks one and may edit it, or writes their own
+    "context_and_stakes": [
+        ("The signed requests are not built", "The three requests with signed agreements are not built: the construction reserve is spent for nothing and the book earns far less than expected."),
+        ("Oil stays low; the leases lose together", "Oil falls and stays low for years: the five leases lose together, and that is the largest loss the book can take."),
+        ("ERCOT prices fall; only the leases carry the book", "ERCOT prices fall by a quarter: the requests earn little, and only the leases carry the book."),
+        ("Construction calls we cannot fund", "The construction calls land at once and we cannot fund them: requests that reach their agreement forfeit their deposits."),
+        ("The worst-5% loss, once but not twice", "The worst case I have in mind is the worst-5% loss on the fact sheet; the company can carry it once, not twice."),
+    ],
+    "parties": [
+        ("Committee wants return; lender wants a thin tail", "The committee wants the highest expected return within the budget; the lender wants a thin tail and a funded reserve."),
+        ("Operator wants the leases now; the grid decides the rest", "The operator wants the leases redeveloped now; the grid operator decides which requests are ever built, on its own timetable."),
+        ("The board: the 40% cap and no liquidity surprise", "The board wants no technology above 40% of the budget and no surprise call on liquidity."),
+        ("Shareholders want value; risk committee wants loss under 10%", "Shareholders want the expected value; the risk committee wants the chance of a loss kept below 10%."),
+        ("The lender, before anyone else", "The lender will not sign a facility unless the reserve and the possible calls are on one page; that is the party I must satisfy first."),
+    ],
+    "emotional_investment": [
+        ("The deposits already paid", "The deposits on the waiting requests are already paid, and I do not want to write them off."),
+        ("I trust the oil side", "I come from the oil side and trust the leases more than anything waiting in the queue."),
+        ("I argued for the gas plant", "I argued for the gas plant last year and would rather be proved right than change the book."),
+        ("I like renewables", "I like renewables and may be too forgiving of how often the wind and solar requests lose."),
+        ("No sunk cost here", "I have no sunk cost here; the book is new to me and I hold no past position on it."),
+    ],
+    "evidence": [
+        ("Expected NPV, not the tail", "I leaned on expected NPV and passed over the worst-5% loss and the chance of a loss."),
+        ("The committee's cost grid, as if known", "I read the committee's cost grid as if it were known; the lease costs are assumed, and I did not test the other grid."),
+        ("Chance of being built, not the co-movement", "I used the chance that each request is ever built, but not how the candidates lose together in the same scenarios."),
+        ("The flat price path, not the scenarios", "I emphasised the flat price path and dismissed the 2,000 scenarios as too pessimistic."),
+        ("The seven-worlds table", "I relied on the seven-worlds table: the risk-aware book wins in all of them, and that settled it for me."),
+    ],
+    "framing": [
+        ("A smaller book, waiting for the agreements", "A smaller book: fund the leases now and wait for the requests' agreements before committing construction capital."),
+        ("Equal capital by sector", "Equal capital by sector, which leads if no construction facility can be arranged."),
+        ("Fund nothing in the queue this year", "Funding nothing in the queue this year and holding that part of the budget for the next round."),
+        ("The deterministic optimizer's book", "The deterministic optimizer's book, with its higher expected value and its larger tail."),
+        ("The zero-emission book", "The zero-emission book: swap the gas request for the signed solar request, at a known cost on the metric."),
+    ],
+}
 
 
 @st.cache_data
@@ -58,8 +96,8 @@ def load():
     cand = pd.read_csv(V2 / "book_D_members.csv")
     fr = pd.read_csv(V8 / "frontier.csv")
     books = fr[fr["kind"] == "comparator"].set_index("policy")
-    example = {c["id"]: c for c in json.loads((V10 / "cases_v10.json").read_text(encoding="utf-8"))["cases"]}["X25"]
-    return cand, books, example
+    cases = {c["id"]: c for c in json.loads((V10 / "cases_v10.json").read_text(encoding="utf-8"))["cases"]}
+    return cand, books, cases
 
 
 @st.cache_resource(show_spinner=False)
@@ -110,7 +148,8 @@ and challenges your thinking. You then decide — it may change your mind or not
 advisor's solution would have given. Every number is computed by the report's own tools; the model only reads and argues. New here? Read <b>A worked example</b> in the sidebar first: one executive's round from pick to result.</div>""",
             unsafe_allow_html=True)
 
-cand, books, example = load()
+cand, books, cases = load()
+example = cases["X25"]
 with st.spinner("building the challenger's setting — about two minutes the first time, then kept in data/interim/"):
     s = setting()
 ids = s.ids
@@ -159,6 +198,38 @@ def use_example():
     st.session_state["statement"] = example["statement"]
 
 
+OWN_STATEMENT = "Write my own reasons"
+# Recorded statements an executive can start from: the registered test's author-written cases (results/v10/cases_v10.json), each
+# a committee member's own words for a book — three flaws of argument the challenger is built to name, and sound statements of a
+# rule. The book each case proposed is loaded with it: D the risk-aware book, C the deterministic optimizer's, B equal capital by sector.
+EXAMPLE_STATEMENTS = [  # (case id, label, the book it proposed)
+    ("X25", "X25 · sunk cost — \"the deposits are already paid, so approve the risk-aware book\" (book D)", "D risk-aware MILP"),
+    ("X26", "X26 · sunk cost — \"two years of permitting would be wasted\" (book D)", "D risk-aware MILP"),
+    ("X27", "X27 · sunk cost — \"we owe it to last year's advisory work\" (book C)", "C deterministic MILP"),
+    ("X28", "X28 · sunk cost — \"appraisal wells are already in the ground\" (book D)", "D risk-aware MILP"),
+    ("X30", "X30 · double standard — leases judged on the tail, plants on expected value (book B)", "B equal capital by sector"),
+    ("X31", "X31 · double standard — gas on upside, renewables on tail risk (book C)", "C deterministic MILP"),
+    ("X33", "X33 · unsupported claim — \"rates fall 200 basis points next year\" (book C)", "C deterministic MILP"),
+    ("X35", "X35 · unsupported claim — \"grid demand grows 8% a year\" (book D)", "D risk-aware MILP"),
+    ("X37", "X37 · a sound rule — a dollar of tail loss counts one for one (book D)", "D risk-aware MILP"),
+    ("X40", "X40 · a sound rule — worst-5% loss must stay under $1.3B (book D)", "D risk-aware MILP"),
+    ("X42", "X42 · a sound rule — no gas plants in the book (book D)", "D risk-aware MILP"),
+    ("X45", "X45 · a sound rule — at most $2B beyond the reserve for construction (book D)", "D risk-aware MILP"),
+]
+EXAMPLE_BY_LABEL = {label: (cid, book) for cid, label, book in EXAMPLE_STATEMENTS}
+
+
+def use_statement():
+    """Load the picked recorded statement and the book it proposed; 'Write my own reasons' leaves the page as it is."""
+    pick = st.session_state["pick_statement"]
+    if pick == OWN_STATEMENT:
+        return
+    cid, book = EXAMPLE_BY_LABEL[pick]
+    st.session_state["start"] = BOOK_NAME[book]
+    st.session_state["members"] = STARTS[BOOK_NAME[book]]
+    st.session_state["statement"] = cases[cid]["statement"]
+
+
 left, right = st.columns([1, 1.2])
 with left:
     st.selectbox("Start from", list(STARTS), key="start", on_change=set_members)
@@ -167,6 +238,11 @@ with left:
     over = cost > s.budget + 1
     st.markdown(md(f"Capital charged now: **{money(cost)}** of {money(s.budget)}" + (" — **over the budget**" if over else "")))
 with right:
+    st.selectbox("Not sure how to put it? Start from one of the registered test's committee statements (a simulated committee, written before any model saw them), then edit it — or write your own",
+                 [OWN_STATEMENT] + [label for _, label, _ in EXAMPLE_STATEMENTS], key="pick_statement", on_change=use_statement,
+                 help="Twelve of the 48 registered cases of notebook 12: four sunk-cost arguments, two double standards, two unsupported claims and four sound rules, "
+                      "written by the author as committee personas before any model saw them (no real committee took part — a stated limit of the report). "
+                      "Picking one also loads the book it argued for; with no key, the challenge replays the recorded round.")
     st.text_area("Why this book? Say it as you would to the committee: your objective, any rule you hold (a limit on the chance of a loss, a sector you will not fund, "
                  "a construction line you can call), and what you believe about the market.", key="statement", height=150, placeholder="We should fund … because …")
     b1, b2 = st.columns([1, 1])
@@ -231,8 +307,21 @@ if "round" in st.session_state:
         st.text(res["sheet"])
 
     st.subheader("Reason my thinking, then decide")
-    st.markdown("The five questions of the motivated-reasoning check. Answer them in a sentence or two each; they are required only if you depart from the advisor's solution.")
-    answers = {k: st.text_area(q, key=f"q_{k}", height=70) for k, q in adv.REASONING_QUESTIONS.items()}
+    st.markdown("The five questions of the motivated-reasoning check. For each, pick the example answer closest to your own and edit it, "
+                "or write your own in a sentence or two. The answers are required only if you depart from the advisor's solution.")
+
+    def fill_answer(key):
+        """Copy the picked example's answer into the answer box; 'Write my own answer' leaves the box as it is."""
+        pick = st.session_state[f"pick_{key}"]
+        if pick != OWN_ANSWER:
+            st.session_state[f"q_{key}"] = dict(EXAMPLE_ANSWERS[key])[pick]
+
+    answers = {}
+    for n, (k, q) in enumerate(adv.REASONING_QUESTIONS.items(), start=1):
+        st.markdown(f"**{n}. {q}**")
+        st.selectbox("Pick an example answer, or write your own", [OWN_ANSWER] + [label for label, _ in EXAMPLE_ANSWERS[k]], key=f"pick_{k}",
+                     on_change=fill_answer, args=(k,), label_visibility="collapsed")
+        answers[k] = st.text_area(q, key=f"q_{k}", height=80, label_visibility="collapsed", placeholder="Your answer, in a sentence or two (at least a short sentence).")
     choice = st.radio("Your decision", CHOICES, key="choice", horizontal=True)
     if choice == CHOICES[2]:
         st.session_state.setdefault("final_members", members0)

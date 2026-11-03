@@ -30,7 +30,7 @@ POST_ENTRY_COLUMNS = ["q_status", "on_date", "wd_date", "ia_date", "IA_status_ra
 
 
 def size_regime(mw):
-    """Bin capacity into the regimes of PLAN.md §7 (right-open MW bins).
+    """Bin capacity into the regimes of docs/plan.md §7 (right-open MW bins).
 
     Parameters
     ----------
@@ -70,7 +70,7 @@ def congestion_at_entry(frame):
     A request counts as waiting on day t if it entered strictly before t and
     had not left before t. It leaves on its operation date if operational
     and on its withdrawal date if withdrawn; with no exit date it is treated
-    as still waiting (PLAN.md §7), which overstates congestion where exit
+    as still waiting (docs/plan.md §7), which overstates congestion where exit
     dates are missing. Because every exit follows its entry (rules R3–R4),
     "entered before t" minus "left before t" counts exactly the waiting
     requests, so a sorted sweep with ``searchsorted`` does the whole region

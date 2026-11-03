@@ -1,6 +1,6 @@
 """Candidate economics: lease redevelopment cash flows, power-plant revenue capture, battery dispatch, NPV.
 
-What: the monthly cash-flow engine of the forty candidates (PLAN.md §14.7)
+What: the monthly cash-flow engine of the forty candidates (docs/plan.md §14.7)
 — an Arps baseline and a modeled redevelopment uplift for a Gulf of Mexico
 lease under the confirmed cost grid (decision #68); hourly price-capture
 factors for solar, wind and gas from the 2024 ERCOT hourly prices and

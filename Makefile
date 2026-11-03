@@ -1,4 +1,4 @@
-# Queue Survival — one command per pipeline step. `make all` rebuilds everything.
+# Beyond Prediction — one command per pipeline step. `make all` rebuilds every result and figure the report cites.
 
 ifeq ($(OS),Windows_NT)
 PYTHON := .venv/Scripts/python.exe
@@ -8,7 +8,7 @@ PYTHON := .venv/bin/python
 PY311 := python3.11
 endif
 
-.PHONY: setup get-data check-data bundle-data data eda features forecast energy economics scenarios portfolio record advisor decide questions corrections figures numbers report report-course poster petrobras app test all
+.PHONY: setup get-data check-data bundle-data data eda features forecast energy economics scenarios portfolio record advisor decide questions corrections figures numbers poster app dashboard test all
 
 setup:            ## create .venv from Python 3.11 (the pinned wheels are 3.11 builds), install pinned packages, register the notebook kernel
 	$(PY311) -m venv .venv
@@ -58,32 +58,18 @@ decide:           ## 11: the decision system of v8 — frontier, what-ifs, expla
 	$(PYTHON) run_pipeline.py --only 11
 
 figures:          ## every notebook that draws figures, in pipeline order
-	$(PYTHON) run_pipeline.py --only 01 02 04 05 07 08 09 06 10 11
+	$(PYTHON) run_pipeline.py --only 01 02 04 05 07 08 09 06 10 11 12 13
 
 numbers:          ## results/report_numbers.csv: every number the report cites, read from results/
 	$(PYTHON) -m src.report_numbers
 
-report: numbers   ## report.md + references.md → report/report.pdf and report/report.docx (needs pandoc and typst)
-	sed 's/\.png)/.svg)/' report/report.md > report/report_vector.md  # the PDF embeds the vector SVGs: sharp at any zoom
-	pandoc report/report_vector.md report/references.md -f markdown-implicit_figures --resource-path=report --include-in-header=report/typst_header.typ --pdf-engine=typst -o report/report.pdf
-	rm report/report_vector.md
-	pandoc report/report.md report/references.md -f markdown-implicit_figures --resource-path=report -o report/report.docx
-
-report-course: numbers   ## the course-length edition (about 3,000 words): report/report_course.pdf and .docx from the executive summary, the brief and the conclusions
-	$(PYTHON) -m src.report_course
-	sed 's/\.png)/.svg)/' report/report_course.md > report/report_course_vector.md
-	pandoc report/report_course_vector.md report/references.md -f markdown-implicit_figures --resource-path=report --include-in-header=report/typst_header.typ --pdf-engine=typst -o report/report_course.pdf
-	rm report/report_course_vector.md
-	pandoc report/report_course.md report/references.md -f markdown-implicit_figures --resource-path=report -o report/report_course.docx
-
-poster:           ## report/poster.pdf from report/poster.typ (needs typst)
-	typst compile --root . report/poster.typ report/poster.pdf
-
-petrobras:        ## report/Petrobras_Report.pdf, the executive edition, from report/petrobras_report.typ (needs typst)
-	typst compile --root . report/petrobras_report.typ report/Petrobras_Report.pdf
+poster:           ## report/poster_V2.pdf from report/poster_V2.typ (needs typst)
+	typst compile --root . report/poster_V2.typ report/poster_V2.pdf
 
 app:              ## the dashboard (app/app.py): decide — the options, your book, the advisor's challenge, your result — and the report's decision
 	$(PYTHON) -m streamlit run app/app.py
+
+dashboard: app    ## the same as `make app` (on Windows, dashboard.bat does it with a double-click)
 
 test:
 	$(PYTHON) -m pytest

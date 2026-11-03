@@ -4,7 +4,7 @@ What: scripted downloads with SHA-256 (BSEE OGOR-A zips, the EIA monthly
 spot-price workbooks, eGRID), the EIA-923 pull through the EIA API, the
 hash check of the ERCOT 2024 files, the parsers that turn each raw file into
 a tidy monthly table, and the manifest every source is recorded in.
-Why: the integrated portfolio (PLAN.md §14) needs observed production,
+Why: the integrated portfolio (docs/plan.md §14) needs observed production,
 generation and prices beside the queue file, each traceable to a public
 file with its checksum, vintage and units (decision #64).
 Reads: the URLs in ``src/config.py``; ``data/raw/<source>/``; the EIA key
@@ -265,7 +265,7 @@ def generation_monthly(eia923):
     fuels of a prime mover, all prime movers of a plant). The fuel-specific
     rows are summed per (plant, prime mover, month), so every megawatt-hour
     is counted once and the grain stays plant × prime mover, never a
-    generator (PLAN.md §14.2). ``technology`` comes from
+    generator (docs/plan.md §14.2). ``technology`` comes from
     ``config.PRIME_MOVER_TECH``; other prime movers are labelled "Other".
     """
     rows = eia923[(eia923["fuelType"] != "ALL") & (eia923["primeMover"] != "ALL")].copy()
@@ -334,7 +334,7 @@ def ercot_dam_monthly(path, hubs=config.ERCOT_HUBS):
 # --- the manifest -------------------------------------------------------------
 
 def manifest_entry(source_id, name, url, files, vintage, units, grain, provenance="OBSERVED", note=""):
-    """One manifest record (PLAN.md §14.1): URL, retrieval time, vintage, checksums, units, grain."""
+    """One manifest record (docs/plan.md §14.1): URL, retrieval time, vintage, checksums, units, grain."""
     if provenance not in config.PROVENANCE:
         raise ValueError(f"provenance must be one of {config.PROVENANCE}")
     return {"source_id": source_id, "name": name, "url": url,

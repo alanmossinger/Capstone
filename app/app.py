@@ -25,7 +25,7 @@ from src import advisor as adv  # noqa: E402
 st.set_page_config(page_title="Beyond Prediction — the dashboard", layout="wide")
 st.markdown("""
 <style>
-.block-container {padding-top: 1.2rem; padding-bottom: 2rem; max-width: 1400px;}
+.block-container {padding-top: 3.4rem; padding-bottom: 2rem; max-width: 1400px;}
 h1 {font-size: 2.0rem !important; margin-bottom: 0.2rem;}
 h2 {font-size: 1.4rem !important; margin-top: 0.6rem;}
 h3 {font-size: 1.15rem !important;}
@@ -36,8 +36,16 @@ h3 {font-size: 1.15rem !important;}
 .rec {background: #13294B; color: white; padding: 1.1rem 1.4rem; border-radius: 10px; font-size: 1.02rem; line-height: 1.5;}
 .rec b {color: #FFFFFF;}
 .quote {background: #F4F5F7; border-left: 4px solid #0072B2; padding: 0.8rem 1rem; border-radius: 6px; font-size: 0.98rem;}
+.masthead {background: #13294B; color: white; padding: 1.0rem 1.4rem 0.9rem 1.4rem; border-radius: 10px; margin: 0 0 0.9rem 0;}
+.masthead .title {font-size: 1.75rem; font-weight: 700; line-height: 1.2; margin: 0;}
+.masthead .subtitle {font-size: 1.0rem; color: #DDE3EC; margin: 0.3rem 0 0 0;}
+.masthead .byline {font-size: 0.9rem; color: #B8C2D3; margin: 0.45rem 0 0 0;}
 </style>
 """, unsafe_allow_html=True)
+st.markdown("""<div class="masthead"><p class="title">Beyond Prediction: Prescriptive AI for Strategic Energy Capital Allocation</p>
+<p class="subtitle">A Governed Decision Intelligence System for Risk, Returns, and Investment Committee Choices Across Oil, Gas, Power, Renewables, and Storage</p>
+<p class="byline">Alan Mössinger · SIADS 699 Capstone, University of Michigan · the dashboard: decide, a worked example, the report's decision</p></div>""",
+            unsafe_allow_html=True)
 backend = adv.backend_name()
 st.markdown(f"""<div class="howto"><b>Before you start.</b> Every number on these pages is read from the report's result tables, and the
 recorded rounds replay with no key. To have the advisor challenge <i>your own</i> book you need a key for a language model — any

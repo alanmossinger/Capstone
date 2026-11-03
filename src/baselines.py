@@ -7,7 +7,7 @@ Why: size is the second-strongest driver in notebook 06 (part C)'s explanation a
 the v1 baseline ignores it, so part of the measured gain over the baseline
 could be a size lookup rather than machine learning. Scoring every v2
 criterion against this baseline as well shows what survives a lookup table
-that any analyst could build (PLAN.md §8, decision #42).
+that any analyst could build (docs/plan.md §8, decision #42).
 Reads / writes: nothing.
 Used by: notebook 04 (part D) (and every later notebook that compares with a
 baseline); ``tests/test_baselines.py``.

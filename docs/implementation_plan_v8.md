@@ -14,7 +14,7 @@ ends with its acceptance checks; the next starts only when they pass (CLAUDE.md 
 - The language model never produces a number the report uses. It translates questions into validated
   parameters, the code computes, and it explains what the code returned.
 
-## Decisions needed before Phase C (ASK ALAN)
+## Decisions needed before Phase C
 
 1. **One decision date for both sectors (E1).** Recommended: *decide on 2025-01-01*, the date the leases are
    already valued at. The power pool becomes the requests active on 2024-12-31, re-drawn as the five largest

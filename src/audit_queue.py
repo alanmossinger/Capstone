@@ -5,7 +5,7 @@ What: functions that describe the project sheet exactly as LBNL published it
 event-date coverage by region, the "13 % built / 77 % withdrawn" headline,
 the median request-to-operation time, a naive 5-year completion mock-up,
 and the size of the Track A sample.
-Why: the readiness gate (PLAN.md §5.3) asks whether the public file can
+Why: the readiness gate (docs/plan.md §5.3) asks whether the public file can
 carry a time-to-event model, and these numbers answer it. They are computed
 before any cleaning so the gate judges the file, not my edits to it.
 Reads: the raw DataFrame from ``get_lbnl.load_queue``.

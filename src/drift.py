@@ -9,7 +9,7 @@ Why: completion within 5 years fell from 12.8% for 2017 entrants to 8.3%
 and 9.6% for 2018 and 2019 entrants while the tree model, which cannot
 extrapolate the request year, stayed at 13–14% (notebook 06 (part A)). A portfolio's
 expected MW online scales with the level, so the level has to be repaired
-before any book is priced (PLAN.md, notebook 04 (part G)).
+before any book is priced (docs/plan.md, notebook 04 (part G)).
 Reads / writes: nothing.
 Used by: notebook 04 (part G); ``tests/test_drift.py``.
 """
@@ -66,7 +66,7 @@ def fit_intercept(p, y, w=None):
     -----
     A level shift only. With a slope as well the repair would also reshape
     the ranking, and the ranking is what the model is kept for; the slope is
-    reported, not fitted (PLAN.md, notebook 04 (part G)). Weighted by the IPCW weights
+    reported, not fitted (docs/plan.md, notebook 04 (part G)). Weighted by the IPCW weights
     so censored requests drop out.
     """
     p = np.clip(np.asarray(p, dtype=float), 1e-6, 1 - 1e-6)

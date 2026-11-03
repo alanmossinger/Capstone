@@ -1,6 +1,6 @@
 """Joint scenarios for the portfolio: prices, output, costs and timing drawn together, with named stresses.
 
-What: reproducible scenario sets for the forty candidates (PLAN.md §14.8)
+What: reproducible scenario sets for the forty candidates (docs/plan.md §14.8)
 — a moving-block bootstrap of the joint monthly log changes of WTI, Henry
 Hub and the ERCOT price that keeps their cross-correlation; a Gaussian
 copula on the same marginals as a second, held-out generator; empirical

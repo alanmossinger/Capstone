@@ -347,7 +347,7 @@ def greedy_risk_adjusted(npv_draws, cost, budget, lam=1.0, caps=(), level=0.95):
 
     Notes
     -----
-    A scenario-based stand-in for the mixed-integer programme of PLAN.md
+    A scenario-based stand-in for the mixed-integer programme of docs/plan.md
     §13: at each step the request with the largest gain in the objective per
     dollar is added, as long as it fits the budget and the caps and the gain
     is positive. Greedy is not optimal, but it is transparent, fast for

@@ -1,7 +1,7 @@
 """Every number the report cites, read from ``results/`` and written to one table.
 
 What: reads the result tables the notebooks wrote and collects, under a short
-key, each value that ``report/report.md`` quotes, already formatted the way
+key, each value that the report quotes, already formatted the way
 the report prints it (``12.8%``, ``2,268``, ``+0.121``).
 Why: every number in the report must trace to ``results/``, never be typed
 by hand. With one table of quoted values, ``tests/test_report.py`` can
@@ -10,8 +10,8 @@ look up where a number comes from (``source`` column).
 Reads: CSV and JSON files in ``results/``; design constants from
 ``src/config.py`` and ``src/track_b.py``. The steps are named after the
 layers that produced the tables (v1 entry models, v3 portfolio layer, v4
-managed book, v5 the capital-allocation additions; PLAN.md §13) and read the
-notebooks that own them since the consolidation of 2026-10-12 (PLAN.md
+managed book, v5 the capital-allocation additions; docs/plan.md §13) and read the
+notebooks that own them since the consolidation of 2026-10-12 (docs/plan.md
 §14): 01 data, 02 EDA, 03 features, 04 forecasting, 06 the record, 07
 economics, 09 the portfolio.
 Writes: ``results/report_numbers.csv`` (key, text, value, source, note).
@@ -158,8 +158,8 @@ def gathering_and_cleaning():
     link = read("linkage_test.csv").iloc[0]
     add("linkage_matched", pct(link["match_rate"]), link["match_rate"], "results/linkage_test.csv", "LBNL projects matched to EIA")
     add("linkage_agree", pct(link["agree_rate"]), link["agree_rate"], "results/linkage_test.csv", "matches agreeing within 6 months")
-    add("linkage_bar_match", "40%", 0.40, "PLAN.md §5.3", "pre-set match bar")
-    add("linkage_bar_agree", "80%", 0.80, "PLAN.md §5.3", "pre-set agreement bar")
+    add("linkage_bar_match", "40%", 0.40, "docs/plan.md §5.3", "pre-set match bar")
+    add("linkage_bar_agree", "80%", 0.80, "docs/plan.md §5.3", "pre-set agreement bar")
     add("linkage_projects", f"{int(link['projects']):,}", link["projects"], "results/linkage_test.csv", "projects in the linkage test")
 
     log = read("clean_log.csv")

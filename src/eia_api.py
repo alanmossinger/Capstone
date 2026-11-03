@@ -5,7 +5,7 @@ What: downloads one month of the route
 in ``config.EIA860M_PERIOD``) and reads the route metadata on request.
 Why: EIA-860M carries generator operating dates, county and coordinates for
 every region, which the public LBNL file lacks outside CAISO/ERCOT/PJM
-(PLAN.md §5.1, source S2).
+(docs/plan.md §5.1, source S2).
 Reads: the API key from ``.env`` (``EIA_API_KEY``); the EIA API.
 Writes: ``data/raw/eia860m/api_<period>_page<N>.json`` (one file per page,
 as returned) and ``data/raw/eia860m/eia860m_<period>.parquet`` (all pages).

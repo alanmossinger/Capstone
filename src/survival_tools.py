@@ -214,7 +214,7 @@ def cif_from_hazards(h_operation, h_withdrawal):
 
     Notes
     -----
-    CIF(t) = Σ_{k ≤ t} h_op(k) · Π_{j < k} (1 − h_op(j) − h_wd(j)) (PLAN.md §6).
+    CIF(t) = Σ_{k ≤ t} h_op(k) · Π_{j < k} (1 − h_op(j) − h_wd(j)) (docs/plan.md §6).
     The product is the probability of still waiting at the start of year k.
     """
     staying = np.cumprod(1 - h_operation - h_withdrawal, axis=1)

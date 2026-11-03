@@ -1,6 +1,7 @@
-# Python 3.11. Pinned on 2026-10-03; re-derived from imports before v1.0.
+# Python 3.11. Every library the notebooks, src/, app/ and tests import, pinned to the versions the results were produced with.
 pandas==2.3.3
 numpy==2.4.6
+scipy==1.17.1
 pyarrow==25.0.1
 openpyxl==3.1.5
 requests==2.34.2
@@ -24,3 +25,4 @@ statsmodels==0.14.6
 xlrd==2.0.2
 anthropic==1.13.0
 streamlit==1.65.0
+altair==6.3.0

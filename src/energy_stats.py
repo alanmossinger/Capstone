@@ -5,7 +5,7 @@ series, Pearson and Spearman correlations at lags, ADF and KPSS tests, and
 a Chow test for a structural break at a named month.
 Why: the proposal asks for intervals that respect autocorrelation, for
 lagged cross-correlations among prices and output, and for stationarity
-and break tests before a price model is fitted (PLAN.md §14.4).
+and break tests before a price model is fitted (docs/plan.md §14.4).
 Reads / writes: nothing.
 Used by: notebooks 02 (part C) and 03 (part B); ``tests/test_energy_stats.py``.
 

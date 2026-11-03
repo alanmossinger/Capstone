@@ -20,7 +20,7 @@ from sklearn.tree import DecisionTreeClassifier
 
 from src import config
 
-HORIZON_YEARS = 5  # the completion horizon of every driver rate (PLAN.md §13)
+HORIZON_YEARS = 5  # the completion horizon of every driver rate (docs/plan.md §13)
 COHORT_YEARS = (2010, 2019)  # entrants who all have five years of follow-up by CENSOR_DATE
 CROWDING_WINDOW_YEARS = 2  # other requests at the same point of interconnection in the two years before entry
 CROWDING_LABELS = ["0", "1–2", "3–5", "6+"]

@@ -5,7 +5,7 @@ its three parameters to a lease's monthly history, with an exponential
 fallback when the hyperbolic fit does not converge.
 Why: a decline curve is what a reservoir engineer forecasts with; the ML
 challengers of notebook 05 must beat it, not only a naive last value
-(PLAN.md §14.6), and the redevelopment uplift of notebook 07 is measured
+(docs/plan.md §14.6), and the redevelopment uplift of notebook 07 is measured
 against it.
 Reads / writes: nothing.
 Used by: notebook 02 (cohort curves), notebook 05 (baseline), notebook 07

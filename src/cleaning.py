@@ -1,6 +1,6 @@
 """Cleaning rules R1–R9 for the LBNL queue file.
 
-What: one function per rule of PLAN.md §7. Each takes the table, returns a
+What: one function per rule of docs/plan.md §7. Each takes the table, returns a
 cleaned copy and a dict ``{what was done: rows touched}``; ``apply_rule``
 records that dict in a log and ``clean_queue`` runs all nine in order.
 Why: every change to the published file is named, counted and testable, so

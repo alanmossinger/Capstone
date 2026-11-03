@@ -6,7 +6,7 @@ operation time by size, request-to-agreement time by service type) and
 computes each one from the clean public file with the same definition.
 Why: if the clean file reproduces LBNL's published figures, the data and the
 cleaning are doing what I think they do; where it does not, the gap is
-explained instead of hidden (PLAN.md §6, notebook 02 (part A)).
+explained instead of hidden (docs/plan.md §6, notebook 02 (part A)).
 Reads: sheets 22, 23, 25, 31 and 38 of the frozen LBNL workbook.
 Writes: nothing (notebook 02 (part A) saves ``results/benchmarks.csv``).
 Used by: notebook 02 (part A).
