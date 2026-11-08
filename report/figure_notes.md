@@ -1992,6 +1992,16 @@ Caption stubs collected by `src/plots.save_fig()` each time a notebook runs. The
 **Caption (stub).** The readiness and control matrix: implemented capabilities, safeguards, known limitations and the validation required before actual financial commitments.
 <!-- /fig:F56_readiness_matrix -->
 
+<!-- fig:F57_book_distributions -->
+### F57_book_distributions
+
+![F57_book_distributions](../figures/F57_book_distributions.png)
+
+*Notebook:* `notebooks/13_executive_corrections.ipynb` · *Files:* `figures/F57_book_distributions.png`, `.svg`
+
+**Caption (stub).** The 2,000 held-out twenty-year outcomes of each of the five decision processes, the 100 worst shaded: their mean is the worst-5% average loss, and the dashed lines mark it and the expected NPV.
+<!-- /fig:F57_book_distributions -->
+
 <!-- fig:F5_auc_brier_by_horizon -->
 ### F5_auc_brier_by_horizon
 

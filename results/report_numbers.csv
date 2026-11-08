@@ -43,8 +43,8 @@ on_cov_West,21.5%,0.2153209109730849,results/event_date_coverage.csv,West operat
 wd_cov_West,7.5%,0.0753438718948881,results/event_date_coverage.csv,West withdrawn rows with a withdrawal date
 linkage_matched,31.1%,0.3109090909090909,results/linkage_test.csv,LBNL projects matched to EIA
 linkage_agree,74.9%,0.7485380116959064,results/linkage_test.csv,matches agreeing within 6 months
-linkage_bar_match,40%,0.4,PLAN.md §5.3,pre-set match bar
-linkage_bar_agree,80%,0.8,PLAN.md §5.3,pre-set agreement bar
+linkage_bar_match,40%,0.4,docs/plan.md §5.3,pre-set match bar
+linkage_bar_agree,80%,0.8,docs/plan.md §5.3,pre-set agreement bar
 linkage_projects,"1,650",1650,results/linkage_test.csv,projects in the linkage test
 clean_rows_out,"36,216",36216,results/clean_log.csv,rows after cleaning
 dates_cleared,692,692,results/clean_log.csv,event dates cleared by R3 and R4

@@ -1,7 +1,7 @@
 // Poster V2 — Beyond Prediction, written to be explained in four minutes.
 // Built with: typst compile --root . report/poster_V2.typ report/poster_V2.pdf
-// Every number is one the V2 report prints (report/Beyond_Prediction_Capstone_Report_V2.docx): sections 2–9, Tables 1–3, Appendix I.
-// The four columns are the report's four conclusions (Section 9), each answered by one stage of the system.
+// Every number is one the edited V2 report prints (report/Beyond_Prediction_Edited_Full_Report_V2_revised.docx): sections 1–12 and Appendix M.
+// The four columns are the report's four questions (Sections 4, 5, 6 and 8), in plain words, each answered by one stage of the system.
 // The charts are drawn here from the report's own numbers, so their type is read at poster size.
 #set page(width: 841mm, height: 594mm, margin: 0mm, fill: rgb("#F4F5F7"))
 #set text(font: ("Calibri", "Carlito"), size: 18pt, fill: rgb("#222222"))
@@ -76,7 +76,7 @@
   #grid(columns: (3.3fr, 1fr), align: (left + horizon, right + horizon), gutter: 10mm,
     [#text(size: 46pt, weight: "bold", fill: white)[Beyond Prediction: Prescriptive AI for Strategic Energy Capital Allocation] \
      #v(0.5mm)
-     #text(size: 21pt, fill: white.darken(12%))[A Governed Decision Intelligence System for Risk, Returns, and Investment Committee Choices Across Oil, Gas, Power, Renewables, and Storage]],
+     #text(size: 21pt, fill: white.darken(12%))[A governed decision-intelligence system for risk, returns and investment-committee decisions across oil, gas, power, renewables and storage]],
     [#text(size: 18.5pt, fill: white)[*Alan Mössinger* \ SIADS 699 Capstone · University of Michigan \ MADS, Group 13 (a solo project) \ Mentor: Laura Danielle Stagnaro · November 2026]]
   )
 ])
@@ -84,92 +84,92 @@
 #block(width: 100%, inset: (x: 20mm, y: 6mm), [
   // ---- the question and the answer ----------------------------------------------------------
   #grid(columns: (1fr, 1.55fr), column-gutter: 10mm, align: horizon,
-    text(size: 33pt, weight: "bold", fill: navy)[Is prediction enough to spend a \$3.82 billion budget well?],
-    text(size: 21pt, fill: ink)[*No.* Machine learning ranked the candidates better than a hand-built lookup, but did not produce a demonstrably better portfolio. The value lay past prediction: in pricing the tail, in optimizing under the company's own rules, and in a challenger that argues but never decides.],
+    text(size: 33pt, weight: "bold", fill: navy)[Are good forecasts enough to spend a \$3.82 billion budget well?],
+    text(size: 21pt, fill: ink)[*No.* The machine-learning model ranked projects better than a simple lookup, yet the portfolio built from it was not clearly better. The value came after prediction: modelling how projects lose money together, choosing the whole portfolio within the company's risk limits, arranging the money to build it, and an AI that questions the committee's reasoning while a person still decides.],
   )
   #v(5mm)
 
   // ---- the decision, in plain words ---------------------------------------------------------
   #grid(columns: (1fr, 1fr, 1fr, 1.15fr), gutter: 8mm, rows: 43mm,
-    card("The decision · 1 January 2025", [\$3.82 billion to commit across forty candidates, using only what was public that day. No technology may take more than 40% of the budget.]),
-    card("20 Gulf of Mexico leases", [Redevelop now: capital spent today, output up 20% after two years. They rarely lose money, but all sell the same oil, so they lose together.], color: orange),
-    card("20 ERCOT queue requests", [Cheap to hold, expensive once the interconnection agreement is signed. Most never get there: of 2000–2019 capacity, 12.6% was operating by 2024 and 76.9% had withdrawn.], color: blue),
-    card("Four words used here", [*Book:* the candidates funded together. *Worst-5% loss:* the loss to budget for in the one year in twenty that goes badly. *Registered:* the pass rule was written before the result was seen. *[a, b]:* the 95% interval.], color: green),
+    card("The decision · 1 January 2025", [\$3.82 billion to spread across 40 projects, using only what was public that day. No single technology may take more than 40% of the budget.]),
+    card("20 Gulf of Mexico oil and gas leases", [Spend now to redevelop; output rises 20% after two years. They rarely lose money, but all sell the same oil, so when they lose, they lose together.], color: orange),
+    card("20 Texas grid (ERCOT) requests", [New solar, wind, gas or storage plants: cheap to hold, expensive to build. Most never get built: of capacity that applied in 2000–2019, 12.6% was operating by 2024 and 76.9% had withdrawn.], color: blue),
+    card("How to read the numbers", [*Worst-5% loss:* the average loss in the worst 5% of the simulated futures. *[a, b]:* the 95% range; if it includes zero, the gain is not proven. *Registered:* the pass rule was written before the result was seen.], color: green),
   )
   #v(5mm)
 
   // ---- how it works: the six stages (report Figure 1) ---------------------------------------
   #grid(columns: (auto, 1fr, 9mm, 1fr, 9mm, 1fr, 9mm, 1fr, 9mm, 0.75fr, 9mm, 0.95fr), rows: 21mm, column-gutter: 1mm,
     box(height: 100%, inset: (right: 4mm), align(horizon, text(size: 20pt, weight: "bold", fill: navy)[How it works])),
-    step("1 Predict", [which plants get built, what each asset produces], blue), arrow,
+    step("1 Predict", [which plants get built, what each project produces], blue), arrow,
     step("2 Simulate", [2,000 futures of prices, output, cost and timing], blue), arrow,
-    step("3 Optimize", [the book, under the budget and the risk appetite], orange), arrow,
-    step("4 Challenge", [a governed language model argues with the committee], green), arrow,
+    step("3 Optimize", [pick the portfolio within budget and risk limits], orange), arrow,
+    step("4 Challenge", [an AI model questions the committee's reasoning], green), arrow,
     step("5 Decide", [a named person signs], grey), arrow,
-    step("6 Score", [on 2,000 different futures], navy),
+    step("6 Score", [on 2,000 new futures], navy),
   )
   #v(5mm)
 
-  // ---- four findings, the report's four conclusions -----------------------------------------
+  // ---- four findings, the report's four questions -------------------------------------------
   #grid(columns: (1fr, 1fr, 1fr, 1fr), gutter: 8mm, rows: 314mm,
     finding("1", "Stage 1 · Prediction", blue,
-      [Can a model predict which plants get built?],
-      [It ranks well, but sizes badly.],
-      bars("Requests that started operating in 2025, of 1,441 live", (
-        ("Raw model expected", 125, "125", pale(blue)),
-        ("Corrected model expected", 78, "78", blue),
-        ("Lookup expected", 17, "17", grey),
+      [Are better predictions enough?],
+      [No. The model ranks well, but overestimates how many get built.],
+      bars("Texas requests that started operating in 2025, of 1,441 waiting", (
+        ("Model, as first fitted", 125, "125", pale(blue)),
+        ("Model, corrected", 78, "78", blue),
+        ("Simple lookup", 17, "17", grey),
         ([*What happened*], 30, "30", ink),
-      ), 125, note: [One year after the decision; nothing refitted (report Figure 3).]),
+      ), 125, note: [Checked one year after the decision; nothing refitted (report Figure 3).]),
       [
-        - The model ordered requests better than the lookup: AUC 0.731 against 0.686.
-        - It put ERCOT's five-year chance at 0.380; 0.238 operated.
-        - Machine learning won 3 of 12 forecast contests, all for plant output; prices behaved as random walks.
+        - *Ranking:* the model ordered requests better than the lookup (AUC 0.731 against 0.686; higher is better).
+        - *Counting:* it gave a Texas request a 0.380 chance of operating within five years; 0.238 did.
+        - Machine learning won 3 of 12 forecast contests, all for plant output. No price model beat "tomorrow looks like today".
       ],
-      [+\$37M], [what the model's curves added to the book: #ci[\[−\$76M, +\$151M\]], *not clear of zero*]),
+      [+\$37M], [what the model's forecasts added to the portfolio: #ci[\[−\$76M, +\$151M\]], includes zero, *so not proven*]),
     finding("2", "Stages 2–3 · Risk", orange,
-      [Is the highest expected return the best investment?],
-      [No. Pricing the tail beat ranking by value.],
-      bars("Rank by value vs the risk-aware optimizer, $ billion", (
-        ("Expected NPV · rank", 2.68, "2.68", grey),
-        ("Expected NPV · risk-aware", 2.17, "2.17", orange),
-        ("Worst-5% loss · rank", 1.55, "1.55", grey),
+      [What happens when projects lose together?],
+      [The losses pile up. Planning for them beats picking the highest values.],
+      bars("Pick the highest values vs the risk-aware optimizer, $ billion", (
+        ("Expected value · highest", 2.68, "2.68", grey),
+        ("Expected value · risk-aware", 2.17, "2.17", orange),
+        ("Worst-5% loss · highest", 1.55, "1.55", grey),
         ("Worst-5% loss · risk-aware", 0.82, "0.82", orange),
-      ), 2.68, note: [2,000 held-out futures (report Figure 4, Table 1).]),
+      ), 2.68, note: [Scored on 2,000 futures not used to choose (report Figure 4).]),
       [
-        - The tail is in the co-movement: five leases on one oil price, eight plants on one power price.
+        - Five leases ride one oil price, eight plants one power price. Break that link in the simulation and the worst-5% loss becomes a small profit.
         - The optimizer gave up \$508M of expected value to nearly halve the worst-5% loss.
-        - It found a hedge ranking never would: five cheap wind and solar deposits that pay when the leases do not.
+        - It found a hedge that ranking never would: five cheap wind and solar deposits that pay when the leases do not.
       ],
-      [+\$219M], [over ranking by value #ci[\[+\$13M, +\$401M\]]. Registered (C33): it holds, narrowly]),
-    finding("3", "Stage 3 · Financing", navy,
-      [Can the company pay for what it chose?],
-      [Only with a credit line: choose the book and its financing together.],
-      bars("The risk-aware book's expected NPV, $ billion", (
+      [+\$219M], [risk-adjusted value over picking the highest values #ci[\[+\$13M, +\$401M\]]. Registered test C33: passes, narrowly]),
+    finding("3", "Stage 3 · Funding", navy,
+      [What should the company actually fund?],
+      [13 projects, and a credit line to build them.],
+      bars("Expected value of the recommended portfolio, $ billion", (
         ("On paper", 2.17, "2.17", grey),
-        ("No facility", 1.71, "1.71", pale(navy)),
-        ([With a \$2.53B facility, after its cost], 1.98, "1.98", navy),
-      ), 2.17, note: [Fee 0.5% and interest 8% are assumed terms (report Section 5, Appendix K.4).]),
+        ("No credit line", 1.71, "1.71", pale(navy)),
+        ([With a \$2.53B credit line, after its cost], 1.98, "1.98", navy),
+      ), 2.17, note: [Fee 0.5% and interest 8% are assumed terms, not a bank's offer (report Section 6).]),
       [
-        - The construction reserve is an average: in half the futures the plants call more than it.
-        - The risk-aware book is the best of five ways to choose in 7 of 7 modelled worlds.
-        - *Caveat:* with no facility at all, equal capital by sector wins (\$0.87B against \$0.76B).
+        - Five lease redevelopments and eight power requests: \$3.78B of the \$3.82B.
+        - Building costs arrive in lumps: in half the futures the plants need more than was set aside.
+        - It is the best of five ways to choose in all 7 modelled worlds. *Caveat:* with no credit line, an equal split by sector wins (\$0.87B against \$0.76B).
       ],
-      [+\$312M], [over ranking once every book is financed the same way #ci[\[+\$110M, +\$506M\]]]),
+      [+\$312M], [over picking the highest values, when every portfolio gets its own credit line #ci[\[+\$110M, +\$506M\]]]),
     finding("4", "Stage 4 · AI challenger", green,
-      [Does a language model help the committee decide?],
-      [Yes, as a challenger that argues, not as the one who decides.],
-      bars("What each step adds to the committee's objective, $M per case", (
-        ("Tools, no language model", 76, "+76", pale(green)),
-        ("Language model on top", 43, "+43", green),
-        ("Optimizer's own book", 134, "+134", grey),
-      ), 134, note: [48 simulated committee proposals; from \$863M to \$1,116M per case (report Table 2).]),
+      [Can AI challenge a committee without replacing it?],
+      [Yes. It argues well, but it does not pick better than the optimizer.],
+      bars("Average gain per committee case, $M", (
+        ("Checking tools, no AI", 76, "+76", pale(green)),
+        ("AI challenger on top", 43, "+43", green),
+        ("Optimizer's portfolio, beyond the AI", 134, "+134", grey),
+      ), 134, note: [48 simulated committee proposals: from \$863M to \$1,116M per case (report Section 9).]),
       [
-        - It named 12 of 12 flaws of argument, challenged 0 of 12 sound proposals and read 40 of 40 paraphrased rules exactly.
-        - A fixed optimizer-first rule chose books as well (−\$14M): its value is the argument, not the pick.
-        - It failed 2 registered lines (8 of 48 readings missed the tail weight; 15 of 20 injections held); the controls caught both. A named person signs.
+        - It spotted 12 of 12 flawed arguments, wrongly challenged 0 of 12 sound proposals, and read 40 of 40 reworded rules correctly.
+        - A fixed "optimizer first" rule picked portfolios as well (AI edge −\$14M): its value is the argument, not the pick.
+        - It failed 2 registered tests: 38 of 48 rules read exactly, and 15 of 20 planted instructions resisted. Human confirmation and a number checker caught both. A named person signs.
       ],
-      [+\$43M], [per case from the language model #ci[\[+\$9M, +\$86M\]]. Registered (C34)]),
+      [+\$43M], [per case from the AI, beyond the checking tools #ci[\[+\$9M, +\$86M\]]. Registered test C34: passes]),
   )
   #v(5mm)
 
@@ -180,27 +180,27 @@
       #v(1.5mm)
       #set text(size: 20.5pt, fill: white)
       #set enum(spacing: 3mm, body-indent: 2.5mm)
-      + State the tail weight first; an unstated one is read as zero.
-      + Fund the risk-aware book: 13 of 40 candidates, \$3.78B. Invest now in 8, in stages in 5.
-      + Arrange a \$2.53B contingent construction facility.
-      + Wait on 12 requests, monitor 14 leases, reject 1. Run the challenger before signing.
+      + Say first how much downside you will accept; if it is left unstated, it is read as none.
+      + Fund the risk-aware portfolio: 13 of 40 projects, \$3.78B. Invest now in 8, in stages in 5.
+      + Arrange a \$2.53B standby credit line for construction.
+      + Wait on 12 requests, watch 14 leases, reject 1. Run the challenger before signing.
     ]),
     block(width: 100%, height: 100%, inset: (x: 9mm, y: 5mm), radius: 5mm, fill: white, stroke: 1.2pt + line-c, [
-      #text(size: 22pt, weight: "bold", fill: navy)[Beyond prediction lies a discipline]
+      #text(size: 22pt, weight: "bold", fill: navy)[Beyond prediction is a decision discipline]
       #v(1.5mm)
       #set text(size: 21pt)
       #set list(marker: text(fill: navy)[▸], spacing: 3.2mm)
-      - Simulate what you cannot forecast.
-      - Optimize against the risk you are willing to bear.
-      - Price the capital you will need.
-      - Let AI argue with the decision-maker, not replace them.
+      - Test the forecasts; simulate what you cannot forecast.
+      - Optimize within the company's own risk limits.
+      - Finance what you commit to.
+      - Let AI question the reasoning; a person signs.
     ]),
     block(width: 100%, height: 100%, inset: (x: 9mm, y: 5mm), radius: 5mm, fill: white, stroke: 1.2pt + line-c, [
       #text(size: 22pt, weight: "bold", fill: orange)[Read with care]
       #v(1.5mm)
-      #text(size: 18.5pt)[Modelled, not realized returns. The committees are simulated, the lease costs assumed, the futures resample 2018–2024, and the primary result clears zero by only \$13M. 41 criteria and 87 lines were registered; 40 pass, and every failure is kept as scored.]
+      #text(size: 18.5pt)[These are modelled results, not real returns. The committees were simulated, lease costs and loan terms assumed, and the futures replay 2018–2024 markets. The main result clears zero by only \$13M. 41 criteria covering 87 tests were set in advance; 40 pass, and every failure stays on the record.]
     ]),
   )
   #v(3.5mm)
-  #text(size: 12.5pt, fill: muted)[Data: LBNL *Queued Up* 2025 and 2026 editions (Rand et al., 2025, 2026), ERCOT interconnection reports and hourly prices, BSEE lease production, EIA prices and generation, NREL ATB 2024; author's analysis. Methods: LightGBM discrete-time hazard models; block-bootstrap futures (Künsch, 1989); a mixed-integer program on expected NPV minus the worst-5% loss (Rockafellar & Uryasev, 2000). Numbers from the report, Version 2; each traces to `results/report_numbers.csv`. Code: github.com/alanmossinger/Capstone]
+  #text(size: 12.5pt, fill: muted)[Data: LBNL *Queued Up* 2025 and 2026 editions (Rand et al., 2025, 2026), ERCOT interconnection reports and hourly prices, BSEE lease production, EIA prices and generation, NREL ATB 2024; author's analysis. Methods: LightGBM discrete-time hazard models; block-bootstrap futures (Künsch, 1989); a mixed-integer program on expected NPV minus the worst-5% loss (Rockafellar & Uryasev, 2000). Numbers from the report, Version 2 (revised); each traces to `results/report_numbers.csv`. Code: github.com/alanmossinger/Capstone]
 ])
