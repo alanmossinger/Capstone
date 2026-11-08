@@ -1,18 +1,20 @@
 """Joint scenarios for the portfolio: prices, output, costs and timing drawn together, with named stresses.
 
 What: reproducible scenario sets for the forty candidates (docs/plan.md §14.8)
-— a moving-block bootstrap of the joint monthly log changes of WTI, Henry
-Hub and the ERCOT price that keeps their cross-correlation; a Gaussian
-copula on the same marginals as a second, held-out generator; empirical
-residual draws for lease output and plant capacity factors from the scored
-holdout forecasts of notebook 05; cost multipliers from the grid; operation
-years for the power candidates from the queue models' curves through the
-copula of notebook 09's book simulation; named stresses; and the risk
-measures (P(NPV < 0), VaR, CVaR).
+— a block bootstrap of the joint monthly log changes of WTI, Henry Hub and
+the ERCOT price in calendar-year blocks, which keeps their cross-correlation,
+applied as shocks to mean-reverting log prices; empirical residual draws for
+lease output and plant capacity factors from the scored holdout forecasts of
+notebook 05; cost multipliers from the grid; operation years for the power
+candidates from the queue models' curves through the copula of notebook 09's
+book simulation; named stresses; and the risk measures (P(NPV < 0), VaR,
+CVaR). The held-out set is a second draw of the same block bootstrap, with
+its own seeds for every component (decision #82); the Gaussian copula
+generator below is kept only for the record of the bridged-price scoring.
 Why: the capital decision has to see the candidates' NPVs moving together
 — an oil collapse, a gas spike and a weak wind year are joint events — and
 the optimizer of notebook 09 must be scored on scenarios it did not select
-on, which is why two generators exist.
+on, which is why a second, independent draw is held out.
 Reads: nothing on import; the notebook passes the tables in.
 Writes: nothing; notebook 08 writes the scenario tables.
 Used by: notebooks 08 and 09; `tests/test_scenarios.py`.
@@ -102,8 +104,11 @@ def gaussian_copula_paths(changes, n_scenarios, horizon_months, seed=2021):
     -----
     Correlated normals with the rank correlation of the historical changes
     are mapped through each series' empirical quantile function; months are
-    independent, which is the copula's known weakness and the reason it is
-    the held-out generator, not the primary one.
+    independent, which is the copula's known weakness. It was the held-out
+    generator until decision #82: drawing months independently, it lets a
+    capped spike land without its reversal, so the held-out set is now a
+    second block-bootstrap draw. The function stays for the record of the
+    bridged-price scoring in ``results/registered_bridged/``, which used it.
     """
     rng = np.random.default_rng(seed)
     n, k = changes.shape
