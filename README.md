@@ -9,13 +9,13 @@ Author: **Alan Mössinger**. Mentor: Laura Danielle Stagnaro. November 2026.
 
 | Deliverable | Where |
 |---|---|
-| **The report** | [`report/Beyond_Prediction_Capstone_Report_V2.pdf`](report/Beyond_Prediction_Capstone_Report_V2.pdf) (the Word source: [`Beyond_Prediction_Capstone_Report_V2.docx`](report/Beyond_Prediction_Capstone_Report_V2.docx)) — abstract, nine sections within the course's 3,000 words, statement of work, appendices A–K, references. Every number in it is checked against `results/report_numbers.csv` by `tests/test_report.py`, and so is the body's length |
+| **The report** | [`report/Beyond_Prediction_Edited_Full_Report_V2_revised.pdf`](report/Beyond_Prediction_Edited_Full_Report_V2_revised.pdf) (the Word source: [`Beyond_Prediction_Edited_Full_Report_V2_revised.docx`](report/Beyond_Prediction_Edited_Full_Report_V2_revised.docx)) — abstract, an executive summary table, twelve sections within the course's 3,000 words, statement of work, appendices A–M, references. Every number in it is checked against `results/report_numbers.csv` by `tests/test_report.py`, and so is the body's length |
 | **The poster** (A1, one page) | [`report/poster_V2.pdf`](report/poster_V2.pdf), drawn from the report's numbers by [`report/poster_V2.typ`](report/poster_V2.typ) (`make poster`); every number on it is checked by the same test |
 | **The code** | thirteen notebooks run in order by `make all`; the `src/` package; the test suite (`make test`) |
 | The dashboard | `make app` — three pages: *Decide*, *A worked example*, *The report's decision* (see below) |
 | The proposal and the evaluation plan | [`docs/SIADS699_Project_Proposal_Group13_2026-10-19.pdf`](docs/SIADS699_Project_Proposal_Group13_2026-10-19.pdf), [`docs/proposal_update_2026-10-19.md`](docs/proposal_update_2026-10-19.md); [`docs/SIADS699_Evaluation_Plan_Group13.pdf`](docs/SIADS699_Evaluation_Plan_Group13.pdf), [`docs/evaluation_plan.md`](docs/evaluation_plan.md) |
 | Mentor feedback and my reply | [`docs/mentor_feedback.md`](docs/mentor_feedback.md) (every item, what changed, where), [`docs/mentor_reply_2026-10-27.md`](docs/mentor_reply_2026-10-27.md) |
-| The record of the work | [`docs/decisions.md`](docs/decisions.md) (125 numbered decisions with reasons), [`docs/registration_ledger.md`](docs/registration_ledger.md) (every pre-registered line, its verdict as first scored, every correction); the index is [`docs/README.md`](docs/README.md) |
+| The record of the work | [`docs/decisions.md`](docs/decisions.md) (126 numbered decisions with reasons), [`docs/registration_ledger.md`](docs/registration_ledger.md) (every pre-registered line, its verdict as first scored, every correction); the index is [`docs/README.md`](docs/README.md) |
 
 ## The question
 

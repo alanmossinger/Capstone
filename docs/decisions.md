@@ -2213,3 +2213,26 @@ alternative rejected.
     digital transformation really mean?* (2025, the year Alan gave;
     Medium's page is behind a bot check) for the stance that transformation changes how
     people decide, not the tools. Five entries; the body at 2,997 words.
+
+126. **The final report is the revised edited edition, its body cut to
+    the course's 3,000 words; the earlier editions archived** (Alan,
+    2026-11-08: "this is the final report:
+    …\report\Beyond_Prediction_Edited_Full_Report_V2_revised.docx"; the
+    body trimmed rather than the test's limit raised, and the ethics
+    appendix named in the body).
+    `report/Beyond_Prediction_Edited_Full_Report_V2_revised.docx` and its
+    PDF (exported with LibreOffice, 79 pages) are the report; the README
+    points to them and `tests/test_report.py` checks the Word file. The
+    body went from 3,312 to 2,987 words by removing repetition, not
+    findings: the abstract's last two sentences (the conclusion carries
+    them), caveats restated in Sections 8–10, the list of stresses in
+    Section 7 (it stays in Appendix K), and tighter wording in Sections 2,
+    3, 5, 6 and 8 and in the executive table. No number changed, and every
+    number still traces to `results/report_numbers.csv`. Section 11 now
+    names the ethical question the course asks the report to raise — a
+    completion score must not screen grid access, since it would penalize
+    small developers — and points to Appendix K.8. The official V2 edition
+    (`Beyond_Prediction_Capstone_Report_V2`) and the first edited edition,
+    Word and PDF, moved to the local `_archive/report/`, as V1 did on
+    3 November. *Rejected:* raising the test's limit to 3,400 words (the
+    course strongly suggests under 3,000).
