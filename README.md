@@ -15,7 +15,7 @@ Author: **Alan Mössinger**. Mentor: Laura Danielle Stagnaro. November 2026.
 | The dashboard | `make app` — three pages: *Decide*, *A worked example*, *The report's decision* (see below) |
 | The proposal and the evaluation plan | [`docs/SIADS699_Project_Proposal_Group13_2026-10-19.pdf`](docs/SIADS699_Project_Proposal_Group13_2026-10-19.pdf), [`docs/proposal_update_2026-10-19.md`](docs/proposal_update_2026-10-19.md); [`docs/SIADS699_Evaluation_Plan_Group13.pdf`](docs/SIADS699_Evaluation_Plan_Group13.pdf), [`docs/evaluation_plan.md`](docs/evaluation_plan.md) |
 | Mentor feedback and my reply | [`docs/mentor_feedback.md`](docs/mentor_feedback.md) (every item, what changed, where), [`docs/mentor_reply_2026-10-27.md`](docs/mentor_reply_2026-10-27.md) |
-| The record of the work | [`docs/decisions.md`](docs/decisions.md) (126 numbered decisions with reasons), [`docs/registration_ledger.md`](docs/registration_ledger.md) (every pre-registered line, its verdict as first scored, every correction); the index is [`docs/README.md`](docs/README.md) |
+| The record of the work | [`docs/decisions.md`](docs/decisions.md) (127 numbered decisions with reasons), [`docs/registration_ledger.md`](docs/registration_ledger.md) (every pre-registered line, its verdict as first scored, every correction); the index is [`docs/README.md`](docs/README.md) |
 
 ## The question
 
@@ -35,7 +35,7 @@ The case: on 1 January 2025 a company decides one budget of **$3.82B** across tw
 
 ## How the work is organized
 
-Each notebook has the same shape: inputs and outputs, numbered sections, a *Reading this* cell under every table and figure, and takeaways that say what goes to the report. `make all` runs them in dependency order (01, 03, 02, 04, 05, 07, 08, 09, 06, 10, 11, 12, 13) and writes every number the report cites to `results/`. The report's body rests on notebooks 11–13, which read everything upstream; its appendices use figures from every notebook.
+Each notebook has the same shape: a title cell that says its step in the pipeline, what it reads, what it writes and which notebooks read it; an inputs-and-outputs table; numbered sections; a *Reading this* cell under every table and figure; and takeaways that say what goes to the report. The larger notebooks are split into lettered parts (part A, part B, …) whose sections are numbered A.1, B.2, …, and cross-references use that form (notebook 04 §J.3 is section 3 of part J of notebook 04). `make all` runs the notebooks in dependency order (01, 03, 02, 04, 05, 07, 08, 09, 06, 10, 11, 12, 13) and writes every number the report cites to `results/`. The report's body rests on notebooks 11–13, which read everything upstream; its appendices use figures from every notebook.
 
 | Notebook | What it does | What the report takes from it |
 |---|---|---|

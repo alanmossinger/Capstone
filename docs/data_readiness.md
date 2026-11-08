@@ -54,7 +54,7 @@
 
 **Outcome (2026-10-23): GO**
 
-## v3 sources — S6, the LBNL 2026 data file (notebook 01, part C)
+## The LBNL 2026 edition — S6 (notebook 01, part C)
 
 Written by `notebooks/01_problem_and_data.ipynb`. File `LBNL_Ix_Queue_Data_File_thru2025.xlsx`, SHA-256 `794582d3…a08b6`.
 
@@ -69,7 +69,7 @@ Written by `notebooks/01_problem_and_data.ipynb`. File `LBNL_Ix_Queue_Data_File_
 
 Event-date coverage by region in both editions: `results/lbnl_2026_date_coverage.csv` (figure 01b_01). The 2025 file stays the basis of every registered result (decisions #43, #48).
 
-## v5 sources — the energy panel (notebook 01, parts D and E)
+## The energy sources — the panel (notebook 01, parts D and E)
 
 *Written by `notebooks/01_problem_and_data.ipynb` on 2026-10-23. Every number below was computed by that notebook; thresholds are in `src/config.py` (PLAN.md §14.1).*
 

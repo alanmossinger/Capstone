@@ -2236,3 +2236,44 @@ alternative rejected.
     Word and PDF, moved to the local `_archive/report/`, as V1 did on
     3 November. *Rejected:* raising the test's limit to 3,400 words (the
     course strongly suggests under 3,000).
+127. **The notebooks read as one pipeline: the plan's old notebook numbers,
+    the version labels and the review history taken out of the written
+    cells** (Alan, 2026-11-08: the notebooks "must follow an organization
+    pipeline"; they were "mentioning older notebooks, complicating the
+    understanding"). The thirteen notebooks grew by merging the plan's
+    notebooks 01–20 into parts, and their prose still spoke in that
+    numbering ("the entry gate of notebook 16", "notebook 08's job") and in
+    the labels of the report's drafts (v1–v10, "the v2 model", "report v9
+    said"), with the dates of reviews and pointers to decision and audit
+    numbers in nearly every cell. Every markdown cell was revised; no code,
+    output or number changed (one code string: the two section headings
+    notebook 01 writes into `docs/data_readiness.md`, renamed there too).
+    What changed: (1) 260 cross-references now name the pipeline's
+    notebooks and parts (notebook 16 → notebook 09 (part A); inside a
+    notebook, "part D"), and 56 section references inside the multi-part
+    notebooks use the part-lettered form §A.9; (2) every part header lost
+    its "(was notebook NN)" and "(new, date)" suffix and every section of a
+    multi-part notebook is numbered X.n, so a reference is unambiguous;
+    (3) each notebook opens with its step in the run order, what it reads,
+    what it writes and which notebooks read it, and the multi-part
+    notebooks end with one takeaway per part instead of a pointer to each
+    part's takeaways; (4) the version labels are replaced by what they
+    named — the first registration (C1–C5), the utility-scale registration
+    (C6–C12) and its chosen candidate, the region × technology and the fair
+    baseline, the queue-sources and the energy-sources gates, the first
+    challenger test (`results/v9/`) and the registered committee test
+    (`results/v10/`); the results folders keep their names and are
+    described by content; (5) 137 parenthetical pointers to decision
+    numbers, audits and the plan are removed from the prose (the decision
+    log, the audit and the plan stay in `docs/`), and review dates and the
+    author's name leave the cells (first person where the author acts);
+    (6) notebook 12 is titled by its role — robustness and the registered
+    committee test — and notebook 13 as the recommendation; the file names
+    stay, since the Makefile, the report's Appendix C and the tests cite
+    them. `report/playbooks.md`, which notebook 09 writes and checks for,
+    is regenerated from `results/playbooks.csv`. The README says how the
+    parts and sections are referenced. *Rejected:* renaming the results
+    folders `v8/`, `v9/`, `v10/`, `v2/` (every path in the code, the
+    report's appendices and the registered hashes would move); renaming
+    the figure files that carry the old numbering (the same); rewriting
+    the registered criteria files, whose text is kept as registered.
