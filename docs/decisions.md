@@ -2478,3 +2478,22 @@ alternative rejected.
     (web addresses such as eia.gov/electricity/data/eia923, the BLS
     series id CUUR0000SA0, the map scale 1:20,000,000). The report was
     not edited for this, and the number test passes on V3.
+
+133. **Poster V3: one question, one answer, four pictures** (Alan,
+    2026-11-14: "a very simple post with written text and mainly images
+    … easy for anyone to read … focus on the main conclusion and
+    results"). Poster V2 passed the number test but read as a report: four
+    columns of three bullets each, terms such as AUC and registered test
+    codes, no ethical question, no statement of work and no reference
+    list. `report/poster_V3.typ` keeps the question, the answer in one
+    sentence, the six steps, one picture per result (the one-year check,
+    value against worst-5% loss, the forty projects as dots with the
+    credit line, the committee ladder), each with one headline and one
+    number with its interval, then what to do, what to read with care
+    (with the ethical question of Section 11), how it was made (data,
+    method, explainability, where AI tools helped) and eight APA
+    references. No number is new; `tests/test_report.py` and `make
+    poster` read V3, and the test leaves out the poster's reference list
+    as it does the report's. *Rejected:* pasting the report's figures,
+    which are drawn for a page and carry subtitles a passer-by will not
+    read. The poster stays with the report, outside the repository.

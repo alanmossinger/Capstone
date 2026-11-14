@@ -51,9 +51,9 @@ def test_report_numbers_keys_are_unique():
     assert table["key"].is_unique
 
 
-# The poster (report/poster_V2.typ) is drawn from the report's numbers only; typst layout sizes (mm, pt, em, fr, %),
-# colours and file names are not quantities.
-POSTER = paths.REPORT / "poster_V2.typ"
+# The poster (report/poster_V3.typ, decision #133) is drawn from the report's numbers only; typst layout sizes
+# (mm, pt, em, fr, %), colours, file names and its reference list are not quantities.
+POSTER = paths.REPORT / "poster_V3.typ"
 
 # The report folder (the Word report, the poster and their notes) is kept by the author and is not in the repository
 # (decision #132): on a clone without it the tests that read those files are skipped, not failed.
@@ -68,6 +68,7 @@ def test_every_number_on_the_poster_is_in_report_numbers():
     for text in table["text"].astype(str):
         cited |= numbers_in(text)
     poster = POSTER.read_text(encoding="utf-8")
+    poster = poster.split("// ---- references")[0]  # volumes and pages of the cited works
     poster = "\n".join(line for line in poster.splitlines() if not line.lstrip().startswith(("//", "#set", "#let")))
     poster = re.sub(r'#(?:text|image|v|line|grid|align|block|circle)\([^)]*\)', " ", poster)  # typst calls carry sizes, not findings
     poster = re.sub(r"\b\d+(?:\.\d+)?(?:mm|pt|em|fr)\b|\d+(?:\.\d+)?%(?=[,)\s])", " ", poster)

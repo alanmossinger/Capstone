@@ -63,8 +63,8 @@ figures:          ## every notebook that draws figures, in pipeline order
 numbers:          ## results/report_numbers.csv: every number the report cites, read from results/
 	$(PYTHON) -m src.report_numbers
 
-poster:           ## report/poster_V2.pdf from report/poster_V2.typ (needs typst)
-	typst compile --root . report/poster_V2.typ report/poster_V2.pdf
+poster:           ## report/poster_V3.pdf from report/poster_V3.typ (needs typst)
+	typst compile --root . report/poster_V3.typ report/poster_V3.pdf
 
 app:              ## the dashboard (app/app.py): decide — the options, your book, the advisor's challenge, your result — and the report's decision
 	$(PYTHON) -m streamlit run app/app.py
