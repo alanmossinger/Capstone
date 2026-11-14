@@ -2277,3 +2277,200 @@ alternative rejected.
     report's appendices and the registered hashes would move); renaming
     the figure files that carry the old numbering (the same); rewriting
     the registered criteria files, whose text is kept as registered.
+
+128. **Section 10 of the report says what the registered criteria are for
+    and why they matter** (Alan, 2026-11-12: "we should briefly include in
+    the report what are the purpose of the criterion (C1, C2, etc) an why
+    they are relevant for the project", placed "to keep the report
+    storytelling"). The body named the criteria only by their count and
+    by the nine lines of Table 3; a reader met C33–C41 without being told
+    what a criterion is or what the earlier families tested. Section 10,
+    "What the registered evidence supports", is where the body first
+    speaks of them, so its opening paragraph became three: what a
+    criterion names (what is measured, against what, the pass threshold);
+    the families by question — C1–C19 the prediction layer (ranking
+    against the cohort average and the lookup, the probability level,
+    other regions, the landmark two years in, the realised book), C20 the
+    output and price forecasts, C21–C24 the allocation (NPV ranking, equal
+    capital, stability under stress, the tail under joint modelling),
+    C25–C32 the challenger's first record and C33–C41 the final
+    experiment with its two primary lines — and why they matter (they
+    close the door on hindsight; a failed line stays a failure); then the
+    counts and the nine lines as before. No number was added; the number
+    test passes. The edit was made through the copy Word had open
+    (win32com, then saved), since the file is locked while Word holds it.
+    The body now counts 3,607 words against the test's 3,000: it was
+    already at 3,428 after the uncommitted edits of 11 November (the
+    co-movement paragraphs, the optimizer's formulation, Sections 7 and 9),
+    so `test_the_official_report_body_is_within_the_course_length` fails
+    before and after this change; trimming is a separate decision. The PDF
+    has not been re-exported since 8 November. *Rejected:* putting the
+    explanation only in Appendix A (Table A1 already groups C1–C24 by
+    family there; the body is what lacked it); opening Section 3 with it
+    (the stages, not the scoring, are that section's story).
+
+129. **Every notebook opens with its purpose, why it matters and its place
+    in the pipeline; notebook 01 opens with the problem and why these
+    data** (Alan, 2026-11-12: the notebooks "should follow a pipeline
+    sequence and storytelling to make easier understanding and
+    explanations of why is important certain steps"; "the problem is not
+    well explained in the beginning of notebook 1. Also explain why use
+    these dataset. Clearly explain in the beginning of each notebook its
+    purpose and importance"). After decision #127 each title cell said the
+    step, what the notebook reads and writes and what it does, but not
+    *why*: a reader met the cleaning rules before the question, and the
+    forecasts before the decision they feed. What changed, in the first
+    two cells of each notebook and nowhere else (no code, output or number
+    moved; validated with nbformat; cells 0 and 1 are the only cells that
+    differ): (1) the title cell shows the whole run order with the
+    notebook's step in bold, then a **Purpose** (what question of the
+    project it serves), **Why it matters** (what the decision would get
+    wrong without it, and which later notebook depends on it) and **What
+    it does** (the former paragraph); the multi-part notebooks' part table
+    gained a "Why it is here" column; (2) notebook 01 opens with the
+    problem in the report's terms — one budget, forty candidates that
+    lose money together, ranking one at a time against choosing a book,
+    the decision of 1 January 2025, the four questions and which
+    notebooks answer each — a table of every data source with what it
+    gives the decision and why that source, the reason for the two
+    sectors, and a thirteen-row map of the pipeline (step, notebook,
+    stage of the decision process, what it leaves behind for the next
+    step) that also explains the two places where the run order departs
+    from the numbering (03 before 02; 06 after 09); (3) the second cell,
+    *Inputs → Outputs*, lost its duplicate and in four notebooks
+    incomplete parts table and its *Execution order* line, three of which
+    contradicted the title cell (03 "after notebook 02", 07 "after 04",
+    09 "after 07"); the order is now stated once; (4) notebooks 12 and 13
+    declared the `python3` kernel instead of `queue-survival`, so
+    `tests/test_notebooks.py` failed; both now declare the project kernel
+    (the pipeline runner names the kernel explicitly, so no run was
+    affected). The README's description of a notebook's shape follows the
+    new opening. `results/_book_outcomes_heldout_tmp.csv`, an untracked
+    file of 5 November that nothing reads (`results/v2/book_outcomes_heldout.csv`
+    superseded it), was removed from the repository.
+    **What was dropped.** A usage audit of all 421 sections (every file
+    each section writes, searched for by name in the other notebooks,
+    `src/`, `app/`, `tests/`, `src/report_numbers.py`, the report's text
+    and figures, the poster, the Makefile and the docs) found 95 code
+    sections whose outputs nothing reads. Most carry the story or the
+    method and stay: the twenty *Checks* sections are each notebook's
+    own acceptance gate (their `*_checks.csv` is the record of the run,
+    not an input to anything); the exploratory sections of 02–04 motivate
+    a later choice the takeaways name (the entry cohorts and the price
+    regimes for the level drift and the scenario design, the yearly
+    hazards and the reference request for the discrete-time models, the
+    ERCOT treatment and the proposed-online-date leak for the features,
+    the stationarity, truncation and split-protocol tables for C20); and
+    the post-hoc sections of 06 and 09 are the labelled transparency the
+    report cites. Three sections were purely exploratory, unused and
+    uncited, and were removed with their files: notebook 01 §A.3.3 "Which
+    columns are filled in" (figure 01_01), notebook 02 §A.10 "Hybrids and
+    service type" (03_07, 03_08; the service-type and hybrid findings
+    stand in F19), and notebook 06 §B.5 "All five candidates on the test
+    cohort — not used for the choice" (`posthoc_all_candidates_test.csv`,
+    08b_05). No name they assigned is read by a later cell (checked by
+    parsing every later cell for a read without an assignment), the one
+    pointer to §A.10 in the Part A takeaways was removed, and the four
+    figure stubs left `report/figure_notes.md`. Section numbers are not
+    closed up, as elsewhere in the notebooks, so existing references
+    hold. Single unused files inside otherwise used sections
+    (`backtest_bootstrap.csv`, `portfolio_frontier.csv`,
+    `managed_book_bootstrap.csv`, `forecast_metrics.csv` and the like)
+    stay: removing a write line changes code for no reader's benefit.
+    *Rejected:* renumbering the notebooks to the run order (the Makefile,
+    Appendix C of the report, the tests and 260 cross-references cite the
+    present numbers; the opening now states the order instead); moving
+    the problem statement into a separate notebook 00 (another file to
+    run; the problem belongs with the data it is answered from).
+
+130. **The free-standing *Checks* sections are dropped from the notebooks**
+    (Alan, 2026-11-12, on the question left open in #129: "Drop them
+    too"). Nineteen sections whose only output was a `*_checks.csv` that
+    nothing reads — not the tests, not `src/report_numbers.py`, not
+    another notebook, not the report — are removed with their files:
+    notebook 02 §B.6; notebook 04 §A.11, §B.11, §C.8, §D.8, §I.5, §K.4
+    and §L.3; notebook 05 §7; notebook 06 §A.12, §B.8 and §D.5; notebook
+    07 §A.9 and §B.5; notebook 08 §7; notebook 09 §A.10, §B.5, §C.11 and
+    §D.7 (`map_checks`, `cox_checks`, `dt_checks`, `trackB_checks`,
+    `scale_checks`, `milestone_checks`, `miso_spp_checks`,
+    `decision_date_checks`, `forecast_checks`, `evaluate_checks`,
+    `posthoc_checks`, `evaluate_v2_checks`, `value_checks`,
+    `candidates_checks`, `scenarios_checks`, `portfolio_checks`,
+    `levers_checks`, `managed_book_checks`, `portfolio_v7_checks`). Before
+    each deletion: no name the section assigned is read by a later cell,
+    and every other file the section named (the figures and tables it
+    checked for) is still produced by the cell that writes it. The
+    *Inputs → Outputs* tables lost the corresponding rows. The checks
+    that stay are the ones that are not free-standing: the sections that
+    save a table *and* check it (01 §B.11, 02 §A.14, 03 §A.10), the gates
+    (01 §A.8, §C.6, §E.5), the checks that are themselves evidence (04
+    §B.9's band check, read by `tests/test_discrete_time.py`; 04 §D.6;
+    04 §J.6, the leakage guard C12, read by `src/report_numbers.py`; 06
+    §C.5 and §C.8), and the checks of notebooks 11 and 12, whose
+    `checks.csv` the report's numbers read. The acceptance rules the
+    dropped sections encoded are not lost to the project: `tests/` holds
+    the ones that guard a result (`make test`), and a failed assertion in
+    a notebook stops `make all`. *Rejected:* keeping the sections as
+    documentation of what was once checked (the decision log and the
+    git history keep that; a reader of the pipeline does not need it).
+
+131. **The conclusion no longer says the risk-aware book beats NPV ranking
+    "only with contingent financing"** (Alan, 2026-11-12: "apply the
+    rewrite in the report", after a review of Section 12). The sentence
+    conflated two findings. On the registered metric the risk-aware book
+    beats ranking by expected NPV under every funding rule tried
+    (`results/v2/books_financed.csv`: static $1.35B against $1.13B, no
+    construction line $0.76B against $0.68B, own line net of financing
+    $1.03B against $0.72B); what financing decides is whether it is the
+    best of the five processes, since with no line equal capital by sector
+    leads ($0.87B). The second paragraph of Section 12 now reads: "The
+    risk-aware book beat ranking by expected NPV on the registered
+    objective under every funding rule tried; it is the best of the five
+    processes only once its construction calls are financed, because
+    without a line equal capital by sector leads. The recommendation is
+    therefore the book and its facility together." The rest of the
+    paragraph is unchanged. Edited in the file with python-docx (the
+    document was closed), one run, formatting kept; the number test
+    passes; the body counts 3,640 words against the test's 3,000 (left as
+    decided). The PDF is not re-exported. *Not applied:* two optional
+    points of the same review — naming the two failed governance lines in
+    the conclusion, and softening "where the money is made".
+
+132. **The report is V3, checked against the course's checklist, and the
+    report folder is kept out of the repository** (Alan, 2026-11-14:
+    "check if the report respect this requirements"; "Yes, fix them";
+    "The statement should say that AI helped with code review, debugging
+    and general plan with AI challenger"; "the reports still stay only on
+    my computer"). The final report is now
+    `Beyond_Prediction_Edited_Full_Report_V3_no_criterion_codes.docx`.
+    Checked against the checklist as this repository records it (APA
+    citations, project statement, data access and context, methodology,
+    evaluation, explainability, translation, broader impacts with an
+    ethical question, technical writing, statement of work), three items
+    were only partly met and were fixed in the document: (1) the body had
+    no in-text citation, so seven were added, thirteen data sources that
+    were used but not listed joined the reference list, and every
+    reference is now cited (Appendix N's source rows, Appendix C and
+    K.2 carry most of them); (2) the body named no data source, so one
+    sentence in Section 2 names them and points to Appendix N; (3)
+    explainability was shown but never named, so one sentence in Section
+    4 names it and points to the ten hand rules of Appendix E.4. Also:
+    the ethical point of Section 11 is posed as a question, the three
+    body tables are captioned Tables 1 to 3, three slips of wording are
+    corrected, the question and the closing sequence are no longer
+    repeated word for word under the opening statement, and the statement
+    of work says where AI tools helped. No number was added or changed.
+    The report folder was removed from GitHub on 11 November; it is now
+    untracked and ignored here as well, so the report, the poster and
+    their notes stay on the author's machine. `tests/test_report.py`
+    reads V3 and skips the tests that need the folder when it is absent;
+    the README describes V3, says where each body figure and table is
+    rebuilt, and no longer links into `report/`. Notebooks 12 and 13
+    declared the `python3` kernel again and were restored to
+    `queue-survival`. *Left open:* the body counts about 3,100 words
+    without tables and captions (3,878 by the test's count, which
+    includes them) against the course's 3,000; and five tokens of
+    Appendix N (1,996 and 9,263 queue rows, the names EIA-923 and
+    CUUR0000SA0, the scale 1:20,000,000) are not in
+    `results/report_numbers.csv`, so the number test fails on them, as
+    it has since the appendix was added on 13 November.

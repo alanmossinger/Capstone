@@ -1,8 +1,0 @@
-check,passed,result
-criteria file predates the scored file,True,PASS
-one scored row per registered line,True,PASS
-every registered line has a paired interval and a verdict,True,PASS
-challenger of every line chosen on validation before scoring,True,PASS
-no holdout prediction uses a target after the panel's end,True,PASS
-ERCOT registered line scores observed targets only,True,PASS
-F27 saved,True,PASS

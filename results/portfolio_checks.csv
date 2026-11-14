@@ -1,9 +1,0 @@
-check,value,pass
-"simulation keeps the marginals (mean of draws ≈ expected MW, year 5)",0.006128625086541398,True
-every chosen book respects the budget and caps,0.9999353239949377,True
-no outcome information enters a chooser's score,scores are expected values from the models and baselines,True
-gate classes partition the pools,1298,True
-simulated scenarios keep the marginals (share operating by year 5 ≈ mean level factor × P),0.00010403026074540245,True
-every policy respects the budget,0.9999353239949377,True
-decision pack covers every test request,2268,True
-"F14, F15 and F23 saved as PNG and SVG",6,True

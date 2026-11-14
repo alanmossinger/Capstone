@@ -3,6 +3,7 @@
 import re
 
 import pandas as pd
+import pytest
 
 from src import paths, report_numbers
 
@@ -51,7 +52,13 @@ def test_report_numbers_keys_are_unique():
 # colours and file names are not quantities.
 POSTER = paths.REPORT / "poster_V2.typ"
 
+# The report folder (the Word report, the poster and their notes) is kept by the author and is not in the repository
+# (decision #132): on a clone without it the tests that read those files are skipped, not failed.
+def needs(path):
+    return pytest.mark.skipif(not path.exists(), reason=f"{path.name} is kept outside the repository (decision #132)")
 
+
+@needs(POSTER)
 def test_every_number_on_the_poster_is_in_report_numbers():
     table = report_numbers.build()
     cited = set()
@@ -68,7 +75,7 @@ def test_every_number_on_the_poster_is_in_report_numbers():
 
 # The official capstone report is the Word edition (decision #117). It is edited in Word, not built from Markdown,
 # so its text is read straight from the document XML: the abstract through the appendices, without the references.
-OFFICIAL = paths.REPORT / "Beyond_Prediction_Edited_Full_Report_V2_revised.docx"  # the final report (decision #126)
+OFFICIAL = paths.REPORT / "Beyond_Prediction_Edited_Full_Report_V3_no_criterion_codes.docx"  # the final report (decision #132)
 
 
 def official_text():
@@ -99,10 +106,12 @@ def official_body_words():
     return sum(len(t.split()) for t in texts[start:end])
 
 
+@needs(OFFICIAL)
 def test_the_official_report_body_is_within_the_course_length():
     assert official_body_words() <= OFFICIAL_WORD_LIMIT
 
 
+@needs(OFFICIAL)
 def test_every_number_in_the_official_report_is_in_report_numbers():
     table = pd.read_csv(paths.RESULTS / "report_numbers.csv", dtype=str)
     cited = set()
