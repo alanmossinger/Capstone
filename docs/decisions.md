@@ -2469,8 +2469,12 @@ alternative rejected.
     declared the `python3` kernel again and were restored to
     `queue-survival`. *Left open:* the body counts about 3,100 words
     without tables and captions (3,878 by the test's count, which
-    includes them) against the course's 3,000; and five tokens of
-    Appendix N (1,996 and 9,263 queue rows, the names EIA-923 and
-    CUUR0000SA0, the scale 1:20,000,000) are not in
-    `results/report_numbers.csv`, so the number test fails on them, as
-    it has since the appendix was added on 13 November.
+    includes them) against the course's 3,000. *Closed the same day* (Alan: "Yes, fix it"): the number test had
+    failed since Appendix N was added on 13 November, on five tokens.
+    Two are quantities and are now written by `src/report_numbers.py`
+    from `results/iso_join_rates.csv` (9,263 queue positions in PJM's
+    export, 1,996 requests in ERCOT's GIS report, beside CAISO's 2,278);
+    three are names, not quantities, and the test now passes over them
+    (web addresses such as eia.gov/electricity/data/eia923, the BLS
+    series id CUUR0000SA0, the map scale 1:20,000,000). The report was
+    not edited for this, and the number test passes on V3.

@@ -594,6 +594,8 @@ def v3_data():
     add("caiso_join_test", pct(join.loc["CAISO", "share_found_2017_2019"], 0), join.loc["CAISO", "share_found_2017_2019"], "results/iso_join_rates.csv",
         "CAISO 2017–2019 entrants found in the ISO report")
     add("caiso_iso_rows", f"{int(join.loc['CAISO', 'rows_in_iso_file']):,}", int(join.loc["CAISO", "rows_in_iso_file"]), "results/iso_join_rates.csv", "rows in CAISO's queue report")
+    add("pjm_iso_rows", f"{int(join.loc['PJM', 'rows_in_iso_file']):,}", int(join.loc["PJM", "rows_in_iso_file"]), "results/iso_join_rates.csv", "queue positions in PJM's queue export")
+    add("ercot_iso_rows", f"{int(join.loc['ERCOT', 'rows_in_iso_file']):,}", int(join.loc["ERCOT", "rows_in_iso_file"]), "results/iso_join_rates.csv", "requests in ERCOT's GIS report")
 
 
 def v3_fair_baseline():

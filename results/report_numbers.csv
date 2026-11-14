@@ -365,6 +365,8 @@ ia_both,"1,186",1186,results/ia_date_agreement.csv,dated in both editions
 caiso_join,90%,0.8965238480194018,results/iso_join_rates.csv,CAISO LBNL requests found in the ISO report
 caiso_join_test,100%,1.0,results/iso_join_rates.csv,CAISO 2017–2019 entrants found in the ISO report
 caiso_iso_rows,"2,278",2278,results/iso_join_rates.csv,rows in CAISO's queue report
+pjm_iso_rows,"9,263",9263,results/iso_join_rates.csv,queue positions in PJM's queue export
+ercot_iso_rows,"1,996",1996,results/iso_join_rates.csv,requests in ERCOT's GIS report
 large_n,"1,839",1839,results/sample_sizes_v2.csv,test requests ≥ 20 MW
 large_share,81%,0.8108465608465608,results/sample_sizes_v2.csv,share of test requests ≥ 20 MW
 large_mw_share,98.9%,0.9893121500510352,results/sample_sizes_v2.csv,share of test MW ≥ 20 MW
