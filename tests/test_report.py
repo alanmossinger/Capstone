@@ -30,6 +30,9 @@ NOT_QUANTITIES = [
     r"\bEIA-923\b",
     r"\beGRID20\d\d\b",
     r"\bSHA-256\b",
+    r"\b[\w-]+(?:\.[\w-]+)*\.(?:gov|com|org)(?:/[\w./-]*)?",  # web addresses in the datasets appendix (eia.gov/electricity/data/eia923)
+    r"\bCUUR\w+\b",                        # the BLS series id of the CPI-U (CUUR0000SA0)
+    r"\b1:\d[\d,]*\b",                     # map scales (1:20,000,000)
     r"\bSIADS \d+",
     r"\bv\d+\b",
     r"\b(?:19|20)\d\d[a-z]?\b",            # calendar years, and citation years such as 2026c
