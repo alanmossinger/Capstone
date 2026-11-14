@@ -1,8 +1,0 @@
-check,passed,result
-scenario count and horizon as registered,True,PASS
-seed reproduces the primary set,True,PASS
-correlations preserved within 0.1 by the primary generator,True,PASS
-every candidate has an NPV in every scenario of every set,True,PASS
-a request that never operates costs its carry,True,PASS
-stresses: base row equals the flat-price book,True,PASS
-F30–F32 saved,True,PASS

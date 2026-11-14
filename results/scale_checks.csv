@@ -1,6 +1,0 @@
-check,value,expected,pass
-criteria file written before the metrics file,128.3,> 0 seconds,True
-variant chosen on 2016 only (the choice table has no test column),"candidate, model, congestion, fitted on, log_loss_2016_all, log_loss_2016_large, chosen",no column named after the test cohort,True
-v1 baseline refit equals the stored v1 baseline,allclose,allclose,True
-every metric row carries an interval,0,0,True
-F10 saved as PNG and SVG,2,2,True

@@ -9,17 +9,19 @@ Author: **Alan Mössinger**. Mentor: Laura Danielle Stagnaro. November 2026.
 
 | Deliverable | Where |
 |---|---|
-| **The report** | [`report/Beyond_Prediction_Edited_Full_Report_V2_revised.pdf`](report/Beyond_Prediction_Edited_Full_Report_V2_revised.pdf) (the Word source: [`Beyond_Prediction_Edited_Full_Report_V2_revised.docx`](report/Beyond_Prediction_Edited_Full_Report_V2_revised.docx)) — abstract, an executive summary table, twelve sections within the course's 3,000 words, statement of work, appendices A–M, references. Every number in it is checked against `results/report_numbers.csv` by `tests/test_report.py`, and so is the body's length |
-| **The poster** (A1, one page) | [`report/poster_V2.pdf`](report/poster_V2.pdf), drawn from the report's numbers by [`report/poster_V2.typ`](report/poster_V2.typ) (`make poster`); every number on it is checked by the same test |
+| **The report** | *Beyond Prediction — Edited Full Report V3* (Word, about 80 pages): an opening statement of the question and the answer, the abstract, the executive decision in one table, twelve sections (about 3,100 words without tables and captions), the statement of work, appendices A–N and the APA reference list. It is submitted through the course and kept by the author; **the report is not in this repository**. This repository holds everything the report is built from: see [*Replicating the report*](#replicating-the-report) |
+| **The poster** (A1, one page) | drawn from the report's numbers; kept with the report, outside the repository |
 | **The code** | thirteen notebooks run in order by `make all`; the `src/` package; the test suite (`make test`) |
 | The dashboard | `make app` — three pages: *Decide*, *A worked example*, *The report's decision* (see below) |
 | The proposal and the evaluation plan | [`docs/SIADS699_Project_Proposal_Group13_2026-10-19.pdf`](docs/SIADS699_Project_Proposal_Group13_2026-10-19.pdf), [`docs/proposal_update_2026-10-19.md`](docs/proposal_update_2026-10-19.md); [`docs/SIADS699_Evaluation_Plan_Group13.pdf`](docs/SIADS699_Evaluation_Plan_Group13.pdf), [`docs/evaluation_plan.md`](docs/evaluation_plan.md) |
 | Mentor feedback and my reply | [`docs/mentor_feedback.md`](docs/mentor_feedback.md) (every item, what changed, where), [`docs/mentor_reply_2026-10-27.md`](docs/mentor_reply_2026-10-27.md) |
-| The record of the work | [`docs/decisions.md`](docs/decisions.md) (127 numbered decisions with reasons), [`docs/registration_ledger.md`](docs/registration_ledger.md) (every pre-registered line, its verdict as first scored, every correction); the index is [`docs/README.md`](docs/README.md) |
+| The record of the work | [`docs/decisions.md`](docs/decisions.md) (132 numbered decisions with reasons), [`docs/registration_ledger.md`](docs/registration_ledger.md) (every pre-registered line, its verdict as first scored, every correction); the index is [`docs/README.md`](docs/README.md) |
 
 ## The question
 
-Energy companies allocate one capital budget across investments — oil and gas, conventional generation, renewables and storage — that differ in return, market exposure, execution risk and downside. Forecasts and project valuations rank these investments one at a time; they do not show that a set of individually attractive projects can carry a concentrated tail, an unplanned call on liquidity and an exposure to one adverse market. The question this project answers is prescriptive: **given limited capital, uncertain markets, competing investments and stated risk preferences, which projects should a company fund, stage, defer or reject — and why?**
+Energy companies allocate one capital budget across investments — oil and gas, conventional generation, renewables and storage — that differ in return, market exposure, execution risk and downside. Forecasts and project valuations rank these investments one at a time; they do not show that a set of individually attractive projects can carry a concentrated tail, an unplanned call on liquidity and an exposure to one adverse market. The report asks a narrow, testable question: **does adding uncertainty, portfolio optimization and a governed AI challenge produce a better capital-allocation decision than prediction and ranking alone?** It answers through four questions: are better predictions enough; what happens when projects lose together; what should the company actually fund; and can AI challenge a committee without replacing it.
+
+The answer is a sequence, not a single model: define the decision, test the forecasts, simulate correlated uncertainty, optimize within the company's limits, finance the resulting commitments, challenge the reasoning and retain a signed human decision. Prediction is one input; a defensible allocation is where the money is made.
 
 The system runs in six stages, kept apart so that each one's contribution can be measured on its own: **prediction** (which interconnection requests get built and when; lease output, plant output and prices), **uncertainty** (2,000 joint scenarios of prices, output, costs and timing), **prescription** (a risk-aware optimizer choosing a book under a budget and caps), **AI challenge** (a language model that reads the committee's reasons into rules and argues against the proposal from computed facts, holding no authority), **human decision** (an override gate and a hash-chained ledger) and **measured outcome** (pre-registered criteria, scored once).
 
@@ -29,29 +31,30 @@ The case: on 1 January 2025 a company decides one budget of **$3.82B** across tw
 
 - **Fund the risk-aware book** — five leases and eight requests, **$3.78B committed** ($1.42B of lease capital, $7M of deposits, a $2.35B construction reserve) — **together with a $2.53B contingent construction facility**, because construction calls exceed the reserve in 50% of scenarios. Defer the 12 waiting requests until their agreements are signed; monitor 14 leases; reject 1.
 - On the registered risk-adjusted metric (expected NPV minus the average loss in the worst 5% of scenarios) the risk-aware book beats ranking by NPV by **+$219M [+$13M, +$401M]** as pre-registered, and by **+$312M [+$110M, +$506M]** once every decision process is financed the same way (+$213M [+$17M, +$412M] over the deterministic optimizer). It expects $2.17B with a $0.82B worst-5% average loss and a 9% chance of a loss ($1.98B and $0.95B financed), and it scores best in **7 of 7** modelled worlds. Without a facility, equal capital by sector would lead: the recommendation is the book *and* its facility.
-- **Better prediction did not make a better decision.** At utility scale the completion model ties a size lookup at entry; the book chosen with the model's queue curves is not demonstrably better than the book chosen with the lookup's. The decision turns on a few large requests, on the capital plan and on the tail, not on the forecast.
-- **The AI's value is in the argument, not the choice.** In a registered test on 48 simulated committee proposals, deterministic tools improve the committee's own decision by **+$76M** per case and the language-model challenger adds **+$43M [+$9M, +$86M]** more; against a fixed optimizer-first rule that reads no words the model's edge disappears (**−$14M [−$36M, +$2M]**). The model named 12 of 12 author-written flaws of argument and over-challenged 0 of 12 sound proposals; every number it writes is checked against its fact sheet by code.
+- **Better prediction did not make a better decision.** The completion model ranks requests better than a transparent lookup (AUC 0.731 against 0.686) but overstates how many get built: of 1,441 live ERCOT requests, 30 entered operation in 2025 where the raw model expected 125, the level-corrected model 78 and the lookup 17. The book chosen with the model's curves is not demonstrably better than the book chosen with the lookup's (**+$37M [−$76M, +$151M]**). Machine learning beat transparent baselines in three of twelve forecast contests, all for plant output; price forecasts did not beat a random walk.
+- **The tail is the co-movement.** Five leases ride one oil price path and eight requests one ERCOT price path. Shuffling the scenarios so the candidates no longer move together turns the book's $0.82B worst-5% loss into a small profit; ranking by expected value cannot see this risk, and the optimizer's tail term can.
+- **The AI's value is in the argument, not the choice.** In a registered test on 48 simulated committee proposals, deterministic tools improve the committee's own decision by **+$76M** per case and the language-model challenger adds **+$43M [+$9M, +$86M]** more; against a fixed optimizer-first rule that reads no words the model's edge disappears (**−$14M [−$36M, +$2M]**). The model named 12 of 12 author-written flaws of argument and over-challenged 0 of 12 sound proposals; every number it writes is checked against its fact sheet by code. Two registered governance lines failed: it read 38 of 48 rule statements exactly (43 required) and resisted 75% of injected instructions.
 - **Reported as they fell.** 41 criteria and 87 lines were registered; 40 lines pass. No registered verdict was re-scored; corrections are added beside the original in the ledger. Of the 12 controls of the governance layer, 10 are in place and 2 partly (injection resistance, scenario realism). All results are model-based on public data and assumed lease costs, not realized returns.
 
 ## How the work is organized
 
-Each notebook has the same shape: a title cell that says its step in the pipeline, what it reads, what it writes and which notebooks read it; an inputs-and-outputs table; numbered sections; a *Reading this* cell under every table and figure; and takeaways that say what goes to the report. The larger notebooks are split into lettered parts (part A, part B, …) whose sections are numbered A.1, B.2, …, and cross-references use that form (notebook 04 §J.3 is section 3 of part J of notebook 04). `make all` runs the notebooks in dependency order (01, 03, 02, 04, 05, 07, 08, 09, 06, 10, 11, 12, 13) and writes every number the report cites to `results/`. The report's body rests on notebooks 11–13, which read everything upstream; its appendices use figures from every notebook.
+Each notebook has the same shape: a title cell that says its step in the run order and shows the whole pipeline with that step marked, then its *purpose*, *why it matters* for the decision, what it does, what it reads, what it writes and which notebooks read it (and, for a notebook in parts, one line per part on why the part is there); an inputs-and-outputs table; numbered sections; a *Reading this* cell under every table and figure; and takeaways that say what goes to the report. Notebook 01 opens with the problem itself — one budget, forty candidates that lose money together, the four questions — and a table of why each data source is used and what each of the thirteen notebooks leaves behind for the next. The larger notebooks are split into lettered parts (part A, part B, …) whose sections are numbered A.1, B.2, …, and cross-references use that form (notebook 04 §J.3 is section 3 of part J of notebook 04). `make all` runs the notebooks in dependency order (01, 03, 02, 04, 05, 07, 08, 09, 06, 10, 11, 12, 13) and writes every number the report cites to `results/`. The report's body rests on notebooks 11–13, which read everything upstream; its appendices use figures from every notebook.
 
 | Notebook | What it does | What the report takes from it |
 |---|---|---|
-| `01_problem_and_data` | the queue sources (LBNL *Queued Up* 2025 and 2026, EIA-860M, the ISO files), the energy sources (BSEE, EIA-923, prices, ERCOT, eGRID), the cleaning rules with row counts, the manifest, the data-readiness gate | Section 3 (data), Appendix E |
+| `01_problem_and_data` | the queue sources (LBNL *Queued Up* 2025 and 2026, EIA-860M, the ISO files), the energy sources (BSEE, EIA-923, prices, ERCOT, eGRID), the cleaning rules with row counts, the manifest, the data-readiness gate | Section 2 (the decision and its data), Appendices E and N |
 | `02_eda` | survival curves, what drives withdrawal, the project map, state archetypes; the energy series | Appendix D (A1, A3, A8, A9), Appendix E |
-| `03_statistics_and_features` | queue outcomes and entry-time features; leakage-safe features at rolling origins (the truncation proof); criterion C20 registered | Section 3, Appendix E |
-| `04_forecast_queue` | the completion-and-timing engine: discrete-time competing-risks models against the fair baseline and the size lookup, the level repair, the landmark models, MISO/SPP on the 2026 file | Section 3 (prediction), Appendix E |
-| `05_forecast_energy` | lease output, plant capacity factors and three prices at rolling origins against five transparent baselines; C20 scored | Section 3 (the forecast contests), Appendix F |
-| `06_evaluation_record` | every registered criterion scored as registered (C1–C24), post-hoc and tournament, explanations, the decision board; runs after 09 | Section 8, Appendix A, Appendix D |
-| `07_economics` | the forty candidates' cash flows and NPV under the documented cost grid, with a provenance label on every value | Section 2, Figure K1 |
-| `08_scenarios_and_risk` | joint price, output, cost and timing scenarios with mean reversion; named stresses; risk measures per candidate | Section 4, Figures A5, A6, K2 |
-| `09_portfolio` | the four books under one budget (NPV ranking, equal capital, the deterministic and the risk-aware optimizer); C21–C24 | Section 5, Appendix E |
-| `10_advisor_and_gym` | the grounded language-model advisor, the challenge round and the override gate, the decision gym on sixteen past situations, the forward view at 1–20 years | Section 7 (the gym), Appendix F |
+| `03_statistics_and_features` | queue outcomes and entry-time features; leakage-safe features at rolling origins (the truncation proof); criterion C20 registered | Appendix A, Appendix E |
+| `04_forecast_queue` | the completion-and-timing engine: discrete-time competing-risks models against the fair baseline and the size lookup, the level repair, the landmark models, MISO/SPP on the 2026 file | Section 4 (prediction), Appendix E |
+| `05_forecast_energy` | lease output, plant capacity factors and three prices at rolling origins against five transparent baselines; C20 scored | Section 4 (the forecast contests), Appendix F |
+| `06_evaluation_record` | every registered criterion scored as registered (C1–C24), post-hoc and tournament, explanations, the decision board; runs after 09 | Section 10, Appendix A, Appendix D |
+| `07_economics` | the forty candidates' cash flows and NPV under the documented cost grid, with a provenance label on every value | Section 2 (costs), Appendix F, Figure K1 |
+| `08_scenarios_and_risk` | joint price, output, cost and timing scenarios with mean reversion; named stresses; risk measures per candidate | Section 5, Appendix L, Figures A5, A6, K2 |
+| `09_portfolio` | the four books under one budget (NPV ranking, equal capital, the deterministic and the risk-aware optimizer); C21–C24 | Sections 6 and 7, Appendix F |
+| `10_advisor_and_gym` | the grounded language-model advisor, the challenge round and the override gate, the decision gym on sixteen past situations, the forward view at 1–20 years | Appendix B, Appendix F (the gym) |
 | `11_decision_system` | the frontier over tail weights, what-ifs, value of information, staged decisions, the processes compared on held-out scenarios, the active challenger; the as-of candidates | Figures 1 and 4, Appendix B, Appendix D |
-| `12_three_questions` | the registered experiment on 48 simulated committees: the four-arm ladder (proposal → tools → tools + model → optimizer), paraphrases and injections, the credit line priced, the one-year forward test; C33–C41 | Figure 3, Tables 2 and 3, Appendix D |
-| `13_executive_corrections` | every process financed the same way, the co-movement dial and seven worlds, the optimizer-first rule as a fifth arm, the allocation line by line, the committee workflow and the control matrix, an emissions cap | Figures 2, 5 and 6, Table 1, Figures K3–K5 |
+| `12_three_questions` | the registered experiment on 48 simulated committees: the four-arm ladder (proposal → tools → tools + model → optimizer), paraphrases and injections, the credit line priced, the one-year forward test; C33–C41 | Sections 8–10, Figure 3, Tables 2 and 3, Appendix D |
+| `13_executive_corrections` | every process financed the same way, the co-movement dial and seven worlds, the optimizer-first rule as a fifth arm, the allocation line by line, the committee workflow and the control matrix, an emissions cap | Section 7, Figures 2, 5, 6 and 7, Table 1, Figures K3–K5, Appendix M |
 
 `src/` holds the functions the notebooks share, each module with a docstring that says what it does, why, what it reads and writes, and who uses it:
 
@@ -66,7 +69,7 @@ Each notebook has the same shape: a title cell that says its step in the pipelin
 
 **The dashboard** (`make app`, `app/`) reads `results/` only and recomputes no model. *Decide*: the options, your book and your reasons, the advisor's challenge with its five reasoning questions, your result against the advisor's solution. *A worked example*: one executive's recorded round through those steps, for a new reader. *The report's decision*: the recommendation on one screen in seven tabs, the last one the committee's own call. Challenging your own book needs a language-model key from any provider (see *How to run*); the recorded rounds replay without one, and the dashboard says so at the top.
 
-**Tests** (`tests/`, pytest): the audit, the cleaning rules, the features and the truncation proof, the metrics and baselines, the economics identities, the scenarios, the optimizer's constraints, the advisor's grounding and replay, the gym, the ledger's gate, the challenger, the dashboard pages headless, and that every number in the report and on the poster is in `results/report_numbers.csv`.
+**Tests** (`tests/`, pytest): the audit, the cleaning rules, the features and the truncation proof, the metrics and baselines, the economics identities, the scenarios, the optimizer's constraints, the advisor's grounding and replay, the gym, the ledger's gate, the challenger and the dashboard pages headless. `tests/test_report.py` also compares the numbers in the report and on the poster with `results/report_numbers.csv`; those tests need the author's report folder and are skipped on a clone without it.
 
 ## Data
 
@@ -80,7 +83,7 @@ Each notebook has the same shape: a title cell that says its step in the pipelin
 | BSEE OGOR-A, EIA-923, EIA and ERCOT prices, NREL ATB 2024, EPA eGRID | lease production, plant generation, the market months, the cost and emissions layer | `data/raw/`; every file listed with its hash in `data/raw_manifest.csv` |
 | EIA wholesale prices, PJM market-monitor report, LBNL PJM cost data, IRS Notice 2025-42, Census boundaries | the value and cost layer and the map | `data/raw/value/`, `data/raw/lbnl_costs/`, `data/raw/geo/` |
 
-The full data access statement, terms and data dictionary are in [`data/README.md`](data/README.md).
+The full data access statement, terms and data dictionary are in [`data/README.md`](data/README.md). Appendix N of the report lists the same twenty public sources one by one, with what each holds and why it was used.
 
 ## How to run
 
@@ -112,9 +115,10 @@ make setup     # .venv, pinned packages, Jupyter kernel "queue-survival"
 make all       # notebooks 01 → 13 in dependency order, stopping at the first error (about three hours)
 make numbers   # results/report_numbers.csv, every number the report cites
 make test      # pytest
-make poster    # report/poster_V2.pdf from report/poster_V2.typ (needs typst)
 make app       # the dashboard at http://localhost:8501 (make dashboard is the same; on Windows, double-click dashboard.bat)
 ```
+
+`make poster` builds the poster with typst from the author's `report/` folder, which is not in the repository.
 
 In VS Code, copy the three files of `tools/vscode/` into `.vscode/` once: then *Terminal → Run Task → Dashboard* (or Ctrl+Shift+B)
 starts the dashboard, *Run → Dashboard (Streamlit)* starts it under the debugger, and the test explorer picks up pytest.
@@ -122,6 +126,28 @@ starts the dashboard, *Run → Dashboard (Streamlit)* starts it under the debugg
 Each notebook also has its own target (`make data`, `make eda`, …, `make corrections`; see the `Makefile`);
 `python run_pipeline.py --only 04` runs one notebook. `python -m src.advisor` challenges your own decision at the
 keyboard.
+
+## Replicating the report
+
+The report is written in Word from what the pipeline produces; nothing in it is typed from memory. After the steps of *How to run*, `make all` followed by `make numbers` rebuilds every figure and every number the report cites:
+
+| In the report | Rebuilt as | By |
+|---|---|---|
+| Figure 1, the six stages | `figures/F43_architecture` | notebook 11 |
+| Figure 2, the committee workflow | `figures/F55_committee_workflow` | notebook 13 |
+| Figure 3, queue outcomes against the decision-date forecasts | `figures/F49_forward_calibration` | notebook 12 |
+| Figure 4, expected value against worst-5% loss over tail weights | `figures/F38_frontier` | notebook 11 |
+| Figure 5, the 2,000 held-out outcomes of each process | `figures/F57_book_distributions` | notebook 13 |
+| Figure 6, each process on three funding bases and its capital | `figures/F51_true_economics` | notebook 13 |
+| Figure 7, the five-arm ladder with paired intervals | `figures/F53_ladder_five_arms` | notebook 13 |
+| Table 1, the five decision processes financed the same way | `results/v2/books_financed.csv` | notebook 13 |
+| Table 2, the five arms of the committee test | `results/v2/ladder_five_arms.csv`, `ladder_five_rungs.csv` | notebooks 12 and 13 |
+| Table 3, the nine registered lines of the final experiment | `results/v10/`, `docs/registration_ledger.md` | notebook 12 |
+| Every number in the text | `results/report_numbers.csv` (the key, the value and the file it comes from) | `make numbers` |
+| Appendix A, every registered test and its verdict | `results/success_criteria*.csv`, `docs/registration_ledger.md` | notebooks 06 and 12 |
+| Appendix N, the datasets | [`data/README.md`](data/README.md), `data/raw_manifest.csv` | notebook 01 |
+
+Every figure is written as PNG and SVG. The language-model calls replay from their record, so the run needs no key and gives the same memos. The scenario sets, bootstraps and draws are seeded, and the solver must reach optimality or the run stops.
 
 ## Map of the repository
 
@@ -134,7 +160,7 @@ prompts/     the advisor's system prompt and every prompt template it is given, 
 data/        raw/ (not committed; the manifest lists it) · interim/ (not committed, rebuilt) · processed/ (small final tables) · README.md
 results/     every number the report cites, written by the notebooks; report_numbers.csv keys them; v8/, v9/, v10/, v2/ the registered records
 figures/     every figure, PNG + SVG; figures/<notebook>/ holds each notebook's exploratory figures; figures/executive/ the report's
-report/      the report (PDF and Word), the poster (PDF and typst source), figure_notes.md (every figure's caption and notebook), references.md
+report/      not in the repository: the report (Word), the poster and their notes are kept by the author
 docs/        the course submissions, the mentor exchange, the record of decisions and the reviews the report cites; docs/README.md indexes them
 tests/       pytest
 ```
@@ -144,7 +170,8 @@ tests/       pytest
 All components of this project — data engineering, modeling, evaluation, visualization and writing — were carried
 out by Alan Mössinger. Code adapted from an external source is credited in-line where it appears. The ERCOT price
 client and the battery dispatch model are reused, with credit, from the author's own earlier projects (*Forecast to
-Dispatch*; MADS Milestone II).
+Dispatch*; MADS Milestone II). AI tools helped with code review, debugging and the general plan, including that of
+the AI challenger.
 
 ## References
 
@@ -155,4 +182,4 @@ of the end of 2024.* Lawrence Berkeley National Laboratory. https://emp.lbl.gov/
 U.S. Energy Information Administration. (2026). *Preliminary monthly electric generator inventory (EIA-860M)* [Data
 set, accessed through the EIA API v2]. https://www.eia.gov/electricity/data/eia860m/
 
-The full reference list is in [`report/references.md`](report/references.md) and in the report.
+The full reference list, in APA style with every data source, is in the report.

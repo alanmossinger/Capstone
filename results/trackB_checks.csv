@@ -1,7 +1,0 @@
-check,passed,result
-"predictions for every 2016 and 2017 request, all models, within [0, 1]",True,PASS
-features are entry-time only,True,PASS
-2016 cohort: both models' AUC above the base rate's,True,PASS
-2016 cohort: both models' Brier score below the base rate's,True,PASS
-"per-region calibration and leave-one-region-out tables written, failing regions named",True,PASS
-notebook runs in under 10 minutes,True,PASS
