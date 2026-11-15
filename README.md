@@ -3,7 +3,7 @@
 *A governed decision intelligence system for risk, returns and investment-committee choices across oil, gas, power, renewables and storage*
 
 SIADS 699 Capstone — Master of Applied Data Science, University of Michigan — Group 13 (solo project).
-Author: **Alan Mössinger**. Mentor: Laura Danielle Stagnaro. November 2026.
+Author: **Alan Mössinger**. Supervisor: Laura Danielle Stagnaro. November 2026.
 
 ## The deliverables
 
