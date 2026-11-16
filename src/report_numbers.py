@@ -2185,6 +2185,13 @@ def v2_report():
     r = fin.loc[("D_L", bases["own"])]
     add("v2_DL_members", str(int(r["members"])), int(r["members"]), v2 + "books_financed.csv", "D re-solved with the line: members")
     add("v2_DL_facility", dollars(r["facility_own_q95"]), r["facility_own_q95"], v2 + "books_financed.csv", "D re-solved with the line: its own facility")
+    # The poster draws its bars in $ million, so a reader can subtract one bar from another and get the headline gap.
+    for book, key, column, what in (("A", "static", "mean", "expected NPV"), ("A", "static", "cvar_loss", "worst-5% loss"), ("A", "static", "metric", "registered metric"),
+                                    ("D", "static", "mean", "expected NPV"), ("D", "static", "cvar_loss", "worst-5% loss"), ("D", "static", "metric", "registered metric"),
+                                    ("F", "static", "metric", "registered metric"), ("D", "noline", "mean", "expected NPV"), ("D", "own", "mean", "expected NPV"),
+                                    ("A", "own", "metric", "registered metric"), ("D", "own", "metric", "registered metric")):
+        x = fin.loc[(book, bases[key])][column]
+        add(f"v2_{book}_{key}_{column}_m", dollars(x, "M", 0), x, v2 + "books_financed.csv", f"book {book}, {bases[key]}: {what}, in $ million (poster)")
     pairs = read("v2/books_financed_pairs.csv").set_index(["basis", "book", "against"])
     for key, basis in (("static", bases["static"]), ("own", bases["own"]), ("common", bases["common"])):
         for other in ("A", "B", "C", "F"):

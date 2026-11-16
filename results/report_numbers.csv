@@ -2707,6 +2707,17 @@ v2_DL_common_metric,$0.99B,985288099.6811236,results/v2/books_financed.csv,"D re
 v2_DL_static_metric,$1.18B,1184714285.934059,results/v2/books_financed.csv,"D re-solved with the line, static (unlimited capital): metric"
 v2_DL_members,9,9,results/v2/books_financed.csv,D re-solved with the line: members
 v2_DL_facility,$1.31B,1308120552.7278898,results/v2/books_financed.csv,D re-solved with the line: its own facility
+v2_A_static_mean_m,"$2,678M",2678376191.8253207,results/v2/books_financed.csv,"book A, static (unlimited capital): expected NPV, in $ million (poster)"
+v2_A_static_cvar_loss_m,"$1,550M",1549675944.745122,results/v2/books_financed.csv,"book A, static (unlimited capital): worst-5% loss, in $ million (poster)"
+v2_A_static_metric_m,"$1,129M",1128700247.0801988,results/v2/books_financed.csv,"book A, static (unlimited capital): registered metric, in $ million (poster)"
+v2_D_static_mean_m,"$2,170M",2170334090.783821,results/v2/books_financed.csv,"book D, static (unlimited capital): expected NPV, in $ million (poster)"
+v2_D_static_cvar_loss_m,$822M,822438008.3922414,results/v2/books_financed.csv,"book D, static (unlimited capital): worst-5% loss, in $ million (poster)"
+v2_D_static_metric_m,"$1,348M",1347896082.3915796,results/v2/books_financed.csv,"book D, static (unlimited capital): registered metric, in $ million (poster)"
+v2_F_static_metric_m,"$1,311M",1310571908.613872,results/v2/books_financed.csv,"book F, static (unlimited capital): registered metric, in $ million (poster)"
+v2_D_noline_mean_m,"$1,707M",1707246374.691272,results/v2/books_financed.csv,"book D, no line (calls beyond the reserve forfeit): expected NPV, in $ million (poster)"
+v2_D_own_mean_m,"$1,982M",1982290338.397127,results/v2/books_financed.csv,"book D, own line, net of fee and interest: expected NPV, in $ million (poster)"
+v2_A_own_metric_m,$722M,721551242.2634451,results/v2/books_financed.csv,"book A, own line, net of fee and interest: registered metric, in $ million (poster)"
+v2_D_own_metric_m,"$1,034M",1033867502.7471124,results/v2/books_financed.csv,"book D, own line, net of fee and interest: registered metric, in $ million (poster)"
 v2_pair_static_D_A,+$219M,219195835.3113809,results/v2/books_financed_pairs.csv,"D minus A, static (unlimited capital)"
 v2_pair_static_D_A_ci,"[+$18M, +$400M]",18347990.97579932,results/v2/books_financed_pairs.csv,its interval
 v2_pair_static_D_B,+$239M,238820995.14820457,results/v2/books_financed_pairs.csv,"D minus B, static (unlimited capital)"
