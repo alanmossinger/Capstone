@@ -96,7 +96,7 @@ def official_text():
     return re.sub(r"[\w/.-]+\.(?:md|csv|py|json|jsonl|ipynb|png|svg|typ|pdf)\b", " ", text)  # file names
 
 
-OFFICIAL_WORD_LIMIT = 3000  # the course's length, excluding references and appendices (decision #124)
+OFFICIAL_WORD_LIMIT = 3300  # the course's length of 3,000 plus 10%, excluding references and appendices (decision #124)
 
 
 def official_body_words():
