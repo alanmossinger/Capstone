@@ -2189,7 +2189,8 @@ def v2_report():
     for book, key, column, what in (("A", "static", "mean", "expected NPV"), ("A", "static", "cvar_loss", "worst-5% loss"), ("A", "static", "metric", "registered metric"),
                                     ("D", "static", "mean", "expected NPV"), ("D", "static", "cvar_loss", "worst-5% loss"), ("D", "static", "metric", "registered metric"),
                                     ("F", "static", "metric", "registered metric"), ("D", "noline", "mean", "expected NPV"), ("D", "own", "mean", "expected NPV"),
-                                    ("A", "own", "metric", "registered metric"), ("D", "own", "metric", "registered metric")):
+                                    ("A", "own", "metric", "registered metric"), ("D", "own", "metric", "registered metric"),
+                                    ("A", "own", "mean", "expected NPV"), ("A", "own", "cvar_loss", "worst-5% loss"), ("D", "own", "cvar_loss", "worst-5% loss")):
         x = fin.loc[(book, bases[key])][column]
         add(f"v2_{book}_{key}_{column}_m", dollars(x, "M", 0), x, v2 + "books_financed.csv", f"book {book}, {bases[key]}: {what}, in $ million (poster)")
     pairs = read("v2/books_financed_pairs.csv").set_index(["basis", "book", "against"])

@@ -2718,6 +2718,9 @@ v2_D_noline_mean_m,"$1,707M",1707246374.691272,results/v2/books_financed.csv,"bo
 v2_D_own_mean_m,"$1,982M",1982290338.397127,results/v2/books_financed.csv,"book D, own line, net of fee and interest: expected NPV, in $ million (poster)"
 v2_A_own_metric_m,$722M,721551242.2634451,results/v2/books_financed.csv,"book A, own line, net of fee and interest: registered metric, in $ million (poster)"
 v2_D_own_metric_m,"$1,034M",1033867502.7471124,results/v2/books_financed.csv,"book D, own line, net of fee and interest: registered metric, in $ million (poster)"
+v2_A_own_mean_m,"$2,473M",2472836962.046364,results/v2/books_financed.csv,"book A, own line, net of fee and interest: expected NPV, in $ million (poster)"
+v2_A_own_cvar_loss_m,"$1,751M",1751285719.7829187,results/v2/books_financed.csv,"book A, own line, net of fee and interest: worst-5% loss, in $ million (poster)"
+v2_D_own_cvar_loss_m,$948M,948422835.6500144,results/v2/books_financed.csv,"book D, own line, net of fee and interest: worst-5% loss, in $ million (poster)"
 v2_pair_static_D_A,+$219M,219195835.3113809,results/v2/books_financed_pairs.csv,"D minus A, static (unlimited capital)"
 v2_pair_static_D_A_ci,"[+$18M, +$400M]",18347990.97579932,results/v2/books_financed_pairs.csv,its interval
 v2_pair_static_D_B,+$239M,238820995.14820457,results/v2/books_financed_pairs.csv,"D minus B, static (unlimited capital)"
