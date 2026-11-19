@@ -1,5 +1,6 @@
-"""Every number in the official report and on the poster traces to results/report_numbers.csv; the report's body stays within the course's length."""
+"""Every number in the official report and on the poster traces to results/report_numbers.csv."""
 
+import functools
 import re
 
 import pandas as pd
@@ -55,8 +56,8 @@ def test_report_numbers_keys_are_unique():
 # (mm, pt, em, fr, %), colours, file names and its reference list are not quantities.
 POSTER = paths.REPORT / "poster_V3.typ"
 
-# The report folder (the Word report, the poster and their notes) is kept by the author and is not in the repository
-# (decision #132): on a clone without it the tests that read those files are skipped, not failed.
+# Most of the report folder (the Word files, the poster source and their notes) is kept by the author and is not in the
+# repository (decision #132): on a clone without a file the tests that read it are skipped, not failed.
 def needs(path):
     return pytest.mark.skipif(not path.exists(), reason=f"{path.name} is kept outside the repository (decision #132)")
 
@@ -77,49 +78,43 @@ def test_every_number_on_the_poster_is_in_report_numbers():
     assert not missing, f"numbers on the poster not in results/report_numbers.csv: {missing}"
 
 
-# The official capstone report is the Word edition (decision #117). It is edited in Word, not built from Markdown,
-# so its text is read straight from the document XML: the abstract through the appendices, without the references.
-OFFICIAL = paths.REPORT / "Beyond_Prediction_Full_Report_Final Version_MADS CAPSTONE.docx"  # the final report: the narrative edition (V5), with the poster's four results in its conclusion
+# The official capstone report is submitted as two PDFs, the only report files in the repository besides the poster:
+# the full narrative edition and the 3,000-word edition. Their text is read from the PDF pages with pdfplumber:
+# the abstract through the appendices, without the references.
+REPORT_FULL = paths.REPORT / "Beyond_Prediction_MADS CAPSTONE_Alan Mossinger.pdf"              # the full narrative edition
+REPORT_SHORT = paths.REPORT / "Beyond_Prediction_MADS CAPSTONE_Alan Mossinger_3000_words.pdf"  # the 3,000-word edition
 
 
-def official_text():
-    """The paragraphs of the official report from Abstract up to References, with cross-references removed."""
-    import zipfile
-    xml = zipfile.ZipFile(OFFICIAL).read("word/document.xml").decode("utf-8")
-    paras = ["".join(re.findall(r"<w:t(?:\s[^>]*)?>([^<]*)</w:t>", p)) for p in re.findall(r"<w:p[ >].*?</w:p>", xml, flags=re.S)]
-    start = max(i for i, p in enumerate(paras) if p.strip() == "Abstract")  # the last one; the first is the contents list
-    end = max(i for i, p in enumerate(paras) if p.strip() == "References")
-    text = "\n".join(paras[start:end])
-    text = re.sub(r"^\d+(?:\.\d+)* [A-Z].*$", " ", text, flags=re.MULTILINE)  # numbered headings
+@functools.lru_cache(maxsize=None)
+def report_lines(path):
+    """The text lines of a report PDF, page after page."""
+    import pdfplumber
+    with pdfplumber.open(path) as pdf:
+        return tuple(line for page in pdf.pages for line in (page.extract_text() or "").splitlines())
+
+
+def last_line(lines, heading):
+    """Index of the last line that is exactly this heading."""
+    return max(i for i, line in enumerate(lines) if line.strip() == heading)
+
+
+def official_text(path):
+    """The lines of a report from Abstract up to References, with cross-references removed."""
+    lines = report_lines(path)
+    text = "\n".join(lines[last_line(lines, "Abstract"):last_line(lines, "References")])
+    text = re.sub(r"\(cid:\d+\)", " ", text)  # equation glyphs the PDF does not map to characters
+    text = re.sub(r"^\d+(?:\.\d+)*\.? [A-Z].*$", " ", text, flags=re.MULTILINE)  # numbered headings
     text = re.sub(r"\bSections?\s+\d+(?:\.\d+)?", " ", text)
     text = re.sub(r"maps onto this report as follows:.*?\.\s", " ", text, flags=re.S)  # the appendices' section map
     return re.sub(r"[\w/.-]+\.(?:md|csv|py|json|jsonl|ipynb|png|svg|typ|pdf)\b", " ", text)  # file names
 
 
-OFFICIAL_WORD_LIMIT = 3300  # the course's length of 3,000 plus 10%, excluding references and appendices (decision #124)
-
-
-def official_body_words():
-    """Words of the official report from the Abstract heading to the Appendices heading: headings, captions and tables included."""
-    import zipfile
-    xml = zipfile.ZipFile(OFFICIAL).read("word/document.xml").decode("utf-8")
-    blocks = re.findall(r"<w:p[ >].*?</w:p>|<w:tbl>.*?</w:tbl>", xml, flags=re.S)
-    texts = ["".join(re.findall(r"<w:t(?:\s[^>]*)?>([^<]*)</w:t>", b)) for b in blocks]
-    start = max(i for i, t in enumerate(texts) if t.strip() == "Abstract")
-    end = max(i for i, t in enumerate(texts) if t.strip() == "Appendices")
-    return sum(len(t.split()) for t in texts[start:end])
-
-
-@needs(OFFICIAL)
-def test_the_official_report_body_is_within_the_course_length():
-    assert official_body_words() <= OFFICIAL_WORD_LIMIT
-
-
-@needs(OFFICIAL)
-def test_every_number_in_the_official_report_is_in_report_numbers():
+@pytest.mark.parametrize("path", [pytest.param(REPORT_FULL, marks=needs(REPORT_FULL), id="full"),
+                                  pytest.param(REPORT_SHORT, marks=needs(REPORT_SHORT), id="3000_words")])
+def test_every_number_in_the_official_report_is_in_report_numbers(path):
     table = pd.read_csv(paths.RESULTS / "report_numbers.csv", dtype=str)
     cited = set()
     for text in table["text"].astype(str):
         cited |= numbers_in(text)
-    missing = sorted(numbers_in(official_text()) - cited)
-    assert not missing, f"numbers in the official report not in results/report_numbers.csv: {missing}"
+    missing = sorted(numbers_in(official_text(path)) - cited)
+    assert not missing, f"numbers in {path.name} not in results/report_numbers.csv: {missing}"

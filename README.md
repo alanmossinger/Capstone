@@ -3,14 +3,14 @@
 *A governed decision intelligence system for risk, returns and investment-committee choices across oil, gas, power, renewables and storage*
 
 SIADS 699 Capstone — Master of Applied Data Science, University of Michigan — Group 13 (solo project).
-Author: **Alan Mössinger**. Mentor: Laura Danielle Stagnaro. November 2026.
+Author: **Alan Mössinger**. Supervisor: Laura Danielle Stagnaro. November 2026.
 
 ## The deliverables
 
 | Deliverable | Where |
 |---|---|
-| **The report** | *Beyond Prediction — Edited Full Report V3* (Word, about 80 pages): an opening statement of the question and the answer, the abstract, the executive decision in one table, twelve sections (about 3,100 words without tables and captions), the statement of work, appendices A–N and the APA reference list. It is submitted through the course and kept by the author; **the report is not in this repository**. This repository holds everything the report is built from: see [*Replicating the report*](#replicating-the-report) |
-| **The poster** (A1, one page) | drawn from the report's numbers; kept with the report, outside the repository |
+| **The report** | two PDF editions in [`report/`](report/): the 3,000-word edition, [*Beyond Prediction … 3000 words*](report/Beyond_Prediction_MADS%20CAPSTONE_Alan%20Mossinger_3000_words.pdf) (80 pages with its appendices), and the full narrative edition, [*Beyond Prediction*](report/Beyond_Prediction_MADS%20CAPSTONE_Alan%20Mossinger.pdf) (87 pages). Each holds the abstract, twelve sections, the statement of work, the appendices and the APA reference list. Everything the report is built from is in this repository: see [*Replicating the report*](#replicating-the-report) |
+| **The poster** (A1, one page) | [`report/poster_MADS_CAPSTONE_Alan Mossinger.pdf`](report/poster_MADS_CAPSTONE_Alan%20Mossinger.pdf), drawn from the report's numbers |
 | **The code** | thirteen notebooks run in order by `make all`; the `src/` package; the test suite (`make test`) |
 | The dashboard | `make app` — three pages: *Decide*, *A worked example*, *The report's decision* (see below) |
 | The proposal and the evaluation plan | [`docs/SIADS699_Project_Proposal_Group13_2026-10-19.pdf`](docs/SIADS699_Project_Proposal_Group13_2026-10-19.pdf), [`docs/proposal_update_2026-10-19.md`](docs/proposal_update_2026-10-19.md); [`docs/SIADS699_Evaluation_Plan_Group13.pdf`](docs/SIADS699_Evaluation_Plan_Group13.pdf), [`docs/evaluation_plan.md`](docs/evaluation_plan.md) |
@@ -69,7 +69,7 @@ Each notebook has the same shape: a title cell that says its step in the run ord
 
 **The dashboard** (`make app`, `app/`) reads `results/` only and recomputes no model. *Decide*: the options, your book and your reasons, the advisor's challenge with its five reasoning questions, your result against the advisor's solution. *A worked example*: one executive's recorded round through those steps, for a new reader. *The report's decision*: the recommendation on one screen in seven tabs, the last one the committee's own call. Challenging your own book needs a language-model key from any provider (see *How to run*); the recorded rounds replay without one, and the dashboard says so at the top.
 
-**Tests** (`tests/`, pytest): the audit, the cleaning rules, the features and the truncation proof, the metrics and baselines, the economics identities, the scenarios, the optimizer's constraints, the advisor's grounding and replay, the gym, the ledger's gate, the challenger and the dashboard pages headless. `tests/test_report.py` also compares the numbers in the report and on the poster with `results/report_numbers.csv`; those tests need the author's report folder and are skipped on a clone without it.
+**Tests** (`tests/`, pytest): the audit, the cleaning rules, the features and the truncation proof, the metrics and baselines, the economics identities, the scenarios, the optimizer's constraints, the advisor's grounding and replay, the gym, the ledger's gate, the challenger and the dashboard pages headless. `tests/test_report.py` also compares the numbers in the report and on the poster with `results/report_numbers.csv`; the report is read from its two PDFs in `report/`; the poster test needs the poster's typst source, which is kept by the author, and is skipped on a clone without it.
 
 ## Data
 
@@ -118,7 +118,7 @@ make test      # pytest
 make app       # the dashboard at http://localhost:8501 (make dashboard is the same; on Windows, double-click dashboard.bat)
 ```
 
-`make poster` builds the poster with typst from the author's `report/` folder, which is not in the repository.
+`make poster` builds the poster with typst from its source, which the author keeps outside the repository; the built poster is in `report/`.
 
 In VS Code, copy the three files of `tools/vscode/` into `.vscode/` once: then *Terminal → Run Task → Dashboard* (or Ctrl+Shift+B)
 starts the dashboard, *Run → Dashboard (Streamlit)* starts it under the debugger, and the test explorer picks up pytest.
@@ -160,7 +160,7 @@ prompts/     the advisor's system prompt and every prompt template it is given, 
 data/        raw/ (not committed; the manifest lists it) · interim/ (not committed, rebuilt) · processed/ (small final tables) · README.md
 results/     every number the report cites, written by the notebooks; report_numbers.csv keys them; v8/, v9/, v10/, v2/ the registered records
 figures/     every figure, PNG + SVG; figures/<notebook>/ holds each notebook's exploratory figures; figures/executive/ the report's
-report/      not in the repository: the report (Word), the poster and their notes are kept by the author
+report/      the submitted PDFs: the report in two editions and the poster; the Word files and the poster source are kept by the author
 docs/        the course submissions, the mentor exchange, the record of decisions and the reviews the report cites; docs/README.md indexes them
 tests/       pytest
 ```
