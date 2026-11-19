@@ -79,7 +79,7 @@ def test_every_number_on_the_poster_is_in_report_numbers():
 
 # The official capstone report is the Word edition (decision #117). It is edited in Word, not built from Markdown,
 # so its text is read straight from the document XML: the abstract through the appendices, without the references.
-OFFICIAL = paths.REPORT / "Beyond_Prediction_Full_Report_V5_narrative.docx"  # the final report: the narrative edition, with the poster's four results in its conclusion
+OFFICIAL = paths.REPORT / "Beyond_Prediction_Full_Report_Final Version_MADS CAPSTONE.docx"  # the final report: the narrative edition (V5), with the poster's four results in its conclusion
 
 
 def official_text():
