@@ -9,7 +9,7 @@ Author: **Alan Mössinger**. Supervisor: Laura Danielle Stagnaro. November 2026.
 
 | Deliverable | Where |
 |---|---|
-| **The report** | two PDF editions in [`report/`](report/): the 3,000-word edition, [*Beyond Prediction … 3000 words*](report/Beyond_Prediction_MADS%20CAPSTONE_Alan%20Mossinger_3000_words.pdf) (80 pages with its appendices), and the full narrative edition, [*Beyond Prediction*](report/Beyond_Prediction_MADS%20CAPSTONE_Alan%20Mossinger.pdf) (87 pages). Each holds the abstract, twelve sections, the statement of work, the appendices and the APA reference list. Everything the report is built from is in this repository: see [*Replicating the report*](#replicating-the-report) |
+| **The report** | two PDF editions in [`report/`](report/): the 3,000-word edition, [*Beyond Prediction … 3000 words*](report/Beyond_Prediction_MADS%20CAPSTONE_Alan%20Mossinger_3000_words.pdf) (80 pages with its appendices), and the full narrative edition, [*Beyond Prediction*](report/Beyond_Prediction_MADS%20CAPSTONE_Alan%20Mossinger_Complete.pdf) (87 pages). Each holds the abstract, twelve sections, the statement of work, the appendices and the APA reference list. Everything the report is built from is in this repository: see [*Replicating the report*](#replicating-the-report) |
 | **The poster** (A1, one page) | [`report/poster_MADS_CAPSTONE_Alan Mossinger.pdf`](report/poster_MADS_CAPSTONE_Alan%20Mossinger.pdf), drawn from the report's numbers |
 | **The code** | thirteen notebooks run in order by `make all`; the `src/` package; the test suite (`make test`) |
 | The dashboard | `make app` — three pages: *Decide*, *A worked example*, *The report's decision* (see below) |

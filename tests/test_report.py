@@ -81,7 +81,7 @@ def test_every_number_on_the_poster_is_in_report_numbers():
 # The official capstone report is submitted as two PDFs, the only report files in the repository besides the poster:
 # the full narrative edition and the 3,000-word edition. Their text is read from the PDF pages with pdfplumber:
 # the abstract through the appendices, without the references.
-REPORT_FULL = paths.REPORT / "Beyond_Prediction_MADS CAPSTONE_Alan Mossinger.pdf"              # the full narrative edition
+REPORT_FULL = paths.REPORT / "Beyond_Prediction_MADS CAPSTONE_Alan Mossinger_Complete.pdf"              # the full narrative edition
 REPORT_SHORT = paths.REPORT / "Beyond_Prediction_MADS CAPSTONE_Alan Mossinger_3000_words.pdf"  # the 3,000-word edition
 
 
@@ -103,6 +103,7 @@ def official_text(path):
     lines = report_lines(path)
     text = "\n".join(lines[last_line(lines, "Abstract"):last_line(lines, "References")])
     text = re.sub(r"\(cid:\d+\)", " ", text)  # equation glyphs the PDF does not map to characters
+    text = re.sub(r"\{0,\s?1\}", " ", text)  # the binary domain x ∈ {0,1} of the optimizer's equation, readable since the export of 25 Nov 2026
     text = re.sub(r"^\d+(?:\.\d+)*\.? [A-Z].*$", " ", text, flags=re.MULTILINE)  # numbered headings
     text = re.sub(r"\bSections?\s+\d+(?:\.\d+)?", " ", text)
     text = re.sub(r"maps onto this report as follows:.*?\.\s", " ", text, flags=re.S)  # the appendices' section map
