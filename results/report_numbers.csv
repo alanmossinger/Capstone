@@ -2046,7 +2046,7 @@ v6_hz_members_5,14,14,results/horizon_books.csv,members of the book at 5 years
 v6_hz_members_10,14,14,results/horizon_books.csv,members of the book at 10 years
 v6_adv_recorded,214,214,results/advisor_evaluation.csv,recorded answers
 v6_adv_missing,0,0,results/advisor_evaluation.csv,calls with no record and no key
-adv_recorded,537,537,results/advisor_runs.jsonl,recorded answers
+adv_recorded,546,546,results/advisor_runs.jsonl,recorded answers
 adv_grounding,94%,0.938,results/advisor_evaluation.csv,mean share of the advisor's numbers found in its tables
 adv_fully_grounded,59%,0.589,results/advisor_evaluation.csv,answers with every number grounded
 adv_jaccard_d,0.94,0.935,results/advisor_evaluation.csv,overlap of the advisor's book with book D over the seven stresses
