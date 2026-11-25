@@ -1616,6 +1616,7 @@ def v6_advisor():
     add("v6_adv_questions", "5", 5, "src/advisor.py", "questions of the motivated-reasoning check")
     add("v6_adv_small_int", "50", 50, "src/advisor.py", "integers exempt from the grounding check")
     add("v6_adv_temperature", "0", 0, "src/advisor.py", "temperature")
+    add("adv_max_tokens", "8,000", 8000, "src/advisor.py", "output limit of an advisor call on the Messages API, tokens (MAX_TOKENS)")
     add("v6_forty", "forty", 40, "results/candidate_npv.csv", "candidates")
     add("v6_hz_list", "1, 2, 3, 5, 10 and 20", 0, "src/horizons.py", "horizons, years")
     add("v6_grid_factor", "four", 4, "results/cost_sensitivity.csv", "the two largest grid items move the book by about this factor")
