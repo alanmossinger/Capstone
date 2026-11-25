@@ -17,7 +17,9 @@ ERCOT's edge accepts).
 Used by: notebook 01 (the v5 sources, part D).
 
 Adapted from my own ``MADS_Milestone2/src/price_loader.py`` (self-reuse,
-credited in the statement of work): the sign-in flow and the paging loop are
+credited in the statement of work;
+https://github.com/alanmossinger/Grid-Electricity-Net-Load-Forecasting-Flexibility-Planning-High-Renewable-Grids-MADS-Milestone-II):
+the sign-in flow and the paging loop are
 the same; the report table, the settlement-point filter, the block detection
 and the secret scrubbing are new.
 

@@ -20,7 +20,7 @@ returns no decline at all, and ten of the twenty leases then produced at
 their 2024 rate for twenty years.
 
 Adapted from: Arps, J. J. (1945), "Analysis of decline curves", Trans. AIME
-160, 228–247 — the hyperbolic form q(t) = q_i (1 + b D_i t)^(-1/b).
+160, 228–247, https://doi.org/10.2118/945228-G — the hyperbolic form q(t) = q_i (1 + b D_i t)^(-1/b).
 """
 
 import numpy as np

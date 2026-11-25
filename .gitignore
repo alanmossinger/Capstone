@@ -12,12 +12,8 @@ __pycache__/
 *.pyc
 .pytest_cache/
 
-# built by `make report` from the Markdown sources
-report/report.pdf
-report/report.docx
+# built by `make bundle-data`
 dist/
-report/report_course.pdf
-report/report_course.docx
 
 # local archive of files kept out of the submission (not committed)
 _archive/

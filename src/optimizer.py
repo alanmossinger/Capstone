@@ -15,7 +15,7 @@ Reads / writes: nothing.
 Used by: notebook 09 (part D), the dashboard; `tests/test_optimizer.py`.
 
 Adapted from: Rockafellar, R. T. and Uryasev, S. (2000), "Optimization of
-conditional value-at-risk", Journal of Risk 2(3), 21–41 — the auxiliary
+conditional value-at-risk", Journal of Risk 2(3), 21–41, https://doi.org/10.21314/JOR.2000.038 — the auxiliary
 variable α and the per-scenario excess u_s that make CVaR linear.
 """
 

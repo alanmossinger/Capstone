@@ -8,7 +8,7 @@ PYTHON := .venv/bin/python
 PY311 := python3.11
 endif
 
-.PHONY: setup get-data check-data bundle-data data eda features forecast energy economics scenarios portfolio record advisor decide questions corrections figures numbers poster app dashboard test all
+.PHONY: setup get-data check-data bundle-data data eda features forecast energy economics scenarios portfolio record advisor decide questions corrections figures ai-figure numbers poster app dashboard test all
 
 setup:            ## create .venv from Python 3.11 (the pinned wheels are 3.11 builds), install pinned packages, register the notebook kernel
 	$(PY311) -m venv .venv
@@ -60,10 +60,13 @@ decide:           ## 11: the decision system of v8 — frontier, what-ifs, expla
 figures:          ## every notebook that draws figures, in pipeline order
 	$(PYTHON) run_pipeline.py --only 01 02 04 05 07 08 09 06 10 11 12 13
 
+ai-figure:        ## figures/F58_ai_use: Figure O1 of the report, where AI fit in the project
+	$(PYTHON) -m src.ai_use_figure
+
 numbers:          ## results/report_numbers.csv: every number the report cites, read from results/
 	$(PYTHON) -m src.report_numbers
 
-poster:           ## report/poster_V3.pdf from report/poster_V3.typ (needs typst)
+poster:           ## report/poster_V3.pdf from report/poster_V3.typ (needs typst; the source is kept by the author, outside the repository)
 	typst compile --root . report/poster_V3.typ report/poster_V3.pdf
 
 app:              ## the dashboard (app/app.py): decide — the options, your book, the advisor's challenge, your result — and the report's decision

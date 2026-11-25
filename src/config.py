@@ -208,7 +208,7 @@ EIA923_ROUTE = "electricity/facility-fuel"  # EIA-923 plant × fuel × prime-mov
 EIA923_DATA_FIELDS = ["generation", "gross-generation", "total-consumption-btu", "consumption-for-eg-btu"]
 EIA923_STATE = "TX"  # the power candidates are ERCOT requests
 EIA923_START, EIA923_END = "2018-01", "2024-12"  # the development and holdout window of the forecasts
-ERCOT_2024_FILES = {  # my Forecast-to-Dispatch pull (gridstatus, July 2026), copied with its hashes
+ERCOT_2024_FILES = {  # my Forecast-to-Dispatch pull (gridstatus, July 2026; https://github.com/alanmossinger/forecast-to-dispatch), copied with its hashes
     "ercot_dam_spp_2024.parquet": "dc212cf26ea601e2bd09e48ac44ddbc9154305e044e77b2dc7edd88f2218c083",
     "ercot_rtm_spp_2024.parquet": "cacfffbb1158bf42a965ad3539bd310e2c79006d93be910ca594a763e7f9b385",
     "ercot_dam_mcpc_2024.parquet": "7c481f7b8a5d992294af66d5223f774ed7a04a27d1280512bcaa708bce2fdc45",

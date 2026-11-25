@@ -16,7 +16,7 @@ Reads / writes: nothing; notebook 11 passes the matrices in.
 Used by: notebook 11; `tests/test_voi.py`.
 
 Adapted from: Raiffa, H. and Schlaifer, R. (1961), *Applied Statistical
-Decision Theory* — the preposterior analysis that values a signal by the
+Decision Theory* (Wiley Classics Library edition, 2000, ISBN 978-0-471-38349-9) — the preposterior analysis that values a signal by the
 decisions it would change.
 """
 

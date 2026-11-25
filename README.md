@@ -140,6 +140,8 @@ The report is written in Word from what the pipeline produces; nothing in it is 
 | Figure 5, the 2,000 held-out outcomes of each process | `figures/F57_book_distributions` | notebook 13 |
 | Figure 6, each process on three funding bases and its capital | `figures/F51_true_economics` | notebook 13 |
 | Figure 7, the five-arm ladder with paired intervals | `figures/F53_ladder_five_arms` | notebook 13 |
+| Figures 8 and 9, the conclusion in two panels | the poster panels, built with typst from the poster source the author keeps outside the repository; their numbers are in `results/report_numbers.csv` | `make poster` |
+| Figure O1, where AI fit in the project | `figures/F58_ai_use` | `make ai-figure` |
 | Table 1, the five decision processes financed the same way | `results/v2/books_financed.csv` | notebook 13 |
 | Table 2, the five arms of the committee test | `results/v2/ladder_five_arms.csv`, `ladder_five_rungs.csv` | notebooks 12 and 13 |
 | Table 3, the nine registered lines of the final experiment | `results/v10/`, `docs/registration_ledger.md` | notebook 12 |

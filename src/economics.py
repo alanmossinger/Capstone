@@ -18,7 +18,7 @@ Writes: nothing; notebook 07 writes `investment_candidates.csv`,
 Used by: notebooks 07, 08 and 09; `tests/test_economics.py`.
 
 The battery dispatch reuses the idea of my Forecast-to-Dispatch LP
-(self-reuse, statement of work) in its simplest form: energy arbitrage
+(self-reuse, statement of work; https://github.com/alanmossinger/forecast-to-dispatch) in its simplest form: energy arbitrage
 only, one cycle a day, no ancillary services, stated on every export.
 """
 
@@ -262,7 +262,8 @@ def battery_day(prices, hours=4, efficiency=0.85, cycles=1.0):
     Variables: charge c_t and discharge d_t in [0, 1] MW each hour; state of
     charge s_t = s_{t-1} + η c_t − d_t within [0, hours], starting and
     ending empty; total discharge ≤ cycles × hours. Objective: maximise
-    Σ p_t (d_t − c_t). Adapted from my Forecast-to-Dispatch dispatch LP,
+    Σ p_t (d_t − c_t). Adapted from my Forecast-to-Dispatch dispatch LP
+    (https://github.com/alanmossinger/forecast-to-dispatch),
     reduced to energy only.
     """
     p = np.asarray(prices, float)

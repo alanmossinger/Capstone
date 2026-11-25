@@ -23,7 +23,7 @@ Used by: notebook 11; `tests/test_dynamic.py`.
 
 Adapted from: Longstaff, F. A. and Schwartz, E. S. (2001), "Valuing
 American options by simulation: a simple least-squares approach", Review of
-Financial Studies 14(1), 113–147 — the regression of a continuation value
+Financial Studies 14(1), 113–147, https://doi.org/10.1093/rfs/14.1.113 — the regression of a continuation value
 on what is known at the decision date.
 """
 
