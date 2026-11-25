@@ -172,8 +172,8 @@ tests/       pytest
 All components of this project — data engineering, modeling, evaluation, visualization and writing — were carried
 out by Alan Mössinger. Code adapted from an external source is credited in-line where it appears. The ERCOT price
 client and the battery dispatch model are reused, with credit, from the author's own earlier projects (*Forecast to
-Dispatch*; MADS Milestone II). AI tools helped with code review, debugging and the general plan, including that of
-the AI challenger.
+Dispatch*; MADS Milestone II). AI tools helped to plan the work, to write, review and debug code and to edit the text,
+under the author's direction and review; Appendix O of the report names the models, the prompts and the checks.
 
 ## References
 
