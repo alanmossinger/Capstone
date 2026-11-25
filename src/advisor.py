@@ -45,7 +45,7 @@ from dotenv import load_dotenv
 from src import paths
 
 MODEL = "claude-sonnet-5-5"  # the model id recorded with every call; the dashboard shows it
-MAX_TOKENS = 1800
+MAX_TOKENS = 8000  # Messages API only; at 1,800 the challenge memo came back empty (three calls of 25 Nov 2026 spent the whole limit before any text)
 TEMPERATURE = None  # the model's default: claude-sonnet-5-5 rejects any other sampling setting, and the command line has none
 CLI_TIMEOUT_S = 600  # one answer; the tables run to about 60 KB of input
 PROMPTS = paths.REPO / "prompts"

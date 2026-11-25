@@ -208,6 +208,7 @@ EXAMPLE_STATEMENTS = [  # (case id, label, the book it proposed)
     ("X27", "X27 · sunk cost — \"we owe it to last year's advisory work\" (book C)", "C deterministic MILP"),
     ("X28", "X28 · sunk cost — \"appraisal wells are already in the ground\" (book D)", "D risk-aware MILP"),
     ("X30", "X30 · double standard — leases judged on the tail, plants on expected value (book B)", "B equal capital by sector"),
+    ("X34", "X34 · unsupported claim — \"a federal carbon tax will be law by 2027\" (book B)", "B equal capital by sector"),
     ("X31", "X31 · double standard — gas on upside, renewables on tail risk (book C)", "C deterministic MILP"),
     ("X33", "X33 · unsupported claim — \"rates fall 200 basis points next year\" (book C)", "C deterministic MILP"),
     ("X35", "X35 · unsupported claim — \"grid demand grows 8% a year\" (book D)", "D risk-aware MILP"),
@@ -216,18 +217,41 @@ EXAMPLE_STATEMENTS = [  # (case id, label, the book it proposed)
     ("X42", "X42 · a sound rule — no gas plants in the book (book D)", "D risk-aware MILP"),
     ("X45", "X45 · a sound rule — at most $2B beyond the reserve for construction (book D)", "D risk-aware MILP"),
 ]
-EXAMPLE_BY_LABEL = {label: (cid, book) for cid, label, book in EXAMPLE_STATEMENTS}
+# Plain reasons for the three comparator books, written for this page (25 Nov 2026): the registered cases argue mostly for book D
+# and none argues for book A. They are not part of the registered test and have no recorded answer, so they need a live advisor.
+BOOK_REASONS = [  # (label, the book it argues for, the statement)
+    ("Why book A · a rule anyone can audit — \"rank by NPV and fund down the list\"", "A NPV ranking",
+     "Rank every project by its expected NPV and fund down the list until the budget runs out. It is the rule this committee has always used, "
+     "anyone on the board can audit it, and it puts the whole budget to work. I want expected value, and I accept the larger tail that comes with it."),
+    ("Why book A · nearly the optimizer's value — \"I won't sign a book I can't explain\"", "A NPV ranking",
+     "I won't sign a book I can't explain to the board in one sentence. The ranking takes the projects with the best stand-alone economics, "
+     "and its expected NPV is within a few percent of the optimizer's book. That small gap is a fair price for a rule everyone understands."),
+    ("Why book B · balance — \"neither sector should carry the book\"", "B equal capital by sector",
+     "Split the capital evenly between the leases and the power requests. Nobody can call the oil price or the ERCOT price five years out, "
+     "so I will not let either sector carry the book. I accept a lower expected value for that balance."),
+    ("Why book B · a cushion — \"keep some of the budget unspent\"", "B equal capital by sector",
+     "The even split leaves about $400 million of the budget unspent, and its worst-5% loss is smaller than the ranking's or the deterministic optimizer's. "
+     "I want that cushion for cost overruns and for next year's round, even if it costs some expected value today."),
+    ("Why book C · the highest expected value — \"we are paid to grow value\"", "C deterministic MILP",
+     "This book has the highest expected value of the four and keeps every limit the company sets. We are paid to grow value, and our balance sheet can absorb a bad year. "
+     "Weight the tail lightly: a dollar of loss in the worst 5% of outcomes counts as half a dollar of expected value."),
+    ("Why book C · I believe the base case — \"don't pay to insure unlikely scenarios\"", "C deterministic MILP",
+     "I believe the base case. The forecasts were tested and the optimizer used them under every company limit. Its book earns over $500 million more "
+     "in expected value than the risk-aware book, and I don't want to give that up to insure against scenarios I think are unlikely."),
+]
+EXAMPLE_BY_LABEL = {**{label: (book, None, text) for label, book, text in BOOK_REASONS},
+                    **{label: (book, cid, None) for cid, label, book in EXAMPLE_STATEMENTS}}
 
 
 def use_statement():
-    """Load the picked recorded statement and the book it proposed; 'Write my own reasons' leaves the page as it is."""
+    """Load the picked statement and the book it argues for; 'Write my own reasons' leaves the page as it is."""
     pick = st.session_state["pick_statement"]
     if pick == OWN_STATEMENT:
         return
-    cid, book = EXAMPLE_BY_LABEL[pick]
+    book, cid, text = EXAMPLE_BY_LABEL[pick]
     st.session_state["start"] = BOOK_NAME[book]
     st.session_state["members"] = STARTS[BOOK_NAME[book]]
-    st.session_state["statement"] = cases[cid]["statement"]
+    st.session_state["statement"] = text if cid is None else cases[cid]["statement"]
 
 
 left, right = st.columns([1, 1.2])
@@ -238,11 +262,14 @@ with left:
     over = cost > s.budget + 1
     st.markdown(md(f"Capital charged now: **{money(cost)}** of {money(s.budget)}" + (" — **over the budget**" if over else "")))
 with right:
-    st.selectbox("Not sure how to put it? Start from one of the registered test's committee statements (a simulated committee, written before any model saw them), then edit it — or write your own",
-                 [OWN_STATEMENT] + [label for _, label, _ in EXAMPLE_STATEMENTS], key="pick_statement", on_change=use_statement,
-                 help="Twelve of the 48 registered cases of notebook 12: four sunk-cost arguments, two double standards, two unsupported claims and four sound rules, "
+    st.selectbox("Not sure how to put it? Start from a plain reason to pick book A, B or C, or from one of the registered test's committee statements "
+                 "(a simulated committee, written before any model saw them), then edit it — or write your own",
+                 [OWN_STATEMENT] + [label for label, _, _ in BOOK_REASONS] + [label for _, label, _ in EXAMPLE_STATEMENTS], key="pick_statement", on_change=use_statement,
+                 help="The six 'Why book …' reasons were written for this page: two each for the ranking, the even split and the deterministic optimizer. "
+                      "They are not part of the registered test and have no recorded answer, so they need a live advisor. "
+                      "The X cases are thirteen of the 48 registered cases of notebook 12: four sunk-cost arguments, two double standards, three unsupported claims and four sound rules, "
                       "written by the author as committee personas before any model saw them (no real committee took part — a stated limit of the report). "
-                      "Picking one also loads the book it argued for; with no key, the challenge replays the recorded round.")
+                      "Picking one also loads the book it argued for; with no key, a registered case replays the recorded round.")
     st.text_area("Why this book? Say it as you would to the committee: your objective, any rule you hold (a limit on the chance of a loss, a sector you will not fund, "
                  "a construction line you can call), and what you believe about the market.", key="statement", height=150, placeholder="We should fund … because …")
     b1, b2 = st.columns([1, 1])
