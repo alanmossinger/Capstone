@@ -105,36 +105,89 @@ SHORT_TITLES = {
     "F3_five_year_by_size": "Small requests are built more often in PJM and CAISO",
     "F4_calibration_by_horizon": "The model's probabilities run high in the middle range",
     "F5_auc_brier_by_horizon": "The model ranks requests better than cohort averages",
-    "F6_hazard_ratios": "ERCOT and gas requests reach operation fastest",
+    "F6_hazard_ratios": "Gas requests reach operation fastest; ERCOT leads the three regions",
     "F7_shap_summary": "State, size and technology drive the model's predictions",
     "F8_congestion_vs_completion": "In PJM, a crowded queue lowers the chance of operation",
-    "F9_project_map": "Three ISOs hold most of the capacity waiting to connect",
+    "F9_project_map": "Three grid regions hold about 40% of the capacity waiting to connect",
     "F10_gains_over_baselines": "At entry, a careful lookup matches the model at utility scale",
     "F11_level_by_entry_year": "Recent cohorts complete far below the historical level",
-    "F12_landmark_models": "Two years in, updated information sharpens the model's ranking",
+    "F12_landmark_models": "Two years in, knowing the agreement status sharpens the model's ranking",
     "F13_expected_mw_and_value": "Raw model levels overstate the megawatts a cohort delivers",
     "F14_simulated_book": "The simulated band brackets what a book delivers",
     "F15_backtest": "At entry, the model's book delivers what the lookup's does",
     "F16_constraint_map": "Queues swell; recent entrants neither leave nor get built as before",
     "F17_miso_spp": "In MISO the model beats the lookup; SPP is too thin",
-    "F18_managed_book": "Two years in, the model's book holds more operations",
+    "F18_managed_book": "The model's two-year picks operate more often but deliver no more megawatts",
     "F19_drivers": "Size, technology and the agreement decide which requests get built",
-    "F20_when_requests_die": "CAISO and PJM cull in year one; ERCOT after year four",
+    "F20_when_requests_die": "CAISO and PJM lose requests in year one; ERCOT after year four",
     "F21_segments": "Ten entry rules sort requests by their odds of completion",
-    "F22_tournament": "Other learners tie LightGBM and do not beat the lookup",
+    "F22_tournament": "Other machine-learning models beat neither the chosen model nor the lookup",
     "F23_portfolio_review": "Funded requests operated more often than exits, except ERCOT's at entry",
-    "F24_book_per_region": "Two years in, the floor book operates at twice the pool rate",
-    "F25_state_archetypes": "State markets fall into archetypes that separate completion",
+    "F24_book_per_region": "Two years in, the model's picks operate at twice the average rate",
+    "F25_state_archetypes": "States fall into market types with different completion rates",
     "F26_npv_per_mw": "With capital counted, few plants pay at merchant prices",
     "F27_forecast_gains": "Machine learning beats baselines for plant output, not for leases",
     "F28_candidates": "Leases add value; wind and solar requests pay only under contract",
     "F29_cost_tornado": "The uplift share and operating cost decide the lease book",
-    "F30_price_scenarios": "Scenarios keep history's price jumps around a reverting level",
+    "F30_price_scenarios": "Simulated prices keep history's jumps and drift back to the average",
     "F31_candidate_risk": "Leases rarely lose money; most power requests usually do",
-    "F32_stresses": "Every named stress leaves the default book positive",
+    "F32_stresses": "Every stress test leaves the default book's expected value positive",
     "F33_four_books": "Four books under one budget and cap, scored out of sample",
     "F35_horizon_view": "Leases pay from year three; queue requests stay a cost",
     "F36_ai_workflow": "The advisor sees only result tables; humans override through a gate",
+    # the decision figures of notebook 11, reviewed against their charts on 26 November 2026 (mentor review of the report figures)
+    "F38_frontier": "Weighting risk more heavily gives up expected value for smaller worst-case losses",
+    "F39_reallocation": "Cheap oil empties the book of leases; wind stays in every case",
+    "F42_value_added": "The risk-aware book earns less on average but outscores two rivals clearly",
+}
+
+# Report-figure subtitles in plain English (mentor review of the report figures, 26 November 2026): two or three short
+# sentences a general reader can follow, saying what each panel shows and how to read it, with no project shorthand
+# (registered, rungs, static basis, committee grid, criterion codes). The notebook's own subtitle keeps the technical
+# detail (cohort, n, resamples) and shows in the notebook's *Reading this* cell; ``save_fig`` redraws the subtitle from
+# this table for every figure named here, exactly as it redraws the title from ``SHORT_TITLES``. Figure F51's subtitle
+# names a leader computed in notebook 13, so it is written there.
+SHORT_SUBTITLES = {
+    "02_C5_asset_map": "Left: 2024 oil production by offshore area of the Gulf of Mexico. Right: Texas power plants by fuel; larger markers are larger plants.",
+    "02_C6_correlation_and_clusters": "Left: how closely monthly changes in prices, Gulf output and Texas plant output move together (1 = perfectly, 0 = not at all). Right: the two typical ways an oil lease's output declines in the three years after its peak month.",
+    "F1_cif_by_region": "The share of grid-connection requests that have started operating (left) or been withdrawn (right), by years since the request. Shaded bands are 95% intervals. ERCOT is the Texas grid, PJM the mid-Atlantic grid and CAISO California's.",
+    "F6_hazard_ratios": "How much faster (right of 1) or slower (left of 1) each kind of request reaches operation or withdraws, compared with a mid-sized solar request in PJM. Bars are 95% intervals.",
+    "F9_project_map": "Left: projects waiting to connect to the grid at the end of 2024, one bubble per county, sized by capacity. Right: power plants operating today. Colours mark the three grid regions studied: ERCOT (Texas), PJM (mid-Atlantic) and CAISO (California).",
+    "F12_landmark_models": "Change in forecast quality when the model is told what has happened since a request joined the queue, at four checkpoints. Left: ranking accuracy. Right: probability error. Above zero is an improvement; bars are 95% intervals.",
+    "F16_constraint_map": "By region and the year a request joined the queue: the capacity already waiting there (left), and the shares withdrawn (middle) and operating (right) within three years. Grey lines are the six other regions.",
+    "F18_managed_book": "Requests operating (left) and megawatts operating (right) within three years, for sets of 25 and 50 requests picked two years into the queue by the model, by three lookup tables of past completion rates, and at random. Bars are 95% intervals.",
+    "F19_drivers": "The share of requests operating within five years, split six ways: size, technology, how crowded the regional queue and the county were, the type of grid service, and whether a connection agreement was signed. Bars are 95% intervals.",
+    "F20_when_requests_die": "Left: the yearly chance that a waiting request withdraws or starts operating. Middle: the study stage reached when requests withdrew. Right: the chance of operating within three years for requests that have already waited 0, 1 or 2 years.",
+    "F21_segments": "Ten simple rules built from what is known when a request joins the queue, each with its five-year completion rate: for the 2010–2016 requests the rules were built on (circles) and for later requests (blue, 95% intervals).",
+    "F22_tournament": "The best alternative model against two references, the chosen model (LightGBM) and a lookup table of past completion rates, at three, five and seven years. Left: ranking accuracy (above 0 is better). Right: probability error (below 0 is better). Bars are 95% intervals.",
+    "F23_portfolio_review": "The share of requests that reached operation, grouped by what the decision rule said at entry (left) and two years in (right): invest or accelerate, hold, or exit. Top: selling at market prices. Bottom: under a fixed-price contract. Bars are 95% intervals.",
+    "F24_book_per_region": "Left: requests operating within three years as more are added in each method's preferred order (dashed: what the method expected). Right: operations by region for the requests each method would keep; the two methods keep different numbers, so the bars are not like for like.",
+    "F25_state_archetypes": "Left: states grouped by seven features of their grid-connection queues. Right: the share of 2017–2019 requests operating by the end of 2024 in each group, an outcome the grouping never used. Bars are 95% intervals.",
+    "F26_npv_per_mw": "Value per megawatt of a new plant over twenty years, after its building cost, by technology and region. Merchant means selling at market prices; contracted means a fixed-price 15-year sales agreement. Lines run from the low case to the high case.",
+    "F27_forecast_gains": "Forecast error of the machine-learning model relative to the best simple method, for each quantity forecast; left of zero means machine learning is better. Green lines passed a test set in advance, orange failed it, grey were reported only. Bars are 95% intervals.",
+    "F28_candidates": "Left: the value added by redeveloping each of twenty Gulf oil and gas leases, with its low-cost to high-cost range. Right: the expected value of twenty Texas power requests at market prices (bars) and under a fixed-price contract (dots), after counting the chance they are never built.",
+    "F30_price_scenarios": "2,000 simulated price paths for oil (WTI), natural gas (Henry Hub) and Texas power (ERCOT), built by reshuffling the monthly changes of 2018–2024 around a level that drifts back to the 2018–2024 average.",
+    "F32_stresses": "The expected value of the forty-candidate default book under six stress tests: an oil-price collapse, dearer gas, weak wind, lower solar revenue, a two-year delay, and all of them at once with costs 20% higher.",
+    "F34_decision_gym": "What four ways of choosing would have earned in past situations, replayed with only the information available at the time: two rules of thumb (instinct), the project's fixed rule and the AI advisor. The black tick is the best choice with hindsight.",
+    "F35_horizon_view": "Left: the expected value of the forty candidates counted over 1 to 20 years, for offshore leases and Texas power requests. Right: how many of each a value-maximising book holds at each horizon.",
+    "F38_frontier": "A book is the set of projects one decision process funds. Left: each point is a book chosen with a different weight on risk (λ), scored on 2,000 simulated futures it was not chosen on. Right: what the books along the line spend, by technology; the dashed line is the budget.",
+    "F39_reallocation": "What the risk-aware book (book D) spends by technology when it is chosen again under each of five what-if questions a committee might ask.",
+    "F41_staged": "The risk-aware book (book D) is either held for twenty years or revised on 1 January 2027 after two years of new information. Left: the difference in value in each simulated future. Right: the two ranges of outcomes, which overlap.",
+    "F42_value_added": "Each row compares two ways of deciding on the same 2,000 simulated futures, with 95% intervals. Left: the difference in expected value. Right: the difference in the score, expected value minus the average loss in the worst 5% of futures. An interval that crosses zero means no clear difference.",
+    "F43_architecture": "The six steps of the decision process. The language model works only in step 4: it reads and argues, and never calculates a value or decides.",
+    "F44_advisor_tools": "How a committee's question is answered: the language model translates and explains, the calculation engine computes, and a person decides.",
+    "F45_robustness": "Left: how much construction money the risk-aware book (book D) needs beyond its reserve in each simulated future. Right: how often each candidate is picked when the book is chosen again on 20 reshuffled sets of futures; a core member is picked at least 80% of the time.",
+    "F46_challenger": "Left: how often the language model's memo (blue) and a plain checklist (grey) name each type of flaw planted in a proposal. Right: what each adds to a simulated committee's result per case, with 95% intervals; *a fixed rule that takes the optimizer's answer first. Below the dotted line: worst-case loss avoided.",
+    "F47_ladder": "The gain per case from each step of support for a simulated investment committee: tools only, tools plus the language model, then the optimizer. Bars are 95% intervals. This was a trial run on earlier cases, before the final test was fixed in advance.",
+    "F48_credit_line_net": "The risk-aware book's score (expected value minus the average loss in the worst 5% of futures) by the size of a credit line for construction overruns: before financing costs, after a 0.5% yearly fee, and after the fee plus 8% interest on money drawn.",
+    "F49_forward_calibration": "Left: the predicted one-year chance of operating against the share of requests that did operate in 2025; the dashed line is a perfect forecast. Right: the twenty candidate requests, their predicted chance and what happened to each in 2025.",
+    "F50_ladder_v10": "The gain per case from each step of support for a simulated investment committee, on 48 test cases whose scoring rules were fixed in writing before the results were seen (pre-registered). Bars are 95% intervals.",
+    "F52_what_can_go_wrong": "Left: each book's average loss in the worst 5% of futures as its projects are made to rise and fall together, from independently (0) to as modelled (1); triangles mark the extreme where every project has its worst outcome at once. Right: each book's score if the model is wrong in one of six ways.",
+    "F53_ladder_five_arms": "Left: the average result for simulated investment committees under five ways of reviewing a proposal. Right: the gain from one way to the next, with 95% intervals; an interval that crosses zero means no clear difference. The optimizer-first rule takes the optimizer's answer and uses no language model.",
+    "F54_allocation": "Each project in the risk-aware book: the capital it takes now (solid) and its expected value (hatched), with how often it loses money and what the book's score loses if it is removed.",
+    "F55_committee_workflow": "How a proposal moves from the committee's words to a signed, tamper-evident record. At stage 5 the language model may only explain, challenge or guide, and code checks every number it writes.",
+    "F56_readiness_matrix": "Twelve safeguards of the system: whether each is in place, how it was tested, its known limitation, and what a committee should verify before committing real money.",
+    "F57_book_distributions": "A book is the set of projects one decision process funds. Each panel shows one book's twenty-year value in the same 2,000 simulated futures, with the 100 worst shaded. Dashed lines mark the average of all futures and the average of the 100 worst.",
 }
 
 
@@ -213,7 +266,7 @@ def finish(fig, title, subtitle, cohort, eia=False, lbnl=True, lbnl_2026=False, 
                       fontsize=13, color=MUTED, linespacing=1.15),
              fig.text(left, 0.012, "\n".join(source_lines), ha="left", va="bottom",
                       fontsize=10.5, color=MUTED, linespacing=1.15)]
-    # kept so save_fig can redraw the title from SHORT_TITLES without the notebook changing
+    # kept so save_fig can redraw the title from SHORT_TITLES and the subtitle from SHORT_SUBTITLES without the notebook changing
     fig._finish = {"texts": texts, "title": title, "subtitle": subtitle, "cohort": cohort, "eia": eia, "lbnl": lbnl, "lbnl_2026": lbnl_2026,
                    "sources": sources, "provenance": provenance}
 
@@ -247,12 +300,12 @@ def save_fig(fig, name, caption, notebook, folder=None):
     instead of appending a duplicate, and blocks stay sorted by name so the
     file reads as a gallery the report's captions are chosen from.
     """
-    if name in SHORT_TITLES and getattr(fig, "_finish", None):
+    if (name in SHORT_TITLES or name in SHORT_SUBTITLES) and getattr(fig, "_finish", None):
         kept = fig._finish
         for text in kept["texts"]:
             text.remove()
-        finish(fig, SHORT_TITLES[name], kept["subtitle"], kept["cohort"], eia=kept["eia"], lbnl=kept["lbnl"], lbnl_2026=kept["lbnl_2026"],
-               sources=kept["sources"], provenance=kept["provenance"])
+        finish(fig, SHORT_TITLES.get(name, kept["title"]), SHORT_SUBTITLES.get(name, kept["subtitle"]), kept["cohort"], eia=kept["eia"], lbnl=kept["lbnl"],
+               lbnl_2026=kept["lbnl_2026"], sources=kept["sources"], provenance=kept["provenance"])
     out_dir = paths.FIGURES / folder if folder else paths.FIGURES
     out_dir.mkdir(parents=True, exist_ok=True)
     png, svg = out_dir / f"{name}.png", out_dir / f"{name}.svg"
